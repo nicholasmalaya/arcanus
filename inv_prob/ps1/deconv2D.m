@@ -2,7 +2,7 @@
 % need to import the image 'longhorn.png'
 %
 %import(longhorn)
-imread("longhorn.png")
+longhorn = imread("longhorn.png");
 
 % The imported image called longhorn
 % is a matrix of size 100x133.
