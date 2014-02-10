@@ -1,4 +1,4 @@
 paleologos
 ==========
 
-Personal Repository
+Personal Repository containing notes, dot files, etc. 
