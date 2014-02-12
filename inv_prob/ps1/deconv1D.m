@@ -27,6 +27,7 @@ d = K * p;
 %n = sqrt(0.1)*randn(N,1);
 n = 0.1*randn(N,1);
 dn = d + n;
+delta = norm(n)
 plot(x,d,x,dn,'Linewidth', 2);
 legend('data', 'noisy data');
 print('data.pdf')
@@ -75,7 +76,7 @@ print('L-curve.pdf')
 %
 % discover alpha using morozov's discrepancy criterion
 %
-delta = n*n';
+delta = norm(n);
 
 for k = 1:no
     alpha = alpha_list(k);
@@ -84,3 +85,34 @@ for k = 1:no
     reg(k) = norm(p_alpha);
 end
 
+figure;
+loglog(alpha_list,misfit, 'Linewidth', 3);
+hold on;
+loglog(alpha_list(5), delta, 'ro', 'Linewidth', 3);
+%axis([9e-1,10,1e-1,500]);
+xlabel('\alpha'); ylabel('||K*p - d||');
+%mu = 0;
+%hold on;
+%line = refline([alpha_list(5) mu]);
+%set(line,'Color','r')
+title('Morozov Discrepancy')
+print('morozov.pdf')
+
+%
+% discover alpha against the 'true' error
+%
+delta = norm(n);
+
+for k = 1:no
+    alpha = alpha_list(k);
+    p_alpha = (K'*K + alpha * eye(N))\(K'*dn);
+    misfit(k) = norm(K*p_alpha - d);
+end
+
+figure;
+loglog(alpha_list,misfit, 'Linewidth', 3);
+hold on;
+loglog(alpha_list(3), misfit(3), 'ro', 'Linewidth', 3);
+xlabel('\alpha'); ylabel('||m_{true} - m_{\alpha}||');
+title('Error in Reconstruction')
+print('true1d.pdf')
