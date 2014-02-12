@@ -12,7 +12,7 @@ x = linspace(0,1,N)';
 for l = 1:N
     for k = 1:N
       %K(l,k)  = h * power(C,-2) * max(0,C-abs((l-k)*h));
-      K(l,k)  = h * power(C,-2) * max(0,C-abs((l-k)*h));
+      K(l,k)  = h * (power(C,-2)) * max(0,C-abs((l-k)*h));
     end
 end
 
@@ -24,16 +24,17 @@ d = K * p;
 
 % noisy data, noise has sigma (standard deviation) = 0.1
 %dn = d + 0.1 * randn(N,1);
-%n = sqrt(0.1)*randn(N,1);
-n = 0.1*randn(N,1);
+n = sqrt(0.1)*randn(N,1);
+%n = 0.1*randn(N,1);
 dn = d + n;
-%plot(x,d,x,dn,'Linewidth', 2);
-%legend('data', 'noisy data');
-%print('data.pdf')
+plot(x,d,x,dn,'Linewidth', 2);
+legend('data', 'noisy data');
+print('data.pdf')
 
 % TSVD regularization parameter
 % alpha = 0.05;
-alpha = 0.0001;
+alpha = 0.1;
+%alpha = 0.0001;
 
 % solve TSVD
 [U,S,V] = svd(K);

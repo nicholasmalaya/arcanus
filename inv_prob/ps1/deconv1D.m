@@ -27,14 +27,13 @@ d = K * p;
 %n = sqrt(0.1)*randn(N,1);
 n = 0.1*randn(N,1);
 dn = d + n;
-delta = norm(n)
 plot(x,d,x,dn,'Linewidth', 2);
 legend('data', 'noisy data');
 print('data.pdf')
 
 % Tikhonov regularization parameter
 % alpha = 0.05;
-alpha = 0.00001;
+alpha = 1.0;
 
 % solve Tikhonov system
 p_alpha = (K'*K + alpha * eye(N))\(K'*dn);
@@ -43,7 +42,7 @@ figure;
 plot(x,p,x,p_alpha,'Linewidth', 2), axis([0,1,-1.5,1.5]);
 legend('exact data', 'Tikhonov reconstruction');
 title(['Alpha= ',num2str(alpha)])
-print('reconstruct.pdf')
+print(['reconstruct',num2str(alpha),'.pdf'])
 
 % solve TSVD
 %p_tsvd = (K'*K + alpha * eye(N))\(K'*dn);
@@ -68,8 +67,8 @@ end
 figure;
 loglog(misfit, reg, 'Linewidth', 3);
 hold on;
-%loglog(misfit(5), reg(5), 'ro', 'Linewidth', 3);
-axis([9e-1,10,1e-1,500]);
+loglog(misfit(3), reg(3), 'ro', 'Linewidth', 3);
+%axis([9e-1,10,1e-1,500]);
 xlabel('||K*p - d||'); ylabel('||p||');
 print('L-curve.pdf')
 
