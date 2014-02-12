@@ -2,8 +2,6 @@
 % N = 200;
 close all
 N = 200;
-gamma = 0.03;
-%C = 1 / (sqrt(2*pi)*gamma);
 C = 0.2;
 
 K = zeros(N,N);
@@ -13,9 +11,8 @@ x = linspace(0,1,N)';
 % discrete convolution matrix
 for l = 1:N
     for k = 1:N
-      %K(l,k) = h * C * exp(-(l-k)^2 * h^2 / (2 * gamma^2));
-      %K(l,k) = h * power(C,-2) * max(0,C-abs((l-k)*h^2));
-      K(l,k) = h* power(C,-2) * max(0,C-abs((l-k)));
+      %K(l,k)  = h * power(C,-2) * max(0,C-abs((l-k)*h));
+      K(l,k)  = h * power(C,-2) * max(0,C-abs((l-k)*h));
     end
 end
 
@@ -27,14 +24,16 @@ d = K * p;
 
 % noisy data, noise has sigma (standard deviation) = 0.1
 %dn = d + 0.1 * randn(N,1);
-n = 0.001*randn(N,1);
+%n = sqrt(0.1)*randn(N,1);
+n = 0.1*randn(N,1);
 dn = d + n;
 plot(x,d,x,dn,'Linewidth', 2);
 legend('data', 'noisy data');
+print('data.pdf')
 
 % Tikhonov regularization parameter
 % alpha = 0.05;
-alpha = 0.01;
+alpha = 0.00001;
 
 % solve Tikhonov system
 p_alpha = (K'*K + alpha * eye(N))\(K'*dn);
@@ -42,6 +41,8 @@ p_alpha = (K'*K + alpha * eye(N))\(K'*dn);
 figure;
 plot(x,p,x,p_alpha,'Linewidth', 2), axis([0,1,-1.5,1.5]);
 legend('exact data', 'Tikhonov reconstruction');
+title(['Alpha= ',num2str(alpha)])
+print('reconstruct.pdf')
 
 % solve TSVD
 %p_tsvd = (K'*K + alpha * eye(N))\(K'*dn);
@@ -51,7 +52,7 @@ legend('exact data', 'Tikhonov reconstruction');
 %legend('exact data', 'TSVD reconstruction');
 
 % plot L-curve
-alpha_list = [1e-6, 1e-5, 1e-4, 1e-3, 1e-2, 5e-2, 1e-1, 3e-1, 5e-1, 1, 1e1, 1e2, 1e3, 1e4];
+alpha_list = [1e-4, 1e-3, 1e-2, 5e-2, 1e-1, 3e-1, 5e-1, 1, 1e1, 1e2, 1e3];
 no = length(alpha_list);
 misfit = zeros(no,1);
 reg = zeros(no,1);
@@ -64,11 +65,12 @@ for k = 1:no
 end
 
 figure;
-loglog(misfit, reg, 'Linewidth', 2);
+loglog(misfit, reg, 'Linewidth', 3);
 hold on;
-loglog(misfit(5), reg(5), 'ro', 'Linewidth', 3);
-%axis([9e-1,10,1e-1,500]);
+%loglog(misfit(5), reg(5), 'ro', 'Linewidth', 3);
+axis([9e-1,10,1e-1,500]);
 xlabel('||K*p - d||'); ylabel('||p||');
+print('L-curve.pdf')
 
 %
 % discover alpha using morozov's discrepancy criterion

@@ -84,14 +84,16 @@ reg = zeros(no,1);
 for k = 1:no
     alpha = alpha_list(k);
     I_alpha = pcg(@(in)apply(in,K1,K2,N1,N2,alpha),K_Ibn(:),1e-6,1500);
-    misfit(k) = norm((K1 * (K2 * reshape(I_alpha,N2,N1))')' - Ibn);
+    %misfit(k) = norm((K1 * (K2 * reshape(I_alpha,N2,N1))')' - Ibn);
+    misfit(k) = norm((K1 * (K2 * reshape(I_alpha,N2,N1))')' - I);
     reg(k) = norm(I_alpha);
 end
 
 figure;
 loglog(misfit, reg, 'Linewidth', 3);
 hold on;
-loglog(misfit(5), reg(5), 'ro', 'Linewidth', 3);
+%loglog(misfit(5), reg(5), 'ro', 'Linewidth', 3);
 %axis([9e-1,10,1e-1,500]);
 %xlabel('||K*p - d||'); ylabel('||p||');
-print('L-curve2d.pdf')
+%print('L-curve2d.pdf')
+print('2d-true.pdf')
