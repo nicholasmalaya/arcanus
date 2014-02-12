@@ -33,7 +33,7 @@ dn = d + n;
 
 % TSVD regularization parameter
 % alpha = 0.05;
-alpha = 0.01;
+alpha = 0.0001;
 
 % solve TSVD
 [U,S,V] = svd(K);
