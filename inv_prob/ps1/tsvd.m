@@ -27,91 +27,27 @@ d = K * p;
 %n = sqrt(0.1)*randn(N,1);
 n = 0.1*randn(N,1);
 dn = d + n;
-plot(x,d,x,dn,'Linewidth', 2);
-legend('data', 'noisy data');
-print('data.pdf')
+%plot(x,d,x,dn,'Linewidth', 2);
+%legend('data', 'noisy data');
+%print('data.pdf')
 
-% Tikhonov regularization parameter
+% TSVD regularization parameter
 % alpha = 0.05;
-alpha = 0.00001;
-
-% solve Tikhonov system
-p_alpha = (K'*K + alpha * eye(N))\(K'*dn);
-% comment out next 3 if you dont want figure
-figure;
-plot(x,p,x,p_alpha,'Linewidth', 2), axis([0,1,-1.5,1.5]);
-legend('exact data', 'Tikhonov reconstruction');
-title(['Alpha= ',num2str(alpha)])
-print('reconstruct.pdf')
+alpha = 0.01;
 
 % solve TSVD
-%p_tsvd = (K'*K + alpha * eye(N))\(K'*dn);
+[U,S,V] = svd(K);
+for j=1:N,
+  if S(j , j)*S(j , j) < alpha
+    S(j , j) = 0;
+  end    
+end
+
+% s is diag matrix of eigenvalues, so lets filter them
+p_tsvd = U*S*V' * dn;
 % comment out next 3 if you dont want figure
-%figure;
-%plot(x,p,x,p_tsvd,'Linewidth', 2), axis([0,1,-1.5,1.5]);
-%legend('exact data', 'TSVD reconstruction');
-
-% plot L-curve
-alpha_list = [1e-4, 1e-3, 1e-2, 5e-2, 1e-1, 3e-1, 5e-1, 1, 1e1, 1e2, 1e3];
-no = length(alpha_list);
-misfit = zeros(no,1);
-reg = zeros(no,1);
-
-for k = 1:no
-    alpha = alpha_list(k);
-    p_alpha = (K'*K + alpha * eye(N))\(K'*dn);
-    misfit(k) = norm(K*p_alpha - dn);
-    reg(k) = norm(p_alpha);
-end
-
 figure;
-loglog(misfit, reg, 'Linewidth', 3);
-hold on;
-%loglog(misfit(5), reg(5), 'ro', 'Linewidth', 3);
-axis([9e-1,10,1e-1,500]);
-xlabel('||K*p - d||'); ylabel('||p||');
-print('L-curve.pdf')
-
-%
-% discover alpha using morozov's discrepancy criterion
-%
-delta = norm(n);
-
-for k = 1:no
-    alpha = alpha_list(k);
-    p_alpha = (K'*K + alpha * eye(N))\(K'*dn);
-    misfit(k) = norm(K*p_alpha - dn);
-    reg(k) = norm(p_alpha);
-end
-
-figure;
-loglog(alpha_list,misfit, 'Linewidth', 3);
-hold on;
-loglog(alpha_list(5), delta, 'ro', 'Linewidth', 3);
-%axis([9e-1,10,1e-1,500]);
-xlabel('\alpha'); ylabel('||K*p - d||');
-%mu = 0;
-%hold on;
-%line = refline([alpha_list(5) mu]);
-%set(line,'Color','r')
-title('Morozov Discrepancy')
-print('morozov.pdf')
-
-%
-% discover alpha against the 'true' error
-%
-delta = norm(n);
-
-for k = 1:no
-    alpha = alpha_list(k);
-    p_alpha = (K'*K + alpha * eye(N))\(K'*dn);
-    misfit(k) = norm(K*p_alpha - d);
-end
-
-figure;
-loglog(alpha_list,misfit, 'Linewidth', 3);
-hold on;
-loglog(alpha_list(3), misfit(3), 'ro', 'Linewidth', 3);
-xlabel('\alpha'); ylabel('||m_{true} - m_{\alpha}||');
-title('Error in Reconstruction')
-print('true1d.pdf')
+plot(x,p,x,p_tsvd,'Linewidth', 2), axis([0,1,-1.5,1.5]);
+legend('exact data', 'TSVD reconstruction');
+title(['T_{SVD}, \alpha=',num2str(alpha)])
+print(['tsvd',num2str(alpha),'.pdf'])
