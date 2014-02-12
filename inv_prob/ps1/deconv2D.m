@@ -49,7 +49,7 @@ figure;
 surf(xx,yy,Ib);
 title('blurred image');
 
-% add nose and plot noisy blurred image
+% add noise and plot noisy blurred image
 Ibn = Ib + 16 * randn(N2,N1);
 figure;
 surf(xx,yy,Ibn);
@@ -75,3 +75,23 @@ title('Tikhonov reconstruction');
 view(0,-90);   % top view
 
 
+% plot L-curve
+alpha_list = [1e-4, 1e-3, 1e-2, 5e-2, 1e-1, 3e-1, 5e-1, 1, 1e1, 1e2, 1e3];
+no = length(alpha_list);
+misfit = zeros(no,1);
+reg = zeros(no,1);
+
+for k = 1:no
+    alpha = alpha_list(k);
+    I_alpha = pcg(@(in)apply(in,K1,K2,N1,N2,alpha),K_Ibn(:),1e-6,1500);
+    misfit(k) = norm((K1 * (K2 * reshape(I_alpha,N2,N1))')' - Ibn);
+    reg(k) = norm(I_alpha);
+end
+
+figure;
+loglog(misfit, reg, 'Linewidth', 3);
+hold on;
+loglog(misfit(5), reg(5), 'ro', 'Linewidth', 3);
+%axis([9e-1,10,1e-1,500]);
+%xlabel('||K*p - d||'); ylabel('||p||');
+print('L-curve2d.pdf')
