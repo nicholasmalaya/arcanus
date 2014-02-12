@@ -33,7 +33,7 @@ print('data.pdf')
 
 % Tikhonov regularization parameter
 % alpha = 0.05;
-alpha = 1.0;
+alpha = 0.1;
 
 % solve Tikhonov system
 p_alpha = (K'*K + alpha * eye(N))\(K'*dn);

@@ -33,8 +33,8 @@ print('data.pdf')
 
 % TSVD regularization parameter
 % alpha = 0.05;
-alpha = 0.1;
 %alpha = 0.0001;
+alpha = 0.0001;
 
 % solve TSVD
 [U,S,V] = svd(K);
