@@ -122,7 +122,6 @@ red dot instead dictates the limit of $\delta$, the norm of the error.
 
 \begin{figure}[!htb]
   \includegraphics[scale=.5]{plots/true1d.pdf}
-  \label{fig:data}
   \caption{The actual error in the reconstruction as a function of
  alpha. } 
  \label{fig:actual}
@@ -132,17 +131,49 @@ Figure \ref{fig:actual} plots actual error in the reconstruction,
 e.g. the norm of the difference between the reconstruction and the
 actual (true) image, as a function of alpha. 
 
-
 \newpage
 \section{Problem 2}
 
+% \begin{figure}[!htb]
+%   \includegraphics[scale=.5]{plots/longhorn.png}
+%   \label{fig:true}
+%   \caption{The true image.} 
+% \end{figure}
+
+% Figure \ref{fig:true} plots the true image, that we will be attempting
+% to reconstruct through inversion. 
 
 \subsection{Memory Requirement}
 
+How much memory would be required to form the entire matrix, $K$?
+We have $N^2$ model parameters. K lives in $\mathbb{R}^{N_2 * N_2}$. 
+With $N=128$, then 
+\begin{equation}
+\frac{N^2 * N^2 * 8 \text{Bytes}}{(1024)^3} = 2 \text{GB}
+\end{equation}
+So while this is not inaccessible on modern HPC systems, it is certainly not efficient. 
 
 \subsection{L-Curve}
 
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{plots/L-curve2d.pdf}
+  \label{fig:l2d}
+  \caption{The L-curve for the 2d problem.} 
+\end{figure}
+
+Figure \ref{fig:l2d} plots the L-curve. The red dot is approximately at
+the location of the optimal value of $\alpha$, which is found to be 0.05. 
 
 \subsection{Actual Error}
+
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{plots/2d-true.pdf}
+  \label{fig:2dt}
+  \caption{The actual error in the reconstruction as a function of
+ alpha, for the 2d problem.} 
+\end{figure}
+
+Figure \ref{fig:2dt} plots the true error. Surprisingly, 
+
 
 \end{document}

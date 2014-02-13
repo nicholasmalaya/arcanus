@@ -62,7 +62,7 @@ title('blurred noisy image');
 K_Ibn = (K1 * (K2 * Ibn)')';
 
 % then set the regularization parameter 
-alpha = 1.5e-3;
+alpha = 1e-2;
 
 % now solve the regularized inverse problem to reconstruct the 
 % the image using preconditioned conjugate gradients (pcg) to solve the
@@ -76,7 +76,7 @@ view(0,-90);   % top view
 
 
 % plot L-curve
-alpha_list = [1e-4, 1e-3, 1e-2, 5e-2, 1e-1, 3e-1, 5e-1, 1, 1e1, 1e2, 1e3];
+alpha_list = [1e-5 1e-4 1e-3 5e-2, 1e-1, 3e-1, 5e-1, 1, 1e1];
 no = length(alpha_list);
 misfit = zeros(no,1);
 reg = zeros(no,1);
@@ -84,16 +84,37 @@ reg = zeros(no,1);
 for k = 1:no
     alpha = alpha_list(k);
     I_alpha = pcg(@(in)apply(in,K1,K2,N1,N2,alpha),K_Ibn(:),1e-6,1500);
-    %misfit(k) = norm((K1 * (K2 * reshape(I_alpha,N2,N1))')' - Ibn);
-    misfit(k) = norm((K1 * (K2 * reshape(I_alpha,N2,N1))')' - I);
+    misfit(k) = norm((K1 * (K2 * reshape(I_alpha,N2,N1))')' - Ibn);
     reg(k) = norm(I_alpha);
 end
 
 figure;
 loglog(misfit, reg, 'Linewidth', 3);
 hold on;
-%loglog(misfit(5), reg(5), 'ro', 'Linewidth', 3);
+loglog(misfit(4), reg(4), 'ro', 'Linewidth', 3);
+alpha_list(4)
 %axis([9e-1,10,1e-1,500]);
-%xlabel('||K*p - d||'); ylabel('||p||');
-%print('L-curve2d.pdf')
+xlabel('||K*p - d||'); ylabel('||p||');
+print('L-curve2d.pdf')
+
+% plot L-curve
+alpha_list = [1e-7 1e-6 1e-5 1e-4 1e-3 5e-2, 1e-1, 3e-1, 5e-1, 1, 1e1];
+no = length(alpha_list);
+misfit = zeros(no,1);
+reg = zeros(no,1);
+
+for k = 1:no
+    alpha = alpha_list(k);
+    I_alpha = pcg(@(in)apply(in,K1,K2,N1,N2,alpha),K_Ibn(:),1e-6,1500);
+    misfit(k) = norm((K1 * (K2 * reshape(I_alpha,N2,N1))')' - I);
+    reg(k) = norm(I_alpha);
+end
+
+figure;
+loglog(alpha_list, misfit, 'Linewidth', 3);
+hold on;
+i=4
+loglog(alpha_list(i), misfit(i), 'ro', 'Linewidth', 3);
+alpha_list(i)
+xlabel('\alpha'); ylabel('error');
 print('2d-true.pdf')
