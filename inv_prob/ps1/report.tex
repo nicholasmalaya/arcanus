@@ -33,6 +33,7 @@ several features of the underlying ``true'' signal.
 
 \subsection{$T_{\text{SVD}}$}
 
+
 \begin{figure}[!htb]
         \centering
         \begin{subfigure}[bh]{0.45\textwidth}
@@ -53,9 +54,15 @@ several features of the underlying ``true'' signal.
                 \caption{$\alpha=1.0$}
         \end{subfigure}
         \caption{$T_{\text{SVD}}$ at varying values of $\alpha$.}
+        \label{fig:svd}
 \end{figure}
 
+Figure \ref{fig:svd} plots the solution to the inverse problem using
+Truncated SVD at several different values of
+$\alpha$, the regularization parameter. 
+
 \subsection{Tikhanov Filter}
+
 
 \begin{figure}[!htb]
         \centering
@@ -78,23 +85,52 @@ several features of the underlying ``true'' signal.
         \end{subfigure}
         \caption{Solutions to the inverse problem using Tikhanov
  regularization at varying values of $\alpha$.} 
+ \label{fig:tik}
 \end{figure}
 
+Figure \ref{fig:tik} plots the solution to the inverse problem using
+Tikhanov regularization at several different values of $\alpha$, the
+regularization parameter.  
 
 \subsection{L-Curve}
 
 \begin{figure}[!htb]
   \includegraphics[scale=.5]{plots/L-curve.pdf}
   \label{fig:data}
-  \caption{The data (after applying the filter) with and without
- normally distributed noise. } 
+  \caption{The L-curve} 
+ \label{fig:lcurve}
 \end{figure}
+
+Figure \ref{fig:lcurve} plots the results of the L-curve criterion.
 
 
 \subsection{Morozov's Discrepancy Criterion}
 
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{plots/morozov.pdf}
+  \label{fig:data}
+  \caption{Morozov discrepancy Criterion} 
+ \label{fig:moro}
+\end{figure}
+
+Figure \ref{fig:moro} plots the results of Morozov discrepancy
+criterion. I could not get the plots to draw a horizontal line, so that
+red dot instead dictates the limit of $\delta$, the norm of the error. 
+
 
 \subsection{Actual Error}
+
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{plots/true1d.pdf}
+  \label{fig:data}
+  \caption{The actual error in the reconstruction as a function of
+ alpha. } 
+ \label{fig:actual}
+\end{figure}
+
+Figure \ref{fig:actual} plots actual error in the reconstruction,
+e.g. the norm of the difference between the reconstruction and the
+actual (true) image, as a function of alpha. 
 
 
 \newpage
