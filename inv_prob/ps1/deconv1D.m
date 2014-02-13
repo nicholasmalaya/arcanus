@@ -68,6 +68,7 @@ figure;
 loglog(misfit, reg, 'Linewidth', 3);
 hold on;
 loglog(misfit(3), reg(3), 'ro', 'Linewidth', 3);
+alpha_list(3)
 %axis([9e-1,10,1e-1,500]);
 xlabel('||K*p - d||'); ylabel('||p||');
 print('L-curve.pdf')
@@ -112,6 +113,7 @@ figure;
 loglog(alpha_list,misfit, 'Linewidth', 3);
 hold on;
 loglog(alpha_list(3), misfit(3), 'ro', 'Linewidth', 3);
+alpha_list(3)
 xlabel('\alpha'); ylabel('||m_{true} - m_{\alpha}||');
 title('Error in Reconstruction')
 print('true1d.pdf')
