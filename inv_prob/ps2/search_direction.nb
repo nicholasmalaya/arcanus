@@ -1,0 +1,252 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      7105,        243]
+NotebookOptionsPosition[      6466,        216]
+NotebookOutlinePosition[      6804,        231]
+CellTagsIndexPosition[      6761,        228]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+H is the Hessian Matrix of f(x,y):\
+\>", "Text",
+ CellChangeTimes->{{3.6018322592592173`*^9, 3.601832293946904*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"H", "=", 
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       RowBox[{"Cos", "[", "x", "]"}], "*", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"y", "/", "10"}], "]"}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"Sin", "[", "x", "]"}]}], "/", "10"}], "*", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"y", "/", "10"}], "]"}]}]},
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"Sin", "[", "x", "]"}]}], "/", "10"}], "*", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"y", "/", "10"}], "]"}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Cos", "[", "x", "]"}], "/", "100"}], "*", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"y", "/", "10"}], "]"}]}]}
+    }], "\[NoBreak]", ")"}]}]], "Input",
+ CellChangeTimes->{{3.601831815558832*^9, 3.601831929405505*^9}, 
+   3.601832261496909*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Cos", "[", "x", "]"}], " ", 
+      RowBox[{"Cos", "[", 
+       FractionBox["y", "10"], "]"}]}], ",", 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox["1", "10"]}], " ", 
+      RowBox[{"Sin", "[", "x", "]"}], " ", 
+      RowBox[{"Sin", "[", 
+       FractionBox["y", "10"], "]"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox["1", "10"]}], " ", 
+      RowBox[{"Sin", "[", "x", "]"}], " ", 
+      RowBox[{"Sin", "[", 
+       FractionBox["y", "10"], "]"}]}], ",", 
+     RowBox[{
+      FractionBox["1", "100"], " ", 
+      RowBox[{"Cos", "[", "x", "]"}], " ", 
+      RowBox[{"Cos", "[", 
+       FractionBox["y", "10"], "]"}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.601831859676982*^9, 3.601831929756218*^9}, 
+   3.601832267717514*^9}]
+}, Open  ]],
+
+Cell["\<\
+// g is the (negative!) gradient of f(x,y):\
+\>", "Text",
+ CellChangeTimes->{{3.601832213818815*^9, 3.601832250938468*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"g", " ", "=", " ", 
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"Sin", "[", "x", "]"}]}], "*", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"y", "/", "10"}], "]"}]}]},
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"Cos", "[", "x", "]"}]}], "/", "10"}], "*", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"y", "/", "10"}], "]"}]}]}
+    }], "\[NoBreak]", ")"}]}]], "Input",
+ CellChangeTimes->{{3.601831941534842*^9, 3.6018319848546658`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"Sin", "[", "x", "]"}]}], " ", 
+     RowBox[{"Sin", "[", 
+      FractionBox["y", "10"], "]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "10"]}], " ", 
+     RowBox[{"Cos", "[", "x", "]"}], " ", 
+     RowBox[{"Sin", "[", 
+      FractionBox["y", "10"], "]"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6018319659809217`*^9, 3.601831985238996*^9}, 
+   3.6018322700357122`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Here, we take the product of the inverse of H with g to find p_k, the search \
+direction:\
+\>", "Text",
+ CellChangeTimes->{{3.601832300618976*^9, 3.601832316834494*^9}, {
+  3.601832360434771*^9, 3.601832389395092*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatrixForm", "[", 
+  RowBox[{"FullSimplify", "[", 
+   RowBox[{
+    RowBox[{"Inverse", "[", "H", "]"}], ".", "g"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.601831994110004*^9, 3.601832064876008*^9}, {
+   3.601832106925555*^9, 3.601832112475792*^9}, {3.60183216364425*^9, 
+   3.601832196852584*^9}, 3.601832264644665*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       RowBox[{
+        RowBox[{"Sin", "[", 
+         RowBox[{"2", " ", "x"}], "]"}], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", 
+          RowBox[{"Cos", "[", 
+           FractionBox["y", "5"], "]"}], "-", 
+          RowBox[{"Sin", "[", 
+           FractionBox["y", "5"], "]"}]}], ")"}]}], 
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Cos", "[", 
+           RowBox[{"2", " ", "x"}], "]"}], "+", 
+          RowBox[{"Cos", "[", 
+           FractionBox["y", "5"], "]"}]}], ")"}]}]]},
+     {
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"20", " ", 
+         RowBox[{"Sin", "[", 
+          FractionBox["y", "10"], "]"}], " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"Cos", "[", "x", "]"}], "2"], " ", 
+            RowBox[{"Cos", "[", 
+             FractionBox["y", "10"], "]"}]}], "+", 
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"Sin", "[", "x", "]"}], "2"], " ", 
+            RowBox[{"Sin", "[", 
+             FractionBox["y", "10"], "]"}]}]}], ")"}]}], 
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          RowBox[{"2", " ", "x"}], "]"}], "+", 
+         RowBox[{"Cos", "[", 
+          FractionBox["y", "5"], "]"}]}]]}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.601832013348193*^9, 3.601832065419943*^9}, {
+   3.601832107612215*^9, 3.601832112884169*^9}, {3.601832170362363*^9, 
+   3.601832197133039*^9}, 3.601832274254224*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 867},
+WindowMargins->{{Automatic, 307}, {Automatic, 104}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 126, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[708, 27, 887, 28, 44, "Input"],
+Cell[1598, 57, 902, 29, 83, "Output"]
+}, Open  ]],
+Cell[2515, 89, 133, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[2673, 96, 547, 17, 44, "Input"],
+Cell[3223, 115, 530, 17, 47, "Output"]
+}, Open  ]],
+Cell[3768, 135, 228, 5, 30, "Text"],
+Cell[CellGroupData[{
+Cell[4021, 144, 349, 7, 30, "Input"],
+Cell[4373, 153, 2077, 60, 105, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
