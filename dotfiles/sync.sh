@@ -18,6 +18,17 @@ manus bashrc
 manus aliases
 
 #
+# now, diff crontab
+#
+crontab -l | diff blah -
+if [ $? -ne 0 ]
+then
+    crontab -l > cron
+    git commit cron -m "[paleologos]: Diff detected in cron. Automatically sync initialized."
+    git push
+fi
+
+#
 # nick
 # 2/28/14
 #
