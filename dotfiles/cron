@@ -142,7 +142,6 @@ MAILTO=""
 # Reminders executed once a year:
 0   4  2 1 * ~/bin/msg/reminder pay_citi_extra_mortgage
 0   4 11 8 * ~/bin/msg/reminder Think_about_Dermotologist 
-0   8 11 8 * ~/bin/msg/reminder Think_about_physical_with_norris
 0   5 02 8 * ~/bin/msg/reminder_n Interest_
 0   8 15 6 * ~/bin/msg/reminder change_air_filter
 0   8 15 12 * ~/bin/msg/reminder change_air_filter
