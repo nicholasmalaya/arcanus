@@ -1,0 +1,124 @@
+;; -----------------------------------------------
+;; NPM Emacs copied from COS/TENSOR/MAGUS
+;; .emacs configuration file
+;; -----------------------------------------------
+;;
+;; It’s been said that Emacs is like a light-saber. 
+;; You don’t just go to the store and buy one, you build your own.
+;;
+
+;; turn on font-lock mode
+(when (fboundp 'global-font-lock-mode)
+  (global-font-lock-mode t))
+
+;; return a backup file path of a give file path
+;; with full directory mirroring from a root dir
+;; non-existant dir will be created
+(defun my-backup-file-name (fpath)
+  "Return a new file path of a given file path.
+If the new path's directories does not exist, create them."
+  (let (backup-root bpath)
+    (setq backup-root "~/.emacs.d/emacs-backup")
+    (setq bpath (concat backup-root fpath "~"))
+    (make-directory (file-name-directory bpath) bpath)
+    bpath
+  )
+)
+(setq make-backup-file-name-function 'my-backup-file-name)
+
+;;
+;; enable dirtree
+;;
+(add-to-list 'load-path "~/.emacs.d/dirtree/")
+
+(require 'tree-mode)
+(require 'windata)
+(autoload 'dirtree "dirtree" "Add directory to tree view" t)
+(global-set-key "\C-o" 'dirtree)
+
+;; setting default font type
+(set-default-font "9x15")
+
+;; Make initial frame as tall as possible
+(setq initial-frame-alist '((top . 1) (height . 63)))
+
+;; default to better frame titles
+(setq frame-title-format
+      (concat  "%b - emacs@" (system-name)))
+
+;; default to unified diffs
+(setq diff-switches "-u")
+
+;;adding backspace for remote log
+(global-set-key "\C-h" 'backward-delete-char)
+
+;;no startup message
+(setq inhibit-startup-message t)
+
+;; remove menu / toolbar / scroll bar for perfection
+(menu-bar-mode -1)
+(tool-bar-mode nil)
+(scroll-bar-mode nil)
+
+;;should be pretty obvious what i am doing here
+(set-cursor-color "red")
+(set-background-color "Black")
+(set-foreground-color "green")
+
+;;this adds font locking (color!)
+(global-font-lock-mode 1)
+
+;; set .h files to c++ font mode
+(setq auto-mode-alist (cons '("\\.h$" . c++-mode) auto-mode-alist))
+
+;; set mail address
+(setq user-mail-address "nick@ices.utexas.edu")
+
+;; finally change all yes/no questions to y/n type
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; setting up emacs YaTeX mode
+;;(setq auto-mode-alist
+;;              (cons (cons "\\.tex$" 'yatex-mode) auto-mode-alist))
+;;        (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
+;;     (setq load-path	
+;;             (cons (expand-file-name "~/Documents/EMACS/YATEX") load-path))
+
+
+(setq auto-mode-alist
+   (cons (cons "\\.tex$" 'yatex-mode) auto-mode-alist))
+(autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
+
+(setq load-path (cons (expand-file-name "/h2/nick/src/emacs/yatex") load-path))
+
+;;testing making .F90 files go to f90-mode
+(setq auto-mode-alist
+      (cons '("\\.F90$" . f90-mode) auto-mode-alist))
+
+;; adds goto line function
+(global-set-key "\M-g" 'goto-line)
+
+;; I haven't seen a keyboard with "copy" and "paste" buttons since 2008
+;; Honestly, Emacs' defaults, WTF
+(global-set-key (kbd "<f2>") 'clipboard-kill-ring-save)
+(global-set-key (kbd "<f3>") 'clipboard-yank)
+
+; Fix copy-paste between emacs and other x programs
+(setq x-select-enable-clipboard t)
+(if (functionp 'x-cut-buffer-or-selection-value)
+    (setq interprogram-paste-function 'x-cut-buffer-or-selection-value))
+
+; octave mode
+(autoload 'octave-mode "octave-mod" nil t)
+(setq auto-mode-alist
+      (cons '("\\.m$" . octave-mode) auto-mode-alist))
+
+;; don't sleep emacs accidentally
+(global-set-key [(control z)] nil)
+
+;; color scheme
+(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/")
+(add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
+(require 'color-theme-solarized)
+
+;; last modified: 8/7/13
