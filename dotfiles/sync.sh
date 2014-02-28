@@ -13,6 +13,10 @@ then
 fi
 }
 
+# sync up sync!
+git pull 
+
+# .exe
 manus emacs
 manus bashrc
 manus aliases
@@ -27,6 +31,9 @@ then
     git commit cron -m "[paleologos]: Diff detected in cron. Automatically sync initialized."
     git push
 fi
+
+# steady as she goes
+exit 0
 
 #
 # nick
