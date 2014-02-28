@@ -1,4 +1,3 @@
-# MAILTO="nick@ices.utexas.edu" 
 MAILTO=""
 
 #m h  dom mon dow   command 
@@ -111,19 +110,13 @@ MAILTO=""
 #To be executed each day
 30  4  * * * ~/bin/ping_test 
 30  4  * * * /h2/nick/bin/paleologos/dotfiles/sync.sh
-#0   7  * * * ~/bin/msg/reminder callie_medicine
-#0  18  * * * ~/bin/msg/reminder callie_medicine_dinner
 
 # haruspex daily
-#0   9  * * * ~/bin/msg/intrade/update.sh
 */5 *  * * * /h2/nick/src/pass/shredder.sh
-#0   9  * * * ~/src/dogs/check_web.sh
 
 #To be executed each week (monday)
-#30  4  * * 1 ~/bin/msg/reminder_n fill_out_timesheet 
 0  20  * * 1 ~/bin/msg/reminder take_out_trash!
 0   9  * * 1 ~/bin/msg/nsf/consilium.sh
-#0   8  * * 1 ~/bin/msg/sbir/run_sbir.sh
 
 #To be executed each week (tues)
 0  20  * * 2 ~/bin/msg/reminder bring_back_trash!
@@ -132,12 +125,7 @@ MAILTO=""
 #30  4  * * 4 ~/bin/msg/litany.sh 
 
 #To be executed each month
-#0   12 24 * * ~/bin/msg/reminder rent 
-#0   1  11 * * ~/bin/check_hdf.sh
 0   1   10  * * ~/bin/msg/reminder callie_heartworm
-
-# Every three months @ at 03:30,1st of Jan,Apr,Jul,Oct.
-30 03 01 */3 * /bin/msg/reminder Purge_Minerva 
 
 # Reminders executed once a year:
 0   4  2 1 * ~/bin/msg/reminder pay_citi_extra_mortgage
@@ -145,11 +133,6 @@ MAILTO=""
 0   5 02 8 * ~/bin/msg/reminder_n Interest_
 0   8 15 6 * ~/bin/msg/reminder change_air_filter
 0   8 15 12 * ~/bin/msg/reminder change_air_filter
-
-#m h dom mon dow command
-#30  4  * * 1 ~/bin/msg/reminder_n workout 
-#30  4  * * 3 ~/bin/msg/reminder_n workout 
-#30  4  * * 5 ~/bin/msg/reminder_n workout 
 
 # dont forget to leave whitespace at the end of cron
 #*/1 * * * * /usr/bin/touch /h2/nick/foo
