@@ -1,0 +1,34 @@
+#!/bin/bash
+alias h="history"
+alias g="grep"
+alias c="clear"
+alias gotomasa="cd /workspace/src/pecos/mms/MASA/trunk"
+alias gotoscratch="cd /scratch/nick"
+alias gototurb="cd /www/sites/turbulence"
+alias gotopaper="cd /workspace/src/pecos/papers/2013/dns_error/data"
+alias gotorelease="cd /org/centers/pecos/LIBRARIES/MASA"
+alias gotopecosweb="cd /www/sites/pecos"
+
+#setting quick moves within computer
+alias goto='source turb_direct'
+alias gotot='source Tijk_direct'
+alias gotobot='source goto_buildbot'
+#alias du='du --max-depth=1 -h'
+
+alias H=" history | egrep -v '^ *[[:digit:]]+ +H +' | grep"
+
+#changing ls --really useful
+alias ls="ls -F --color=yes"
+alias l="ls -F --color=yes"
+alias sl="ls"
+
+# using the super ipython
+#alias python='ipython'
+
+#enabling port forwarding (allows remote access to mathematica, matlab)
+#alias ssh="ssh -X -v" 
+#for passwordless entry
+#ssh-agent bash (inactive)
+
+#setting up emacs alias--type e to not open emacs window (good for slow ssh)
+alias e='emacs -nw'
