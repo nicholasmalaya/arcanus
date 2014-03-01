@@ -135,4 +135,33 @@ Thus, Newton's method is insensitive to the scale of the underlying
 problem. Steepest decent on the other hand, does depent on the scale of
 the underlying problem, and therefore it is not possible to make a good
 initial step length, $\alpha$.
+
+\subsection{Multidimensional expansion}
+
+The result from the previous section is generalizable to
+multi-dimensions. Now, instead of $\beta$ we have B, a matrix of
+positive elements that scale the function f(x) that we are trying to
+minimize. 
+
+\begin{equation}
+ Bg(x) = 0
+\end{equation}
+As before, our Newton step is insensitive to the scale of the system we
+are solving, 
+\begin{align*}
+ H_{k} p_{k}&=-g_{k}\\
+ B H_{k} p_{k}&=- B g_{k}\\
+ (B^{-1}B)H_{k} p_{k}&=-(B^{-1}B)g_{k}
+ H_{k} p_{k}&=-g_{k}\\
+\end{align*}
+This is because the same scale factor will ``push-through'' the Hessian
+Matrix, e.g. 
+\begin{equation}
+\nabla\nabla B f(x) = B \nabla\nabla f(x) 
+\end{equation}
+
+\section{Problem 3}
+
+
+
 \end{document}
