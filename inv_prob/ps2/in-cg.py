@@ -15,22 +15,21 @@ def mycg(A,b,maxiter,tol,x):
     
     r = A*x-b;
     d = -r;
-    #rsold = r'*r;
+    rsold = numpy.transpose(r)*r;
 
-    for i=1:maxiter:
+    for i in xrange(1,maxiter):
         Ad = A*d;
-        #alpha = rsold/(d'*Ad);
+        alpha = rsold/(numpy.transpose(d)*Ad);
         x = x+alpha*d;
         r = r+alpha*Ad;
-        #rsnew = r'*r;
+        rsnew = numpy.transpose(r)*r;
         if sqrt(rsnew)<tol:
             break
-
+        
         beta = rsnew/rsold;
         d = -r+beta*d;
         rsold = rsnew;
-    end
-
+    return d
 
 
 # parameters
