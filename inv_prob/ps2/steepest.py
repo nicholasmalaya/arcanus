@@ -4,6 +4,7 @@
 # min f(x,y) = -cos(x)cos(y/10)
 #
 import numpy as np
+import matplotlib.pylab as plt
 
 x_old  = np.array([0, 0])
 eps    = 0.01               # step size
@@ -19,10 +20,24 @@ def f_prime(xv):
     y = xv[1]
     return np.array([np.sin(x)*np.cos(y/10), np.cos(x)*np.sin(y/10)/10.])
  
+xdat = []
+ydat = []
 while np.linalg.norm(x_new-x_old) > thresh:
     x_old = x_new
+    xdat.append(x_new[0])
+    ydat.append(x_new[1])
     x_new = x_old - eps * f_prime(x_old)
 print "Local minimum occurs at ", x_new
+
+# plot movement
+#
+# plt.plot(xdat,ydat)
+# plt.xlabel('time (s)')
+# plt.ylabel('voltage (mV)')
+# plt.title('About as simple as it gets, folks')
+# plt.grid(True)
+# plt.savefig("test.png")
+# plt.show()
 
 
 #
