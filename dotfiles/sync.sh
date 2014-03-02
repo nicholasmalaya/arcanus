@@ -1,10 +1,10 @@
 #!/bin/bash
 #
 # sync dot files on magus with central repo
-
+#
 manus()
 { # take input string, test if changed
-diff /h2/nick/".$1" ./"$1"
+diff /h2/nick/".$1" "$1"
 if [ $? -ne 0 ]
 then
     cp /h2/nick/".$1" "$1"
@@ -13,6 +13,7 @@ then
 fi
 }
 
+cd /h2/nick/bin/paleologos/dotfiles/
 # sync up sync!
 git pull 
 
