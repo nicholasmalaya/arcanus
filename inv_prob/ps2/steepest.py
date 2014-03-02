@@ -18,7 +18,7 @@ def f_prime(xv):
     """ Gradient f = [sin(x)cos(y/10), cos(x) sin(y/10)/10 ]"""
     x = xv[0]
     y = xv[1]
-    return np.array([np.sin(x)*np.cos(y/10), np.cos(x)*np.sin(y/10)/10.])
+    return np.array([np.sin(x)*np.cos(y/10.), np.cos(x)*np.sin(y/10.)/10.])
  
 xdat = []
 ydat = []
