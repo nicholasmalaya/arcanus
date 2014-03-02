@@ -168,13 +168,22 @@ are solving,
 This is because the same scale factor will ``push-through'' the Hessian
 Matrix, e.g. 
 \begin{equation}
-\nabla\nabla B f(x) = B \nabla\nabla f(x) 
+H(x) = \nabla\nabla B f(x) = B \nabla\nabla f(x) 
 \end{equation}
 Thus, Newton's method is affine invariant, e.g. independent of linear
 changes of coordinates. 
 
 \section{Problem 3}
 
+Write a program to minimize a quartic form -- a homogeneous polynomial
+of degree four. 
 
+\subsection{Code}
+
+\subsection{Compare the performance between Newton and Steepest Descent}
+
+\subsection{Experiment with different choices of $\eta$}
+
+Verify the theoretical convergence rates for these different choices. 
 
 \end{document}
