@@ -1,4 +1,5 @@
-MAILTO=""
+#MAILTO=""
+MAILTO="nick@ices.utexas.edu"
 
 #m h  dom mon dow   command 
 ############################################ 
@@ -109,10 +110,7 @@ MAILTO=""
 
 #To be executed each day
 30  4  * * * ~/bin/ping_test 
-30  4  * * * /h2/nick/bin/paleologos/dotfiles/sync.sh
-
-# haruspex daily
-*/5 *  * * * /h2/nick/src/pass/shredder.sh
+30  12  * * * /h2/nick/bin/paleologos/dotfiles/sync.sh
 
 #To be executed each week (monday)
 0  20  * * 1 ~/bin/msg/reminder take_out_trash!
