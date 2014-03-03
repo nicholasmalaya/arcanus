@@ -77,7 +77,6 @@ In other words,
 
 \begin{figure}[!htb]
   \includegraphics[scale=.5]{figs/eigen.pdf}
-  \label{fig:3d}
   \caption{The Contours of the Eigenvalues. The red line at the top is
  the region where the Hessian is positive definite. }   
 \end{figure}
@@ -128,6 +127,31 @@ Which is,
 
 \subsection{Write a program that performs both steepest descent and a
   Newton Iteration} 
+
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{figs/P1SDNLSwin.jpg}
+  \caption{Steepest Descent from within the region of stability,
+ converging to the solution at (0,0).}   
+\end{figure}
+
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{figs/P1SDNLSFail.jpg}
+  \caption{Steepest Descent from outside the region of stability, yet
+ still converging to the solution at (0,0).}   
+\end{figure}
+
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{figs/P1NMWLSwin.jpg}
+  \caption{Newton's Method with line search inside the region of
+ stability, converging correctly.}   
+\end{figure}
+
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{figs/P1NMWLSFail.jpg}
+  \caption{Newton's Method with line search outside the region of
+ stability, diverging. Hint: look at the bottom right.}   
+\end{figure}
+
 
 
 \section{Problem 2}
