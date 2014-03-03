@@ -10,7 +10,9 @@
 \usepackage{amssymb}
 
 \title{\bf{CSE397: Assignment \#2}}
-\author{Nicholas Malaya \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
+\author{Nicholas Malaya \\ Department of Mechanical Engineering \\
+Institute for Computational Engineering and Sciences \\ University of
+Texas at Austin} \date{} 
 
 \begin{document}
 \maketitle
@@ -20,6 +22,23 @@
 
 \subsection{Find and classify all stationary points}
 
+
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{figs/1_3d.pdf}
+  \label{fig:3d}
+  \caption{The topology of -cos(x)cos(y/10) in the domain.} 
+\end{figure}
+
+Figure one shows a clear stationary point at (0,0). In addition, we are
+seeking all points where $\nabla f = 0$.  The gradient of $\nabla f =
+(\text{sin}(x)\text{cos}(y/10),\frac{\text{cos}(x)}{10}\text{sin}(y/10))$. Solving
+$\text{sin}(x)\text{cos}(y/10) = 0$  and
+$\frac{\text{cos}(x)}{10}\text{sin}(y/10) = 0$ shows that while the
+directional derivative of x is zero at $y \pm \frac{10 \pi}{2}$ and the
+y-derivative is zero at $x \pm \frac{\pi}{2}$, the entire gradient is
+only zero at (0,0). Thus, this is the only fixed point in the region we
+are considering. 
+
 \subsection{Find the region where the Hessian Matrix of f(x,y) is positive definite.}
 
 \subsection{Derive expressions for the search directions}
@@ -27,21 +46,6 @@
 \subsection{Write a program that performs both steepest descent and a
   Newton Iteration}
 
-
-
-% \begin{figure}[!htb]
-%   \includegraphics[scale=.5]{plots/data.pdf}
-%   \label{fig:data}
-%   \caption{The data (after applying the filter) with and without
-%  normally distributed noise. } 
-% \end{figure}
-
-% After applying the new filter $k(x)$ and adding gaussian noise, the data
-% used as input for the inverse problem is plotted in figure 1. 
-
-% Notice that this filter is significant: the raw data generated after
-% passing through the filter (even without statistical noise) has lost
-% several features of the underlying ``true'' signal. 
 
 % \subsection{$T_{\text{SVD}}$}
 
