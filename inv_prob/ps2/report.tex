@@ -86,6 +86,46 @@ The bounds of this region are plotted in figure 2.
 \newpage
 \subsection{Derive expressions for the search directions}
 
+The search direction for steepest descent is the negative gradient,
+e.g. 
+\begin{equation*}
+g = -\nabla f =\left(
+  \begin{array}{ c }
+     - \text{sin}(x)\text{cos}(y/10)\\
+     - \frac{\text{cos}(x)}{10}\text{sin}(y/10)
+  \end{array} \right)
+\end{equation*}
+For newton, the step direction is $H_k p_k = g_k$ or, 
+\begin{equation*}
+\left(
+  \begin{array}{ c c }
+     \text{cos}(x)\text{cos}(y/10) & -\frac{\text{sin}(x)}{10}\text{sin}(y/10) \\
+     -\frac{\text{sin}(x)}{10}\text{sin}(y/10) & \frac{\text{cos}(x)}{100}\text{cos}(y/10)
+  \end{array} \right)
+  p_k  
+  = 
+\left(
+ \begin{array}{ c }
+  - \text{sin}(x)\text{cos}(y/10)\\
+  - \frac{\text{cos}(x)}{10}\text{sin}(y/10)
+   \end{array} \right)
+\end{equation*}
+Which is, 
+\begin{equation*}
+ p_k = 
+\left(
+\begin{array}{c}
+ \frac{\sin (2 x) \left(\cos \left(\frac{y}{5}\right)-\sin
+   \left(\frac{y}{5}\right)-1\right)}{2 \left(\cos (2 x)+\cos
+   \left(\frac{y}{5}\right)\right)} \\
+ -\frac{20 \sin \left(\frac{y}{10}\right) \left(\cos
+   \left(\frac{y}{10}\right) \cos ^2(x)+\sin ^2(x) \sin
+   \left(\frac{y}{10}\right)\right)}{\cos (2 x)+\cos
+   \left(\frac{y}{5}\right)}
+\end{array}
+\right)
+\end{equation*}
+
 \subsection{Write a program that performs both steepest descent and a
   Newton Iteration} 
 
