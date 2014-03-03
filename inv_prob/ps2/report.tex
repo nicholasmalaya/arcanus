@@ -41,6 +41,22 @@ are considering.
 
 \subsection{Find the region where the Hessian Matrix of f(x,y) is positive definite.}
 
+\begin{equation*}
+H = \left(
+  \begin{array}{ c c }
+     \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x
+      \partial y} \\
+     \frac{\partial^2 f}{\partial x
+      \partial y} & \frac{\partial^2 f}{\partial y^2}
+  \end{array} \right)
+= 
+\left(
+  \begin{array}{ c c }
+     \text{cos}(x)\text{cos}(y/10) & -\frac{\text{sin}(x)}{10}\text{sin}(y/10) \\
+     -\frac{\text{sin}(x)}{10}\text{sin}(y/10) & \frac{\text{cos}(x)}{100}\text{cos}(y/10)
+  \end{array} \right)
+\end{equation*}
+
 \subsection{Derive expressions for the search directions}
 
 \subsection{Write a program that performs both steepest descent and a
