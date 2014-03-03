@@ -166,6 +166,24 @@ Which is,
 
 \subsection{What do you observe about convergence rates in these cases?} 
 
+The number of iterations required to converge were nearly what I
+expected. Steepest descent always converges, but is the slowest. A line
+search improves it by dialing back the otherwise overly greedy step
+sizes, but still significantly underperforms Newton's method. 
+Newton's method is fastest without a line search, but only within the
+region where the function is very nearly quadratic. Outside of this
+region, it fails. 
+\newline
+\begin{tabular}{| l | c |}
+ \hline
+ Method & Number of iterations \\
+ \hline
+  Steepest Descent without line search & 212 \\
+  Steepest Descent with line search & 81     \\
+  Newton's Method with Line Search & 33      \\
+  Newton's Method without Line Search & 3    \\
+ \hline
+\end{tabular}
 
 \section{Problem 2}
 
@@ -255,7 +273,7 @@ of degree four.
 \newpage
 \subsection{Compare the performance between Newton and Steepest Descent}
 
-% mu = 1 sigma = 0
+% mu = 0 sigma = 10
 \begin{figure}[!htb]
         \centering
         \begin{subfigure}[bh]{0.45\textwidth}
@@ -274,9 +292,11 @@ of degree four.
         \caption{Comparison between steepest descent and Newton CG at
  varying $\eta$, for $\mu=0$, $\sigma=1$.}
 \end{figure}
-Blah happens.
 
-%
+In figure 9, we can see that roughly all of the plots are converging
+non-linearly. 
+
+% mu = 10, sigma = 1
 \begin{figure}[!htb]
         \centering
         \begin{subfigure}[bh]{0.45\textwidth}
@@ -295,7 +315,10 @@ Blah happens.
         \caption{Comparison between steepest descent and Newton CG at
  varying $\eta$, for $\mu=10$, $\sigma=1$.}
 \end{figure}
-
+In figure 10, steepest descent only converges linearly. We can see that
+when $eta$ is fixed at one half, the convergence is only linear for
+newton as well. Both of the other methods for selecting $eta$ given
+superior convergence rates (quadratic). 
 
 \subsection{Experiment with different choices of $\eta$}
 
