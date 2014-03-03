@@ -109,7 +109,6 @@ MAILTO="nick@ices.utexas.edu"
 0   4 23 12 * ~/bin/msg/reminder Kevin_Kim 
 
 #To be executed each day
-30  4  * * * ~/bin/ping_test 
 30  12  * * * /h2/nick/bin/paleologos/dotfiles/sync.sh
 
 #To be executed each week (monday)
