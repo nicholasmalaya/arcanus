@@ -152,6 +152,19 @@ Which is,
  stability, diverging. Hint: look at the bottom right.}   
 \end{figure}
 
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{figs/P1NMNLSwin.jpg}
+  \caption{Newton's Method without line search inside the region of
+ stability, converging correctly.}   
+\end{figure}
+
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{figs/P1NMNLSFailinside.jpg}
+  \caption{Newton's Method without line search inside the region of
+ stability, yet not converging correctly.}   
+\end{figure}
+
+\subsection{What do you observe about convergence rates in these cases?} 
 
 
 \section{Problem 2}
@@ -239,10 +252,50 @@ changes of coordinates.
 
 Write a program to minimize a quartic form -- a homogeneous polynomial
 of degree four. 
-
-\subsection{Code}
-
+\newpage
 \subsection{Compare the performance between Newton and Steepest Descent}
+
+% mu = 1 sigma = 0
+\begin{figure}[!htb]
+        \centering
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/P3SDmu0sig1.jpg}
+        \end{subfigure}%
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/P3NCGmu0sig1eta1.jpg}
+        \end{subfigure}
+        \centering
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/P3NCGmu0sig1eta2.jpg}
+        \end{subfigure}%
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/P3NCGmu0sig1eta3.jpg}
+        \end{subfigure}
+        \caption{Comparison between steepest descent and Newton CG at
+ varying $\eta$, for $\mu=0$, $\sigma=1$.}
+\end{figure}
+Blah happens.
+
+%
+\begin{figure}[!htb]
+        \centering
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/P3SDmu10sig1.jpg}
+        \end{subfigure}%
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/P3NCGmu10sig1eta1.jpg}
+        \end{subfigure}
+        \centering
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/P3NCGmu10sig1eta2.jpg}
+        \end{subfigure}%
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/P3NCGmu10sig1eta3.jpg}
+        \end{subfigure}
+        \caption{Comparison between steepest descent and Newton CG at
+ varying $\eta$, for $\mu=10$, $\sigma=1$.}
+\end{figure}
+
 
 \subsection{Experiment with different choices of $\eta$}
 
