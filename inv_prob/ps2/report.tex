@@ -294,7 +294,13 @@ of degree four.
 \end{figure}
 
 In figure 9, we can see that roughly all of the plots are converging
-non-linearly. 
+non-linearly. This is surprising, because I did not expect the steepest
+descent to converge at this rate. It is possible that gradient descent
+is converging super-linearly because of the function. I would conjecture
+that 
+this is related to the $mu=0$, and that by killing the lower order term
+in the function, we are making it easier for our gradient vector to
+point in the correct direction ``downhill''.
 
 % mu = 10, sigma = 1
 \begin{figure}[!htb]
@@ -317,11 +323,12 @@ non-linearly.
 \end{figure}
 In figure 10, steepest descent only converges linearly. We can see that
 when $eta$ is fixed at one half, the convergence is only linear for
-newton as well. Both of the other methods for selecting $eta$ given
-superior convergence rates (quadratic). 
+newton as well, as expected. Both of the other methods for selecting
+$eta$ give superior convergence rates (super-linear), as expected. 
 
-\subsection{Experiment with different choices of $\eta$}
+Therefore, aside from the $\mu=0$ case, the theoretical convergence
+rates for these different choices are what we expected. 
 
-Verify the theoretical convergence rates for these different choices. 
+
 
 \end{document}
