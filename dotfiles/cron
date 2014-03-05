@@ -109,11 +109,10 @@ MAILTO="nick@ices.utexas.edu"
 0   4 23 12 * ~/bin/msg/reminder Kevin_Kim 
 
 #To be executed each day
-30  12  * * * /h2/nick/bin/paleologos/dotfiles/sync.sh
+#30  12  * * * /h2/nick/bin/paleologos/dotfiles/sync.sh
 
 #To be executed each week (monday)
 0  20  * * 1 ~/bin/msg/reminder take_out_trash!
-0   9  * * 1 ~/bin/msg/nsf/consilium.sh
 
 #To be executed each week (tues)
 0  20  * * 2 ~/bin/msg/reminder bring_back_trash!
