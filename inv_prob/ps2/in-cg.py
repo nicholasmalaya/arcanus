@@ -7,6 +7,31 @@
 #
 import numpy as np
 
+def mycg(A,b,maxiter,tol,x):
+    """ Conjugate Gradient Method. """
+    """ MYCG(A,B,maxiter,tol,x0) solves the system of linear equations A*X=B """
+    """ for X. The N-by-N coefficient matrix A must be symmetric and the right"""
+    """hand side column vector B must have length N."""
+    
+    r = A*x-b;
+    d = -r;
+    rsold = numpy.transpose(r)*r;
+
+    for i in xrange(1,maxiter):
+        Ad = A*d;
+        alpha = rsold/(numpy.transpose(d)*Ad);
+        x = x+alpha*d;
+        r = r+alpha*Ad;
+        rsnew = numpy.transpose(r)*r;
+        if sqrt(rsnew)<tol:
+            break
+        
+        beta = rsnew/rsold;
+        d = -r+beta*d;
+        rsold = rsnew;
+    return d
+
+
 # parameters
 sigma = 1.0
 mu    = 10.0

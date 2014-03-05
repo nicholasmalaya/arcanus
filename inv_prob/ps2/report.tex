@@ -1,15 +1,18 @@
 \documentclass{article}
 \usepackage{hyperref}
-\usepackage{amsmath,amssymb}
+\usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage[section]{placeins}
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
 \usepackage{listings}
+\usepackage{amssymb}
 
 \title{\bf{CSE397: Assignment \#2}}
-\author{Nicholas Malaya \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
+\author{Nicholas Malaya \\ Department of Mechanical Engineering \\
+Institute for Computational Engineering and Sciences \\ University of
+Texas at Austin} \date{} 
 
 \begin{document}
 \maketitle
@@ -17,69 +20,315 @@
 \newpage
 \section{Problem 1}
 
+\subsection{Find and classify all stationary points}
+
+
 \begin{figure}[!htb]
-  \includegraphics[scale=.5]{plots/data.pdf}
-  \label{fig:data}
-  \caption{The data (after applying the filter) with and without
- normally distributed noise. } 
+  \includegraphics[scale=.5]{figs/1_3d.pdf}
+  \label{fig:3d}
+  \caption{The topology of -cos(x)cos(y/10) in the domain.} 
 \end{figure}
 
-After applying the new filter $k(x)$ and adding gaussian noise, the data
-used as input for the inverse problem is plotted in figure 1. 
+Figure one shows a clear stationary point at (0,0). In addition, we are
+seeking all points where $\nabla f = 0$.  The gradient of $\nabla f =
+(\text{sin}(x)\text{cos}(y/10),\frac{\text{cos}(x)}{10}\text{sin}(y/10))$. Solving
+$\text{sin}(x)\text{cos}(y/10) = 0$  and
+$\frac{\text{cos}(x)}{10}\text{sin}(y/10) = 0$ shows that while the
+directional derivative of x is zero at $y \pm \frac{10 \pi}{2}$ and the
+y-derivative is zero at $x \pm \frac{\pi}{2}$, the entire gradient is
+only zero at (0,0). Thus, this is the only fixed point in the region we
+are considering. 
 
-Notice that this filter is significant: the raw data generated after
-passing through the filter (even without statistical noise) has lost
-several features of the underlying ``true'' signal. 
+\subsection{Find the region where the Hessian Matrix of f(x,y) is positive definite.}
 
-\subsection{$T_{\text{SVD}}$}
+\begin{equation*}
+H = \left(
+  \begin{array}{ c c }
+     \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x
+      \partial y} \\
+     \frac{\partial^2 f}{\partial x
+      \partial y} & \frac{\partial^2 f}{\partial y^2}
+  \end{array} \right)
+= 
+\left(
+  \begin{array}{ c c }
+     \text{cos}(x)\text{cos}(y/10) & -\frac{\text{sin}(x)}{10}\text{sin}(y/10) \\
+     -\frac{\text{sin}(x)}{10}\text{sin}(y/10) & \frac{\text{cos}(x)}{100}\text{cos}(y/10)
+  \end{array} \right)
+\end{equation*}
 
+Then setting the determinant of the matrix ($H - \lambda = 0$) to zero yields:
+\begin{equation*}
+		\lambda^2 - \frac{101}{100}\cos(x)\cos(\frac{y}{10})\lambda + \frac{1}{100}(\cos^2(x)\cos^2(\frac{y}{10}) - \sin^2(x)\sin^2(\frac{y}{10})) = 0
+\end{equation*}
+The eigenvalues are therefore,
+\begin{equation*}
+		\lambda = \frac{1}{200}\left[101\cos(x)\cos(\frac{y}{10}) \pm \sqrt{9801\cos^2(x)\cos^2(\frac{y}{10}) + 400\sin^2(x)\sin^2(\frac{y}{10})}\right]
+\end{equation*}
+The first eigenvalue is always positive. The second is positive when the
+terms in the square root are positive, e.g. 
+\begin{equation*}   
+ \cos^2(x)\cos^2(\frac{y}{10}) - \sin^2(x)\sin^2(\frac{y}{10}) > 0
+\end{equation*}
+In other words,
+\begin{equation*}
+ \cos^2(x)\cos^2(\frac{y}{10}) > \sin^2(x)\sin^2(\frac{y}{10})
+\end{equation*}
 
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{figs/eigen.pdf}
+  \caption{The Contours of the Eigenvalues. The red line at the top is
+ the region where the Hessian is positive definite. }   
+\end{figure}
+The bounds of this region are plotted in figure 2. 
+
+\newpage
+\subsection{Derive expressions for the search directions}
+
+The search direction for steepest descent is the negative gradient,
+e.g. 
+\begin{equation*}
+g = -\nabla f =\left(
+  \begin{array}{ c }
+     - \text{sin}(x)\text{cos}(y/10)\\
+     - \frac{\text{cos}(x)}{10}\text{sin}(y/10)
+  \end{array} \right)
+\end{equation*}
+For newton, the step direction is $H_k p_k = g_k$ or, 
+\begin{equation*}
+\left(
+  \begin{array}{ c c }
+     \text{cos}(x)\text{cos}(y/10) & -\frac{\text{sin}(x)}{10}\text{sin}(y/10) \\
+     -\frac{\text{sin}(x)}{10}\text{sin}(y/10) & \frac{\text{cos}(x)}{100}\text{cos}(y/10)
+  \end{array} \right)
+  p_k  
+  = 
+\left(
+ \begin{array}{ c }
+  - \text{sin}(x)\text{cos}(y/10)\\
+  - \frac{\text{cos}(x)}{10}\text{sin}(y/10)
+   \end{array} \right)
+\end{equation*}
+Which is, 
+\begin{equation*}
+ p_k = 
+\left(
+\begin{array}{c}
+ \frac{\sin (2 x) \left(\cos \left(\frac{y}{5}\right)-\sin
+   \left(\frac{y}{5}\right)-1\right)}{2 \left(\cos (2 x)+\cos
+   \left(\frac{y}{5}\right)\right)} \\
+ -\frac{20 \sin \left(\frac{y}{10}\right) \left(\cos
+   \left(\frac{y}{10}\right) \cos ^2(x)+\sin ^2(x) \sin
+   \left(\frac{y}{10}\right)\right)}{\cos (2 x)+\cos
+   \left(\frac{y}{5}\right)}
+\end{array}
+\right)
+\end{equation*}
+
+\subsection{Write a program that performs both steepest descent and a
+  Newton Iteration} 
+
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{figs/P1SDNLSwin.jpg}
+  \caption{Steepest Descent from within the region of stability,
+ converging to the solution at (0,0).}   
+\end{figure}
+
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{figs/P1SDNLSFail.jpg}
+  \caption{Steepest Descent from outside the region of stability, yet
+ still converging to the solution at (0,0).}   
+\end{figure}
+
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{figs/P1NMWLSwin.jpg}
+  \caption{Newton's Method with line search inside the region of
+ stability, converging correctly.}   
+\end{figure}
+
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{figs/P1NMWLSFail.jpg}
+  \caption{Newton's Method with line search outside the region of
+ stability, diverging. Hint: look at the bottom right.}   
+\end{figure}
+
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{figs/P1NMNLSwin.jpg}
+  \caption{Newton's Method without line search inside the region of
+ stability, converging correctly.}   
+\end{figure}
+
+\begin{figure}[!htb]
+  \includegraphics[scale=.5]{figs/P1NMNLSFailinside.jpg}
+  \caption{Newton's Method without line search inside the region of
+ stability, yet not converging correctly.}   
+\end{figure}
+
+\subsection{What do you observe about convergence rates in these cases?} 
+
+The number of iterations required to converge were nearly what I
+expected. Steepest descent always converges, but is the slowest. A line
+search improves it by dialing back the otherwise overly greedy step
+sizes, but still significantly underperforms Newton's method. 
+Newton's method is fastest without a line search, but only within the
+region where the function is very nearly quadratic. Outside of this
+region, it fails. 
+\newline
+\begin{tabular}{| l | c |}
+ \hline
+ Method & Number of iterations \\
+ \hline
+  Steepest Descent without line search & 212 \\
+  Steepest Descent with line search & 81     \\
+  Newton's Method with Line Search & 33      \\
+  Newton's Method without Line Search & 3    \\
+ \hline
+\end{tabular}
+
+\section{Problem 2}
+
+\subsection{Show that the two problems have the same minimizers}
+
+We can see that the problems must have the same minimizers
+(e.g. $x^\star$) because $\beta$ is just a scale factor, and our solution
+should be invariant to homogeneous linear mappings. 
+
+Intuitively, if we multiply our function at each point by 10x, then 
+the lowest point should remain in the same place (and likewise, for the
+max). 
+
+More formally speaking, our first order necessary conditions for a local
+minimizer, $x^\star$, require that if $x^\star$ is a local minimizer of
+$f_2(x)$, then $g_2(x^\star) = 0 $ at the local minimizer. 
+
+However, $f_2(x) = \beta f_1(x)$. Therefore,  $f_2(x^\star) = \beta
+f_1(x^\star)$, and $g_1(x^\star) = g_2(x^\star) = 0 $. Therefore, the
+gradient is also zero at $x^\star$ for $f_1$.
+
+\subsection{Compare Steepest Descent and Newton Directions at $x_0 \in \mathbb{R}$}
+
+\begin{align*}
+ p_k&=-g_k = -\nabla f_k\\
+ p_{k,1}&=-g_{k,1}\\
+ p_{k,2}&=-g_{k,2} = -\beta g_{k,1}
+\end{align*}
+
+Thus, 
+\begin{equation}
+p_{k,2} \ne p_{k,1}
+\end{equation}
+for steepest descent: the search directions
+vary by a scale factor. However, using Newton's method, the first search
+direction is,
+\begin{align*}
+ H_k p_k&=-g_k \\
+ H_{k,1} p_{k,1}&=-g_{k,1}\\
+\end{align*}
+And the second is,
+\begin{align*}
+ H_{k,2} p_{k,2}&=-g_{k,2}\\
+ \beta H_{k,1} p_{k,2}&=- \beta g_{k,1}\\
+ H_{k,1} p_{k,2}&=-g_{k,1}
+\end{align*}
+And therefore, 
+\begin{equation}
+p_{k,2} = p_{k,1}
+\end{equation}
+Thus, Newton's method is insensitive to the scale of the underlying
+problem. Steepest decent on the other hand, does depent on the scale of
+the underlying problem, and therefore it is not possible to make a good
+initial step length, $\alpha$.
+
+\subsection{Multidimensional expansion}
+
+The result from the previous section is generalizable to
+multi-dimensions. Now, instead of $\beta$ we have B, a matrix of
+positive elements that scale the function f(x) that we are trying to
+minimize. Note that B is invertible, has full rank and is independent of
+x. 
+
+\begin{equation}
+ Bg(x) = 0
+\end{equation}
+As before, our Newton step is insensitive to the scale of the system we
+are solving, 
+\begin{align*}
+ H_{k} p_{k}&=-g_{k}\\
+ B H_{k} p_{k}&=- B g_{k}\\
+ (B^{-1}B)H_{k} p_{k}&=-(B^{-1}B)g_{k} \\
+ H_{k} p_{k}&=-g_{k}
+\end{align*}
+This is because the same scale factor will ``push-through'' the Hessian
+Matrix, e.g. 
+\begin{equation}
+H(x) = \nabla\nabla B f(x) = B \nabla\nabla f(x) 
+\end{equation}
+Thus, Newton's method is affine invariant, e.g. independent of linear
+changes of coordinates. 
+
+\section{Problem 3}
+
+Write a program to minimize a quartic form -- a homogeneous polynomial
+of degree four. 
+\newpage
+\subsection{Compare the performance between Newton and Steepest Descent}
+
+% mu = 0 sigma = 10
 \begin{figure}[!htb]
         \centering
         \begin{subfigure}[bh]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{plots/tsvd0001.pdf}
-                \caption{$\alpha=0.0001$}
+                \includegraphics[width=\textwidth]{figs/P3SDmu0sig1.jpg}
         \end{subfigure}%
         \begin{subfigure}[bh]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{plots/tsvd001.pdf}
-                \caption{$\alpha=0.001$}
+                \includegraphics[width=\textwidth]{figs/P3NCGmu0sig1eta1.jpg}
         \end{subfigure}
         \centering
         \begin{subfigure}[bh]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{plots/tsvd01.pdf}
-                \caption{$\alpha=0.1$}
+                \includegraphics[width=\textwidth]{figs/P3NCGmu0sig1eta2.jpg}
         \end{subfigure}%
         \begin{subfigure}[bh]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{plots/tsvd1.pdf}
-                \caption{$\alpha=1.0$}
+                \includegraphics[width=\textwidth]{figs/P3NCGmu0sig1eta3.jpg}
         \end{subfigure}
-        \caption{$T_{\text{SVD}}$ at varying values of $\alpha$.}
-        \label{fig:svd}
+        \caption{Comparison between steepest descent and Newton CG at
+ varying $\eta$, for $\mu=0$, $\sigma=1$.}
 \end{figure}
 
-Figure \ref{fig:svd} plots the solution to the inverse problem using
-Truncated SVD at several different values of $\alpha$, the
-regularization parameter. We can see that actually, the filter nicely
-regularizing the inverse problem even for small values of $\alpha$. It
-is only for the largest value of $\alpha$ that the parameter is obviously
-too large, at which point almost all the frequencies are filtered out,
-and the solution to the inverse problem is constant and zero. 
+In figure 9, we can see that roughly all of the plots are converging
+non-linearly. This is surprising, because I did not expect the steepest
+descent to converge at this rate. It is possible that gradient descent
+is converging super-linearly because of the function. I would conjecture
+that 
+this is related to the $mu=0$, and that by killing the lower order term
+in the function, we are making it easier for our gradient vector to
+point in the correct direction ``downhill''.
 
-As expected, none of the solutions capture any of the very fine (high
-frequency) features of the original data. 
-
-\subsection{L-Curve}
-
+% mu = 10, sigma = 1
 \begin{figure}[!htb]
-  \includegraphics[scale=.6]{plots/L-curve.pdf}
-  \caption{The L-curve} 
- \label{fig:lcurve}
+        \centering
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/P3SDmu10sig1.jpg}
+        \end{subfigure}%
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/P3NCGmu10sig1eta1.jpg}
+        \end{subfigure}
+        \centering
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/P3NCGmu10sig1eta2.jpg}
+        \end{subfigure}%
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/P3NCGmu10sig1eta3.jpg}
+        \end{subfigure}
+        \caption{Comparison between steepest descent and Newton CG at
+ varying $\eta$, for $\mu=10$, $\sigma=1$.}
 \end{figure}
+In figure 10, steepest descent only converges linearly. We can see that
+when $eta$ is fixed at one half, the convergence is only linear for
+newton as well, as expected. Both of the other methods for selecting
+$eta$ give superior convergence rates (super-linear), as expected. 
 
-Figure \ref{fig:lcurve} plots the results of the L-curve criterion. The
-red dot plotted is at 0.01. This is approximately the ``optimal'' value
-of regularization, which is generally consistent with the observations
-of the previous plots. 
+Therefore, aside from the $\mu=0$ case, the theoretical convergence
+rates for these different choices are what we expected. 
+
 
 
 \end{document}
