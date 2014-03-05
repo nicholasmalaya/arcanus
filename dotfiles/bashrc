@@ -13,7 +13,6 @@ SVNDIR_PECOS=https://svn.ices.utexas.edu/repos/pecos
 SVNDIR_INCITE=https://svn.ices.utexas.edu/repos/boundarylayer
 SVNDIR_CANTERA=https://cantera.googlecode.com/svn
 SVNDIR_2nd=http://tri.dynalias.org/svn/2nd
-SVNDIR_xan=http://tri.dynalias.org/svn/xanthine
 
 Second="git@github.com:secondfoundation/Second-Foundation-Src.git"
 SECOND="git@github.com:secondfoundation/Second-Foundation-Src.git"
