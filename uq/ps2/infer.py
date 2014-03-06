@@ -12,6 +12,7 @@ import sys
 # local files that will be imported
 import prior
 import likelihood
+from settings_infer import *
 
 # construct map of prior functions, to plot below
 fdict = {'prior_p': prior.prior_p,'prior_U': prior.prior_U,'prior_C': prior.prior_C}
@@ -54,13 +55,12 @@ class BayesianRichardsonExtrapolation(object):
     "Computes the Bayesian Richardson extrapolation posterior log density."
 
     def __call__(self, params, dtype=np.double):
-        q, C, p = params
 
         from math import log
 
         return (
-            prior.prior(q,C,p) + 
-            likelihood.likelihood(q,C,p)
+            prior.prior(params) + 
+            likelihood.likelihood(params)
             )
 
 # -------------------------------------------------------------
@@ -81,34 +81,32 @@ bre = BayesianRichardsonExtrapolation()
 
 print("\nInitializing walkers")
 nwalk = 100
+params0       = np.tile(guess_list, nwalk).reshape(nwalk, len(guess_list))
+#
+# perturb walkers around guess
+#
+for i in xrange(len(guess_list)):
+    params0.T[i] += np.random.rand(nwalk) * perturb_list[i]
 
-# initial guesses for the walkers starting locations
-guess_q = 1.16389876649
-guess_c = 0
-guess_p = 6
-
-params0       = np.tile([guess_q, guess_c, guess_p], nwalk).reshape(nwalk, 3)
-params0.T[0] += np.random.rand(nwalk) * 0.025    # Perturb q
-params0.T[1] += np.random.rand(nwalk) * 0.1      # Perturb C
-params0.T[2] += np.random.rand(nwalk) * 1.5      # Perturb p...
+# hack!
 params0.T[2]  = np.absolute(params0.T[2])        # ...and force >= 0
 
 print("\nInitializing the sampler and burning in walkers")
 s = EnsembleSampler(nwalk, params0.shape[-1], bre, threads=4)
-pos, prob, state = s.run_mcmc(params0, 5000)
+pos, prob, state = s.run_mcmc(params0, burn_in)
 s.reset()
 
 print("\nSampling the posterior density for the problem")
-s.run_mcmc(pos, 10000)
+s.run_mcmc(pos, samples)
 print("Mean acceptance fraction was %.3f" % s.acceptance_fraction.mean())
 
 #
 # 1d Marginals
 #
 print("\nDetails for posterior one-dimensional marginals:")
-def textual_boxplot(label, unordered, header):
+print((10*" %15s") % ("", "min", "P5", "P25", "P50", "P75", "P95", "max", "mean", "stddev"))
+def textual_boxplot(label, unordered):
     n, d = np.size(unordered), np.sort(unordered)
-    if (header): print((10*" %15s") % ("", "min", "P5", "P25", "P50", "P75", "P95", "max", "mean", "stddev"))
     print((" %15s" + 9*" %+.8e") % (label,
                                     d[0],
                                     d[[floor(1.*n/20), ceil(1.*n/20)]].mean(),
@@ -119,21 +117,21 @@ def textual_boxplot(label, unordered, header):
                                     d[-1],
                                     d.mean(),
                                     d.std()))
-    #return d[[floor(1.*n/20), ceil(1.*n/20)]].mean(), d[[floor(17.*n/20), ceil(17.*n/20)]].mean()
     return d.mean(), 2*d.std()
 
-qm, qs = textual_boxplot("q", s.flatchain[:,0], header=True)
-cm, cs = textual_boxplot("C", s.flatchain[:,1], header=False)
-pm, ps = textual_boxplot("p", s.flatchain[:,2], header=False)
+box_mean = []
+box_std  = []
+for i in xrange(len(qoi_list)):
+    mm, ss = textual_boxplot(qoi_list[i], s.flatchain[:,i])
+    box_mean.append(mm)
+    box_std.append(mm)
 
 #----------------------------------
 # FIGURES: Marginal posterior(s)
 #----------------------------------
-print("\nPrinting PDF output")
-
-plotter(s.flatchain[:,0],'U')
-plotter(s.flatchain[:,1],'C')
-plotter(s.flatchain[:,2],'p')
+print("\nPrinting PDF outputs")
+for i in xrange(len(qoi_list)):
+    plotter(s.flatchain[:,i],qoi_list[i])
 
 #----------------------------------
 # FIGURE: Joint posterior(s)
@@ -151,14 +149,18 @@ qpdf = qkde.evaluate(qbins)
 Cpdf = Ckde.evaluate(Cbins)
 ppdf = pkde.evaluate(pbins)
 
-# TODO FIX ME
-qbounds = np.array([qm-qs,qm+qs])
-Cbounds = np.array([cm-cs,cm+cs])
-pbounds = np.array([pm-ps,pm+ps])
+bounds = []
+for i in xrange(len(qoi_list)):
+    print i, box_mean[i]-box_std[i]
+    bounds.append(np.array([box_mean[i]-box_std[i],box_mean[i]+box_std[i]]))
 
-qticks = np.linspace(qbounds[0], qbounds[1], 3)
-Cticks = np.linspace(Cbounds[0], Cbounds[1], 3)
-pticks = np.linspace(pbounds[0], pbounds[1], 5)
+print bounds
+print bounds[0]
+print bounds[0][1]
+
+qticks = np.linspace(bounds[0][0], bounds[0][1], 3)
+Cticks = np.linspace(bounds[1][0], bounds[1][1], 3)
+pticks = np.linspace(bounds[2][0], bounds[2][1], 5)
 
 pyplot.figure()
 
@@ -169,7 +171,7 @@ formatter2 = FormatStrFormatter('%5.f')
 pylab.subplot(3,3,1)
 pyplot.plot(qbins, qpdf, linewidth=2, color="k", label="Post")
 
-pyplot.xlim(qbounds)
+pyplot.xlim(bounds[0])
 pylab.gca().set_xticks(qticks)
 pylab.gca().xaxis.set_major_formatter(formatter)
 pylab.gca().xaxis.set_minor_formatter(formatter)
@@ -184,11 +186,11 @@ Cv = 0.5*(Ce[0:-1] + Ce[1:len(Ce)]);
 
 pyplot.contour(Cv,qv,H,5,colors='k')
 
-pyplot.xlim(Cbounds)
+pyplot.xlim(bounds[1])
 pylab.gca().set_xticks(Cticks)
 pylab.gca().set_xticklabels([])
 
-#pyplot.ylim(qbounds)
+#pyplot.ylim(bounds[0])
 pylab.gca().set_yticks(qticks)
 pylab.gca().set_yticklabels([])
 
@@ -200,11 +202,11 @@ pv = 0.5*(pe[0:-1] + pe[1:len(pe)]);
 
 pyplot.contour(pv,qv,H,5,colors='k')
 
-pyplot.xlim(pbounds)
+pyplot.xlim(bounds[2])
 pylab.gca().set_xticks(pticks)
 pylab.gca().set_xticklabels([])
 
-pyplot.ylim(qbounds)
+pyplot.ylim(bounds[0])
 pylab.gca().set_yticks(qticks)
 pylab.gca().set_yticklabels([])
 
@@ -215,7 +217,7 @@ pylab.gca().xaxis.set_minor_formatter(formatter)
 pylab.gca().set_yticks([])
 pyplot.xlabel('$C$', fontsize=24)
 
-pyplot.xlim(Cbounds)
+pyplot.xlim(bounds[1])
 pylab.gca().set_xticks(Cticks)
 
 pylab.subplot(3,3,6)
@@ -226,11 +228,11 @@ pv = 0.5*(pe[0:-1] + pe[1:len(pe)]);
 
 pyplot.contour(pv,Cv,H,5,colors='k')
 
-pyplot.xlim(pbounds)
+pyplot.xlim(bounds[2])
 pylab.gca().set_xticks(pticks)
 pylab.gca().set_xticklabels([])
 
-pyplot.ylim(Cbounds)
+pyplot.ylim(bounds[1])
 pylab.gca().set_yticks(Cticks)
 pylab.gca().set_yticklabels([])
 
@@ -241,7 +243,7 @@ pylab.gca().xaxis.set_minor_formatter(formatter2)
 pylab.gca().set_yticks([])
 pyplot.xlabel('$p$', fontsize=24)
 
-pyplot.xlim(pbounds)
+pyplot.xlim(bounds[2])
 pylab.gca().set_xticks(pticks)
 pyplot.savefig('joint_post.pdf', bbox_inches='tight')
 
