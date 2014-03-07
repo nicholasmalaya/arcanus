@@ -124,7 +124,7 @@ box_std  = []
 for i in xrange(len(qoi_list)):
     mm, ss = textual_boxplot(qoi_list[i], s.flatchain[:,i])
     box_mean.append(mm)
-    box_std.append(mm)
+    box_std.append(ss)
 
 #----------------------------------
 # FIGURES: Marginal posterior(s)
@@ -136,27 +136,26 @@ for i in xrange(len(qoi_list)):
 #----------------------------------
 # FIGURE: Joint posterior(s)
 #----------------------------------
-
-qbins = np.linspace(np.min(s.flatchain[:,0]), np.max(s.flatchain[:,0]), 200)
-Cbins = np.linspace(np.min(s.flatchain[:,1]), np.max(s.flatchain[:,1]), 200)
-pbins = np.linspace(np.min(s.flatchain[:,2]), np.max(s.flatchain[:,2]), 200)
+#
+# q = 1
+# c = 2 
+# p = 3
+#
+qbins = []
+for i in xrange(len(qoi_list)):
+    qbins.append(np.linspace(np.min(s.flatchain[:,i]), np.max(s.flatchain[:,i]), 200))
 
 qkde = stats.gaussian_kde(s.flatchain[:,0])
 Ckde = stats.gaussian_kde(s.flatchain[:,1])
 pkde = stats.gaussian_kde(s.flatchain[:,2])
 
-qpdf = qkde.evaluate(qbins)
-Cpdf = Ckde.evaluate(Cbins)
-ppdf = pkde.evaluate(pbins)
+qpdf = qkde.evaluate(qbins[0])
+Cpdf = Ckde.evaluate(qbins[1])
+ppdf = pkde.evaluate(qbins[2])
 
 bounds = []
 for i in xrange(len(qoi_list)):
-    print i, box_mean[i]-box_std[i]
     bounds.append(np.array([box_mean[i]-box_std[i],box_mean[i]+box_std[i]]))
-
-print bounds
-print bounds[0]
-print bounds[0][1]
 
 qticks = np.linspace(bounds[0][0], bounds[0][1], 3)
 Cticks = np.linspace(bounds[1][0], bounds[1][1], 3)
@@ -169,7 +168,7 @@ formatter = FormatStrFormatter('%5.4f')
 formatter2 = FormatStrFormatter('%5.f')
 
 pylab.subplot(3,3,1)
-pyplot.plot(qbins, qpdf, linewidth=2, color="k", label="Post")
+pyplot.plot(qbins[0], qpdf, linewidth=2, color="k", label="Post")
 
 pyplot.xlim(bounds[0])
 pylab.gca().set_xticks(qticks)
@@ -211,7 +210,7 @@ pylab.gca().set_yticks(qticks)
 pylab.gca().set_yticklabels([])
 
 pylab.subplot(3,3,5)
-pyplot.plot(Cbins, Cpdf, linewidth=2, color="k",label="Post")
+pyplot.plot(qbins[1], Cpdf, linewidth=2, color="k",label="Post")
 pylab.gca().xaxis.set_major_formatter(formatter)
 pylab.gca().xaxis.set_minor_formatter(formatter)
 pylab.gca().set_yticks([])
@@ -237,7 +236,7 @@ pylab.gca().set_yticks(Cticks)
 pylab.gca().set_yticklabels([])
 
 pylab.subplot(3,3,9)
-pyplot.plot(pbins, ppdf, linewidth=2, color="k", label="Post")
+pyplot.plot(qbins[2], ppdf, linewidth=2, color="k", label="Post")
 pylab.gca().xaxis.set_major_formatter(formatter2)
 pylab.gca().xaxis.set_minor_formatter(formatter2)
 pylab.gca().set_yticks([])
