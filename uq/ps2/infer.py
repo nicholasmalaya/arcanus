@@ -142,16 +142,17 @@ for i in xrange(len(qoi_list)):
 # p = 3
 #
 qbins = []
+qkde  = []
 for i in xrange(len(qoi_list)):
     qbins.append(np.linspace(np.min(s.flatchain[:,i]), np.max(s.flatchain[:,i]), 200))
+    qkde.append(stats.gaussian_kde(s.flatchain[:,i]))
 
-qkde = stats.gaussian_kde(s.flatchain[:,0])
 Ckde = stats.gaussian_kde(s.flatchain[:,1])
 pkde = stats.gaussian_kde(s.flatchain[:,2])
 
-qpdf = qkde.evaluate(qbins[0])
-Cpdf = Ckde.evaluate(qbins[1])
-ppdf = pkde.evaluate(qbins[2])
+qpdf = qkde[i].evaluate(qbins[i])
+Cpdf = qkde[i].evaluate(qbins[i])
+ppdf = qkde[i].evaluate(qbins[i])
 
 bounds = []
 for i in xrange(len(qoi_list)):
