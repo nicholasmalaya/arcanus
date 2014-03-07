@@ -143,16 +143,14 @@ for i in xrange(len(qoi_list)):
 #
 qbins = []
 qkde  = []
+qpdf  = []
 for i in xrange(len(qoi_list)):
     qbins.append(np.linspace(np.min(s.flatchain[:,i]), np.max(s.flatchain[:,i]), 200))
     qkde.append(stats.gaussian_kde(s.flatchain[:,i]))
+    qpdf.append(qkde[i].evaluate(qbins[i]))
 
-Ckde = stats.gaussian_kde(s.flatchain[:,1])
-pkde = stats.gaussian_kde(s.flatchain[:,2])
-
-qpdf = qkde[i].evaluate(qbins[i])
-Cpdf = qkde[i].evaluate(qbins[i])
-ppdf = qkde[i].evaluate(qbins[i])
+#Cpdf = qkde[i].evaluate(qbins[i])
+#ppdf = qkde[i].evaluate(qbins[i])
 
 bounds = []
 for i in xrange(len(qoi_list)):
@@ -169,7 +167,7 @@ formatter = FormatStrFormatter('%5.4f')
 formatter2 = FormatStrFormatter('%5.f')
 
 pylab.subplot(3,3,1)
-pyplot.plot(qbins[0], qpdf, linewidth=2, color="k", label="Post")
+pyplot.plot(qbins[0], qpdf[0], linewidth=2, color="k", label="Post")
 
 pyplot.xlim(bounds[0])
 pylab.gca().set_xticks(qticks)
@@ -211,7 +209,7 @@ pylab.gca().set_yticks(qticks)
 pylab.gca().set_yticklabels([])
 
 pylab.subplot(3,3,5)
-pyplot.plot(qbins[1], Cpdf, linewidth=2, color="k",label="Post")
+pyplot.plot(qbins[1], qpdf[1], linewidth=2, color="k",label="Post")
 pylab.gca().xaxis.set_major_formatter(formatter)
 pylab.gca().xaxis.set_minor_formatter(formatter)
 pylab.gca().set_yticks([])
@@ -237,7 +235,7 @@ pylab.gca().set_yticks(Cticks)
 pylab.gca().set_yticklabels([])
 
 pylab.subplot(3,3,9)
-pyplot.plot(qbins[2], ppdf, linewidth=2, color="k", label="Post")
+pyplot.plot(qbins[2], qpdf[2], linewidth=2, color="k", label="Post")
 pylab.gca().xaxis.set_major_formatter(formatter2)
 pylab.gca().xaxis.set_minor_formatter(formatter2)
 pylab.gca().set_yticks([])
