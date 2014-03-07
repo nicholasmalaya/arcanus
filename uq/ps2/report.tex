@@ -20,10 +20,29 @@
 \newpage
 \section{Problem Statement}
 
-Potential Sources of Uncerainty
+Potential Sources of Uncertainty
 \begin{itemize}
 \item Ambient (and intermittent) winds
 \item Roughness of basketball and bowling ball (were they unusally rough?)
 \end{itemize}
+
+\section{Uncertainty in the data}
+\begin{enumerate}
+ \item Dimension and weight of the balls:
+\begin{itemize}
+ \item Basket ball: Circumference and weight don't appear to correspond to any official values (Wikipedia + Google). That would indicates these characteristics were measured.
+ \item Bowling ball: We can assume the bowling ball was also measured.
+\end{itemize}
+We are only dealing with measurement errors here. We can model both with additive Gaussian noise of mean zero and standard deviation defined by a 95\% confidence interval. We could assume the circumference is correct within $\pm 1$ cm with 95\% confidence. Whereas the weight is accurate within 0.1 oz.
+ \item Height of the drop: This is represented by a uniform distribution between 34.5m and 35.5m.
+ \item Position of the operator: The position is very uncertain. But it doesn't matter in the outcome of the experiment. As long as the operator is far enough to capture the whole drop sequence without having to move (which he is at 22.4m away from the action), it is not going to have an incidence on the results.
+ \item Temperature: Mass density of the air depends on the temperature. Both experiments were performed in two different days. So most likely the temperature was different which affected the mass density of the air. We can assume the temperature was between 15C and 25C with 95\% confidence. We will directly translate this uncertainty into the mass density.
+ \item Video acquisition: The time framing is assumed to be exactly accurate as this is based on the iPad internal clock and there is no reason to assume it was defective. However the distance of the ball is very uncertain for different reasons.
+\begin{itemize}
+ \item Reference distance: The distances are all relative to a reference distance. The experimentalists chose the height of the bridge as their reference distance. But on top of the large uncertainties on that exact distance (see above), we have uncertainties coming from the definition of that length in Logger Pro.
+ \item Fixed position of the camera: The acquisition of the motion of the ball is done by selecting the ball (or the top of the ball to more accurate) on the screen at each frame you want to use. However, based on online videos, Logger Pro doesn't adjust the position of the object relative to its environement. So the position of the object is relative of the sides of the image (ie, the camera is assumed to be fixed in Logger Pro). Hence if the camera operator shifts the camera during the experiment he shifts the absolute position of the ball by the same amount. If he rotates the iPad, he shifts the absolute position of the ball by the distance between the camera and the ball times the rotation angle. That would indicate that the distance from the ball is actually relevant. Unless we adopt some general treatment as advised in the next section.
+\end{itemize}
+
+\end{enumerate}
 
 \end{document}
