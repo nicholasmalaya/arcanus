@@ -38,7 +38,42 @@ We are only dealing with measurement errors here. We can model both with additiv
  \item Reference distance: The distances are all relative to a reference distance. The experimentalists chose the height of the bridge as their reference distance. But on top of the large uncertainties on that exact distance (see above), we have uncertainties coming from the definition of that length in Logger Pro.
  \item Fixed position of the camera: The acquisition of the motion of the ball is done by selecting the ball (or the top of the ball to more accurate) on the screen at each frame you want to use. However, based on online videos, Logger Pro doesn't adjust the position of the object relative to its environement. So the position of the object is relative of the sides of the image (ie, the camera is assumed to be fixed in Logger Pro). Hence if the camera operator shifts the camera during the experiment he shifts the absolute position of the ball by the same amount. If he rotates the iPad, he shifts the absolute position of the ball by the distance between the camera and the ball times the rotation angle. That would indicate that the distance from the ball is actually relevant. Unless we adopt some general treatment as advised in the next section.
 \end{itemize}
-
 \end{enumerate}
+
+\section{Uncertainty on the position of the ball}
+
+Working at the continuous level for now, we are interested in characterizing the uncertainty on the measured position of the ball $\tilde{h}(t)$. 
+We model this uncertainty with additive noise $\varepsilon(t)$ such that
+\begin{align*}
+ \tilde{h}(t) = h(t) + \varepsilon(t).
+\end{align*}
+Assuming we can estimate the mean and covariance matrix of that random variables, the principle of maximum entropy relative to a uniform distribution would lead us to using a Gaussian distribution for that noise.
+In the question we are advised to use the following form for the mean~$\mu(t)$ and covariance matrix~$R(t,t')$ of the noise
+\begin{align*}
+ \mu(t) = \alpha t , \quad R(t,t') = \sigma^2 e^{-|t-t'|/\tau} .
+\end{align*}
+
+In practice for each experiment we are given a discrete set of times~$\{ t_i \}_i$ when position measurements occurred. This leads to the following discrete representation of uncertainty for the measured vector position
+\begin{align*}
+ \{ \tilde{h} \} = \{ h \} + \{ \varepsilon \},
+\end{align*}
+where
+\begin{align*}
+ \{ \varepsilon \} \sim \mathcal{N}\left( \{ \mu \} ,  R  \right),
+\end{align*}
+with
+\begin{align*}
+ \mu_i = \alpha t_i, \quad R_{ij} = \sigma^2 e^{-|t_i-t_j|/\tau}.
+\end{align*}
+
+\section{Probabilistic model}
+
+
+\begin{enumerate}
+ \item The coefficient $\alpha$ defined above is said to be ``of order $0.5$~m/s with uncertainty of the same order''. Since we cannot definitely exclude negative values of $\alpha$ we can choose $\alpha$ to be Gaussian with mean $0.5$~m/s and $95\%$~confidence interval given by the interval of uncertainty (here, $1.0$~m/s).
+ \item For $\sigma$, we know it has to be non-negative. We can therefore assume that $\sigma$ is uniformly distributed over the interval $[0, 0.2]$~m.
+\end{enumerate}
+
+
 
 \end{document}
