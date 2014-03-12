@@ -61,7 +61,6 @@ guess_p = 6
 #
 guess_list = [guess_q, guess_c, guess_p]
 
-
 #
 # perturb q,c,p
 #
@@ -70,7 +69,6 @@ perturb_c = 0.1
 perturb_p = 1.5
 
 perturb_list = [perturb_q, perturb_c, perturb_p]
-
 
 #
 # list of qoi (strings please)

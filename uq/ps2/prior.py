@@ -65,12 +65,6 @@ def prior(params):
     This routine should return the log of the
     prior probability distribution.
     """
-    q1, C1, p1 = params
-
-    # for some reason the p guesses are sometimes negative, this 
-    # patches that up
-    if(p1 < 0):
-        return -1 * np.inf
 
     #
     # python list will sum over each function 
@@ -80,5 +74,3 @@ def prior(params):
     for i in xrange(len(prior_funcs)):
         ss += prior_funcs[i](params[i])
     return ss
-    #return [f(params) for f in prior_funcs]
-    #return prior_U(q) + prior_C(C) + prior_p(p)
