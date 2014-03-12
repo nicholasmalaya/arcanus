@@ -45,8 +45,7 @@ def plotter(chain,quant,xmin=None,xmax=None):
     pyplot.ylabel('$\pi('+quant+')$', fontsize=30)
     pyplot.legend(loc='upper left')
     pyplot.savefig(quant+'_post.pdf', bbox_inches='tight')
-    
-
+   
 # -------------------------------------------------------------
 # MCMC sampling Function
 # -------------------------------------------------------------
@@ -160,97 +159,33 @@ from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 formatter = FormatStrFormatter('%5.4f')
 formatter2 = FormatStrFormatter('%5.f')
 
-# col = 3
-# for i in xrange(col):
-#     for j in xrange(col):
-#         if(j>=i):
-#             pylab.subplot(col,col,(j+i*col)+1)
-#             pyplot.plot(t,s, linewidth=2, color="k", label="Post")
-#
-#  if i = j -- 1d plot
+col = len(qoi_list)
+for i in xrange(col):
+    for j in xrange(col):
+        if(j>=i):
+             pylab.subplot(col,col,(j+i*col)+1)
 
-#
-#
-#
-pylab.subplot(3,3,1)
-pyplot.plot(qbins[0], qpdf[0], linewidth=2, color="k", label="Post")
-pyplot.xlim(bounds[0])
-pylab.gca().set_xticks(qticks[0])
-pylab.gca().xaxis.set_major_formatter(formatter)
-pylab.gca().xaxis.set_minor_formatter(formatter)
-pylab.gca().set_yticks([])
-pyplot.xlabel(qoi_list[0], fontsize=24)
+             # plot marginal
+             if (j == i):
+                 pyplot.plot(qbins[i], qpdf[i], linewidth=2, color="k", label="Post")
+                 pyplot.xlim(bounds[i])
+                 pylab.gca().set_xticks(qticks[i])
+                 pylab.gca().xaxis.set_major_formatter(formatter)
+                 pylab.gca().xaxis.set_minor_formatter(formatter)
+                 pylab.gca().set_yticks([])
+                 pyplot.xlabel(qoi_list[i], fontsize=24)
 
-#
-#
-#
-pylab.subplot(3,3,2)
-H, qe, Ce = np.histogram2d(s.flatchain[:,0], s.flatchain[:,1], bins=(200,200))    
-qv = 0.5*(qe[0:-1] + qe[1:len(qe)]);
-Cv = 0.5*(Ce[0:-1] + Ce[1:len(Ce)]);
-pyplot.contour(Cv,qv,H,5,colors='k')
-pyplot.xlim(bounds[1])
-pylab.gca().set_xticks(qticks[1])
-pylab.gca().set_xticklabels([])
-#pyplot.ylim(bounds[0])
-pylab.gca().set_yticks(qticks[0])
-pylab.gca().set_yticklabels([])
+             # plot contour when j>i
+             else:
+                 H, qe, Ce = np.histogram2d(s.flatchain[:,i], s.flatchain[:,j], bins=(200,200))
+                 qv = 0.5*(qe[0:-1] + qe[1:len(qe)]);
+                 Cv = 0.5*(Ce[0:-1] + Ce[1:len(Ce)]);
+                 pyplot.contour(Cv,qv,H,5,colors='k')
+                 pyplot.xlim(bounds[j])
+                 pylab.gca().set_xticks(qticks[j])
+                 pylab.gca().set_xticklabels([])
+                 pylab.gca().set_yticks(qticks[i])
+                 pylab.gca().set_yticklabels([])
 
-
-pylab.subplot(3,3,3)
-H, qe, pe = np.histogram2d(s.flatchain[:,0], s.flatchain[:,2], bins=(200,200))
-qv = 0.5*(qe[0:-1] + qe[1:len(qe)]);
-pv = 0.5*(pe[0:-1] + pe[1:len(pe)]);
-pyplot.contour(pv,qv,H,5,colors='k')
-pyplot.xlim(bounds[2])
-pylab.gca().set_xticks(qticks[2])
-pylab.gca().set_xticklabels([])
-pyplot.ylim(bounds[0])
-pylab.gca().set_yticks(qticks[0])
-pylab.gca().set_yticklabels([])
-
-#
-# done with first row
-#
-
-pylab.subplot(3,3,5)
-pyplot.plot(qbins[1], qpdf[1], linewidth=2, color="k",label="Post")
-pylab.gca().xaxis.set_major_formatter(formatter)
-pylab.gca().xaxis.set_minor_formatter(formatter)
-pylab.gca().set_yticks([])
-pyplot.xlabel(qoi_list[1], fontsize=24)
-
-pyplot.xlim(bounds[1])
-pylab.gca().set_xticks(qticks[1])
-
-pylab.subplot(3,3,6)
-H, Ce, pe = np.histogram2d(s.flatchain[:,1], s.flatchain[:,2], bins=(200,200))
-
-Cv = 0.5*(Ce[0:-1] + Ce[1:len(Ce)]);
-pv = 0.5*(pe[0:-1] + pe[1:len(pe)]);
-
-pyplot.contour(pv,Cv,H,5,colors='k')
-
-pyplot.xlim(bounds[2])
-pylab.gca().set_xticks(qticks[2])
-pylab.gca().set_xticklabels([])
-
-pyplot.ylim(bounds[1])
-pylab.gca().set_yticks(qticks[1])
-pylab.gca().set_yticklabels([])
-
-# 
-# final row
-#
-
-pylab.subplot(3,3,9)
-pyplot.plot(qbins[2], qpdf[2], linewidth=2, color="k", label="Post")
-pylab.gca().xaxis.set_major_formatter(formatter2)
-pylab.gca().xaxis.set_minor_formatter(formatter2)
-pylab.gca().set_yticks([])
-pyplot.xlabel(qoi_list[2], fontsize=24)
-
-pyplot.xlim(bounds[2])
-pylab.gca().set_xticks(qticks[2])
 pyplot.savefig('joint_post.pdf', bbox_inches='tight')
 
