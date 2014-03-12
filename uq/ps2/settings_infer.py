@@ -2,7 +2,28 @@
 #
 # global settings for the inference routines
 # 
+
+
+#
+# Use scipy to integrate:
+# 
+#   dy^2 / dt^2 = -g + r (dh/dt)^2 (object falling with drag)
+#
+from scipy.integrate import odeint
 import numpy as np
+
+def deriv(h,t,param): 
+    """return derivatives of the array y"""
+    g = param[0]
+    r = param[1]
+    return np.array([ h[1], -g + r * h[1]**2])
+
+def drag_eqn(times,g,r):
+    """define scenario and integrate"""
+    param = np.array([ g, r])
+    hinit = np.array([0.0,0.0])       # initial values (position and velocity, respectively)
+    h = odeint(deriv,hinit,times, args = (param,))
+    return h[:,0], h[:,1]
 
 def logGaussian(MEAN, VAR, X):
 	# Return the log of a multivariate Gaussian pdf evaluated at X
