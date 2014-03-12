@@ -2,37 +2,56 @@
 #
 # Use scipy to integrate:
 # 
-#   dy^2 / dt^2 = -g  (object falling with no drag)
+#   dy^2 / dt^2 = -g + r (dh/dt)^2 (object falling with drag)
 #
-from scipy.integrate import odeint
-import numpy as np
 import pylab
-
-def deriv(h,t): 
-    """return derivatives of the array y"""
-    g = 9.8                       # m/s/s
-    b = 0.1
-    return np.array([ h[1], -g + b * h[1]**2])
+import settings_infer
+import numpy as np
 
 #
-# define scenario
+# main function (example)
 #
-time = np.linspace(0.0,2.0,1000) # 10 seconds, divided into 10/1000 timesteps
-hinit = np.array([0.0,0.0])       # initial values (position and velocity, respectively)
-h = odeint(deriv,hinit,time)
+if __name__ == "__main__":
+    """Example Driver for Solving Equation of Motion with Drag"""
+    
+    # ------------------------------
+    # set params
+    # ------------------------------
+    g = 10.0
+    r = 0.1
 
-#
-# plot result of time integration
-#
-pylab.figure()
-pylab.title("Scipy odeint example: Falling ball.")
-pylab.plot(time,h[:,0], label='Position',color='black',linewidth=4) 
-pylab.plot(time,h[:,1], label='Velocity',color='red', linestyle="dashed",linewidth=4) 
-pylab.xlabel('Time (Seconds)',fontsize=15)
-pylab.ylabel('Height (Meters)',fontsize=15)
-pylab.rcParams['legend.loc'] = 'best'
-pylab.legend()
-pylab.show()
+    # ------------------------------
+    # solve at three times
+    # ------------------------------
+    times = np.array([0.0,1.0,2.0])
+    pos1, vel1 = settings_infer.drag_eqn(times,g,r)
+
+    # ------------------------------
+    # solve at a series of times
+    # ------------------------------
+    times2 = np.linspace(0.0,2.0,1000)
+    pos2, vel2 = settings_infer.drag_eqn(times2,g,r)
+
+    # ------------------------------
+    # plot result of time integration
+    # ------------------------------
+    pylab.figure()
+    pylab.title("Scipy odeint example: Falling ball.")
+
+    # plot first set
+    pylab.plot(times,pos1, label='Position',color='black',linewidth=4) 
+    pylab.plot(times,vel1, label='Velocity',color='red', linestyle="dashed",linewidth=4) 
+    
+    # plot second set
+    pylab.plot(times2,pos2, label='Position',color='black',linewidth=4) 
+    pylab.plot(times2,vel2, label='Velocity',color='red', linestyle="dashed",linewidth=4) 
+    
+    # labels
+    pylab.xlabel('Time (Seconds)',fontsize=15)
+    pylab.ylabel('Height (Meters)',fontsize=15)
+    pylab.rcParams['legend.loc'] = 'best'
+    pylab.legend()
+    pylab.show()
 
 #
 # nick 
