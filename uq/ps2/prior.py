@@ -9,6 +9,7 @@ def prior_U(q):
     prior probability distribution: P(q|X)
     evaluated for the given value of q.
     """
+
     mymean = 1.1627
     myvar = 2.0*0.05*mymean / 3.92
     
@@ -35,6 +36,7 @@ def prior_p(p):
     prior probability distribution: P(p|X)
 	evaluated for the given value of p.
     """
+
     pmin = 1.0
     pmax = 10.0
 
@@ -53,7 +55,7 @@ def prior_p(p):
 #    prior_funcs = [prior_A, prior_B] 
 #    
 # 
-prior_funcs = []
+prior_funcs = [prior_U,prior_C,prior_p]
 
 #
 # One should not have to edit the routine below
@@ -63,16 +65,20 @@ def prior(params):
     This routine should return the log of the
     prior probability distribution.
     """
-    q, C, p = params
+    q1, C1, p1 = params
 
     # for some reason the p guesses are sometimes negative, this 
     # patches that up
-    if(p < 0):
+    if(p1 < 0):
         return -1 * np.inf
 
     #
-    # python list comprehension will sum over each function 
-    #        e.g. prior_A(a) + prior_B(B) + ... + prior_N(n)
+    # python list will sum over each function 
+    #        e.g. prior_A(params) + prior_B(params) + ... + prior_N(params)
     #
-    #return [f() for f in prior_funcs]
-    return prior_U(q) + prior_C(C) + prior_p(p)
+    ss = 0.0
+    for i in xrange(len(prior_funcs)):
+        ss += prior_funcs[i](params[i])
+    return ss
+    #return [f(params) for f in prior_funcs]
+    #return prior_U(q) + prior_C(C) + prior_p(p)

@@ -10,17 +10,14 @@ from scipy import stats
 import sys
 
 # local files that will be imported
-import prior
 import likelihood
 from settings_infer import *
-
-# construct map of prior functions, to plot below
-fdict = {'prior_p': prior.prior_p,'prior_U': prior.prior_U,'prior_C': prior.prior_C}
+from prior import *
 
 # -------------------------------------------------------------
-# subroutine that generates a .pdf file plotting a quantity
+# subroutine that generates a .pdf file plotting a prior and posterior quantity
 # -------------------------------------------------------------
-def plotter(chain,quant,xmin=None,xmax=None):
+def plotter(chain,ind,xmin=None,xmax=None):
     from math import log, pi
     bins = np.linspace(np.min(chain), np.max(chain), 200)
     qkde = stats.gaussian_kde(chain)
@@ -31,7 +28,7 @@ def plotter(chain,quant,xmin=None,xmax=None):
     pyplot.plot(bins, qpdf, linewidth=3, label="Post")
 
     # plot prior (requires some cleverness to do in general)
-    qpr  = [fdict['prior_'+quant](x) for x in bins]
+    qpr  = [prior_funcs[i](x) for x in bins]
     qpri = [np.exp(x) for x in qpr]        
     qpri=qpri/np.linalg.norm(qpri) 
     pyplot.plot(bins, qpri, linewidth=3, label="Prior")
@@ -40,7 +37,8 @@ def plotter(chain,quant,xmin=None,xmax=None):
     if(xmin != None and xmax != None):
         bounds = np.array([xmin, xmax])
         pyplot.xlim(bounds)        
-    
+
+    quant = qoi_list[i]
     pyplot.xlabel(quant, fontsize=30)
     pyplot.ylabel('$\pi('+quant+')$', fontsize=30)
     pyplot.legend(loc='upper left')
@@ -58,7 +56,7 @@ class BayesianRichardsonExtrapolation(object):
         from math import log
 
         return (
-            prior.prior(params) + 
+            prior(params) + 
             likelihood.likelihood(params)
             )
 
@@ -130,15 +128,11 @@ for i in xrange(len(qoi_list)):
 #----------------------------------
 print("\nPrinting PDF outputs")
 for i in xrange(len(qoi_list)):
-    plotter(s.flatchain[:,i],qoi_list[i])
+    plotter(s.flatchain[:,i],i)
 
 #----------------------------------
 # FIGURE: Joint posterior(s)
 #----------------------------------
-#
-# q = 1
-# c = 2 
-# p = 3
 #
 qbins  = []
 qkde   = []

@@ -47,7 +47,6 @@ burn_in = 5000
 #
 samples = 10000
 
-
 #
 # initial guesses for the walkers starting locations
 #
@@ -75,5 +74,6 @@ perturb_list = [perturb_q, perturb_c, perturb_p]
 
 #
 # list of qoi (strings please)
-#
+# (please ensure this is identical to the order you placed in 'prior_funcs')
+# (or else, labels could be misleading)
 qoi_list = ["U", "C", "p"]
