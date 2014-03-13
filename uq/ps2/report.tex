@@ -18,7 +18,7 @@
 \maketitle
 
 \newpage
-\section{Problem Statement}
+\section*{Problem Statement}
 
 \section{Uncertainty in the data}
 \begin{enumerate}
@@ -74,8 +74,10 @@ with
 
 \begin{enumerate}
  \item The coefficient $\alpha$ defined above is said to be ``of order $0.5$~m/s with uncertainty of the same order''. 
- Since we cannot definitely exclude positive values of $\alpha$ we can choose $\alpha$ to be Gaussian with mean $-0.5$~m/s and $95\%$~confidence interval given by the interval of uncertainty. Here the uncertainty is said to be ``of the same order'' as the mean. In order to be conservative, we'll pick our $95\%$~confidence interval to be $[-1,1]$~m/s.
+ Since we could not exclude negative values of $\alpha$ we can choose $\alpha$ to be Gaussian with mean $0.5$~m/s and $95\%$~confidence interval given by the interval of uncertainty. Here the uncertainty is said to be ``of the same order'' as the mean. In order to be conservative, we'll pick our $67\%$~confidence interval to be $[-1,1]$~m/s. 
+\[ \alpha \sim \mathcal{N}(0.5, 1). \]
  \item For $\sigma$, we know it has to be non-negative. We can therefore assume that $\sigma$ is uniformly distributed over the interval $[0, 0.2]$~m.
+\[ \sigma \sim \mathcal{U}(0, 0.2) . \]
  \item The uncertainty on the height will impact the measurement. Assuming for a second that we have no errors due to the handling of the iPad, the height we measure is given proportionally to the reference height of the bridge and the ratio of the pixels for each object, that is
  \begin{align*}
   \tilde{h} = \frac{p_1}{p_2} \tilde{H},
@@ -114,9 +116,65 @@ where
 \begin{align*}
  H \sim \mathcal{U} \left( 34.5, 35.5 \right).
 \end{align*}
-
-
 \end{enumerate}
+
+\section{Plausible prior for $C_d$}
+
+\section{Likelihood and MCMC computations}
+
+We will infer (at most) for the following parameters: $\alpha, \sigma, C_d, H$. The likelihood gives us the probability that the results from our simulation~$h_c$ match the data~$h_d$ we have.
+\[ \pi\left( h_c = h_d \, | \, \alpha, \sigma, C_d, H \right) .\]
+In the hypothetical case we'd know all parameters exactly ($\alpha, \sigma, C_d, H$), the data would be connected to the results of our simulation through the following relation
+\begin{align*}
+ h_d = \left( h^\text{ODE} + \varepsilon \right) \frac{H}{35} , 
+\end{align*}
+where $h_c$ is given by
+\begin{align*}
+ h_c = h^\text{ODE} \frac{H}{35}.
+\end{align*}
+For convenience, we re-write this relation as
+\begin{align*}
+\left( h_d - h_c \right)\frac{35}H  = \varepsilon.
+\end{align*}
+We already detailed the distribution of the random variable $\varepsilon$. It is Gaussian with mean and covariance given by the time measurements of each experiment and random variables $\alpha$ and $\sigma$ (which are assumed to be sampled when evaluating the likelihood). Calling $\mu$ and $R$ the mean and covariance matrix corresponding to the right format of $h$ (ie, stacking information from all 4 experiments 'on top of each other'), we get the following distribution for the likelihood,
+\begin{align*}
+ \pi(h_c = h_d \, | \, \alpha, \sigma, C_d, H) = \frac1{\sqrt{(2\pi)^n |R|}} \exp \left\{ - \frac12 \left( \left( h_d - h_c \right)\frac{35}H - \mu \right)^T \cdotp R^{-1} \cdotp \left( \left( h_d - h_c \right)\frac{35}H - \mu \right) \right\} ,
+\end{align*}
+where $n = t_f^1 \times t_f^2 \times t_f^3 \times t_f^4$ is the number of data (ie, the dimension of $h_d$) and $h_d$ is defined as
+\begin{align*}
+ h_d = \begin{bmatrix}
+h_1(t_1^1) \\
+h_1(t_2^1) \\
+\vdots \\
+h_1 (t_f^1) \\
+h_2(t_1^2) \\
+\vdots \\
+h_2(t_f^2) \\
+\vdots \\
+h_4(t_f^4) 
+\end{bmatrix}.
+\end{align*}
+Note that the times used in $h_d$ (and hence $h_c, \mu, R$) can be a subset of the times used in the actual experiments. For instance, the last measurements look highly suspicious and should be probably excluded from our inference.
+$\mu$ and $R$ are defined as follows
+\begin{align*}
+ \mu = \alpha
+ \begin{bmatrix}
+  t_1^1 \\
+  t_2^1 \\
+  \vdots \\
+  t_f^4
+ \end{bmatrix}, \quad R = \sigma^2
+ \begin{bmatrix}
+  1 & e^{-|t_1^1 - t_2^1|/\tau} & e^{-|t_1^1 - t_3^1|/\tau} &  \ldots & e^{-|t_1^1 - t_{f-1}^4|/\tau} & e^{-|t_1^1-t_f^4|/\tau} \\
+\vdots & 1 & e^{-|t_2^1 - t_3^1|/\tau} &   \ldots & e^{-|t_2^1 - t_{f-1}^4|/\tau} & e^{-|t_2^1 - t_f^4|/\tau} \\
+\\
+\vdots &  &  \ddots & &  & \vdots \\
+\\
+& \text{symm} & & & 1 & e^{-|t_{f-1}^4 - t_f^4|/\tau}  \\
+\\
+& & \ldots & & & 1
+ \end{bmatrix}.
+\end{align*}
 
 
 
