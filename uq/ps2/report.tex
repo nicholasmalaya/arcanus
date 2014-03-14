@@ -28,7 +28,9 @@
  \item $C_d$ is varying in time, but we are not accounting for that.
  \item Dimension and weight of the balls:
 \begin{itemize}
- \item Basket ball: Circumference and weight don't appear to correspond to any official values (Wikipedia + Google). That would indicates these characteristics were measured.
+ \item Basket ball: Circumference and weight don't appear to correspond
+       to any official values (Wikipedia + Google). That would indicates
+       these characteristics were measured. 
  \item Bowling ball: We can assume the bowling ball was also measured.
 \end{itemize}
 
@@ -116,8 +118,43 @@ with
  \mu_i = \alpha t_i, \quad R_{ij} = \sigma^2 e^{-|t_i-t_j|/\tau}.
 \end{align*}
 
-\section{Probabilistic model}
+\section{Prior on $C_d$, the coefficient of drag}
 
+The coefficient of drag is a non-dimensionalization of the force that
+results from a scaling analysis. 
+\begin{equation*}
+ \frac{F_D}{\frac{1}{2} \rho V^2 A } = C_D(Re).
+\end{equation*}
+Thus, the coefficient depends only on the Reynolds number of the
+flow. Let's estimate the Reynolds number to give us a sense of the range 
+we believe may be possible in this particular experiment. 
+
+The Reynolds number is defined as, 
+\begin{equation*}
+ Re = \frac{V L}{\nu}
+\end{equation*}
+Let's estimate the characteristic velocity (V), and length (L) as well
+as the viscosity, $\nu$. An upper bound for the velocity would be from
+the calculating the velocity in the absense of drag. Here, $V = g
+t_{\text{final}}$, and with $t_{\text{final}} \approx 3 $ seconds, our V
+is $\approx 29.4 $ m/s. The characteristic length is the ball diameter,
+which for the basketball is 23.33 cm. Finally, the kinematic viscosity
+of air is $15.68 * 10^{-6} \text{m}^2/s$ according to
+\url{http://www.engineeringtoolbox.com/air-properties-d_156.html}. Thus,
+our $\text{Re} \approx 437,000$, which means the flow is certainly
+turbulence. Furthermore, we expect roughness effects to become
+significant around $Re \approx 10^5$. Given that we do not know, with
+confidence, if the balls are rough or smooth, our prior must be
+sufficiently broad to capture the possibilty of either condition. 
+
+Looking at a NASA chart for the measured drag coefficient on a sphere, 
+at low reynolds numbers (when we release the ball) we expect that our
+drag coefficient might be as large as 2. Should the sphere be smooth,
+the drag coefficient could be as small as 0.1 at the end. We also know
+that our prior should not be capable of negative values, that would be
+aphysical. 
+
+\section{Probabilistic model}
 
 \begin{enumerate}
  \item The coefficient $\alpha$ defined above is said to be ``of order
