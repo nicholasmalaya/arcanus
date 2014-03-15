@@ -28,35 +28,84 @@
  \item $C_d$ is varying in time, but we are not accounting for that.
  \item Dimension and weight of the balls:
 \begin{itemize}
- \item Basket ball: Circumference and weight don't appear to correspond to any official values (Wikipedia + Google). That would indicates these characteristics were measured.
+ \item Basket ball: Circumference and weight don't appear to correspond
+       to any official values (Wikipedia + Google). That would indicates
+       these characteristics were measured. 
  \item Bowling ball: We can assume the bowling ball was also measured.
 \end{itemize}
-We are only dealing with measurement errors here. We can model both with additive Gaussian noise of mean zero and standard deviation defined by a 95\% confidence interval. We could assume the circumference is correct within $\pm 1$ cm with 95\% confidence. Whereas the weight is accurate within 0.1 oz.
- \item Height of the drop: This is represented by a uniform distribution between 34.5m and 35.5m.
- \item Position of the operator: The position is very uncertain. But it doesn't matter in the outcome of the experiment. As long as the operator is far enough to capture the whole drop sequence without having to move (which he is at 22.4m away from the action), it is not going to have an incidence on the results.
- \item Temperature: Mass density of the air depends on the temperature. Both experiments were performed in two different days. So most likely the temperature was different which affected the mass density of the air. We can assume the temperature was between 15C~(1.2250~kg/m$^3$) and 25C~(1.2041~kg/m$^3$) with 95\% confidence. We will directly translate this uncertainty into the mass density.
- \item Video acquisition: The time framing is assumed to be exactly accurate as this is based on the iPad internal clock and there is no reason to assume it was defective. However the distance of the ball is very uncertain for different reasons.
+
+We are only dealing with measurement errors here. We can model both with
+       additive Gaussian noise of mean zero and standard deviation
+       defined by a 95\% confidence interval. We could assume the
+       circumference is correct within $\pm 1$ cm with 95\%
+       confidence. Whereas the weight is accurate within 0.1 oz. 
+ \item Height of the drop: This is represented by a uniform distribution
+       between 34.5m and 35.5m. 
+ \item Position of the operator: The position is very uncertain. But it
+       doesn't matter in the outcome of the experiment. As long as the
+       operator is far enough to capture the whole drop sequence without
+       having to move (which he is at 22.4m away from the action), it is
+       not going to have an incidence on the results. 
+ \item Temperature: Mass density of the air depends on the
+       temperature. Both experiments were performed in two different
+       days. So most likely the temperature was different which affected
+       the mass density of the air. We can assume the temperature was
+       between 15C~(1.2250~kg/m$^3$) and 25C~(1.2041~kg/m$^3$) with 95\%
+       confidence. We will directly translate this uncertainty into the
+       mass density. 
+ \item Video acquisition: The time framing is assumed to be exactly
+       accurate as this is based on the iPad internal clock and there is
+       no reason to assume it was defective. However the distance of the
+       ball is very uncertain for different reasons. 
 \begin{itemize}
- \item Reference distance: The distances are all relative to a reference distance. The experimentalists chose the height of the bridge as their reference distance. But on top of the large uncertainties on that exact distance (see above), we have uncertainties coming from the definition of that length in Logger Pro.
- \item Fixed position of the camera: The acquisition of the motion of the ball is done by selecting the ball (or the top of the ball to more accurate) on the screen at each frame you want to use. However, based on online videos, Logger Pro doesn't adjust the position of the object relative to its environment. So the position of the object is relative of the sides of the image (ie, the camera is assumed to be fixed in Logger Pro). Hence if the camera operator shifts the camera during the experiment he shifts the absolute position of the ball by the same amount. If he rotates the iPad, he shifts the absolute position of the ball by the distance between the camera and the ball times the rotation angle. That would indicate that the distance from the ball is actually relevant. Unless we adopt some general treatment as advised in the next section.
+ \item Reference distance: The distances are all relative to a reference
+       distance. The experimentalists chose the height of the bridge as
+       their reference distance. But on top of the large uncertainties
+       on that exact distance (see above), we have uncertainties coming
+       from the definition of that length in Logger Pro. 
+ \item Fixed position of the camera: The acquisition of the motion of
+       the ball is done by selecting the ball (or the top of the ball to
+       more accurate) on the screen at each frame you want to
+       use. However, based on online videos, Logger Pro doesn't adjust
+       the position of the object relative to its environment. So the
+       position of the object is relative of the sides of the image (ie,
+       the camera is assumed to be fixed in Logger Pro). Hence if the
+       camera operator shifts the camera during the experiment he shifts
+       the absolute position of the ball by the same amount. If he
+       rotates the iPad, he shifts the absolute position of the ball by
+       the distance between the camera and the ball times the rotation
+       angle. That would indicate that the distance from the ball is
+       actually relevant. Unless we adopt some general treatment as
+       advised in the next section. 
 \end{itemize}
- \item Gravity of Earth: From Wikipedia (actually using Wolfram Alpha's city data), we found the gravity at Vancouver to be $9.81339$~m/s$^2$. The uncertainty will be estimated below.
+ \item Gravity of Earth: From Wikipedia (actually using Wolfram Alpha's
+       city data), we found the gravity at Vancouver to be
+       $9.81339$~m/s$^2$. The uncertainty will be estimated below. 
 \end{enumerate}
 
 \section{Uncertainty on the position of the ball}
 
-Working at the continuous level for now, we are interested in characterizing the uncertainty on the measured position of the ball $\tilde{h}(t)$. 
-We model this uncertainty with additive noise $\varepsilon(t)$ such that
+Working at the continuous level for now, we are interested in
+characterizing the uncertainty on the measured position of the ball
+$\tilde{h}(t)$.  
+We model this uncertainty with additive noise $\varepsilon(t)$ such that 
 \begin{align*}
  \tilde{h}(t) = h(t) + \varepsilon(t).
 \end{align*}
-Assuming we can estimate the mean and covariance matrix of that random variables, the principle of maximum entropy relative to a uniform distribution would lead us to using a Gaussian distribution for that noise.
-In the question we are advised to use the following form for the mean~$\mu(t)$ and covariance matrix~$R(t,t')$ of the noise
+Assuming we can estimate the mean and covariance matrix of that random
+variables, the principle of maximum entropy relative to a uniform
+distribution would lead us to using a Gaussian distribution for that
+noise. 
+In the question we are advised to use the following form for the
+mean~$\mu(t)$ and covariance matrix~$R(t,t')$ of the noise 
 \begin{align*}
  \mu(t) = \alpha t , \quad R(t,t') = \sigma^2 e^{-|t-t'|/\tau} .
 \end{align*}
 
-In practice for each experiment we are given a discrete set of times~$\{ t_i \}_i$ when position measurements occurred. This leads to the following discrete representation of uncertainty for the measured vector position
+In practice for each experiment we are given a discrete set of times~$\{
+t_i \}_i$ when position measurements occurred. This leads to the
+following discrete representation of uncertainty for the measured vector
+position 
 \begin{align*}
  \{ \tilde{h} \} = \{ h \} + \{ \varepsilon \},
 \end{align*}
@@ -69,29 +118,80 @@ with
  \mu_i = \alpha t_i, \quad R_{ij} = \sigma^2 e^{-|t_i-t_j|/\tau}.
 \end{align*}
 
+\section{Prior on $C_d$, the coefficient of drag}
+
+The coefficient of drag is a non-dimensionalization of the force that
+results from a scaling analysis. 
+\begin{equation*}
+ \frac{F_D}{\frac{1}{2} \rho V^2 A } = C_D(Re).
+\end{equation*}
+Thus, the coefficient depends only on the Reynolds number of the
+flow. Let's estimate the Reynolds number to give us a sense of the range 
+we believe may be possible in this particular experiment. 
+
+The Reynolds number is defined as, 
+\begin{equation*}
+ Re = \frac{V L}{\nu}
+\end{equation*}
+Let's estimate the characteristic velocity (V), and length (L) as well
+as the viscosity, $\nu$. An upper bound for the velocity would be from
+the calculating the velocity in the absense of drag. Here, $V = g
+t_{\text{final}}$, and with $t_{\text{final}} \approx 3 $ seconds, our V
+is $\approx 29.4 $ m/s. The characteristic length is the ball diameter,
+which for the basketball is 23.33 cm. Finally, the kinematic viscosity
+of air is $15.68 * 10^{-6} \text{m}^2/s$ according to
+\url{http://www.engineeringtoolbox.com/air-properties-d_156.html}. Thus,
+our $\text{Re} \approx 437,000$, which means the flow is certainly
+turbulence. Furthermore, we expect roughness effects to become
+significant around $Re \approx 10^5$. Given that we do not know, with
+confidence, if the balls are rough or smooth, our prior must be
+sufficiently broad to capture the possibilty of either condition. 
+
+Looking at a NASA chart for the measured drag coefficient on a sphere, 
+at low reynolds numbers (when we release the ball) we expect that our
+drag coefficient might be as large as 2. Should the sphere be smooth,
+the drag coefficient could be as small as 0.1 at the end. We also know
+that our prior should not be capable of negative values, that would be
+aphysical. 
+
 \section{Probabilistic model}
 
-
 \begin{enumerate}
- \item The coefficient $\alpha$ defined above is said to be ``of order $0.5$~m/s with uncertainty of the same order''. 
- Since we could not exclude negative values of $\alpha$ we can choose $\alpha$ to be Gaussian with mean $0.5$~m/s and $95\%$~confidence interval given by the interval of uncertainty. Here the uncertainty is said to be ``of the same order'' as the mean. In order to be conservative, we'll pick our $67\%$~confidence interval to be $[-1,1]$~m/s. 
+ \item The coefficient $\alpha$ defined above is said to be ``of order
+       $0.5$~m/s with uncertainty of the same order''.  
+ Since we could not exclude negative values of $\alpha$ we can choose
+       $\alpha$ to be Gaussian with mean $0.5$~m/s and $95\%$~confidence
+       interval given by the interval of uncertainty. Here the
+       uncertainty is said to be ``of the same order'' as the mean. In
+       order to be conservative, we'll pick our $67\%$~confidence
+       interval to be $[-1,1]$~m/s.  
 \[ \alpha \sim \mathcal{N}(0.5, 1). \]
- \item For $\sigma$, we know it has to be non-negative. We can therefore assume that $\sigma$ is uniformly distributed over the interval $[0, 0.2]$~m.
-\[ \sigma \sim \mathcal{U}(0, 0.2) . \]
- \item The uncertainty on the height will impact the measurement. Assuming for a second that we have no errors due to the handling of the iPad, the height we measure is given proportionally to the reference height of the bridge and the ratio of the pixels for each object, that is
+ \item For $\sigma$, we know it has to be non-negative. We can therefore
+       assume that $\sigma$ is uniformly distributed over the interval
+       $[0, 0.2]$~m. 
+\[ \sigma \sim \mathcal{U}(0, 0.2) . \] 
+ \item The uncertainty on the height will impact the
+       measurement. Assuming for a second that we have no errors due to
+       the handling of the iPad, the height we measure is given
+       proportionally to the reference height of the bridge and the
+       ratio of the pixels for each object, that is 
  \begin{align*}
   \tilde{h} = \frac{p_1}{p_2} \tilde{H},
  \end{align*}
-where $\tilde{H}$ is the measured height of the bridge. As discussed earlier, the height of the bridge is a random variable sampled from a uniform distribution over $[34.5, 35.5]$~m.
+where $\tilde{H}$ is the measured height of the bridge. As discussed
+       earlier, the height of the bridge is a random variable sampled
+       from a uniform distribution over $[34.5, 35.5]$~m. 
 For convenience we re-write $\tilde{H}$ as
 \begin{align*}
  \tilde{H} = 35 + \tilde{\eta},
 \end{align*}
-where $\tilde{\eta}$ is sampled from a uniform distribution over $[-0.5, 0.5]$~m. Plugging this into the equation for our measured height of the ball, we get
+where $\tilde{\eta}$ is sampled from a uniform distribution over $[-0.5,
+       0.5]$~m. Plugging this into the equation for our measured height
+       of the ball, we get 
 \begin{align*}
- \tilde{h} = \frac{p_1}{p_2} 35 + \frac{p_1}{p_2} \tilde{\eta}.
+ \tilde{h} = \frac{p_1}{p_2} 35 + \frac{p_1}{p_2} \tilde{\eta}. 
 \end{align*}
-Let's define the exact height of the ball as
+Let's define the exact height of the ball as 
 \begin{align*}
  h \equiv \frac{p_1}{p_2} 35.
 \end{align*}
@@ -99,16 +199,23 @@ We then get
 \begin{align*}
  \tilde{h} = h \left( 1 + \frac{\tilde{\eta}}{35} \right).
 \end{align*}
-That is the uncertainty due to the height of the bridge acts on the measured height of the ball through a multiplicative noise. 
-Using the notations we defined in the previous questions for the uncertainty due to the handling of the iPad, we can write the measured height of the ball as
+That is the uncertainty due to the height of the bridge acts on the
+       measured height of the ball through a multiplicative noise.  
+Using the notations we defined in the previous questions for the
+       uncertainty due to the handling of the iPad, we can write the
+       measured height of the ball as 
 \begin{align*}
  \tilde{h} = \left( h + \varepsilon \right) (1 + \eta),
 \end{align*}
-where $\varepsilon$ is a multivariate Gaussian with mean and covariance matrix defined in earlier and 
+where $\varepsilon$ is a multivariate Gaussian with mean and covariance
+       matrix defined in earlier and  
 \begin{align*}
  \eta \sim \mathcal{U}\left( \frac{-0.5}{35}, \frac{+0.5}{35} \right) .
 \end{align*}
-Maybe a more informative way to formulate that problem would be to define the total height of the bridge directly as a random variable. This leads to the following data reduction model for the measured height of the ball
+Maybe a more informative way to formulate that problem would be to
+       define the total height of the bridge directly as a random
+       variable. This leads to the following data reduction model for
+       the measured height of the ball 
 \begin{align*}
  \tilde{h} = ( h  + \varepsilon ) \frac{H}{35},
 \end{align*}
@@ -122,9 +229,13 @@ where
 
 \section{Likelihood and MCMC computations}
 
-We will infer (at most) for the following parameters: $\alpha, \sigma, C_d, H$. The likelihood gives us the probability that the results from our simulation~$h_c$ match the data~$h_d$ we have.
-\[ \pi\left( h_c = h_d \, | \, \alpha, \sigma, C_d, H \right) .\]
-In the hypothetical case we'd know all parameters exactly ($\alpha, \sigma, C_d, H$), the data would be connected to the results of our simulation through the following relation
+We will infer (at most) for the following parameters: $\alpha, \sigma,
+C_d, H$. The likelihood gives us the probability that the results from
+our simulation~$h_c$ match the data~$h_d$ we have. 
+\[ \pi\left( h_c = h_d \, | \, \alpha, \sigma, C_d, H \right) .\] 
+In the hypothetical case we'd know all parameters exactly ($\alpha,
+\sigma, C_d, H$), the data would be connected to the results of our
+simulation through the following relation 
 \begin{align*}
  h_d = \left( h^\text{ode} + \varepsilon \right) \frac{H}{35} , 
 \end{align*}
@@ -136,11 +247,19 @@ For convenience, we re-write this relation as
 \begin{align*}
 \left( h_d - h_c \right)\frac{35}H  = \varepsilon.
 \end{align*}
-We already detailed the distribution of the random variable $\varepsilon$. It is Gaussian with mean and covariance given by the time measurements of each experiment and random variables $\alpha$ and $\sigma$ (which are assumed to be sampled when evaluating the likelihood). Calling $\mu$ and $R$ the mean and covariance matrix corresponding to the right format of $h$ (ie, stacking information from all 4 experiments 'on top of each other'), we get the following distribution for the likelihood,
+We already detailed the distribution of the random variable
+$\varepsilon$. It is Gaussian with mean and covariance given by the time
+measurements of each experiment and random variables $\alpha$ and
+$\sigma$ (which are assumed to be sampled when evaluating the
+likelihood). Calling $\mu$ and $R$ the mean and covariance matrix
+corresponding to the right format of $h$ (ie, stacking information from
+all 4 experiments 'on top of each other'), we get the following
+distribution for the likelihood, 
 \begin{align*}
  \pi(h_c = h_d \, | \, \alpha, \sigma, C_d, H) = \frac1{\sqrt{(2\pi)^n |R|}} \exp \left\{ - \frac12 \left(  h_d \frac{35}H - h^\text{ode} - \mu \right)^T \cdotp R^{-1} \cdotp \left(  h_d \frac{35}H - h^\text{ode} - \mu \right) \right\} ,
 \end{align*}
-where $n = t_f^1 \times t_f^2 \times t_f^3 \times t_f^4$ is the number of data (ie, the dimension of $h_d$) and $h_d$ is defined as
+where $n = t_f^1 \times t_f^2 \times t_f^3 \times t_f^4$ is the number
+of data (ie, the dimension of $h_d$) and $h_d$ is defined as 
 \begin{align*}
  h_d = \begin{bmatrix}
 h_1(t_1^1) \\
@@ -154,8 +273,11 @@ h_2(t_f^2) \\
 h_4(t_f^4) 
 \end{bmatrix}.
 \end{align*}
-Note that the times used in $h_d$ (and hence $h_c, \mu, R$) can be a subset of the times used in the actual experiments. For instance, the last measurements look highly suspicious and should be probably excluded from our inference.
-$\mu$ and $R$ are defined as follows
+Note that the times used in $h_d$ (and hence $h_c, \mu, R$) can be a
+subset of the times used in the actual experiments. For instance, the
+last measurements look highly suspicious and should be probably excluded
+from our inference. 
+$\mu$ and $R$ are defined as follows 
 \begin{align*}
  \mu = \alpha
  \begin{bmatrix}
