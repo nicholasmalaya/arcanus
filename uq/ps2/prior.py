@@ -3,49 +3,51 @@
 import numpy as np
 from settings_infer import *
 
-def prior_U(q):
+def prior_a(a):
     """
-    This routine should return the log of the 
-    prior probability distribution: P(q|X)
-    evaluated for the given value of q.
-    """
+	Log Prior for alpha
+	"""
 
-    mymean = 1.1627
-    myvar = 2.0*0.05*mymean / 3.92
+    mymean = 0.5
+    myvar = 1
     
-    prior_U = logGaussian(mymean, myvar, q)
-    return prior_U
+    return logGaussian(mymean, myvar**2, a)
 
-def prior_C(C):
+
+def prior_S(s):
     """
-    This routine should return the log of the 
-    prior probability distribution: P(C|X)
-    evaluated for the given value of C.
+	Log Prior for sigma
     """
 
-    mymean = 0.0
-    meanUc = 1.1627
-    myvar = 2.0*0.005*meanUc / 3.92
+    smin = 0.0
+    smax = 2.0
 
-    prior_C = logGaussian(mymean, myvar, C)
-    return prior_C
-
-def prior_p(p):
-    """
-    This routine should return the log of the 
-    prior probability distribution: P(p|X)
-	evaluated for the given value of p.
-    """
-
-    pmin = 1.0
-    pmax = 10.0
-
-    if (p >= pmin) and (p <= pmax):
-        prior_p = -np.log(pmax-pmin)
+    if (s >= smin) and (s <= smax):
+        return -np.log(smax-smin)
     else:
-        prior_p = -np.inf
-        
-    return prior_p
+        return -np.inf
+
+
+def prior_H(h):
+    """
+	Log Prior for H
+    """
+
+    hmin = 34.5
+    hmax = 35.5
+
+    if (h >= hmin) and (h <= hmax):
+        return -np.log(hmax-hmin)
+    else:
+        return -np.inf
+
+
+def prior_C(c):
+	"""
+	Log Prior for C
+	"""
+	
+	return assert False
 
 #
 # here, please append each prior function for evaluation
@@ -55,7 +57,7 @@ def prior_p(p):
 #    prior_funcs = [prior_A, prior_B] 
 #    
 # 
-prior_funcs = [prior_U,prior_C,prior_p]
+prior_funcs = [prior_a, prior_s, prior_H, prior_C]
 
 #
 # One should not have to edit the routine below
