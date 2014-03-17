@@ -9,6 +9,7 @@
 # 
 #   dy^2 / dt^2 = -g + r (dh/dt)^2 (object falling with drag)
 #
+from scipy.linalg import det, solve
 from scipy.integrate import odeint
 import numpy as np
 
@@ -25,17 +26,26 @@ def drag_eqn(times,g,r):
     h = odeint(deriv,hinit,times, args = (param,))
     return h[:,0], h[:,1]
 
-def logGaussian(MEAN, VAR, X):
+def logGaussian(MEAN, COVAR, X):
 	# Return the log of a multivariate Gaussian pdf evaluated at X
+	# MEAN, X = np.arrays (kk, 1)
+	# COVAR = np.array (kk, kk)
 	kk = np.size(MEAN)
+	assert np.shape(MEAN) == np.shape(X), "MEAN and X must have same shape"
+	assert np.size(COVAR) == kk**2, "MEAN and COVAR must have same nb of rows"
 
 	if kk  == 1:
-		return np.log(1.0 / (VAR*np.sqrt(2.0*np.pi))) - .5*(MEAN-X)**2 / VAR**2
+		assert np.shape(MEAN) == (), "MEAN must be a column vector or a number"
+		return np.log(1.0 / np.sqrt(COVAR*2.0*np.pi)) - .5*(MEAN-X)**2 / COVAR
 
-	detS = VAR.prod()
-	MISFIT = (MEAN - X)/VAR
-	return np.log(1.0 / (detS*np.sqrt((2.0*np.pi)**kk))) \
-	- .5*np.dot(MISFIT, MISFIT)
+	assert np.shape(MEAN) == (kk, 1), "MEAN must be column vector or a number"
+
+	detC = det(COVAR)
+	MISFIT = MEAN - X
+	invCM = solve(COVAR, MISFIT)
+	return np.log(1.0 / np.sqrt(detC*(2.0*np.pi)**kk)) \
+	- .5*np.dot(MISFIT.T, invCM)
+
 
 #
 # this is how long the walkers will propagate, before we start
