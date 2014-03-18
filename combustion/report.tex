@@ -139,7 +139,7 @@ distance halfway between the fuel and oxidizer sources.
 
 \newpage
 \section*{Problem 2}
-
+\subsection*{Formulation}
 Our conserved scalar equation takes the form,
 \begin{equation*}
  \rho \frac{\partial \beta}{\partial t} = \frac{1}{r^2}\frac{\partial
@@ -164,6 +164,20 @@ spatial location:
  \left(\frac{\beta_{j+1}-2 \beta_j + \beta_{j-1}}{\Delta r}\right) -
  r^2_{i-1/2}\left(\frac{\beta_{j+1}-2 beta_{j-1}}{2\Delta r}\right)}{r^2_i\Delta r}.
 \end{eqnarray*}
+Here, $r_{i+1/2}$ is the location between the cells. Note that because
+this is an explicit method, it is stable only when the timestep does not
+exceed the CFL condition, 
+\begin{equation*}
+ \Delta t = \frac{\Delta r^2}{2 D}
+\end{equation*}
+
+Solving the conserved scalar equation provides a time dependent profile
+of that quantity. For a given profile of the conserved scalar, we can
+then obtain solutions for T, $Y_f$,$Y_o$, $Y_p$, etc. 
+
+\subsection*{Initial and Boundary Conditions}
+
+At the fuel inlet, $\beta = 1$, and starts zero everywhere else. 
 
 
 \end{document}
