@@ -69,7 +69,7 @@ Now, we must solve this equation. After the first integration, we have,
 This assumes constant density and transport properties. The second
 integration in $r$ leaves us with, 
 \begin{equation*}
-\beta(r) = C_2 - \frac{C_1}{ r }.
+ \beta(r) = C_2 - \frac{C_1}{ r }.
 \end{equation*}
 In other words, $Y_i \propto \frac{1}{r} $. 
 
@@ -103,7 +103,7 @@ Where $\mathcal{\hat L}\left( \right)$ is the non-dimensional form of
 the operator. This means we are assuming that the reactions are
 infinitely fast (in comparison to diffusion in the fluid) and therefore,
 the flame sits at an asymptotically thin region (a flame sheet) where it instantly
-consumes any reactants.
+consumes any reactants. This is the Burke-Schumann limit.
 
 The Shvab-Zel'dovich form is then,
 \begin{eqnarray*}
@@ -139,6 +139,23 @@ distance halfway between the fuel and oxidizer sources.
 
 \newpage
 \section*{Problem 2}
+
+Our conserved scalar equation takes the form,
+\begin{equation*}
+ \rho \frac{\partial \beta}{\partial t} = \frac{1}{r^2}\frac{\partial
+  }{\partial r}\left( r^2 \rho D \frac{\partial \beta}{\partial r}
+	       \right) 
+\end{equation*}
+where again, the source terms have been elimintated. This conserved
+scalar has the form $\beta = Y_i + T$. In order to numerically solve
+this, we need to discretize these equations in time and space. To do
+this, we will use finite difference schemes of the form,
+\begin{eqnarray*}
+ \frac{\partial^2 \beta}{\partial r^2} &= \frac{\beta_{j+1}-2 \beta_j +
+  \beta_{j-1}}{\Delta r^2}\\
+ \frac{\partial \beta}{\partial r} &= \frac{\beta_{j+1}-2
+ beta_{j-1}}{2\Delta r}
+\end{eqnarray*}
 
 
 
