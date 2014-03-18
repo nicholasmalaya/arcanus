@@ -154,9 +154,16 @@ this, we will use finite difference schemes of the form,
  \frac{\partial^2 \beta}{\partial r^2} &= \frac{\beta_{j+1}-2 \beta_j +
   \beta_{j-1}}{\Delta r^2}\\
  \frac{\partial \beta}{\partial r} &= \frac{\beta_{j+1}-2
- beta_{j-1}}{2\Delta r}
+ beta_{j-1}}{2\Delta r}.
 \end{eqnarray*}
-
+Inserting these into our equation, and discretizing time using a forward
+euler step turns this into a system of equations we solve at every
+spatial location:
+\begin{eqnarray*}
+\frac{\partial \beta^{n+1} - \beta^{n}}{\Delta t} = D \frac{r^2_{i+1/2}
+ \left(\frac{\beta_{j+1}-2 \beta_j + \beta_{j-1}}{\Delta r}\right) -
+ r^2_{i-1/2}\left(\frac{\beta_{j+1}-2 beta_{j-1}}{2\Delta r}\right)}{r^2_i\Delta r}.
+\end{eqnarray*}
 
 
 \end{document}
