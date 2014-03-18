@@ -4,6 +4,7 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{color}
 \usepackage[section]{placeins}
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
 \usepackage{listings}
@@ -24,7 +25,14 @@ through the outer sphere ($r_0$). Assume that the mass averaged velocity
 in the system is zero and that the fuel and air diffuse from the walls
 and are maintained at the walls with a mass fraction of unity. The walls
 are a sink to the products and they disappear at the wall. A schematic
-of the arrangement is shown below. 
+of the arrangement is shown in figure 1 below. 
+
+\begin{figure}[h]
+ \begin{center}
+  \includegraphics[scale=.3]{figs/spherical_burner.pdf}
+  \caption{The spherical burner apparatus.}
+ \end{center}
+\end{figure}
 
 The governing equation for the fuel is assumed to be, 
 \begin{equation*}
@@ -37,7 +45,8 @@ Where,
 \begin{center}
 \line(1,0){350}
 \end{center}
-Note that, 
+We will solve this as a quasi-steady problem, in that we assume the fuel
+at the center is not shrinking as a function of time. Note that, 
 \begin{equation*}
 \omega = \frac{\omega_i}{\nu_i W_i}= \frac{\omega_F}{\nu_F W_F} =
  \frac{\omega_O}{\nu_O W_O} 
