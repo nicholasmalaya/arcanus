@@ -23,12 +23,13 @@ dr = (rinf-r0)/n
 r = np.arange(r0,rinf,dr)
 
 # number of timesteps
-steps = 10000
+steps = 1000
 
-save = 1000
+save = 100
 
 # Diffusion Coefficient
 D = 0.1
+#D = 0.97*10**-5
 
 print 'Running with:'
 print 'dr ', dr
@@ -69,17 +70,17 @@ if(dr*dr / (2*D) > dt):
     #sys.exit(1)
 
 nf = 1
-no = 1
-wo = 1
-wf = 1
+no = 5
+wo = 15.99
+wf = 44.1
 
 frac = wo*no/(wf*nf)
 
 # heat release
-q= 1
+q= 2220.0
 
 # specific heat capacity
-cp = 1
+cp = 1.009
 qcp = q/cp
 
 #
@@ -132,23 +133,28 @@ for t in xrange(steps):
     #    plot(r,Yf,label=t)
 
     Yn = (1-beta)
+    #if( t%save == 0):
+    #    plot(r,Yn,label=t)
 
     # ------------------------------------------------------------
     # calculate on oxidizer side
     # ------------------------------------------------------------
     
-    T = Ti * (1-beta) + (Yf[0]*qcp + Ti)*beta
-    Yo = Yo[-1]*(1-beta) - beta*Yf[0]/frac
+    T = (Ti * (1-beta) + (Yf[0]*qcp + Ti)*beta)
+    #Yo = (Yo[-1]*(1-beta) - beta*Yf[0]/frac)
+    Yo = Yo[-1]*(1-beta)
 
     # save plot of temperature at special times
     if( t%save == 0):
-        plot(r,Yo,label=t)
+        #plot(r,Yf,label=t)
+        plot(r,-Yf/.55,label=t)
         
 
 
 #
 # plot
 # 
+ylim([0,1])
 show()
 
 

@@ -162,7 +162,7 @@ spatial location:
 \begin{eqnarray*}
 \frac{\partial \beta^{n+1} - \beta^{n}}{\Delta t} = D \frac{r^2_{i+1/2}
  \left(\frac{\beta_{j+1}-2 \beta_j + \beta_{j-1}}{\Delta r}\right) -
- r^2_{i-1/2}\left(\frac{\beta_{j+1}-2 beta_{j-1}}{2\Delta r}\right)}{r^2_i\Delta r}.
+ r^2_{i-1/2}\left(\frac{\beta_{j+1}-2 \beta_{j-1}}{2\Delta r}\right)}{r^2_i\Delta r}.
 \end{eqnarray*}
 Here, $r_{i+1/2}$ is the location between the cells. Note that because
 this is an explicit method, it is stable only when the timestep does not
@@ -176,8 +176,8 @@ of that quantity. For a given profile of the conserved scalar, we can
 then obtain solutions for T, $Y_f$,$Y_o$, $Y_p$, etc. 
 
 \subsection*{Initial and Boundary Conditions}
-
-At the fuel inlet, $\beta = 1$, and starts zero everywhere else. 
-
+ 
+The conserved scalar is one at the fuel inlet($\beta = 1$), and starts
+zero everywhere else. I set the far radius location to be 20 cm. This seemed far enough away to be 'quasi-infinite'.
 
 \end{document}
