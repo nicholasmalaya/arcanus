@@ -12,6 +12,7 @@
 from scipy.linalg import det, solve
 from scipy.integrate import odeint
 import numpy as np
+from Data.read_data import read_data
 
 def deriv(h,t,param): 
     """return derivatives of the array y"""
@@ -31,14 +32,21 @@ def logGaussian(MEAN, COVAR, X):
 	# MEAN, X = np.arrays (kk, 1)
 	# COVAR = np.array (kk, kk)
 	kk = np.size(MEAN)
-	assert np.shape(MEAN) == np.shape(X), "MEAN and X must have same shape"
-	assert np.size(COVAR) == kk**2, "MEAN and COVAR must have same nb of rows"
+	assert np.size(MEAN) == np.size(X), "MEAN and X must have same size"
 
+	# Handle scalar differently:
 	if kk  == 1:
-		assert np.shape(MEAN) == (), "MEAN must be a column vector or a number"
 		return np.log(1.0 / np.sqrt(COVAR*2.0*np.pi)) - .5*(MEAN-X)**2 / COVAR
 
-	assert np.shape(MEAN) == (kk, 1), "MEAN must be column vector or a number"
+	try:
+		colsize = np.shape(MEAN)[1]
+	except:
+		MEAN = MEAN.reshape((kk, 1))
+		colsize = np.shape(MEAN)[1]
+
+	assert colsize == 1, "MEAN must be column vector or a number"
+	assert np.shape(MEAN) == np.shape(X), "MEAN and X must have same shape"
+	assert np.size(COVAR) == kk**2, "MEAN and COVAR must have same nb of rows"
 
 	detC = det(COVAR)
 	MISFIT = MEAN - X
@@ -85,3 +93,27 @@ perturb_list = [perturb_q, perturb_c, perturb_p]
 # (please ensure this is identical to the order you placed in 'prior_funcs')
 # (or else, labels could be misleading)
 qoi_list = ["U", "C", "p"]
+
+
+# Load data and build elementary vectors and matrices for the
+# mean and covariance of the likelihood function
+DataFolder = 'Data/'
+DataFiles = ['Basket_Ball_1.dat', 'Basket_Ball_2.dat', \
+'Bowling_Ball_1.dat', 'Bowling_Ball_2.dat']
+DTIMES = []
+DHEIGHTS = []
+# NOTE: We here exclude the last measurement as it looked suspicious
+# on the plots
+for myfile in DataFiles:
+	t, h = read_data(DataFolder + myfile)
+	DTIMES.append(np.array(t[:-1]))
+	DHEIGHTS.append(np.array(h[:-1]))
+
+tau = 0.5	# Factor in covariance matrix of Likelihood
+DCOVAR = []	# Covariance matrix for each experiment
+for hh in DHEIGHTS:
+	dimR = np.size(hh)
+	COVAR = (np.zeros(dimR**2)).reshape((dimR, dimR))
+	for ii in range(dimR):
+		COVAR[ii,:] = np.exp(-np.abs(hh - hh[ii])/tau)
+	DCOVAR.append(COVAR)
