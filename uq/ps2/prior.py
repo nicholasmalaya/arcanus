@@ -44,10 +44,17 @@ def prior_H(h):
 
 def prior_C(c):
 	"""
-	Log Prior for C
+	Log Prior for Cd
 	"""
 	
-	return assert False
+    cmin = 0.0
+    cmax = 2.0
+
+    if (c >= cmin) and (c <= cmax):
+        return -np.log(cmax-cmin)
+    else:
+        return -np.inf
+
 
 #
 # here, please append each prior function for evaluation

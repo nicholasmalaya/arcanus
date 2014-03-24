@@ -152,7 +152,11 @@ at low reynolds numbers (when we release the ball) we expect that our
 drag coefficient might be as large as 2. Should the sphere be smooth,
 the drag coefficient could be as small as 0.1 at the end. We also know
 that our prior should not be capable of negative values, that would be
-aphysical. 
+aphysical. For these reasons, we decided to define $C_d$ as
+\begin{align*}
+ C_d \sim \mathcal{U}(0,2).
+\end{align*}
+
 
 \section{Probabilistic model}
 
