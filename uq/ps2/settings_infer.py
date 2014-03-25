@@ -68,32 +68,34 @@ samples = 10000
 #
 # initial guesses for the walkers starting locations
 #
-guess_q = 1.16389876649
-guess_c = 0
-guess_p = 6
+guess_a = 0.75
+guess_s = 1.0
+guess_h = 35.0
+guess_c = 1.0
+
 
 #
 # please now put these guesses into a list:
 # (please ensure the order in which you guess is the same 
 #  as the order for the prior_function list)
 #
-guess_list = [guess_q, guess_c, guess_p]
+guess_list = [guess_a, guess_s, guess_h, guess_c]
 
 #
 # perturb q,c,p
 #
-perturb_q = 0.025
-perturb_c = 0.1
-perturb_p = 1.5
+perturb_a = 0.05
+perturb_s = 0.3
+perturb_h = 0.4
+perturb_h = 0.5
 
-perturb_list = [perturb_q, perturb_c, perturb_p]
+perturb_list = [perturb_a, perturb_s, perturb_h, perturb_c]
 
 #
 # list of qoi (strings please)
 # (please ensure this is identical to the order you placed in 'prior_funcs')
 # (or else, labels could be misleading)
-qoi_list = ["U", "C", "p"]
-
+qoi_list = ["a", "s", "H", "C"]
 
 # Load data and build elementary vectors and matrices for the
 # mean and covariance of the likelihood function
@@ -103,7 +105,7 @@ DataFiles = ['Basket_Ball_1.dat', 'Basket_Ball_2.dat', \
 DTIMES = []
 DHEIGHTS = []
 # NOTE: We here exclude the last measurement as it looked suspicious
-# on the plots
+# on the plots (we believe the ball is boucing)
 for myfile in DataFiles:
 	t, h = read_data(DataFolder + myfile)
 	DTIMES.append(np.array(t[:-1]))
