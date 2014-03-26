@@ -140,7 +140,7 @@ For both $\mathcal{F}_{TN}$ and $\mathcal{F}_{TV}$ , derive the
 \end{solution}
 
 \item [(B)]%PART B
-Show that when $\nabla u$ is zero, $\mathcal{R}_{TV}$ is not differentiable, but $\mathcal{R}^ε_{TV}$ is.
+Show that when $\nabla u$ is zero, $\mathcal{R}_{TV}$ is not differentiable, but $\mathcal{R}^{\epsilon}_{TV}$ is.
 \begin{solution}
 	Performing the variational derivative of $\mathcal{R}_{TV}$ as done previously:
 	\begin{align}
@@ -151,7 +151,7 @@ Show that when $\nabla u$ is zero, $\mathcal{R}_{TV}$ is not differentiable, but
 	\end{align}
 	From here it is easy to see that a divide by 0 occurs if $\nabla
  u = 0$. Therefore the derivative of $\mathcal{R}_{TV}$ does not exist
- for $\nabla u = 0$. However for $\mathcal{R}^ε_{TV}$, one has: 
+ for $\nabla u = 0$. However for $\mathcal{R}^{\epsilon}_{TV}$, one has: 
 	\begin{align}
 		\mathcal{R}_{TV}^\epsilon(u+\tau\hat{u}) &= \int_\Omega k(\mathbf{x})\left(\nabla(u+\tau\hat{u}) \cdot \nabla(u+\tau\hat{u}) + \epsilon\right)^{0.5}d\mathbf{x} \nonumber \\
 		\left.\frac{d\mathcal{R}^\epsilon_{TV}}{d\tau}(u+\tau\hat{u})\right|_{\tau
@@ -191,21 +191,43 @@ For both $\mathcal{F}_{TN}$ and $\mathcal{F}_{TV}^\epsilon$ , derive the
 	 -u_0\right)\hat{u}d\mathbf{x} + \int_{\Omega}
 	 k(\mathbf{x})\nabla(u+\tau\tilde{u})
 	 \cdot\nabla\hat{u}d\mathbf{x} \\ 
-		\frac{\delta
-	 u\mathcal{F}_{TN}}{d\tau}(u+\tau\tilde{u},\hat{u}) &=  
+		\frac{d
+	 (\delta
+	 u\mathcal{F}_{TN})}{d\tau}(u+\tau\tilde{u},\hat{u})|_{\tau =0} &=  
 		2\int_{\Omega}\tilde{u}\hat{u}d\mathbf{x} +
-	 \int_{\Omega} k(\mathbf{x})\nabla(u+\tau\tilde{u})
-	 \cdot\nabla\hat{u}d\mathbf{x} 
+	 \int_{\Omega} k(\mathbf{x})\nabla \tilde{u}
+	 \cdot\nabla\hat{u}d\mathbf{x}
 	\end{align}
 
 Then, for $\mathcal{F}^{\epsilon}_{TV}$:
 	\begin{align}
-		\delta
-	 u\mathcal{F}^{\epsilon}_{TV}(u+\tau\tilde{u},\hat{u}) &= 2\int_{\Omega}\left(u + \tau \tilde{u}
+	 \delta u\mathcal{F}^{\epsilon}_{TV}(u+\tau\tilde{u},\hat{u}) &= 2\int_{\Omega}\left(u + \tau \tilde{u}
 	 -u_0\right)\hat{u}d\mathbf{x} + \int_{\Omega} k(\mathbf{x})
 	 \frac{\nabla(u+\tau\tilde{u})\cdot\nabla\hat{u}}{\sqrt{\nabla(u+\tau\tilde{u})\cdot\nabla(u+\tau\tilde{u})
-	 +\epsilon}}\\ 
-	 yar
+	 +\epsilon}} dx \\ 
+	 \frac{\delta
+	 u\mathcal{F}^{\epsilon}_{TV}}{d\tau}(u+\tau\tilde{u},\hat{u})
+	 &= 2\int_{\Omega}\tilde{u}\hat{u}d\mathbf{x}
+	 + \int_{\Omega} k(\mathbf{x})
+	 \frac{\nabla u \cdot\nabla\hat{u}}{\sqrt{\nabla(u+\tau\tilde{u})\cdot\nabla(u+\tau\tilde{u})
+	 + \epsilon}} dx
+	 - \int_{\Omega} k(\mathbf{x})\frac{
+	 (\nabla (u+\tau \tilde u)\cdot \nabla \hat u) (\nabla (u+\tau
+	 \tilde u)\cdot \nabla \tilde u)}
+	 {(\sqrt{\nabla(u+\tau\tilde{u})\cdot\nabla(u+\tau\tilde{u}) 
+	 + \epsilon)^{3/2}}} dx \\	 
+	 \frac{\delta
+	 u\mathcal{F}^{\epsilon}_{TV}}{d\tau}(u+\tau\tilde{u},\hat{u})
+	 |_{\tau = 0} 
+	 &= 2\int_{\Omega}\tilde{u}\hat{u}d\mathbf{x} +
+	 \int_{\Omega} k(\mathbf{x})
+	 \frac{\nabla \tilde u \cdot\nabla\hat{u}}{\sqrt{\nabla u \cdot
+	 \nabla u +\epsilon}} dx
+	 %
+	 - \int_{\Omega} k(\mathbf{x})\frac{
+	 (\nabla u \cdot \nabla u^T) (\nabla \tilde u \cdot \nabla \hat u)}
+	 {(\sqrt{\nabla u \cdot\nabla u 
+	 + \epsilon)^{3/2}}} dx 	
 	\end{align}
 
 
