@@ -87,7 +87,7 @@ guess_list = [guess_a, guess_s, guess_h, guess_c]
 perturb_a = 0.05
 perturb_s = 0.3
 perturb_h = 0.4
-perturb_h = 0.5
+perturb_c = 0.5
 
 perturb_list = [perturb_a, perturb_s, perturb_h, perturb_c]
 
