@@ -53,16 +53,25 @@ Texas at Austin} \date{}
 
 \begin{enumerate}
 \item [(A)] %PART A
-For both $\mathcal{F}_{TN}$ and $\mathcal{F}_{TV}$ , derive the first-order necessary condition for optimality using calculus of variations, in both weak form and strong form. Use $\hat{u}$ to represent the variation of $u$.
+For both $\mathcal{F}_{TN}$ and $\mathcal{F}_{TV}$ , derive the
+      first-order necessary condition for optimality using calculus of
+      variations, in both weak form and strong form. Use $\hat{u}$ to
+      represent the variation of $u$. 
 
 \begin{solution}
 	To obtain the weak form for the Tikhonov regularization, take the variational derivative:
 	\begin{align}
 	\mathcal{F}_{TN}(u + \tau\hat{u}) &= \int_{\Omega}\left(u + \tau\hat{u} - u_0\right)^2d\mathbf{x}
-		+ 0.5\int_{\Omega} k(\mathbf{x})\nabla(u+\tau\hat{u})\cdot\nabla(u + \tau\hat{u})d\mathbf{x}\nonumber \\
+		+ 0.5\int_{\Omega}
+	 k(\mathbf{x})\nabla(u+\tau\hat{u})\cdot\nabla(u +
+	 \tau\hat{u})d\mathbf{x}\nonumber \\ 
 	\frac{d\mathcal{F}_{TN}}{d\tau} &= 2\int_{\Omega}\left(u + \tau\hat{u}-u_0\right)\hat{u}d\mathbf{x}
-	    + \int_{\Omega} k(\mathbf{x})\nabla(u + \tau\hat{u})\cdot\nabla\hat{u}d\mathbf{x}\nonumber\\
-	\left.\frac{d\mathcal{F}_{TN}}{d\tau}\right|_{\tau=0} &= 2\int_{\Omega}\left(u -u_0\right)\hat{u}d\mathbf{x} + \int_{\Omega} k(\mathbf{x})\nabla u \cdot\nabla\hat{u}d\mathbf{x}\nonumber\\
+	    + \int_{\Omega} k(\mathbf{x})\nabla(u +
+	 \tau\hat{u})\cdot\nabla\hat{u}d\mathbf{x}\nonumber\\ 
+	\left.\frac{d\mathcal{F}_{TN}}{d\tau}\right|_{\tau=0} &=
+	 2\int_{\Omega}\left(u -u_0\right)\hat{u}d\mathbf{x} +
+	 \int_{\Omega} k(\mathbf{x})\nabla u
+	 \cdot\nabla\hat{u}d\mathbf{x}\nonumber\\ 
     &= 0 \nonumber
 	\end{align}
 	Therefore the weak form for the Tikhonov regularization is given by:
@@ -75,7 +84,9 @@ For both $\mathcal{F}_{TN}$ and $\mathcal{F}_{TV}$ , derive the first-order nece
 	\end{displaymath}
 	However it was prescribed that the Neumann condition on $u$ is zero, leaving:
 	\begin{displaymath}
-		2\int_{\Omega}\left(\left(u -u_0\right) - \nabla \cdot (k(\mathbf{x})\nabla u)\right)\hat{u}d\mathbf{x}  = 0 \hspace{1 cm} \forall\hat{u} \in H^1(\Omega)
+		2\int_{\Omega}\left(\left(u -u_0\right) - \nabla \cdot
+	 (k(\mathbf{x})\nabla u)\right)\hat{u}d\mathbf{x}  = 0 \hspace{1
+	 cm} \forall\hat{u} \in H^1(\Omega) 
 	\end{displaymath}
 	Since this is true for all variations $\hat{u}$ then the following strong form holds:
 	\begin{align}
@@ -86,10 +97,16 @@ For both $\mathcal{F}_{TN}$ and $\mathcal{F}_{TV}$ , derive the first-order nece
 	Following the same method for the modified total variational regularization:
 	\begin{align}
 	\mathcal{F}_{TV}^\epsilon(u + \tau\hat{u}) &= \int_{\Omega}\left(u + \tau\hat{u} - u_0\right)^2d\mathbf{x}
-		+ \int_{\Omega} k(\mathbf{x})\left(\nabla(u+\tau\hat{u})\cdot\nabla(u + \tau\hat{u}) + \epsilon\right)^{0.5}d\mathbf{x}\nonumber \\
+		+ \int_{\Omega}
+	 k(\mathbf{x})\left(\nabla(u+\tau\hat{u})\cdot\nabla(u +
+	 \tau\hat{u}) + \epsilon\right)^{0.5}d\mathbf{x}\nonumber \\ 
 	\frac{d\mathcal{F}_{TV}^\epsilon}{d\tau} &= 2\int_{\Omega}\left(u + \tau\hat{u}-u_0\right)\hat{u}d\mathbf{x}
 	    + \int_{\Omega} k(\mathbf{x})\frac{\left(\nabla(u+\tau\hat{u})\cdot\nabla\hat{u} \right)}{\sqrt{\left(\nabla(u+\tau\hat{u})\cdot\nabla(u + \tau\hat{u}) + \epsilon\right)}}d\mathbf{x}\nonumber\\
-	\left.\frac{d\mathcal{F}_{TV}^\epsilon}{d\tau}\right|_{\tau=0} &= 2\int_{\Omega}\left(u -u_0\right)\hat{u}d\mathbf{x} + \int_{\Omega} k(\mathbf{x})\frac{\left(\nabla u \cdot\nabla\hat{u} \right)}{\sqrt{\left(\nabla u\cdot\nabla u + \epsilon\right)}}d\mathbf{x}\nonumber\\
+	\left.\frac{d\mathcal{F}_{TV}^\epsilon}{d\tau}\right|_{\tau=0}
+	 &= 2\int_{\Omega}\left(u -u_0\right)\hat{u}d\mathbf{x} +
+	 \int_{\Omega} k(\mathbf{x})\frac{\left(\nabla u
+	 \cdot\nabla\hat{u} \right)}{\sqrt{\left(\nabla u\cdot\nabla u +
+	 \epsilon\right)}}d\mathbf{x}\nonumber\\ 
     &= 0 \nonumber
 	\end{align}
 	This gives the weak form:
@@ -99,19 +116,25 @@ For both $\mathcal{F}_{TN}$ and $\mathcal{F}_{TV}$ , derive the first-order nece
 	The performing Gauss Theorem for the strong form:
 	\begin{displaymath}
 	2\int_{\Omega}\left(u -u_0\right)\hat{u}d\mathbf{x} 
-	-\int_{\Omega} \nabla \cdot \left(k(\mathbf{x})\frac{\nabla u}{\sqrt{\left(\nabla u\cdot\nabla u + \epsilon\right)}}\right)\hat{u}d\mathbf{x}
+	-\int_{\Omega} \nabla \cdot \left(k(\mathbf{x})\frac{\nabla
+	 u}{\sqrt{\left(\nabla u\cdot\nabla u +
+	 \epsilon\right)}}\right)\hat{u}d\mathbf{x} 
 	+\int_{\Gamma} k(\mathbf{x})\hat{u}\frac{\nabla u \cdot n}{\sqrt{\left(\nabla u\cdot\nabla u + \epsilon\right)}}ds
 	= 0 \hspace{1 cm} \forall\hat{u} \in H^1(\Omega) 
 	\end{displaymath}
 	Again the prescribed boundary condition on $\Gamma$ causes the boundary to be zero, leaving:
 	\begin{displaymath}
 	2\int_{\Omega}\left(u -u_0\right)\hat{u}
-	- \nabla \cdot \left(k(\mathbf{x})\frac{\nabla u}{\sqrt{\left(\nabla u\cdot\nabla u + \epsilon\right)}}\right)\hat{u}d\mathbf{x}
+	- \nabla \cdot \left(k(\mathbf{x})\frac{\nabla
+	 u}{\sqrt{\left(\nabla u\cdot\nabla u +
+	 \epsilon\right)}}\right)\hat{u}d\mathbf{x} 
 	= 0 \hspace{1 cm} \forall\hat{u} \in H^1(\Omega) 
 	\end{displaymath}
 	Since this holds for all variations $\hat{u}$ then the following strong form holds:
 	\begin{align}
-		2\left(u -u_0\right) - \nabla \cdot \left(k(\mathbf{x})\frac{\nabla u}{\sqrt{\left(\nabla u\cdot\nabla u + \epsilon\right)}}\right) &= 0 \nonumber\\
+		2\left(u -u_0\right) - \nabla \cdot
+	 \left(k(\mathbf{x})\frac{\nabla u}{\sqrt{\left(\nabla
+	 u\cdot\nabla u + \epsilon\right)}}\right) &= 0 \nonumber\\ 
 		\nabla u \cdot n &= 0 \nonumber
 	\end{align}
 \end{solution}
@@ -121,19 +144,37 @@ Show that when $\nabla u$ is zero, $\mathcal{R}_{TV}$ is not differentiable, but
 \begin{solution}
 	Performing the variational derivative of $\mathcal{R}_{TV}$ as done previously:
 	\begin{align}
-		\mathcal{R}_{TV}(u+\tau\hat{u}) &= \int_\Omega k(\mathbf{x})\left(\nabla(u+\tau\hat{u}) \cdot \nabla(u+\tau\hat{u})\right)^{0.5}d\mathbf{x} \nonumber \\
+		\mathcal{R}_{TV}(u+\tau\hat{u}) &= \int_\Omega
+	 k(\mathbf{x})\left(\nabla(u+\tau\hat{u}) \cdot
+	 \nabla(u+\tau\hat{u})\right)^{0.5}d\mathbf{x} \nonumber \\ 
 		\left.\frac{d\mathcal{R}_{TV}}{d\tau}(u+\tau\hat{u})\right|_{\tau = 0} &= \int_\Omega k(\mathbf{x})\frac{\nabla u \cdot \nabla\hat{u}}{\sqrt{\nabla u \cdot \nabla u}}d\mathbf{x} \nonumber
 	\end{align}
-	From here it is easy to see that a divide by 0 occurs if $\nabla u = 0$. Therefore the derivative of $\mathcal{R}_{TV}$ does not exist for $\nabla u = 0$. However for $\mathcal{R}^ε_{TV}$, one has:
+	From here it is easy to see that a divide by 0 occurs if $\nabla
+ u = 0$. Therefore the derivative of $\mathcal{R}_{TV}$ does not exist
+ for $\nabla u = 0$. However for $\mathcal{R}^ε_{TV}$, one has: 
 	\begin{align}
 		\mathcal{R}_{TV}^\epsilon(u+\tau\hat{u}) &= \int_\Omega k(\mathbf{x})\left(\nabla(u+\tau\hat{u}) \cdot \nabla(u+\tau\hat{u}) + \epsilon\right)^{0.5}d\mathbf{x} \nonumber \\
-		\left.\frac{d\mathcal{R}^\epsilon_{TV}}{d\tau}(u+\tau\hat{u})\right|_{\tau = 0} &= \int_\Omega k(\mathbf{x})\frac{\nabla u \cdot \nabla\hat{u}}{\sqrt{\nabla u \cdot \nabla u + \epsilon}}d\mathbf{x} \nonumber
+		\left.\frac{d\mathcal{R}^\epsilon_{TV}}{d\tau}(u+\tau\hat{u})\right|_{\tau
+	 = 0} &= \int_\Omega k(\mathbf{x})\frac{\nabla u \cdot
+	 \nabla\hat{u}}{\sqrt{\nabla u \cdot \nabla u +
+	 \epsilon}}d\mathbf{x} \nonumber 
 	\end{align}
-	Then the derivative exists for $\nabla u = 0$ as the divide by 0 is avoided due to the nonzero epsilon.
+	Then the derivative exists for $\nabla u = 0$ as the divide by 0
+ is avoided due to the nonzero epsilon. 
 \end{solution}
 
 \item [(C)] %C
-For both $\mathcal{F}_{TN}$ and $\mathcal{F}_{TV}^\epsilon$ , derive the infinite-dimensional Newton step, in both weak and strong form. For consistency of notation, please use $\tilde{u}$ as the differential of $u$ (i.e. the Newton step). The strong form of the second variation of $\mathcal{F}_{TV}^\epsilon$ will give an anisotropic diffusion operator of the form $- \nabla\cdot(A(u)\nabla \tilde{u})$, where $A(u)$ is an anisotropic tensor that plays the role of the diffusivity coefficient. (In contrast, you can think of the second variation of $\mathcal{F}_{TV}^\epsilon$ giving an isotropic diffusion operator, i.e. with $A = \alpha I$ for some $\alpha$.)
+For both $\mathcal{F}_{TN}$ and $\mathcal{F}_{TV}^\epsilon$ , derive the
+      infinite-dimensional Newton step, in both weak and strong
+      form. For consistency of notation, please use $\tilde{u}$ as the
+      differential of $u$ (i.e. the Newton step). The strong form of the
+      second variation of $\mathcal{F}_{TV}^\epsilon$ will give an
+      anisotropic diffusion operator of the form $-
+      \nabla\cdot(A(u)\nabla \tilde{u})$, where $A(u)$ is an anisotropic
+      tensor that plays the role of the diffusivity coefficient. (In
+      contrast, you can think of the second variation of
+      $\mathcal{F}_{TV}^\epsilon$ giving an isotropic diffusion
+      operator, i.e. with $A = \alpha I$ for some $\alpha$.) 
 
 \begin{solution}
 	As shown in class the Newton step is given by:
@@ -141,13 +182,34 @@ For both $\mathcal{F}_{TN}$ and $\mathcal{F}_{TV}^\epsilon$ , derive the infinit
 		\left.\frac{d\delta u\pi(u+\tau\tilde{u},\hat{u})}{d\tau}\right|_{\tau = 0} =
 		-\left.\frac{d\pi(u+\tau\hat{u})}{d\tau}\right|_{\tau = 0}
 	\end{displaymath}
-	where the $\pi$ function will be either $\mathcal{F}_{TN}$ or $\mathcal{F}_{TV}^\epsilon$. However the left hand side needs to be evaluated for these cases. First for $\mathcal{F}_{TN}$:
+	where the $\pi$ function will be either $\mathcal{F}_{TN}$ or
+ $\mathcal{F}_{TV}^\epsilon$. However the left hand side needs to be
+ evaluated for these cases. First for $\mathcal{F}_{TN}$: 
 	\begin{align}
 		\delta u\mathcal{F}_{TN}(u+\tau\tilde{u},\hat{u}) &=
-		2\int_{\Omega}\left(u + \tau \tilde{u} -u_0\right)\hat{u}d\mathbf{x} + \int_{\Omega} k(\mathbf{x})\nabla(u+\tau\tilde{u}) \cdot\nabla\hat{u}d\mathbf{x}
-		\frac{\delta u\mathcal{F}_{TN}}{d\tau}(u+\tau\tilde{u},\hat{u}) &=
-		2\int_{\Omega}\tilde{u}\hat{u}d\mathbf{x} + \int_{\Omega} k(\mathbf{x})\nabla(u+\tau\tilde{u}) \cdot\nabla\hat{u}d\mathbf{x}
+		2\int_{\Omega}\left(u + \tau \tilde{u}
+	 -u_0\right)\hat{u}d\mathbf{x} + \int_{\Omega}
+	 k(\mathbf{x})\nabla(u+\tau\tilde{u})
+	 \cdot\nabla\hat{u}d\mathbf{x} \\ 
+		\frac{\delta
+	 u\mathcal{F}_{TN}}{d\tau}(u+\tau\tilde{u},\hat{u}) &=  
+		2\int_{\Omega}\tilde{u}\hat{u}d\mathbf{x} +
+	 \int_{\Omega} k(\mathbf{x})\nabla(u+\tau\tilde{u})
+	 \cdot\nabla\hat{u}d\mathbf{x} 
 	\end{align}
+
+Then, for $\mathcal{F}^{\epsilon}_{TV}$:
+	\begin{align}
+		\delta
+	 u\mathcal{F}^{\epsilon}_{TV}(u+\tau\tilde{u},\hat{u}) &= 2\int_{\Omega}\left(u + \tau \tilde{u}
+	 -u_0\right)\hat{u}d\mathbf{x} + \int_{\Omega} k(\mathbf{x})
+	 \frac{\nabla(u+\tau\tilde{u})\cdot\nabla\hat{u}}{\sqrt{\nabla(u+\tau\tilde{u})\cdot\nabla(u+\tau\tilde{u})
+	 +\epsilon}}\\ 
+	 yar
+	\end{align}
+
+
+
 \end{solution}
 \end{enumerate}
 %%%%%
