@@ -37,7 +37,7 @@ tb1  = np.asarray(tb1)/600.0
 tb2  = np.asarray(tb2)/600.0
 
 tbb1 = np.asarray(tbb1)/600.0
-tbb1 = np.asarray(tbb1)/600.0
+tbb2 = np.asarray(tbb2)/600.0
 
 nb1  = len(tb1)
 nb2  = len(tb2)
@@ -56,20 +56,20 @@ Rbb2 = np.zeros((nbb2,  nbb2))
 #
 # now, iterate over each matrix element
 #
-for i in xrange(len(tb1)):
-    for j in xrange(len(tb1)):
+for i in xrange(nb1):
+    for j in xrange(nb1):
         Rb1[i][j] = np.exp(-abs(tb1[i]-tb1[j])/tau)
 
-for i in xrange(len(tb2)):
-    for j in xrange(len(tb2)):
+for i in xrange(nb2):
+    for j in xrange(nb2):
         Rb2[i][j] = np.exp(-abs(tb2[i]-tb2[j])/tau)
 
-for i in xrange(len(tbb1)):
-    for j in xrange(len(tbb1)):
+for i in xrange(nbb1):
+    for j in xrange(nbb1):
         Rbb1[i][j] = np.exp(-abs(tbb1[i]-tbb1[j])/tau)
 
-for i in xrange(len(tbb2)):
-    for j in xrange(len(tbb2)):
+for i in xrange(nbb2):
+    for j in xrange(nbb2):
         Rbb2[i][j] = np.exp(-abs(tbb2[i]-tbb2[j])/tau)
 
 def likelihood(params):
@@ -78,6 +78,14 @@ def likelihood(params):
     likelihood function: P(qi|q,C,p,X)
     """
     a, s, H, c = params
+
+    #
+    # if given
+    #
+    a = np.float64(0.5)
+    s = np.float64(0.1)
+    H = np.float64(35.0)
+    
 
     if c < 0:
         return -np.inf
@@ -134,20 +142,20 @@ def likelihood(params):
     # put it all together, and straight on till morning
     #    
 
-    eb1   = -1/2  * np.dot(np.dot((35*hdb1 /H - hb1 - mub1) ,np.linalg.inv(sRb1)), ( 35*hdb1 /H - hb1 - mub1))
-    eb2   = -1/2  * np.dot(np.dot((35*hdb2 /H - hb2 - mub2) ,np.linalg.inv(sRb2)), ( 35*hdb2 /H - hb2 - mub2))
+    eb1   = -1/2.  * np.dot(np.dot((35*hdb1 /H - hb1 - mub1) ,np.linalg.inv(sRb1)), ( 35*hdb1 /H - hb1 - mub1))
+    eb2   = -1/2.  * np.dot(np.dot((35*hdb2 /H - hb2 - mub2) ,np.linalg.inv(sRb2)), ( 35*hdb2 /H - hb2 - mub2))
 
-    ebb1   = -1/2  * np.dot(np.dot((35*hdbb1 /H - hbb1 - mubb1) ,np.linalg.inv(sRbb1)), ( 35*hdbb1 /H - hbb1 - mubb1))
-    #ebb2   = -1/2  * np.dot(np.dot((35*hdbb2 /H - hbb2 - mubb2) ,np.linalg.inv(sRbb2)), ( 35*hdbb2 /H - hbb2 - mubb2))
+    ebb1   = -1/2.  * np.dot(np.dot((35*hdbb1 /H - hbb1 - mubb1) ,np.linalg.inv(sRbb1)), ( 35*hdbb1 /H - hbb1 - mubb1))
+    ebb2   = -1/2.  * np.dot(np.dot((35*hdbb2 /H - hbb2 - mubb2) ,np.linalg.inv(sRbb2)), ( 35*hdbb2 /H - hbb2 - mubb2))
 
     #
     # likelihood
     #
 
-    lb1 = eb1 - np.log((2*np.pi)**(nb1/2) * DRb1)
-    lb2 = eb2 - np.log((2*np.pi)**(nb2/2) * DRb2)
+    lb1 = eb1 - np.log((2*np.pi)**(nb1/2.) * DRb1)
+    lb2 = eb2 - np.log((2*np.pi)**(nb2/2.) * DRb2)
 
-    lbb1 = ebb1 - np.log((2*np.pi)**(nbb1/2) * DRbb1)
-    #lbb2 = ebb2 - np.log((2*np.pi)**(nbb2/2) * DRbb2)
+    lbb1 = ebb1 - np.log((2*np.pi)**(nbb1/2.) * DRbb1)
+    lbb2 = ebb2 - np.log((2*np.pi)**(nbb2/2.) * DRbb2)
 
-    return lb1
+    return lbb1 + lbb2
