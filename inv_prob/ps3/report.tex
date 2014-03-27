@@ -322,7 +322,24 @@ A(u) = \frac{k(x)}{(\nabla u \cdot \nabla u +
       eigenvalues of the matrix are $k(x)$ and will not be impacted by
       the gradient. 
 
+\item [(D)]
+      Show that for large $\epsilon$, $\mathcal{F}^{\epsilon}_{TV}$
+      behaves like $\mathcal{F}_{TN}$, and for $\epsilon=0$, the Hessian
+      of $\mathcal{F}^{\epsilon}_{TV}$ is singular. This suggests that
+      $\epsilon$ should be small, but not too small. 
 
+\begin{solution}
+ First note that the Hessian of $\mathcal{F}^{\epsilon}_{TV}$ is the
+ matrix A. Therefore for large $\epsilon$, the $\frac{\nabla u \cdot
+ \nabla u}{\nabla u \cdot \nabla u + \epsilon}$ term will drop out 
+ of the second eigenvalue of the Hessian. However then both eigenvalues
+ of the k(x) Hessian of $\mathcal{F}^{\epsilon}_{TV}$ are 
+ then $\frac{k(x)}{\nabla u \cdot \nabla u + \epsilon}$. This
+ effectively causes the Hessian to be $\alpha I$ for 
+ some $\alpha$. However if one takes $\epsilon$ to zero then the second
+ eigenvalue goes to zero. Since one of the eigenvalues is zero, the
+ Hessian is singular. 
+\end{solution}
 
 \end{enumerate}
 %%%%%
