@@ -343,6 +343,229 @@ A(u) = \frac{k(x)}{(\nabla u \cdot \nabla u +
 
 \end{enumerate}
 %%%%%
+%
+%
+%
+%
+\section*{ Problem 2}
+\begin{itemize}
+\item [(A)]
+\begin{solution}
+To derive the weak form we multiply by a test function $v$ and integrate by parts to get
+\begin{eqnarray*}
+ \int_{\Omega}fvdx&=&-\int_{\Omega}\nabla \cdot(A(x)\nabla u)vdx\\
+&=&\int_{\Omega}A(x)\nabla u\cdot \nabla
+ vdx-\int_{\partial\Omega}A(x)\nabla u \cdot n vds_x. 
+\end{eqnarray*}
+To incorporate the Dirichlet boundary conditions we assume that we can
+ extend $u_0$ to a function $Eu_0$ on the whole domain $\Omega$. Then we
+ can rewrite any solution $u$ as 
+\begin{displaymath}
+ u=Eu_0+w
+\end{displaymath}
+for a function $w$ that vanishes on the boundary $\partial
+ \Omega$. Since we already know $Eu_0$ we are then left to find
+ $w$. However, since we are now looking for a function $w$ that vanishes
+ on the boundary, it is then also natural to choose the test functions
+ in the same space as the functions we are seeking for. Hence, we arrive
+ at the problem of finding $w$ with $w|_{\partial\Omega}=0$ such that 
+\begin{displaymath}
+ \int_{\Omega}A(x)\nabla (Eu_0+w)\cdot \nabla vdx= \int_{\Omega}fvdx
+\end{displaymath}
+for all $v$ such that $v|_{\partial\Omega}=0$. Note that the boundary
+ integral vanishes in this case since we just consider test functions
+ $v$ that vanish on the boundary. However, this can be reformulated as
+ the problem of finding $w$ with $w|_{\partial\Omega}=0$ such that 
+\begin{displaymath}
+ \int_{\Omega}A(x)\nabla w\cdot \nabla vdx=
+ \int_{\Omega}fvdx-\int_{\Omega}A(x)\nabla Eu_0\cdot \nabla vdx 
+\end{displaymath}
+for all $v$ such that $v|_{\partial\Omega}=0$.
+
+This is the weak form. Since $A$ is symmetric
+ and positive definite, this problem is equivalent to the minimization
+ problem 
+\begin{displaymath}
+ \min_{u: u|_{\partial\Omega}=u_0} \frac{1}{2}\int_{\Omega}A(x)\nabla
+ u\cdot \nabla udx-\int_{\Omega}fudx. 
+\end{displaymath}
+This is a well-known result in Functional analysis. However, let us
+ justify this result. First, let us define the functional 
+\begin{displaymath}
+ \mathcal{F}(u):=\frac{1}{2}\int_{\Omega}A(x)\nabla u\cdot \nabla
+ udx-\int_{\Omega}fudx. 
+\end{displaymath}
+Then we can compute the derivative
+\begin{displaymath}
+ \frac{\partial \mathcal{F}(u+\varepsilon \hat{u})}{\partial
+ \varepsilon}|_{\varepsilon=0} 
+\end{displaymath}
+for all $\hat{u}$ that vanish on the boundary. Note that since we chose
+ $\hat{u}$ in a way that it vanishes on the boundary, a necessary
+ condition for the minimum is 
+\begin{displaymath}
+ \frac{\partial \mathcal{F}(u+\varepsilon \hat{u})}{\partial
+ \varepsilon}|_{\varepsilon=0}=0 
+\end{displaymath} 
+for all $\hat{u}$ that vanish on the boundary. We already computed that
+ condition in problem 1 and got that a minimizer $u$ has to satisfy 
+\begin{displaymath}
+ \int_{\Omega}A(x)\nabla u\cdot \nabla \hat{u}dx=
+ \int_{\Omega}f\hat{u}dx 
+\end{displaymath}
+for all $\hat{u}$ that vanish on the boundary. However, this is exactly
+ the weak formulation that we derived above. Hence, we know that any
+ minimizer of the functional has to satisfy the weak formulation. 
+
+The fact that the weak formulation is also a sufficient condition for
+ $u$ to be a minimizer of the functional $\mathcal{F}$ is a little bit
+ more subtle. This can be proved in a straight forward way by proving
+ that for a solution of the weak formulation holds
+\begin{displaymath}
+ \mathcal{F}(u)\leq \mathcal{F}(u+w)
+\end{displaymath}
+for all $w$ that vanish on the boundary. An important assumption that
+has to be made for this proof to work out is that $A$ is symmetric and
+positive definite. 
+\end{solution}
+
+\item [(B)] Solve the problem in COMSOL using quadratic finite
+      elements. 
+\begin{solution}
+
+ \begin{figure}[!htb]
+        \centering
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/prob2b1.jpg}
+        \end{subfigure}%
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/prob2b2.jpg}
+        \end{subfigure}
+\end{figure}
+
+
+In the first case the matrix is a scaled identity matrix meaning both
+ directions have equal contributions. This is easily seen in the radial
+ symmetry of the solution which is expected due to the forcing. However
+ in the second matrix the y direction is dominant which is seen in
+ disparity in size of the diagonal elements. This is reflected in the
+ solution in which there is little change in the x direction while there
+ are large shifts in the y direction. 
+\end{solution}
+\end{itemize}
+
+\section*{ Problem 3}
+\begin{itemize}
+\item [(A)]
+Compute a reconstruction using TN regularization. Since for TN
+      regularization the weak form is linear (in u), you can use COMSOL
+      linear solver femlin. Choose $\alpha >0$ such that you obtain a
+      reasonable reconstruction , i.e., a reconstruction that removes
+      noise from the image but also does not smooth the image too much.
+
+\begin{solution}
+ The optimal value alpha appears to be around $\alpha = 0.001$. Anything larger blurs more
+ while anything less introduces noise similar to the noisy initial image.
+
+ \begin{figure}[!htb]
+        \centering
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/prob3TNa1e0.jpg}
+        \end{subfigure}%
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/prob3TNa1e-1.jpg}
+        \end{subfigure}
+        \centering
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/prob3TNa1e-2.jpg}
+        \end{subfigure}%
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/prob3TNa1e-3.jpg}
+        \end{subfigure}
+        \centering
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/prob3TNa1e-4.jpg}
+        \end{subfigure}%
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/prob3TNa1e-5.jpg}
+        \end{subfigure}
+\end{figure}
+
+\end{solution}
+
+\item [(B)]
+\begin{solution}
+ It is easy to see that the optimal alpha is near 0.01 since it
+ has little effect on the blurring. Furthermore the number of iterations
+ for chaging epsilon can be seen below. As epsilon goes to zero the
+ number of steps increases as the matrix A becomes ill-conditioned as
+ seen in Problem 1. However for large epsilon, the problem becomes more
+ linear, requiring fewer steps to solve. 
+
+ \begin{figure}[!htb]
+        \centering
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/prob3TVa1e0e1e-1.jpg}
+        \end{subfigure}%
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/prob3TVa1e-1e1e-1.jpg}
+        \end{subfigure}
+        \centering
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/prob3TVa1e-2e1e-1.jpg}
+        \end{subfigure}%
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/prob3TVa1e-3e1e-1.jpg}
+        \end{subfigure}
+        \centering
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/prob3TVa1e-2e1e1.jpg}
+        \end{subfigure}%
+        \begin{subfigure}[bh]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{figs/prob3TVa1e-2e1e0.jpg}
+        \end{subfigure}
+\end{figure}
+
+ \begin{figure}[!htb]
+        \centering
+        \begin{subfigure}[bh]{0.75\textwidth}
+                \includegraphics[width=\textwidth]{figs/iterationPlot.jpg}
+        \end{subfigure}
+\end{figure}
+
+
+\end{solution}
+
+\item [(C)]
+\begin{solution}
+ From the graphs above it is clear that the TV regularization preserves
+ the sharp edges of the triangle and circle much better than then TN
+ regularization. This is consistent with Problem 1. Also the TV
+ regularization converged to the various extremes as predicted previously.
+\end{solution}
+
+\end{itemize}
+
+
+\section*{Code}
+Code for the first matrix in problem 2: 
+\lstinputlisting{code/prob2b1.m}
+
+\newpage
+Code for the second matrix in problem 2:
+\lstinputlisting{code/prob2b2.m}
+
+\newpage 
+This is the code for the Tikhonov regularization in Problem 3.
+\lstinputlisting{code/TN.m}
+
+\newpage 
+This is the code for the Total Variation regularization in Problem 3.
+\lstinputlisting{code/TV.m}
+
+\newpage 
+This is the code for determining the number of iterations for various epsilon in Problem 3.
+\lstinputlisting{code/TVeps.m}
 
 \end{document}
 
