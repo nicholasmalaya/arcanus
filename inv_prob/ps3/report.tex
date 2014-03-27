@@ -235,14 +235,39 @@ Then, $\mathcal{F}^{\epsilon}_{TV}$:
 	\end{align}
 The weak form is therefore, 
 \begin{equation}
- 
+2\int_{\Omega}\tilde{u}\hat{u}d\mathbf{x} +
+ \int_{\Omega} k(\mathbf{x})
+ \frac{\nabla \tilde u \cdot\nabla\hat{u}}{\sqrt{\nabla u \cdot
+ \nabla u +\epsilon}} dx
+ %
+ - \int_{\Omega} k(\mathbf{x})\frac{
+ (\nabla u \cdot \nabla u^T) (\nabla \tilde u \cdot \nabla \hat u)}
+ {(\sqrt{\nabla u \cdot\nabla u 
+ + \epsilon)^{3/2}}} dx
+ = 2 \int_{\Omega}(u-u_0)\hat u dx +  \int_{\Omega} k(\mathbf{x})
+ \frac{\nabla u \cdot\nabla\hat{u}}{\sqrt{\nabla u \cdot
+ \nabla u +\epsilon}} dx
 \end{equation}
 
-
  We now have the weak forms for Newton steps of
- $\mathcal{F}_{TN}$ and $\mathcal{F}^{\epsilon}_{TV}$. 
-
-
+ $\mathcal{F}_{TN}$ and $\mathcal{F}^{\epsilon}_{TV}$. Using Gauss'
+ Theorem, and the condition that $\nabla \hat u \cdot n = 0$, we can
+ regain the strong forms, namely: 
+ \begin{align}
+  2 \tilde u - \nabla \cdot (k(x)\nabla \tilde u) = 2(u-u_0) - \nabla
+  \cdot (k(x)\nabla u)\\
+  \nabla \hat u \cdot n = 0\\
+ \end{align}
+  and, 
+ \begin{align}
+  2 \tilde u - \nabla \cdot \left( \frac{k(x)}{(\nabla u \cdot \nabla +
+  \epsilon)^{1/2}} \left( I - \frac{1}{\nabla u \cdot \nabla u +
+  \epsilon} \nabla u \cdot \nabla u^T \right) \nabla \tilde u \right) =
+  2(u=u_0) - \nabla \cdot \left( \frac{k(x)}{(\nabla u \cdot \nabla +
+  \epsilon)^{1/2}} \nabla u \right) \\
+  \nabla \hat u \cdot n = 0
+\end{align}
+ 
 
 \end{solution}
 \end{enumerate}
