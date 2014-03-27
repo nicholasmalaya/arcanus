@@ -21,23 +21,23 @@ Mbb=.4548
 #
 # load bowling ball data
 #
-tb1, hb1 = read_data('Bowling_Ball_1.dat')
-tb2, hb2 = read_data('Bowling_Ball_2.dat')
+tb1, hb1 = read_data('Data/Bowling_Ball_1.dat')
+tb2, hb2 = read_data('Data/Bowling_Ball_2.dat')
 
 #
 # load basketball
 #
-tbb1, hbb1 = read_data('Basket_Ball_1.dat')
-tbb2, hbb2 = read_data('Basket_Ball_2.dat')
+tbb1, hbb1 = read_data('Data/Basket_Ball_1.dat')
+tbb2, hbb2 = read_data('Data/Basket_Ball_2.dat')
 
 #
 # convert each element from 1/600 sec to time...
 #
-tb1  = tb1/600.0
-tb2  = tb2/600.0
+tb1  = np.asarray(tb1)/600.0
+tb2  = np.asarray(tb2)/600.0
 
-tbb1 = tbb1/600.0
-tbb1 = tbb1/600.0
+tbb1 = np.asarray(tbb1)/600.0
+tbb1 = np.asarray(tbb1)/600.0
 
 nb1  = len(tb1)
 nb2  = len(tb2)
@@ -48,7 +48,8 @@ nbb2 = len(tbb2)
 # initalize covariance matricies as zeros
 #
 Rb1  = np.zeros((nb1,  nb1))
-Rb21 = np.zeros((nb2,  nb2))
+Rb2  = np.zeros((nb2,  nb2))
+
 Rbb1 = np.zeros((nbb1,  nbb1))
 Rbb2 = np.zeros((nbb2,  nbb2))
 
@@ -81,24 +82,24 @@ def likelihood(params):
     #
     # form r's (coefficient on ODE)
     # 
-    rb  = (c*rho*4*np.pi*r1**2.0)/(2.0*Mb)
-    rbb = (c*rho*4*np.pi*r2**2.0)/(2.0*Mbb)
+    coef_b  = (c*rho*4*np.pi*rb**2.0)/(2.0*Mb)
+    coef_bb = (c*rho*4*np.pi*rbb**2.0)/(2.0*Mbb)
     
     #
     # sanity check
     #
-    if r < 0 or r2 < 0:
+    if rb < 0 or rbb < 0:
         print "achtung! negative drag!"
         sys.exit(1)
 
     #
     # solve ode at each time series
     #
-    [hdb1,vb1]   = drag_eqn(tb1,g,rb)
-    [hdb2,vb2]   = drag_eqn(tb2,g,rb)
+    [hdb1,vb1]   = drag_eqn(tb1,g,coef_b)
+    [hdb2,vb2]   = drag_eqn(tb2,g,coef_b)
 
-    [hdbb1,vbb1] = drag_eqn(tbb1,g,rbb)
-    [hdbb2,vbb2] = drag_eqn(tbb2,g,rbb)
+    [hdbb1,vbb1] = drag_eqn(tbb1,g,coef_bb)
+    [hdbb2,vbb2] = drag_eqn(tbb2,g,coef_bb)
 
     #
     # form \mu 
@@ -112,10 +113,10 @@ def likelihood(params):
     # form actual covariance
     #
 
-    sRb1 = s*s * Rb1
-    sRb1 = s*s * Rb1
-    sRb1 = s*s * Rb1
-    sRb1 = s*s * Rb1
+    sRb1  = s*s * Rb1
+    sRb2  = s*s * Rb2
+    sRbb1 = s*s * Rbb1
+    sRbb2 = s*s * Rbb2
 
     #
     # calculate determinant
@@ -129,11 +130,11 @@ def likelihood(params):
     # put it all together, and straight on till morning
     #    
 
-    eb1   = -1/2 * ( 35*hdb1 /H - hd1 - mu) * np.linalg.inv(sRb1) * ( 35*hdb1 /H - hd1 - mub1) 
-    eb2   = -1/2 * ( 35*hdb2 /H - hd2 - mu) * np.linalg.inv(sRb2) * ( 35*hdb2 /H - hd2 - mub2) 
+    eb1   = -1/2 * ( 35*hdb1 /H - hb1 - mub1) * np.linalg.inv(sRb1) * ( 35*hdb1 /H - hb1 - mub1) 
+    eb2   = -1/2 * ( 35*hdb2 /H - hb2 - mub2) * np.linalg.inv(sRb2) * ( 35*hdb2 /H - hb2 - mub2) 
 
-    ebb1   = -1/2 * ( 35*hdbb1 /H - hd1 - mu) * np.linalg.inv(sRbb1) * ( 35*hdbb1 /H - hd1 - mubb1)
-    ebb2   = -1/2 * ( 35*hdbb2 /H - hd2 - mu) * np.linalg.inv(sRbb2) * ( 35*hdbb2 /H - hd2 - mubb2) 
+    ebb1   = -1/2 * ( 35*hdbb1 /H - hb1 - mubb1) * np.linalg.inv(sRbb1) * ( 35*hdbb1 /H - hb1 - mubb1)
+    ebb2   = -1/2 * ( 35*hdbb2 /H - hb2 - mubb2) * np.linalg.inv(sRbb2) * ( 35*hdbb2 /H - hb2 - mubb2) 
 
     #
     # likelihood
