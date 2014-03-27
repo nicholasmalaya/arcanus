@@ -283,13 +283,46 @@ A(u) = \frac{k(x)}{(\nabla u \cdot \nabla u +
   \epsilon)^{1/2}}
   \left(
    \begin{array}{ c c }
-     \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x
-      \partial y} \\
-     \frac{\partial^2 f}{\partial x
-      \partial y} & \frac{\partial^2 f}{\partial y^2}
+    -\frac{u_x^2}{\nabla u \cdot \nabla u + \epsilon} + 1 &
+     -\frac{u_x u_y}{\nabla u \cdot \nabla u + \epsilon} \\ 
+    -\frac{u_x u_y}{\nabla u \cdot \nabla u + \epsilon}
+      & -\frac{u_y^2}{\nabla u \cdot \nabla u + \epsilon} + 1
    \end{array} \right)
 \end{equation*}
 \end{solution}
+      Now we need to only solve the characteristic equation of this matrix
+      $A(u)$, which are, 
+      \begin{equation*}
+       \lambda = \frac{k(x)}{(\nabla u \cdot \nabla u +
+	\epsilon)^{1/2}}, \frac{k(x)}{(\nabla u \cdot \nabla u +
+	\epsilon)^{1/2}} \left(1-\frac{\nabla u \cdot \nabla u}{\nabla u
+			  \cdot \nabla u + \epsilon}\right)
+      \end{equation*}
+      and the eigenvectors are: 
+      \begin{equation}
+        v=    
+	 \left(
+	  \begin{array}{ c }
+	  u_y\\
+	  -u_x 
+	  \end{array}\right),
+	 \left(\begin{array}{ c }
+	  u_x\\
+	  u_y 
+	 \end{array}\right)
+      \end{equation}
+      This provides a clear picture as to why the
+      $\mathcal{F}^{\epsilon}_{TV}$ method is more effective at
+      preserving sharp edges. Near sharp edges, $\nabla u$ is
+      large. When this goes to infinity, the Newton step eigenvalues
+      will go to zero, locally. Since the second eigenvalue
+      goes to zero there is little motion along its corresponding
+      eigenvector, $\nabla u$. Therefore the edge will
+      be preserved. This is not the case with $\mathcal{F}_{TN}$, as the
+      eigenvalues of the matrix are $k(x)$ and will not be impacted by
+      the gradient. 
+
+
 
 \end{enumerate}
 %%%%%
