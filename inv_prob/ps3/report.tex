@@ -256,20 +256,41 @@ The weak form is therefore,
  \begin{align}
   2 \tilde u - \nabla \cdot (k(x)\nabla \tilde u) = 2(u-u_0) - \nabla
   \cdot (k(x)\nabla u)\\
-  \nabla \hat u \cdot n = 0\\
+  \nabla \hat u \cdot n = 0
  \end{align}
   and, 
  \begin{align}
-  2 \tilde u - \nabla \cdot \left( \frac{k(x)}{(\nabla u \cdot \nabla +
+  2 \tilde u - \nabla \cdot \left( \frac{k(x)}{(\nabla u \cdot \nabla u+
   \epsilon)^{1/2}} \left( I - \frac{1}{\nabla u \cdot \nabla u +
   \epsilon} \nabla u \cdot \nabla u^T \right) \nabla \tilde u \right) =
-  2(u=u_0) - \nabla \cdot \left( \frac{k(x)}{(\nabla u \cdot \nabla +
+  2(u=u_0) - \nabla \cdot \left( \frac{k(x)}{(\nabla u \cdot \nabla u+
   \epsilon)^{1/2}} \nabla u \right) \\
   \nabla \hat u \cdot n = 0
 \end{align}
- 
-
 \end{solution}
+
+\item [(D)]
+      Derive Expressions for the two eigenvalues and corresponding
+      eigenvectors of A. Based on these expressions, given an
+      explaination of why $\mathcal{F}^{\epsilon}_{TV}$ is effective at
+      preserving sharp edges in the image, while $\mathcal{F}_{TN}$ is
+      not. Consider a single Newton step for this argument. 
+
+\begin{solution}
+This problem is in two dimensions. Thus, our matrix is: 
+\begin{equation*}
+A(u) = \frac{k(x)}{(\nabla u \cdot \nabla u +
+  \epsilon)^{1/2}}
+  \left(
+   \begin{array}{ c c }
+     \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x
+      \partial y} \\
+     \frac{\partial^2 f}{\partial x
+      \partial y} & \frac{\partial^2 f}{\partial y^2}
+   \end{array} \right)
+\end{equation*}
+\end{solution}
+
 \end{enumerate}
 %%%%%
 
