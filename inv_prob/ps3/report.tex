@@ -195,8 +195,15 @@ For both $\mathcal{F}_{TN}$ and $\mathcal{F}_{TV}^\epsilon$ , derive the
 	 \int_{\Omega} k(\mathbf{x})\nabla \tilde{u}
 	 \cdot\nabla\hat{u}d\mathbf{x}
 	\end{align}
+The weak form is therefore, 
+\begin{equation}
+ 2\int_{\Omega}\tilde{u}\hat{u}d\mathbf{x} +
+  \int_{\Omega} k(\mathbf{x})\nabla \tilde{u}
+  \cdot\nabla\hat{u}d\mathbf{x} = 2 \int_{\Omega}(u-u_0)\hat u dx +
+  \int_{\Omega} k(x) \nabla u \cdot \hat u dx. 
+\end{equation}
 
-Then, for $\mathcal{F}^{\epsilon}_{TV}$:
+Then, $\mathcal{F}^{\epsilon}_{TV}$:
 	\begin{align}
 	 \delta u\mathcal{F}^{\epsilon}_{TV}(u+\tau\tilde{u},\hat{u}) &= 2\int_{\Omega}\left(u + \tau \tilde{u}
 	 -u_0\right)\hat{u}d\mathbf{x} + \int_{\Omega} k(\mathbf{x})
@@ -226,6 +233,14 @@ Then, for $\mathcal{F}^{\epsilon}_{TV}$:
 	 {(\sqrt{\nabla u \cdot\nabla u 
 	 + \epsilon)^{3/2}}} dx 	
 	\end{align}
+The weak form is therefore, 
+\begin{equation}
+ 
+\end{equation}
+
+
+ We now have the weak forms for Newton steps of
+ $\mathcal{F}_{TN}$ and $\mathcal{F}^{\epsilon}_{TV}$. 
 
 
 

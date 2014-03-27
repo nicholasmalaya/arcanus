@@ -5,8 +5,8 @@ from settings_infer import *
 
 def prior_a(a):
     """
-	Log Prior for alpha
-	"""
+    Log Prior for alpha
+    """
 
     mymean = 0.5
     myvar = 1
@@ -16,7 +16,7 @@ def prior_a(a):
 
 def prior_S(s):
     """
-	Log Prior for sigma
+    Log Prior for sigma
     """
 
     smin = 0.0
@@ -30,7 +30,7 @@ def prior_S(s):
 
 def prior_H(h):
     """
-	Log Prior for H
+    Log Prior for H
     """
 
     hmin = 34.5
@@ -43,10 +43,10 @@ def prior_H(h):
 
 
 def prior_C(c):
-	"""
-	Log Prior for Cd
-	"""
-	
+    """
+    Log Prior for Cd
+    """
+    
     cmin = 0.0
     cmax = 2.0
 
@@ -64,7 +64,7 @@ def prior_C(c):
 #    prior_funcs = [prior_A, prior_B] 
 #    
 # 
-prior_funcs = [prior_a, prior_s, prior_H, prior_C]
+prior_funcs = [prior_a, prior_S, prior_H, prior_C]
 
 #
 # One should not have to edit the routine below

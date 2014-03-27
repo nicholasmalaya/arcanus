@@ -79,6 +79,9 @@ def likelihood(params):
     """
     a, s, H, c = params
 
+    if c < 0:
+        return -np.inf
+
     #
     # form r's (coefficient on ODE)
     # 
@@ -93,7 +96,7 @@ def likelihood(params):
         sys.exit(1)
 
     #
-    # solve ode at each time series
+    # solve ode at each time point
     #
     [hdb1,vb1]   = drag_eqn(tb1,g,coef_b)
     [hdb2,vb2]   = drag_eqn(tb2,g,coef_b)
@@ -131,11 +134,11 @@ def likelihood(params):
     # put it all together, and straight on till morning
     #    
 
-    eb1   = -1/2 * np.transpose( 35*hdb1 /H - hb1 - mub1) * np.linalg.inv(sRb1) * ( 35*hdb1 /H - hb1 - mub1) 
-    eb2   = -1/2 * np.transpose( 35*hdb2 /H - hb2 - mub2) * np.linalg.inv(sRb2) * ( 35*hdb2 /H - hb2 - mub2) 
+    eb1   = -1/2  * np.dot(np.dot((35*hdb1 /H - hb1 - mub1) ,np.linalg.inv(sRb1)), ( 35*hdb1 /H - hb1 - mub1))
+    eb2   = -1/2  * np.dot(np.dot((35*hdb2 /H - hb2 - mub2) ,np.linalg.inv(sRb2)), ( 35*hdb2 /H - hb2 - mub2))
 
-    ebb1  = -1/2 * np.transpose( 35*hdbb1 /H - hbb1 - mubb1) * np.linalg.inv(sRbb1) * ( 35*hdbb1 /H - hbb1 - mubb1)
-    ebb2  = -1/2 * np.transpose( 35*hdbb2 /H - hbb2 - mubb2) * np.linalg.inv(sRbb2) * ( 35*hdbb2 /H - hbb2 - mubb2) 
+    ebb1   = -1/2  * np.dot(np.dot((35*hdbb1 /H - hbb1 - mubb1) ,np.linalg.inv(sRbb1)), ( 35*hdbb1 /H - hbb1 - mubb1))
+    #ebb2   = -1/2  * np.dot(np.dot((35*hdbb2 /H - hbb2 - mubb2) ,np.linalg.inv(sRbb2)), ( 35*hdbb2 /H - hbb2 - mubb2))
 
     #
     # likelihood
