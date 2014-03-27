@@ -82,8 +82,8 @@ def likelihood(params):
     #
     # if given
     #
-    a = np.float64(0.5)
-    s = np.float64(0.1)
+    #a = np.float64(0.5)
+    #s = np.float64(0.1)
     H = np.float64(35.0)
     
 
@@ -158,4 +158,5 @@ def likelihood(params):
     lbb1 = ebb1 - np.log((2*np.pi)**(nbb1/2.) * DRbb1)
     lbb2 = ebb2 - np.log((2*np.pi)**(nbb2/2.) * DRbb2)
 
-    return lbb1 + lbb2
+    #return lbb1 + lbb2
+    return lb1 + lb2
