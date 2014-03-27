@@ -49,11 +49,12 @@ def prior_C(c):
     
     cmin = 0.0
     cmax = 2.0
-
     if (c >= cmin) and (c <= cmax):
-        return -np.log(cmax-cmin)
-    else:
-        return -np.inf
+         return -np.log(cmax-cmin)
+     else:
+         return -np.inf
+
+    #return -np.log(c)
 
 
 #
