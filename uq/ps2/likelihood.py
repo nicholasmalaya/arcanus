@@ -16,7 +16,7 @@ rb =0.1166
 rbb=0.1066
 
 Mb =2.296
-Mbb=.4548
+Mbb=0.4548
 
 #
 # load bowling ball data
@@ -121,6 +121,7 @@ def likelihood(params):
     #
     # calculate determinant
     #
+
     DRb1 = (np.linalg.det(sRb1))**0.5
     DRb2 = (np.linalg.det(sRb2))**0.5
     DRbb1= (np.linalg.det(sRbb1))**0.5
@@ -130,11 +131,11 @@ def likelihood(params):
     # put it all together, and straight on till morning
     #    
 
-    eb1   = -1/2 * ( 35*hdb1 /H - hb1 - mub1) * np.linalg.inv(sRb1) * ( 35*hdb1 /H - hb1 - mub1) 
-    eb2   = -1/2 * ( 35*hdb2 /H - hb2 - mub2) * np.linalg.inv(sRb2) * ( 35*hdb2 /H - hb2 - mub2) 
+    eb1   = -1/2 * np.transpose( 35*hdb1 /H - hb1 - mub1) * np.linalg.inv(sRb1) * ( 35*hdb1 /H - hb1 - mub1) 
+    eb2   = -1/2 * np.transpose( 35*hdb2 /H - hb2 - mub2) * np.linalg.inv(sRb2) * ( 35*hdb2 /H - hb2 - mub2) 
 
-    ebb1   = -1/2 * ( 35*hdbb1 /H - hb1 - mubb1) * np.linalg.inv(sRbb1) * ( 35*hdbb1 /H - hb1 - mubb1)
-    ebb2   = -1/2 * ( 35*hdbb2 /H - hb2 - mubb2) * np.linalg.inv(sRbb2) * ( 35*hdbb2 /H - hb2 - mubb2) 
+    ebb1  = -1/2 * np.transpose( 35*hdbb1 /H - hbb1 - mubb1) * np.linalg.inv(sRbb1) * ( 35*hdbb1 /H - hbb1 - mubb1)
+    ebb2  = -1/2 * np.transpose( 35*hdbb2 /H - hbb2 - mubb2) * np.linalg.inv(sRbb2) * ( 35*hdbb2 /H - hbb2 - mubb2) 
 
     #
     # likelihood
@@ -144,6 +145,6 @@ def likelihood(params):
     lb2 = eb2 - np.log((2*np.pi)**(nb2/2) * DRb2)
 
     lbb1 = ebb1 - np.log((2*np.pi)**(nbb1/2) * DRbb1)
-    lbb2 = ebb2 - np.log((2*np.pi)**(nbb2/2) * DRbb2)
+    #lbb2 = ebb2 - np.log((2*np.pi)**(nbb2/2) * DRbb2)
 
     return lb1
