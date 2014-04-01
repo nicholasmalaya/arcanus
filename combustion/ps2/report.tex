@@ -1,0 +1,107 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{color}
+\usepackage[section]{placeins}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\usepackage{listings}
+
+\title{\bf{Combustion Problem Set}}
+\author{Nicholas Malaya\\ Department of Mechanical Engineering \\
+University of Texas at Austin}  
+\date{}
+
+\begin{document}
+\maketitle
+
+\newpage
+\section*{Problem 6.14}
+
+If we assume a near-unity Lewis number then,
+\begin{equation}
+\frac{c_p (T_\infty - T_s)}{q_v} = \frac{Y_{i,s} - Y_{i,\infty}}{1-Y_{i,s}}.
+\end{equation}
+$C_p,T_\infty, q_v$ are given, and $Y_i,\infty=0$. Thus, 
+\begin{equation}
+\frac{c_p (T_\infty - T_s)}{q_v} = \frac{Y_{i,s}}{1-Y_{i,s}}
+\end{equation}
+and, 
+\begin{equation}
+\frac{c_p (T_\infty - T_s)}{q_v} (1-Y_{i,s}) = Y_{i,s}.
+\end{equation}
+Distributing the temperature term, moving $Y_{i,s}$ to the RHS, and then
+solving for $Y_{i,s}$, 
+\begin{equation}
+\frac{a}{1-a} = Y_{i,s}
+\end{equation}
+where $a=\frac{c_p (T_\infty - T_s)}{q_v}$. However, we do not know what
+$T_s$ is. To solve for $T_s$, we use Clausius-Clapwell:
+\begin{equation}
+ p = p_{\text{ref}}\text{ exp}\left[-\frac{\bar q_v}{R^0}\left(\frac{1}{T_s}-\frac{1}{T_{\text{ref}}}\right)\right]
+\end{equation}
+To solve for $T_s$, we take the logarithm of the equation, and perform
+several manipulations to arrive at:
+\begin{equation}
+ T_s = \left(\frac{1}{T_{\text{ref}}} - 1 \right)
+  \left(\frac{1}{\text{ln}p - \text{ln }p_{\text{ref}}}\right)
+  \frac{\hat q_v}{R^0}. 
+\end{equation}
+We can now solve for $T_s$, which will then give us $Y_{i,s}$. We also
+need the non-dimensional vaporization rate, $\hat m_v$. This is
+described by equation 6.4.6 in Law's as, 
+\begin{equation}
+ B^{\text{dry}}_{m,v} = \frac{Y_{i,s}}{1-Y_{i,s}.}
+\end{equation}
+
+%
+% ------------------------------------------------------------
+%
+%
+%
+%
+\newpage
+\section*{Problem 6.15}
+
+The $D^2$ law is:
+\begin{equation}
+ \tau_v = r^2/ K_v.
+\end{equation}
+The radius size that will be completely burned during the entire stroke
+will therefore be, 
+\begin{equation}
+ r = \sqrt{\tau_v K_v}
+\end{equation}
+We know that $\tau_v$ is equal to the time for one stroke in the engine,
+which is running at 1000 rpm. Thus, $\tau_v$:
+\begin{equation}
+T = \left(\frac{1 \text{ minute}}{1000}\right) \left(\frac{60
+     \text{ sec}}{\text{ minute}}\right).
+\end{equation}
+$K_v$ is more complicated:
+\begin{equation}
+K_v = \frac{2 (\lambda/c_p)}{p_l} ln(1+B_{h,v}).
+\end{equation}
+Where, $B_{h,v}$ is, 
+\begin{equation}
+\frac{c_p (T_\infty - T_s)}{q_v}
+\end{equation}
+At this point we have all we need to solve these equations, except that
+$\lambda$ was not given. This requires that we assume then that the
+Pecle number is $\approx 1$, at which point,
+\begin{equation}
+(\lambda/c_p) = (\rho D)
+\end{equation}
+and,
+\begin{equation}
+ \lambda = (\rho D)c_p
+\end{equation}
+The evidence for the pecle number being 1 is present in Law on page 208,
+but I admittedly do not follow his argument. I would be interested in
+hearing more about how this assumption is reasonable.
+\newline
+Plugging in all the given scenario parameters, we find that the radius
+is 
+\end{document}
