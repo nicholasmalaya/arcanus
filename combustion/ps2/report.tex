@@ -38,7 +38,7 @@ solving for $Y_{i,s}$,
 \frac{a}{1-a} = Y_{i,s}
 \end{equation}
 where $a=\frac{c_p (T_\infty - T_s)}{q_v}$. However, we do not know what
-$T_s$ is. To solve for $T_s$, we use Clausius-Clapwell:
+$T_s$ is. To solve for $T_s$, we use the Clausius–Clapeyron relation:
 \begin{equation}
  p = p_{\text{ref}}\text{ exp}\left[-\frac{\bar q_v}{R^0}\left(\frac{1}{T_s}-\frac{1}{T_{\text{ref}}}\right)\right]
 \end{equation}
@@ -55,7 +55,13 @@ described by equation 6.4.6 in Law's as,
 \begin{equation}
  B^{\text{dry}}_{m,v} = \frac{Y_{i,s}}{1-Y_{i,s}.}
 \end{equation}
+At 1 atm, then CC implies that $T_s = T_{\text{ref}} = \text{
+boiling}$. Then $Y_{i,s} \approx 0$, it is $6.6e-4$. The vaporization
+rate is necessarily also almost zero. 
 
+In the case at 5 ATM, now $T_s$ is 425.138 kelvin. Higher than I would
+have expected! However, the non-dimensional vaporization flow rate is
+now 1.48, which is large. 
 %
 % ------------------------------------------------------------
 %
@@ -103,5 +109,8 @@ but I admittedly do not follow his argument. I would be interested in
 hearing more about how this assumption is reasonable.
 \newline
 Plugging in all the given scenario parameters, we find that the radius
-is 
+is 0.0163 centimeters. I do not have much intuition for this problem,
+but this is roughly in the range (of several orders of magnitude) I
+would have estimated the drop size to be, so it does not seem obviously
+wrong. This implies that the drops would have to be rather small, however! 
 \end{document}
