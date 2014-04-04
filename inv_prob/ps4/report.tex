@@ -204,42 +204,28 @@ This will give the gradient for a point $m$, provided a solution is
 
 \newpage
 \subsection*{Problem 2}
-Inverse elliptic parameter estimation problem. We solve the inverse
-problem for the advection-diffusion equation on $\Omega = [0, 1] × [0,
-1]$: 
-\begin{displaymath}
-\min_m J(m) := \frac{1}{2}\int_\Omega \left(u - u^{obs}\right)^2dx +
- \frac{\gamma}{2}\int_\Omega(\nabla m \cdot \nabla m )dx 
-\end{displaymath}
-where $u$ is the solution of
-\begin{align}
--\nabla \cdot (m\nabla u)+v \cdot \nabla u &= f \hspace{5 mm} \text{in }
- \Omega \nonumber \\ 
-u &= 0 \hspace{5 mm} \text{on } \partial\Omega \nonumber
-\end{align}
-with the advective velocity $v = (v_1, v_2)$, regularization parameter
-$\gamma > 0$ and measurement data $u^{obs}$, which are obtained by
-solving the state equation with $m(x,y) = 4$ for $(x-0.5)^2+(y-0.5)^2
-\leq 0.2$ and $m(x,y) = 8$ else (and adding noise), and $f \equiv 1$. 
 
-We provide the COMSOL implementation elliptic\_sd\_ip of the steepest
-descent method for this problem with advective velocity $v = 0$. 
 \begin{enumerate}
-\item[(a)]Report the reconstructions and the number of required iterations for the following
-cases:
+\item[(a)] Report the solution of the inverse problem and the number of
+	  required iterations for the following cases:
+
+
+%Report the reconstructions and the number of required
+%	  iterations for the following cases:
+
 \begin{enumerate}
 \item[$\bullet$] Noise level of 0.01 (roughly $1\%$ noise), and
-	     regularization $\gamma = 5 \cdot 10^{−10}$. 
-\item[$\bullet$] Same, but with $\gamma = 0$, i.e., no regularization. 
-\item[$\bullet$] No noise, and use $m \equiv 4$ and $m \equiv 8$ as initialization for the paramter. Do
-you find the same solution? Explain the behavior. 
+	     regularization $\beta = 5 \cdot 10^{−10}$. 
+ \item[$\bullet$] Same, but with $\beta = 0$, i.e., no regularization. 
+ \item[$\bullet$] No noise, and use $m \equiv 4$ and $m \equiv 8$ as
+	      initial guesses for the paramter. Do you find the same solution? Explain the behavior. 
 \end{enumerate}
 \begin{solution}
 The following table summarizes the number of iterations for each of the
  desired start conditions: 
 \begin{center}
 \begin{tabular}{| c | c | c | c |} \cline{1-4}
-Noise & $\gamma$ & $m$ & No. of Iterations \\ \cline{1-4}
+Noise & $\beta$ & $m$ & No. of Iterations \\ \cline{1-4}
 0.01 & 5E-10 & 8 & 284 \\ \cline{1-4}
 0.01 & 0.0 & 8 & 27 \\ \cline{1-4}
 0.0 & 0.0 & 8 & 27 \\ \cline{1-4}
@@ -281,26 +267,36 @@ Note the difference in the final cases where the result for $m = 4$ ($a$
  problem. 
 \end{solution}
 
-\item[(b)]Add the advective term with $v = (30, 0)$ to the implementation and plot the
-resulting reconstruction of $m$.
+\item[(b)] Add the advective term v = (30, 0) to the inverse problem and its COMSOL
+	  implementation and plot the resulting reconstruction of m for
+	  a noise level of 0.01 and for a reasonably chosen regularization parameter.
+
 
 \begin{solution}
-After adding the advective term, the result for a noise level of 0.01 and regularization of 5e-10 is given by:
+After adding the advective term, the result for a noise level of 0.01
+ and regularization of 5e-10 is given by: 
 \begin{center}
 \includegraphics[width = 6 cm]{figs/prob2bNoiseRegM8.jpg}
 \end{center}
 \end{solution}
 
-\item[(c)]Since the coefficient $m$ is discontinuous, a better choice is to use total variation
-regularization rather than Tikhonov regularization to prevent an overly smooth
-reconstruction. Modify the implementation and plot the result for a reasonably
-chosen regularization parameter.
+\item[(c)] Since the coefficient m is discontinuous, a better choice of
+	   regularization is total variation
+	   rather than Tikhonov regularization, to prevent an overly smooth
+	   reconstruction. Modify the implementation and plot the result
+	   for a reasonably chosen regularization parameter
+
+
+%Since the coefficient $m$ is discontinuous, a better choice is to use total variation
+%regularization rather than Tikhonov regularization to prevent an overly smooth
+%reconstruction. Modify the implementation and plot the result for a reasonably
+%chosen regularization parameter.
 
 \begin{solution}
-Since one is switching to a total variational regularization parameter,
+ Since one is switching to a total variational regularization parameter,
  now two choices of parameters are needed. For the solution shown below,
  the calculation was done with the same advective term, regularization
- parameter gamma, and noise level as before in part b, however it also
+ parameter beta, and noise level as before in part b, however it also
  uses a tau of 1e-1 as requested. The result found is: 
 \begin{center}
 \includegraphics[width = 6 cm]{figs/prob2c.jpg}
