@@ -68,14 +68,14 @@ The weak form of the state equation is given by:
  \int_{\Gamma}p\nabla u \cdot n\hspace{2 mm}ds \hspace{1 cm} \forall p
  \in H^1_0(\Omega) 
 \end{displaymath}
-However since p = 0 on the boundary then the boundary term is zero. From
- this the Lagragian is: 
+However since p = 0 on the boundary then the boundary term is zero. The
+ Lagragian is therefore:  
 \begin{displaymath}
 \mathcal{L}(u,p,m) := \int_{\Omega}\nabla u \cdot \nabla p - k^2mup -
  fp\hspace{2 mm}dx + \int_{\Omega}\left(u - u^{obs}\right)^2 dx +
- \frac{\alpha}{2}\int_{\Omega}\nabla m \cdot \nabla m dx 
+ \frac{\beta}{2}\int_{\Omega}\nabla m \cdot \nabla m dx 
 \end{displaymath}
-Now to take variations with respect to each of the parameters:
+We now take variations with respect to each of the parameters:
 \begin{align}
 \delta_u\mathcal{L}(\tilde{u}) &= \int_{\Omega}(u-u^{obs})\tilde{u} +
  \nabla\tilde{u}\cdot\nabla p - k^2m\tilde{u}p \hspace{2 mm} dx = 0
@@ -83,34 +83,32 @@ Now to take variations with respect to each of the parameters:
 \delta_p\mathcal{L}(\tilde{p}) &= \int_{\Omega} \nabla u \cdot
  \nabla\tilde{p} - k^2mu\tilde{p} - f\tilde{p} \hspace{2 mm} dx = 0
  \hspace{1 cm} \forall\tilde{p} \in H^1_0(\Omega) \nonumber \\ 
-\delta_m\mathcal{L}(\tilde{m}) &= \int_{\Omega} \alpha \nabla m \cdot
+\delta_m\mathcal{L}(\tilde{m}) &= \int_{\Omega} \beta \nabla m \cdot
  \nabla\tilde{m} - k^2\tilde{m}up \hspace{2 mm} dx = 0 \nonumber 
 \end{align}
-The last of these equations is the gradient equation however it depends
+The last of these equations is the gradient equation. It depends
  on both p and u which come from the adjoint and state
- equations. Thus, u is found to be the solution of the
+ equations. u is found to be the solution of the
  following: 
 \begin{align}
 -\Delta u - k^2mu &= f\hspace{5 mm} \text{on } \Omega \nonumber \\
 u &= 0 \hspace{5 mm} \text{on } \partial\Omega \nonumber
 \end{align}
-$p$ is then found to be the soultion to the adjoint equation:
+and $p$ is found to be the soultion to the adjoint equation:
 \begin{align}
 -\Delta p - k^2mp &= u^{obs} - u \hspace{5 mm} \text{on } \Omega \nonumber \\
-p &= 0 \hspace{5 mm} \text{on } \partial\Omega \nonumber
+p &= 0 \hspace{5 mm} \text{on } \partial\Omega \nonumber.
 \end{align}
 Using the solutions of these equations then gives the gradient with
- $\delta_m\mathcal{L}(\tilde{m}) = 0$ gives the gradient. 
+ $\delta_m\mathcal{L}(\tilde{m}) = 0$. 
 \end{solution}
 
 \item[(b)] Derive an expression for the (infinite dimensional) action of
 	   the Hessian in a direction m in the single source and frequency case.
-%Compute the application of the Hessian to a vector in the
-%single source and frequency case.
 
 \begin{solution}
-To get the application of a Hessian to a vector, one needs the second
- variation of the three weak forms in the previous portion. These are: 
+To get the application of a Hessian on a vector, one needs the second
+ variation of the three weak forms in the previous section. These are: 
 \begin{align}
 \left(\delta_u+\delta_m+\delta_p\right)\left(\delta_u\mathcal{L}\right)
  &= \int_\Omega \hat{u}\tilde{u} - k^2\hat{m}\tilde{u}p -
@@ -120,11 +118,11 @@ To get the application of a Hessian to a vector, one needs the second
  &= \int_\Omega \nabla\hat{u}\cdot\nabla\tilde{p} - k^2m\hat{u}\tilde{p}
  - k^2\hat{m}u\tilde{p} \hspace{2 mm} dx \nonumber \\ 
 \left(\delta_u+\delta_m+\delta_p\right)\left(\delta_m\mathcal{L}\right)
- &= \int_\Omega \alpha\nabla\hat{m}\cdot\nabla\tilde{m} -
+ &= \int_\Omega \beta\nabla\hat{m}\cdot\nabla\tilde{m} -
  k^2\tilde{m}\hat{u}p - k^2\tilde{m}u\hat{p} \hspace{2 mm} dx \nonumber 
 \end{align}
-However this has introduced two new variables $\hat{p}$ and $\hat{u}$
- which need to be solved. From the second variation one gets
+However this introduces two new variables $\hat{p}$ and $\hat{u}$
+ which need to be solved for. From the second variation one gets
  $\hat{u}$. Its strong form is given by:  
 \begin{align}
 -\Delta\hat{u}-k^2m\hat{u} &= k^2\hat{m}u \hspace{5 mm} \text{on }
@@ -142,7 +140,7 @@ Using the solution to the state equation ($u$), the solution to the
  the adjoint equation ($\hat{p}$), and given a direction $\hat{m}$, the
  action of the Hessian in a direction $\hat{m}$ is given by: 
 \begin{displaymath}
-\int_\Omega \alpha\nabla\hat{m}\cdot\nabla\tilde{m} -
+\int_\Omega \beta\nabla\hat{m}\cdot\nabla\tilde{m} -
  k^2\tilde{m}\hat{u}p - k^2\tilde{m}u\hat{p} \hspace{2 mm} dx = 0 
 \end{displaymath}
 \end{solution}
@@ -151,9 +149,6 @@ Using the solution to the state equation ($u$), the solution to the
 	   for an arbitrary number of sources and frequencies. How many
 	   state and adjoint equations have to be solved for a single
 	   gradient computation? 
-
-%Compute the gradient for an arbitrary number of sources and frequencies . How
-%many state and adjoint equations have to be solved for a single gradient computation?
 
 \begin{solution}
 The gradient is still calculated in the same manner as in the previous
@@ -165,7 +160,7 @@ The gradient is still calculated in the same manner as in the previous
 \begin{displaymath}
 \min_m J(m) :=
  \frac{1}{2}\sum_{i=1}^{N_f}\sum_{j=1}^{N_s}\int_{\Omega}\left(u_{ij} -
- u_{ij}^{obs}\right)^2 dx + \frac{\alpha}{2}\int_{\Omega}\nabla m \cdot
+ u_{ij}^{obs}\right)^2 dx + \frac{\beta}{2}\int_{\Omega}\nabla m \cdot
  \nabla m dx 
 \end{displaymath}
 To form the Lagrangian this needs to be paired with the state equation. However the state equation for a single $u_{ij}$ is given by:
@@ -187,12 +182,12 @@ Again the boundary term is zero since $p_{ij} = 0$ on the boundary. With
 \mathcal{L} := \sum_{i=1}^{N_f}\sum_{j=1}^{N_s}\int_{\Omega}\left(\nabla
  u_{ij} \cdot \nabla p_{ij} - k_i^2mu_{ij}p_{ij} - f_jp_{ij}\right)dx +
  \frac{1}{2}\sum_{i=1}^{N_f}\sum_{j=1}^{N_s}\int_{\Omega}\left(u_{ij} -
- u_{ij}^{obs}\right)^2 dx + \frac{\alpha}{2}\int_{\Omega}(\nabla m \cdot
+ u_{ij}^{obs}\right)^2 dx + \frac{\beta}{2}\int_{\Omega}(\nabla m \cdot
  \nabla m) dx 
 \end{displaymath}
 Taking a variation with respect to $m$ of this gives:
 \begin{displaymath} 
-\int_{\Omega} \alpha (\nabla m \cdot \nabla\tilde{m})dx -
+\int_{\Omega} \beta (\nabla m \cdot \nabla\tilde{m})dx -
  \sum_{i=1}^{N_f}\sum_{j=1}^{N_s}\int_{\Omega}(k_i^2\tilde{m}u_{ij}p_{ij})dx 
 \end{displaymath}
 This will give the gradient for a point $m$, provided a solution is
@@ -214,8 +209,8 @@ This will give the gradient for a point $m$, provided a solution is
 %	  iterations for the following cases:
 
 \begin{enumerate}
-\item[$\bullet$] Noise level of 0.01 (roughly $1\%$ noise), and
-	     regularization $\beta = 5 \cdot 10^{−10}$. 
+ \item[$\bullet$] Noise level of 0.01 (roughly $1\%$ noise), and
+	      regularization $\beta = 5 \cdot 10^{-10}$.
  \item[$\bullet$] Same, but with $\beta = 0$, i.e., no regularization. 
  \item[$\bullet$] No noise, and use $m \equiv 4$ and $m \equiv 8$ as
 	      initial guesses for the paramter. Do you find the same solution? Explain the behavior. 
