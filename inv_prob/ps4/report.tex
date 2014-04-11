@@ -213,7 +213,8 @@ This will give the gradient for a point $m$, provided a solution is
 	      regularization $\beta = 5 \cdot 10^{-10}$.
  \item[$\bullet$] Same, but with $\beta = 0$, i.e., no regularization. 
  \item[$\bullet$] No noise, and use $m \equiv 4$ and $m \equiv 8$ as
-	      initial guesses for the paramter. Do you find the same solution? Explain the behavior. 
+	      initial guesses for the parameter. Do you find the same
+	      solution? Explain the behavior.  
 \end{enumerate}
 \begin{solution}
 The following table summarizes the number of iterations for each of the
@@ -227,7 +228,7 @@ Noise & $\beta$ & $m$ & No. of Iterations \\ \cline{1-4}
 0.0 & 0.0 & 4 & 24 \\ \cline{1-4} 
 \end{tabular} 
 \end{center}
-The results of these trials are widely different. The case with noise
+The results of these trials are can be quite different. The case with noise
  and regularization yields the following result: 
 \begin{center}
 \includegraphics[width = 6 cm]{figs/prob2aNoiseRegM8.jpg}
@@ -251,21 +252,18 @@ The case with no noise and no regularization and $m = 4$:
 Note the difference in the final cases where the result for $m = 4$ ($a$
  in the image) is vastly different from the other results. This is a
  direct result of steepest descent being dependent on the start
- value. In the case of no noise or regularization with $m = 8$ yields a
- solution close to the true (except for the central circle). Similarly
+ value. The case with no noise or regularization with $m = 8$ provides a 
+ solution close to the truth. Similarly
  the $m = 4$ solution is close to the true solution except for the
- diagonals. Note also that the $p$ values are also widely
+ diagonals. Note also that the $p$ values are also rather
  different. This is likely due to the adjoint being sensitive to
- $m$. $u$ should also be sensitive to $m$, but its end result looks the
- same because of the misfit penalization. However $p$ has no misfit term
- to drive it towards a solution, giving these different results for this
- problem. 
+ $m$. $u$ should also be sensitive to $m$, but the end result look
+ roughly the same because of the misfit penalization.
 \end{solution}
 
 \item[(b)] Add the advective term v = (30, 0) to the inverse problem and its COMSOL
 	  implementation and plot the resulting reconstruction of m for
 	  a noise level of 0.01 and for a reasonably chosen regularization parameter.
-
 
 \begin{solution}
 After adding the advective term, the result for a noise level of 0.01
