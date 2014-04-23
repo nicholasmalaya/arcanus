@@ -103,7 +103,8 @@ Varying this with respect to the test function, $p$, will yield (1) back
  weak form of the adjoint equation which holds for all $\tilde{u}$ which
  obey the same boundary conditions as $u$:  
 \begin{equation}
-\int_0^T\int_0^L\left(\tilde{u}_t p + u\tilde{u}_x p + \tilde{u}u_x p 
+\delta_u \mathcal{L} = \int_0^T\int_0^L\left(\tilde{u}_t p +
+					u\tilde{u}_x p + \tilde{u}u_x p  
 		 + \nu\tilde{u}_x p_x\right)dxdt  
 + \int_{T_1}^T\int_0^L(u-u^{\text{obs}})\tilde{u}dxdt = 0.
 \end{equation}
@@ -112,8 +113,37 @@ The strong form can be solved for by,
 \end{solution}
 \end{enumerate}
 
-
-
+Finally, the variation with respect to $\nu$ is, 
+\begin{equation}
+ \delta_\nu \mathcal{L} = \frac{\beta}{2} \int^L_0 \nu_x \tilde \nu_x dx +
+  \int_0^T \int_0^L \tilde \nu u_x p_x dx dt. 
+\end{equation}
+This is the weak form of the gradient. In order to arrive at the strong
+form, we perform the simple judo kata of moving the differential
+operator from $\tilde v_x$, 
+\begin{equation}
+  \int_0^T \int_0^L \tilde \nu u_x p_x dx dt -\frac{\beta}{2} \int^L_0
+   \nu_{xx} \tilde \nu dx.
+\end{equation}
+Next, move $\beta$ into the integral, and pull out the time integration, 
+\begin{equation}
+ \int_0^T \left[ 
+	   \int_0^L \tilde \nu u_x p_x dx -\frac{\beta}{2} \int^L_0
+	   \nu_{xx} \tilde \nu dx 
+       \right] dt
+\end{equation}
+finally, combine the spatial integration operators, 
+\begin{equation}
+ \int_0^T \left[ 
+	   \int_0^L \tilde \nu \left(u_x p_x - \frac{\beta}{2} \nu_{xx}
+			       \right) dx \right] dt.
+\end{equation}
+Now, we have isolated $\tilde \nu$, which can be arbitrary. Thus, the
+terms in the parenthesis must be equal to zero, and the strong form
+appears as: 
+\begin{equation}
+ u_x p_x - \frac{\beta}{2} \nu_{xx} = 0.
+\end{equation}
 %
 %
 %
