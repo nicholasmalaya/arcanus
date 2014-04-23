@@ -95,7 +95,7 @@ The Largrangian functional is given by:
 \begin{equation}
 \mathcal{L} = \int_0^T \int_0^L (u_t p + u u_x p + \nu u_{x} p_x - f p) dx dt
 + \frac{1}{2}\int_{T_1}^T\int_0^L(u-u^{\text{obs}})^2dxdt  
-+ \frac{\beta}{2} \int_0^1 \nu_x \nu_x dx  
++ \frac{\beta}{2} \int_0^L \nu_x \nu_x dx  
 \label{lagrangian}
 \end{equation}
 Varying this with respect to the test function, $p$, will yield (1) back
@@ -103,11 +103,11 @@ Varying this with respect to the test function, $p$, will yield (1) back
  weak form of the adjoint equation which holds for all $\tilde{u}$ which
  obey the same boundary conditions as $u$:  
 \begin{equation}
-\int_0^T\int_0^1\left(\tilde{u}_tv + au\tilde{u}_xv + a\tilde{u}u_xv 
-		 + \nu\tilde{u}_xv_x\right)dxdt  
-+ \int_{T_1}^T\int_0^1(u-u^{obs})\tilde{u}dxdt = 0 \tag{5}
-\label{adjweak}  
+\int_0^T\int_0^L\left(\tilde{u}_t p + u\tilde{u}_x p + \tilde{u}u_x p 
+		 + \nu\tilde{u}_x p_x\right)dxdt  
++ \int_{T_1}^T\int_0^L(u-u^{\text{obs}})\tilde{u}dxdt = 0.
 \end{equation}
+The strong form can be solved for by, 
 
 \end{solution}
 \end{enumerate}
