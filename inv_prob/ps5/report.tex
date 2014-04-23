@@ -26,7 +26,7 @@
 \def\qed{\hspace*{\fill}
         \vbox{\hrule\hbox{\vrule\squarebox{.667em}\vrule}\hrule}}
 \newenvironment{solution}{\begin{trivlist}\item[]{\bf Solution:}}
-                      {\textbf{//} \end{trivlist}}
+                      {\end{trivlist}}
 \lstset{
 	language=MATLAB,              % choose the language of the code ("language=Verilog" is popular as well)
    tabsize=3,							  % sets the size of the tabs in spaces (1 Tab is replaced with 3 spaces)
@@ -75,11 +75,129 @@ Now, we integrate the viscous term by parts, to move a derivative of x
  onto the test function, 
 \begin{align}
  \int_0^T \int_0^L (u_t p + u u_x p + \nu u_{x} p_x - f p) dx dt -
- \int_0^T \nu u_x p \bigg|_{x=0}^{x=T} dt = 0 
+ \int_0^T \nu u_x p \bigg|_{x=0}^{x=T} dt = 0. 
 \end{align}
-
- 
+Notice that we have introduced a boundary term (and changed the sign of
+ the convective operator) by doing this. However,
+ $p(0,x)=0$, and therefore this term vanishes. Thus, 
+\begin{align}
+ \int_0^T \int_0^L (u_t p + u u_x p + \nu u_{x} p_x - f p) dx dt = 0
+\end{align}
+is our weak form.  
 \end{solution}
+
+\item[(2)] Using the Lagrangian functional, derive expressions for the
+	   adjoint equation and for the gradient of J with respect to
+	   $\nu$. Give weak and strong forms of these equations. 
+\begin{solution}
+
+The Largrangian functional is given by: 
+\begin{equation}
+\mathcal{L} = \int_0^T \int_0^L (u_t p + u u_x p + \nu u_{x} p_x - f p) dx dt
++ \frac{1}{2}\int_{T_1}^T\int_0^L(u-u^{\text{obs}})^2dxdt  
++ \frac{\beta}{2} \int_0^1 \nu_x \nu_x dx  
+\label{lagrangian}
+\end{equation}
+Varying this with respect to the test function, $p$, will yield (1) back
+ in weak and strong form. Varying with respect to $u$ will return the
+ weak form of the adjoint equation which holds for all $\tilde{u}$ which
+ obey the same boundary conditions as $u$:  
+\begin{equation}
+\int_0^T\int_0^1\left(\tilde{u}_tv + au\tilde{u}_xv + a\tilde{u}u_xv 
+		 + \nu\tilde{u}_xv_x\right)dxdt  
++ \int_{T_1}^T\int_0^1(u-u^{obs})\tilde{u}dxdt = 0 \tag{5}
+\label{adjweak}  
+\end{equation}
+
+\end{solution}
+\end{enumerate}
+
+
+
+%
+%
+%
+%
+%
+%
+
+\newpage
+\subsection*{Problem 2}
+\textbf{Inverse elliptic parameter estimation, continued from assignment
+4.} We solve 
+the inverse problem for the advection-diffusion equation on $\Omega =
+[0, 1] \times [0, 1]$: 
+\begin{equation}
+\min_a J(m) = \frac{1}{2}\int_\Omega(u-u^{\text{obs}})^2dx +
+ \frac{\beta}{2}\int_\Omega (\nabla m \cdot \nabla m)dx \tag{8}
+ \label{2cost} 
+\end{equation}
+where $u$ is the solution of
+\begin{align}
+-\nabla\cdot(m\nabla u) + v\cdot\nabla u &= f \text{ in } \Omega
+ \\ 
+u &= 0 \text{ on } \partial \Omega 
+\end{align}
+with the advective velocity $v = (v_1 , v_2 )$, regularization parameter
+$\beta > 0$ and measurement data $u^{\text{obs}}$ , which are obtained by
+solving the state equation with $m(x, y) = 2$ for $(x - 0.5)^2 + (y -
+0.5)^2 \le 0.04$ and $m(x, y) = 8$ otherwise (and adding noise). 
+\begin{enumerate}
+\item[(a)]Find an optimal regularization parameter $\beta$ found from the
+	  discrepancy criterion.
+
+\begin{solution}
+yar
+\end{solution}
+
+
+\item[(b)]Extend the COMSOL implementation elliptic\_GN\_ip of the
+	  Gauss-Newton method using the advection velocity
+	  $v=(30,0)$. Report the number of Gauss-Newton and of overall
+	  CG iterations for a discretization of the domain with $10
+	  \times 10$, $20 \times 20$, $40 \times 40$ and $80 \times 80$
+	  linear finite elements and give the number of unknowns used to
+	  discretize the coefficient function $m$ (which is called a in
+	  the implementation) for each of these meshes. Discuss how the
+	  number of iterations changes as more parameters are used. 
+
+\begin{solution}
+yar
+\end{solution}
+
+\item[(c)]To avoid over-solving of the CG system in early Newton steps,
+	  where we are still far away from the solution and thus cannot
+	  benefit from the fast local convergence properties of Newton’s
+	  method, the implementation uses the stopping
+	  criterion. Discuss the behavior.  
+
+
+\begin{solution}
+yar
+\end{solution}
+
+\item[(d)]The ill-posedness of inverse problems is closely related to
+	  the spectrum (i.e., the eigenvalues) of the involved
+	  operators. Compute the eigenvalues of the reduced Hessian at
+	  the solution of the problem for a mesh with $20 \times 20$
+	  elements. Since the Hessian is not explicitly available and
+	  can only be applied to vectors, there are 2 possibilities to
+	  access its eigenvalues: 
+\begin{enumerate}
+\item[$\bullet$] Build the Hessian matrix explicitly by applying it to
+	     unit vectors and compute the eigenvalues of the resulting
+	     matrix. 
+\item[$\bullet$] Luckily, there are iterative methods to compute
+	     eigenvalues of a matrix, which only requires the
+	     application of the matrix to vectors. Compute the largest
+	     100 eigenvalues using an iterative method. 
+\end{enumerate}
+Plot the spectrum of the reduced Hessian with and without regularization 
+	  and discuss the result. 
+
+\item[(e)]\textit{Optional:}Replace the Tikhonov regularization by total
+	  variation regularization and report the results for different
+	  meshes. 
 \end{enumerate}
 
 \newpage
