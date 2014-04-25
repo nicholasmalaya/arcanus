@@ -28,20 +28,6 @@ def prior_S(s):
         return -np.inf
 
 
-def prior_H(h):
-    """
-    Log Prior for H
-    """
-
-    hmin = 34.5
-    hmax = 35.5
-
-    if (h >= hmin) and (h <= hmax):
-        return -np.log(hmax-hmin)
-    else:
-        return -np.inf
-
-
 def prior_C(c):
     """
     Log Prior for Cd
@@ -65,7 +51,7 @@ def prior_C(c):
 #    prior_funcs = [prior_A, prior_B] 
 #    
 # 
-prior_funcs = [prior_a, prior_S, prior_H, prior_C]
+prior_funcs = [prior_a, prior_S, prior_C]
 
 #
 # One should not have to edit the routine below
