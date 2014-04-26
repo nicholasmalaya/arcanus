@@ -55,6 +55,7 @@ class BayesianRichardsonExtrapolation(object):
 
         from math import log
 
+        print params[0], params[1], params[2]
         return (
             prior(params) + 
             likelihood.likelihood(params)

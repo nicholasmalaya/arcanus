@@ -76,8 +76,13 @@ export SVN_editor="emacs -nw"
 
 # add your customizations below
 export PATH=$PATH:/h2/nick/bin
-
 export PATH=$PATH:bin
+
+# pythonpath for paraview
+export PYTHONPATH=$PYTHONPATH:/opt/apps/ossw/applications/paraview/paraview-3.14.1/sl6/bin: 
+export PYTHONPATH=$PYTHONPATH:/opt/apps/ossw/applications/paraview/paraview-3.14.1/sl6/lib/paraview-3.14/site-packages/paraview
+export PYTHONPATH=$PYTHONPATH:/opt/apps/ossw/applications/paraview/paraview-3.14.1/sl6/lib/paraview-3.14
+
 
 #what does this do again?
 export HISTCONTROL="ignoredups"
@@ -135,8 +140,10 @@ case $MACHINE in
 	module load boost 
 	module load texlive
 	module load masa 
-	module load phdf5
+	#module load phdf5
+        module load hdf5
 	module load esio
+	module load epd
 	;;
 	*)
 	case $- in *i*)
@@ -147,3 +154,10 @@ case $MACHINE in
 	module load mpich2
 	;;
 esac
+
+alias srcgrep="find . -iname '*.C' -or -iname '*.cpp' -or -iname '*.c' \
+                    -or -iname '*.cc' -or -iname '*.hh' \
+                    -or -iname '*.hpp' -or -iname '*.h' \
+                    -or -iname '*.F90' -or -iname '*.f90' \
+                    -or -iname '*.F' -or -iname '*.f' | xargs grep --color=auto"
+

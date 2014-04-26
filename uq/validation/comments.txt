@@ -1,0 +1,19 @@
+To Everyone:
+
+Thanks everyone for sending me your project proposals. Below is
+specific feedback regarding your proposal. One thing that almost all
+the proposals were missing was a specific explanation of what the
+models/simulations were to be used for. This should include discussion
+of what quantities need to be predicted/inferred, how those quantities
+would be used and how well they need to be known.
+
+Nick,
+
+Your proposal to address the solar vortex problem is a good
+one. Please be sure to think about the role of model inadequacy in
+your analysis, since the models will include those known to be in
+error (RANS). Also, be specific and explicit about what is known and
+unknown. It is common to both under- and over-state what is known,
+sometimes both at the same time.
+
+-----------------------------------------------------------------------

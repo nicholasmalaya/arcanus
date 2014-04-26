@@ -1,0 +1,237 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx,amsmath,amsfonts,amssymb,graphicx} 
+\usepackage[varg]{txfonts}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\urlstyle{tt}
+
+\usepackage{geometry}
+\geometry{%
+  letterpaper,
+  lmargin=2cm,
+  rmargin=2cm,
+  tmargin=2cm,
+  bmargin=2cm,
+  footskip=12pt,
+  headheight=12pt}
+  
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\headheight 35pt
+
+\def\squarebox#1{\hbox to #1{\hfill\vbox to #1{\vfill}}}
+\def\qed{\hspace*{\fill}
+        \vbox{\hrule\hbox{\vrule\squarebox{.667em}\vrule}\hrule}}
+\newenvironment{solution}{\begin{trivlist}\item[]{\bf Solution:}}
+                      {\end{trivlist}}
+\lstset{
+	language=MATLAB,              % choose the language of the code ("language=Verilog" is popular as well)
+   tabsize=3,							  % sets the size of the tabs in spaces (1 Tab is replaced with 3 spaces)
+	basicstyle=\tiny,               % the size of the fonts that are used for the code
+	numbers=left,                   % where to put the line-numbers
+	numberstyle=\tiny,              % the size of the fonts that are used for the line-numbers
+	stepnumber=2,                   % the step between two line-numbers. If it's 1 each line will be numbered
+	numbersep=5pt,                  % how far the line-numbers are from the code
+	%backgroundcolor=\color{mygrey}, % choose the background color. You must add \usepackage{color}
+	%showspaces=false,              % show spaces adding particular underscores
+	%showstringspaces=false,        % underline spaces within strings
+	%showtabs=false,                % show tabs within strings adding particular underscores
+	frame=single,	                 % adds a frame around the code
+	tabsize=3,	                    % sets default tabsize to 2 spaces
+	captionpos=b,                   % sets the caption-position to bottom
+	breaklines=true,                % sets automatic line breaking
+	breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+	%escapeinside={\%*}{*)},        % if you want to add a comment within your code
+	%commentstyle=\color{BrickRed}   % sets the comment style
+}                    
+\begin{document}
+
+\title{\bf{CSE397: Assignment \#5}}
+\author{Nicholas Malaya \\ Department of Mechanical Engineering \\
+Institute for Computational Engineering and Sciences \\ University of
+Texas at Austin} \date{} 
+\maketitle
+\newpage
+
+\subsection*{Problem 1: An inverse problem for Burgers' Equation}
+
+\begin{enumerate}
+\item[(1)] Derive a weak form. Use integration-by-parts on the viscous
+	   term to derive the weak form of Burgers' equation. 
+
+\begin{solution}
+Starting with Burgers' equation in strong form, 
+\begin{align}
+ u_t + u u_x - \nu u_{xx} = f, 
+\end{align}
+we multiply by a test function, $p(t,x)$ and integrate over time and space, 
+\begin{align}
+ \int_0^T \int_0^L (u_t p + u u_x p - \nu u_{xx} p - f p) dx dt = 0. 
+\end{align}
+Now, we integrate the viscous term by parts, to move a derivative of x
+ onto the test function, 
+\begin{align}
+ \int_0^T \int_0^L (u_t p + u u_x p + \nu u_{x} p_x - f p) dx dt -
+ \int_0^T \nu u_x p \bigg|_{x=0}^{x=T} dt = 0. 
+\end{align}
+Notice that we have introduced a boundary term (and changed the sign of
+ the convective operator) by doing this. However,
+ $p(0,x)=0$, and therefore this term vanishes. Thus, 
+\begin{align}
+ \int_0^T \int_0^L (u_t p + u u_x p + \nu u_{x} p_x - f p) dx dt = 0
+\end{align}
+is our weak form.  
+\end{solution}
+
+\item[(2)] Using the Lagrangian functional, derive expressions for the
+	   adjoint equation and for the gradient of J with respect to
+	   $\nu$. Give weak and strong forms of these equations. 
+\begin{solution}
+
+The Largrangian functional is given by: 
+\begin{equation}
+\mathcal{L} = \int_0^T \int_0^L (u_t p + u u_x p + \nu u_{x} p_x - f p) dx dt
++ \frac{1}{2}\int_{T_1}^T\int_0^L(u-u^{\text{obs}})^2dxdt  
++ \frac{\beta}{2} \int_0^L \nu_x \nu_x dx  
+\label{lagrangian}
+\end{equation}
+Varying this with respect to the test function, $p$, will yield (1) back
+ in weak and strong form. Varying with respect to $u$ will return the
+ weak form of the adjoint equation which holds for all $\tilde{u}$ which
+ obey the same boundary conditions as $u$:  
+\begin{equation}
+\delta_u \mathcal{L} = \int_0^T\int_0^L\left(\tilde{u}_t p +
+					u\tilde{u}_x p + \tilde{u}u_x p  
+		 + \nu\tilde{u}_x p_x\right)dxdt  
++ \int_{T_1}^T\int_0^L(u-u^{\text{obs}})\tilde{u}dxdt = 0.
+\end{equation}
+The strong form can be solved for by, 
+
+\end{solution}
+\end{enumerate}
+
+Finally, the variation with respect to $\nu$ is, 
+\begin{equation}
+ \delta_\nu \mathcal{L} = \frac{\beta}{2} \int^L_0 \nu_x \tilde \nu_x dx +
+  \int_0^T \int_0^L \tilde \nu u_x p_x dx dt. 
+\end{equation}
+This is the weak form of the gradient. In order to arrive at the strong
+form, we perform the simple judo kata of moving the differential
+operator from $\tilde v_x$, 
+\begin{equation}
+  \int_0^T \int_0^L \tilde \nu u_x p_x dx dt -\frac{\beta}{2} \int^L_0
+   \nu_{xx} \tilde \nu dx.
+\end{equation}
+Next, move $\beta$ into the integral, and pull out the time integration, 
+\begin{equation}
+ \int_0^T \left[ 
+	   \int_0^L \tilde \nu u_x p_x dx -\frac{\beta}{2} \int^L_0
+	   \nu_{xx} \tilde \nu dx 
+       \right] dt
+\end{equation}
+finally, combine the spatial integration operators, 
+\begin{equation}
+ \int_0^T \left[ 
+	   \int_0^L \tilde \nu \left(u_x p_x - \frac{\beta}{2} \nu_{xx}
+			       \right) dx \right] dt.
+\end{equation}
+Now, we have isolated $\tilde \nu$, which can be arbitrary. Thus, the
+terms in the parenthesis must be equal to zero, and the strong form
+appears as: 
+\begin{equation}
+ u_x p_x - \frac{\beta}{2} \nu_{xx} = 0.
+\end{equation}
+%
+%
+%
+%
+%
+%
+
+\newpage
+\subsection*{Problem 2}
+\textbf{Inverse elliptic parameter estimation, continued from assignment
+4.} We solve 
+the inverse problem for the advection-diffusion equation on $\Omega =
+[0, 1] \times [0, 1]$: 
+\begin{equation}
+\min_a J(m) = \frac{1}{2}\int_\Omega(u-u^{\text{obs}})^2dx +
+ \frac{\beta}{2}\int_\Omega (\nabla m \cdot \nabla m)dx \tag{8}
+ \label{2cost} 
+\end{equation}
+where $u$ is the solution of
+\begin{align}
+-\nabla\cdot(m\nabla u) + v\cdot\nabla u &= f \text{ in } \Omega
+ \\ 
+u &= 0 \text{ on } \partial \Omega 
+\end{align}
+with the advective velocity $v = (v_1 , v_2 )$, regularization parameter
+$\beta > 0$ and measurement data $u^{\text{obs}}$ , which are obtained by
+solving the state equation with $m(x, y) = 2$ for $(x - 0.5)^2 + (y -
+0.5)^2 \le 0.04$ and $m(x, y) = 8$ otherwise (and adding noise). 
+\begin{enumerate}
+\item[(a)]Find an optimal regularization parameter $\beta$ found from the
+	  discrepancy criterion.
+
+\begin{solution}
+yar
+\end{solution}
+
+
+\item[(b)]Extend the COMSOL implementation elliptic\_GN\_ip of the
+	  Gauss-Newton method using the advection velocity
+	  $v=(30,0)$. Report the number of Gauss-Newton and of overall
+	  CG iterations for a discretization of the domain with $10
+	  \times 10$, $20 \times 20$, $40 \times 40$ and $80 \times 80$
+	  linear finite elements and give the number of unknowns used to
+	  discretize the coefficient function $m$ (which is called a in
+	  the implementation) for each of these meshes. Discuss how the
+	  number of iterations changes as more parameters are used. 
+
+\begin{solution}
+yar
+\end{solution}
+
+\item[(c)]To avoid over-solving of the CG system in early Newton steps,
+	  where we are still far away from the solution and thus cannot
+	  benefit from the fast local convergence properties of Newton’s
+	  method, the implementation uses the stopping
+	  criterion. Discuss the behavior.  
+
+
+\begin{solution}
+yar
+\end{solution}
+
+\item[(d)]The ill-posedness of inverse problems is closely related to
+	  the spectrum (i.e., the eigenvalues) of the involved
+	  operators. Compute the eigenvalues of the reduced Hessian at
+	  the solution of the problem for a mesh with $20 \times 20$
+	  elements. Since the Hessian is not explicitly available and
+	  can only be applied to vectors, there are 2 possibilities to
+	  access its eigenvalues: 
+\begin{enumerate}
+\item[$\bullet$] Build the Hessian matrix explicitly by applying it to
+	     unit vectors and compute the eigenvalues of the resulting
+	     matrix. 
+\item[$\bullet$] Luckily, there are iterative methods to compute
+	     eigenvalues of a matrix, which only requires the
+	     application of the matrix to vectors. Compute the largest
+	     100 eigenvalues using an iterative method. 
+\end{enumerate}
+Plot the spectrum of the reduced Hessian with and without regularization 
+	  and discuss the result. 
+
+\item[(e)]\textit{Optional:}Replace the Tikhonov regularization by total
+	  variation regularization and report the results for different
+	  meshes. 
+\end{enumerate}
+
+\newpage
+\subsection*{Code}
+%Here is the code for part c:
+%\lstinputlisting{code/elliptic_sd_ip_adv_TV.m}
+\end{document}

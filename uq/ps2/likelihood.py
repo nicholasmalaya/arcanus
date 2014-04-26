@@ -77,7 +77,7 @@ def likelihood(params):
     This routine should return the log of the
     likelihood function: P(qi|q,C,p,X)
     """
-    a, s, H, c = params
+    a, s, c = params
 
     #
     # if given
