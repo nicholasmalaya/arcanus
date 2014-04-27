@@ -25,6 +25,27 @@
 \section{Independent Samples}
 
 \section{Posterior of the observations}
-
+In the general case, the posterior distribution of the observations~$y$ can be marginalized over the parameters~$\theta$ and the true value of the observed quantity~$\tilde{y}$,
+\begin{align*}
+p( y | D, X)  = \int_{\tilde{y}} \int_\theta p(y, \tilde{y}, \theta | D, X) \, d\theta d\tilde{y} .
+\end{align*}
+We can then apply Bayes' theorem twice to get 
+\begin{align*}
+p( y | D, X) & = \int_{\tilde{y}} \int_\theta p(y | \tilde{y}, \theta , D, X) p(\tilde{y}, \theta | D, X) \, d\theta d\tilde{y}  \\
+ & = \int_{\tilde{y}} \int_\theta p(y | \tilde{y}, \theta , D, X) p(\tilde{y} | \theta , D, X) p(\theta | D, X) \, d\theta d\tilde{y} .
+\end{align*}
+We can now simplify this expression a bit more by noticing that the first two conditional probability density functions~(pdf) do not depend on the observed quantities~$D$.
+We end up with the expression found in the problem statement
+\begin{equation} \label{eq:postobsfull}
+ p( y | D, X)  = \int_{\tilde{y}} \int_\theta p(y | \tilde{y}, \theta , X) p(\tilde{y} | \theta , X) p(\theta | D, X) \, d\theta d\tilde{y} . 
+\end{equation}
+In this exercise, we did not assume any model inadequacy.
+Therefore, the second pdf inside the integral is simply given by the deterministic physical model, i.e.
+\[ p( \tilde{y} | \theta, X) = \delta(\tilde{y} - Y(\theta)) , \]
+where $Y$ is the deterministic physical model.
+Then expression~\ref{eq:postobsfull} simplifies more to
+\begin{equation} \label{eq:postobs}
+ p( y | D, X)  = \int_{\theta} p(y | Y(\theta), \theta , X) p(\theta | D, X) \, d\theta .
+\end{equation}
 
 \end{document}
