@@ -58,12 +58,12 @@ def logGaussian(MEAN, COVAR, X):
 #
 # this is how long the walkers will propagate, before we start
 # to record statistics
-burn_in = 200
+burn_in = 10
 
 #
 # number of samples to gather
 #
-samples = 200
+samples = 10
 
 #
 # initial guesses for the walkers starting locations

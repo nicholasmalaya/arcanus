@@ -101,15 +101,35 @@ The Largrangian functional is given by:
 Varying this with respect to the test function, $p$, will yield (1) back
  in weak and strong form. Varying with respect to $u$ will return the
  weak form of the adjoint equation which holds for all $\tilde{u}$ which
- obey the same boundary conditions as $u$:  
+ obey the same boundary conditions as $u$ (we must integrate $\tilde u_t$
+ and $\tilde u_x$ by parts to accomplish this):   
 \begin{equation}
-\delta_u \mathcal{L} = \int_0^T\int_0^L\left(\tilde{u}_t p +
+\delta_u \mathcal{L} = \int_0^T\int_0^L\left(-\tilde{u} p_t +
 					u\tilde{u}_x p + \tilde{u}u_x p  
-		 + \nu\tilde{u}_x p_x\right)dxdt  
+		 - \nu\tilde{u} p_{xx}\right)dxdt  
 + \int_{T_1}^T\int_0^L(u-u^{\text{obs}})\tilde{u}dxdt = 0.
 \end{equation}
-The strong form can be solved for by, 
+As one would expect, this moves backward in time. 
 
+
+ Now, in order to solve for the strong form, we now need to combine the
+ integration from $T_1$ to $T$ with the integral from zero to $T$. In
+ order to do this, we multiply the second integral by a function that is
+ zero below $T_1$, and 1 past it. This is actually the ``Heavyside
+ function''. The resulting equation is then, 
+\begin{equation}
+\delta_u \mathcal{L} = \int_0^T\int_0^L \left( -\tilde{u} p_t -
+					\tilde{u}(u p)_x + \tilde{u}u_x p  
+		 - \nu\tilde{u} p_{xx}
++ H(t-T_1)(u-u^{\text{obs}})\tilde{u} \right)dxdt = 0.
+\end{equation}
+Now, we move $\tilde u$ out of the parenthesis, 
+\begin{equation}
+\delta_u \mathcal{L} = \int_0^T\int_0^L \tilde u \left( - p_t -
+					(u p)_x + u_x p  
+		 - \nu p_{xx}
++ H(t-T_1)(u-u^{\text{obs}}) \right) dxdt = 0.
+\end{equation}
 \end{solution}
 \end{enumerate}
 
@@ -197,7 +217,7 @@ yar
 
 \item[(c)]To avoid over-solving of the CG system in early Newton steps,
 	  where we are still far away from the solution and thus cannot
-	  benefit from the fast local convergence properties of Newton’s
+	  benefit from the fast local convergence properties of Newton's
 	  method, the implementation uses the stopping
 	  criterion. Discuss the behavior.  
 
