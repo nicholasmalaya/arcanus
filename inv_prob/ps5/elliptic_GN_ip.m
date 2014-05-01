@@ -26,7 +26,7 @@ fem.dim = {'a' 'delta_a' 'delta_p' 'delta_u' 'g' 'p' 'u' 'ud'};
 fem.shape = [1 1 1 1 1 1 1 1];
 
 % target coefficient atrue, noise ratio, rhs f, regularization weight gamma
-fem.equ.expr.atrue = '2 + 6*(sqrt((x-0.5)^2 + (y-0.5)^2) > 0.2)';
+fem.equ.expr.atrue = '2 + 6*(sqrt((x-0.5)^2 + (y-0.5)^2) > 0.04)';
 datanoise = 0.01;
 fem.equ.expr.f = '1';
 fem.equ.expr.gamma = '1e-10';
