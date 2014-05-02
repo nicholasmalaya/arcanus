@@ -240,23 +240,23 @@ We now iterate over choices of regularization, to find an optimal
 	  number of iterations changes as more parameters are used. 
 
 \begin{solution}
-To introduce $v=(30,0)$ into the code, added the following lines:
+To introduce $v=(30,0)$ into the code, we added the following lines:
 \begin{lstlisting}
 fem.equ.expr.v1 = '30';
 fem.equ.expr.v2 = '0';
 
 % weak forms to make up data ud, state, adjoint and control equation
 fem.equ.expr.goal    = '-(atrue*(udx*udx_test+udy*udy_test)
-   +v1*udx*ud_test+v2*udy*ud_test-f*ud_test)';
++v1*udx*ud_test+v2*udy*ud_test-f*ud_test)';
 fem.equ.expr.state   = '-(a*(ux*ux_test+uy*uy_test)
-   +v1*ux*u_test+v2*uy*u_test-f*u_test )';
++v1*ux*u_test+v2*uy*u_test-f*u_test )';
 
 fem.equ.expr.incstate   = ['-(a*(delta_ux*delta_px_test+delta_uy*' ...
    'delta_py_test)+v1*delta_ux*delta_p_test+v2*delta_uy*delta_p_test
-   + delta_a*(ux*delta_px_test+uy*delta_py_test))'];
++delta_a*(ux*delta_px_test+uy*delta_py_test))'];
 fem.equ.expr.incadjoint = ['-(a*(delta_px*delta_ux_test+delta_py*' ...
    'delta_uy_test)+v1*delta_ux_test*delta_p+v2*delta_uy_test*delta_p
-   +delta_u*delta_u_test )'];
++delta_u*delta_u_test )'];
 fem.equ.expr.inccontrol = ['-(gamma*(delta_ax*delta_ax_test+delta_ay' ...
    '*delta_ay_test)+(delta_px*ux+delta_py*uy)*delta_a_test)'];
 \end{lstlisting}
@@ -279,7 +279,7 @@ $80\times 80$ & 7 & 49
 \end{center}
 
 Aside from the $20\times20$ mesh, the number of Newton iterations
- remains very nearly the same!The CG iterations also remain the same or only
+ remains very nearly the same! The CG iterations also remain the same or only
  increase slightly with the mesh-size. This is a remarkable result,
  because it implies the Newton iterations are independent of problem
  size. 
@@ -296,9 +296,9 @@ Aside from the $20\times20$ mesh, the number of Newton iterations
 \begin{solution}
 In order to account the differenct stopping criteria, I added the following lines:
 \begin{lstlisting}
-    tolcg = 0.5;
-    % tolcg = min(0.5, sqrt(gradnorm/gradnorm_ini));
-    % tolcg = min(0.5, gradnorm/gradnorm_ini);
+    stopping = 0.5;
+    stopping = min(0.5, sqrt(gradnorm/gradnorm_ini));
+    stopping = min(0.5, gradnorm/gradnorm_ini);
 \end{lstlisting}
 where I comment out all but the criterion I want to use. Also, I am
  going back to a mesh of $20\times 20$ elements (the $80\times 80$ is
