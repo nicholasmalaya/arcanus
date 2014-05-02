@@ -203,7 +203,23 @@ solving the state equation with $m(x, y) = 2$ for $(x - 0.5)^2 + (y -
 	  discrepancy criterion.
 
 \begin{solution}
-yar
+The discrepancy criterion is defined as $(u-u^{\text{obs}}) \approx
+ \delta$. We find $\delta = 0.002$ by adding the following lines to the
+ solution file: 
+ \begin{lstlisting}
+  if(noise==0)
+    noise = datanoise * max(abs(X(UDI))) * randn(length(UDI),1);
+    delta = norm(noise)
+  end
+ \end{lstlisting}
+ Where we also add this ``noise'' variable to the data. We now calculate
+ the difference between $\delta$ and $(u-u^{\text{obs}})$ using, 
+ \begin{lstlisting}
+  err=norm(X(UDI) - X(UI))-delta
+ \end{lstlisting}
+We now iterate over choices of regularization, to find an optimal
+ $\beta$. 
+ 
 \end{solution}
 
 
@@ -256,8 +272,8 @@ Plot the spectrum of the reduced Hessian with and without regularization
 	  meshes. 
 \end{enumerate}
 
-\newpage
-\subsection*{Code}
+%\newpage
+%\subsection*{Code}
 %Here is the code for part c:
 %\lstinputlisting{code/elliptic_sd_ip_adv_TV.m}
 \end{document}
