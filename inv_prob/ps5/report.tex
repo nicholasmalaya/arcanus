@@ -2,6 +2,7 @@
 \usepackage{graphicx,amsmath,amsfonts,amssymb,graphicx} 
 \usepackage[varg]{txfonts}
 \usepackage{enumerate}
+\usepackage{subcaption}
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{color}
@@ -218,7 +219,12 @@ The discrepancy criterion is defined as $(u-u^{\text{obs}}) \approx
   err=norm(X(UDI) - X(UI))-delta
  \end{lstlisting}
 We now iterate over choices of regularization, to find an optimal
- $\beta$. 
+ $\beta$. The curve is relatively flat, indicating that the inverse
+ problem is not particularily sensitive to choice of regularization
+ parameter, but the optimal value appears to be right around $\beta
+ \approx 1e-10$. (e.g I found the ``err'' above was only .001 for $\beta
+ = 0.001$, which indicates it does not change greatly for several orders
+ of magnitude.)
  
 \end{solution}
 
@@ -234,7 +240,50 @@ We now iterate over choices of regularization, to find an optimal
 	  number of iterations changes as more parameters are used. 
 
 \begin{solution}
-yar
+To introduce $v=(30,0)$ into the code, added the following lines:
+\begin{lstlisting}
+fem.equ.expr.v1 = '30';
+fem.equ.expr.v2 = '0';
+
+% weak forms to make up data ud, state, adjoint and control equation
+fem.equ.expr.goal    = '-(atrue*(udx*udx_test+udy*udy_test)
+   +v1*udx*ud_test+v2*udy*ud_test-f*ud_test)';
+fem.equ.expr.state   = '-(a*(ux*ux_test+uy*uy_test)
+   +v1*ux*u_test+v2*uy*u_test-f*u_test )';
+
+fem.equ.expr.incstate   = ['-(a*(delta_ux*delta_px_test+delta_uy*' ...
+   'delta_py_test)+v1*delta_ux*delta_p_test+v2*delta_uy*delta_p_test
+   + delta_a*(ux*delta_px_test+uy*delta_py_test))'];
+fem.equ.expr.incadjoint = ['-(a*(delta_px*delta_ux_test+delta_py*' ...
+   'delta_uy_test)+v1*delta_ux_test*delta_p+v2*delta_uy_test*delta_p
+   +delta_u*delta_u_test )'];
+fem.equ.expr.inccontrol = ['-(gamma*(delta_ax*delta_ax_test+delta_ay' ...
+   '*delta_ay_test)+(delta_px*ux+delta_py*uy)*delta_a_test)'];
+\end{lstlisting}
+We also need to adjust the values in
+\begin{lstlisting}
+fem.mesh = meshmap(fem, 'Edgelem', {1,20,2,20});
+\end{lstlisting}
+so for a $10\times 10$ grid I would set $10$ instead of $20$, and so on 
+ for 20,40, 80, etc. 
+ 
+\begin{center}
+\begin{tabular}{l||l|l}
+ Mesh & Gauss-Newton Iterations & Overall CG iterations\\
+\hline\hline
+$10\times 10$ & 7 & 41\\
+$20\times 20$ & 6 & 29\\
+$40\times 40$ & 7 & 42\\
+$80\times 80$ & 7 & 49
+\end{tabular}
+\end{center}
+
+Aside from the $20\times20$ mesh, the number of Newton iterations
+ remains very nearly the same!The CG iterations also remain the same or only
+ increase slightly with the mesh-size. This is a remarkable result,
+ because it implies the Newton iterations are independent of problem
+ size. 
+
 \end{solution}
 
 \item[(c)]To avoid over-solving of the CG system in early Newton steps,
@@ -245,7 +294,46 @@ yar
 
 
 \begin{solution}
-yar
+In order to account the differenct stopping criteria, I added the following lines:
+\begin{lstlisting}
+    tolcg = 0.5;
+    % tolcg = min(0.5, sqrt(gradnorm/gradnorm_ini));
+    % tolcg = min(0.5, gradnorm/gradnorm_ini);
+\end{lstlisting}
+where I comment out all but the criterion I want to use. Also, I am
+ going back to a mesh of $20\times 20$ elements (the $80\times 80$ is
+ exceedingly slow on the node provided). 
+
+\begin{center}
+ \begin{tabular}{l||l|l}
+  Method & Gauss-Newton Iterations & Overall CG iterations\\
+  \hline\hline
+  $\eta_k=0.5$ & 12 & 47\\
+  $\eta_k=\min(0.5,\sqrt{\|g_k\|/\|g_0\|})$ & 7 & 50\\
+  $\eta_k=\min(0.5,\|g_k\|/\|g_0\|)$ & 6 & 64
+ \end{tabular}
+\end{center}
+
+In summary, we see exactly the behavior as predected in assignment
+ two. For the choice $\eta_k=0.5$ we see a linear convergence behavior
+ which is the  reason why we needed the most Gauss-Newton iterations in
+ this case. In  the second case, as soon as we get close to the minimum
+ (the point  where the gradient is zero), we are getting a convergence somewhere
+ in between  linear and quadratic convergence. 
+ For the final choice, we are getting quadratic convergence as soon as we get close to
+ the point where the gradient is zero. 
+
+ However, the total number of CG iterations needed in
+ order is increased for each subsequent scheme. 
+ For the first choice we needed the least number of CG iterations. 
+
+ What we see here is that if we want to see the superlinear or quadratic
+ convergence in the second or third choices, we require more CG
+ iterations. Ultimately, the decision on which stopping criterion to use depends on
+ balancing the desire to minimize CG iterations per newton solve against
+ taking advantage of the superior convergence properties of the later
+ criterion. 
+
 \end{solution}
 
 \item[(d)]The ill-posedness of inverse problems is closely related to
@@ -259,17 +347,54 @@ yar
 \item[$\bullet$] Build the Hessian matrix explicitly by applying it to
 	     unit vectors and compute the eigenvalues of the resulting
 	     matrix. 
-\item[$\bullet$] Luckily, there are iterative methods to compute
-	     eigenvalues of a matrix, which only requires the
-	     application of the matrix to vectors. Compute the largest
+\item[$\bullet$] There exist iterative methods for computing
+	     eigenvalues of a matrix that require only the application
+	     of the matrix to vectors. Compute the largest
 	     100 eigenvalues using an iterative method. 
 \end{enumerate}
 Plot the spectrum of the reduced Hessian with and without regularization 
 	  and discuss the result. 
 
-\item[(e)]\textit{Optional:}Replace the Tikhonov regularization by total
-	  variation regularization and report the results for different
-	  meshes. 
+\begin{solution}
+I added the following lines, to calculate the first 100 eigenvalues using
+ the second (recommended) method: 
+\begin{lstlisting}
+eigsolve = @(V)elliptic_apply(V,chi,W,A,C,R,X);
+lambda = eigs(eigsolve, size(C,2),100,'lm');
+figure;
+plot(lambda);
+\end{lstlisting}
+The spectrum of the Hessian is plotted below, for cases using regularization,
+ and not. 
+ \begin{figure}[!htb]
+  \centering
+  \begin{subfigure}[bh]{0.45\textwidth}
+   \includegraphics[width=\textwidth]{figs/noreg.jpg}
+  \end{subfigure}%
+  \begin{subfigure}[bh]{0.45\textwidth}
+   \includegraphics[width=\textwidth]{figs/regularization.jpg}
+  \end{subfigure}
+  \caption{The unregularized (left) and regularized (right) spectrum of
+  the Hessian. }
+ \end{figure}
+
+As one can see, the larger eigenvalues are nearly the same. However,
+ without regularization the eigenvalues converge to zero rapidly, which
+ results in what is, due to numerical error, essentially a non-positive
+ definite matrix. In other words, the regularization accomplishes
+ precisely what we desired: it prevents the small eigenvalues from
+ converging to zero while keeping the large eigenvalues close to the
+ unregularized values. 
+
+\emph{Note: did we cover the Lanczos method in class? I don't think I am
+ familiar with this technique, but it is interesting. }
+
+\end{solution}
+
+
+%\item[(e)]\textit{Optional:}Replace the Tikhonov regularization by total
+%	  variation regularization and report the results for different
+%	  meshes. 
 \end{enumerate}
 
 %\newpage
