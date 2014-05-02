@@ -24,5 +24,8 @@ if __name__ == '__main__':
     sigma = np.sqrt(variance)
     x     = np.linspace(-3,3,100)
     pdf   = mlab.normpdf(x,mean,sigma)
+    print pdf
     plt.plot(x,pdf)    
     plt.show()
+
+    hpd(x,pdf) 
