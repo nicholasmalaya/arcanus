@@ -31,6 +31,18 @@ def hpd(x, pdf, obs):
 	return beta
 
 
+def plotpdfandobs(x, pdf, obs, filename=None):
+	""" Plot pdf along with the given observation """
+
+	maxval = round(max(pdf)*10.+1)/10.
+	plt.figure()
+	plt.plot(x, pdf, 'b', label='pdf')
+	plt.plot([obs, obs], [0.0, maxval], 'k--', label='obs')
+	plt.legend()
+	if filename == None:	plt.show()
+	else:	plt.savefig(filename + '.eps', format='eps', dpi=300)
+
+
 #
 # main function
 # 
@@ -42,10 +54,8 @@ if __name__ == '__main__':
 	pdf   = mlab.normpdf(x,-1,0.5) + mlab.normpdf(x, 1, 0.5)
 	pdf = pdf / simps(pdf, x)
 #	print pdf
-	plt.figure()
-	plt.plot(x,pdf, 'o-')    
-	plt.title('Before hpd()')
-	plt.show()
+	obs = 0.2
+	plotpdfandobs(x, pdf, obs, 'test')
 
-	beta = hpd(x, pdf, 0.5) 
+	beta = hpd(x, pdf, obs) 
 	print beta
