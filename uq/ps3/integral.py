@@ -60,12 +60,8 @@ ymax = 35.8
 spacing = 0.1
 yp    = np.arange(ymin,ymax,spacing)
 times = np.arange(tmin,tmax,tspacing)
-pr = np.zeros(len(yp))
-
-#
-# evaluate sum for each yp
-# 
-mu    = 0.0
+pr       = np.zeros(len(yp))
+integral = np.zeros(len(yp))
 
 #
 # given a time (seconds)
@@ -84,15 +80,15 @@ coef_bb = (rho*4*np.pi*rbb**2.0)/(2.0*Mbb)
 #
 # iterate over position
 #
+
 for i in xrange(len(yp)):
     
     #
     # iterate over mcmc chain
     #
-    integral = 0.0
     for j in xrange(len(drag)):
         mu = drag_eqn([t],g,coef_b*drag[i])[0]+alpha[j]*t
-        integral += scipy.stats.norm(mu, sigma[j]).pdf(yp[i])[0]
+        integral[i] += scipy.stats.norm(mu, sigma[j]).pdf(yp[i])[0]
 
     #
     # normalize
@@ -102,7 +98,7 @@ for i in xrange(len(yp)):
     #
     # print
     #
-    print yp[i], integral
+    print yp[i], integral[i]
 
 
 #
