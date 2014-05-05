@@ -88,7 +88,7 @@ def integral(time,ymin=-1.0,ymax=35.0,spacing=0.1,samples=100):
         #
         # normalize
         #
-        integral[i] /= len(drag)
+        integral[i] /= samples
     
         #
         # print
