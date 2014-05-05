@@ -1,7 +1,22 @@
 \documentclass{article}
-\usepackage{hyperref}
-\usepackage{amsmath,amssymb}
-\usepackage{graphicx}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{esint}
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 1},backref=section,colorlinks=false]
+ {hyperref}
+\usepackage{breakurl}
+
+\makeatletter
+
+\providecommand{\tabularnewline}{\\}
+
+\@ifundefined{date}{}{\date{}}
+
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage[section]{placeins}
@@ -11,73 +26,407 @@
 \title{\bf{CSE397: Group Assignment \#3}}
 \author{Benjamin Crestel, Nicholas Malaya, Prabhakar Marepalli, Ajay Vadakkepatt}
 
- %\\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} 
-\date{}
+ %\\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin}
+
+\makeatother
 
 \begin{document}
+
+\title{Problem \# 3}
+
+
+\author{Ben Crestel, Nick Malaya, Prabhakar Marepalli, Ajay Vadakkepatt}
+
 \maketitle
 
-\newpage
 \section*{Problem Statement}
+
 
 \section{Selection of calibration}
 
+Select what you consider to be the best calibration of the ball-drop
+model from group problem 2. You may either use one of the calibrations
+from problem 2, or revise your calibration based on any feedback you
+received (your choice). Be sure to document what calibration you are
+using (the priors, error models and likelihood formulation) and your
+justification for selecting this particular formulation.
+
+
+\subsubsection*{Solution}
+
+For this project, we choose the parameters inferred from the data
+of both the ball drops together (inferring same alpha and sigma, but
+different $C_{d}'s$). This selection is one of the realistic cases
+as $\alpha$ and $\sigma$ only depend on the measurement error (motion
+of the iPad while recording) whereas it is quite reasonable to infer
+different $C_{d}'s$ for different balls as $C_{d}$ is a function
+of the surface roughness and diameter of the ball. Also, in contrast
+with our solution procedure for Project 2, the parameter $H$ is not
+inferred here. This change is from the feedback received for that
+report. We outline the calibration procedure below:
+
+
+\subsubsection*{Prior for $\alpha$}
+
+The coefficient $\alpha$ defined above is said to be ``of order
+$0.5$~m/s with uncertainty of the same order''. Since we could
+not exclude negative values of $\alpha$ we can choose $\alpha$ to
+be Gaussian with mean $0.5$~m/s and $95\%$~confidence interval
+given by the interval of uncertainty. Here the uncertainty is said
+to be ``of the same order'' as the mean. In order to be conservative,
+we'll pick our $67\%$~confidence interval to be $[-1,1]$~m/s.
+\[
+\alpha\sim\mathcal{N}(0.5,1).
+\]
+
+
+
+\subsubsection*{Prior for $\sigma$}
+
+For $\sigma$, we know it has to be non-negative. We can therefore
+assume that $\sigma$ is uniformly distributed over the interval $[0,0.2]$~m.
+\[
+\sigma\sim\mathcal{U}(0,0.2).
+\]
+
+
+
+\subsubsection*{Prior on $C_{d}$, the coefficient of drag}
+
+The coefficient of drag is a non-dimensionalization of the force that
+results from a scaling analysis.
+\[
+\frac{F_{D}}{\frac{1}{2}\rho V^{2}A}=C_{D}(Re).
+\]
+ Thus, the coefficient depends only on the Reynolds number of the
+flow. Let's estimate the Reynolds number to give us a sense of the
+range we believe may be possible in this particular experiment.
+
+The Reynolds number is defined as,
+\[
+Re=\frac{VL}{\nu}
+\]
+ Let's estimate the characteristic velocity (V), and length (L) as
+well as the viscosity, $\nu$. An upper bound for the velocity would
+be from the calculating the velocity in the absense of drag. Here,
+$V=gt_{\text{final}}$, and with $t_{\text{final}}\approx3$ seconds,
+our V is $\approx29.4$ m/s. The characteristic length is the ball
+diameter, which for the basketball is 23.33 cm. Finally, the kinematic
+viscosity of air is $15.68*10^{-6}\text{m}^{2}/s$. Thus, our $\text{Re}\approx437,000$,
+which means the flow is certainly turbulence. Furthermore, we expect
+roughness effects to become significant around $Re\approx10^{5}$.
+Given that we do not know, with confidence, if the balls are rough
+or smooth, our prior must be sufficiently broad to capture the possibilty
+of either condition.
+
+Looking at a NASA chart for the measured drag coefficient on a sphere,
+at low reynolds numbers (when we release the ball) we expect that
+our drag coefficient might be as large as 2. Should the sphere be
+smooth, the drag coefficient could be as small as 0.1 at the end.
+We also know that our prior should not be capable of negative values,
+that would be aphysical. For these reasons, we decided to define $C_{d}$
+as
+\begin{align*}
+C_{d}\sim\mathcal{U}(0,2).
+\end{align*}
+
+
+
+\subsubsection*{Likelihood}
+
+We will infer (at most) for the following parameters: $\alpha,\sigma,C_{d}$.
+The likelihood gives us the probability that the results from our
+simulation~$h_{ode}$ match the data~$h_{d}$ we have.
+\[
+\pi\left(h_{ode}=h_{d}\,|\,\alpha,\sigma,C_{d}\right).
+\]
+ In the hypothetical case we'd know all parameters exactly ($\alpha,\sigma,C_{d}$),
+the data would be connected to the results of our simulation through
+the following relation
+\begin{align*}
+h_{d}=\left(h^{\text{ode}}+\varepsilon\right),
+\end{align*}
+We already detailed the distribution of the random variable $\varepsilon$.
+It is Gaussian with mean and covariance given by the time measurements
+of each experiment and random variables $\alpha$ and $\sigma$ (which
+are assumed to be sampled when evaluating the likelihood). Calling
+$\mu$ and $R$ the mean and covariance matrix corresponding to the
+right format of $h$ (ie, stacking information from all 4 experiments
+'on top of each other'), we get the following distribution for the
+likelihood,
+\begin{align*}
+\pi(h_{ode}=h_{d}\,|\,\alpha,\sigma,C_{d})=\frac{1}{\sqrt{(2\pi)^{n}|R|}}\exp\left\{ -\frac{1}{2}\left(h_{d}-h^{\text{ode}}-\mu\right)^{T}\cdotp R^{-1}\cdotp\left(h_{d}-h^{\text{ode}}-\mu\right)\right\} ,
+\end{align*}
+ where $n=t_{f}^{1}+t_{f}^{2}+t_{f}^{3}+t_{f}^{4}$ is the number
+of data (ie, the dimension of $h_{d}$) and $h_{d}$ is defined as
+\begin{align*}
+h_{d}=\begin{bmatrix}h_{1}(t_{1}^{1})\\
+h_{1}(t_{2}^{1})\\
+\vdots\\
+h_{1}(t_{f}^{1})\\
+h_{2}(t_{1}^{2})\\
+\vdots\\
+h_{2}(t_{f}^{2})\\
+\vdots\\
+h_{4}(t_{f}^{4})
+\end{bmatrix}.
+\end{align*}
+ Note that the times used in $h_{d}$ (and hence $h_{ode},\mu,R$)
+can be a subset of the times used in the actual experiments. For instance,
+the last measurements look highly suspicious and should be probably
+excluded from our inference. $\mu$ and $R$ are defined as follows
+\begin{align*}
+\mu=\alpha\begin{bmatrix}t_{1}^{1}\\
+t_{2}^{1}\\
+\vdots\\
+t_{f}^{1}\\
+t_{1}^{2}\\
+\vdots\\
+t_{f}^{4}
+\end{bmatrix},\quad R=\begin{bmatrix}R_{1} & 0 & 0 & 0\\
+0 & R_{2} & 0 & 0\\
+0 & 0 & R_{3} & 0\\
+0 & 0 & 0 & R_{4}
+\end{bmatrix}
+\end{align*}
+ where
+\begin{align*}
+R_{i}=\sigma^{2}\begin{bmatrix}1 & e^{-|t_{1}^{i}-t_{2}^{i}|/\tau} & e^{-|t_{1}^{i}-t_{3}^{i}|/\tau} & \ldots & e^{-|t_{1}^{i}-t_{f-1}^{i}|/\tau} & e^{-|t_{1}^{1}-t_{f}^{i}|/\tau}\\
+\vdots & 1 & e^{-|t_{2}^{i}-t_{3}^{i}|/\tau} & \ldots & e^{-|t_{2}^{i}-t_{f-1}^{i}|/\tau} & e^{-|t_{2}^{i}-t_{f}^{i}|/\tau}\\
+\\
+\vdots &  & \ddots &  &  & \vdots\\
+\\
+ & \text{symm} &  &  & 1 & e^{-|t_{f-1}^{i}-t_{f}^{i}|/\tau}\\
+\\
+ &  & \ldots &  &  & 1
+\end{bmatrix}
+\end{align*}
+ Because of the very specific form of our covariance matrix (block-diagonal),
+we can simplify the expression for the likelihood as follows
+\begin{align*}
+ & \pi(h_{ode}=h_{d}\,|\,\alpha,\sigma,C_{d})=\ldots\\
+ & \frac{1}{\sqrt{(2\pi)^{n}\prod_{i=1}^{4}|R_{i}|}}\exp\left\{ -\frac{1}{2}\sum_{i=1}^{4}\left(h_{d}-h^{\text{ode}}-\mu\right)_{i}^{T}\cdotp R_{i}^{-1}\cdotp\left(h_{d}-h^{\text{ode}}-\mu\right)_{i}\right\} ,
+\end{align*}
+ where
+\begin{align*}
+\left(h_{d}-h^{\text{ode}}-\mu\right)_{i}
+\end{align*}
+ corresponds to the data, computed results and mean for the $i^{\text{th}}$
+experiment. This formulation clarifies the fact that we work experiment
+per experiment as each experiment is independent from the others.
+
+
 \section{Independent Samples}
 
+Generate samples of the joint posterior distribution of the calibration
+parameters for use in performing the validation calculations. Instead
+of using every sample in the MCMC chain, you may want to take every
+$n^{th}$ sample in the chain, so the samples will be closer to independent.
+Again be sure to document what you do. You will need enough nearly
+independent samples to accurately perform the Monte Carlo integrals
+in (3).
+
+
+\subsubsection*{Solution}
+
+We created samples of the joint posterior distribution for $C_{d},\sigma$
+and $\alpha$ using MCMC. The correlation between the samples were
+measured using the program `Autoregressive process modeling tools'
+(https://github.com/RhysU/ar). Table \ref{table:creatingindesamples}
+shows the number of steps for each of the parameters required so that
+the samples are independent (correlation fall below a specified value).
+$C_{d}$ has by far the longest correlation between steps, more than
+30 chain steps before decorrelation. We generated a set of samples
+300,000 long, and downsampled to 10000 uncorrelated samples for the
+integrals.
+
+\begin{table}
+\begin{centering}
+\begin{tabular}{|c|c|}
+\hline
+Parameter & Chain steps to decorrelation\tabularnewline
+\hline
+\hline
+$C_{d}$ & 30.533078\tabularnewline
+\hline
+$\sigma$ & 12.089690\tabularnewline
+\hline
+$\alpha$ & 11.870957\tabularnewline
+\hline
+\end{tabular}
+\par\end{centering}
+
+\caption{Creating independent samples.}
+
+
+\label{table:creatingindesamples}
+\end{table}
+
+
+
 \section{Posterior of the observations}
-In the general case, the posterior distribution of the observations~$y$ can be marginalized over the parameters~$\theta$ and the true value of the observed quantity~$\tilde{y}$,
-\begin{align*}
-p( y | D, X)  = \int_{\tilde{y}} \int_\theta p(y, \tilde{y}, \theta | D, X) \, d\theta d\tilde{y} .
-\end{align*}
-We can then apply Bayes' theorem twice to get 
-\begin{align*}
-p( y | D, X) & = \int_{\tilde{y}} \int_\theta p(y | \tilde{y}, \theta , D, X) p(\tilde{y}, \theta | D, X) \, d\theta d\tilde{y}  \\
- & = \int_{\tilde{y}} \int_\theta p(y | \tilde{y}, \theta , D, X) p(\tilde{y} | \theta , D, X) p(\theta | D, X) \, d\theta d\tilde{y} .
-\end{align*}
-We can now simplify this expression a bit more by noticing that the first two conditional probability density functions~(pdf) do not depend on the observed quantities~$D$.
-We end up with the expression found in the problem statement
-\begin{equation} \label{eq:postobsfull}
- p( y | D, X)  = \int_{\tilde{y}} \int_\theta p(y | \tilde{y}, \theta , X) p(\tilde{y} | \theta , X) p(\theta | D, X) \, d\theta d\tilde{y} . 
-\end{equation}
-In this exercise, we did not assume any model inadequacy.
-Therefore, the second pdf inside the integral is simply given by the deterministic physical model, i.e.
-\[ p( \tilde{y} | \theta, X) = \delta(\tilde{y} - Y(\theta)) , \]
-where $Y$ is the deterministic physical model.
-Then expression~\ref{eq:postobsfull} simplifies more to
-\begin{equation} \label{eq:postobs}
- p( y | D, X)  = \int_{\theta} p(y | Y(\theta), \theta , X) p(\theta | D, X) \, d\theta ,
-\end{equation}
-where $p(y | Y(\theta), \theta , X)$ is the observational model and $p(\theta | D, X)$ is the posterior distribution coming from the calibration.
 
-Applying a Monte-Carlo approximation we evaluate integral~(\ref{eq:postobs}) thanks to the samples drawn in question~2. This gives
-\begin{equation} \label{eq:postobsmc} 
-p(y | D, X) \approx \frac1N \sum_{i=1}^N p(y | Y(\theta_i), \theta_i, X ) . 
+Recall that the posterior distribution of an observation $y$, including
+the uncertainty in the observation measurement is given by:
+
+\begin{equation}
+p\left(y|D,X\right)=\int_{\tilde{y}}\int_{\theta}p\left(y|\tilde{y},\theta,X\right)p\left(\tilde{y}|\theta,X\right)p\left(\theta|D,X\right)d\theta d\tilde{y}
 \end{equation}
-The variable~$y$ represents the observation and could be as such understood as a vector of all the observations made. 
-However multi-dimensional model validation is cumbersome and instead we'll treat each observation separately.
-For each ball, we had the results from two experiments. Let's number these experiments and call the observations $y^1(t), y^2(t), y^3(t), y^4(t)$.
-In each experiment, the ball position was only recorded at a discrete number of times, we in fact we are dealing with the data
-\[ y^1(t^1_1), y^1(t^1_2), \ldots, y^1(t^1_{N_1}), y^2(t^2_1), \ldots, y^2(t^2_{N_2}), \ldots, y^4(t^4_{N_4}) . \]
-And therefore for any $i = 1, \ldots, 4$ and $j = 1, \ldots , N_i$, let $y^{i,j} := y^i(t^i_j)$.
-We then want to evaluate
-\[ p(y^{i,j} | D, X) \approx \frac1N \sum_{s=1}^N p(y^{i,j} | Y(\theta_s), \theta_s, X ) . \]
-We are going to evaluate that sum on a grid.
-For storage efficiency, each observation will have its own grid centered around a reasonable value (to be defined later).
-The grid is then defined as
-\[ y^{i,j}_k= y^{i,j}_c + k \Delta y, \quad \forall k \in \{ -m^{i,j}, m^{i,j} \} . \]
-For a given $i = 1, \ldots, 4$ and $j = 1, \ldots, N_i$, we are going to store the values of
-\[ \frac1N \sum_{s=1}^N p(y^i(t^i_j) = y^{i,j}_k | Y(\theta_s), \theta_s, X ), \quad \forall k \in \{-m^{i,j}, m^{i,j}\} . \]
-We can now write down explicitly the formula for that quantity.
-In the group project~\#2, we defined the measurement error as a multivariate Gaussian with mean and covariance depending on the calibration parameters~$\alpha$ and $\sigma$.
-But here we only care about the marginalized distribution of a single observation.
-Fortunately, marginalized distributions of Gaussian are also Gaussian with mean and covariance being given by the restriction of the multivariate mean and covariance to the variables of interest.
-In our case, we end up with a Gaussian of mean $\alpha t^i_j$ and covariance $\sigma^2$.
-Let's call $y^{i,j}_c$ the computed solution of the ball drop without noise.
-We can therefore write
-\[ y^{i,j} = y^{i,j}_c + \varepsilon , \]
-with $\varepsilon \sim \mathcal{N}(\alpha t^i_j, \sigma^2)$.
+
+
+where $\tilde{y}$ is the unknown true value of the observable, and
+$\theta$ is the vector of parameters. The conditional probabilities
+in the integrand are:
+\begin{itemize}
+\item $p\left(y|\tilde{y},\theta,X\right)$ -- the probabilistic representation
+of measurement error. It is conditioned on because of the calibration
+parameters in the error model.
+\item $p\left(\tilde{y}|\theta,X\right)$ -- this is the physical model,
+which in our case is deterministic. Therefore, $p\left(\tilde{y}|\theta,X\right)=\delta\left(\tilde{y}-Y\left(\theta\right)\right)$
+, where $Y\left(\theta\right)$ is the model predicted value of $\tilde{y}$
+for given parameters , and $\delta\left(\right)$ is the Dirac delta
+function. You made use of this fact when formulating the likelihood.
+\item $p\left(\theta|D,X\right)$ is the posterior distribution of the parameters
+obtained from the Bayesian calibration.
+\end{itemize}
+Because the model is deterministic, the $\tilde{y}$ integral can
+be done trivially, further the samples of the parameters obtained
+from the MCMC algorithm are samples from the posterior distribution
+$p\left(\theta|D,X\right)$, so the $\theta$ integral can be performed
+using a Monte Carlo method to obtain the approximation:
+
+\begin{equation}
+p\left(y|D,X\right)=\int_{\theta}p\left(y|Y\left(\theta\right),\theta,X\right)p\left(\theta|D,X\right)d\theta\approx\frac{1}{N}\sum_{j=1}^{N}p\left(y|Y\left(\theta_{j}\right),\theta_{j},X\right)
+\end{equation}
+
+
+where $\theta_{j}$ is the $j^{th}$ sample of $\theta$. Use this
+Monte Carlo approximation, the samples from (2) and the measurement
+error model developed for problem 2 to compute the posterior distribution
+$p\left(y|D,X\right)$ for each observation of both balls considered
+in problem 2. \textbf{Hint}: You can define a grid in $y$, with grid
+points $y_{i}$ and evaluate the sum above for each $y_{i}$ . Be
+sure to choose the grid spacing in $y$ to be fine enough to accurately
+represent the distribution.
+
+
+\subsubsection*{Solution}
+
+In the general case, the posterior distribution of the observations~$y$
+can be marginalized over the parameters~$\theta$ and the true value
+of the observed quantity~$\tilde{y}$,
+\begin{align*}
+p(y|D,X)=\int_{\tilde{y}}\int_{\theta}p(y,\tilde{y},\theta|D,X)\, d\theta d\tilde{y}.
+\end{align*}
+ We can then apply Bayes' theorem twice to get
+\begin{align*}
+p(y|D,X) & =\int_{\tilde{y}}\int_{\theta}p(y|\tilde{y},\theta,D,X)p(\tilde{y},\theta|D,X)\, d\theta d\tilde{y}\\
+ & =\int_{\tilde{y}}\int_{\theta}p(y|\tilde{y},\theta,D,X)p(\tilde{y}|\theta,D,X)p(\theta|D,X)\, d\theta d\tilde{y}.
+\end{align*}
+ We can now simplify this expression a bit more by noticing that the
+first two conditional probability density functions~(pdf) do not
+depend on the observed quantities~$D$. We end up with the expression
+found in the problem statement
+\begin{equation}
+p(y|D,X)=\int_{\tilde{y}}\int_{\theta}p(y|\tilde{y},\theta,X)p(\tilde{y}|\theta,X)p(\theta|D,X)\, d\theta d\tilde{y}.\label{eq:postobsfull}
+\end{equation}
+ In this exercise, we did not assume any model inadequacy. Therefore,
+the second pdf inside the integral is simply given by the deterministic
+physical model, i.e.
+\[
+p(\tilde{y}|\theta,X)=\delta(\tilde{y}-Y(\theta)),
+\]
+ where $Y$ is the deterministic physical model. Then expression~\ref{eq:postobsfull}
+simplifies more to
+\begin{equation}
+p(y|D,X)=\int_{\theta}p(y|Y(\theta),\theta,X)p(\theta|D,X)\, d\theta,\label{eq:postobs}
+\end{equation}
+ where $p(y|Y(\theta),\theta,X)$ is the observational model and $p(\theta|D,X)$
+is the posterior distribution coming from the calibration.
+
+Applying a Monte-Carlo approximation we evaluate integral~(\ref{eq:postobs})
+thanks to the samples drawn in question~2. This gives
+\begin{equation}
+p(y|D,X)\approx\frac{1}{N}\sum_{i=1}^{N}p(y|Y(\theta_{i}),\theta_{i},X).\label{eq:postobsmc}
+\end{equation}
+ The variable~$y$ represents the observation and could be as such
+understood as a vector of all the observations made. However multi-dimensional
+model validation is cumbersome and instead we'll treat each observation
+separately. For each ball, we had the results from two experiments.
+Let's number these experiments and call the observations $y^{1}(t),y^{2}(t),y^{3}(t),y^{4}(t)$.
+In each experiment, the ball position was only recorded at a discrete
+number of times, we in fact we are dealing with the data
+\[
+y^{1}(t_{1}^{1}),y^{1}(t_{2}^{1}),\ldots,y^{1}(t_{N_{1}}^{1}),y^{2}(t_{1}^{2}),\ldots,y^{2}(t_{N_{2}}^{2}),\ldots,y^{4}(t_{N_{4}}^{4}).
+\]
+ And therefore for any $i=1,\ldots,4$ and $j=1,\ldots,N_{i}$, let
+$y^{i,j}:=y^{i}(t_{j}^{i})$. We then want to evaluate
+\[
+p(y^{i,j}|D,X)\approx\frac{1}{N}\sum_{s=1}^{N}p(y^{i,j}|Y(\theta_{s}),\theta_{s},X).
+\]
+ We are going to evaluate that sum on a grid. For storage efficiency,
+each observation will have its own grid centered around a reasonable
+value (to be defined later). The grid is then defined as
+\[
+y_{k}^{i,j}=y_{c}^{i,j}+k\Delta y,\quad\forall k\in\{-m^{i,j},m^{i,j}\}.
+\]
+ For a given $i=1,\ldots,4$ and $j=1,\ldots,N_{i}$, we are going
+to store the values of
+\[
+\frac{1}{N}\sum_{s=1}^{N}p(y^{i}(t_{j}^{i})=y_{k}^{i,j}|Y(\theta_{s}),\theta_{s},X),\quad\forall k\in\{-m^{i,j},m^{i,j}\}.
+\]
+ We can now write down explicitly the formula for that quantity. In
+the group project~\#2, we defined the measurement error as a multivariate
+Gaussian with mean and covariance depending on the calibration parameters~$\alpha$
+and $\sigma$. But here we only care about the marginalized distribution
+of a single observation. Fortunately, marginalized distributions of
+Gaussian are also Gaussian with mean and covariance being given by
+the restriction of the multivariate mean and covariance to the variables
+of interest. In our case, we end up with a Gaussian of mean $\alpha t_{j}^{i}$
+and covariance $\sigma^{2}$. Let's call $y_{c}^{i,j}$ the computed
+solution of the ball drop without noise. We can therefore write
+\[
+y^{i,j}=y_{c}^{i,j}+\varepsilon,
+\]
+ with $\varepsilon\sim\mathcal{N}(\alpha t_{j}^{i},\sigma^{2})$.
 Then we store at each grid point
-\[ \frac1N \frac1{\sqrt{2\pi} \sigma} \sum_{s=1}^N  e^{-(y^{i,j}_k - y^{i,j}_c - \alpha t^i_j)^2/2\sigma^2}  , \quad \forall k \in \{-m^{i,j}, m^{i,j}\} . \]
+\[
+\frac{1}{N}\frac{1}{\sqrt{2\pi}\sigma}\sum_{s=1}^{N}e^{-(y_{k}^{i,j}-y_{c}^{i,j}-\alpha t_{j}^{i})^{2}/2\sigma^{2}},\quad\forall k\in\{-m^{i,j},m^{i,j}\}.
+\]
 
 
+
+\section{Credibility}
+
+For each observation, compute the the credibility $1-\beta$, where
+the datum is the maximum or minimum value of a $\beta-$credibility
+set. You may use either an HPD or quantile credibility set. Plot these
+credibility values as a function of time for the four ball drops considered.
+\textbf{Hint}: you can approximate the required integrals using the
+grid of values obtained in 3) and a quadrature rule, such as trapezoidal
+rule.
+
+
+\subsubsection*{Solution}
+
+
+\section{Validation test}
+
+Choose two or more data points for each drop (including those with
+the highest and lowest credibility), and plot the predicted posterior
+distribution of the observation $p\left(y|D,X\right)$ along with
+the value of the actual observation.
+
+
+\subsubsection*{Solution}
+
+
+\section{Consistency of the model}
+
+Given the results of the above validation calculations, is the model
+consistent with the observations for all drops? If not, what might
+be wrong?
+
+
+\subsubsection*{Solution}
 \end{document}
