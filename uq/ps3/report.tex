@@ -58,13 +58,26 @@ However multi-dimensional model validation is cumbersome and instead we'll treat
 For each ball, we had the results from two experiments. Let's number these experiments and call the observations $y^1(t), y^2(t), y^3(t), y^4(t)$.
 In each experiment, the ball position was only recorded at a discrete number of times, we in fact we are dealing with the data
 \[ y^1(t^1_1), y^1(t^1_2), \ldots, y^1(t^1_{N_1}), y^2(t^2_1), \ldots, y^2(t^2_{N_2}), \ldots, y^4(t^4_{N_4}) . \]
-And therefore for any $i = 1, \ldots, 4$ and $j = 1, \ldots , N_i$, we want to evaluate
-\[ p(y^i(t^i_j) | D, X) \approx \frac1N \sum_{s=1}^N p(y^i(t^i_j) | Y(\theta_s), \theta_s, X ) . \]
-Because we do not know the probabilities analytically, we are going to evaluate that sum on a grid.
+And therefore for any $i = 1, \ldots, 4$ and $j = 1, \ldots , N_i$, let $y^{i,j} := y^i(t^i_j)$.
+We then want to evaluate
+\[ p(y^{i,j} | D, X) \approx \frac1N \sum_{s=1}^N p(y^{i,j} | Y(\theta_s), \theta_s, X ) . \]
+We are going to evaluate that sum on a grid.
 For storage efficiency, each observation will have its own grid centered around a reasonable value (to be defined later).
 The grid is then defined as
 \[ y^{i,j}_k= y^{i,j}_c + k \Delta y, \quad \forall k \in \{ -m^{i,j}, m^{i,j} \} . \]
 For a given $i = 1, \ldots, 4$ and $j = 1, \ldots, N_i$, we are going to store the values of
 \[ \frac1N \sum_{s=1}^N p(y^i(t^i_j) = y^{i,j}_k | Y(\theta_s), \theta_s, X ), \quad \forall k \in \{-m^{i,j}, m^{i,j}\} . \]
+We can now write down explicitly the formula for that quantity.
+In the group project~\#2, we defined the measurement error as a multivariate Gaussian with mean and covariance depending on the calibration parameters~$\alpha$ and $\sigma$.
+But here we only care about the marginalized distribution of a single observation.
+Fortunately, marginalized distributions of Gaussian are also Gaussian with mean and covariance being given by the restriction of the multivariate mean and covariance to the variables of interest.
+In our case, we end up with a Gaussian of mean $\alpha t^i_j$ and covariance $\sigma^2$.
+Let's call $y^{i,j}_c$ the computed solution of the ball drop without noise.
+We can therefore write
+\[ y^{i,j} = y^{i,j}_c + \varepsilon , \]
+with $\varepsilon \sim \mathcal{N}(\alpha t^i_j, \sigma^2)$.
+Then we store at each grid point
+\[ \frac1N \frac1{\sqrt{2\pi} \sigma} \sum_{s=1}^N  e^{-(y^{i,j}_k - y^{i,j}_c - \alpha t^i_j)^2/2\sigma^2}  , \quad \forall k \in \{-m^{i,j}, m^{i,j}\} . \]
+
 
 \end{document}
