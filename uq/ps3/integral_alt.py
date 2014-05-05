@@ -54,12 +54,18 @@ def integral(times, YP, coeff_b):
 		INTEGRAL.append(0.*yp)
 
 	# Go over our MCMC samples
+	g = 9.81334 
 	samples = 1000
 	for j in xrange(samples):
 		MU = drag_eqn(times, g, coeff_b*drag[j])[0] + alpha[j]*times
 		for yp, integral, mu in zip(YP, INTEGRAL, MU):
 			tmp_int = scipy.stats.norm(mu, sigma[j]).pdf(yp)
-			integral += tmp_int / simps(tmp_int, yp)
+			normfact = simps(tmp_int, yp)
+			if normfact < 0.9:
+				print j, mu, tmp_int
+			assert normfact > 0.9, \
+			'interval: Truncated too much; normfact = ' + str(normfact)
+			integral += tmp_int / normfact
 
 	for integral in INTEGRAL:
 		integral /= samples

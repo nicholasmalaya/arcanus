@@ -7,7 +7,7 @@ from scipy.integrate import simps
 
 from read_data import read_data
 from hpd import hpd, plotpdfandobs
-from integral import integral
+from integral_alt import integral
 
 
 ###############################################################################
@@ -20,27 +20,37 @@ DataFolder = 'data/'
 DataFiles = [DataFolder + name for name in DataFilesNames]
 
 # Read all data points (+ clean-up suspicious ones)
-allt, allh = [], []
-for datafile in DataFiles:
-	t, h = read_data(datafile)
-	# remove last data points:
-	allt.append(t[:-1])
-	allh.append(h[:-1])
+Dx = 5.0
+gridpts = 1000
 
+allt, allh, allYP = [], [], []
+for datafile in DataFiles:
+	YP = []
+	t, h = read_data(datafile)
+	t = np.array(t[:-1])/600.
+	h = h[:-1]
+	# Assemble YP:
+	for hh in h:
+		YP.append(np.linspace(hh-Dx, hh+Dx, gridpts))
+	# remove last data points:
+	allt.append(t)
+	allh.append(h)
+	allYP.append(YP)
 
 ###############################################################################
 # Compute posterior of observations at all points
 
-samples = 100
-yp, integrall = [], []
-for tt in allt:
-	yp_loc, int_loc = [], []
-	for mytime in tt:
-		my_yp, my_integral = integral(mytime) 
-		yp_loc.append(my_yp)
-		int_loc.append(my_integral)
-	yp.append(yp_loc)
-	integrall.append(int_loc)
+rho = 1.4
+rb = 0.1166
+rbb = 0.1066
+Mb = 2.296
+Mbb = 0.4548
+
+coeff_b = (rho*4*np.pi*rb**2.0)/(2.0*Mb)
+coeff_bb = (rho*4*np.pi*rbb**2.0)/(2.0*Mbb)        
+
+for times, YP in zip(allt, allYP):
+	INTEGRAL = integral(times, YP, coeff_b)
 
 # Final product should be
 # yp, integrall
@@ -67,7 +77,7 @@ for tt in allt:
 # Compute credibility intervals for each experiment:
 
 beta = []
-for x_L, pdf_L, obs_L in zip(yp, integrall, allh):
+for x_L, pdf_L, obs_L in zip(allYP, INTEGRAL, allh):
 	beta_loc = []
 	for x, pdf, obs in zip(x_L, pdf_L, obs_L):
 		beta_loc.append( hpd(x, pdf, obs) )
