@@ -88,7 +88,7 @@ def integral(time,ymin=-1.0,ymax=35.0,spacing=0.1,samples=100):
         #
         # normalize
         #
-        integral /= len(drag)
+        integral[i] /= len(drag)
     
         #
         # print
@@ -116,6 +116,7 @@ spacing=0.1
 samples=100
 ypp, integralll = integral(time,ymin,ymax,spacing,samples)
 pyplot.plot(ypp, integralll, linewidth=3, label="Pdf")
+pyplot.show()
 pyplot.savefig('distr.pdf', bbox_inches='tight')
 
 #
