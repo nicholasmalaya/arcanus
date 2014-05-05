@@ -37,7 +37,7 @@ yp, integrall = [], []
 for tt in allt:
 	yp_loc, int_loc = [], []
 	for mytime in tt:
-		my_yp, my_integral = integral(time) 
+		my_yp, my_integral = integral(mytime) 
 		yp_loc.append(my_yp)
 		int_loc.append(my_integral)
 	yp.append(yp_loc)
@@ -65,7 +65,7 @@ for tt in allt:
 
 
 ###############################################################################
-# Compute credibility intervals for each experiments:
+# Compute credibility intervals for each experiment:
 
 beta = []
 for x_L, pdf_L, obs_L in zip(yp, integrall, allh):
@@ -78,7 +78,7 @@ for x_L, pdf_L, obs_L in zip(yp, integrall, allh):
 ###############################################################################
 # Plot posterior for obs along with obs for a few cases
 # and save it to a file
-Obs_ind = [5, 20, 35]
+Obs_ind = [5, 20, 34]
 for beta_loc, filename, x_L, pdf_L, obs_L in zip(beta, DataFilesNames, yp, integrall, allh):
 	justnameoffile, extension = os.path.splitext(filename)
 
