@@ -27,7 +27,7 @@ def drag_eqn(times,g,r):
     h = odeint(deriv,hinit,times, args = (param,))
     return h[:,0], h[:,1]
 
-def integral(time):
+def integral(time,ymin=-1.0,ymax=35.0,spacing=1.0):
     """Returns arrays of h (height) and p (probability)"""
     
     #
@@ -51,9 +51,6 @@ def integral(time):
     tmax = 3.0
     tspacing = 40/600.
 
-    ymin = 0.0
-    ymax = 35.8
-    spacing = 0.1
     yp    = np.arange(ymin,ymax,spacing)
     pr       = np.zeros(len(yp))
     integral = np.zeros(len(yp))
@@ -107,7 +104,10 @@ if __name__ != '__main__': raise SystemExit, 0
 # test
 #
 time = 1.0
-integral(time)
+ymin=-1.0
+ymax=10.0
+spacing=1.0
+integral(time,ymin,ymax,spacing)
 
 #
 # nick
