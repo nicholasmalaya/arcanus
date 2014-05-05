@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #
 #
-
+import sys
 #
 # Use scipy to integrate:
 # 
@@ -27,9 +27,13 @@ def drag_eqn(times,g,r):
     h = odeint(deriv,hinit,times, args = (param,))
     return h[:,0], h[:,1]
 
-def integral(time,ymin=-1.0,ymax=35.0,spacing=1.0):
+def integral(time,ymin=-1.0,ymax=35.0,spacing=0.1,samples=10000):
     """Returns arrays of h (height) and p (probability)"""
     
+    if(samples > 10000):
+        print "paradox! we dont have that many samples!"
+        sys.exit(1)
+
     #
     # load data into arrays
     #
@@ -77,7 +81,7 @@ def integral(time,ymin=-1.0,ymax=35.0,spacing=1.0):
         #
         # iterate over mcmc chain
         #
-        for j in xrange(len(drag)):
+        for j in xrange(samples):
             mu = drag_eqn([t],g,coef_b*drag[i])[0]+alpha[j]*t
             integral[i] += scipy.stats.norm(mu, sigma[j]).pdf(yp[i])[0]
 
@@ -98,6 +102,8 @@ def integral(time,ymin=-1.0,ymax=35.0,spacing=1.0):
 # -------------------------------------------------------------
 #
 # Stop module loading when imported.  Otherwise continue running.
+from matplotlib import pyplot
+
 if __name__ != '__main__': raise SystemExit, 0
 
 #
@@ -106,8 +112,11 @@ if __name__ != '__main__': raise SystemExit, 0
 time = 1.0
 ymin=-1.0
 ymax=10.0
-spacing=1.0
-integral(time,ymin,ymax,spacing)
+spacing=0.1
+samples=1000
+yp, integral = integral(time,ymin,ymax,spacing,samples)
+pyplot.plot(yp, integral, linewidth=3, label="Pdf")
+pyplot.savefig('distr.pdf', bbox_inches='tight')
 
 #
 # nick
