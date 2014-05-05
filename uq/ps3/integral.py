@@ -28,6 +28,12 @@ def deriv(h,t,param):
 # Stop module loading when imported.  Otherwise continue running.
 if __name__ != '__main__': raise SystemExit, 0
 
+#
+# load data into arrays
+#
+sigma = [line.strip() for line in open('data/sigma_ds.dat')]
+alpha = [line.strip() for line in open('data/sigma_ds.dat')]
+drag  = [line.strip() for line in open('data/sigma_ds.dat')]
 
 #
 # choose yp grid (positions of observations)
@@ -44,10 +50,10 @@ mu    = 0.0
 sigma = 1.0
 
 for i in yp:
+
     # mu is the data
     # sigma is less clear: 
     scipy.stats.norm(mu, sigma).pdf(i)
-
 
 #
 # nick
