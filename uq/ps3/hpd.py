@@ -31,13 +31,17 @@ def hpd(x, pdf, obs):
 	return beta
 
 
-def plotpdfandobs(x, pdf, obs, filename=None):
+def plotpdfandobs(x, pdf, obs, filename=None, beta=[]):
 	""" Plot pdf along with the given observation """
 
 	maxval = round(max(pdf)*10.+1)/10.
 	plt.figure()
 	plt.plot(x, pdf, 'b', label='pdf')
 	plt.plot([obs, obs], [0.0, maxval], 'k--', label='obs')
+	if beta: 
+		xt = x[len(x)/6]
+		yt = 8.*maxval/10.
+		plt.text(xt, yt, 'beta = ' + str(beta))
 	plt.legend()
 	if filename == None:	plt.show()
 	else:	plt.savefig(filename + '.eps', format='eps', dpi=300)
@@ -55,7 +59,7 @@ if __name__ == '__main__':
 	pdf = pdf / simps(pdf, x)
 #	print pdf
 	obs = 0.2
-	plotpdfandobs(x, pdf, obs, 'test')
 
 	beta = hpd(x, pdf, obs) 
+	plotpdfandobs(x, pdf, obs, 'test', beta)
 	print beta
