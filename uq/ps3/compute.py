@@ -7,8 +7,7 @@ from scipy.integrate import simps
 
 from read_data import read_data
 from hpd import hpd, plotpdfandobs
-#from integral import integral
-from integral import *
+from integral import integral
 
 
 ###############################################################################
