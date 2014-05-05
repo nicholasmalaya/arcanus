@@ -82,7 +82,7 @@ def integral(time,ymin=-1.0,ymax=35.0,spacing=0.1,samples=100):
         # iterate over mcmc chain
         #
         for j in xrange(samples):
-            mu = drag_eqn([t],g,coef_b*drag[j])[0]+alpha[j]*t
+            mu = drag_eqn([t],g,coef_b*drag[j])[1]+alpha[j]*t
             integral[i] += scipy.stats.norm(mu, sigma[j]).pdf(yp[i])[0]
 
         #
@@ -108,7 +108,7 @@ if __name__ == '__main__':
     #
     # test
     #
-    time = 5.0
+    time = 10.0
     ymin=-1.0
     ymax=10.0
     spacing=0.1
