@@ -27,7 +27,7 @@ def drag_eqn(times,g,r):
     h = odeint(deriv,hinit,times, args = (param,))
     return h[:,0], h[:,1]
 
-def integral(time,ymin=-1.0,ymax=35.0,spacing=0.1,samples=10000):
+def integral(time,ymin=-1.0,ymax=35.0,spacing=0.1,samples=100):
     """Returns arrays of h (height) and p (probability)"""
     
     if(samples > 10000):
@@ -93,7 +93,7 @@ def integral(time,ymin=-1.0,ymax=35.0,spacing=0.1,samples=10000):
         #
         # print
         #
-        # print yp[i], integral[i]
+        #print yp, integral
 
     return yp, integral
 
@@ -104,18 +104,18 @@ def integral(time,ymin=-1.0,ymax=35.0,spacing=0.1,samples=10000):
 # Stop module loading when imported.  Otherwise continue running.
 from matplotlib import pyplot
 
-if __name__ != '__main__': raise SystemExit, 0
+#if __name__ != '__main__': raise SystemExit, 0
 
 #
 # test
 #
-time = 1.0
+time = 0.0
 ymin=-1.0
 ymax=10.0
 spacing=0.1
-samples=1000
-yp, integral = integral(time,ymin,ymax,spacing,samples)
-pyplot.plot(yp, integral, linewidth=3, label="Pdf")
+samples=100
+ypp, integralll = integral(time,ymin,ymax,spacing,samples)
+pyplot.plot(ypp, integralll, linewidth=3, label="Pdf")
 pyplot.savefig('distr.pdf', bbox_inches='tight')
 
 #
