@@ -104,20 +104,19 @@ def integral(time,ymin=-1.0,ymax=35.0,spacing=0.1,samples=100):
 # Stop module loading when imported.  Otherwise continue running.
 from matplotlib import pyplot
 
-#if __name__ != '__main__': raise SystemExit, 0
-
-#
-# test
-#
-time = 0.0
-ymin=-1.0
-ymax=10.0
-spacing=0.1
-samples=100
-ypp, integralll = integral(time,ymin,ymax,spacing,samples)
-pyplot.plot(ypp, integralll, linewidth=3, label="Pdf")
-pyplot.show()
-pyplot.savefig('distr.pdf', bbox_inches='tight')
+if __name__ == '__main__':
+    #
+    # test
+    #
+    time = 5.0
+    ymin=-1.0
+    ymax=10.0
+    spacing=0.1
+    samples=100
+    ypp, integralll = integral(time,ymin,ymax,spacing,samples)
+    pyplot.plot(ypp, integralll, linewidth=3, label="Pdf")
+    pyplot.show()
+    pyplot.savefig('distr.pdf', bbox_inches='tight')
 
 #
 # nick
