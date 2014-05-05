@@ -27,6 +27,75 @@ def drag_eqn(times,g,r):
     h = odeint(deriv,hinit,times, args = (param,))
     return h[:,0], h[:,1]
 
+def integral(time):
+    """Returns arrays of h (height) and p (probability)"""
+    
+    #
+    # load data into arrays
+    #
+    sigmas = [line.strip() for line in open('data/sigma_ds.dat')]
+    alphas = [line.strip() for line in open('data/sigma_ds.dat')]
+    drags  = [line.strip() for line in open('data/sigma_ds.dat')]
+    
+    #
+    # convert to floats
+    #
+    sigma = map(float, sigmas)
+    alpha = map(float, alphas)
+    drag  = map(float, drags)
+
+    #
+    # params
+    #
+    tmin = 0.0
+    tmax = 3.0
+    tspacing = 40/600.
+
+    ymin = 0.0
+    ymax = 35.8
+    spacing = 0.1
+    yp    = np.arange(ymin,ymax,spacing)
+    pr       = np.zeros(len(yp))
+    integral = np.zeros(len(yp))
+    
+    #
+    # given a time (seconds)
+    #
+    t = time
+    g = 9.81334 
+    rho=1.4
+    rb =0.1166
+    rbb=0.1066
+    Mb =2.296
+    Mbb=0.4548
+
+    coef_b  = (rho*4*np.pi*rb**2.0)/(2.0*Mb)
+    coef_bb = (rho*4*np.pi*rbb**2.0)/(2.0*Mbb)        
+
+    #
+    # iterate over position
+    #    
+    for i in xrange(len(yp)):
+        
+        #
+        # iterate over mcmc chain
+        #
+        for j in xrange(len(drag)):
+            mu = drag_eqn([t],g,coef_b*drag[i])[0]+alpha[j]*t
+            integral[i] += scipy.stats.norm(mu, sigma[j]).pdf(yp[i])[0]
+
+        #
+        # normalize
+        #
+        integral /= len(drag)
+    
+        #
+        # print
+        #
+        # print yp[i], integral[i]
+
+    return yp, integral
+
 # -------------------------------------------------------------
 # Main Function
 # -------------------------------------------------------------
@@ -35,71 +104,10 @@ def drag_eqn(times,g,r):
 if __name__ != '__main__': raise SystemExit, 0
 
 #
-# load data into arrays
+# test
 #
-sigmas = [line.strip() for line in open('data/sigma_ds.dat')]
-alphas = [line.strip() for line in open('data/sigma_ds.dat')]
-drags  = [line.strip() for line in open('data/sigma_ds.dat')]
-
-#
-# convert to floats
-#
-sigma = map(float, sigmas)
-alpha = map(float, alphas)
-drag  = map(float, drags)
-
-#
-# params
-#
-tmin = 0.0
-tmax = 3.0
-tspacing = 40/600.
-
-ymin = 0.0
-ymax = 35.8
-spacing = 0.1
-yp    = np.arange(ymin,ymax,spacing)
-times = np.arange(tmin,tmax,tspacing)
-pr       = np.zeros(len(yp))
-integral = np.zeros(len(yp))
-
-#
-# given a time (seconds)
-#
-t = 1.0
-g = 9.81334 
-rho=1.4
-rb =0.1166
-rbb=0.1066
-Mb =2.296
-Mbb=0.4548
-
-coef_b  = (rho*4*np.pi*rb**2.0)/(2.0*Mb)
-coef_bb = (rho*4*np.pi*rbb**2.0)/(2.0*Mbb)
-
-#
-# iterate over position
-#
-
-for i in xrange(len(yp)):
-    
-    #
-    # iterate over mcmc chain
-    #
-    for j in xrange(len(drag)):
-        mu = drag_eqn([t],g,coef_b*drag[i])[0]+alpha[j]*t
-        integral[i] += scipy.stats.norm(mu, sigma[j]).pdf(yp[i])[0]
-
-    #
-    # normalize
-    #
-    integral /= len(drag)
-    
-    #
-    # print
-    #
-    print yp[i], integral[i]
-
+time = 1.0
+integral(time)
 
 #
 # nick
