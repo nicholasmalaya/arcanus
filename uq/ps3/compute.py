@@ -13,14 +13,14 @@ from integral_alt import integral
 ###############################################################################
 # Get data (observations)
 
-#DataFilesNames = ['Basket_Ball_1.dat', 'Basket_Ball_2.dat', 'Bowling_Ball_1.dat', 'Bowling_Ball_2.dat']
-DataFilesNames = ['Basket_Ball_1.dat'] 
+DataFilesNames = ['Basket_Ball_1.dat', 'Basket_Ball_2.dat', 'Bowling_Ball_1.dat', 'Bowling_Ball_2.dat']
+#DataFilesNames = ['Basket_Ball_1.dat'] 
 
 DataFolder = 'data/'
 DataFiles = [DataFolder + name for name in DataFilesNames]
 
 # Read all data points (+ clean-up suspicious ones)
-Dx = 5.0
+Dx = 10.0
 gridpts = 1000
 
 allt, allh, allYP = [], [], []
