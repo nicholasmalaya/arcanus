@@ -664,7 +664,6 @@ Given the results of the above validation calculations, is the model
 consistent with the observations for all drops? If not, what might
 be wrong?
 
-
 \subsubsection*{Solution}
 
 From the above results, the model is clearly not consistent with the
@@ -672,13 +671,21 @@ observations for all ball drops. Rather, the model is accurate for
 a finite time horizon, after which the predictions are no longer accurate.
 Possible reasons for the model failure:
 \begin{enumerate}
-\item The assumptions made in the model may not be accurate.
-\item The fact that the model is credible for first few seconds hints us
-about the domain of validity of the model.
+\item The assumptions made in the model may not be accurate. For
+      instance, the ball may not be starting at rest, but with a
+      non-zero downward velocity. 
+\item The model may be inadequate, without rich enough physics to
+      capture all the significant dynamics. 
 \item The measurement data may not be reliable
 \item The scenario parameters may have been inaccurate: for instance,
       the height of the bridge, or the size of the basketball.
 \end{enumerate}
 
+In addition, we note that the model appears to be systematically
+overestimating the balls drop rate. In other words, it appears as if our
+predictions are consistently projecting the ball to fall farther than it
+actually does. This hints that our drag model may be at fault, because
+it is not reducing the rate at which the ball falls as much as will in
+reality. 
 
 \end{document}
