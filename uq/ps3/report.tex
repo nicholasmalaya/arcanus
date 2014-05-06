@@ -2,8 +2,10 @@
 \usepackage[latin9]{inputenc}
 \usepackage{geometry}
 \geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+\usepackage{float}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{graphicx}
 \usepackage{esint}
 \usepackage[unicode=true,pdfusetitle,
  bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
@@ -16,23 +18,14 @@
 \providecommand{\tabularnewline}{\\}
 
 \@ifundefined{date}{}{\date{}}
-
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage[section]{placeins}
-\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
-\usepackage{listings}
-
-\title{\bf{CSE397: Group Assignment \#3}}
-\author{Benjamin Crestel, Nicholas Malaya, Prabhakar Marepalli, Ajay Vadakkepatt}
-
- %\\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin}
+\usepackage{subfigure}
+\usepackage{cancel}
 
 \makeatother
 
 \begin{document}
 
-\title{Problem \# 3}
+\title{CSE397: Group Assignment \#3}
 
 
 \author{Ben Crestel, Nick Malaya, Prabhakar Marepalli, Ajay Vadakkepatt}
@@ -94,7 +87,7 @@ assume that $\sigma$ is uniformly distributed over the interval $[0,0.2]$~m.
 \subsubsection*{Prior on $C_{d}$, the coefficient of drag}
 
 The coefficient of drag is a non-dimensionalization of the force that
-results from a scaling analysis.
+results from a scaling analysis. 
 \[
 \frac{F_{D}}{\frac{1}{2}\rho V^{2}A}=C_{D}(Re).
 \]
@@ -102,7 +95,7 @@ results from a scaling analysis.
 flow. Let's estimate the Reynolds number to give us a sense of the
 range we believe may be possible in this particular experiment.
 
-The Reynolds number is defined as,
+The Reynolds number is defined as, 
 \[
 Re=\frac{VL}{\nu}
 \]
@@ -125,7 +118,7 @@ our drag coefficient might be as large as 2. Should the sphere be
 smooth, the drag coefficient could be as small as 0.1 at the end.
 We also know that our prior should not be capable of negative values,
 that would be aphysical. For these reasons, we decided to define $C_{d}$
-as
+as 
 \begin{align*}
 C_{d}\sim\mathcal{U}(0,2).
 \end{align*}
@@ -136,13 +129,13 @@ C_{d}\sim\mathcal{U}(0,2).
 
 We will infer (at most) for the following parameters: $\alpha,\sigma,C_{d}$.
 The likelihood gives us the probability that the results from our
-simulation~$h_{ode}$ match the data~$h_{d}$ we have.
+simulation~$h_{ode}$ match the data~$h_{d}$ we have. 
 \[
 \pi\left(h_{ode}=h_{d}\,|\,\alpha,\sigma,C_{d}\right).
 \]
  In the hypothetical case we'd know all parameters exactly ($\alpha,\sigma,C_{d}$),
 the data would be connected to the results of our simulation through
-the following relation
+the following relation 
 \begin{align*}
 h_{d}=\left(h^{\text{ode}}+\varepsilon\right),
 \end{align*}
@@ -153,7 +146,7 @@ are assumed to be sampled when evaluating the likelihood). Calling
 $\mu$ and $R$ the mean and covariance matrix corresponding to the
 right format of $h$ (ie, stacking information from all 4 experiments
 'on top of each other'), we get the following distribution for the
-likelihood,
+likelihood, 
 \begin{align*}
 \pi(h_{ode}=h_{d}\,|\,\alpha,\sigma,C_{d})=\frac{1}{\sqrt{(2\pi)^{n}|R|}}\exp\left\{ -\frac{1}{2}\left(h_{d}-h^{\text{ode}}-\mu\right)^{T}\cdotp R^{-1}\cdotp\left(h_{d}-h^{\text{ode}}-\mu\right)\right\} ,
 \end{align*}
@@ -189,7 +182,7 @@ t_{f}^{4}
 0 & 0 & 0 & R_{4}
 \end{bmatrix}
 \end{align*}
- where
+ where 
 \begin{align*}
 R_{i}=\sigma^{2}\begin{bmatrix}1 & e^{-|t_{1}^{i}-t_{2}^{i}|/\tau} & e^{-|t_{1}^{i}-t_{3}^{i}|/\tau} & \ldots & e^{-|t_{1}^{i}-t_{f-1}^{i}|/\tau} & e^{-|t_{1}^{1}-t_{f}^{i}|/\tau}\\
 \vdots & 1 & e^{-|t_{2}^{i}-t_{3}^{i}|/\tau} & \ldots & e^{-|t_{2}^{i}-t_{f-1}^{i}|/\tau} & e^{-|t_{2}^{i}-t_{f}^{i}|/\tau}\\
@@ -202,18 +195,75 @@ R_{i}=\sigma^{2}\begin{bmatrix}1 & e^{-|t_{1}^{i}-t_{2}^{i}|/\tau} & e^{-|t_{1}^
 \end{bmatrix}
 \end{align*}
  Because of the very specific form of our covariance matrix (block-diagonal),
-we can simplify the expression for the likelihood as follows
+we can simplify the expression for the likelihood as follows 
 \begin{align*}
  & \pi(h_{ode}=h_{d}\,|\,\alpha,\sigma,C_{d})=\ldots\\
  & \frac{1}{\sqrt{(2\pi)^{n}\prod_{i=1}^{4}|R_{i}|}}\exp\left\{ -\frac{1}{2}\sum_{i=1}^{4}\left(h_{d}-h^{\text{ode}}-\mu\right)_{i}^{T}\cdotp R_{i}^{-1}\cdotp\left(h_{d}-h^{\text{ode}}-\mu\right)_{i}\right\} ,
 \end{align*}
- where
+ where 
 \begin{align*}
 \left(h_{d}-h^{\text{ode}}-\mu\right)_{i}
 \end{align*}
  corresponds to the data, computed results and mean for the $i^{\text{th}}$
 experiment. This formulation clarifies the fact that we work experiment
 per experiment as each experiment is independent from the others.
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=8cm]{figs/a_post} 
+\par\end{centering}
+
+\caption{Prior and posterior probability function of parameter $\alpha$. }
+
+
+\label{fig:Uc} 
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=8cm]{figs/s_post} 
+\par\end{centering}
+
+\caption{Prior and posterior probability distribution function of parameter
+$\sigma$.}
+
+
+\label{fig:Uc} 
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=8cm]{figs/C1_post} 
+\par\end{centering}
+
+\caption{Prior and posterior probability function of drag coefficient of bowling
+ball $C_{d}1$. }
+
+
+%Cd1
+
+
+\label{fig:Uc} 
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=8cm]{figs/C2_post} 
+\par\end{centering}
+
+\caption{Prior and posterior probability function of drag coefficient of basket
+ball $C_{d}2$. }
+
+
+%Cd1
+
+
+\label{fig:Uc} 
+\end{figure}
+
 
 
 \section{Independent Samples}
@@ -237,22 +287,22 @@ shows the number of steps for each of the parameters required so that
 the samples are independent (correlation fall below a specified value).
 $C_{d}$ has by far the longest correlation between steps, more than
 30 chain steps before decorrelation. We generated a set of samples
-300,000 long, and downsampled to 10000 uncorrelated samples for the
+30,000 long, and downsampled to 1000 uncorrelated samples for the
 integrals.
 
 \begin{table}
 \begin{centering}
 \begin{tabular}{|c|c|}
-\hline
+\hline 
 Parameter & Chain steps to decorrelation\tabularnewline
-\hline
-\hline
+\hline 
+\hline 
 $C_{d}$ & 30.533078\tabularnewline
-\hline
+\hline 
 $\sigma$ & 12.089690\tabularnewline
-\hline
+\hline 
 $\alpha$ & 11.870957\tabularnewline
-\hline
+\hline 
 \end{tabular}
 \par\end{centering}
 
@@ -314,11 +364,11 @@ represent the distribution.
 
 In the general case, the posterior distribution of the observations~$y$
 can be marginalized over the parameters~$\theta$ and the true value
-of the observed quantity~$\tilde{y}$,
+of the observed quantity~$\tilde{y}$, 
 \begin{align*}
 p(y|D,X)=\int_{\tilde{y}}\int_{\theta}p(y,\tilde{y},\theta|D,X)\, d\theta d\tilde{y}.
 \end{align*}
- We can then apply Bayes' theorem twice to get
+ We can then apply Bayes' theorem twice to get 
 \begin{align*}
 p(y|D,X) & =\int_{\tilde{y}}\int_{\theta}p(y|\tilde{y},\theta,D,X)p(\tilde{y},\theta|D,X)\, d\theta d\tilde{y}\\
  & =\int_{\tilde{y}}\int_{\theta}p(y|\tilde{y},\theta,D,X)p(\tilde{y}|\theta,D,X)p(\theta|D,X)\, d\theta d\tilde{y}.
@@ -326,18 +376,18 @@ p(y|D,X) & =\int_{\tilde{y}}\int_{\theta}p(y|\tilde{y},\theta,D,X)p(\tilde{y},\t
  We can now simplify this expression a bit more by noticing that the
 first two conditional probability density functions~(pdf) do not
 depend on the observed quantities~$D$. We end up with the expression
-found in the problem statement
+found in the problem statement 
 \begin{equation}
 p(y|D,X)=\int_{\tilde{y}}\int_{\theta}p(y|\tilde{y},\theta,X)p(\tilde{y}|\theta,X)p(\theta|D,X)\, d\theta d\tilde{y}.\label{eq:postobsfull}
 \end{equation}
  In this exercise, we did not assume any model inadequacy. Therefore,
 the second pdf inside the integral is simply given by the deterministic
-physical model, i.e.
+physical model, i.e. 
 \[
 p(\tilde{y}|\theta,X)=\delta(\tilde{y}-Y(\theta)),
 \]
  where $Y$ is the deterministic physical model. Then expression~\ref{eq:postobsfull}
-simplifies more to
+simplifies more to 
 \begin{equation}
 p(y|D,X)=\int_{\theta}p(y|Y(\theta),\theta,X)p(\theta|D,X)\, d\theta,\label{eq:postobs}
 \end{equation}
@@ -345,7 +395,7 @@ p(y|D,X)=\int_{\theta}p(y|Y(\theta),\theta,X)p(\theta|D,X)\, d\theta,\label{eq:p
 is the posterior distribution coming from the calibration.
 
 Applying a Monte-Carlo approximation we evaluate integral~(\ref{eq:postobs})
-thanks to the samples drawn in question~2. This gives
+thanks to the samples drawn in question~2. This gives 
 \begin{equation}
 p(y|D,X)\approx\frac{1}{N}\sum_{i=1}^{N}p(y|Y(\theta_{i}),\theta_{i},X).\label{eq:postobsmc}
 \end{equation}
@@ -355,23 +405,23 @@ model validation is cumbersome and instead we'll treat each observation
 separately. For each ball, we had the results from two experiments.
 Let's number these experiments and call the observations $y^{1}(t),y^{2}(t),y^{3}(t),y^{4}(t)$.
 In each experiment, the ball position was only recorded at a discrete
-number of times, we in fact we are dealing with the data
+number of times, we in fact we are dealing with the data 
 \[
 y^{1}(t_{1}^{1}),y^{1}(t_{2}^{1}),\ldots,y^{1}(t_{N_{1}}^{1}),y^{2}(t_{1}^{2}),\ldots,y^{2}(t_{N_{2}}^{2}),\ldots,y^{4}(t_{N_{4}}^{4}).
 \]
  And therefore for any $i=1,\ldots,4$ and $j=1,\ldots,N_{i}$, let
-$y^{i,j}:=y^{i}(t_{j}^{i})$. We then want to evaluate
+$y^{i,j}:=y^{i}(t_{j}^{i})$. We then want to evaluate 
 \[
 p(y^{i,j}|D,X)\approx\frac{1}{N}\sum_{s=1}^{N}p(y^{i,j}|Y(\theta_{s}),\theta_{s},X).
 \]
  We are going to evaluate that sum on a grid. For storage efficiency,
 each observation will have its own grid centered around a reasonable
-value (to be defined later). The grid is then defined as
+value (to be defined later). The grid is then defined as 
 \[
 y_{k}^{i,j}=y_{c}^{i,j}+k\Delta y,\quad\forall k\in\{-m^{i,j},m^{i,j}\}.
 \]
  For a given $i=1,\ldots,4$ and $j=1,\ldots,N_{i}$, we are going
-to store the values of
+to store the values of 
 \[
 \frac{1}{N}\sum_{s=1}^{N}p(y^{i}(t_{j}^{i})=y_{k}^{i,j}|Y(\theta_{s}),\theta_{s},X),\quad\forall k\in\{-m^{i,j},m^{i,j}\}.
 \]
@@ -384,12 +434,12 @@ Gaussian are also Gaussian with mean and covariance being given by
 the restriction of the multivariate mean and covariance to the variables
 of interest. In our case, we end up with a Gaussian of mean $\alpha t_{j}^{i}$
 and covariance $\sigma^{2}$. Let's call $y_{c}^{i,j}$ the computed
-solution of the ball drop without noise. We can therefore write
+solution of the ball drop without noise. We can therefore write 
 \[
 y^{i,j}=y_{c}^{i,j}+\varepsilon,
 \]
  with $\varepsilon\sim\mathcal{N}(\alpha t_{j}^{i},\sigma^{2})$.
-Then we store at each grid point
+Then we store at each grid point 
 \[
 \frac{1}{N}\frac{1}{\sqrt{2\pi}\sigma}\sum_{s=1}^{N}e^{-(y_{k}^{i,j}-y_{c}^{i,j}-\alpha t_{j}^{i})^{2}/2\sigma^{2}},\quad\forall k\in\{-m^{i,j},m^{i,j}\}.
 \]
@@ -409,6 +459,15 @@ rule.
 
 \subsubsection*{Solution}
 
+The credibility of a given distribution is defined as alpha = 1 \textendash{}
+beta, where beta = integral(P(y)dy). In this project, we chose to
+use HPD method to compute the credibility. In the figures below, we
+plot the credibility as a function of time for the 4 sets of measurements
+(2 basket ball and 2 bowling ball). As we can clearly notice from
+the figures, the data seems to be credible (wrt the model) only till
+the first five seconds and then becomes incredible later on. In other
+words, this means the model is invalidated. 
+
 
 \section{Validation test}
 
@@ -420,6 +479,130 @@ the value of the actual observation.
 
 \subsubsection*{Solution}
 
+The plots below show the best and the worst credibility intervals
+along with credibility at few other time steps. The cases where $\beta$
+falls within distribution say that the model is plausible \textendash{}
+i.e. the model prediction is not inconsistent with the data. For the
+values far outside the distribution, the model prediction is largely
+implausible. This is like an invalidation event.
+
+
+\subsection{Ball drop - 1 (Basket Ball) }
+
+\begin{figure}[H]
+\begin{centering}
+\subfigure[]{\includegraphics[width=6cm]{figs/Basket_Ball_1_5}}\,\,\,\subfigure[]{\includegraphics[width=6cm]{figs/Basket_Ball_1_20}}\,\,\,\subfigure[]{\includegraphics[width=6cm]{figs/Basket_Ball_1_35}}
+\par\end{centering}
+
+\caption{Predicted posterior distribution at time (a) $t=5$ (b) $t=20$ and
+(c) $t=35$ secs vs the actual observation}
+
+
+\label{balldrop1t5}
+
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{centering}
+\subfigure[]{\includegraphics[width=6cm]{figs/Basket_Ball_1_maxbeta22}}\,\,\,\subfigure[]{\includegraphics[width=6cm]{figs/Basket_Ball_1_minbeta1}}
+\par\end{centering}
+
+\caption{Predicted posterior distribution at (a) maximum $\beta$ (b) minimum
+$\beta$}
+
+
+\label{balldrop1t5-3}
+\end{figure}
+
+
+
+\subsection{Ball drop - 2 (Basket Ball)}
+
+\begin{figure}[H]
+\begin{centering}
+\subfigure[]{\includegraphics[width=6cm]{figs/Basket_Ball_2_5}}\,\,\,\subfigure[]{\includegraphics[width=6cm]{figs/Basket_Ball_2_20}}\,\,\,\subfigure[]{\includegraphics[width=6cm]{figs/Basket_Ball_2_35}}
+\par\end{centering}
+
+\caption{Predicted posterior distribution at time (a) $t=5$ (b) $t=20$ and
+(c) $t=35$ secs vs the actual observation}
+
+
+\label{balldrop1t5-1}
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{centering}
+\subfigure[]{\includegraphics[width=6cm]{figs/Basket_Ball_2_maxbeta40}}\,\,\,\subfigure[]{\includegraphics[width=6cm]{figs/Basket_Ball_2_minbeta10}}
+\par\end{centering}
+
+\caption{Predicted posterior distribution at (a) maximum $\beta$ (b) minimum
+$\beta$}
+
+
+\label{balldrop1t5-3-1}
+\end{figure}
+
+
+
+\subsection{Ball drop - 1 (Bowling Ball)}
+
+\begin{figure}[H]
+\begin{centering}
+\subfigure[]{\includegraphics[width=6cm]{figs/Bowling_Ball_1_5}}\,\,\,\subfigure[]{\includegraphics[width=6cm]{figs/Bowling_Ball_1_20}}\,\,\,\subfigure[]{\includegraphics[width=6cm]{figs/Bowling_Ball_1_35}}
+\par\end{centering}
+
+\caption{Predicted posterior distribution at time (a) $t=5$ (b) $t=20$ and
+(c) $t=35$ secs vs the actual observation}
+
+
+\label{balldrop1t5-2}
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{centering}
+\subfigure[]{\includegraphics[width=6cm]{figs/Bowling_Ball_1_maxbeta24}}\,\,\,\subfigure[]{\includegraphics[width=6cm]{figs/Bowling_Ball_1_minbeta0}}
+\par\end{centering}
+
+\caption{Predicted posterior distribution at (a) maximum $\beta$ (b) minimum
+$\beta$}
+
+
+\label{balldrop1t5-3-2}
+\end{figure}
+
+
+
+\subsection{Ball drop - 2 (Bowling Ball)}
+
+\begin{figure}[H]
+\begin{centering}
+\subfigure[]{\includegraphics[width=6cm]{figs/Bowling_Ball_2_5}}\,\,\,\subfigure[]{\includegraphics[width=6cm]{figs/Bowling_Ball_2_20}}\,\,\,\subfigure[]{\includegraphics[width=6cm]{figs/Bowling_Ball_2_35}}
+\par\end{centering}
+
+\caption{Predicted posterior distribution at time (a) $t=5$ (b) $t=20$ and
+(c) $t=35$ secs vs the actual observation}
+
+
+\label{balldrop1t5-4}
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{centering}
+\subfigure[]{\includegraphics[width=6cm]{figs/Bowling_Ball_2_maxbeta20}}\,\,\,\subfigure[]{\includegraphics[width=6cm]{figs/Basket_Ball_2_minbeta10}}
+\par\end{centering}
+
+\caption{Predicted posterior distribution at (a) maximum $\beta$ (b) minimum
+$\beta$}
+
+
+\label{balldrop1t5-3-3}
+\end{figure}
+
+
 
 \section{Consistency of the model}
 
@@ -429,4 +612,15 @@ be wrong?
 
 
 \subsubsection*{Solution}
+
+From the above results, the model is clearly not consistent with the
+observations for all ball drops. Rather, the model is accurate for
+a finite time horizon, after which the predictions are no longer accurate.
+Possible reasons for the model failure:
+\begin{enumerate}
+\item The assumptions made in the model may not be accurate.
+\item The fact that the model is credible for first few seconds hints us
+about the domain of validity of the model.
+\item The measurement data may not be reliable\end{enumerate}
+
 \end{document}
