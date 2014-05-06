@@ -26,8 +26,6 @@
 \begin{document}
 
 \title{CSE397: Group Assignment \#3}
-
-
 \author{Ben Crestel, Nick Malaya, Prabhakar Marepalli, Ajay Vadakkepatt}
 
 \maketitle
@@ -464,9 +462,20 @@ beta, where beta = integral(P(y)dy). In this project, we chose to
 use HPD method to compute the credibility. In the figures below, we
 plot the credibility as a function of time for the 4 sets of measurements
 (2 basket ball and 2 bowling ball). As we can clearly notice from
-the figures, the data seems to be credible (wrt the model) only till
-the first five seconds and then becomes incredible later on. In other
-words, this means the model is invalidated. 
+the figures, the data seems to be credible (wrt the model) only for
+the first fractions of a second and then becomes incredible later on. In other
+words, this means the predictions of the model are inconsistent with the
+observations.
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=8cm]{figs/credibility} 
+\par\end{centering}
+\caption{Credibility as a function of time.}
+
+\label{fig:Uc} 
+\end{figure}
+
 
 
 \section{Validation test}
