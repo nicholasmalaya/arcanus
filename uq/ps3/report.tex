@@ -487,14 +487,21 @@ rule.
 \subsubsection*{Solution}
 
 The credibility of a given distribution is defined as alpha = 1 \textendash{}
-beta, where beta = integral(P(y)dy). In this project, we chose to
-use HPD method to compute the credibility. In the figures below, we
+beta, where beta = integral(P(y)dy). In this project, we made the
+decision to 
+use the HPD method to compute the credibility. HPD was selected because
+we did not know if the distributions would be skewed (in reality, they
+did not appear to have been strongly skewed) and HPD would provide a
+more robust estimate than the quartile analysis in this case. 
+In the figures below, we
 plot the credibility as a function of time for the 4 sets of measurements
-(2 basket ball and 2 bowling ball). As we can clearly notice from
+(2 basket ball and 2 bowling ball). As one can clearly observe from
 the figures, the data seems to be credible (wrt the model) only for
 the first fractions of a second and then becomes incredible later on. In other
-words, this means the predictions of the model are inconsistent with the
-observations. 
+words, this means the predictions of the model are quickly inconsistent with the
+observations. This figure depicts the credibility interval for the first
+data set with the basketball, but all data sets and balls were
+qualititively similar. 
 
 \begin{figure}[H]
 \begin{centering}
