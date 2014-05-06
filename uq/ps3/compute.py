@@ -40,6 +40,8 @@ for datafile in DataFiles:
 ###############################################################################
 # Compute posterior of observations at all points
 
+allINTEGRAL = []
+
 rho = 1.4
 rb = 0.1166
 rbb = 0.1066
@@ -49,8 +51,12 @@ Mbb = 0.4548
 coeff_b = (rho*4*np.pi*rb**2.0)/(2.0*Mb)
 coeff_bb = (rho*4*np.pi*rbb**2.0)/(2.0*Mbb)        
 
-for times, YP in zip(allt, allYP):
-	INTEGRAL = integral(times, YP, coeff_b)
+for times, YP, filename in zip(allt, allYP, DataFilesNames):
+	if 'Basket' in filename:
+		INTEGRAL = integral(times, YP, coeff_b)
+	else:
+		INTEGRAL = integral(times, YP, coeff_bb)
+	allINTEGRAL.append(INTEGRAL)
 
 # Final product should be
 # yp, integrall
@@ -77,7 +83,7 @@ for times, YP in zip(allt, allYP):
 # Compute credibility intervals for each experiment:
 
 beta = []
-for x_L, pdf_L, obs_L in zip(allYP, INTEGRAL, allh):
+for x_L, pdf_L, obs_L in zip(allYP, allINTEGRAL, allh):
 	beta_loc = []
 	for x, pdf, obs in zip(x_L, pdf_L, obs_L):
 		beta_loc.append( hpd(x, pdf, obs) )
@@ -87,21 +93,21 @@ for x_L, pdf_L, obs_L in zip(allYP, INTEGRAL, allh):
 ###############################################################################
 # Plot posterior for obs along with obs for a few cases
 # and save it to a file
-Obs_ind = [5, 20, 34]
-for beta_loc, filename, x_L, pdf_L, obs_L in zip(beta, DataFilesNames, yp, integrall, allh):
+Obs_ind = [5, 20, 35]
+for beta_loc, filename, x_L, pdf_L, obs_L in zip(beta, DataFilesNames, allYP, allINTEGRAL, allh):
 	justnameoffile, extension = os.path.splitext(filename)
 
 	maxind = np.where(beta_loc == max(beta_loc))[0][0]
 	x = x_L[maxind]
 	pdf = pdf_L[maxind]
 	obs = obs_L[maxind]
-	plotpdfandobs(x, pdf, obs, justnameoffile + '_maxbeta', beta_loc[maxind]) 
+	plotpdfandobs(x, pdf, obs, justnameoffile + '_maxbeta' + str(maxind), beta_loc[maxind]) 
 
 	minind = np.where(beta_loc == min(beta_loc))[0][0]
 	x = x_L[minind]
 	pdf = pdf_L[minind]
 	obs = obs_L[minind]
-	plotpdfandobs(x, pdf, obs, justnameoffile + '_minbeta', beta_loc[minind])
+	plotpdfandobs(x, pdf, obs, justnameoffile + '_minbeta' + str(minind), beta_loc[minind])
 
 	for myindex in Obs_ind:
 		x = x_L[myindex]
@@ -109,3 +115,13 @@ for beta_loc, filename, x_L, pdf_L, obs_L in zip(beta, DataFilesNames, yp, integ
 		obs = obs_L[myindex]
 		plotpdfandobs(x, pdf, obs, justnameoffile + '_' + str(myindex), beta_loc[myindex])
 
+
+###############################################################################
+# Save beta's to file
+outp = open('betas.out', 'w')
+
+for filename, beta_loc in zip(DataFilesNames, beta):
+	outp.write(' %s: \n' % filename)
+	for betai in beta_loc:
+		outp.write(' %14.6e\n' % betai)
+	outp.write('\n\n')

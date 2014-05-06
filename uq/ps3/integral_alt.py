@@ -37,8 +37,8 @@ def integral(times, YP, coeff_b):
 	# load data into arrays
 	#
 	sigmas = [line.strip() for line in open('data/sigma_ds.dat')]
-	alphas = [line.strip() for line in open('data/sigma_ds.dat')]
-	drags  = [line.strip() for line in open('data/sigma_ds.dat')]
+	alphas = [line.strip() for line in open('data/alpha_ds.dat')]
+	drags  = [line.strip() for line in open('data/drag_ds.dat')]
 
 	#
 	# convert to floats
@@ -61,9 +61,8 @@ def integral(times, YP, coeff_b):
 		for yp, integral, mu in zip(YP, INTEGRAL, MU):
 			tmp_int = scipy.stats.norm(mu, sigma[j]).pdf(yp)
 			normfact = simps(tmp_int, yp)
-			if normfact < 0.9:
-				print j, mu, tmp_int
-			assert normfact > 0.9, \
+			if normfact < 0.95:	print j, mu, tmp_int
+			assert normfact > 0.95, \
 			'interval: Truncated too much; normfact = ' + str(normfact)
 			integral += tmp_int / normfact
 
@@ -110,7 +109,3 @@ if __name__ == '__main__':
 	for yp, integral, xx in zip(YP, INTEGRAL, x):
 		plotpdfandobs(yp, integral, xx)
 
-#
-# nick
-# 5/4/14
-#
