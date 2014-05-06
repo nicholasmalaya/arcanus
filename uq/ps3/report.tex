@@ -284,14 +284,38 @@ measured using the program `Autoregressive process modeling tools'
 shows the number of steps for each of the parameters required so that
 the samples are independent (correlation fall below a specified value).
 $C_{d}$ has by far the longest correlation between steps, more than
-30 chain steps before decorrelation. We generated a set of samples
-300,000 long, and downsampled to 10,000 uncorrelated samples for the
-integrals. We then confirmed that these samples were uncorrelated using
-arsel on the downsampled chains. Later, we found that these 10k uncorrelated samples were
-complete overkill with respect to the integration. Only a few hundred
-samples were needed to compute the posterior distributions shown below,
-wich are generally quite smooth (and no further smoothing function or
-KDE was utilized afterwards). 
+30 chain steps before decorrelation. 
+
+An example of the arsel output is:
+\begin{verbatim}
+[nick@magus data]$ arsel -s < cd.dat | grep '#'
+# absrho    true
+# criterion CIC
+# eff_N     32.751365129344251
+# eff_var   0.12904055664629624
+# gain      5.0428322668791719
+# maxorder  512
+# minorder  0
+# mu        0.67116199032442436
+# mu_sigma  0.062769462607289453
+# N         1000
+# AR(p)     71
+# sigma2eps 0.024807597117980005
+# sigma2x   0.12510055121028832
+# submean   true
+# T0        30.533078424386947
+# window_T0 1
+\end{verbatim}
+Where $T_0$ presents the estimated envelope window of time of
+correlation between samples. 
+
+We generated a set of samples 300,000 long, and downsampled to 10,000
+uncorrelated samples for the integrals. We then confirmed that these
+samples were uncorrelated using arsel on the downsampled chains. Later,
+we found that these 10k uncorrelated samples were complete overkill with
+respect to the integration. Only a few hundred samples were needed to
+compute the posterior distributions shown below, wich are generally
+quite smooth (and no further smoothing function or KDE was utilized afterwards). 
 
 \begin{table}
 \begin{centering}
