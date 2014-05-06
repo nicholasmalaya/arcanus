@@ -285,8 +285,13 @@ shows the number of steps for each of the parameters required so that
 the samples are independent (correlation fall below a specified value).
 $C_{d}$ has by far the longest correlation between steps, more than
 30 chain steps before decorrelation. We generated a set of samples
-30,000 long, and downsampled to 1000 uncorrelated samples for the
-integrals.
+300,000 long, and downsampled to 10,000 uncorrelated samples for the
+integrals. We then confirmed that these samples were uncorrelated using
+arsel on the downsampled chains. Later, we found that these 10k uncorrelated samples were
+complete overkill with respect to the integration. Only a few hundred
+samples were needed to compute the posterior distributions shown below,
+wich are generally quite smooth (and no further smoothing function or
+KDE was utilized afterwards). 
 
 \begin{table}
 \begin{centering}
@@ -465,7 +470,7 @@ plot the credibility as a function of time for the 4 sets of measurements
 the figures, the data seems to be credible (wrt the model) only for
 the first fractions of a second and then becomes incredible later on. In other
 words, this means the predictions of the model are inconsistent with the
-observations.
+observations. 
 
 \begin{figure}[H]
 \begin{centering}
