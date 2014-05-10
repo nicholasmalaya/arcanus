@@ -1,0 +1,106 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{color}
+\usepackage[section]{placeins}
+%\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\usepackage{listings}
+%\renewcommand{\thesection}{\alph{subsection}}
+
+\title{Combustion Theory Final Take Home Exam} 
+\author{Nicholas Malaya\\ Department of Mechanical Engineering \\
+University of Texas at Austin}  
+\date{}
+
+\begin{document}
+\maketitle
+\newpage
+
+
+\section*{Turbulent diffusion flames}
+
+In this problem, I want you to assume that the system is turbulent and
+that you know the turbulence mass diffusivity ($D_T$) is 10 times the
+laminar value. Assume that the fluctuation squared of the mixture
+fraction is equal to the gradient of the mean mixture fraction squared
+multiplied by the characteristic diffusion length scale squared, i.e.
+\begin{equation}
+ \bar{z'z'} = \frac{1}{2} (\nabla \bar z) \frac{D_T L_x}{u}
+\end{equation}
+
+\subsection*{a) Write down the solution for the mean mixture fraction field
+  with the turbulent diffusivity.}
+
+We start with the steady state species equation, 
+\begin{equation}
+ \rho u \frac{\partial Y_i}{\partial x} = \rho D \frac{\partial^2
+  Y_i}{\partial y^2} \pm \omega_i. 
+\end{equation}
+We note that, 
+\begin{equation}
+ \omega = \frac{\omega_i}{\nu_i W_i} = \frac{\omega_F}{\nu_F W_F} =
+  \frac{\omega_O}{\nu_O W_O}. 
+\end{equation}
+This hints at a conserved scalar form of the species equation, where
+with, 
+\begin{equation}
+ \beta  = \frac{\omega_F}{\nu_F W_F} - \frac{\omega_O}{\nu_O W_O}
+\end{equation}
+then our reaction is decoupled from the convection-diffusion of a
+conserved scalar quantity. In particular, 
+\begin{equation}
+ \mathcal{L}(\beta)  = \mathcal{L}\left(\frac{\omega_F}{\nu_F W_F} -
+				   \frac{\omega_O}{\nu_O W_O} \right)
+ \Rightarrow \rho u \frac{\partial \beta_i}{\partial x} - \rho D \frac{\partial^2
+  \beta_i}{\partial y^2} = 0. 
+\end{equation}
+Now, we construct z, 
+\begin{equation}
+ z = \frac{\beta -\beta_{O}}{\beta_F - \beta_{O}}
+\end{equation}
+Here, the boundary conditions are that $z=1$ for all $y>0$ and $x<0$
+(e.g. the fuel reserve) and $z=0$ for $y<0$ and $x<0$ (e.g. the oxygen
+reserve). 
+
+Thus, we are solving, 
+\begin{equation}
+\rho u \frac{\partial z}{\partial x} - \rho D \frac{\partial^2
+  z}{\partial y^2} = 0. 
+\end{equation}
+and, 
+\begin{equation}
+\rho u \frac{\partial \bar z}{\partial x} - \rho D_T \frac{\partial^2
+  \bar z}{\partial y^2} = 0. 
+\end{equation}
+Where the first equation is from the laminar flow, and the latter case
+is the favre-averaged mean field.  
+
+\subsection*{b) Plot the fluctuation and mean value of the mixture fraction
+  at 5 cm, 30 cm, and 50 cm.}
+
+\subsection*{c) Plot the PDF of the mixture fraction at two points, $y=0$ cm,
+$x=30$ and at $y=15$ cm, $x=30$ cm.}
+
+
+\subsection*{d) Plot the laminar and mean turbulent temperature
+distributions at $x=30$ cm.}
+
+\subsection*{e) Discuss the results.}
+
+
+\newpage
+
+Thank you for the class! 
+\vspace{1in}
+\newline
+References:
+
+``Turbulent Combustion'', Norbert Peters
+
+``Combustion Physics'', Chung K. Law
+
+
+\end{document}
