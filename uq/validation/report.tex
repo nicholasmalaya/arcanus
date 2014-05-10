@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{color}
+\usepackage[section]{placeins}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\usepackage{listings}
+
+\title{Validation and Uncertainty Quantification Proposal for a
+Solar-driven Vortex Apparatus} 
+\author{Nicholas Malaya\\ Department of Mechanical Engineering \\
+University of Texas at Austin}  
+\date{}
+
+\begin{document}
+\maketitle
+\newpage
+
+\section{Introduction}
+Much of the solar energy incident on the Earth's surface is absorbed
+into the ground, which in turn heats the air layer above the surface.
+This buoyant air layer contains considerable gravitational potential
+energy. The basic idea behind this approach is to convert the 
+potential energy in this buoyant air layer to kinetic energy in an
+anchored vortex, and to use that kinetic energy to drive a
+vertical-axis turbine coupled with an electric generator in order to
+produce electrical power. Computational Fluid Dynamics (CFD) is used to
+simulate this Solar-Driven Vortex (SoV). These computer simulations are
+intended to discover the optimal system configuration for a range of
+scenarios and system sizes. In order for these simulations to be
+generally useful, they must first be validated against existing
+experimental data and high fidelity simulations. These models
+will then explore regimes and scales where no experimental measurements
+presently exist. Characterizing the uncertainty of predictions resulting
+from extrapolation is a critical component in enabling reliable
+assessments of field performance of the SoV, as it will guide the
+commercialization strategy of the product. 
+
+This report provides a ``validation roadmap'' detailing the process by
+which an analysis of the uncertainties inherent to this
+problem may be characterized.  It will begin with a discussion of the
+physics scenario and the mathematical model, as well as detailing the
+reliability of each submodel and the systems inputs. We will then
+discuss the validation of these models against existing experimental
+data and high fidelity simulations. Finally, we will formulate a Bayesian
+analysis for a sub-problem, to serve as a representative example of a
+probabilistic analysis applied to this project.  
+
+
+%
+% end
+%
+\newpage
+This work is supported by the Department of Energy [Advanced Research
+Projects Agency-Energy] under Award Number [DE-FOA-0000670].   
+
+\end{document}
