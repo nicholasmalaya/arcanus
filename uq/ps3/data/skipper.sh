@@ -1,1 +1,1 @@
-perl -ne 'print unless (0 != $. % 4)' somefile
+perl -ne 'print unless (0 != $. % 10)' somefile

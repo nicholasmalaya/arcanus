@@ -89,6 +89,10 @@ for x_L, pdf_L, obs_L in zip(allYP, allINTEGRAL, allh):
 		beta_loc.append( hpd(x, pdf, obs) )
 	beta.append(beta_loc)
 
+print '# betas!'
+for i in xrange(len(beta[0])-1):
+	#print allYP[i], beta[i]
+	print times[i], 1-beta[1][i] 
 
 ###############################################################################
 # Plot posterior for obs along with obs for a few cases

@@ -38,8 +38,8 @@ def integral(time,ymin=-1.0,ymax=35.0,spacing=0.1,samples=100):
     # load data into arrays
     #
     sigmas = [line.strip() for line in open('data/sigma_ds.dat')]
-    alphas = [line.strip() for line in open('data/sigma_ds.dat')]
-    drags  = [line.strip() for line in open('data/sigma_ds.dat')]
+    alphas = [line.strip() for line in open('data/alpha_ds.dat')]
+    drags  = [line.strip() for line in open('data/drag_ds.dat')]
     
     #
     # convert to floats

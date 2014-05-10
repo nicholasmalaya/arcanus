@@ -127,7 +127,6 @@ from a large area. These computations will guide commercialization
 planning, where decision-makers will need to assess optimum unit size,
 spacing, and geographic location for utility-scale deployment.  
 
-
 %
 %
 %
@@ -158,10 +157,56 @@ spacing, and geographic location for utility-scale deployment.
 %
 \section{Model Validation}
 
+% validation
+Several phases of research must be conducted in order to develop robust
+and reliable predictive simulation capability. First, the simulations
+must be validated against existing experimental data generated from the
+laboratory apparatus. These data were taken using particle image
+velocimetery, often not without non-trivial error in measurement and
+sampling. 
+
+% scaling analysis
+New simulations at different conditions will then be performed in order
+to inform the optimal design and scale of the planned two and five meter
+SoV prototypes, to be installed in Arizona. This study will inform the
+design based on the scaling 
+of the velocity field and anticipated energy generation. Furthermore,
+insights may be gathered on the dyamics of these flows, which could lead
+to fundamental advances in the physics of fluid dynamics, dust devils,
+and other coherent structures with vortex
+dynamics\cite{Mullen1977181,smithleslie,kanak}. Determining the optimal design of
+these systems will involve parameter sweeps over a large space of
+possible configurations. Where possible, models will be developed in
+order to simplify the mesh (memory) and computational requirements. One
+such method, which replaces the turning vanes with a model, improved
+runtime by a factor of twenty-four, due to the greatly decreased
+mesh resolution requirements near the vane trailing edges. These models,
+once properly validated, will be invaluable tools in effective computer
+aided design and simulation of this new technology. 
+
+
 %
 %
 %
 \section{Further Concerns}
+
+In order for these simulations to be generally useful, they must first
+be validated against existing experimental data and high fidelity
+simulations. These models will then explore regimes and scales where no
+experimental measurements presently exist. Characterizing the
+uncertainty of predictions resulting from extrapolation is a critical
+component in enabling reliable assessments of field performance of the
+SoV, as it will guide the commercialization strategy of the product.
+
+Our focus has therefore moved to a validation study to ensure that the output of the 
+numerical simulation agrees with the experimental measurements. In particular, we have 
+implemented a simulation designed to closely mimic the 30 degree vane
+experimental setup. The  
+outputs of the simulation (velocity field, temperatures, etc. ) are then
+compared to available experimental data, which at this time is
+principally the velocity field taken by PIV measurements at a variety of
+time frames near the center of the SoV.  
+
 
 %
 %

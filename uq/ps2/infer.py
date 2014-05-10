@@ -118,12 +118,17 @@ pylab.ylabel('Value')
 pylab.show()
 pylab.savefig('cd.png')
 
-filepath='sigma'
+filepath='sigma.dat'
 f = open(filepath, 'w')
 for item in samples:
     f.write("%s\n" % item)
 
-filepath='alpha'
+filepath='alpha.dat'
 f = open(filepath, 'w')
 for item in samplea:
+    f.write("%s\n" % item)
+
+filepath='drag.dat'
+f = open(filepath, 'w')
+for item in sample:
     f.write("%s\n" % item)

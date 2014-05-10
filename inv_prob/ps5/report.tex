@@ -205,7 +205,7 @@ solving the state equation with $m(x, y) = 2$ for $(x - 0.5)^2 + (y -
 
 \begin{solution}
 The discrepancy criterion is defined as $(u-u^{\text{obs}}) \approx
- \delta$. We find $\delta = 0.002$ by adding the following lines to the
+ \delta$. We find $\delta = 0.02$ by adding the following lines to the
  solution file: 
  \begin{lstlisting}
   if(noise==0)
@@ -300,7 +300,7 @@ In order to account the differenct stopping criteria, I added the following line
     stopping = min(0.5, sqrt(gradnorm/gradnorm_ini));
     stopping = min(0.5, gradnorm/gradnorm_ini);
 \end{lstlisting}
-where I comment out all but the criterion I want to use. Also, I am
+where we comment out all but the criterion we wish to use. Also, we are 
  going back to a mesh of $20\times 20$ elements (the $80\times 80$ is
  exceedingly slow on the node provided). 
 
@@ -314,7 +314,7 @@ where I comment out all but the criterion I want to use. Also, I am
  \end{tabular}
 \end{center}
 
-In summary, we see exactly the behavior as predected in assignment
+In summary, we see exactly the behavior as predicted in assignment
  two. For the choice $\eta_k=0.5$ we see a linear convergence behavior
  which is the  reason why we needed the most Gauss-Newton iterations in
  this case. In  the second case, as soon as we get close to the minimum
