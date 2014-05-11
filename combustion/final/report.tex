@@ -78,18 +78,51 @@ and,
 Where the first equation is from the laminar flow, and the latter case
 is the favre-averaged mean field.  
 
+%
+%
+%
+%
 \subsection*{b) Plot the fluctuation and mean value of the mixture fraction
   at 5 cm, 30 cm, and 50 cm.}
 
+The mean value mixture fraction was described above. The fluctuation $\bar{z'z'} 
+must also be determined. Normally, this would require solving another differential equation, 
+and potentially using submodels for the scalar dissipation rate as well. However, we were given a
+simplified expression (model) for the variance, namely,
+\begin{equation}
+ \bar{z'z'} = \frac{1}{2} (\nabla \bar z) \frac{D_T L_x}{u}
+\end{equation}
+
+
+%
+%
+%
+%
 \subsection*{c) Plot the PDF of the mixture fraction at two points, $y=0$ cm,
 $x=30$ and at $y=15$ cm, $x=30$ cm.}
 
 
+
+%
+%
+%
+%
 \subsection*{d) Plot the laminar and mean turbulent temperature
 distributions at $x=30$ cm.}
 
 \subsection*{e) Discuss the results.}
 
+A few initial comments. The entire formulation utilized chemical equilibrium models 
+to find the long time stable solution. The model cannot predict extinction or ignition. 
+This also assumes that the chemical time scales are much smaller than the turbulence 
+time scales, e.g. that the Damkohler number is large. 
+
+Finally, we either ``turned-on'' or ``turned-off'' the turbulence (laminar). In reality, the flow
+might be intermittent or laminar away from the mixing layer at $y=0$ and turbulent near it. 
+So a mixing of the models might be more appropriate. 
+
+Given the assumptions, we would have to be careful using the results of 
+this model in a predictive context. Those caveats aside, 
 
 \newpage
 
