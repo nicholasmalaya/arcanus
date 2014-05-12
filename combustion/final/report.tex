@@ -96,6 +96,7 @@ a first order (in time) ODE. Thus, we do not actually need to store our
 entire x-domain in memory, but can simply solve for all y-values at our
 particular x-coordinate, and then step forward in space and solve for
 the next grid location. 
+
 %
 %
 %
@@ -103,7 +104,22 @@ the next grid location.
 \subsection*{b) Plot the fluctuation and mean value of the mixture fraction
   at 5 cm, 30 cm, and 50 cm.}
 
-The mean value mixture fraction was described above. The fluctuation $\bar{z'z'}$
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/mean.pdf}
+    \caption{The mixture fraction plotted as a function of y.}
+    \label{mean}
+   \end{center}
+   \end{figure}
+
+The method to arrive at the mean value mixture fraction was described
+above. The value of the mixture fraction at several locations is plotted
+in figure \ref{mean}. The flow at $x=0$ cm is a sharp interface between
+the fuel and the oxidizer. As you move downstream, the fuel and oxidants 
+mix, which will create a mixing layer that diffuses out and increases in
+y-width as a function of distance downstream. 
+
+The fluctuation $\bar{z'z'}$
 must also be determined. Normally, this would require solving another differential equation, 
 and potentially using submodels for the scalar dissipation rate as well. However, we were given a
 simplified expression (model) for the variance, namely,
@@ -116,13 +132,41 @@ can be simplified to be,
  \bar{z'z'} = \frac{1}{2} (\frac{\partial \bar z}{\partial y})^2 \frac{D_T L_x}{u}. 
  \label{fluc}
 \end{equation}
-This expression is a model for the variance of the mixture fraction. Intuitively, this expression is reasonable, 
-as we expect the variance (in some sense, our uncertainty) of the value of the mixture fraction to be largest in regions 
-with large gradients. In the mixing layer, the gradient will be quite large near the layer ($y=0,x=0$) and expanding outward 
-at larger x. 
+This expression is a model for the variance of the mixture
+fraction. Intuitively, this expression is reasonable,  as we expect the
+variance (in some sense, our uncertainty) of the value of the mixture
+fraction to be largest in regions with large gradients. In the mixing
+layer, the gradient will be quite large near the layer ($y=0,x=0$) and expanding outward  at larger x. 
 
-We discretize equation \ref{fluc} using the finite difference scheme shown in equation \ref{first}, however, 
-now the indicies are changed from i to j, to reflect the different direction of the derivative.
+We discretize equation \ref{fluc} using the finite difference scheme
+shown in equation \ref{first}, however, now the indicies are changed
+from i to j, to reflect the different direction of the
+derivative. However, upon running the code, I found that a forward
+finite difference was very numerically noisy for the solution at $x=5$
+cm. This was because the interface at this distance is still quite
+sharp, and so squaring the derivative ``blew-up'' the noise. I therefore
+switched a centered finite difference scheme, namely:
+\begin{equation}
+  \frac{\partial \bar z}{\partial y} = \frac{\bar z_{i+1}-\bar z_{i-1}}{2\Delta y}.
+\end{equation}
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/fluc.pdf}
+    \caption{The mixture fraction variance plotted as a function of y.}
+    \label{fluc}
+   \end{center}
+  \end{figure}
+
+The results are plotted in figure \ref{fluc}. The results of this figure
+display that at anything but low values of x, the variance is nearly
+zero. It is only near the sharp interface that the flow is
+turbulent. Outside of just a few centimeters, the variance is very
+nearly zero, implying essentialy laminar flow. As we move downstream,
+the pdf opens up, as the mixing layer grows and entrains more fluid
+around it. The peak also grows, implying that the turbulence grows to a
+higher reynolds number, with larger fluctuations. 
+
 %
 %
 %

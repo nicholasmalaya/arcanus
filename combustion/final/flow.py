@@ -91,7 +91,7 @@ if __name__ == "__main__":
     pylab.plot(y,zf[ind], linewidth=2.0, label=t)
     pylab.xlabel('y (cm)',size=22.0)
     pylab.ylabel(r'$\bar z$', size=30.0)
-    pylab.title(r'Mean value of the mixture fraction, $\bar z$')
+    pylab.title(r'Mean value of the mixture fraction, $\bar z$ at several x-locations. ')
     pylab.grid(True)
 
     #
@@ -150,7 +150,7 @@ if __name__ == "__main__":
     #
     pylab.legend()
     pylab.savefig('fluc.pdf')
-    pylab.show()
+    #pylab.show()
     
     
 
