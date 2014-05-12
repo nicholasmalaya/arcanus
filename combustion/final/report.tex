@@ -241,20 +241,22 @@ distributions at $x=30$ cm.}
 
 \subsection*{e) Discuss the results.}
 
-A few initial comments. The entire formulation utilized chemical equilibrium models 
-to find the long time stable solution. The model cannot predict extinction or ignition. 
-This also assumes that the chemical time scales are much smaller than the turbulence 
-time scales, e.g. that the Damkohler number is large. 
+A few initial comments. The entire formulation utilized chemical
+equilibrium models to find the long time stable solution. The model
+cannot predict extinction or ignition. This also assumes that the
+chemical time scales are much smaller than the turbulence time scales,
+e.g. that the Damkohler number is large.  
 
 Finally, we either ``turned-on'' or ``turned-off'' the turbulence
 (e.g. it was fully developed turbulence, or completely laminar). In
 reality, the flow might be intermittent or laminar away from the mixing
 layer at $y=0$ and turbulent near it. So a mixing of the models might be
 more appropriate. Ideally, the flow would be fully turbulent near the
-centerline, intermittent at the edges of the layer, and laminar outside.  
+centerline, intermittent at the edges of the layer, and laminar outside. 
 
-Given these assumptions, we would have to be careful using the results of 
-this model in a predictive context. Those caveats aside, 
+Given these assumptions, we would have to be careful using the results
+of this model in a predictive context. Those caveats aside, 
+
 
 \newpage
 All the work contained in this report was entirely my own. 
@@ -268,5 +270,11 @@ References:
 
 ``Combustion Physics'', Chung K. Law
 
+
+\subsection*{Code}
+I wrote these routines entire from scratch, using python 2.X. The only
+libraries necessary to run these routines should be Numpy, SciPy and
+Matplotlib.  
+\lstinputlisting{flow.py}
 
 \end{document}
