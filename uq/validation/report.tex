@@ -150,7 +150,7 @@ spacing, and geographic location for utility-scale deployment.
 %
 \section{Model Parameter Specification}
 
-The most significant parameterization in the model comes through the
+The most uncertain parameterization in the model comes through the
 stabilization parameter. Stabilization is necessary for Finite Element
 Methods for fluid flows\cite{franca1992stabilized}. The choice and
 design of the stability parameter is a crucial ingredient to ensure the
@@ -180,7 +180,8 @@ solvers used in our present simulation may impact the scheme.
 
 The model inputs consistitute a very large component (arguably, the
 largest source) of the uncertainty in this problem, for both the
-laboratory and outdoor test cases. 
+laboratory and outdoor test cases. For brevity, we consider here only
+the laboratory cases. 
 
   \begin{figure}[!htb]
     \begin{center}
@@ -193,12 +194,10 @@ laboratory and outdoor test cases.
 The experimental laboratory has numerous objects
 in the immediate vicinity (see figure \ref{lab}) that may
 obstruct/manipulate the flow. These objects may be moved or removed
-during PIV data gathering. 
-
-The laboratory simulation uses adiabatic side walls as a boundary
-condition. It is unclear how much of an impact this may have on the
-simulation. It is also unclear if this is a realistic boundary
-condition. 
+during PIV data gathering. The laboratory simulation uses adiabatic side
+walls as a boundary condition. It is unclear how much of an impact this
+may have on the simulation. It is also unclear if this is a realistic
+boundary condition. 
 
 While no sensitivity analysis has been performed, it is likely that the
 largest uncertainty in the laboratory simulation is a result of the
@@ -229,11 +228,22 @@ go. \footnote{\normalsize Author note: This story related here not as a comment 
 our collaborators. Rather, this is presented as an example of the challenges
 and uncertainties that presently exist in this numerical investigation.}
 
+We impose Dirichlet boundary conditions to establish a constant inflow
+condition of cool air at the rates proscribed by our
+collaborators. Unfortunately, we have found that the using inflow rates
+consistent with the lower bound of those estimates result in an
+unrealistic heating of the room, while inflow conditions at the high end
+result in velocity profiles that exceed the laboratory measurements. In
+other words, our simulations appear to be sensitive to the choice of
+inflow rate, and it is likely that the laboratory is run where one of
+the vents is operating intermittently. 
+
 The initial conditions in both the laboratory and the outdoor
 tests are highly uncertain. The dimensions of the laboratory are
-measured with a high degree of confidence, the initial temperature
+(it is presumed) measured with a high degree of confidence, however, the
+initial temperature 
 in the room is not closely measured, and may vary as a function of
-time. We note however, that the solutions from the simulations are
+time or across tests. We note however, that the solutions from the simulations are
 generally stationary in time, and consistent results are gathered from several
 simulations with different initial conditions. Therefore, it does not
 appear that the initial conditions in the room in terms of the ambient
@@ -282,7 +292,8 @@ begin iterating on system designs with our experimental colleagues.
 %    experiments would be needed. Also describe what, if anything, is
 %    known about uncertainties in the observational data.
 %
-\section{Model Validation}
+\section{Model Validation Challenges}
+
 
 % validation
 Several phases of research must be conducted in order to develop robust
@@ -295,32 +306,44 @@ cooling, geometry of the room, etc. are rough, and almost certainly
 possess non-trivial uncertainties/errors. As a result, this is already a
 difficult validation scenario. 
 
-Very little is known about the uncertainties in the observation data. 
+The validation challenge is compounded by the fact that very little is
+known about the uncertainties in the observation data. PIV is a
+non-intrusive technique, but it does rely upon large sample sizes in
+order to generate reliable statistics. While several hundred PIV
+snapshots are available, no quantified uncertainties for the averaged fields
+presently exist.  
+
+In addition, only velocity measurements are available. Several
+potentially important quantities of interest, such as the pressure field
+or the temperature, have not been measured, and cannot then be used for
+the purposes of validation. This presents a risk that our 
+simulations might generate acceptable velocity fields, but that a
+significant source of error may exist in unobserved QoIs, and would not
+be detected in our present validation regime. 
 
 Furthermore, the model form in use is known to be imperfect. 
-Model inadequacy
+Model inadequacy may play a role in 
+
+%
+% first case
+%
+\subsection{Model Validation}
+Our initial focus has therefore moved to a validation study to ensure that the
+output of the  numerical simulation agrees with the experimental
+measurements. In particular, we have implemented a simulation designed
+to closely mimic the 30 degree vane experimental setup. The outputs of
+the simulation (velocity field, temperatures, etc. ) are then compared
+to available experimental data, which at this time is principally the
+velocity field taken by PIV measurements at a variety of time frames
+near the center of the SoV. 
+
+This ``high-fidelity'' simulation
+
+%
+% hybrid (embedded model)
+%
 
 
-
-% scaling analysis
-New simulations at different conditions will then be performed in order
-to inform the optimal design and scale of the planned two and five meter
-SoV prototypes, to be installed in Arizona. This study will inform the
-design based on the scaling 
-of the velocity field and anticipated energy generation. Furthermore,
-insights may be gathered on the dyamics of these flows, which could lead
-to fundamental advances in the physics of fluid dynamics, dust devils,
-and other coherent structures with vortex
-dynamics\cite{Mullen1977181,smithleslie,kanak}. Determining the optimal
-design of 
-these systems will involve parameter sweeps over a large space of
-possible configurations. Where possible, models will be developed in
-order to simplify the mesh (memory) and computational requirements. One
-such method, which replaces the turning vanes with a model, improved
-runtime by a factor of twenty-four, due to the greatly decreased
-mesh resolution requirements near the vane trailing edges. These models,
-once properly validated, will be invaluable tools in effective computer
-aided design and simulation of this new technology. 
 
 
 %
@@ -330,22 +353,44 @@ aided design and simulation of this new technology.
 %
 \section{Further Concerns}
 
+
 In order for these simulations to be generally useful, they must first
 be validated against existing experimental data and high fidelity
-simulations. These models will then explore regimes and scales where no
+simulations, as mentioned previously. 
+However, these models will then explore regimes and scales where no
 experimental measurements presently exist. Characterizing the
 uncertainty of predictions resulting from extrapolation is a critical
 component in enabling reliable assessments of field performance of the
 SoV, as it will guide the commercialization strategy of the product.
 
-Our focus has therefore moved to a validation study to ensure that the
-output of the  numerical simulation agrees with the experimental
-measurements. In particular, we have implemented a simulation designed
-to closely mimic the 30 degree vane experimental setup. The outputs of
-the simulation (velocity field, temperatures, etc. ) are then compared
-to available experimental data, which at this time is principally the
-velocity field taken by PIV measurements at a variety of time frames
-near the center of the SoV. 
+% scaling analysis
+These new simulations at different conditions will be performed in order
+to inform the optimal design and scale of the planned two and five meter
+SoV prototypes, to be installed in Arizona. This study will inform the
+design based on the scaling of the velocity field and anticipated energy
+generation. Furthermore, insights may be gathered on the dyamics of
+these flows, which could lead to fundamental advances in the physics of
+fluid dynamics, dust devils, and other coherent structures with vortex 
+dynamics\cite{Mullen1977181,smithleslie,kanak}. 
+
+
+% this might be junk
+Determining the optimal design of these systems will involve parameter
+sweeps over a large space of possible configurations. Where possible,
+models will be developed in order to simplify the mesh (memory) and
+computational requirements. One such method, which replaces the turning
+vanes with a model, improved runtime by a factor of twenty-four, due to
+the greatly decreased mesh resolution requirements near the vane
+trailing edges. These models, once properly validated, will be
+invaluable tools in effective computer aided design and simulation of
+this new technology.  
+
+% talk about physics plan?
+
+
+% the fucking turbine too...
+
+
 
 
 %
