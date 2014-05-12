@@ -9,6 +9,43 @@
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
 \usepackage{listings}
 
+\newcommand{\abs}[1]{\ensuremath{ \left|#1\right|}}
+\newcommand{\norm}[1]{\ensuremath{ \left|\left|#1\right|\right|}}
+\newcommand{\orderof}[1]{\ensuremath{ {\cal O}\left(#1\right)}}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\grad}[1]{\bv{\nabla} {#1}}
+\newcommand{\bv}[1]{{\ensuremath{\boldsymbol{#1}}}}
+\newcommand{\bt}[1]{{\ensuremath{\boldsymbol{#1}}}}
+
+\newcommand{\Res}{{\ensuremath{\mathcal R}}}
+\newcommand{\Unknowns}{{\ensuremath{\bf{U}}}}
+\newcommand{\UnknownsR}{{\ensuremath{\bf{U^R}}}}
+\newcommand{\unknown}{{\ensuremath{\bv{u}}}}
+\newcommand{\primalsol}{{\ensuremath{\bv{\tilde{u}}}}}
+\newcommand{\primalsolh}{{\ensuremath{\bv{\tilde{u}^h}}}}
+\newcommand{\adjointsol}{{\ensuremath{\bv{\tilde{z}}}}}
+\newcommand{\adjointsolh}{{\ensuremath{\bv{\tilde{z}^h}}}}
+\newcommand{\adjointsolH}{{\ensuremath{\bv{\tilde{z}^H}}}}
+\newcommand{\Testfuncs}{{\ensuremath{\bf{V}}}}
+\newcommand{\testfunc}{{\ensuremath{\bv{v}}}}
+
+\newcommand{\intO}{\ensuremath{\int_\Omega}}
+\newcommand{\elem}{\ensuremath{E}}
+\newcommand{\qoi}{{\ensuremath{q}}}
+\newcommand{\qoih}{\ensuremath{q^h}}
+\newcommand{\Qoi}{{\ensuremath{Q}}}
+\newcommand{\param}{{\ensuremath{\xi}}}
+\newcommand{\params}{{\ensuremath{\bv{\param}}}}
+\newcommand{\PDF}{\ensuremath{p}}
+\newcommand{\Params}{{\ensuremath{\bf{\Xi}}}}
+\newcommand{\ParamsR}{{\ensuremath{\bf{\Xi^R}}}}
+
+\newcommand{\Reals}{{\ensuremath{\mathbb{R}}}}
+
+
+\newcommand{\sa}{\nu_{\mathrm{sa}}}
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+
 \title{Validation and Uncertainty Quantification Proposal for a
 Solar-driven Vortex Apparatus} 
 \author{Nicholas Malaya\\ Department of Mechanical Engineering \\
@@ -141,10 +178,50 @@ spacing, and geographic location for utility-scale deployment.
 
 
 % navier stokes
+We use the 3-D incompressible Navier-Stokes in order to model a
+low-speed fluid flow with heat convection and diffusion and buoyancy. 
 
+\begin{align*}
+    \bv{R}\left(\left[
+    \begin{array}{l}
+        \bv{u} \\
+        p \\
+        T 
+    \end{array}
+    \right]\right) \equiv& 
+    \left[
+    \begin{array}{l}
+        \frac{\partial (\rho \bv{u})}{\partial t} + \rho \bv{u} \cdot
+    \nabla \bv{u} + \nabla p - \mu \nabla^2 \bv{u} + 
+    \rho \beta_T (T - T_0) \bv{g} \\
+    \nabla \cdot \bv{u} \\
+    \frac{\partial (\rho c_p T)}{\partial t} + \rho c_p \bv{u} \cdot
+    \nabla T - k \nabla^2 T
+    \end{array} 
+    \right] = 0
+\end{align*}
 
+The Navier-Stokes equations are derived from conservation of mass,
+momentum and energy, and are a highly reliable model for low-speed flows
+of the sort encountered here. The boussinesq approximation for the
+buoyancy is less generally applicable, but still very accurate for a
+wide variety of flows in nature, such as atmospheric fronts, oceanic
+circulation, etc. The Boussinesq buoyancy approximation relies upon the
+difference in density in the fluid being negligible except for gravitational
+forces which are large enough to make the specific weight appreciably different
+between the two fluids.
+
+Our model also neglects viscous heating. Viscous heating can play an
+important role in fluids with strongly temperature-dependent viscosity
+because this introduces a coupling between the energy and momentum
+equations. This is an important effect in the fluid flow of magma, for
+instance.  However, the operating temperatures of our simulations are
+sufficiently far from these conditions as to make viscous heating
+negligable. 
 
 % embedded models for the vanes!
+%An embedded model for the 
+
 
 %
 % 
@@ -165,7 +242,7 @@ manner inconsistent with the physical simulation regime, can also
 cover-up other discrepancies that might exist in the code. 
 
 Our choice of parameter is guided by a similar numerical
-study\cite{Becker2002428} of a compressible flow at low mach number with
+study\cite{Becker2002428} of a incompressible flow with
 convection driven by a large temperature. 
 
 However, significant uncertainties still exist. The discretization in
@@ -401,11 +478,20 @@ constrained to only velocity measurements.
 %
 \section{Further Concerns}
 
+% the fucking turbine too...
+Our goal is to eventually extract energy from the SoV, which at this
+time is envisioned coming from a turbine placed over the vanes. It will
+be very difficult to get accurate PIV measurements from the apparatus in
+the laboratory, and once again the simulations will be essential in
+driving the experimental optimization and design of the SoV. Thus, 
+this adds another significant validation case, with new, significant,
+challenges in modeling the turbines. This is in essence a new embedded
+submodel that we will add after validation of the initial configuration
+is completed. 
 
-In order for these simulations to be generally useful, they must first
-be validated against existing experimental data and high fidelity
-simulations, as mentioned previously. 
-However, these models will then explore regimes and scales where no
+In order for these simulations to be generally useful, after they are 
+validated against existing experimental data and high fidelity
+simulations, they will be used to explore regimes and scales where no
 experimental measurements presently exist. Characterizing the
 uncertainty of predictions resulting from extrapolation is a critical
 component in enabling reliable assessments of field performance of the
@@ -421,24 +507,19 @@ these flows, which could lead to fundamental advances in the physics of
 fluid dynamics, dust devils, and other coherent structures with vortex 
 dynamics\cite{Mullen1977181,smithleslie,kanak}. 
 
-
 % this might be junk
 Determining the optimal design of these systems will involve parameter
-sweeps over a large space of possible configurations. Where possible,
+sweeps over a large space of possible configurations. These simulatons
+are expensive, and so while accuracy is important, where possible,
 models will be developed in order to simplify the mesh (memory) and
-computational requirements. One such method, which replaces the turning
+computational requirements. For instance, the previous ``low-cost'' vane
+ method, which replaces the turning
 vanes with a model, improved runtime by a factor of twenty-four, due to
 the greatly decreased mesh resolution requirements near the vane
-trailing edges. These models, once properly validated, will be
+trailing edges. These models, if they prove to be robust after
+validation testing, will be
 invaluable tools in effective computer aided design and simulation of
 this new technology.  
-
-% talk about physics plan?
-
-
-% the fucking turbine too...
-
-
 
 
 %
@@ -452,7 +533,7 @@ this new technology.
 %    specify yet.
 %
 %
-\section{Probabalistic Formulation on a Sub-Problem}
+\section{Probabilistic Formulation on a Sub-Problem}
 
 
 We propose the following subproblem
