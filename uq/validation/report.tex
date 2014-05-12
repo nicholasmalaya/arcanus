@@ -338,7 +338,27 @@ capacity.
 \subsection{Model Validation}
 Our initial focus has therefore moved to a validation study to ensure that the
 output of the numerical simulation agrees with the experimental
-measurements. In particular, we have implemented a simulation designed
+measurements. The flows are qualitatively similar, with a vortex forming
+in the center of in both cases, but the degree to which each matches
+each other is unclear and must be characterized. 
+
+\begin{figure}[!htb]
+        \centering
+        \begin{subfigure}[bh]{0.5\textwidth}
+                \includegraphics[width=.8\linewidth]{figs/u_sim.png}
+        \end{subfigure}%
+        \begin{subfigure}[bh]{0.5\textwidth}
+                \includegraphics[width=.8\linewidth]{figs/u_exp.png}
+        \end{subfigure}
+ \caption{The instantaneous x velocity component (u)
+ from a horizontal plane situated slightly above the vanes,
+ measured in the simulation (left) and the laboratory apparatus
+ (right). This is for a 30 degree vane configuration.} 
+ \label{fig:instant}
+\end{figure}
+
+
+In particular, we have implemented a simulation designed
 to closely mimic the 30 degree vane experimental setup. The outputs of
 the simulation (velocity field, temperatures, etc. ) are then compared
 to available experimental data, which at this time is principally the
