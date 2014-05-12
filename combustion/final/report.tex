@@ -262,23 +262,45 @@ variance in mixing fraction concentration to impact the temperature.
 In order to account for the turbulent fluctuations, we need to integrate
 over the probability density, e.g.
 \begin{equation}
- \tilde T = \int P(z) T(z) dz
+ \tilde T = \int P(\bar z) T(\bar z) dz
 \end{equation}
 Using equation \ref{eq}, this is equivalent to, 
 \begin{equation}
- \tilde T = \int P(z) (a z + b) dz
+ \tilde T = \int P(\bar z) (a \bar z + b) dz
 \end{equation}
 Essentially, this ``blurs'' the temperature profile by averaging each
 location with its neighboring temperatures. 
 
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/temperature.pdf}
+    \caption{The temperature profiles for the laminar (blue) and
+    turbulent (green) simulations at $x=30$.}
+    \label{temp}
+   \end{center}
+  \end{figure}
+
+These results are plotted in figure \ref{temp}. These profiles are
+qualitatively similar to what we expected. The peak is lower for the
+turbulent profile, but the temperature peak is wider and the temperature
+is elevated farther away from the mixing layer, due to the increased
+mixing from the turbulence. I was surprised that the slope is
+ not perfectly linear in the case of the laminar profile. 
 
 \subsection*{e) Discuss the results.}
 
-A few initial comments. The entire formulation utilized chemical
+The entire formulation utilized chemical
 equilibrium models to find the long time stable solution. The model
 cannot predict extinction or ignition. This also assumes that the
 chemical time scales are much smaller than the turbulence time scales,
-e.g. that the Damkohler number is large.  
+e.g. that the Damkohler number is large. 
+
+We are also ignoring instantaneous turbulence effects, on account of
+using a Favre-Averaging scheme, instead of resolving the fine turbulence
+scales. So these results are certainly not expected to be accurate
+instanteously, but only represent mean quantities. Furthermore, they may
+be far from realistic for some time, as the flow transitions to
+turbulence and large eddies form downstream of the splitter.  
 
 Finally, we either ``turned-on'' or ``turned-off'' the turbulence
 (e.g. it was fully developed turbulence, or completely laminar). In
@@ -290,7 +312,12 @@ outside. This could be more accurately modeled using the ``composite PDF
 approach for intermittency''. 
 
 Given these assumptions, we would have to be careful using the results
-of this model in a predictive context. Those caveats aside, 
+of this model in a predictive context. Those caveats aside, the results
+have the correct qualitative character for a flame, and so are certainly
+much more useful than only expert opinion or conjecture. This is not to be too
+negative, this is an extremely complex system we are simulating, and I
+am able to generate all the plot used in this report in a few seconds on
+my computer. 
 
 
 \newpage
