@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
     # define field
     nx = 50
-    ny = 31
+    ny = 91
     
     # sanity check
     if(ny%2 != 1):
@@ -31,11 +31,11 @@ if __name__ == "__main__":
     #
     # enforce b.c. ( x < 0, y = 0 => z=1)
     #
-    z[0:ny/2] = 1.0
+    z[0:ny/2 +1] = 1.0
 
     # spacing
     dx = 1 # centimeters
-    dy = 1 # centimeters
+    dy = 0.2 # centimeters
 
     # Diffusivities
     DL = 0.176 # (cm^2/sec)
@@ -93,6 +93,9 @@ if __name__ == "__main__":
     #
     # plot
     #
+    pylab.xlim([-5,5])
+    pylab.ylim([-0.1,1.1])
+    pylab.legend()
     pylab.show()
 
 #
