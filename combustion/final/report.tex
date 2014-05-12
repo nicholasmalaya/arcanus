@@ -247,6 +247,31 @@ more severely in this case.
 \subsection*{d) Plot the laminar and mean turbulent temperature
 distributions at $x=30$ cm.}
 
+We already know that the laminar profile will have a linear profile,
+from the Burke-Schumann solution. This takes the form, 
+\begin{equation}
+a z + b = T(z). 
+\label{eq}
+\end{equation}
+This is equivalent to saying that at each grid point, we expect the
+temperature distribution to be a delta function around the temperature
+predicted by the mixing fraction at that location. 
+
+The turbulent system is more complicated. Now, we expect the non-zero
+variance in mixing fraction concentration to impact the temperature. 
+In order to account for the turbulent fluctuations, we need to integrate
+over the probability density, e.g.
+\begin{equation}
+ \tilde T = \int P(z) T(z) dz
+\end{equation}
+Using equation \ref{eq}, this is equivalent to, 
+\begin{equation}
+ \tilde T = \int P(z) (a z + b) dz
+\end{equation}
+Essentially, this ``blurs'' the temperature profile by averaging each
+location with its neighboring temperatures. 
+
+
 \subsection*{e) Discuss the results.}
 
 A few initial comments. The entire formulation utilized chemical
@@ -260,7 +285,9 @@ Finally, we either ``turned-on'' or ``turned-off'' the turbulence
 reality, the flow might be intermittent or laminar away from the mixing
 layer at $y=0$ and turbulent near it. So a mixing of the models might be
 more appropriate. Ideally, the flow would be fully turbulent near the
-centerline, intermittent at the edges of the layer, and laminar outside. 
+centerline, intermittent at the edges of the layer, and laminar
+outside. This could be more accurately modeled using the ``composite PDF
+approach for intermittency''. 
 
 Given these assumptions, we would have to be careful using the results
 of this model in a predictive context. Those caveats aside, 
