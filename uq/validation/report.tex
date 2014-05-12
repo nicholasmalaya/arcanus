@@ -536,20 +536,72 @@ this new technology.
 \section{Probabilistic Formulation on a Sub-Problem}
 
 
-We propose the following subproblem
+We propose the to calibrate our simuation inflow boundary conditions
+against the laboratory data. We will assume that the inflow between the
+two HVACs is identical, and that they have the same areas. 
 
-%
-%
-%
-\section{Conclusions}
+We are therefore inferring three parameters: A (the area of each HVAC), V (the inflow
+velocity rate) and T (the inflow temperature). Note that a more rich
+model for A might be useful, as $A=b*h$, but for this calibration we
+will assume that $A=l^2$, e.g. the area is square. We choose to infer
+the velocity and the area seperately (instead of the flow rate, for
+instance) because this has important implications for the simulation. In
+particular, a higher velocity penetrates deeper into the room more
+quickly. 
 
+We are given information that the inflow velocity is $4-6 m/s$. It seems
+very unlikely that the velocity cannot be below 4 m/s or higher than 6
+m/s. Thus, instead of a uniform distribution, we will use a Gaussian
+centered at 5 m/s with the 95\% (two $\sigma$) centered at 4 and 6. 
+\begin{equation}
+v \sim \mathcal{N}(5,0.5).
+\end{equation}
+
+We expect that the area measured to be more accurate, presumably with a
+tape-measure or another device with small error (However, the note did
+ominously state, ``approximate area''). It seems extremely unlikely this
+error is more than 10\%. We therefore set a Gaussian, where again the
+95\% (two sigma) range is between 0.08 and 1.2, 
+\begin{equation}
+A \sim \mathcal{N}(1,0.01).
+\end{equation}
+
+The temperature also appears to be uncertain. Here, we have very little
+estimate at how much it might be off. It is not known how the 15 degree
+C measurement was attained, or if the instrument (one hopes it was not a
+hand) was properly calibrated. We therefore choose a broad prior,
+with standard deviation of 2 degree centigrade. e.g.
+\begin{equation}
+T \sim \mathcal{N}(15,2).
+\end{equation}
+
+We do not have an estimate for the experimental data uncertainty. Thus,
+for the purposes of this calibration, we must necessarily choose a broad
+prior that permits room for non-trivial error. However, we note that
+aside from the error being zero mean, we do not know much more about the
+expected characteristics of it. I'll therefore choose a Gaussian with 10\% (in the
+average velocity measured in the PIV) sigma. I am slightly worried this is not
+broad enough, however. 
+\begin{equation}
+\epsilon_d \sim \mathcal{N}(0,.1 \bar w).
+\end{equation}
+
+We desire to calibrate our inflow to as closely match the vertical
+velocity between the experiment and the simulation as possible. This is
+not necessarily because this is our QoI, but because it will have more
+implications for power-generation than the azimuthal velocity, and we do
+not have access to many quantities to consider. 
+\begin{align*}
+\pi(w_{\text{fwd model}}=w_{d}\,|\,A,v,T)=\frac{1}{\sqrt{(2\pi)^{n}|.1
+ \bar w|}}\exp\left\{ -\frac{1}{2}\left(h_{d}-h^{\text{fwd model}}-\mu\right)^{T}\cdotp\left(h_{d}-h^{\text{fwd model}}-\mu\right)\right\} ,
+\end{align*}
 
 
 %
 % end
 %
-This work is supported by the Department of Energy [Advanced Research
-Projects Agency-Energy] under Award Number [DE-FOA-0000670].    
+%This work is supported by the Department of Energy [Advanced Research
+%Projects Agency-Energy] under Award Number [DE-FOA-0000670].    
 
 \bibliography{references}
 \bibliographystyle{unsrt}
