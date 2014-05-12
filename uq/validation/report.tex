@@ -128,13 +128,14 @@ planning, where decision-makers will need to assess optimum unit size,
 spacing, and geographic location for utility-scale deployment.  
 
 %
-%
+% 2)
 %
 \section{Mathematical Specification}
 
 
+
 %
-%
+% 3)
 %
 \section{Model Parameter Specification}
 
@@ -148,27 +149,49 @@ spacing, and geographic location for utility-scale deployment.
 %
 \section{Model Inputs}
 
+The model inputs consistitute a very large component (arguably, the
+largest) of the uncertainty in this problem. 
+
+For the Laboratory, 
+
 Initial conditions are highly uncertain. Blowing to cool lab important. 
 No sensitivity analysis performed. 
 
 %
-%
+% 5) 
 %
 \section{Proposed Model Calibration}
 
+Lab input conditions
+
 
 %
-%
+% 6)
 %
 \section{Model Validation}
+
+
+  \begin{figure}[!htb]
+    \begin{center}
+     \includegraphics[width = 12 cm]{figs/lab_setup.jpg}
+     \caption{The laboratory set-up.}
+     \label{lab}
+    \end{center}
+  \end{figure}
 
 % validation
 Several phases of research must be conducted in order to develop robust
 and reliable predictive simulation capability. First, the simulations
 must be validated against existing experimental data generated from the
 laboratory apparatus. These data were taken using particle image
-velocimetery, often not without non-trivial error in measurement and
-sampling. 
+velocimetery (PIV), often not without non-trivial error in measurement and
+sampling. In addition, the experimental laboratory has numerous objects
+in the immediate vicinity (see figure \ref{lab}) that may
+obstruct/manipulate the flow. Finally, as mentioned previously, the
+measurements for the cooling, geometry of the room, etc. are rough, and
+almost certainly possess non-trivial uncertainties/errors. 
+
+
 
 % scaling analysis
 New simulations at different conditions will then be performed in order
@@ -179,7 +202,8 @@ of the velocity field and anticipated energy generation. Furthermore,
 insights may be gathered on the dyamics of these flows, which could lead
 to fundamental advances in the physics of fluid dynamics, dust devils,
 and other coherent structures with vortex
-dynamics\cite{Mullen1977181,smithleslie,kanak}. Determining the optimal design of
+dynamics\cite{Mullen1977181,smithleslie,kanak}. Determining the optimal
+design of 
 these systems will involve parameter sweeps over a large space of
 possible configurations. Where possible, models will be developed in
 order to simplify the mesh (memory) and computational requirements. One
@@ -204,13 +228,12 @@ component in enabling reliable assessments of field performance of the
 SoV, as it will guide the commercialization strategy of the product.
 
 Our focus has therefore moved to a validation study to ensure that the output of the 
-numerical simulation agrees with the experimental measurements. In particular, we have 
-implemented a simulation designed to closely mimic the 30 degree vane
-experimental setup. The  
-outputs of the simulation (velocity field, temperatures, etc. ) are then
-compared to available experimental data, which at this time is
-principally the velocity field taken by PIV measurements at a variety of
-time frames near the center of the SoV.  
+numerical simulation agrees with the experimental measurements. In
+particular, we have implemented a simulation designed to closely mimic
+the 30 degree vane experimental setup. The outputs of the simulation
+(velocity field, temperatures, etc. ) are then compared to available
+experimental data, which at this time is principally the velocity field
+taken by PIV measurements at a variety of time frames near the center of the SoV.  
 
 
 %
