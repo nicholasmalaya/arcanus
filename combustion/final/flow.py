@@ -1,6 +1,6 @@
 #!/bin/py
 #
-#
+# Combustion Theory Final Exam: Turbulent Diffusion Flames
 #
 import sys
 import numpy as np
@@ -67,20 +67,33 @@ if __name__ == "__main__":
     zf = []
     zf.append(z)
 
+    zlf = []
+    zlf.append(z)
+
     zzf = []
     zzf.append(np.zeros(ny))
+
+    zl = z
 
     for i in xrange(nx):
 
         zt = np.zeros(ny)
         zt[0] = 1.0
+
+        zlt = np.zeros(ny)
+        zlt[0] = 1.0
+
         for j in xrange(1,ny-1):
-            zt[j] = DT*dx*(z[j+1]-2*z[j]+z[j-1])/(u*dy*dy) + z[j]
+            zt[j]  = DT*dx*(z[j+1]-2*z[j]+z[j-1])/(u*dy*dy) + z[j]
+            zlt[j] = DL*dx*(zl[j+1]-2*zl[j]+zl[j-1])/(u*dy*dy) + zl[j]
             
         #
         # update mean field  and save state
         #
         z = zt
+        zl = zlt
+
+        zlf.append(zl)
         zf.append(z)    
 
         #
@@ -193,11 +206,10 @@ if __name__ == "__main__":
     zbar  = zf[ind][yloc]
     print zbar
     zzbar = zzf[ind][yloc]
-    #gamm = (zbar * (1 - zbar ) / (zzbar*zzbar) ) - 1
-    gamm = 10000
+    gamm = (zbar * (1 - zbar ) / (zzbar*zzbar) ) - 1
     alph = zbar * gamm
     bet  = (1-zbar)*gamm
-    plot_beta(.01, 1)
+    plot_beta(alph, bet)
 
     #
     # generic plot options
@@ -209,7 +221,51 @@ if __name__ == "__main__":
     pylab.ylim(0.0, 6.0)
     pylab.legend()
     pylab.savefig('pdf.pdf')
+    pylab.close()
 
+    # --------------------------------------------------
+    #
+    # calculate and plot temperature profiles for laminar and turbulent profiles
+    #
+    # --------------------------------------------------
+
+    # laminar:
+    # 
+    tl  = zlf
+    tu  = 293. # room temp
+    Q   = 55
+
+    # CP = 1.00 kJ/kg.K
+    cp  = 1.00
+    nuf = 1
+    wf  = 1
+
+    #
+    # location = 30 cm
+    #
+    ind = 30
+    trl = tu + zlf[ind]*Q/(cp*nuf*wf)
+    tll = tu + (1-zlf[ind])*Q/(cp*nuf*wf)
+    tll[ny/2:]=trl[ny/2:]
+    pylab.plot(y,tll, linewidth=2.0, label='Laminar')
+
+    
+    #
+    # turbulent
+    #
+    tr = tu + zf[ind]*Q/(cp*nuf*wf)
+    tl = tu + (1-zf[ind])*Q/(cp*nuf*wf)
+    tl[ny/2:]=tr[ny/2:]
+    pylab.plot(y,tl, linewidth=2.0, label='Turbulent')
+
+    #
+    # plot
+    #
+    pylab.xlim(-3.0, 3.0)
+    pylab.xlabel('y (cm)',size=22.0)
+    pylab.ylabel('Temperature (K)', size=30.0)
+    pylab.legend()
+    pylab.savefig('temperature.pdf')
 
 #
 # nick 
