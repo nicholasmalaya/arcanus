@@ -5,10 +5,24 @@
 import sys
 import numpy as np
 import pylab
+import scipy.special as ss
 
-def zprime(z):
-    """Returns \bar z'z'"""
-    return 1
+def beta(a, b, mew):
+    e1 = ss.gamma(a + b)
+    e2 = ss.gamma(a)
+    e3 = ss.gamma(b)
+    e4 = mew ** (a - 1)
+    e5 = (1 - mew) ** (b - 1)
+    return (e1/(e2*e3)) * e4 * e5
+ 
+def plot_beta(a, b):
+    Ly = []
+    Lx = []
+    mews = np.mgrid[0:1:1000j]
+    for mew in mews:
+        Lx.append(mew)
+        Ly.append(beta(a, b, mew))
+    pylab.plot(Lx, Ly, linewidth=3.0)
 
 #
 # main function 
@@ -74,7 +88,6 @@ if __name__ == "__main__":
         #
         zzt = np.zeros(ny)
         for j in xrange(1,ny-1):
-            #zzt[j] = 0.5*((z[j+1]-z[j])/dy)**2 * DT * (i*dx)/u
             zzt[j] = 0.25*((z[j+1]-z[j-1])/dy)**2 * DT * (i*dx)/u
         
         zzf.append(zzt)
@@ -150,9 +163,53 @@ if __name__ == "__main__":
     #
     pylab.legend()
     pylab.savefig('fluc.pdf')
-    #pylab.show()
+    pylab.close()
     
-    
+    # --------------------------------------------------
+    #
+    # calculate and plot PDF of mixture fraction!
+    #
+    # --------------------------------------------------
+
+    #
+    # y = 0, x = 30 (should look gaussian)
+    #
+    ind = 30 
+    yloc = ny/2.
+    zbar  = zf[ind][yloc]
+    zzbar = zzf[ind][yloc]
+    gamm = (zbar * (1 - zbar ) / (zzbar*zzbar) ) - 1
+    if(gamm < 0):
+        gamm = 0
+    alph = zbar * gamm
+    bet  = (1-zbar)*gamm
+    plot_beta(alph, bet)
+
+    #
+    # plot at y = 15, x = 30 (should look like a delta function)
+    # 
+    ind = 30 
+    yloc = ny-1
+    zbar  = zf[ind][yloc]
+    print zbar
+    zzbar = zzf[ind][yloc]
+    #gamm = (zbar * (1 - zbar ) / (zzbar*zzbar) ) - 1
+    gamm = 10000
+    alph = zbar * gamm
+    bet  = (1-zbar)*gamm
+    plot_beta(.01, 1)
+
+    #
+    # generic plot options
+    #
+    pylab.xlabel(r'$\bar z$',size=22.0)
+    pylab.ylabel(r'$P(\bar z)$', size=30.0)
+
+    pylab.xlim(0.0, 1.0)
+    pylab.ylim(0.0, 6.0)
+    pylab.legend()
+    pylab.savefig('pdf.pdf')
+
 
 #
 # nick 

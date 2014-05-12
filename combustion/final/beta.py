@@ -19,7 +19,7 @@ def plot_beta(a, b):
         Lx.append(mew)
         Ly.append(beta(a, b, mew))
     pl.plot(Lx, Ly, label="a=%f, b=%f" %(a,b))
- 
+ o
 def main():
     plot_beta(0.1, 0.1)
     plot_beta(1, 1)

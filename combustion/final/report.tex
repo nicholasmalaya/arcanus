@@ -195,6 +195,43 @@ Where the variable $\gamma$ is defined as,
 \begin{equation}
   \gamma = \frac{\bar z (1-\bar z)}{\bar{z'z'}^2} -1 \geq 0.
 \end{equation}
+
+For the two locations, we can already predict what the distributions
+will look like. The first, at $y=0$, will be roughly gaussian, with a
+mean centered around the expected value of the mixture fraction at that
+location. Given that we expect the mixture fraction to be one half at that
+location, the mean should be around that value as well. For the location
+off-center, we expect a distribution that is skewed towards the side
+with more fuel or oxidizer. This is the oxidizer side, so we expect the
+mixture fraction pdf to have a mean less than zero. Furthermore, we note
+from figure \ref{mean} that this is far away from the mixing layer. We
+expect there to be essentially no mixing this far away, and therefore,
+the distribution should be essentially completely oxidizer, e.g. a
+distribution very sharply pushed up against zero. 
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/pdf.pdf}
+    \caption{The distribution of the mixture fraction, using the assumed
+    pdf approach (with an assumed $\beta$ distribution). The green line
+    on the right is at $x=30,y=0$, and the blue distribution is at $x=30,y=15$.}
+    \label{pdf}
+   \end{center}
+  \end{figure}
+
+The results of this when instantiated numerically are shown in figure
+\ref{pdf}. The results are precisely what we expected. The distribution
+at $x=30,y=0$ is not exactly at 0.5, but it is nearly so (0.53). The
+distribution is not skewed to either the fuel or oxidizer side. 
+I expect that this is accurate. 
+One might note
+that the beta distribution, despite how sharp it is near zero, is still
+giving non-trivial weight to less than zero mixture
+fractions. Personally, I am skeptical this is not an over-estimate, and
+it is likely a weakness of the assumed beta distribution for this edge
+case. However, note that assuming a Gaussian pdf would break down even
+more severely in this case. 
+
 %
 %
 %
