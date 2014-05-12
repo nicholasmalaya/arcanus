@@ -81,13 +81,14 @@ analytically!). We will completely wimp out, and only use finite difference meth
 \begin{align}
   \frac{\partial \bar z}{\partial x} &= \frac{\bar z_{i+1}-\bar z_{i}}{\Delta x} \\
   \label{first}
-  \frac{\partial^2 \bar z}{\partial y^2} &= \frac{\bar z_{j+1}-2\bar z_{j}+z_{j-1}}{\Delta y^2} 
+  \frac{\partial^2 \bar z}{\partial y^2} &= \frac{\bar z_{j+1}-2\bar z_{j}+\bar z_{j-1}}{\Delta y^2} 
 \end{align}
 The boundary conditions are $\bar z = 1$ $\forall x<0,y>0$, $\bar z = 0$ $\forall x<0,y<0$. 
 I additionally imposed a Neuman (zero flux) boundary condition on the top and bottom of the box, 
 essentially forcing the derivatives to zero at $\pm \infty$. As with the previous examination, 
 we are now in a position to instantiate this on a computer using python to solve for 
 the $\bar z(x,y)$ field. 
+
 %
 %
 %
@@ -123,7 +124,7 @@ now the indicies are changed from i to j, to reflect the different direction of 
 $x=30$ and at $y=15$ cm, $x=30$ cm.}
 
 $P(z) =$ probability of z in $z+\Delta z$. If we knew the joint probability density function
-we could calculate it directly. However, do don't know P() (the PDF). Instead, we will use 
+we could calculate it directly. However, we don't know P() (the PDF). Instead, we will use 
 what Peters calls the ``Presumed Shape PDF Approach''. We must pick a probability distribution. 
 We are limited to two parameter distributions for the model to be closed, because we only possess 
 $\bar z$ and $\bar{z'z'}$. Essentially, our choice is between a clipped Gaussian and the Beta 
