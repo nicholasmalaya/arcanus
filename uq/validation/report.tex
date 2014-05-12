@@ -140,6 +140,11 @@ spacing, and geographic location for utility-scale deployment.
 \section{Mathematical Specification}
 
 
+% navier stokes
+
+
+
+% embedded models for the vanes!
 
 %
 % 
@@ -322,29 +327,52 @@ significant source of error may exist in unobserved QoIs, and would not
 be detected in our present validation regime. 
 
 Furthermore, the model form in use is known to be imperfect. 
-Model inadequacy may play a role in 
+Model inadequacy may play a significant role in both the validation
+scenarios described below, as well as (more chillingly) in the
+additional regimes that the models will be used in a predictive
+capacity. 
 
 %
 % first case
 %
 \subsection{Model Validation}
 Our initial focus has therefore moved to a validation study to ensure that the
-output of the  numerical simulation agrees with the experimental
+output of the numerical simulation agrees with the experimental
 measurements. In particular, we have implemented a simulation designed
 to closely mimic the 30 degree vane experimental setup. The outputs of
 the simulation (velocity field, temperatures, etc. ) are then compared
 to available experimental data, which at this time is principally the
 velocity field taken by PIV measurements at a variety of time frames
-near the center of the SoV. 
-
-This ``high-fidelity'' simulation
+near the center of the SoV. This ``high-cost'' simulation resolves
+the SoV large-scale structure, as well as the turning vanes
+nearby. Comparisons must be made between the:
+\begin{itemize}
+ \item Azimuthal Velocity as a function of radius from center of the Sov
+ \item Azimuthal Velocity as a function of the height at different
+       points in the SoV
+ \item Vertical Velocity as a function of radius from center of the Sov
+ \item Vertical Velocity as a function of the height at different
+       points in the SoV
+\end{itemize}
+As noted above, this is an extremely limited set of comparisons. 
 
 %
 % hybrid (embedded model)
 %
-
-
-
+Further validation cases are required. We are now in a position to perform
+a validation of the embedded vane model. As described previously, this
+uses the same turbulence models, but now without resolving the turning
+vanes. Instead of resolving the vanes, for a region in the flow, the
+velocity field is forced in a manner similar to as if the fluid was
+moving through the turning vanes. While direct comparisons between this
+model and the experimental data can be (and will be) made, a comparison between this
+``low-cost'' (in terms of computation and mesh requirements) simulation
+and is useful for several reasons. It permits directly comparing the effect of
+the simple, low cost, turning vane model against the higher resolution
+modeling (essentially this permits a validation of an embedded
+model). Furthermore, it allows us to observe a much richer set of
+possible changes in the state space than in the experiment, which is
+constrained to only velocity measurements. 
 
 %
 % 7) An assessment of what further concerns might remain after (5) and
