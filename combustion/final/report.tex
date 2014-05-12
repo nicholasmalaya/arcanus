@@ -89,6 +89,13 @@ essentially forcing the derivatives to zero at $\pm \infty$. As with the previou
 we are now in a position to instantiate this on a computer using python to solve for 
 the $\bar z(x,y)$ field. 
 
+As an interesting implementation detail, because the solution is only
+first order in x, we only need one boundary condition for that
+direction, as shown above. This is equivalent to an initial condition on
+a first order (in time) ODE. Thus, we do not actually need to store our
+entire x-domain in memory, but can simply solve for all y-values at our
+particular x-coordinate, and then step forward in space and solve for
+the next grid location. 
 %
 %
 %
@@ -158,14 +165,18 @@ to find the long time stable solution. The model cannot predict extinction or ig
 This also assumes that the chemical time scales are much smaller than the turbulence 
 time scales, e.g. that the Damkohler number is large. 
 
-Finally, we either ``turned-on'' or ``turned-off'' the turbulence (laminar). In reality, the flow
-might be intermittent or laminar away from the mixing layer at $y=0$ and turbulent near it. 
-So a mixing of the models might be more appropriate. 
+Finally, we either ``turned-on'' or ``turned-off'' the turbulence
+(e.g. it was fully developed turbulence, or completely laminar). In
+reality, the flow might be intermittent or laminar away from the mixing
+layer at $y=0$ and turbulent near it. So a mixing of the models might be
+more appropriate. Ideally, the flow would be fully turbulent near the
+centerline, intermittent at the edges of the layer, and laminar outside.  
 
-Given the assumptions, we would have to be careful using the results of 
+Given these assumptions, we would have to be careful using the results of 
 this model in a predictive context. Those caveats aside, 
 
 \newpage
+All the work contained in this report was entirely my own. 
 
 Thank you for the class! 
 \vspace{1in}
