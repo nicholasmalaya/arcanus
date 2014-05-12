@@ -30,8 +30,8 @@ multiplied by the characteristic diffusion length scale squared, i.e.
  \bar{z'z'} = \frac{1}{2} (\nabla \bar z)^2 \frac{D_T L_x}{u}
 \end{equation}
 
-\subsection*{a) Write down the solution for the mean mixture fraction field
-  with the turbulent diffusivity.}
+\subsection*{a) Write down the solution for the mean mixture fraction
+field with the turbulent diffusivity.}
 
 We start with the steady state species equation, 
 \begin{equation}
@@ -75,19 +75,21 @@ and,
   \bar z}{\partial y^2} = 0. 
 \end{equation}
 Where the first equation is from the laminar flow, and the latter case
-is the favre-averaged mean field. We now need to discretize this equation, 
-in order to solve it numerically (It looks like it would be a trainwreck to solve
-analytically!). We will completely wimp out, and only use finite difference methods, 
+is the favre-averaged mean field. We now need to discretize this
+equation, in order to solve it numerically (It looks like it would be a
+trainwreck to solve analytically!). We will completely wimp out, and
+only use finite difference methods, 
 \begin{align}
   \frac{\partial \bar z}{\partial x} &= \frac{\bar z_{i+1}-\bar z_{i}}{\Delta x} \\
   \label{first}
   \frac{\partial^2 \bar z}{\partial y^2} &= \frac{\bar z_{j+1}-2\bar z_{j}+\bar z_{j-1}}{\Delta y^2} 
 \end{align}
-The boundary conditions are $\bar z = 1$ $\forall x<0,y>0$, $\bar z = 0$ $\forall x<0,y<0$. 
-I additionally imposed a Neuman (zero flux) boundary condition on the top and bottom of the box, 
-essentially forcing the derivatives to zero at $\pm \infty$. As with the previous examination, 
-we are now in a position to instantiate this on a computer using python to solve for 
-the $\bar z(x,y)$ field. 
+The boundary conditions are $\bar z = 1$ $\forall x<0,y>0$, $\bar z = 0$
+$\forall x<0,y<0$. I additionally imposed a Neuman (zero flux) boundary
+condition on the top and bottom of the box, essentially forcing the
+derivatives to zero at $\pm \infty$. As with the previous examination,  
+we are now in a position to instantiate this on a computer using python
+to solve for the $\bar z(x,y)$ field.  
 
 As an interesting implementation detail, because the solution is only
 first order in x, we only need one boundary condition for that
@@ -101,8 +103,8 @@ the next grid location.
 %
 %
 %
-\subsection*{b) Plot the fluctuation and mean value of the mixture fraction
-  at 5 cm, 30 cm, and 50 cm.}
+\subsection*{b) Plot the fluctuation and mean value of the mixture
+fraction at 5 cm, 30 cm, and 50 cm.}
 
   \begin{figure}[!htb]
    \begin{center}
@@ -120,13 +122,15 @@ mix, which will create a mixing layer that diffuses out and increases in
 y-width as a function of distance downstream. 
 
 The fluctuation $\bar{z'z'}$
-must also be determined. Normally, this would require solving another differential equation, 
-and potentially using submodels for the scalar dissipation rate as well. However, we were given a
-simplified expression (model) for the variance, namely,
+must also be determined. Normally, this would require solving another
+differential equation, and potentially using submodels for the scalar
+dissipation rate as well. However, we were given a simplified expression
+(model) for the variance, namely, 
 \begin{equation}
  \bar{z'z'} = \frac{1}{2} (\nabla \bar z)^2 \frac{D_T L_x}{u}. 
 \end{equation}
-Variations in y will be much larger than variations in x, and this expression 
+Variations in y will be much larger than variations in x, and this
+expression  
 can be simplified to be,
 \begin{equation}
  \bar{z'z'} = \frac{1}{2} (\frac{\partial \bar z}{\partial y})^2 \frac{D_T L_x}{u}. 
@@ -174,15 +178,19 @@ higher reynolds number, with larger fluctuations.
 \subsection*{c) Plot the PDF of the mixture fraction at two points, $y=0$ cm,
 $x=30$ and at $y=15$ cm, $x=30$ cm.}
 
-$P(z) =$ probability of z in $z+\Delta z$. If we knew the joint probability density function
-we could calculate it directly. However, we don't know P() (the PDF). Instead, we will use 
-what Peters calls the ``Presumed Shape PDF Approach''. We must pick a probability distribution. 
-We are limited to two parameter distributions for the model to be closed, because we only possess 
-$\bar z$ and $\bar{z'z'}$. Essentially, our choice is between a clipped Gaussian and the Beta 
-function distribution. We will use the Beta distribution, as it should have much more appropriate 
-limit behaviour for the mixing layer. In particular, due to the effect of intermittency, we expect the 
-edges of the mixing layer to act like a delta function. This effect can be captured by the Beta distribution. 
-The distribution function pdf has the form, 
+$P(z) =$ probability of z in $z+\Delta z$. If we knew the joint
+probability density function we could calculate it directly. However, we
+don't know P() (the PDF). Instead, we will use  what Peters calls the
+``Presumed Shape PDF Approach''. We must pick a probability
+distribution. We are limited to two parameter distributions for the
+model to be closed, because we only possess  $\bar z$ and
+$\bar{z'z'}$. Essentially, our choice is between a clipped Gaussian and
+the Beta  function distribution. We will use the Beta distribution, as
+it should have much more appropriate  limit behaviour for the mixing
+layer. In particular, due to the effect of intermittency, we expect the
+edges of the mixing layer to act like a delta function. This effect can
+be captured by the Beta distribution. The distribution function pdf has
+the form,  
 \begin{equation}
 P(\bar z) = \frac{\bar z^{\alpha-1}(1-\bar z)^{\beta-1}}{\Gamma(\alpha)\Gamma(\beta)}\Gamma(\alpha + \beta)
 \end{equation}
