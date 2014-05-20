@@ -55,6 +55,7 @@ class BayesianRichardsonExtrapolation(object):
 
         from math import log
 
+        #print params[0], params[1], params[2]
         return (
             prior(params) + 
             likelihood.likelihood(params)
@@ -76,7 +77,7 @@ from math import ceil, floor, sqrt
 #
 bre = BayesianRichardsonExtrapolation()
 
-print("\nInitializing walkers")
+#print("\nInitializing walkers")
 nwalk = 100
 params0       = np.tile(guess_list, nwalk).reshape(nwalk, len(guess_list))
 #
@@ -88,98 +89,46 @@ for i in xrange(len(guess_list)):
 # hack!
 params0.T[2]  = np.absolute(params0.T[2])        # ...and force >= 0
 
-print("\nInitializing the sampler and burning in walkers")
+#print("\nInitializing the sampler and burning in walkers")
 s = EnsembleSampler(nwalk, params0.shape[-1], bre, threads=4)
 pos, prob, state = s.run_mcmc(params0, burn_in)
 s.reset()
 
-print("\nSampling the posterior density for the problem")
+#print("\nSampling the posterior density for the problem")
 s.run_mcmc(pos, samples)
-print("Mean acceptance fraction was %.3f" % s.acceptance_fraction.mean())
 
-#
-# 1d Marginals
-#
-print("\nDetails for posterior one-dimensional marginals:")
-print((10*" %15s") % ("", "min", "P5", "P25", "P50", "P75", "P95", "max", "mean", "stddev"))
-def textual_boxplot(label, unordered):
-    n, d = np.size(unordered), np.sort(unordered)
-    print((" %15s" + 9*" %+.8e") % (label,
-                                    d[0],
-                                    d[[floor(1.*n/20), ceil(1.*n/20)]].mean(),
-                                    d[[floor(1.*n/4), ceil(1.*n/4)]].mean(),
-                                    d[[floor(2.*n/4), ceil(2.*n/4)]].mean(),
-                                    d[[floor(3.*n/4), ceil(3.*n/4)]].mean(),
-                                    d[[floor(19.*n/20), ceil(19.*n/20)]].mean(),
-                                    d[-1],
-                                    d.mean(),
-                                    d.std()))
-    return d.mean(), 2*d.std()
+samplea = s.flatchain[:,0]
+pylab.plot(samplea)
+pylab.xlabel('Step number')
+pylab.ylabel('alpha')
+pylab.show()
+pylab.savefig('alpha.png')
 
-box_mean = []
-box_std  = []
-for i in xrange(len(qoi_list)):
-    mm, ss = textual_boxplot(qoi_list[i], s.flatchain[:,i])
-    box_mean.append(mm)
-    box_std.append(ss)
+samples = s.flatchain[:,1]
+pylab.plot(samples)
+pylab.xlabel('Step number')
+pylab.ylabel('sigma')
+pylab.show()
+pylab.savefig('sigma.png')
 
-#----------------------------------
-# FIGURES: Marginal posterior(s)
-#----------------------------------
-print("\nPrinting PDF outputs")
-for i in xrange(len(qoi_list)):
-    plotter(s.flatchain[:,i],i)
+sample = s.flatchain[:,2]
+pylab.plot(sample)
+pylab.xlabel('Step number')
+pylab.ylabel('Value')
+pylab.show()
+pylab.savefig('cd.png')
 
-#----------------------------------
-# FIGURE: Joint posterior(s)
-#----------------------------------
-#
-qbins  = []
-qkde   = []
-qpdf   = []
-bounds = []
-qticks = []
+filepath='sigma.dat'
+f = open(filepath, 'w')
+for item in samples:
+    f.write("%s\n" % item)
 
-for i in xrange(len(qoi_list)):
-    qbins.append(np.linspace(np.min(s.flatchain[:,i]), np.max(s.flatchain[:,i]), 200))
-    qkde.append(stats.gaussian_kde(s.flatchain[:,i]))
-    qpdf.append(qkde[i].evaluate(qbins[i]))
-    bounds.append(np.array([box_mean[i]-box_std[i],box_mean[i]+box_std[i]]))
-    qticks.append(np.linspace(bounds[i][0], bounds[i][1], 3))
+filepath='alpha.dat'
+f = open(filepath, 'w')
+for item in samplea:
+    f.write("%s\n" % item)
 
-pyplot.figure()
-
-from matplotlib.ticker import MultipleLocator, FormatStrFormatter
-formatter = FormatStrFormatter('%5.4f')
-formatter2 = FormatStrFormatter('%5.f')
-
-col = len(qoi_list)
-for i in xrange(col):
-    for j in xrange(col):
-        if(j>=i):
-             pylab.subplot(col,col,(j+i*col)+1)
-
-             # plot marginal
-             if (j == i):
-                 pyplot.plot(qbins[i], qpdf[i], linewidth=2, color="k", label="Post")
-                 pyplot.xlim(bounds[i])
-                 pylab.gca().set_xticks(qticks[i])
-                 pylab.gca().xaxis.set_major_formatter(formatter)
-                 pylab.gca().xaxis.set_minor_formatter(formatter)
-                 pylab.gca().set_yticks([])
-                 pyplot.xlabel(qoi_list[i], fontsize=24)
-
-             # plot contour when j>i
-             else:
-                 H, qe, Ce = np.histogram2d(s.flatchain[:,i], s.flatchain[:,j], bins=(200,200))
-                 qv = 0.5*(qe[0:-1] + qe[1:len(qe)]);
-                 Cv = 0.5*(Ce[0:-1] + Ce[1:len(Ce)]);
-                 pyplot.contour(Cv,qv,H,5,colors='k')
-                 pyplot.xlim(bounds[j])
-                 pylab.gca().set_xticks(qticks[j])
-                 pylab.gca().set_xticklabels([])
-                 pylab.gca().set_yticks(qticks[i])
-                 pylab.gca().set_yticklabels([])
-
-pyplot.savefig('joint_post.pdf', bbox_inches='tight')
-
+filepath='drag.dat'
+f = open(filepath, 'w')
+for item in sample:
+    f.write("%s\n" % item)

@@ -58,19 +58,18 @@ def logGaussian(MEAN, COVAR, X):
 #
 # this is how long the walkers will propagate, before we start
 # to record statistics
-burn_in = 200
+burn_in = 1000
 
 #
 # number of samples to gather
 #
-samples = 200
+samples = 10000
 
 #
 # initial guesses for the walkers starting locations
 #
 guess_a = 0.75
 guess_s = 1.0
-guess_h = 35.0
 guess_c = 1.0
 
 
@@ -79,23 +78,22 @@ guess_c = 1.0
 # (please ensure the order in which you guess is the same 
 #  as the order for the prior_function list)
 #
-guess_list = [guess_a, guess_s, guess_h, guess_c]
+guess_list = [guess_a, guess_s, guess_c]
 
 #
 # perturb q,c,p
 #
 perturb_a = 0.05
 perturb_s = 0.3
-perturb_h = 0.4
 perturb_c = 0.5
 
-perturb_list = [perturb_a, perturb_s, perturb_h, perturb_c]
+perturb_list = [perturb_a, perturb_s, perturb_c]
 
 #
 # list of qoi (strings please)
 # (please ensure this is identical to the order you placed in 'prior_funcs')
 # (or else, labels could be misleading)
-qoi_list = ["a", "s", "H", "C"]
+qoi_list = ["a", "s", "C"]
 
 # Load data and build elementary vectors and matrices for the
 # mean and covariance of the likelihood function

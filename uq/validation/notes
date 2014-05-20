@@ -1,14 +1,7 @@
-I am sure you will all be happy to hear that it is time to start on
-the class projects. The first step will be for each of you to identify
-a modeling & simulation problem to work on, and write a brief
-description of your plan (a paragraph or two) for me to look
-over. This brief project proposal will be due Thursday April 3, by
-e-mail. I will then send you comments and suggestions by April 7. This
-will give you about a month to work on the project.
 
-The problem you select should be one with which you have some
-familiarity, as this will make your task easier. Ideally, you should
-choose a problem you are working with for your research. Your task
+/workspace/src/pecos/talks/thermal_vortex/review_2013
+
+Your task
 will be to develop a plan for a validation and uncertainty
 quantification study on you problem. The result will be a report
 (about 10 pages) describing your plan. The report should have the
@@ -16,38 +9,31 @@ following components:
 
 1) A definition of the problem, what needs to be simulated and the
    purpose of the simulations
-
 2) A complete mathematical specification of the mathematical model
    (i.e. the equations), with documentation of the basis for the
    model, what aspects are reliable theory that need not be questioned
    in the context of this problem, and what aspects are not as
    reliable (i.e. embedded models), and what is known about how these
    aspects of the model could be wrong or inaccurate.
-
 3) Identification of all parameters in the model, the available
    information about these parameters and what is known about their
    uncertainty.
-
 4) Identification of other inputs required for the model (e.g. initial
    conditions, boundary conditions), and what is known about these
    inputs for this problem, and associated uncertainties.
-
 5) A proposal of what (if any) of the parameters/inputs could
    be/should be calibrated, what experimental scenarios could be
    used for this calibration, and whether data is already available,
    or new experiments would be needed. Also describe what, if
    anything, is known about uncertainties in the observational data. 
-
 6) A proposal of how the model could/should be validated, including
    validation of any embedded models, as well as the overall model.
    Identify whether data is already available or whether new
    experiments would be needed. Also describe what, if anything, is
    known about uncertainties in the observational data.
-
 7) An assessment of what further concerns might remain after (5) and
    (6) regarding the applicability of the model for the purpose of the
    calculations.
-
 8) From this plan, select a sufficiently simplified or constrained
    sub-problem, on which to formulate the probabilistic analysis of
    calibration and validation. To the extent possible, symbolically
@@ -55,6 +41,3 @@ following components:
    uncertainties, etc., defining probability models for the relevant
    uncertainties and including things symbolically that you can't
    specify yet.
-
-I'll provide a few more details later, but this should be enough for
-you to select an appropriate problem.

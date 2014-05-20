@@ -1,5 +1,5 @@
 #!/bin/py
-# From calculation, we expect that the local minimum occurs at (x,y)= (0,0)
+# From calculation, we expect that the local minimum occurs at (x,y) = (0,0)
 #
 # min f(x,y) = -cos(x)cos(y/10)
 #
@@ -10,8 +10,8 @@ x_old  = np.array([0, 0])
 eps    = 0.01               # step size
 thresh = 0.00001
 
-x_guess = np.pi/2.
-y_guess = np.pi/2.
+x_guess = np.pi/4.
+y_guess = -np.pi
 x_new  = np.array([x_guess, y_guess])
  
 def f_prime(xv):    
@@ -19,14 +19,28 @@ def f_prime(xv):
     x = xv[0]
     y = xv[1]
     return np.array([np.sin(x)*np.cos(y/10.), np.cos(x)*np.sin(y/10.)/10.])
- 
+
+def f_hess(xv):    
+    """ Hessian f"""
+    x = xv[0]
+    y = xv[1]
+    return np.matrix([[ np.cos(x)*np.cos(y/10.)    , -np.sin(x)*np.sin(y/10.)/10. ],
+                     [ -np.sin(x)*np.sin(y/10.)/10.,  np.cos(x)*np.cos(y/10.)/100.]])
+
 xdat = []
 ydat = []
 while np.linalg.norm(x_new-x_old) > thresh:
     x_old = x_new
-    xdat.append(x_new[0])
-    ydat.append(x_new[1])
-    x_new = x_old - eps * f_prime(x_old)
+    #xdat.append(x_new[0])
+    #ydat.append(x_new[1])
+    a = f_hess(x_old)
+    print a
+    inv_hess = np.linalg.inv(a)
+    print inv_hess
+    # line search
+    #eps = 
+
+    x_new = x_old - eps * np.dot(inv_hess,f_prime(x_old))
 print "Local minimum occurs at ", x_new
 
 # plot movement

@@ -10,8 +10,8 @@ x_old  = np.array([0, 0])
 eps    = 0.01               # step size
 thresh = 0.00001
 
-x_guess = np.pi/2.
-y_guess = np.pi/2.
+x_guess = np.pi/4.
+y_guess = -np.pi
 x_new  = np.array([x_guess, y_guess])
  
 def f_prime(xv):    
