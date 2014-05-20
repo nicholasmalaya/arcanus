@@ -1,0 +1,38 @@
+#!/bin/sh
+#
+# Deterministic Bayes
+#
+# given binary outcome, update expectations
+# 
+# -------------------------------------------
+# example:
+# 1% of women have breast cancer (and therefore 99% do not).
+# 80% of mammograms detect breast cancer when it is there (and therefore 20% miss it).
+# 9.6% of mammograms detect breast cancer when it’s not there (and therefore 90.4% correctly return a negative result).
+#
+# posterior should be 7.76%
+# -------------------------------------------
+
+# prior
+echo 'Prior Probability of Event?'
+read x
+
+# likelihood
+echo 'Likelihood of observation corroborating hypothesis?'
+read y
+
+# evidence (false pos)
+echo 'Likelihood of observation despite hypothesis (false positive)?'
+read z
+
+#
+# update probability
+#
+echo ''
+echo 'Probability is now: '
+echo "scale=4; 100*($x*$y / ( $x*$y + $z*(1-$x) ))" | bc -l; echo "Percent"
+
+#
+# nick 
+# 5/20/14
+#
