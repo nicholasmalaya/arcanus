@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# return shiller PE ratio for market
+#
+#
+#
+
+echo '# Historical Odds of Stock Market Crash Within One Year'
+echo '# P/E Ratio <10% 10-15% 15-20% 20-25% 25-30% 30%+'
+echo '#             4%  3%      8%     10%   12%   19% '
+lynx -dump -nolist http://www.multpl.com/shiller-pe/ | grep 'Current Shiller'
+
+#
+# nick
+# 5/20/14
+#
