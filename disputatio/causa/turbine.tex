@@ -1,0 +1,20 @@
+\documentclass{article}
+\title{\bf{Turbine Modeling}}
+\author{Nicholas Malaya, Roy Stogner, Robert D. Moser \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
+
+\begin{document}
+\maketitle
+
+\newpage
+
+A constant rotation speed turbine. Counter-clockwise spin with angular velocity omega. 
+
+\begin{verbatim}
+  base_velocity=
+  '{(r<r_max)*(z<zmax)*r*-sin(theta)*omega}{(r<r_max)*(z<zmax)*r*cos(theta)*omega}{0}'
+\end{verbatim}
+
+Zmax will be the height of the vanes, which is approximately 0.84 meters in the laboratory, 
+and 1.0795 meters for the two-meter SoV configuration. Rmax will be the inner diameter of the vanes. 
+
+\end{document}
