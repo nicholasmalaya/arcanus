@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage{amsmath,amssymb}
 \title{\bf{Turbine Modeling}}
 \author{Nicholas Malaya, Roy Stogner, Robert D. Moser \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
 
@@ -17,9 +18,30 @@ A constant rotation speed turbine. Counter-clockwise spin with angular velocity 
 Zmax will be the height of the vanes, which is approximately 0.84 meters in the laboratory, 
 and 1.0795 meters for the two-meter SoV configuration. Rmax will be the inner diameter of the vanes. 
 
-We now need to choose $\omega$. Options include: 
-\begin{itemize}
-   \item Spatial average of the velocity between vanes? (neglects momentum)
-   \item A simple control volume 
+We now need to choose $\omega$. At the Betz limit, the velocities will be
+$V_{\text{out}}/V_{\text{in}} = 1/3$. Furthermore, the control volume
+analysis implies that,
+\begin{equation}
+ V_{\text{turbine}} = \frac{1}{2}\left(V_{\text{in}} + V_{\text{out}} \right)
+\end{equation}
+then,
+\begin{align}
+ V_{\text{turbine}} &= \left(\frac{1}{2}\right) \left(\frac{4}{3}\right) V_{\text{in}} \\
+ &= \frac{2}{3} V_{\text{in}}.
+\end{align}
+Note this is not the velocity of the turbine, but the velocity of the
+fluid around the turbine. We can estimate the turbine speed from the
+``tip-speed ratio'', $\lambda$, which is,
+\begin{equation}
+ \lambda = \frac{\omega R}{v}.
+\end{equation}
+Here, R is the radius of the turbine blades, omega the angular velocity,
+and v is the velocity of the fluid. Values for $\lambda$ generate power
+in the range of 0-16, and are typically between 4 and 14. Thus, our
+angular velocity of the turbine is, 
+\begin{equation}
+ \omega = \frac{ 2 V_{\text{in}}\lambda}{3 R_{\text{max}}}.
+\end{equation}
+
 
 \end{document}
