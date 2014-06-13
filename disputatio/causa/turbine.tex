@@ -45,9 +45,13 @@ large, the velocities will closely match.
 \section{Turbine}
 
 The penalty function will be added to the navier-stokes as, 
+% \begin{align}
+%  \partial_t(\rho u) = \text{NS} &+ \frac{1}{\epsilon}(u-u_t)\cdot n_p \\
+%                                 &+ \frac{1}{\epsilon}(u-\omega u_t)\cdot n_p \\
+% \end{align}
+
 \begin{align}
- \partial_t(\rho u) = \text{NS} &+ \frac{1}{\epsilon}(u-u_t)\cdot n_p \\
-                                &+ \frac{1}{\epsilon}(u-\omega u_t)\cdot n_p \\
+ \partial_t(\rho u) = \text{NS} + \frac{1}{\epsilon}(u-\omega u_t)\cdot n_p
 \end{align}
 
 We will start by formulating a constant rotation speed
