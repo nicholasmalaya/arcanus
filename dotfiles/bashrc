@@ -122,6 +122,12 @@ case $MACHINE in
 	module load pecos
 	module load antioch
 	module load paraview
+	module load tbb
+	module load trilinos
+	module load petsc
+	#module list slepc
+	module load vtk
+	module load libmesh/trunk-devel
 	;;
     athena)
 # interactive mode stuff goes here
