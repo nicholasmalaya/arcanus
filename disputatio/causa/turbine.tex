@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{amsmath,amssymb}
+\usepackage{hyperref}
 \title{\bf{Turbine Modeling}}
 \author{Nicholas Malaya, Roy Stogner, Robert D. Moser \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
 
@@ -23,11 +24,29 @@ With a test function, $v$, the weak formulation is now,
 \int_{\Omega}  - \nabla u \cdot \nabla v - \frac{1}{\epsilon}
  \int_{\partial \Omega} (u-g) \cdot v = 0 
 \end{equation}
+Given, 
+\begin{equation}
+\int_{\Omega}  - \nabla u \cdot \nabla v - 
+ \int_{\partial \Omega} v \partial_n u = 0 
+\end{equation}
+Then, 
+\begin{align}
+-\frac{1}{\epsilon}(u-g) = \partial_n u \\
+ u = g - \epsilon \partial_n u 
+\end{align}
+In this manner, we can see that the velocity inthe penalty function
+region is constrained to match the value $g$, much like a
+slip-condition. So long as the value of $\epsilon$ is sufficiently
+large, the velocities will match. 
 
+%Here, $\beta$ is a large scale factor artificially introduced in order
+%to ensure that the no-slip condition holds. 
 
-\section{turbine}
+\section{Turbine}
 
-A constant rotation speed turbine. Counter-clockwise spin with angular velocity omega. 
+We will start by formulating a constant rotation speed
+turbine. The rotor will have counter-clockwise spin with angular
+velocity omega.   
 
 \begin{verbatim}
   base_velocity=
@@ -39,6 +58,10 @@ A constant rotation speed turbine. Counter-clockwise spin with angular velocity 
 Zmax will be the height of the vanes, which is approximately 0.84 meters in the laboratory, 
 and 1.0795 meters for the two-meter SoV configuration. Rmax will be the inner diameter of the vanes. 
 
+%
+% ---------------------------------------------------
+% old discussion on determining the rotation speed:
+% ---------------------------------------------------
 % We now need to choose $\omega$. At the Betz limit, the velocities will be
 % $V_{\text{out}}/V_{\text{in}} = 1/3$. Furthermore, the control volume
 % analysis implies that,
@@ -64,6 +87,10 @@ and 1.0795 meters for the two-meter SoV configuration. Rmax will be the inner di
 %  \omega = \frac{ 2 V_{\text{in}}\lambda}{3 R_{\text{max}}}.
 % \end{equation}
 
-Look at penalty function papers. 
+Look at penalty function papers: 
+\begin{itemize}
+ \item Babuska's paper on the B.C. \url{http://www.ams.org/journals/mcom/1973-27-122/S0025-5718-1973-0351118-5/S0025-5718-1973-0351118-5.pdf}
+ \item penalty boundary condition on Navier-Stokes velocity turns out to be equivalent to a "slip" boundary condition: \url{http://onlinelibrary.wiley.com/doi/10.1002/fld.2264/full}
+\end{itemize}
 
 \end{document}
