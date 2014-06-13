@@ -37,12 +37,18 @@ Then,
 In this manner, we can see that the velocity inthe penalty function
 region is constrained to match the value $g$, much like a
 slip-condition. So long as the value of $\epsilon$ is sufficiently
-large, the velocities will match. 
+large, the velocities will closely match. 
 
 %Here, $\beta$ is a large scale factor artificially introduced in order
 %to ensure that the no-slip condition holds. 
 
 \section{Turbine}
+
+The penalty function will be added to the navier-stokes as, 
+\begin{align}
+ \partial_t(\rho u) = \text{NS} &+ \frac{1}{\epsilon}(u-u_t)\cdot n_p \\
+                                &+ \frac{1}{\epsilon}(u-\omega u_t)\cdot n_p \\
+\end{align}
 
 We will start by formulating a constant rotation speed
 turbine. The rotor will have counter-clockwise spin with angular
@@ -50,8 +56,8 @@ velocity omega.
 
 \begin{verbatim}
   base_velocity=
-                '{(r<r_max)*(z<zmax)*r*-sin(theta)*omega}
-                 {(r<r_max)*(z<zmax)*r*cos(theta)*omega}
+                '{(r<r_max)*(z<zmax) * r * -sin(theta)*omega}
+                 {(r<r_max)*(z<zmax) * r * cos(theta)*omega}
                  {0}'
 \end{verbatim}
 
