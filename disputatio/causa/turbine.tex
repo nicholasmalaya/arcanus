@@ -64,6 +64,16 @@ velocity omega.
                  {(r<r_max)*(z<zmax) * r * cos(theta)*omega}
                  {0}'
 \end{verbatim}
+There are a few problems with this formulation. One, in a turbine, the
+fluid velocity is not necessarily identical to the blade velocity. 
+The turbine speed can take a range of values, and is often quoted as the
+`tip-speed ratio'', $\lambda$, which is,
+ \begin{equation}
+  \lambda = \frac{\omega R}{v}.
+ \end{equation}
+Here, R is the radius of the turbine blades, omega the angular velocity,
+ and v is the velocity of the fluid. Values for $\lambda$ generate power
+ in the range of 0-16, and are typically between 4 and 14. 
 
 Zmax will be the height of the vanes, which is approximately 0.84 meters in the laboratory, 
 and 1.0795 meters for the two-meter SoV configuration. Rmax will be the inner diameter of the vanes. 
