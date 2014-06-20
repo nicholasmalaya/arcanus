@@ -1,5 +1,7 @@
 \documentclass{article}
-\title{\bf{Turbine Modeling}}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\title{\bf{Penalty Function and Turbine Modeling}}
 \author{Nicholas Malaya, Roy Stogner, Robert D. Moser \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
 
 \begin{document}
@@ -7,14 +9,109 @@
 
 \newpage
 
-A constant rotation speed turbine. Counter-clockwise spin with angular velocity omega. 
+\section{Penalty Function Formulation}
+
+Using Laplace's equation as a test problem, 
+\begin{equation}
+ \nabla^2 u = 0 
+\end{equation}
+We impose a dirichlet-like boundary condition, 
+\begin{equation}
+ u|_{\Gamma_D} = g
+\end{equation}
+With a test function, $v$, the weak formulation is now, 
+\begin{equation}
+\int_{\Omega}  - \nabla u \cdot \nabla v - \frac{1}{\epsilon}
+ \int_{\partial \Omega} (u-g) \cdot v = 0 
+\end{equation}
+Given, 
+\begin{equation}
+\int_{\Omega}  - \nabla u \cdot \nabla v - 
+ \int_{\partial \Omega} v \partial_n u = 0 
+\end{equation}
+Then, 
+\begin{align}
+-\frac{1}{\epsilon}(u-g) = \partial_n u \\
+ u = g - \epsilon \partial_n u 
+\end{align}
+In this manner, we can see that the velocity inthe penalty function
+region is constrained to match the value $g$, much like a
+slip-condition. So long as the value of $\epsilon$ is sufficiently
+large, the velocities will closely match. 
+
+%Here, $\beta$ is a large scale factor artificially introduced in order
+%to ensure that the no-slip condition holds. 
+
+\section{Turbine}
+
+The penalty function will be added to the navier-stokes as, 
+% \begin{align}
+%  \partial_t(\rho u) = \text{NS} &+ \frac{1}{\epsilon}(u-u_t)\cdot n_p \\
+%                                 &+ \frac{1}{\epsilon}(u-\omega u_t)\cdot n_p \\
+% \end{align}
+
+\begin{align}
+ \partial_t(\rho u) = \text{NS} + \frac{1}{\epsilon}(u-\omega u_t)\cdot n_p
+\end{align}
+
+We will start by formulating a constant rotation speed
+turbine. The rotor will have counter-clockwise spin with angular
+velocity omega.   
 
 \begin{verbatim}
   base_velocity=
-  '{(r<r_max)*(z<zmax)*r*-sin(theta)*omega}{(r<r_max)*(z<zmax)*r*cos(theta)*omega}{0}'
+                '{(r<r_max)*(z<zmax) * r * -sin(theta)*omega}
+                 {(r<r_max)*(z<zmax) * r * cos(theta)*omega}
+                 {0}'
 \end{verbatim}
+There are a few problems with this formulation. One, in a turbine, the
+fluid velocity is not necessarily identical to the blade velocity. 
+The turbine speed can take a range of values, and is often quoted as the
+`tip-speed ratio'', $\lambda$, which is,
+ \begin{equation}
+  \lambda = \frac{\omega R}{v}.
+ \end{equation}
+Here, R is the radius of the turbine blades, omega the angular velocity,
+ and v is the velocity of the fluid. Values for $\lambda$ generate power
+ in the range of 0-16, and are typically between 4 and 14. 
 
 Zmax will be the height of the vanes, which is approximately 0.84 meters in the laboratory, 
 and 1.0795 meters for the two-meter SoV configuration. Rmax will be the inner diameter of the vanes. 
+
+%
+% ---------------------------------------------------
+% old discussion on determining the rotation speed:
+% ---------------------------------------------------
+% We now need to choose $\omega$. At the Betz limit, the velocities will be
+% $V_{\text{out}}/V_{\text{in}} = 1/3$. Furthermore, the control volume
+% analysis implies that,
+% \begin{equation}
+%  V_{\text{turbine}} = \frac{1}{2}\left(V_{\text{in}} + V_{\text{out}} \right)
+% \end{equation}
+% then,
+% \begin{align}
+%  V_{\text{turbine}} &= \left(\frac{1}{2}\right) \left(\frac{4}{3}\right) V_{\text{in}} \\
+%  &= \frac{2}{3} V_{\text{in}}.
+% \end{align}
+% Note this is not the velocity of the turbine, but the velocity of the
+% fluid around the turbine. We can estimate the turbine speed from the
+% ``tip-speed ratio'', $\lambda$, which is,
+% \begin{equation}
+%  \lambda = \frac{\omega R}{v}.
+% \end{equation}
+% Here, R is the radius of the turbine blades, omega the angular velocity,
+% and v is the velocity of the fluid. Values for $\lambda$ generate power
+% in the range of 0-16, and are typically between 4 and 14. Thus, our
+% angular velocity of the turbine is, 
+% \begin{equation}
+%  \omega = \frac{ 2 V_{\text{in}}\lambda}{3 R_{\text{max}}}.
+% \end{equation}
+
+\section{References}
+Look at penalty function papers: 
+\begin{itemize}
+ \item Babuska's paper on the B.C. \url{http://www.ams.org/journals/mcom/1973-27-122/S0025-5718-1973-0351118-5/S0025-5718-1973-0351118-5.pdf}
+ \item penalty boundary condition on Navier-Stokes velocity turns out to be equivalent to a "slip" boundary condition: \url{http://onlinelibrary.wiley.com/doi/10.1002/fld.2264/full}
+\end{itemize}
 
 \end{document}
