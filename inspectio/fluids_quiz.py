@@ -36,6 +36,13 @@ def loadProblems(a):
     "B",
     "C",
     "A"))
+
+  a.problems.append(quiz.Problem(
+    "What are the units of viscosity (kinematic)?",
+    "meters squared per second.",
+    "B",
+    "C",
+    "A"))
   
 def main():
   a = quiz.App()
