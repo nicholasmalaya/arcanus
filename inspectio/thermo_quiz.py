@@ -8,6 +8,13 @@ def loadProblems(a):
     "B",
     "C",
     "A"))
+
+  a.problems.append(quiz.Problem(
+    "What is a control mass?",
+    "A closed system: a volume that has no mass transfer.",
+    "B",
+    "C",
+    "A"))
   
   a.problems.append(quiz.Problem(
     "What is Cp?",
