@@ -38,6 +38,20 @@ def loadProblems(a):
     "A"))
 
   a.problems.append(quiz.Problem(
+    "What does Eulerian Method imply?",
+    "Fixed points in space.",
+    "B",
+    "C",
+    "A"))
+
+  a.problems.append(quiz.Problem(
+    "What does Lagrangian Method imply?",
+    "Following particles as they move.",
+    "B",
+    "C",
+    "A"))
+
+  a.problems.append(quiz.Problem(
     "What are the units of viscosity (kinematic)?",
     "meters squared per second.",
     "B",
