@@ -57,7 +57,22 @@ def loadProblems(a):
     "B",
     "C",
     "A"))
+
+  a.problems.append(quiz.Problem(
+    "What is a steamline?",
+    "A line that is everywhere tangent to the velocity field.",
+    "B",
+    "C",
+    "A"))
   
+  a.problems.append(quiz.Problem(
+    "What is the material derivative?",
+    "D()/Dt = d()/dt + u d()/dx + v d()/dy + w d()/dz",
+    "B",
+    "C",
+    "A"))
+
+
 def main():
   a = quiz.App()
   loadProblems(a)    
