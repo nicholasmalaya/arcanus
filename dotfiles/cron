@@ -9,9 +9,7 @@ MAILTO=""
 0   4 15 1 * ~/bin/msg/reminder_all Dad_Rocky 
 0   4 17 1 * ~/bin/msg/reminder Mallory 
 0   4 18 1 * ~/bin/msg/reminder_all Dad_Ron 
-0   5 18 1 * ~/bin/msg/reminder Jeremy_Hira 
 0   5 20 1 * ~/bin/msg/reminder Katherine
-0   5 24 1 * ~/bin/msg/reminder Adam_Maruyama 
 0   4 24 1 * ~/bin/msg/reminder Gabriel 
 0   4 25 1 * ~/bin/msg/reminder Kate_Conway 
 0   4 27 1 * ~/bin/msg/reminder_n Check_Blood_Pressure
@@ -34,10 +32,10 @@ MAILTO=""
 0   4 13 3 * ~/bin/msg/reminder lauren_mardis
 0   4 15 3 * ~/bin/msg/reminder_all celia 
 0   4 18 3 * ~/bin/msg/reminder_all Tasha_cousin 
-0   4 25 3 * ~/bin/msg/reminder Sam_owes_Em_a_goat
+0   4 25 3 * ~/bin/msg/reminder Sam_still_owes_Em_a_goat
 
 #APRIL
-0   4 02 4 * ~/bin/msg/reminder Charles Meredith 
+0   4 02 4 * ~/bin/msg/reminder Charles
 0   4 03 4 * ~/bin/msg/reminder Tim_Bludau
 0   4 10 4 * ~/bin/msg/reminder Estimated_Taxes_Due_in_a_week
 0   4 11 4 * ~/bin/msg/reminder_n Dentist?
@@ -68,9 +66,9 @@ MAILTO=""
 0   4 25 6 * ~/bin/msg/reminder_all Caroline_Rush   
 
 #JULY
-0   4 03 7 * ~/bin/msg/reminder Olga Chad
-# winner gets to pick dinner location
-0   4 07 7 * ~/bin/msg/reminder Is_a_st_regis_open_in_austin_3yrs
+0   4 03 7 * ~/bin/msg/reminder Chad
+# winner gets to pick dinner location 
+0   4 07 7 * ~/bin/msg/reminder Is_a_st_regis_open_in_austin_2yrs
 0   4 08 7 * ~/bin/msg/reminder Mike_dodd
 0   4 09 7 * ~/bin/msg/reminder sarah_dodd
 0   4 10 7 * ~/bin/msg/reminder kristin_brudy
@@ -82,21 +80,19 @@ MAILTO=""
 0   4 03 8 * ~/bin/msg/reminder Kim 
 0   4 20 8 * ~/bin/msg/reminder paul_bauman
 0   4 28 8 * ~/bin/msg/reminder_all Varner 
-0   4 30 8 * ~/bin/msg/reminder Twoomey 
 
 #SEPTEMBER 
 0   4 18 9 * ~/bin/msg/reminder Brent 
 0   4 11 9 * ~/bin/msg/reminder Estimated_Taxes_Due_in_a_week
 0   4 20 9 * ~/bin/msg/reminder_all Granddad
 0   4 21 9 * ~/bin/msg/reminder Travis Ed Jackie 
-0   4 22 9 * ~/bin/msg/reminder Monaco_Grand_Prix_w_Charles_18years
 0   4 26 9 * ~/bin/msg/reminder Sarah_J 
 0   4 26 9 * ~/bin/msg/reminder_n Check_Blood_Pressure
 
 #OCTOBER
 0   4 03 10 * ~/bin/msg/reminder Nonie
-0   4 16 10 * ~/bin/msg/reminder Nikki 
 0   4 16 10 * ~/bin/msg/reminder_n Dentist?
+0   4  6 10 * ~/bin/msg/reminder belanger
 0   4 21 10 * ~/bin/msg/reminder Jojo 
 0   4 26 10 * ~/bin/msg/reminder Rufino
 0   4 27 10 * ~/bin/msg/reminder Rocco
@@ -115,13 +111,14 @@ MAILTO=""
 
 #To be executed each day
 #30  12  * * * /h2/nick/bin/paleologos/dotfiles/sync.sh
-40  5  * * * ~/bin/msg/morrow
+#40  5  * * * ~/bin/msg/morrow
 
 #To be executed each week (monday)
 0  20  * * 1 ~/bin/msg/reminder take_out_trash!
 
 #To be executed each week (tues)
 0  20  * * 2 ~/bin/msg/reminder bring_back_trash!
+0  6   * * 2 ~/bin/msg/litany.sh 
 
 #To be executed each week (thursday)
 #30  4  * * 4 ~/bin/msg/litany.sh 
