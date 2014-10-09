@@ -121,4 +121,16 @@ If the new path's directories does not exist, create them."
 (add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
 (require 'color-theme-solarized)
 
-;; last modified: 8/7/13
+(global-set-key "\M-[1;5C" 'forward-word)   ;  Ctrl+right->forward word
+(global-set-key "\M-[1;5D" 'backward-word)  ;  Ctrl+left-> backward word
+;;
+;; Ctrl-V followed by the key combo (e.g., Ctrl-rightarrow) reveals the 
+;; code required.
+;;
+
+(global-set-key "\M-[1;5A" 'backward-paragraph)
+(global-set-key "\M-[1;5B" 'forward-paragraph)
+
+;; last modified: 
+;;  8/07/13
+;; 10/09/14 
