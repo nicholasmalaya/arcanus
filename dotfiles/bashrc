@@ -65,6 +65,7 @@ export MAIL=/mail/${USER}/Maildir/
 
 # default printer: change this to suit your needs.
 export PRINTER=pr6406
+#export PRINTER=pr6414
 # cp 6414 is the one by fatima
 #export PRINTER=pr6406d  #for double sides
 
@@ -79,9 +80,9 @@ export PATH=$PATH:/h2/nick/bin
 export PATH=$PATH:bin
 
 # pythonpath for paraview
-export PYTHONPATH=$PYTHONPATH:/opt/apps/ossw/applications/paraview/paraview-3.14.1/sl6/bin: 
-export PYTHONPATH=$PYTHONPATH:/opt/apps/ossw/applications/paraview/paraview-3.14.1/sl6/lib/paraview-3.14/site-packages/paraview
-export PYTHONPATH=$PYTHONPATH:/opt/apps/ossw/applications/paraview/paraview-3.14.1/sl6/lib/paraview-3.14
+#export PYTHONPATH=$PYTHONPATH:/opt/apps/ossw/applications/paraview/paraview-3.14.1/sl6/bin: 
+#export PYTHONPATH=$PYTHONPATH:/opt/apps/ossw/applications/paraview/paraview-3.14.1/sl6/lib/paraview-3.14/site-packages/paraview
+#export PYTHONPATH=$PYTHONPATH:/opt/apps/ossw/applications/paraview/paraview-3.14.1/sl6/lib/paraview-3.14
 
 
 #what does this do again?
@@ -103,7 +104,8 @@ case $MACHINE in
 	esac
 	module purge
 	module load sl6
-	module load intel/12.1
+	#module load intel/12.1
+	module load gcc
 	module load mpich2
 	module load mkl
       	module load boost 
@@ -127,7 +129,7 @@ case $MACHINE in
 	module load petsc
 	#module list slepc
 	module load vtk
-	module load libmesh/trunk-devel
+	#module load libmesh/trunk-devel
 	;;
     athena)
 # interactive mode stuff goes here
