@@ -84,6 +84,8 @@ export PATH=$PATH:bin
 #export PYTHONPATH=$PYTHONPATH:/opt/apps/ossw/applications/paraview/paraview-3.14.1/sl6/lib/paraview-3.14/site-packages/paraview
 #export PYTHONPATH=$PYTHONPATH:/opt/apps/ossw/applications/paraview/paraview-3.14.1/sl6/lib/paraview-3.14
 
+eval `dircolors ~/.dir_colors`
+alias ls="ls --color=auto"
 
 #what does this do again?
 export HISTCONTROL="ignoredups"
@@ -123,10 +125,12 @@ case $MACHINE in
 	module load masa 
 	module load pecos
 	module load antioch
-	module load paraview
+	module load paraview/4.0.1
 	module load tbb
 	module load trilinos
 	module load petsc
+	module load neon/0.29.6
+	module load subversion/1.7.9
 	#module list slepc
 	module load vtk
 	#module load libmesh/trunk-devel
