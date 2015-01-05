@@ -99,6 +99,7 @@ MAILTO=""
 0   4 30 10 * ~/bin/msg/reminder Oma
 
 #NOVEMBER
+0   4  1 11 * ~/bin/msg/reminder_n eat_some_lysene_this_month
 0   4  4 11 * ~/bin/msg/reminder Alice_em 
 0   4 15 11 * ~/bin/msg/reminder Sara_Tassan 
 0   4 20 11 * ~/bin/msg/reminder Sol Christina 
@@ -111,14 +112,14 @@ MAILTO=""
 
 #To be executed each day
 #30  12  * * * /h2/nick/bin/paleologos/dotfiles/sync.sh
-#40  5  * * * ~/bin/msg/morrow
+40  5  * * * ~/bin/msg/morrow
+0  6   * * * ~/bin/msg/litany.sh 
 
 #To be executed each week (monday)
 0  20  * * 1 ~/bin/msg/reminder take_out_trash!
 
 #To be executed each week (tues)
 0  20  * * 2 ~/bin/msg/reminder bring_back_trash!
-0  6   * * 2 ~/bin/msg/litany.sh 
 
 #To be executed each week (thursday)
 #30  4  * * 4 ~/bin/msg/litany.sh 
