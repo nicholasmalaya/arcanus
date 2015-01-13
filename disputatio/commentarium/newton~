@@ -1,0 +1,67 @@
+(11:09:51 AM) Paul Bauman: What, he's upset CFL is not automatically being calculated or something?
+(11:10:55 AM) nick: nah, I said that I calculated a cfl by hand last night and it implied grins is being unstable for this problem at a sub order one cfl
+(11:11:14 AM) nick: it was suppose to be more of a, 'this is an anomaly' comment
+(11:11:26 AM) nick: not a send nastygram to paul+roy about broken grins
+(11:11:31 AM) Paul Bauman: oh
+(11:11:34 AM) Paul Bauman: i c
+(11:11:36 AM) nick: but i would like to check up on it
+(11:11:45 AM) Paul Bauman: We're doing implicit solvers anyway...
+(11:12:04 AM) nick: ya so it should be able to handle larger timesteps, right?
+(11:12:37 AM) Paul Bauman: Yeah, BE should be stable… are you seeing stability issues?
+(11:12:42 AM) Paul Bauman: Or accuracy issues/
+(11:12:43 AM) Paul Bauman: ?
+(11:13:13 AM) damon: implicit for nonlinear too?
+(11:13:19 AM) nick: damon, yes
+(11:13:22 AM) nick: the solver isn't converging 
+(11:13:34 AM) Paul Bauman: Newton step is not converging?
+(11:13:47 AM) nick: aye
+(11:13:52 AM) Paul Bauman: Check the linear solver
+(11:13:57 AM) nick: ok
+(11:14:02 AM) Paul Bauman: I bet your Krylov solver is stagnating
+(11:14:05 AM) nick: what about it should I check?
+(11:14:06 AM) nick: hmm ok
+(11:14:14 AM) damon: also, what is the condition number of the system?
+(11:14:14 AM) nick: from a stiff system?
+(11:14:24 AM) Paul Bauman: and therefore linear residual is stagnating the nonlinear residual
+(11:14:44 AM) Paul Bauman: OK, step-by-step:
+(11:14:50 AM) damon: sorry i'll shut up now
+(11:15:15 AM) Paul Bauman: 1. You're using theta method to time march a system of ODE's that comes from a FE discretization
+(11:15:33 AM) nick: right, and just backward euler, so theta=1
+(11:15:53 AM) Paul Bauman: 2. The new value of the solution at the next time step is a nonlinear system of equations to be solved
+(11:16:07 AM) Paul Bauman: 3. We use Newton's method to solve that nonlinear system
+(11:16:29 AM) Paul Bauman: 4. Each iteration of Newton's method requires a linear solve for the Newton increment
+(11:16:40 AM) Paul Bauman: So, PETSc is being used for teh linear solver
+(11:16:46 AM) Paul Bauman: and if you're not feeding command line options
+(11:16:56 AM) Paul Bauman: it's using gmres with ilu(0) preconditioning
+(11:17:14 AM) Paul Bauman: To see what the linear solver is doing
+(11:17:30 AM) Paul Bauman: you can throw a -ksp_view and -ksp_monitor on the command line
+(11:17:50 AM) Paul Bauman: -ksp_view will show all the details of the solver type, preconditioning and so forth
+(11:17:59 AM) nick: ok
+(11:18:10 AM) Paul Bauman: -ksp_monitor will show the preconditioned residual at each Krylov iteration
+(11:18:25 AM) roystgnr: For debugging don't do -ksp_monitor, do -ksp_monitor_true_residual.  We just had a case come up on libmesh-users where a linear solve *looked* like it was converging due to a funky ILU preconditioner but was really stagnating badly.
+(11:18:25 AM) Paul Bauman: Now, my hunch is that the preconditioned residual is stagnating
+(11:19:02 AM) Paul Bauman: and because you're effectively not solving the linear system, you're Newton update is not the correct one and, eventually, the Newton solver will stagnate
+(11:19:30 AM) Paul Bauman: The Newton residual will never get small than the residual of your linear system
+(11:19:32 AM) Paul Bauman: Make sense?
+(11:19:41 AM) nick: yes, I think so
+(11:19:55 AM) damon: that was well described, paul Bauman
+(11:20:00 AM) damon: gj
+(11:20:02 AM) nick: but what is not clear is what is causing the linear solve to stagnate
+(11:20:10 AM) Paul Bauman: shitty preconditioning
+(11:20:13 AM) nick: oooo
+(11:20:16 AM) nick: ooooooo
+(11:20:27 AM) nick: so we might want to do something more sophisticated than ILU?
+(11:20:34 AM) Paul Bauman: How big is the system you're solving?
+(11:20:42 AM) Paul Bauman: O(ndofs)?
+(11:21:07 AM) Paul Bauman: O(1e6) - I'd just use a sparse direct solver
+
+(11:21:46 AM) Paul Bauman: Bigger you'll need Krylov
+(11:21:49 AM) nick: ok
+(11:21:52 AM) Paul Bauman: Now
+(11:21:56 AM) nick: we are in millions, i'm afraid
+(11:22:04 AM) Paul Bauman: First thing I'd do is:
+(11:22:04 AM) nick: its not small 
+(11:22:09 AM) damon: phrasing
+(11:22:11 AM) roystgnr: Actually, it's possible for the Newton loop to make up for shitty linear solves.  That's what happened in this libmesh-users case: they could run the same linear system as a forward rather than adjoint solve, but since the forward solve was wrapped in Newton, it was okay that each linear solve was stagnating at ~1e-3 relative residual, because it just took three linear solves.  That's definitely not guaranteed to happen, though; sometimes the first inexact Newton step just gets the "easy" residual reduction and leaves subsequent linear solves to diverge or stagnate horribly.
+(11:22:47 AM) Paul Bauman: -ksp_type preonly -pc_type bjacobi -sub_pc_type ilu -sub_pc_factor_mat_solver_package superlu
+(11:23:05 AM) Paul Bauman: -sub_pc_factor_levels 4
