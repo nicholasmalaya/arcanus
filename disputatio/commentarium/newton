@@ -83,3 +83,4 @@
 (11:27:12 AM) Paul Bauman: There's alot of knobs you can turn on SuperLU's ilu too
 (11:27:27 AM) Paul Bauman: http://www.mcs.anl.gov/petsc/petsc-current/docs/manualpages/Mat/MATSOLVERSUPERLU.html
 (11:27:45 AM) roystgnr: Hmm... I've been avoiding -sub_pc_type lu on incompressible flow problems, because sometimes the different partitioning of velocity vs pressure dofs gives you weird submatrices that don't fully factor nicely, but I guess it should be worth trying on the stabilized cases.
+(11:29:13 AM) Paul Bauman: Could be. But, this is why I like PETSc's interface: "Fuck it. Throw in the option and see."
