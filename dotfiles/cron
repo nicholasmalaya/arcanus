@@ -112,8 +112,8 @@ MAILTO=""
 
 #To be executed each day
 #30  12  * * * /h2/nick/bin/paleologos/dotfiles/sync.sh
-40  5  * * * ~/bin/msg/morrow
-0  6   * * * ~/bin/msg/litany.sh 
+20  18  * * * ~/bin/msg/morrow
+#0  6   * * * ~/bin/msg/litany.sh 
 
 #To be executed each week (monday)
 0  20  * * 1 ~/bin/msg/reminder take_out_trash!
@@ -126,6 +126,7 @@ MAILTO=""
 
 #To be executed each month
 0   1   10  * * ~/bin/msg/reminder callie_heartworm
+0   1   5  * * ~/bin/msg/reminder Tyres!
 
 # Reminders executed once a year:
 0   4  2 1 * ~/bin/msg/reminder pay_citi_extra_mortgage
