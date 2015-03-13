@@ -20,6 +20,7 @@ alias H=" history | egrep -v '^ *[[:digit:]]+ +H +' | grep"
 
 #changing ls --really useful
 alias ls="ls -F --color=yes"
+alias grep="grep --color=auto"
 alias l="ls -F --color=yes"
 alias sl="ls"
 
