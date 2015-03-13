@@ -1,0 +1,59 @@
+#!/bin/python
+#
+# 
+
+#
+# construct text
+# 
+text_array = []
+
+## 
+# personal
+## 
+text_array.append("You will never, ever give up.")
+
+
+##
+#  ss2
+## 
+text_array.append("Learn how to reach out with your mind. Do not let fear block your path.")
+text_array.append("Ready yourself to feel the limitations of your mind slipping away.")
+text_array.append("Your body has been neglected in your training of your mind. You will expand your physical prowess without compromising your mental discipline.")
+
+## 
+#  morrow
+## 
+text_array.append("You realize that all your life you have been coasting along as if you were in a dream. Suddenly, when faced with real trials, you have come alive.")
+text_array.append("You've done things the hard way. But without taking risks, taking responsibility for failure... how could you have understood?")
+text_array.append("Everything you do is just a bit easier, more instinctive, more satisfying. It is as though you had suddenly developed keen senses and instincts.")
+text_array.append("Resolve to continue pushing yourself. Perhaps there's more to you than you thought.")
+text_array.append("So that's how it works. You plod along, putting one foot before the other, look up, and suddenly, there you are. Right where you wanted to be all along.")
+text_array.append("You woke today with a new sense of purpose. You're no longer afraid of failure. Failure is just an opportunity to learn something new.")
+text_array.append("Being smart doesn't hurt. And a little luck now and then is nice. But the key is patience and hard work.")
+text_array.append("You can't believe how easy it is. You just have to go... a little crazy. And then, suddenly, it all makes sense, and everything you do turns to gold.")
+text_array.append("It's the most amazing thing. Yesterday it was hard, and today it is easy. Just a good night's sleep, and yesterday's mysteries are today's masteries.")
+text_array.append("Today you wake up, full of energy and ideas, and you know, somehow, that overnight everything has changed. What a difference a day makes.")
+text_array.append("You've been trying too hard, thinking too much. Relax. Trust your instincts. Just be yourself. Do the little things, and the big things take care of themselves.")
+text_array.append("Life isn't over. You can still get smarter, or cleverer, or more experienced, or meaner... but your body and soul just aren't going to get any younger.")
+text_array.append("You're really good. And that's why it's so hard to get better. But you just keep trying, because that's the way you are.")
+text_array.append("The results of hard work and dedication always look like luck. But you know you must earn every ounce of your success.")
+
+#text_array.append("The secret does seem to be hard work, yes, but it's also a kind of blind passion, an inspiration.")
+#text_array.append("With the life you've been living, the punishment your body has taken... there are limits, and maybe you've reached them. Is this what it's like to grow old?")
+#text_array.append("You realize that you are catching on to the secret of success. It's just a matter of concentration.")
+#text_array.append("By superhuman effort, you can avoid slipping backwards for a while. But one day, you'll lose a step, or drop a beat, or miss a detail... and you'll be gone forever.")
+#text_array.append("Now you just stay at your peak as long as you can. There's no one stronger, but there's always someone younger... a new challenger.")
+#text_array.append("You've learned a lot about the world... and about yourself. It's hard to believe how ignorant you were, but now you have so much more to learn.")
+
+#
+# choose random text
+#
+import random
+today=random.randint(0,len(text_array))
+
+print text_array[today]
+
+#
+# nick 
+# 5/12/14
+#
