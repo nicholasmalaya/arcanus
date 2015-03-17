@@ -79,7 +79,7 @@ MAILTO=""
 0   4 02 8 * ~/bin/msg/reminder Tim_Piechowski 
 0   4 03 8 * ~/bin/msg/reminder Kim 
 0   4 20 8 * ~/bin/msg/reminder paul_bauman
-0   4 28 8 * ~/bin/msg/reminder_all Varner 
+0   4 28 8 * ~/bin/msg/reminder Varner_burger_cake
 
 #SEPTEMBER 
 0   4 18 9 * ~/bin/msg/reminder Brent 
