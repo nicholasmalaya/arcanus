@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\title{\bf{Diffusivity Model}}
+\author{Nicholas Malaya \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
+
+\begin{document}
+\maketitle
+
+\newpage
+Estimation of sink flow. 
+
+
+\[ \nu_{\text{tot}} = \left\{
+  \begin{array}{lr}
+    \nu_{\text{visc}} + \sqrt{C_f /2} \frac{\alpha \kappa}{r} \text{min}(z,\beta \delta) & : r > r_\text{vanes} \\
+    \nu_{\text{visc}} + \nu_{\text{vane}}f(z)                                            & : r < r_\text{vanes}
+  \end{array}
+\right.
+\]
+
+With $f(z) = \text{min}((\frac{y}{\delta})^{1/7},1)$.
+
+\end{document}
