@@ -1,0 +1,65 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{enumerate}
+\usepackage{todonotes}
+\usepackage{listings}
+\usepackage{paralist}
+\usepackage{natbib}
+\usepackage{fullpage}
+\usepackage[T1]{fontenc}
+\usepackage{booktabs}
+\usepackage{pgfplotstable}
+\usepackage{makecell}
+\usepackage{comment}
+
+\usepackage[colorlinks=true,
+            linkcolor=blue,
+            urlcolor=blue,
+            citecolor=blue,
+            final,
+            hypertexnames=false]{hyperref}
+\newcommand\myworries[1]{\textcolor{red}{#1}}
+
+\author{Nicholas Malaya}
+
+\begin{document}
+
+\include{title_page}
+
+\newpage
+\include{abstract}
+
+
+\newpage
+\tableofcontents
+\newpage
+%\singlespacing
+\onehalfspacing
+%\doublespacing
+\include{introduction}
+
+\newpage
+\include{method}
+
+\include{result}
+
+\include{future_work}
+
+
+\newpage
+\appendix
+\include{course_list}
+
+
+\bibliography{foo/bib}
+\bibliographystyle{plain}
+
+
+\end{document}

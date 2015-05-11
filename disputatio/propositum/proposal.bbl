@@ -1,0 +1,218 @@
+\begin{thebibliography}{10}
+
+\bibitem{Bernardini2014}
+Matteo Bernardini, Sergio Pirozzoli, and Paolo Orlandi.
+\newblock {Velocity statistics in turbulent channel flow up to $Re_\tau$ =
+  4000}.
+\newblock {\em Journal of Fluid Mechanics}, 742:171--191, February 2014.
+
+\bibitem{PeterA.Davidson2011}
+Peter~A. Davidson, Yukio Kaneda, Keith Moffatt, and Katepalli~R. Sreenivasan.
+\newblock {\em {A Voyage Through Turbulence}}.
+\newblock Cambridge University Press, 2011.
+
+\bibitem{Davis2013}
+Stacy~C. Davis, Susan~W. Diegel, and Robert~G. Boundy.
+\newblock {Transportation energy data book}.
+\newblock Technical report, Oak Ridge National Laboratory, 2013.
+
+\bibitem{DeBoor2001}
+Carl de~Boor.
+\newblock {\em {A Practical Guide to Splines - Revised Edition}}.
+\newblock Springer, 2001.
+
+\bibitem{Dean1978}
+R.~B. Dean.
+\newblock {Reynolds number dependence of skin friction and other bulk flow
+  variables in two-dimensional rectangular duct flow}.
+\newblock {\em Journal of Fluids Engineering}, 100(June 1978), 1978.
+
+\bibitem{DeGraaff2000}
+D.~B. DeGraaff and J.~K. Eaton.
+\newblock {Reynolds-number scaling of the flat-plate turbulent boundary layer}.
+\newblock {\em Journal of Fluid Mechanics}, 422:319--346, 2000.
+
+\bibitem{DelAlamo2009}
+Juan~C. {Del \'{A}lamo} and Javier Jim\'{e}nez.
+\newblock {Estimation of turbulent convection velocities and corrections to
+  Taylor's approximation}.
+\newblock {\em Journal of Fluid Mechanics}, 640:5, October 2009.
+
+\bibitem{DelLamo2004}
+Juan~C. {Del \'{A}lamo}, Javier Jim\'{e}nez, Paulo Zandonade, and Robert~D. Moser.
+\newblock {Scaling of the energy spectra of turbulent channels}.
+\newblock {\em Journal of Fluid Mechanics}, 500:135--144, January 2004.
+
+\bibitem{Frigo2005}
+M.~Frigo and S.G. Johnson.
+\newblock {The Design and Implementation of FFTW3}.
+\newblock {\em Proceedings of the IEEE}, 93(2):216--231, February 2005.
+
+\bibitem{Group}
+The~HDF Group.
+\newblock {HDF5}.
+
+\bibitem{Hoyas2006}
+Sergio Hoyas and Javier Jim\'{e}nez.
+\newblock {Scaling of the velocity fluctuations in turbulent channels up to
+ $Re_\tau$ = 2003}.
+\newblock {\em Physics of Fluids}, 18(1):011702, 2006.
+
+\bibitem{Hultmark2012}
+M.~Hultmark, M.~Vallikivi, S.~C.~C. Bailey, and a.~J. Smits.
+\newblock {Turbulent Pipe Flow at Extreme Reynolds Numbers}.
+\newblock {\em Physical Review Letters}, 108(9):094501, February 2012.
+
+\bibitem{Hutchins2007}
+Nicholas Hutchins and Ivan Marusic.
+\newblock {Large-scale influences in near-wall turbulence.}
+\newblock {\em Philosophical transactions. Series A, Mathematical, physical,
+  and engineering sciences}, 365(1852):647--64, March 2007.
+
+\bibitem{Jeong1995}
+J~Jeong and F~Hussain.
+\newblock {On the identification of a vortex}.
+\newblock {\em Journal of fluid mechanics}, 285:69--94, 1995.
+
+\bibitem{Jimenez2012}
+Javier Jim\'{e}nez.
+\newblock {Cascades in Wall-Bounded Turbulence}.
+\newblock {\em Annual Review of Fluid Mechanics}, 44(1):27--45, January 2012.
+
+\bibitem{Jimenez2007}
+Javier Jim\'{e}nez and Robert~D Moser.
+\newblock {What are we learning from simulating wall turbulence?}
+\newblock {\em Philosophical transactions. Series A, Mathematical, physical,
+  and engineering sciences}, 365(1852):715--32, March 2007.
+
+\bibitem{Kim1987a}
+John Kim, Parviz Moin, and Robert Moser.
+\newblock {Turbulence statistics in fully developed channel flow at low
+  Reynolds number}.
+\newblock {\em Journal of Fluid Mechanics}, 177:133--166, April 1987.
+
+\bibitem{Kolmogorov1941}
+A.~N. Kolmogorov.
+\newblock {The local structure of turbulence in incompressible viscous fluid
+  for very large Reynolds numbers}.
+\newblock {\em Proceedings: Mathematical and Physical Sciences},
+  434(1890):9--13, July 1991.
+
+\bibitem{KWOK2001}
+Wai~Yip Kwok, Robert~D. Moser, and Javier Jim\'{e}nez.
+\newblock {A Critical Evaluation of the Resolution Properties of B-Spline and
+  Compact Finite Difference Methods}.
+\newblock {\em Journal of Computational Physics}, 174(2):510--551, December
+  2001.
+
+\bibitem{Lee2013}
+Myoungkyu Lee, Nicholas Malaya, and Robert~D. Moser.
+\newblock {Petascale direct numerical simulation of turbulent channel flow on
+  up to 786K cores}.
+\newblock In {\em Proceedings of SC13: International Conference for High
+  Performance Computing, Networking, Storage and Analysis}, pages 1--11, New
+  York, New York, USA, 2013. ACM Press.
+
+\bibitem{Lozano-Duran2014}
+Adri\'{a}n Lozano-Dur\'{a}n and Javier Jim\'{e}nez.
+\newblock {Effect of the computational domain on direct simulations of
+  turbulent channels up to $Re_\tau$ = 4200}.
+\newblock {\em Physics of Fluids}, 26(1):011702, January 2014.
+
+\bibitem{Marusic2010b}
+I.~Marusic, B.~J. McKeon, P.~a. Monkewitz, H.~M. Nagib, a.~J. Smits, and K.~R.
+  Sreenivasan.
+\newblock {Wall-bounded turbulent flows at high Reynolds numbers: Recent
+  advances and key issues}.
+\newblock {\em Physics of Fluids}, 22(6):065103, 2010.
+
+\bibitem{McKeon2004}
+B.~J. McKeon, J.~Li, W.~Jiang, J.~F. Morrison, and a.~J. Smits.
+\newblock {Further observations on the mean velocity distribution in fully
+  developed pipe flow}.
+\newblock {\em Journal of Fluid Mechanics}, 501:135--147, February 2004.
+
+\bibitem{Millikan1938}
+C~M Millikan.
+\newblock {A critical discussion of turbulent flows in channels and circular
+  tubes}.
+\newblock In {\em Proceedings of the fifth International Congress for Applied
+  Mechanics}, pages 386--392. J. Wiley \& Sons, inc., 1938.
+
+\bibitem{Moin2009}
+P.~Moin.
+\newblock {Revisiting Taylor's hypothesis}.
+\newblock {\em Journal of Fluid Mechanics}, 640:1, December 2009.
+
+\bibitem{Moser1999a}
+Robert~D. Moser, John Kim, and Nagi~N. Mansour.
+\newblock {Direct numerical simulation of turbulent channel flow up to $Re_\tau$ = 590}.
+\newblock {\em Physics of Fluids}, 11(4):943, 1999.
+
+\bibitem{Nagib2008a}
+Hassan~M. Nagib and Kapil~a. Chauhan.
+\newblock {Variations of von K\'{a}rm\'{a}n coefficient in canonical flows}.
+\newblock {\em Physics of Fluids}, 20(10):101518, 2008.
+
+\bibitem{Nagib2007}
+Hassan~M Nagib, Kapil~a Chauhan, and Peter~a Monkewitz.
+\newblock {Approach to an asymptotic state for zero pressure gradient turbulent
+  boundary layers.}
+\newblock {\em Philosophical transactions. Series A, Mathematical, physical,
+  and engineering sciences}, 365(1852):755--70, March 2007.
+
+\bibitem{Nickels2005}
+T.~Nickels, I.~Marusic, S.~Hafez, and M.~Chong.
+\newblock {Evidence of the $k_1^{-1}$ Law in a High-Reynolds-Number
+  Turbulent Boundary Layer}.
+\newblock {\em Physical Review Letters}, 95(7):074501, August 2005.
+
+\bibitem{Nickels2007}
+T~B Nickels, I~Marusic, S~Hafez, N~Hutchins, and M~S Chong.
+\newblock {Some predictions of the attached eddy model for a high Reynolds
+  number boundary layer.}
+\newblock {\em Philosophical transactions. Series A, Mathematical, physical,
+  and engineering sciences}, 365(1852):807--22, March 2007.
+
+\bibitem{Orszag1971}
+Steven~A. Orszag.
+\newblock {On the elimination of aliasing in finite-difference schemes by
+  filtering high-wavenumber components}.
+\newblock {\em Journal of the Atmospheric sciences}, 28:1074, 1971.
+
+\bibitem{Reynolds1883}
+Osborne Reynolds.
+\newblock {An Experimental Investigation of the Circumstances Which Determine
+  Whether the Motion of Water Shall Be Direct or Sinuous, and of the Law of
+  Resistance in Parallel Channels}.
+\newblock {\em Philosophical Transactions of the Royal Society of London},
+  174:935--982, January 1883.
+
+\bibitem{Smits2013}
+Alexander~J. Smits and Ivan Marusic.
+\newblock {Wall-bounded turbulence}.
+\newblock {\em Physics Today}, 66(9):25, 2013.
+
+\bibitem{Smits2011}
+Alexander~J. Smits, Beverley~J. McKeon, and Ivan Marusic.
+\newblock {High-Reynolds Number Wall Turbulence}.
+\newblock {\em Annual Review of Fluid Mechanics}, 43(1):353--375, January 2011.
+
+\bibitem{Spalart1991}
+Philippe~R Spalart, Robert~D Moser, and Michael~M Rogers.
+\newblock {Spectral methods for the Navier-Stokes equations with one infinite
+  and two periodic directions}.
+\newblock {\em Journal of Computational Physics}, 96(2):297--324, October 1991.
+
+\bibitem{Townsend1980}
+A.~A. Townsend.
+\newblock {\em {The structure of turbulent shear flow}}.
+\newblock Cambridge University Press, 2nd edition, 1980.
+
+\bibitem{Zanoun2003}
+E.~S. Zanoun, F.~Durst, and H.~Nagib.
+\newblock {Evaluating the law of the wall in two-dimensional fully developed
+  turbulent channel flows}.
+\newblock {\em Physics of Fluids}, 15(10):3079, 2003.
+
+\end{thebibliography}
