@@ -1,37 +1,99 @@
 \section{Introduction}
 
-Our aim is to simulate the formation of synthetic dust devils in the field. This requires 
-a model of the ambient conditions for a representative case, such as Arizona, where 
-experimental data is available from test have been performed. Furthermore, for this to be 
-more generally useful in the prediction of flows in a variety of conditions, we need a model 
-generally applicable to any flow near the surface of the earth. 
+Renewable energy is critical to our environmental, economic, and
+national security. Demand for energy is on the rise, as is our national
+reliance on fossil fuel-based power plants for the bulk of our
+electricity generation. There is a critical need for safe, clean, and
+cost-effective alternatives to coal, such as wind, solar, hydroelectric,
+and geothermal power\cite{arpa-e}. These technologies would reduce carbon dioxide
+emissions and help position the U.S. as a leader in the global renewable
+energy industry. 
+%
+% proposal
+%
+This proposal details a research plan perform a numerical investigation
+for the design and optimization of a novel device for renewable, clean
+energy generation. 
 
-This document details an analysis of surface fluid mechanics, and
-develops a theory of turbulence in a thermally stratified medium. As we
-are utilizing a RANS model with spatially variable diffusivity, we are
-particularly interested formulating a model for these quantities. 
+Much of the solar energy incident on the Earth's surface is absorbed
+into the ground, which in turn heats the air layer above the surface.
+This buoyant air layer contains considerable gravitational potential
+energy. The basic idea behind this engineering approach is to convert the 
+potential energy in this buoyant air layer to kinetic energy in an
+anchored vortex, and to use that kinetic energy to drive a
+vertical-axis turbine coupled with an electric generator in order to
+produce electrical power. The mechanism is much like that of a naturally
+%
+% are we certain this is baroclinic? montegomery might argue it is not.
+% update: I think montgomery is wrong here, or at best nitty.  
+% BAROCLINIC: essentially just that temp fronts exist
+%
+occurring ``dust devil'' with baroclinic generation of vorticity in a
+vertically stratified, ground-heated air layer producing a columnar vortex. 
 
-We are interested in the operation of the apparatus during the day. 
-At these times, the atmospheric surface layer has the following character. 
-Incident radiation from the sun largely does not interact with the
-air, which is nearly transparent. Instead, this radiation is absorbed by
-the ground, which causes a temperature rise. This results in a thermal
-gradient between the hot ground and the cooler air. The warm ground
-conducts heat to the air, causing an expansion and lowering the density
-of the air. This reduced density air near the surface is driven upwards
-by the force of buoyancy.  
+With nearly one-third of global land mass covered by deserts, there are huge
+untapped regions for capturing solar heat (about 200 W/$\text{m}^2$ averaged over
+a 24-hour day, and up to 1000 W/$\text{m}^2$ peak).  The available power is
+competitive in magnitude with worldwide power generation from fossil
+sources. If successful, this could result in a low-cost, scalable
+approach to electrical power generation that could create a new class of
+renewable energy ideally suited for arid low-wind regions. 
 
-For sufficiently large temperature gradients, these motions are
-unstable, and as the warm air is driven upwards the flow will transition
-to turbulence. 
+The Solar-Driven Vortex (SoV) phenomena has already been demonstrated in
+an experimental setup by our partners at Georgia Tech. The simulation
+effort intends to utilize Computational Fluid Dynamics (CFD) to simulate
+this SoV. These computer simulations are intended to discover the optimal
+system configuration for a range of scenarios and system sizes. The
+results of these simulations will be used as input for the design of a
+pilot site in Mesa, Arizona, and eventually, over a range of
+scenarios and system sizes. 
 
-Motivation vis a vi energy and physics
+In order for these simulations to be generally useful, they must first
+be validated against existing experimental data and high fidelity
+simulations. These models will then explore regimes and scales where no
+experimental measurements presently exist. 
+%Characterizing the
+%uncertainty of predictions resulting from extrapolation is a critical
+%component in enabling reliable assessments of field performance of the
+%SoV, as it will guide the commercialization strategy of the product. 
 
-ubiquitious
 
-share a common structure
+In addition to the system configuration, it is important to consider the
+effect of local conditions on SoV performance. Characterizing the impact
+of variations in ambient conditions on the SoV will guide the
+commercialization strategy of the product, by determining optimal
+install locations across the country. It is therefore desirable to have models
+that are capable of accounting for variation in field conditions, such as solar
+input, cross-winds and topography. Furthermore, it is expected that 
+large ``farms'' of SoVs (akin to the wind and solar farms for wind
+turbines and photovoltaics, respectively) may be used by commercial or
+utility-scale energy generation. In order for this to be effective, 
+the inter-unit spacing must also be optimized, as a single SoV collects
+from a large area. These computations will guide commercialization
+planning, where decision-makers will need to assess optimum unit size,
+spacing, and geographic location for utility-scale deployment.  
 
-harnessx
-
-This proposal is organized as follows. In section \ref{sec:method},
+This proposal is organized as follows. 
+In section \ref{sec:method},
 the algorithms used 
+
+% provides a ``validation roadmap'' detailing the process by
+%which an analysis of the uncertainties inherent to this
+%problem may be characterized.  
+
+It will begin with a discussion of the
+physics scenario and the mathematical model, as well as detailing the
+reliability of each submodel and the systems inputs. We will then
+discuss the validation of these models against existing experimental
+data and high fidelity simulations. 
+
+\begin{itemize}
+\item Motivation vis a vi energy and physics
+\item ubiquitious
+\item share a common structure
+\item harnessx
+\end{itemize}
+
+
+
+This proposal is organized as follows. 
