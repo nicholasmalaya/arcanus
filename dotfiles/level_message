@@ -11,6 +11,7 @@ text_array = []
 # personal
 ## 
 text_array.append("You will never, ever give up.")
+text_array.append("You will only ever rely on yourself.")
 
 
 ##
@@ -19,6 +20,22 @@ text_array.append("You will never, ever give up.")
 text_array.append("Learn how to reach out with your mind. Do not let fear block your path.")
 text_array.append("Ready yourself to feel the limitations of your mind slipping away.")
 text_array.append("Your body has been neglected in your training of your mind. You will expand your physical prowess without compromising your mental discipline.")
+text_array.append("Your greatest barrier is your own fear, your own doubts.")
+
+## 
+# Dokkodo
+##
+
+text_array.append("Think lightly of yourself and deeply of the world.")
+text_array.append("You may abandon your own body but you must preserve your honor.")
+
+## 
+# Dune
+##
+text_array.append("Subtlety and self-control are the most deadly threats.")
+text_array.append("Respect for the truth is the basis of all morality.")
+text_array.append("The way the mind will lean under stress is strongly influenced by training.")
+text_array.append("The eye that looks ahead to the safe course is closed forever.")
 
 ## 
 #  morrow

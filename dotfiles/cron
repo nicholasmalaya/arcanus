@@ -110,9 +110,12 @@ MAILTO=""
 #DECEMBER
 0   4 23 12 * ~/bin/msg/reminder Kevin_Kim 
 
+#To be executed each hour
+5  *  * * * ~/src/pass/shredder.sh
+
 #To be executed each day
 #30  12  * * * /h2/nick/bin/paleologos/dotfiles/sync.sh
-20  18  * * * ~/bin/msg/morrow
+20  9   * * * ~/bin/msg/morrow
 #0  6   * * * ~/bin/msg/litany.sh 
 
 #To be executed each week (monday)
