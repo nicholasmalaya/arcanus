@@ -1,4 +1,4 @@
-\section{Introduction}
+\section{Introduction / Executive Summary}
 
 Renewable energy is critical to our environmental, economic, and
 national security. Demand for energy is on the rise, as is our national
@@ -19,28 +19,6 @@ Much of the solar energy incident on the Earth's surface is absorbed
 into the ground, which in turn heats the air layer above the surface.
 This buoyant air layer contains considerable gravitational potential
 energy. 
-
-
-
-contain lots of energy
-appear on mars
-wide range of scales and sizes
-
-
-
-The basic idea behind this engineering approach is to convert the 
-potential energy in this buoyant air layer to kinetic energy in an
-anchored vortex, and to use that kinetic energy to drive a
-vertical-axis turbine coupled with an electric generator in order to
-produce electrical power. The mechanism is much like that of a naturally
-%
-% are we certain this is baroclinic? montegomery might argue it is not.
-% update: I think montgomery is wrong here, or at best nitty.  
-% BAROCLINIC: essentially just that temp fronts exist
-%
-occurring ``dust devil'' with baroclinic generation of vorticity in a
-vertically stratified, ground-heated air layer producing a columnar vortex. 
-
 With nearly one-third of global land mass covered by deserts, there are huge
 untapped regions for capturing solar heat (about 200 W/$\text{m}^2$ averaged over
 a 24-hour day, and up to 1000 W/$\text{m}^2$ peak).  The available power is
@@ -49,61 +27,66 @@ sources. If successful, this could result in a low-cost, scalable
 approach to electrical power generation that could create a new class of
 renewable energy ideally suited for arid low-wind regions. 
 
+How then, is one to efficiently extract this gravitational potential
+energy and convert it into useable work? We turn to Nature to provide a 
+guide, with the observation that objects already
+exist that provide precisely this mechanism. Namely, the phenomena is
+that of a naturally 
+%
+% are we certain this is baroclinic? montegomery might argue it is not.
+% update: I think montgomery is wrong here, or at best nitty.  
+% BAROCLINIC: essentially just that temp fronts exist
+%
+occurring ``dust devil'' with baroclinic generation of vorticity in a
+vertically stratified, ground-heated air layer producing a coherent
+columnar vortex. These ``dust-devil''s are naturally appearing in
+regions as diverse as Arizona, to over water, to Mars. They are observed
+to occur over a wide range of length scales (between )with large variations in
+velocities ()\cite{sinclair}. 
+
+Thus, the basic idea behind this engineering approach is to convert the 
+potential energy in this buoyant air layer to kinetic energy in an
+anchored vortex, and to use that kinetic energy to drive a
+vertical-axis turbine coupled with an electric generator in order to
+produce electrical power. 
 The Solar-Driven Vortex (SoV) phenomena has already been demonstrated in
 an experimental setup by our partners at Georgia Tech. The simulation
 effort intends to utilize Computational Fluid Dynamics (CFD) to simulate
-this SoV. These computer simulations are intended to discover the optimal
-system configuration for a range of scenarios and system sizes. The
-results of these simulations will be used as input for the design of a
-pilot site in Mesa, Arizona, and eventually, over a range of
-scenarios and system sizes. 
+this SoV. 
+%
+% TODO: add table of 'state of the art' or novel work performed
+%
 
-In order for these simulations to be generally useful, they must first
-be validated against existing experimental data and high fidelity
-simulations. These models will then explore regimes and scales where no
-experimental measurements presently exist. 
+
+This proposal outlines a body of research to be performed to build
+confidence in the simulation capability, optimize the apparatus, and 
+probe the underlying physical dynamics of the system. 
+The proposal is organized as follows. In section \ref{sec:physics}, we
+begin with a discussion of the physical domain of interest. We then
+review the presently understood dynamics of Dust-devils and similar
+columnar vorticies. We then utilize this knowledge in section
+\ref{sec:model}, in order to motivate a mathematical formulation of the
+system of interest. In section \ref{sec:software}, we discuss the 
+algorithms and software implementation in order to explicitly solve the
+equations of interest and arrive at numerical solutions of our
+phenomena. Section \ref{sec:validation} discusses the validation of
+these results against existing experimental data and high fidelity
+simulations.  Section \ref{sec:results} details the preliminary
+predictions of system performance in the field. Finally, section
+\ref{sec:future_work} contains a list of remaining tasks necessary to
+fufill the goals of this research project. 
+
+
+%details a short validation
+%study performed by comparing between the available experimental
+%measurements and the simulations results. 
+
+
+%In order for these simulations to be generally useful, they must first
+%be validated against existing experimental data and high fidelity
+%simulations. These models will then explore regimes and scales where no
+%experimental measurements presently exist. 
 %Characterizing the
 %uncertainty of predictions resulting from extrapolation is a critical
 %component in enabling reliable assessments of field performance of the
 %SoV, as it will guide the commercialization strategy of the product. 
-
-
-In addition to the system configuration, it is important to consider the
-effect of local conditions on SoV performance. Characterizing the impact
-of variations in ambient conditions on the SoV will guide the
-commercialization strategy of the product, by determining optimal
-install locations across the country. It is therefore desirable to have models
-that are capable of accounting for variation in field conditions, such as solar
-input, cross-winds and topography. Furthermore, it is expected that 
-large ``farms'' of SoVs (akin to the wind and solar farms for wind
-turbines and photovoltaics, respectively) may be used by commercial or
-utility-scale energy generation. In order for this to be effective, 
-the inter-unit spacing must also be optimized, as a single SoV collects
-from a large area. These computations will guide commercialization
-planning, where decision-makers will need to assess optimum unit size,
-spacing, and geographic location for utility-scale deployment.  
-
-This proposal is organized as follows. 
-In section \ref{sec:method},
-the algorithms used 
-
-% provides a ``validation roadmap'' detailing the process by
-%which an analysis of the uncertainties inherent to this
-%problem may be characterized.  
-
-It will begin with a discussion of the
-physics scenario and the mathematical model, as well as detailing the
-reliability of each submodel and the systems inputs. We will then
-discuss the validation of these models against existing experimental
-data and high fidelity simulations. 
-
-\begin{itemize}
-\item Motivation vis a vi energy and physics
-\item ubiquitious
-\item share a common structure
-\item harnessx
-\end{itemize}
-
-
-
-This proposal is organized as follows. 
