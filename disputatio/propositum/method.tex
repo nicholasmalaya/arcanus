@@ -3,9 +3,45 @@
 
 \subsection{Equations (discretization and finite elements)}
 
+We use the 3-D incompressible Navier-Stokes in order to model a
+low-speed fluid flow with heat convection and diffusion and buoyancy. 
+
+\begin{align*}
+    \bv{R}\left(\left[
+    \begin{array}{l}
+        \bv{u} \\
+        p \\
+        T 
+    \end{array}
+    \right]\right) \equiv& 
+    \left[
+    \begin{array}{l}
+        \frac{\partial (\rho \bv{u})}{\partial t} + \rho \bv{u} \cdot
+    \nabla \bv{u} + \nabla p - \mu \nabla^2 \bv{u} + 
+    \rho \beta_T (T - T_0) \bv{g} \\
+    \nabla \cdot \bv{u} \\
+    \frac{\partial (\rho c_p T)}{\partial t} + \rho c_p \bv{u} \cdot
+    \nabla T - k \nabla^2 T
+    \end{array} 
+    \right] = 0
+\end{align*}
+
+The Navier-Stokes equations are derived from conservation of mass,
+momentum and energy, and are a highly reliable model for low-speed flows
+of the sort encountered here. The boussinesq approximation for the
+buoyancy is less generally applicable, but still very accurate for a
+wide variety of flows in nature, such as atmospheric fronts, oceanic
+circulation, etc. The Boussinesq buoyancy approximation relies upon the
+difference in density in the fluid being negligible except for gravitational
+forces which are large enough to make the specific weight appreciably different
+between the two fluids.
+
+
 \subsection{Modeling the vanes}
 
 Talk about penalty method here
+% Be sure to pull out your old penalty method write up here.
+% Will want to use an abridged version, and expand that in the full doc
 
 \subsection{Software}
 
@@ -14,3 +50,6 @@ GRINS blurb (dont forget paper)
 \subsection{Simulation geometry}
 
 check out val doc here
+dont forget to add wall spacing function to document
+
+probably need to create a table of runs, perhaps that goes in results
