@@ -37,13 +37,6 @@
 \begin{document}
 \maketitle
 
-Here, we investigate the variation of the Solar Vortex (SoV) as a function of diameter of the apparatus. We consider 
-three fully developed, averaged runs for system configurations that are identical excepting having been scaled to larger sizes. We will use 
-system apparatus that have diameters of one, three and five meters. The design is two tiers, with a longer curved vane on the bottom tier providing a 
-smoother and slower variation in angle as a function of radius. Each configuration has an outer angle of $0\degree$, and varying along a smooth curve 
-depending on the square root of the radius inward to a maximum angle of $75\degree$. The ``baseline'' configuration was the three meter design, 
-which was optimized over the coarse of a parameter sweep across inner and outer radius, heights, angles, etc. 
-
 \begin{table}
 \begin{centering}
   \begin{tabular}{ | l || c | r | r | r | r |}
@@ -59,12 +52,7 @@ which was optimized over the coarse of a parameter sweep across inner and outer 
     $z_{b}$ and $z_{t}$ are the heights of the top and bottom tiers, respectively. }\label{fig:scaling_table}
 \end{centering}
 \end{table}
-
-These different run definitions are completely defined in Table \ref{fig:scaling_table}. Here, 
 %
-% image of vane angle?
-%
-
 
 \begin{figure}[!htb]
   \begin{center}
@@ -75,6 +63,18 @@ These different run definitions are completely defined in Table \ref{fig:scaling
   \end{center}
 \end{figure}
 
+
+This document details investigations into the variation of the Solar Vortex (SoV) physical size and energy as a function of diameter of the apparatus. We consider 
+three fully developed, averaged runs for system configurations that are identical excepting having been scaled to larger sizes. We will use 
+system apparatus that have diameters of one, three and five meters. The design is two tiers, with a longer curved vane on the bottom tier providing a 
+smoother and slower variation in angle as a function of radius. Each configuration has an outer angle of $0\degree$, and varying along a smooth curve 
+depending on the square root of the radius inward to a maximum angle of $75\degree$. The ``baseline'' configuration was the three meter design, 
+which was optimized over the coarse of a parameter sweep across inner and outer radius, heights, angles, etc. These different run 
+definitions are completely defined in Table \ref{fig:scaling_table}. The results shown here are all temporally averaged, and are not sensitive to changes in the domain size.
+
+%
+% image of vane angle?
+%
 Figure \ref{vane_scaling} plots a vertical slice through the three vane sizes, to give the reader a sense of the 
 scale between each configuration.
 
@@ -93,11 +93,21 @@ scale between each configuration.
 \endminipage
 \end{figure}
 
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 12 cm]{figs/temp_iso}
+    \caption{Thermal Isocontours from the three different cases superimposed 
+      on top of each other to show the growing extend of the thermal column at larger vane sizes. }
+    \label{fig:scaling_slice}
+  \end{center}
+\end{figure}
+
+
 An isocontour of the temperature field (contoured at 317 Kelvin) are shown in figures \ref{fig:1m_scaling}-\ref{fig:5m_scaling}. 
-It is clear that as the vanes grow in size, the physical size also increases. 
-
-Should certainly mention that these results do not appear to be sensitive to differing domain sizes. 
-
+It is clear that as the vanes grow in size, the physical size of the thermal plume also increases. This is shown slightly more clearly in
+ Figure \ref{fig:scaling_slice}
+ 
 %
 % just a figure
 %
