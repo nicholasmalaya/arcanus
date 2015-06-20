@@ -19,6 +19,7 @@
 \usepackage{pgfplotstable}
 \usepackage{makecell}
 \usepackage{comment}
+\usepackage{gensymb}
 
 \usepackage[colorlinks=true,
             linkcolor=blue,
@@ -36,7 +37,35 @@
 \begin{document}
 \maketitle
 
-Here, we investigate the variation of the Solar Vortex (SoV) as a function of diameter of the apparatus. 
+Here, we investigate the variation of the Solar Vortex (SoV) as a function of diameter of the apparatus. We consider 
+three fully developed, averaged runs for system configurations that are identical excepting having been scaled to larger sizes. We will use 
+system apparatus that have diameters of one, three and five meters. The design is two tiers, with a longer curved vane on the bottom tier providing a 
+smoother and slower variation in angle as a function of radius. Each configuration has an outer angle of $0\degree$, and varying along a smooth curve 
+depending on the square root of the radius inward to a maximum angle of $75\degree$. The ``baseline'' configuration was the three meter design, 
+which was optimized over the coarse of a parameter sweep across inner and outer radius, heights, angles, etc. 
+
+% image of vane angle?
+\begin{tabular}{ | l || c | r | r | r | r |}
+  \hline     
+  Case & $r_{ib}$ & $r_{it}$ & $r_{o}$ & $z_{tb}$ & $z_{tt}$ \\ \hline \hline
+  1m & 2 & 3 & 3 & 3 & 3 \\ \hline
+  3m & 2 & 3 & 3 & 3 & 3 \\ \hline
+  5m & 2 & 3 & 3 & 3 & 3 \\
+  \hline 
+\end{tabular}
+
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 12 cm]{figs/vane_scaling}
+    \caption{An image showing the three different vane configurations. The three-meter vanes (mid-sized set) 
+      have a slight plotting artifact at the top outer corner, but this does not exist in the simulations. }
+    \label{vane_scaling}
+  \end{center}
+\end{figure}
+
+Figure \ref{vane_scaling} plots a vertical slice through the three vane sizes, to give the reader a sense of the 
+scale between each configuration.
 
 \begin{figure}[!htb]
 \minipage{0.32\textwidth}
@@ -53,6 +82,14 @@ Here, we investigate the variation of the Solar Vortex (SoV) as a function of di
 \endminipage
 \end{figure}
 
+An isocontour of the temperature field (contoured at 317 Kelvin) are shown in figures \ref{fig:1m_scaling}-\ref{fig:5m_scaling}. 
+It is clear that as the vanes grow in size, the physical size also increases. 
+
+Should certainly mention that these results do not appear to be sensitive to differing domain sizes. 
+
+%
+% just a figure
+%
 
   %% \begin{figure}[!htb]
   %%   \begin{center}
