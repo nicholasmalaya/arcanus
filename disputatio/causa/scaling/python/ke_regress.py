@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 sx = np.array([38.0])
-sy = np.array([2000])
+sy = np.array([2491])
 
 #x = np.array([0.0,1.0,3.0,5.0])
 #y = np.array([0.0,0.144,1.826,6.842])
