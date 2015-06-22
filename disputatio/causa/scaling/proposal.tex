@@ -37,6 +37,8 @@
 \begin{document}
 \maketitle
 
+\section*{System Configurations}
+
 \begin{table}
 \begin{centering}
   \begin{tabular}{ | l || c | r | r | r | r |}
@@ -104,10 +106,21 @@ scale between each configuration.
   \end{center}
 \end{figure}
 
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 12 cm]{figs/scaling_regression}
+    \caption{The thermal column thickness plotted against the total system diameter sizes. A linear regression is also shown against the data.}
+    \label{fig:scaling_reg}
+  \end{center}
+\end{figure}
 
-An isocontour of the temperature field (contoured at 317 Kelvin) are shown in figures \ref{fig:1m_scaling}-\ref{fig:5m_scaling}. 
+\section*{Thermal Plume Scaling}
+Isocontours of the temperature field (contoured at 317 Kelvin) are shown in figures \ref{fig:1m_scaling}-\ref{fig:5m_scaling}. 
 It is clear that as the vanes grow in size, the physical size of the thermal plume also increases. This is shown slightly more clearly in
- Figure \ref{fig:scaling_slice}. 
+ Figure \ref{fig:scaling_slice}. Here, the two larger cases isocountours are sliced and transparent so that one can see an approximate 
+location of the thermal column thickness for each of the three cases. These thicknesses have been extracted and plotted as a 
+function of outer system diameter in Figure \ref{fig:scaling_reg}, where it is clear that the trend is generally linear. It appears then that 
+the thickness of the thermal plume is scaling roughly proportionally with the system outer diameter. 
 
 %
 % probably need to plot the increase in diameter as a function of diameter 
@@ -147,6 +160,10 @@ size occupies roughly the same fraction of the volume inside the vanes.
   %%    \label{lab}
   %%   \end{center}
   %% \end{figure}
+\section*{Predictions for System Sizes at Larger Kinetic Energy Milestones}
 
+We can use our model to make some very rough predictions for system sizes to attain various power outputs. 
+
+An interesting question is to ask if these predictions are consistent with the available experimental results. Sinclair 
 
 \end{document}
