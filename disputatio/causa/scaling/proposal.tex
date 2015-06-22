@@ -148,6 +148,13 @@ and apparatus size are maintained roughly constant, so as to give the appearance
 clear here than in the thermal column case that there exists a qualitatively similar structure between each of the three cases. The velocity plume 
 size occupies roughly the same fraction of the volume inside the vanes. 
 
+For these three cases, we calculate the kinetic energy flux as, 
+\begin{equation}
+k = \frac{1}{2} \int v_z (v_z^2 + v_{\theta}^2) dA. 
+\label{ke_flux}
+\end{equation}
+
+%Where the Kinetic energy flux for the 1m,3m and 5m are then 
 
 %
 % just a figure
@@ -160,10 +167,32 @@ size occupies roughly the same fraction of the volume inside the vanes.
   %%    \label{lab}
   %%   \end{center}
   %% \end{figure}
-\section*{Predictions for System Sizes at Larger Kinetic Energy Milestones}
+\section*{Predictions for System Scaling}
 
-We can use our model to make some very rough predictions for system sizes to attain various power outputs. 
+%We can use our model to make some very rough predictions for system sizes to attain various power outputs. 
 
-An interesting question is to ask if these predictions are consistent with the available experimental results. Sinclair 
+A crucial question now is how do we expect the kinetic energy to scale with larger system sizes. We expect the 
+kinetic energy to scale with some unknown exponent of the diameter, 
+\begin{equation}
+k \propto D^\alpha. 
+\end{equation}
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 12 cm]{figs/ke_regression}
+    \caption{The kinetic energy fluxes for the three configurations extrapolated out to larger configuration sizes.}
+    \label{fig:ke_regression}
+  \end{center}
+\end{figure}
+
+An interesting question is to ask if these predictions are consistent with the available experimental results. 
+Sinclair (1973) has experimentally measured profiles, which can be integrated using equation \ref{ke_flux} to 
+provide an estimate of the energy flux. This is measured to be $\approx 2.4$ kW. Examining the thermal 
+profiles from Sinclair, the thermal plume thickness is found to be roughly 4.6 meters in diameter. This is 
+7.6 times larger than the thermal plume thickness measured in the five-meter configuration. If we assume 
+linear scaling in vane configurations, that would require a 38 meter outer diameter configuration to 
+generate the same energy flux as the Sinclair field dust-devils. Figure \ref{fig:ke_regression} shows 
+several powers of extrapolations from the present data sets to the larger diameter sizes. Our projections 
+are roughly consistent with the Sinclair data for a scaling coefficient between three and four. 
 
 \end{document}
