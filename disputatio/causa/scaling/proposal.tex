@@ -68,7 +68,7 @@
 
 This document details investigations into the variation of the Solar Vortex (SoV) physical size and energy as a function of diameter of the apparatus. We consider 
 three fully developed, averaged runs for system configurations that are identical excepting having been scaled to larger sizes. We will use 
-system apparatus that have diameters of one, three and five meters. The design is two tiers, with a longer curved vane on the bottom tier providing a 
+system apparatus that have outer vane diameters of one, three and five meters. The design is two tiers, with a longer curved vane on the bottom tier providing a 
 smoother and slower variation in angle as a function of radius. Each configuration has an outer angle of $0\degree$, and varying along a smooth curve 
 depending on the square root of the radius inward to a maximum angle of $75\degree$. The ``baseline'' configuration was the three meter design, 
 which was optimized over the coarse of a parameter sweep across inner and outer radius, heights, angles, etc. These different run 
@@ -150,12 +150,6 @@ and apparatus size are maintained roughly constant, so as to give the appearance
 clear here than in the thermal column case that there exists a qualitatively similar structure between each of the three cases. The velocity plume 
 size occupies roughly the same fraction of the volume inside the vanes. 
 
-For these three cases, we calculate the kinetic energy flux as, 
-\begin{equation}
-k = \frac{1}{2} \int v_z (v_z^2 + v_{\theta}^2) dA. 
-\label{ke_flux}
-\end{equation}
-
 %
 %
 %
@@ -184,11 +178,17 @@ scaling might be by calculating it data from the field simulations.
 
 Figure \ref{fig:ke_exponent} is a first attempt at measuring the
 exponent of $\alpha$. We plot the kinetic energy for our available
-runs on a log-log plot. Measuring the slope on an equal aspect-ratio log-log plot provides an estimate of the exponent. 
+runs on a log-log plot. We calculate the kinetic energy flux as, 
+\begin{equation}
+k = \frac{1}{2} \int v_z (v_z^2 + v_{\theta}^2) dA. 
+\label{ke_flux}
+\end{equation}
+
+Measuring the slope on an equal aspect-ratio log-log plot provides an estimate of the exponent. 
 Measuring from our present data, the kinetic energy is scaling with the diameter raised to the power of 2.428. 
 While non-integer scalings are not impossible, and not unprecidented in turbulence, there are no obvious characteristic scales that would 
 result in this power-law exponent, and more pen and paper analysis is necessary. Regardless, the result is sufficiently close to 2.5 as to be
-intruiging, however, as that implies an anomalous scaling of roughly $\frac{5}{2}$. 
+intruiging, however, as that implies an anomalous scaling coefficient of $\frac{5}{2}$. 
 
 % The exponent would likely be an integer power, although this is not necessarily so. 
 
@@ -208,7 +208,9 @@ profiles from Sinclair, the thermal plume thickness is found to be roughly 4.6 m
 linear scaling in vane configurations, that would require a 38 meter outer diameter configuration to 
 generate the same energy flux as the Sinclair field dust-devils. Figure \ref{fig:ke_regression} shows 
 several powers of extrapolations from the present data sets to the larger diameter sizes. Our projections 
-are roughly consistent with the Sinclair data for a scaling coefficient between two and four, and more data is needed
-to improve upon this prediction. 
+are roughly consistent with the Sinclair data for a scaling coefficient between two and four, but this extrapolation
+could be unreliable. We are extrapolating far outside of the data, at scales and energies considerably 
+exceeding the present data. As a result, while these data are not inconsistent with those reported by Sinclair, 
+more data (at larger system diameters) is needed to improve upon this prediction. 
 
 \end{document}
