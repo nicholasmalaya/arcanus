@@ -32,7 +32,8 @@
 %
 %
 \title{\bf{SoV Scaling Study}}
-\author{Nicholas Malaya, Robert D. Moser \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
+\author{Nicholas Malaya, Robert D. Moser \\ Institute for Computational
+Engineering and Sciences \\ University of Texas at Austin} \date{} 
 
 \begin{document}
 \maketitle
@@ -66,19 +67,27 @@
 \end{figure}
 
 
-This document details investigations into the variation of the Solar Vortex (SoV) physical size and energy as a function of diameter of the apparatus. We consider 
-three fully developed, averaged runs for system configurations that are identical excepting having been scaled to larger sizes. We will use 
-system apparatus that have diameters of one, three and five meters. The design is two tiers, with a longer curved vane on the bottom tier providing a 
-smoother and slower variation in angle as a function of radius. Each configuration has an outer angle of $0\degree$, and varying along a smooth curve 
-depending on the square root of the radius inward to a maximum angle of $75\degree$. The ``baseline'' configuration was the three meter design, 
-which was optimized over the coarse of a parameter sweep across inner and outer radius, heights, angles, etc. These different run 
-definitions are completely defined in Table \ref{fig:scaling_table}. The results shown here are all temporally averaged, and are not sensitive to changes in the domain size.
-
+This document details investigations into the variation of the Solar
+Vortex (SoV) physical size and energy as a function of diameter of the
+apparatus. We consider three fully developed, averaged runs for system
+configurations that are identical excepting having been scaled to larger
+sizes. We will use system apparatus that have outer vane diameters of
+one, three and five meters. The design is two tiers, with a longer
+curved vane on the bottom tier providing a smoother and slower variation
+in angle as a function of radius. Each configuration has an outer angle
+of $0\degree$, and varying along a smooth curve depending on the square
+root of the radius inward to a maximum angle of $75\degree$. The
+``baseline'' configuration was the three meter design, which was
+optimized over the coarse of a parameter sweep across inner and outer
+radius, heights, angles, etc. These different run definitions are
+completely defined in Table \ref{fig:scaling_table}. The results shown
+here are all temporally averaged, and are not sensitive to changes in
+the domain size. 
 %
 % image of vane angle?
 %
-Figure \ref{vane_scaling} plots a vertical slice through the three vane sizes, to give the reader a sense of the 
-scale between each configuration.
+Figure \ref{vane_scaling} plots a vertical slice through the three vane
+sizes, to give the reader a sense of the scale between each configuration.
 
 \begin{figure}[!htb]
 \minipage{0.32\textwidth}
@@ -94,6 +103,7 @@ scale between each configuration.
   \caption*{5m Apparatus}\label{fig:5m_scaling}
 \endminipage
 \caption{3d Isocontour Rendering of the Thermal Plume across three different cases.}
+\label{fig:iso}
 \end{figure}
 
 
@@ -101,7 +111,7 @@ scale between each configuration.
   \begin{center}
     \includegraphics[width = 12 cm]{figs/temp_iso}
     \caption{Thermal Isocontours from the three different cases superimposed 
-      on top of each other to show the growing extend of the thermal column at larger vane sizes. }
+      on top of each other to show the growing extent of the thermal column at larger vane sizes. }
     \label{fig:scaling_slice}
   \end{center}
 \end{figure}
@@ -115,12 +125,18 @@ scale between each configuration.
 \end{figure}
 
 \section*{Thermal Plume Scaling}
-Isocontours of the temperature field (contoured at 317 Kelvin) are shown in figures \ref{fig:1m_scaling}-\ref{fig:5m_scaling}. 
-It is clear that as the vanes grow in size, the physical size of the thermal plume also increases. This is shown slightly more clearly in
- Figure \ref{fig:scaling_slice}. Here, the two larger cases isocountours are sliced and transparent so that one can see an approximate 
-location of the thermal column thickness for each of the three cases. These thicknesses have been extracted and plotted as a 
-function of outer system diameter in Figure \ref{fig:scaling_reg}, where it is clear that the trend is generally linear. It appears then that 
-the thickness of the thermal plume is scaling roughly proportionally with the system outer diameter. 
+
+Isocontours of the temperature field (contoured at 317 Kelvin) are shown in figure \ref{fig:iso}. 
+It is clear that as the vanes grow in size, the physical size of the
+thermal plume also increases. This is shown slightly more clearly in
+Figure \ref{fig:scaling_slice}. Here, the two larger cases isocountours
+are sliced and transparent so that one can see an approximate location
+of the thermal column thickness for each of the three cases. These
+thicknesses have been extracted and plotted as a function of outer
+system diameter in Figure \ref{fig:scaling_reg}, where it is clear that
+the trend is generally linear. It appears then that the thickness of the
+thermal plume is scaling roughly proportionally with the system outer
+diameter.  
 
 %
 % probably need to plot the increase in diameter as a function of diameter 
@@ -141,41 +157,62 @@ the thickness of the thermal plume is scaling roughly proportionally with the sy
   \caption*{5m}\label{fig:5m_vz}
 \endminipage
 \caption{Vertical Velocity}
+\label{fig:vz_scaling}
 \end{figure}
  
-Figure \ref{fig:scaling_slice} shows the vertical velocity for each of the three cases. In each case the aspect ratio between domain extent
-and apparatus size are maintained roughly constant, so as to give the appearance of ``scaling'' each apparatus. In this way, it is more 
-clear here than in the thermal column case that there exists a qualitatively similar structure between each of the three cases. The velocity plume 
-size occupies roughly the same fraction of the volume inside the vanes. 
+Figure \ref{fig:vz_scaling} shows the vertical velocity for each of the
+three cases. In each case the aspect ratio between domain extentand
+apparatus size are maintained roughly constant, so as to give the
+appearance of ``scaling'' each apparatus. In this way, it is more clear
+here than in the thermal column case that there exists a qualitatively
+similar structure between each of the three cases. The velocity plume
+size occupies roughly the same fraction of the volume inside the vanes.  
 
-For these three cases, we calculate the kinetic energy flux as, 
+%
+%
+%
+\section*{Predictions for System Scaling}
+
+%We can use our model to make some very rough predictions for system sizes to attain various power outputs. 
+
+A crucial question now is how do we expect the kinetic energy to scale with larger system sizes. In other words, 
+how do we determine the coefficient, $\alpha$, that dictates the power
+at which the diameter is raised that determines the kinetic energy: 
+\begin{equation}
+k \propto D^\alpha. 
+\end{equation}
+
+Preliminary analysis has shown that the exponent should be to the fourth
+power. We will investigate what this scaling might be by calculating it
+data from the field simulations.  
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 12 cm]{figs/ke_exponent}
+    \caption{The kinetic energy fluxes for the three configurations on a
+   log-log plot}
+    \label{fig:ke_exponent}
+  \end{center}
+\end{figure}
+
+Figure \ref{fig:ke_exponent} is a first attempt at measuring the
+exponent of $\alpha$. We plot the kinetic energy for our available
+runs on a log-log plot. We calculate the kinetic energy flux as, 
 \begin{equation}
 k = \frac{1}{2} \int v_z (v_z^2 + v_{\theta}^2) dA. 
 \label{ke_flux}
 \end{equation}
 
-%Where the Kinetic energy flux for the 1m,3m and 5m are then 
+Measuring the slope on an equal aspect-ratio log-log plot provides an estimate of the exponent. 
+Measuring from our present data, the kinetic energy is scaling with the diameter raised to the power of 2.428. 
+While non-integer scalings are not impossible, and not unprecidented in
+turbulence, there are no obvious characteristic scales that would result
+in this power-law exponent, and more pen and paper analysis is
+necessary. Regardless, the result is sufficiently close to 2.5 as to be
+intruiging, however, as that implies an anomalous scaling coefficient of
+$\frac{5}{2}$.  
 
-%
-% just a figure
-%
-
-  %% \begin{figure}[!htb]
-  %%   \begin{center}
-  %%    \includegraphics[width = 12 cm]{figs/1m_temp_iso}
-  %%    \caption{1m }
-  %%    \label{lab}
-  %%   \end{center}
-  %% \end{figure}
-\section*{Predictions for System Scaling}
-
-%We can use our model to make some very rough predictions for system sizes to attain various power outputs. 
-
-A crucial question now is how do we expect the kinetic energy to scale with larger system sizes. We expect the 
-kinetic energy to scale with some unknown exponent of the diameter, 
-\begin{equation}
-k \propto D^\alpha. 
-\end{equation}
+% The exponent would likely be an integer power, although this is not necessarily so. 
 
 \begin{figure}[!htb]
   \begin{center}
@@ -193,6 +230,9 @@ profiles from Sinclair, the thermal plume thickness is found to be roughly 4.6 m
 linear scaling in vane configurations, that would require a 38 meter outer diameter configuration to 
 generate the same energy flux as the Sinclair field dust-devils. Figure \ref{fig:ke_regression} shows 
 several powers of extrapolations from the present data sets to the larger diameter sizes. Our projections 
-are roughly consistent with the Sinclair data for a scaling coefficient between three and four. 
+are roughly consistent with the Sinclair data for a scaling coefficient between two and four, but this extrapolation
+could be unreliable. We are extrapolating far outside of the data, at scales and energies considerably 
+exceeding the present data. As a result, while these data are not inconsistent with those reported by Sinclair, 
+more data (at larger system diameters) is needed to improve upon this prediction. 
 
 \end{document}
