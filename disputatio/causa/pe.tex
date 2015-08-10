@@ -1,5 +1,10 @@
 \documentclass{article}
 \usepackage{amsmath,amssymb}
+\usepackage{bm}
+
+\newcommand{\uveci}{{\bm{\hat{\textnormal{\bfseries\i}}}}}
+\newcommand{\uvecj}{{\bm{\hat{\textnormal{\bfseries\j}}}}}
+\newcommand{\uveck}{{\bm{\hat{\textnormal{\bfseries\k}}}}}
 
 \title{\bf{Order of Magnitude Analysis of Energy Flux into the SoV}}
 \author{Nicholas Malaya \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
@@ -7,8 +12,58 @@
 \begin{document}
 \maketitle
 
-This document details an attempt to provide a very rough estimate of the total energy flowing into the Solar Vortex 
-device. This information is desired to provide a context to the energy fluxes measured through the top of the 
-device. 
+This document details an attempt to provide a very rough estimate of the
+total energy flowing into the Solar Vortex apparatus. This information
+is desired to provide a context to the energy fluxes measured through
+the top of the device. 
+
+At present, we consider only the energy flowing into the device due to
+the ambient conditions, in particular, the incoming wind and heat
+through the front hemisphere of the circular device. We consider a large
+(3m radius) device incoming freestream velocity of 5 m/s. The surface
+temperature is 343 Kelvin, with a specified inflow boundary layer
+bridging the ground temperature to the ambient air conditions of 313
+Kelvin. These numbers were chosen based on information provided by the
+field team in Arizona during the summer of 2014. 
+
+There are two forms of energy to consider: kinetic and enthalpy. We
+begin by considering the kinetic energy flux through the front of the
+apparatus. 
+
+\section*{Kinetic Energy Flux}
+
+From the first law of thermodynamics we can express the kinetic energy
+flux as a surface integral over the upstream face of the device, 
+\begin{equation*}
+\int_{CS} \frac{\vec V^2}{2} \rho \vec V \cdot \hat n dA.
+\end{equation*}
+Where, $\vec V = u \uveci + v \uvecj + w \uvecj.$ 
+We assume our freestream velocity has no components in y and z, 
+$\vec V = u \uveci + 0 \uvecj + 0 \uvecj.$ The surface of interest, S,
+is a perfect cylinder, and therefore has a surface element of, 
+\begin{equation*}
+dS = Rd\theta dz. 
+\end{equation*}
+An outward pointing vector from this surface has the form, 
+\begin{equation*}
+x \uveci + y \uvecj. 
+\end{equation*}
+The normal vector is then,
+\begin{equation*}
+\hat n = \frac{x \uveci + y \uvecj }{||x \uveci + y \uvecj||} =
+ \frac{r\text{ cos}\theta \uveci + r\text{ sin}\theta \uvecj}{r} =
+ \text{cos}\theta \uveci + \text{sin}\theta \uvecj. 
+\end{equation*}
+
+%
+% could cite fluid dynamics book here
+% pg. 239
+
+
+
+
+\section*{Thermal Energy Flux}
+
+
 
 \end{document}
