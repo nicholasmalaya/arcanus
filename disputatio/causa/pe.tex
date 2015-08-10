@@ -37,6 +37,11 @@ flux as a surface integral over the upstream face of the device,
 \begin{equation*}
 \int_{CS} \frac{\vec V^2}{2} \rho \vec V \cdot \hat n dA.
 \end{equation*}
+%
+% could cite fluid dynamics book here
+% pg. 239
+%
+
 Where, $\vec V = u \uveci + v \uvecj + w \uvecj.$ 
 We assume our freestream velocity has no components in y and z, 
 $\vec V = u \uveci + 0 \uvecj + 0 \uvecj.$ The surface of interest, S,
@@ -54,13 +59,23 @@ The normal vector is then,
  \frac{r\text{ cos}\theta \uveci + r\text{ sin}\theta \uvecj}{r} =
  \text{cos}\theta \uveci + \text{sin}\theta \uvecj. 
 \end{equation*}
+Our integral now has the form, 
+\begin{align*}
+\int_{CS} \frac{\vec V^2}{2} \rho \vec V \cdot \hat n dA & = R \rho \int
+ \int \frac{(u \uveci)^2}{2} (u \uveci) \cdot
+ (\text{cos}\theta \uveci + \text{sin}\theta \uvecj) d\theta dz \\
+ & = \frac{1}{2} R \rho u^3 \int^{z_\text{max}}_0 \int^{\frac{3\pi}{2}}_{\frac{\pi}{2}} \text{cos}\theta d\theta dz \\
+ & = \frac{1}{2} R \rho u^3 z_\text{max}
+ \int^{\frac{3\pi}{2}}_{\frac{\pi}{2}} \text{cos}\theta d\theta \\
+ & = -R \rho u^3 z_\text{max}. 
+\end{align*}
 
-%
-% could cite fluid dynamics book here
-% pg. 239
-
-
-
+The negative sign here indicates that the kinetic energy is flowing into
+the surface, in opposition to the outward facing unit normal, $\hat
+n$. Characteristic values for this analysis are, $u = 5$ m/s, $\rho =
+1.225$ Kg/$m^3$, R$= 3$ m, and $z_{\text{max}} = 2.5$ m. This provides
+an estimate of 1148.44 Watts as the incoming kinetic energy flux across
+the SoV vanes. Or, approximately 1.15 kW. 
 
 \section*{Thermal Energy Flux}
 
