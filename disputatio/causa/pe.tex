@@ -64,7 +64,8 @@ Our integral now has the form,
 \int_{CS} \frac{\vec V^2}{2} \rho \vec V \cdot \hat n dA & = R \rho \int
  \int \frac{(u \uveci)^2}{2} (u \uveci) \cdot
  (\text{cos}\theta \uveci + \text{sin}\theta \uvecj) d\theta dz \\
- & = \frac{1}{2} R \rho u^3 \int^{z_\text{max}}_0 \int^{\frac{3\pi}{2}}_{\frac{\pi}{2}} \text{cos}\theta d\theta dz \\
+ & = \frac{1}{2} R \rho u^3 \int^{z_\text{max}}_0
+ \int^{\frac{3\pi}{2}}_{\frac{\pi}{2}} \text{cos}\theta d\theta dz \\ 
  & = \frac{1}{2} R \rho u^3 z_\text{max}
  \int^{\frac{3\pi}{2}}_{\frac{\pi}{2}} \text{cos}\theta d\theta \\
  & = -R \rho u^3 z_\text{max}. 
@@ -83,50 +84,75 @@ would impose a maximum in the possible energy extraction. We only present an ide
 estimate of the total energy available in the flow, to provide a very rough estimate.
 
 
-\section*{Thermal Energy Flux}
+\section*{Gravitational Potential Energy Flux}
 
-The thermal energy flux is essentially the specific enthalpy. Again 
-examining our 1st law energy balance rate equation, 
-\begin{equation*}
-\frac{dE}{dt} = \dot Q - \dot W + \dot m_{in}\left( h_{in} + \frac{V_{in}^2}{2} + gz_{out} \right)
-- \dot m_{out}\left( h_{out} + \frac{V_{out}^2}{2} + gz_{out} \right).
-\end{equation*}
-Now we make several convenient simplifying assumptions. 
-Namely, that the system is steady state ($\frac{dE}{dt} = 0$), 
-there is no heat transfer with the surroundings ($\dot Q = 0$), 
-and there are no appreciable contributions from gravitational 
-potential energy ($z_{out}-z_{in} = 0$). Furthermore, we 
-previously provided an estimate for the kinetic energy contribution. 
-Finally, we assume that the mass flux is approximately the same 
-between the inlet and outlet. 
 
-Our resulting equation is then, 
-\begin{equation*}
-  \dot W_{\text{thermal}} = \dot m \left(h_{in}-h_{out}\right).
-\end{equation*}
-At the very moderate temperatures considered, 
-for the working fluid (air), it is reasonable to model 
-the system as an ideal gas. Under these conditions, 
-the specific enthalpy will only depend on the temperature. 
+Now we estimate the gravitational potential energy flux by integrating 
+the boussinesq term by the height of the vanes, 
+\begin{align*}
+  & = u \int_{-h}^0 \Delta \rho g z dz. \\
+  & = u \int_{-h}^0 \rho' g z^2 dz. \\
+  & = \frac{1}{3} u \rho' g z^3 \bigg|_{-h}^{0}
+\end{align*}
+Where the substitution, $\Delta \rho = \rho z$ was made. Furthermore, we
+note that $\rho' = -\beta \rho_0 \Delta T$, resulting in, 
+%
+% cite monin-yaglom page 59
+%
+\begin{equation}
+ \text{Power } = \frac{1}{3} u \beta \rho_0 \Delta T g h^3.
+\end{equation}
 
-Our expression then becomes, 
-\begin{equation*}
-  \dot W_{\text{thermal}} = \dot m \left(h(T_{in})-h(T_{out})\right).
-\end{equation*}
-We now further approximate this system by making the 
-assumption that the specific heats are constant, or that, 
-\begin{equation*}
-  h(T_{in})-h(T_{out}) = c_p(T_{in}-T_{out})
-\end{equation*}
-Here, $T_{out}$ is the ambient temperature. For $T_{in}$ we 
-approximate the varying vertical gradient by a constant value equal to the
-mean value of the function over that interval, e.g.
-\begin{equation*}
-\bar f = \frac{1}{b-a} \int^b_a f(x) dx. 
-\end{equation*}
-With a gradient of $2/3$ Kelvin/meter this results in a delta T of approximately 2 degrees Kelvin. 
-$c_p$ of air at this temperature is approximately 1006.5 kJ/(kg K). 
-The resulting estimate of the thermal energy is substantial: 69 kW, or 60x larger than 
-the kinetic energy of the wind.
+Using $\rho_0 = 1.225$ Kg/$m^3$, $T_{\text{ref}}=313$, $\beta_T = 0.003194$
+(This is just 1/$T_{\text{ref}}$), $g=9.81$ m/$s^2$ results in an
+estimate of 50 Watts for the gravitational potential energy. 
+
+%
+% old discussion
+%
+% The thermal energy flux is essentially the specific enthalpy. Again 
+% examining our 1st law energy balance rate equation, 
+% \begin{equation*}
+% \frac{dE}{dt} = \dot Q - \dot W + \dot m_{in}\left( h_{in} + \frac{V_{in}^2}{2} + gz_{out} \right)
+% - \dot m_{out}\left( h_{out} + \frac{V_{out}^2}{2} + gz_{out} \right).
+% \end{equation*}
+% Now we make several convenient simplifying assumptions. 
+% Namely, that the system is steady state ($\frac{dE}{dt} = 0$), 
+% there is no heat transfer with the surroundings ($\dot Q = 0$), 
+% and there are no appreciable contributions from gravitational 
+% potential energy ($z_{out}-z_{in} = 0$). Furthermore, we 
+% previously provided an estimate for the kinetic energy contribution. 
+% Finally, we assume that the mass flux is approximately the same 
+% between the inlet and outlet. 
+
+% Our resulting equation is then, 
+% \begin{equation*}
+%   \dot W_{\text{thermal}} = \dot m \left(h_{in}-h_{out}\right).
+% \end{equation*}
+% At the very moderate temperatures considered, 
+% for the working fluid (air), it is reasonable to model 
+% the system as an ideal gas. Under these conditions, 
+% the specific enthalpy will only depend on the temperature. 
+
+% Our expression then becomes, 
+% \begin{equation*}
+%   \dot W_{\text{thermal}} = \dot m \left(h(T_{in})-h(T_{out})\right).
+% \end{equation*}
+% We now further approximate this system by making the 
+% assumption that the specific heats are constant, or that, 
+% \begin{equation*}
+%   h(T_{in})-h(T_{out}) = c_p(T_{in}-T_{out})
+% \end{equation*}
+% Here, $T_{out}$ is the ambient temperature. For $T_{in}$ we 
+% approximate the varying vertical gradient by a constant value equal to the
+% mean value of the function over that interval, e.g.
+% \begin{equation*}
+% \bar f = \frac{1}{b-a} \int^b_a f(x) dx. 
+% \end{equation*}
+% With a gradient of $2/3$ Kelvin/meter this results in a delta T of
+% approximately 2 degrees Kelvin. $c_p$ of air at this temperature is
+% approximately 1006.5 kJ/(kg K). The resulting estimate of the thermal
+% energy is substantial: 69 kW, or 60x larger than the kinetic energy of
+% the wind. 
 
 \end{document}
