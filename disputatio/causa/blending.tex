@@ -31,3 +31,36 @@ Finally, $\gamma$ determines the horizontal shift. This is set to the location w
 the vanes intercept. 
 
 \end{document}
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+
+\title{\bf{Blending Function}}
+\author{Nicholas Malaya \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
+
+\begin{document}
+\maketitle
+
+We are constructing a blending function so that we can smoothly patch together 
+the values of the penalty functions across a hybrid vane configuration, 
+instead of discontinuously forcing. 
+
+In order to accomplish this, we desire a blending function that is symmetric 
+around a value, varying continuously from zero (no forcing) to one (full forcing). 
+The blending function B(z) is chosen to be: 
+\begin{equation}
+  B(z) = \frac{\text{tanh}(\beta z -\gamma) + \alpha}{2}
+\end{equation}
+
+The value of $\beta$ dictates the thickness of the blending function. 
+We choose a relatively sharp $\beta$ of nine, which makes the variation from 
+zero to one occur over approximately one fourth of a meter. We use an identical 
+magnitude, but opposite in sign, for the "other side" of the penalty function, which then 
+varies from one to zero. 
+
+$\alpha$ must be set to one in order to guarantee 
+that the function starts at zero and ends at one. 
+
+Finally, $\gamma$ determines the horizontal shift. This is set to the location where 
+the vanes intercept. 
+
+\end{document}
