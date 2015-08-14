@@ -44,7 +44,11 @@ flux as a surface integral over the upstream face of the device,
 
 Where, $\vec V = u \uveci + v \uvecj + w \uvecj.$ 
 We assume our freestream velocity has no components in y and z, 
-$\vec V = u \uveci + 0 \uvecj + 0 \uvecj.$ The surface of interest, S,
+$\vec V = u(z) \uveci + 0 \uvecj + 0 \uvecj.$ Note that the 
+streamwise velocity, u, is shown as having variation in z. 
+This variation in magnitude is entirely due to the boundary layer 
+and will be expanded upon in this discussion shortly.
+The surface of interest, S,
 is a perfect cylinder, and therefore has a surface element of, 
 \begin{equation*}
 dS = Rd\theta dz. 
@@ -62,14 +66,25 @@ The normal vector is then,
 Our integral now has the form, 
 \begin{align*}
 \int_{CS} \frac{\vec V^2}{2} \rho \vec V \cdot \hat n dA & = R \rho \int
- \int \frac{(u \uveci)^2}{2} (u \uveci) \cdot
+ \int \frac{(u(z) \uveci)^2}{2} (u(z) \uveci) \cdot
  (\text{cos}\theta \uveci + \text{sin}\theta \uvecj) d\theta dz \\
- & = \frac{1}{2} R \rho u^3 \int^{z_\text{max}}_0
- \int^{\frac{3\pi}{2}}_{\frac{\pi}{2}} \text{cos}\theta d\theta dz \\ 
- & = \frac{1}{2} R \rho u^3 z_\text{max}
- \int^{\frac{3\pi}{2}}_{\frac{\pi}{2}} \text{cos}\theta d\theta \\
- & = -R \rho u^3 z_\text{max}. 
+ & = \frac{1}{2} R \rho \int^{z_\text{max}}_0
+ \int^{\frac{3\pi}{2}}_{\frac{\pi}{2}}  u(z)^3 \text{cos}\theta d\theta dz.
 \end{align*}
+
+We assume that the variation in z for the streamwise velocity is only on account 
+of the thin boundary layer near the ground. We functionally approximate this behavior 
+using the common 7th power function for a turbulent boundary layer, 
+\begin{equation*}
+  u(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)
+\end{equation*}
+where U is the constant freestream velocity and $\delta$ the assumed boundary 
+layer thickness. 
+
+%%  & = \frac{1}{2} R \rho u^3 z_\text{max}
+%%  \int^{\frac{3\pi}{2}}_{\frac{\pi}{2}} \text{cos}\theta d\theta \\
+%%  & = -R \rho u^3 z_\text{max}. 
+%% \end{align*}
 
 The negative sign here indicates that the kinetic energy is flowing into
 the surface, in opposition to the outward facing unit normal, $\hat
@@ -114,7 +129,8 @@ estimate of 50 Watts for the gravitational potential energy.
 % The thermal energy flux is essentially the specific enthalpy. Again 
 % examining our 1st law energy balance rate equation, 
 % \begin{equation*}
-% \frac{dE}{dt} = \dot Q - \dot W + \dot m_{in}\left( h_{in} + \frac{V_{in}^2}{2} + gz_{out} \right)
+% \frac{dE}{dt} = \dot Q - \dot W + \dot m_{in}\left( h_{in} +
+% \frac{V_{in}^2}{2} + gz_{out} \right) 
 % - \dot m_{out}\left( h_{out} + \frac{V_{out}^2}{2} + gz_{out} \right).
 % \end{equation*}
 % Now we make several convenient simplifying assumptions. 
