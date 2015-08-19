@@ -71,6 +71,13 @@ Our integral now has the form,
  & = \frac{1}{2} R \rho \int^{z_\text{max}}_0
  \int^{\frac{3\pi}{2}}_{\frac{\pi}{2}}  u(z)^3 \text{cos}\theta d\theta dz.
 \end{align*}
+This is seperable, 
+\begin{align*}
+ & = \frac{1}{2} R \rho \left( \int^{z_\text{max}}_0 u(z)^3 dz \right)
+ \left(\int^{\frac{3\pi}{2}}_{\frac{\pi}{2}} \text{cos}\theta d\theta
+ \right) \\
+ & = -R \rho \int^{z_\text{max}}_0 u(z)^3 dz. 
+\end{align*}
 
 We assume that the variation in z for the streamwise velocity is only on account 
 of the thin boundary layer near the ground. We functionally approximate this behavior 
@@ -79,7 +86,18 @@ using the common 7th power function for a turbulent boundary layer,
   u(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)
 \end{equation*}
 where U is the constant freestream velocity and $\delta$ the assumed boundary 
-layer thickness. 
+layer thickness. Our integral now becomes, 
+\begin{align*}
+ & = -R \rho \left[ \int^{z_\text{max}}_\delta U^3 dz
+ + \int^{\delta}_0 \left(U\left(\frac{z}{\delta}\right)^7
+ \right)^3 dz \right] \\
+ & = -R \rho \left[ \int^{z_\text{max}}_\delta U^3 dz
+ + \int^{\delta}_0 U^3 \left(\frac{z}{\delta} \right)^{10} dz \right] \\
+ & = -R \rho U^3 \left[ z \bigg|^{z_{\text{max}}}_{\delta}
+ + \int^{\delta}_0 \left(\frac{z}{\delta} \right)^{10} dz \right] \\
+& = -R \rho U^3 \left[ z_{\text{max}} - \frac{10}{11}\delta.
+\right]
+\end{align*}
 
 %%  & = \frac{1}{2} R \rho u^3 z_\text{max}
 %%  \int^{\frac{3\pi}{2}}_{\frac{\pi}{2}} \text{cos}\theta d\theta \\
@@ -89,9 +107,10 @@ layer thickness.
 The negative sign here indicates that the kinetic energy is flowing into
 the surface, in opposition to the outward facing unit normal, $\hat
 n$. Characteristic values for this analysis are, $u = 5$ m/s, $\rho =
-1.225$ Kg/$m^3$, R$= 3$ m, and $z_{\text{max}} = 2.5$ m. This provides
-an estimate of 1148.44 Watts as the incoming kinetic energy flux across
-the SoV vanes. Or, approximately 1.15 kW. 
+1.225$ Kg/$m^3$, $R = 3$ m, and $z_{\text{max}} = 2.5$ m. The boundary
+layer thickness is $\approx 10$ cm. This provides
+an estimate of 1144.26 Watts as the incoming kinetic energy flux across
+the SoV vanes. Or, approximately 1.14 kW. 
 
 Note that this is only an accounting of the incoming flow energy. It is certainly
 impossible to extract all this energy from the flow, where Betz-like considerations 
