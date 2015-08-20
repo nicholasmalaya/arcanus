@@ -117,30 +117,44 @@ impossible to extract all this energy from the flow, where Betz-like considerati
 would impose a maximum in the possible energy extraction. We only present an idealized
 estimate of the total energy available in the flow, to provide a very rough estimate.
 
-
 \section*{Gravitational Potential Energy Flux}
 
 
 Now we estimate the gravitational potential energy flux by integrating 
 the boussinesq term by the height of the vanes, 
 \begin{align*}
-  & = u \int_{-h}^0 \Delta \rho g z dz. \\
-  & = u \int_{-h}^0 \rho' g z^2 dz. \\
-  & = \frac{1}{3} u \rho' g z^3 \bigg|_{-h}^{0}
+  \text{Potential Energy Flux} & = \int_{-h}^0 u(z) \Delta \rho g z dz. \\
+  & = \int_{-h}^0 u(z) \rho' g z^2 dz. 
 \end{align*}
-Where the substitution, $\Delta \rho = \rho z$ was made. Furthermore, we
+Where the substitution, $\Delta \rho = \rho' z$ was made. At 
+this point we again separate the integral into two components, 
+for the boundary layer and the constant freestream velocity region. 
+\begin{align*}
+  & = \rho' g \left[ \int_{-\delta}^{0} U \left( \frac{z}{\delta} \right)^7 z^2 dz 
+      + \int_{-h}^{-\delta} U z^2 dz \right] \\
+  & = -\rho' g U \left[ \frac{h^3}{3} - \frac{7}{30} \delta^3 \right].
+\end{align*}
+Furthermore, we
 note that $\rho' = -\beta \rho_0 \Delta T$, resulting in, 
 %
 % cite monin-yaglom page 59
 %
 \begin{equation}
- \text{Power } = \frac{1}{3} u \beta \rho_0 \Delta T g h^3.
+ \text{Power } = U \beta \rho_0 \Delta T g \left[ \frac{h^3}{3} - \frac{7}{30} \delta^3 \right].
 \end{equation}
 
-Using $\rho_0 = 1.225$ Kg/$m^3$, $T_{\text{ref}}=313$, $\beta_T = 0.003194$
+Using $\rho_0 = 1.225$ Kg/$m^3$, $T_{\text{ref}}=313$m Kelvin, $\beta_T = 0.003194$
 (This is just 1/$T_{\text{ref}}$), $g=9.81$ m/$s^2$, and a freesteam
 velocity of five meters per second results in an
-estimate of 50 Watts for the gravitational potential energy. 
+estimate of 30 Watts for the gravitational potential energy. 
+
+\section*{Discussion}
+
+These two quantities do not scale identically. In particular, 
+the kinetic energy scales linearly in height, while the gravitational potential 
+energy holds a cubic power scaling. The dust devils observed in the field are often quite tall,
+so a reasonable question is if the heights are such that this occurs in a regime where the kinetic
+energy or the gravititaional potential energy (or both, equally) is dominant. 
 
 %
 % old discussion
