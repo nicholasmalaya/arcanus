@@ -26,17 +26,15 @@ h  = np.linspace(0.0, 100.0)
 ke = R*rho*u**3 * (h - 10*delta/11.)
 pe = u*beta*rho*dt*g*((h**3)/3.0 - (7*delta**3)/30.)
 
-print pe
-
 # plot it
 plt.plot(h,ke,'blue',label='Kinetic Energy')
-plt.plot(h,pe,'red',label='Gravitational Potential Energy')
+plt.plot(h,pe,'r--',label='Gravitational Potential Energy')
 plt.xlabel('Height')
 plt.ylabel('Energy')
 plt.grid(True)
-plt.legend()
+plt.legend(loc='best')
 plt.ylim([0,10000])
-plt.xlim([0,30])
+plt.xlim([0,20])
 plt.savefig('cross.png')
 #plt.show()
 
