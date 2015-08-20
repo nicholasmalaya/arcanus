@@ -16,7 +16,7 @@ delta  = 0.10  # [m]
 #
 dt     = 30.0  # [Kelvin]
 T      = 313   # [Kelvin]
-beta   = 1/T   # [1/Kelvin]
+beta   = 1.0/T   # [1/Kelvin]
 g      = 9.8   # [m/s^2]
 
 #
@@ -24,15 +24,20 @@ g      = 9.8   # [m/s^2]
 #
 h  = np.linspace(0.0, 100.0)
 ke = R*rho*u**3 * (h - 10*delta/11.)
-pe = u*beta*rho*dt*g*(h**3/3.0 - 7*delta**3/30.)
+pe = u*beta*rho*dt*g*((h**3)/3.0 - (7*delta**3)/30.)
+
+print pe
 
 # plot it
 plt.plot(h,ke,'blue',label='Kinetic Energy')
 plt.plot(h,pe,'red',label='Gravitational Potential Energy')
-plt.set_xlabel('Height')
-plt.set_ylabel('Energy')
+plt.xlabel('Height')
+plt.ylabel('Energy')
 plt.grid(True)
-plt.save_fig('cross.png')
+plt.legend()
+plt.ylim([0,10000])
+plt.xlim([0,30])
+plt.savefig('cross.png')
 #plt.show()
 
 
