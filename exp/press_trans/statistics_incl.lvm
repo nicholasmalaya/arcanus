@@ -1,0 +1,39 @@
+LabVIEW Measurement	
+Writer_Version	2
+Reader_Version	2
+Separator	Tab
+Decimal_Separator	.
+Multi_Headings	No
+X_Columns	One
+Time_Pref	Absolute
+Operator	Administrator
+Description	Don't delete initial header
+Date	2015/09/03
+Time	12:09:41.2168573999998882095
+***End_of_Header***	
+	
+Channels	4				
+Samples	1	1	1	1	
+Date	2015/09/03	2015/09/03	2015/09/03	2015/09/03	
+Time	12:09:41.2168573999998882095	12:09:41.2168573999998882095	12:09:41.2168573999998882095	12:09:41.2168573999998882095	
+Y_Unit_Label	Volts	Volts	Volts	Volts	
+X_Dimension	Time	Time	Time	Time	
+X0	0.0000000000000000E+0	0.0000000000000000E+0	0.0000000000000000E+0	0.0000000000000000E+0	
+Delta_X	0.001000	0.001000	0.001000	0.001000	
+***End_of_Header***					
+X_Value	Pressure Transducer Voltage (Arith. Mean)	Pressure Transducer Voltage (Std Dev)	Pressure Transducer Voltage (Variance)	Pressure Transducer Voltage (Total Samples)	Comment
+0.000000	5.881585	0.019145	0.000367	1000.000000
+0.000000	5.848814	0.018615	0.000347	1000.000000	incl manometer - 3.955inh20
+0.000000	5.316841	0.016968	0.000288	1000.000000	incl manometer - 3.465inh20
+0.000000	4.817628	0.015478	0.000240	1000.000000	incl manometer - 3.025inh20
+0.000000	4.202348	0.013558	0.000184	1000.000000	incl manometer - 2.510inh20
+0.000000	3.668090	0.011735	0.000138	1000.000000	incl manometer - 2.05inh20
+0.000000	3.052077	0.010026	0.000101	1000.000000	incl manometer - 1.53inh20
+0.000000	2.410805	0.008126	6.603493E-5	1000.000000	incl manometer - 0.99inh20
+0.000000	1.850186	0.006158	3.792081E-5	1000.000000	incl manometer - 0.525inh20
+0.000000	1.223827	0.004419	1.952445E-5	1000.000000	incl manometer - 0.0inh20
+0.000000	5.821940	0.018641	0.000347	1000.000000	incl manometer - 3.93inh20 - second run
+0.000000	4.793798	0.015316	0.000235	1000.000000	incl manometer - 3.015inh20 - second run
+0.000000	3.646245	0.011475	0.000132	1000.000000	incl manometer - 2.02inh20 - second run
+0.000000	2.467008	0.008463	7.162354E-5	1000.000000	incl manometer - 1.04inh20 - second run
+0.000000	1.210133	0.004235	1.793750E-5	1000.000000	incl manometer - 0.0inh20 - second run

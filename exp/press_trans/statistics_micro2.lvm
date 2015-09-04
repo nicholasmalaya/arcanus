@@ -1,0 +1,43 @@
+LabVIEW Measurement	
+Writer_Version	2
+Reader_Version	2
+Separator	Tab
+Decimal_Separator	.
+Multi_Headings	No
+X_Columns	One
+Time_Pref	Absolute
+Operator	Methods Students
+Description	Don't delete initial header
+Date	2015/09/04
+Time	13:08:09.0586233999999701421
+***End_of_Header***	
+	
+Channels	4				
+Samples	1	1	1	1	
+Date	2015/09/04	2015/09/04	2015/09/04	2015/09/04	
+Time	13:08:15.5569377999997121179	13:08:15.5569377999997121179	13:08:15.5569377999997121179	13:08:15.5569377999997121179	
+Y_Unit_Label	Volts	Volts	Volts	Volts	
+X_Dimension	Time	Time	Time	Time	
+X0	0.0000000000000000E+0	0.0000000000000000E+0	0.0000000000000000E+0	0.0000000000000000E+0	
+Delta_X	0.001000	0.001000	0.001000	0.001000	
+***End_of_Header***					
+X_Value	Pressure Transducer Voltage (Arith. Mean)	Pressure Transducer Voltage (Std Dev)	Pressure Transducer Voltage (Variance)	Pressure Transducer Voltage (Total Samples)	Comment
+0.000000	1.211921	0.004186	1.752261E-5	1000.000000	micro-manometer - zero gage pressure
+0.000000	3.516492	0.011473	0.000132	1000.000000	micro-manometer - 2.0 gage pressure
+0.000000	3.230358	0.010564	0.000112	1000.000000	micro-manometer - 1.75 gage pressure
+0.000000	2.944744	0.009739	9.485466E-5	1000.000000	micro-manometer - 1.5 gage pressure
+0.000000	2.655539	0.009118	8.314297E-5	1000.000000	micro-manometer - 1.25 gage pressure
+0.000000	2.359768	0.008532	7.279755E-5	1000.000000	micro-manometer - 1.0 gage pressure
+0.000000	2.074907	0.006899	4.759200E-5	1000.000000	micro-manometer - 0.75 gage pressure
+0.000000	1.779936	0.006032	3.638596E-5	1000.000000	micro-manometer - 0.5 gage pressure
+0.000000	1.493466	0.005402	2.918194E-5	1000.000000	micro-manometer - 0.25 gage pressure
+0.000000	1.197457	0.004261	1.815511E-5	1000.000000	micro-manometer - 0.0 gage pressure
+0.000000	3.503173	0.011388	0.000130	1000.000000	micro-manometer - 2.0 gage pressure -- second set
+0.000000	3.209486	0.010663	0.000114	1000.000000	micro-manometer - 1.75 gage pressure -- second set
+0.000000	2.921190	0.009617	9.248060E-5	1000.000000	micro-manometer - 1.5 gage pressure -- second set
+0.000000	2.630606	0.008986	8.073985E-5	1000.000000	micro-manometer - 1.25 gage pressure -- second set
+0.000000	2.340046	0.007712	5.947945E-5	1000.000000	micro-manometer - 1.0 gage pressure -- second set
+0.000000	2.055178	0.007142	5.100262E-5	1000.000000	micro-manometer - 0.75 gage pressure -- second set
+0.000000	1.759440	0.006315	3.988038E-5	1000.000000	micro-manometer - 0.5 gage pressure -- second set
+0.000000	1.469287	0.005117	2.618781E-5	1000.000000	micro-manometer - 0.25 gage pressure -- second set
+0.000000	1.188025	0.004572	2.090493E-5	1000.000000	micro-manometer - 0.0 gage pressure -- second set

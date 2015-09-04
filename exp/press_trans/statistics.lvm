@@ -1,0 +1,25 @@
+LabVIEW Measurement	
+Writer_Version	2
+Reader_Version	2
+Separator	Tab
+Decimal_Separator	.
+Multi_Headings	No
+X_Columns	One
+Time_Pref	Absolute
+Operator	Administrator
+Description	Don't delete initial header
+Date	2015/09/03
+Time	11:44:31.4040729999997907385
+***End_of_Header***	
+	
+Channels	4				
+Samples	1	1	1	1	
+Date	2015/09/03	2015/09/03	2015/09/03	2015/09/03	
+Time	11:48:03.4456291999997695655	11:48:03.4456291999997695655	11:48:03.4456291999997695655	11:48:03.4456291999997695655	
+Y_Unit_Label	Volts	Volts	Volts	Volts	
+X_Dimension	Time	Time	Time	Time	
+X0	0.0000000000000000E+0	0.0000000000000000E+0	0.0000000000000000E+0	0.0000000000000000E+0	
+Delta_X	0.001000	0.001000	0.001000	0.001000	
+***End_of_Header***					
+X_Value	Pressure Transducer Voltage (Arith. Mean)	Pressure Transducer Voltage (Std Dev)	Pressure Transducer Voltage (Variance)	Pressure Transducer Voltage (Total Samples)	Comment
+0.000000	1.214487	0.004209	1.771380E-5	10000.000000	micromanometer - zero gage pressure - 10000 samples

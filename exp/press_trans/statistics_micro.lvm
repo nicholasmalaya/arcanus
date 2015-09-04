@@ -1,0 +1,35 @@
+LabVIEW Measurement	
+Writer_Version	2
+Reader_Version	2
+Separator	Tab
+Decimal_Separator	.
+Multi_Headings	No
+X_Columns	One
+Time_Pref	Absolute
+Operator	Administrator
+Description	Don't delete initial header
+Date	2015/09/03
+Time	12:09:41.2168573999998884006
+***End_of_Header***	
+	
+Channels	4				
+Samples	1	1	1	1	
+Date	2015/09/03	2015/09/03	2015/09/03	2015/09/03	
+Time	12:36:13.4649287999997597596	12:36:13.4649287999997597596	12:36:13.4649287999997597596	12:36:13.4649287999997597596	
+Y_Unit_Label	Volts	Volts	Volts	Volts	
+X_Dimension	Time	Time	Time	Time	
+X0	0.0000000000000000E+0	0.0000000000000000E+0	0.0000000000000000E+0	0.0000000000000000E+0	
+Delta_X	0.001000	0.001000	0.001000	0.001000	
+***End_of_Header***					
+X_Value	Pressure Transducer Voltage (Arith. Mean)	Pressure Transducer Voltage (Std Dev)	Pressure Transducer Voltage (Variance)	Pressure Transducer Voltage (Total Samples)	Comment
+0.000000	1.210323	0.004532	2.053933E-5	1000.000000	micro-manometer - 0.0inh20
+0.000000	3.555441	0.011378	0.000129	1000.000000	micro-manometer - 2.0inh20
+0.000000	3.175107	0.010139	0.000103	1000.000000	micro-manometer - 1.73inh20
+0.000000	2.917123	0.009641	9.295031E-5	1000.000000	micro-manometer - 1.5inh20
+20.927197	2.618253	0.008894	7.909449E-5	1000.000000	micro-manometer - 1.25inh20
+0.000000	2.357083	0.007776	6.047041E-5	1000.000000	micro-manometer - 1.0inh20
+0.000000	3.513046	0.011333	0.000128	1000.000000	micro-manometer - 2.0inh20 - second run
+0.000000	3.196075	0.010492	0.000110	1000.000000	micro-manometer - 1.75inh20 - second run
+0.000000	2.944765	0.009924	9.849463E-5	1000.000000	micro-manometer - 1.5inh20 - second run
+0.000000	2.615655	0.008619	7.428807E-5	1000.000000	micro-manometer - 1.25inh20 - second run
+0.000000	2.361588	0.007625	5.814115E-5	1000.000000	micro-manometer - 1.0inh20 - second run
