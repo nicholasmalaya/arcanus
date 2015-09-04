@@ -11,7 +11,7 @@
        %
        % Intro
        %
- \item Introduction
+ \item Introduction // Executive Summary
        \begin{itemize}
 	\item existence of dust devils and other cyclonic structures
 	\item probably some stuff about energy
@@ -22,8 +22,10 @@
        %
  \item Physics of the Naturally Occuring Phenomena
        \begin{itemize} 
-        \item physics of dust devils and other cyclonic structures
+	\item phenomenological description
+	\item regions/frequency of occurance
 	\item review of sinclair and other pertinent literature
+        \item known physics of dust devils and other cyclonic structures
 	\item scaling discussion as estimate of energy
        \end{itemize}
 
@@ -32,9 +34,10 @@
        %
  \item Mathematical Model
        \begin{itemize}
-	\item unstable stratified boundary layers
-	\item incompressible navier stokes
-	\item eddy viscosity model (M-O)
+	\item unstable stratified boundary layers (raleigh number estimate)
+	\item justify incompressible N-S
+	\item justification of eddy-viscosity model (M-O)
+	\item penalty formulation?
        \end{itemize}
 
        %
@@ -42,15 +45,21 @@
        %
  \item Computational Methods
        \begin{itemize}
-	\item wind and thermal-only (boundary conditions, etc.)
+	\item discretized equations, finite elements, stabilized
+	\item modeling the vanes and penalty formulation
+	\item software (GRINS+Libmesh)
+	\item tool-chain, simulation machine and hardware
+	\item simulation geometry and boundary conditions for wind/thermal-only
        \end{itemize}
 
        %
        % Validation
        %
- \item Validation
+ \item Verification and Validation
        \begin{itemize}
-	\item lab data available
+	\item unit testing 
+	\item model calibration
+	\item model validation
        \end{itemize}
 
        %
@@ -58,14 +67,24 @@
        %
  \item Preliminary Results
        \begin{itemize}
-	\item results and implications
+	\item field results for wind baseline
+	\item field result for thermal only baseline
+
+	\item field results for wind flipped
+	\item field result for thermal only flipped
+
+	\item field results for wind inside-out
+	\item field result for thermal only inside out
+
+	\item character of solution
        \end{itemize}
        %
        % Summary
        %
  \item Summary and Future Work
        \begin{itemize}
-	\item ``proposed''
+	\item ``proposed'' new runs and physical investigation
+	\item other ideas
        \end{itemize}
 
 \end{itemize}
