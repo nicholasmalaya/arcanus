@@ -18,26 +18,31 @@
        \end{itemize}
 
        %
+       % Physics of the Naturally Occuring Phenomena
        % Physics
        %
- \item Physics of the Naturally Occuring Phenomena
+ \item Physics of Dust-Devils
        \begin{itemize} 
 	\item phenomenological description
 	\item regions/frequency of occurance
 	\item review of sinclair and other pertinent literature
         \item known physics of dust devils and other cyclonic structures
 	\item scaling discussion as estimate of energy
+	\item Dust-Devil Generation Concept
+	\item Motivation of computational modeling
        \end{itemize}
 
        %
        % Model
        %
- \item Mathematical Model
+ \item Mathematical Models
        \begin{itemize}
 	\item unstable stratified boundary layers (raleigh number estimate)
 	\item justify incompressible N-S
-	\item justification of eddy-viscosity model (M-O)
-	\item penalty formulation?
+	\item justification of far-field eddy-viscosity model (M-O)
+	\item modeling eddy-viscosity in device 
+	\item vane and turbine representation
+	\item cone representation
        \end{itemize}
 
        %
@@ -46,8 +51,9 @@
  \item Computational Methods
        \begin{itemize}
 	\item discretized equations, finite elements, stabilized
-	\item modeling the vanes and penalty formulation
+	\item penalty formulation
 	\item software (GRINS+Libmesh)
+	\item verification of software
 	\item tool-chain, simulation machine and hardware
 	\item simulation geometry and boundary conditions for wind/thermal-only
        \end{itemize}
@@ -55,11 +61,11 @@
        %
        % Validation
        %
- \item Verification and Validation
+ \item Calibration and Validation
        \begin{itemize}
 	\item unit testing 
-	\item model calibration
-	\item model validation
+	\item model calibration (of viscosity, and penalty value)
+	\item model validation (against gridded vanes, experiment)
        \end{itemize}
 
        %
@@ -67,24 +73,19 @@
        %
  \item Preliminary Results
        \begin{itemize}
-	\item field results for wind baseline
-	\item field result for thermal only baseline
-
-	\item field results for wind flipped
-	\item field result for thermal only flipped
-
-	\item field results for wind inside-out
-	\item field result for thermal only inside out
-
-	\item character of solution
+        \item need a coherent story here
+        \item show some optimization examples, provide story
+	\item character of solution(s), observations
        \end{itemize}
        %
        % Summary
        %
  \item Summary and Future Work
        \begin{itemize}
+        \item main event!
 	\item ``proposed'' new runs and physical investigation
 	\item other ideas
+	\item rough time line
        \end{itemize}
 
 \end{itemize}
