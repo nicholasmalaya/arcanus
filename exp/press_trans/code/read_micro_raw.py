@@ -20,7 +20,7 @@ def plot_series(time,voltage,name):
 
     import matplotlib.pyplot as plt
     plt.subplot(2, 1, 1)
-    plt.title('Inclined Manometer Raw Time Series Data')
+    plt.title('Micro-Manometer Raw Time Series Data')
     plt.plot(t,v,  'ko-',color='blue') #label=name,
     plt.ylabel('Voltage')
     plt.xlabel('Time (Seconds)')
@@ -29,10 +29,10 @@ def plot_series(time,voltage,name):
     plt.axhline(y=up, xmin=0, xmax=1, hold=None,linewidth=4.0,color='red',label=r'$2\sigma$')
     plt.axhline(y=down, xmin=0, xmax=1, hold=None,linewidth=4.0,color='red')
 
-    plt.axis([0,1,5.80,5.90])
+    #plt.axis([0,1,5.80,5.90])
 
     plt.legend(loc='best')
-    plt.savefig('incl_time.png')
+    plt.savefig('micro_time.png')
     plt.close()
 
     #
@@ -43,7 +43,7 @@ def plot_series(time,voltage,name):
 #
 # open and read file
 #
-path="../data/alldata_incl.lvm"
+path="../data/alldata_micro2.lvm"
 file = open(path, "r+")
 
 #
