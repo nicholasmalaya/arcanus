@@ -33,7 +33,7 @@ for line in file:
     set_name=line_list[5:]
     set_names.append(' '.join(set_name))
 
-    if( len(set_names) > 10):
+    if( len(set_names) > 9):
         height2.append(line_list[8])
         voltage2.append(line_list[2])
         std2.append(line_list[3])
@@ -42,6 +42,7 @@ for line in file:
         height.append(line_list[8])
         voltage.append(line_list[2])
         std.append(line_list[3])
+        print line_list
 #
 # clean up
 #
