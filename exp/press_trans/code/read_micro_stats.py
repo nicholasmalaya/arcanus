@@ -10,7 +10,7 @@ import sys
 #
 # open and read file
 #
-path="../data/statistics_incl.lvm"
+path="../data/statistics_micro2.lvm"
 file = open(path, "r+")
 
 #
@@ -34,12 +34,12 @@ for line in file:
     set_names.append(' '.join(set_name))
 
     if( len(set_names) > 9):
-        height2.append(line_list[8])
+        height2.append(line_list[7])
         voltage2.append(line_list[2])
         std2.append(line_list[3])
 
     else:
-        height.append(line_list[8])
+        height.append(line_list[7])
         voltage.append(line_list[2])
         std.append(line_list[3])
 #
@@ -68,11 +68,11 @@ plt.plot(height2, voltage2,'ko',label='Second Calibration Set',color='black')
 line = slope*np.array(height) + intercept
 print line
 plt.plot(height, line, '--k',label='Least Squares Fit') 
-plt.title('Calibration of an Pressure Transducer: Inclined Manometer')
+plt.title('Calibration of an Pressure Transducer: Micromanometer')
 plt.ylabel('Voltage')
 plt.xlabel('Height (Inches)')
 plt.legend(loc='best')
-plt.savefig('inclined.png')
+plt.savefig('micro.png')
 plt.close()
 #
 # steady as she goes
@@ -85,9 +85,3 @@ sys.exit(0)
 #
 # old header:
 #
-# X_Dimension     Time    Time    Time    Time
-# X0      0.0000000000000000E+0   0.0000000000000000E+0   0.0000000000000000E+0   0.0000000000000000E+0
-# Delta_X 0.001000        0.001000        0.001000        0.001000
-# ***End_of_Header***
-# X_Value Pressure Transducer Voltage (Arith. Mean)       Pressure Transducer Voltage (Std Dev)   Pressure Transducer Voltage (Variance)  Pressure Transduce\
-# r Voltage (Total Samples)     Comment
