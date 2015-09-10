@@ -239,6 +239,40 @@ an accuracy. Also estimate the lowest pressure differential that you can
 measure with at least $\pm 10\%$ accuracy. Be sure to justify these
 estimates with analyses.}
 
-
+The forward propagation of uncertainty will be performed here the
+``Standard technique'' of Moffat. In general, this applies to
+functionals of the form, 
+\begin{equation}
+  R_0 = f(x_1,x_2, \ldots ,x_N)
+\end{equation}
+Where the individual contribution is of each variable to uncertainty is,
+\begin{equation}
+  \delta R_i = \frac{\partial R_0}{\partial x_i} \delta x_i
+\end{equation}
+and the total uncertainty may be calculated as, 
+\begin{equation}
+  \delta R_0 = \left(\delta R_1^2 + \delta R_2^2 + \ldots + \delta R_N^2 \right)^{1/2}
+\end{equation}
+However, we implicitly assume a linear fit of the form, 
+\begin{equation}
+  V = m*x_1 + b. 
+\end{equation}
+This implies our functional is a function of only one variable, $\Delta p$, 
+\begin{equation}
+  R_0 = f(x_1)
+\end{equation}
+and therefore,
+\begin{equation}
+  \delta R_0 = \left(\delta R_1^2 \right)^{1/2} = \delta R_1 =
+   \frac{\partial R_0}{\partial x_1} \delta x_1.
+\end{equation}
+ Notice however that we can evaluate this partial derivative, 
+\begin{equation}
+ \frac{\partial R_0}{\partial x_1} \delta x_1 = \frac{\partial}{\partial
+  x_1}\left( m*x_1 +b \right) \delta x_1 = m \delta x_1. 
+\end{equation}
+In words, this means that the uncertainty of our voltage prediction can
+be calculated as the uncertainty measured in the heights multiplied by
+the slope of the best fit line. 
 
 \end{document}
