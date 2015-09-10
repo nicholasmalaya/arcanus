@@ -81,7 +81,7 @@ the autocorrelation of the signal, to investigate this further.
    \begin{center}
     \includegraphics[width = 12 cm]{figs/incl_auto.png}
     \caption{Autocorrelation of the voltage as a function of time.}
-    \label{incl-hist}
+    \label{incl-auto}
    \end{center}
   \end{figure}
 
@@ -154,8 +154,12 @@ in voltage from the transducer.
 
 \subsection*{Micro-Manometer Results}
 
+I don't believe it is necessary to discuss these results in as great
+detail as before, but I'll provide a similar overview. Suffice to say,
+this is plagued by similar over-sampling results. In Figure
+\ref{micro-time}, we can again see that while the fluctuations are
+larger, the signal output has a similar character. 
 
-Larger fluctuations, more apparent correlation. 
   \begin{figure}[!htb]
    \begin{center}
     \includegraphics[width = 12 cm]{figs/micro_time.png}
@@ -167,10 +171,63 @@ Larger fluctuations, more apparent correlation.
    \end{center}
   \end{figure}
 
+The histogram (shown in Figure \ref{micro-hist}) appears cleaner, with
+at least tails of a distribution dropping away from the mean but again
+does not provide a great deal of confidence that our samples are truly
+independent. 
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/micro_hist.png}
+    \caption{Histogram depicting the frequency of voltages in our
+    signal. This was generated with fifty bins, but the results did not
+    appear to be sensitive to the number selected.}
+    \label{micro-hist}
+   \end{center}
+  \end{figure}
 
-$R^2 =$ 0.990071511099
+Figure \ref{random} displays a plot of the autocorrelation 1000 samples
+of synthetic data. These are 1000 synthetic data samples that were
+randomly generated numbers. This plot is included to demonstrate two
+things:  
+\begin{itemize}
+ \item What a more reasonable autocorrelation would appear as.
+ \item Evidence the software is functioning properly.
+\end{itemize}
 
-p\_value $=$ 2.84909524211e-08
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/random.png}
+    \caption{The autocorrelation of 1000 samples that were randomly
+    generated numbers.}
+    \label{random}
+   \end{center}
+  \end{figure}
+
+As it should, the correlation drops from 1 at $t=0$ (which can barely be
+seen on the plot) quickly into ``the
+noise'' near a correlation of zero. I would expect well sampled data
+(e.g. nearly independent) to appear much more like this plot. Needless
+to say, the micro-manometer data also appears to be over-sampled. 
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/micro.png}
+    \caption{Scatter plot of the averaged time samples for both
+    calibration runs, along with a dotted line depicting the Least
+    Squares Fit.}
+    \label{micro}
+   \end{center}
+  \end{figure}
+
+
+Figure \ref{micro} shows the plot and least squares best fit line. 
+This scatter plot has an $R^2 =$ 0.990071511099, which again is an
+excellent fit. As before, the results appear to be largely reproducable,
+as the second calibration set is certainly highly consistent with the
+first, despite again slightly changing the location of measurement as
+well as the operator of the apparatus (from Jon to Owen, again). I
+should note that these runs were all logged using the labview software
+by Nick, so that element remains ironclad and consistent across runs. 
 
 \newpage
 \section{Uncertainty Analysis}
@@ -181,5 +238,7 @@ your calibration. Compare this with the manufacturer's specifications of
 an accuracy. Also estimate the lowest pressure differential that you can
 measure with at least $\pm 10\%$ accuracy. Be sure to justify these
 estimates with analyses.}
+
+
 
 \end{document}
