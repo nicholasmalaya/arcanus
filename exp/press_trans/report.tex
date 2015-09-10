@@ -273,11 +273,17 @@ and therefore,
 \end{equation}
 In words, this means that the uncertainty of our voltage prediction can
 be calculated as the uncertainty measured in the heights multiplied by
-the slope of the best fit line. We assume that the std. deviation of the
-measurements produced by the 
-
-$\delta x_1$ varies for each measured
-point, 
+the slope of the best fit line. The smallest units of measurement were
+.01 for the inclined and .001 for the micro. We can likely measure these
+by another half, by assessing the height of the column between these two
+keys. As a result, we will estimate $\delta x_1$ for the inclined and
+micro as .005 and .0005, respectively. The slopes, m, for these cases
+are 0.0036191 (inclined) and 0.0036178 (micro). Thus, the products, $m
+\delta x_1$ will be: 
+\begin{eqnarray}
+1.80955e-05 \text{ Volts} & (\text{inclined}) \\
+1.80890e-06 \text{ Volts} & (\text{micro}). 
+\end{eqnarray}
 
 
 \subsection{Estimate the Lowest Pressure Differential You Can Measure
@@ -289,5 +295,5 @@ differs only by height. As a result, the equation has the form,
 \begin{equation}
  \rho g \Delta h = \Delta P. 
 \end{equation}
-
+We have previously established that 
 \end{document}
