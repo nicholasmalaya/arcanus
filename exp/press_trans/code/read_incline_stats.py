@@ -57,6 +57,7 @@ voltage = [float(i) for i in voltage]
 (slope, intercept, r_value, p_value, std_err) = stats.linregress(height,voltage)
 print "r-squared:", r_value**2
 print  'p_value', p_value
+print 'slope: ', slope
 #
 # plot it!
 #

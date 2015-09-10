@@ -57,11 +57,12 @@ voltage = [float(i) for i in voltage]
 (slope, intercept, r_value, p_value, std_err) = stats.linregress(height,voltage)
 print "r-squared:", r_value**2
 print  'p_value', p_value
+print 'slope: ', slope
 #
 # plot it!
 #
 import matplotlib.pyplot as plt
-plt.subplot(2, 1, 1)
+plt.subplot(1, 1, 1)
 plt.plot(height, voltage,  'ko',label='First Calibration Set',color='blue')
 plt.plot(height2, voltage2,'ko',label='Second Calibration Set',color='black')
 

@@ -7,6 +7,14 @@
 import sys
 import numpy as np
 
+def autocorr(x):
+    result = np.correlate(x, x, mode = 'full')
+    maxcorr = np.argmax(result)
+    #print 'maximum = ', result[maxcorr]
+    result = result / result[maxcorr]     # <=== normalization
+
+    return result[result.size/2:]
+
 def plot_series(time,voltage,name):
     v  = [float(i) for i in voltage]
     t  = [float(i) for i in time]
@@ -34,6 +42,26 @@ def plot_series(time,voltage,name):
     plt.legend(loc='best')
     plt.savefig('micro_time.png')
     plt.close()
+
+    #
+    # now, make a histogram!
+    # 
+    bin_number=25
+    pdf,bins,patches = plt.hist(v,bin_number,normed=0)
+    plt.ylabel('Frequency')
+    plt.xlabel('Voltage')
+    plt.savefig('micro_hist.png')
+    plt.close()
+
+    #
+    # now make an autocorrelation plot
+    #
+    #plt.acorr(v,usevlines=True, normed=True, lw=2,maxlags=999)
+    a = autocorr(v)
+    plt.plot(time,a)
+    plt.ylabel('Correlation')
+    plt.xlabel('Time')
+    plt.savefig('micro_auto.png')
 
     #
     # steady as she goes!

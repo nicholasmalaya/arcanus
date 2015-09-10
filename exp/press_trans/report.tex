@@ -294,6 +294,33 @@ Our model for the pressure differential utilizes the Bernoilli equation
 differs only by height. As a result, the equation has the form,
 \begin{equation}
  \rho g \Delta h = \Delta P. 
+  \ref{bern}
 \end{equation}
-We have previously established that 
+We have previously established that the smallest height that can be
+measured is .005 and .0005 for the inclined and micro cases. Values of
+height changes below these thresholds will presumably have 100\% error,
+as no adjustment to the estimated value will be logged. The change in
+height that would result in only 10\% error must therefore be 10x the
+size of the smallest height change measurable, or .05 and .005. We can
+then apply these height changes to equation \ref{bern} using $rho$ for
+H20 at STP (977.8 kg/$m^3$) and g at the surface of the earth (9.81 m/s)
+to arrive at our estimates of the smallest pressure gradient we can
+measure, which are: 
+\begin{eqnarray}
+ 479.1 \text{ Pascals} & (\text{inclined}) \\
+ 47.91 \text{ Pascals} & (\text{micro}). 
+\end{eqnarray}
+
+It is difficult for me to estimate if this is a reasonable
+answer. Atmospheric pressure is 101,325 Pascals, so the micro-manomter would in
+principle be able to detect .047\% changes in pressure, which sounds
+small but not implausible. If we imagine this working as a static tube,
+then using,
+\begin{equation}
+V = \left(\frac{2 \Delta P}{\rho}\right)^1/2
+\end{equation}
+we would be able to estimate changes in velocity as small as 0.313 m/s,
+which certainly seems reasonable, and perhaps larger than I would have
+expected. 
+
 \end{document}
