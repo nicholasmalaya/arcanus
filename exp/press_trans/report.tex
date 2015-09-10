@@ -1,7 +1,9 @@
 \documentclass{article}
 \usepackage{amsmath,amssymb}
 \usepackage{hyperref}
-\title{\bf{Laboratory Project \#1: Calibration of a Pressure Transducer}}
+\usepackage{graphicx}
+
+\title{\bf{Laboratory Project One: Calibration of a Pressure Transducer}}
 \author{Nicholas Malaya \\ Department of Mechanical Engineering \\ University of Texas at Austin} \date{}
 
 \begin{document}
@@ -10,7 +12,11 @@
 
 This document details the calibration and uncertainty quantification of
 an Omega PX164-005D5V pressure transducer. 
+\newline
+\newline
+Lab Partners: Jon Langston \& Owen O'Neal
 
+\newpage
 \section{Presentation of Calibration Data}
 
 \textbf{You will have calibration data from using two different
@@ -21,14 +27,150 @@ Ascertain whether a linear curve fit is appropriate or whether better
 accuracy could be obtained with a different curve fit. Comment about
 these results, particularly on any unusual or unexpected results.}  
 
+\subsection*{Inclined Manometer Results}
 
-[magus code] python read incline stats.py 
-r-squared: 0.999552862197
-p\_value 5.50240371955e-13
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/incl_time.png}
+    \caption{Example raw time series data from a single inclined manometer
+    run. The calculated mean of the signal is shown in black, along with
+    the two $\sigma$ (standard deviation) confidence interval in
+    red.}
+    \label{incl-time}
+   \end{center}
+  \end{figure}
 
-[magus code] python read micro stats.py 
-r-squared: 0.990071511099
-p\_value 2.84909524211e-08
+We begin with the inclined manometer results. Figure \ref{incl-time}
+depicts the voltage measured at the pressure transducer as a function of
+time. One thousand samples were taken over a period of one second. This
+signal was then analyzed to calculate the mean and standard deviation of
+the sample, which are also depicted on the figure. These numbers appear
+roughly sane, with the mean clearly near the center of the signal, and
+the two $\sigma$ bands encompassing the vast majority of the points (we
+would expect 95\%). Furthermore, the signal appears to be ``white
+noise'', namely evenly distributed around the mean (no bias) and with
+little or no correlation between samples e.g. subsequent readings of
+the signal are not obviously visibly correlated with the previous step.
+
+However, we can do better than evaluating these properties by
+eyeball. Let's examine a histogram of the timeseries data, which is
+shown below in Figure \ref{incl-hist}. 
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/incl_hist.png}
+    \caption{Histogram depicting the frequency of voltages in our
+    signal. This was generated with fifty bins, but the results did not
+    appear to be sensitive to the number selected.}
+    \label{incl-hist}
+   \end{center}
+  \end{figure}
+
+Yikes. This does not look good at all. In the limit of a large number of
+samples, I would have expected to see a Gaussian (due to the central
+limit theorem) that is centered around the mean and smooth tails. 
+Instead of a nice smooth gaussian distribution we have essentially a
+uniform distribution of samples across all values. This does not make me
+happy, but I'm having difficulty stating if this is certainly a problem,
+instead of just a strange oddity of the data sampling. Perhaps, the
+samples are more correlated with each other than they had appeared to my
+eyeballs. Thankfully, we have a way to check this as well. Let's look at
+the autocorrelation of the signal, to investigate this further. 
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/incl_auto.png}
+    \caption{Autocorrelation of the voltage as a function of time.}
+    \label{incl-hist}
+   \end{center}
+  \end{figure}
+
+When I saw this I assumed something was wrong in the matplotlib acorr()
+function, and calculated this indepdently in xmgrace. Sadly, the same
+result was obtained. Clearly, this data was poorly obtained. What is
+wrong? The correlation of our signal does not reduce to zero until
+nearly the very end of our time sampling window. For instance, at 0.8
+seconds, our samples still have roughly a 20\% correlation with the
+initial time sample! In other words, while I initially claimed to have
+1000 samples, I have far, far fewer ``effective samples''. Our
+statistics will be much more suspect as a result. 
+
+What happened? Almost certainly we had far too high of a sampling
+rate, and the samples were much more correlated in time than we had
+realized. Conclusion: 1000 samples per second is far too large of a
+frequency. We discussed the sampling rate during data collection, and
+given the time readout of the signal (and the eyeball norm we discussed
+above) nothing seemed to be out of place. It has only been during this
+data analysis step that serious irregularities have appeared. 
+
+You go to war with the data you have, so let's proceed. The next step is
+to calculate a mean and standard deviation for each sample, plot this
+and then perform a linear regression of the best fit line through this
+dataset. This is shown below, in Figure \ref{inclined}. 
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/inclined.png}
+    \caption{Scatter plot of the averaged time samples for both
+    calibration runs, along with a dotted line depicting the Least
+    Squares Fit.}
+    \label{inclined}
+   \end{center}
+  \end{figure}
+
+We attempted to mix things up between calibration runs, by changing the
+location of the calibration points (in height of column of water) as
+well as by changing the human operator of the inclined manometer (from
+intially Jon to Owen). As one can see from the plot, these changes did
+not materially impact the calibration data point readings, and therefore
+did not have substantial impact on the prediction of the linear
+fit. This speaks favorable towards the repeatability of the calibration.
+
+The
+linear fit is also quite good. The $R^2 =$ 0.999552862197, which implies
+an extremely tight fit (99.9\%) between the data and the prediction resulting
+from the linear fit. In fact, I find this goodness of fit slightly
+suspicious, as it is too high. I wonder if we made this, ``too easy'' by
+using large variations in the column of water height (from 4.0 to 0.0)
+and if we got lucky with out small statistical sample size (from
+earlier) not introducing large deviations from the true mean. 
+
+Nevertheless, with an $R^2$ value that high, and given the trend in the
+data, I feel confident stating that our data implies a linear
+relationship between the height of the column of water and the voltage
+produced at the transducer. While higher order fits (polynomials, etc.)
+will always improve the goodness of fit, they will also introduce
+spurrious oscillations and are more prone to over-fit. I see no reason
+to believe that a higher order fit is appropriate, given these
+results. I believe this data constitutes a ``validation'' of the
+transducers linear response. 
+
+Of course, I would be hesitant to use the transducer outside of the
+calibration regime shown here. It is entirely possible that our
+calibration data fell into a linear response range, and that
+extrapolations outside this range will fail due to a non-linear response
+in voltage from the transducer.
+
+
+\subsection*{Micro-Manometer Results}
+
+
+Larger fluctuations, more apparent correlation. 
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/micro_time.png}
+    \caption{Example raw time series data from a single micro-manometer
+    run. The calculated mean of the signal is shown in black, along with
+    the two $\sigma$ (standard deviation) confidence interval in
+    red.}
+    \label{micro-time}
+   \end{center}
+  \end{figure}
+
+
+$R^2 =$ 0.990071511099
+
+p\_value $=$ 2.84909524211e-08
 
 \newpage
 \section{Uncertainty Analysis}
