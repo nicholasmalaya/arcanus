@@ -61,7 +61,7 @@ print  'p_value', p_value
 # plot it!
 #
 import matplotlib.pyplot as plt
-plt.subplot(2, 1, 1)
+plt.subplot(1, 1, 1)
 plt.plot(height, voltage,  'ko',label='First Calibration Set',color='blue')
 plt.plot(height2, voltage2,'ko',label='Second Calibration Set',color='black')
 

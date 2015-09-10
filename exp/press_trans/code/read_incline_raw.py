@@ -7,6 +7,14 @@
 import sys
 import numpy as np
 
+def autocorr(x):
+    result = np.correlate(x, x, mode = 'full')
+    maxcorr = np.argmax(result)
+    #print 'maximum = ', result[maxcorr]
+    result = result / result[maxcorr]     # <=== normalization
+
+    return result[result.size/2:]
+
 def plot_series(time,voltage,name):
     v  = [float(i) for i in voltage]
     t  = [float(i) for i in time]
@@ -19,7 +27,11 @@ def plot_series(time,voltage,name):
     print 'std : ', sig
 
     import matplotlib.pyplot as plt
-    plt.subplot(2, 1, 1)
+
+    #
+    # first, time series data
+    #
+    plt.subplot(1, 1, 1)
     plt.title('Inclined Manometer Raw Time Series Data')
     plt.plot(t,v,  'ko-',color='blue') #label=name,
     plt.ylabel('Voltage')
@@ -29,11 +41,31 @@ def plot_series(time,voltage,name):
     plt.axhline(y=up, xmin=0, xmax=1, hold=None,linewidth=4.0,color='red',label=r'$2\sigma$')
     plt.axhline(y=down, xmin=0, xmax=1, hold=None,linewidth=4.0,color='red')
 
-    plt.axis([0,1,5.80,5.90])
+    #plt.axis([0,1,5.80,5.90])
 
     plt.legend(loc='best')
     plt.savefig('incl_time.png')
     plt.close()
+
+    #
+    # now, make a histogram!
+    # 
+    bin_number=50
+    pdf,bins,patches = plt.hist(v,bin_number,normed=0)
+    plt.ylabel('Frequency')
+    plt.xlabel('Voltage')
+    plt.savefig('incl_hist.png')
+    plt.close()
+
+    #
+    # now make an autocorrelation plot
+    #
+    #plt.acorr(v,usevlines=True, normed=True, lw=2,maxlags=999)
+    a = autocorr(v)
+    plt.plot(time,a)
+    plt.ylabel('Correlation')
+    plt.xlabel('Time')
+    plt.savefig('incl_auto.png')
 
     #
     # steady as she goes!
@@ -62,7 +94,7 @@ for line in file:
         #
         # reset! save name of this set
         #
-        if stop == 0:
+        if stop < 2:
             stop=stop+1
         else:
             plot_series(time,voltage,set_names[0])

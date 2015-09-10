@@ -19,7 +19,7 @@ def plot_series(time,voltage,name):
     print 'std : ', sig
 
     import matplotlib.pyplot as plt
-    plt.subplot(2, 1, 1)
+    plt.subplot(1, 1, 1)
     plt.title('Micro-Manometer Raw Time Series Data')
     plt.plot(t,v,  'ko-',color='blue') #label=name,
     plt.ylabel('Voltage')
