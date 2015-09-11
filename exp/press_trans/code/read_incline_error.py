@@ -54,31 +54,42 @@ import numpy as np
 from scipy import stats
 height  = [float(i) for i in height]
 voltage = [float(i) for i in voltage]
+std     = [float(i) for i in std]
+
 (slope, intercept, r_value, p_value, std_err) = stats.linregress(height,voltage)
 print "r-squared:", r_value**2
 print  'p_value', p_value
 print 'slope: ', slope
+print 'std error: ', std_err
+print '\sigma x^2: ',sum(height)
+#
+# calculate uncertainty
+#
+h = np.array(height)
+s = np.array(std)
+print len(s)
+buff = h*h
+uq = 100*2*s*np.sqrt(std_err)*(1.0/len(s) + buff/sum(height))
+print uq
 #
 # plot it!
 #
 import matplotlib.pyplot as plt
 plt.subplot(1, 1, 1)
-plt.plot(height, voltage,  'ko',label='First Calibration Set',color='blue')
-plt.plot(height2, voltage2,'ko',label='Second Calibration Set',color='black')
 
 line = slope*np.array(height) + intercept
-print line
-plt.plot(height, line, '--k',label='Least Squares Fit') 
-plt.title('Calibration of an Pressure Transducer: Inclined Manometer')
+plt.errorbar(height, line,color='blue',yerr=uq,label='Least Squares Fit w/ Uncertainty') 
+plt.title('Calibration of an Pressure Transducer: Micromanometer')
 plt.ylabel('Voltage')
 plt.xlabel('Height (Inches)')
 plt.legend(loc='best')
-plt.savefig('inclined.png')
+plt.savefig('incl-error.png')
 plt.close()
 #
 # steady as she goes
 #
 sys.exit(0)
+
 
 #
 # nick 

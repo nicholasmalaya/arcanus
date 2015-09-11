@@ -239,51 +239,89 @@ an accuracy. Also estimate the lowest pressure differential that you can
 measure with at least $\pm 10\%$ accuracy. Be sure to justify these
 estimates with analyses.}
 
-The forward propagation of uncertainty will be performed here the
-``Standard technique'' of Moffat. In general, this applies to
-functionals of the form, 
+We now calculate the error bounds on each datum individually, using the formula, 
 \begin{equation}
-  R_0 = f(x_1,x_2, \ldots ,x_N)
+  \delta \hat Y = t_{0.05} * S_{y,x} \left[ \frac{1}{n} + \frac{x^2}{\Sigma x^2} \right]
 \end{equation}
-Where the individual contribution is of each variable to uncertainty is,
+
+Here, $S_{y,x}$ is the standard error of fit, defined as, 
 \begin{equation}
-  \delta R_i = \frac{\partial R_0}{\partial x_i} \delta x_i
+  S_{y,x}^2 = \frac{\Sigma (Y-\hat Y)^2}{n-2}
 \end{equation}
-and the total uncertainty may be calculated as, 
+and $t_{0.05}$ is the 95\% confidence interval bound estimated from the data. 
+We replace this with the two $\sigma$ value, as for a Gaussian distribution 
+(expected to result in data that is independent and with sufficient sample 
+size, due to the central limit theorem). In other words, 
 \begin{equation}
-  \delta R_0 = \left(\delta R_1^2 + \delta R_2^2 + \ldots + \delta R_N^2 \right)^{1/2}
+  t_{0.05} = 2 \sigma.
 \end{equation}
-However, we implicitly assume a linear fit of the form, 
-\begin{equation}
-  V = m*x_1 + b. 
-\end{equation}
-This implies our functional is a function of only one variable, $\Delta p$, 
-\begin{equation}
-  R_0 = f(x_1)
-\end{equation}
-and therefore,
-\begin{equation}
-  \delta R_0 = \left(\delta R_1^2 \right)^{1/2} = \delta R_1 =
-   \frac{\partial R_0}{\partial x_1} \delta x_1.
-\end{equation}
- Notice however that we can evaluate this partial derivative, 
-\begin{equation}
- \frac{\partial R_0}{\partial x_1} \delta x_1 = \frac{\partial}{\partial
-  x_1}\left( m*x_1 +b \right) \delta x_1 = m \delta x_1. 
-\end{equation}
-In words, this means that the uncertainty of our voltage prediction can
-be calculated as the uncertainty measured in the heights multiplied by
-the slope of the best fit line. The smallest units of measurement were
-.01 for the inclined and .001 for the micro. We can likely measure these
-by another half, by assessing the height of the column between these two
-keys. As a result, we will estimate $\delta x_1$ for the inclined and
-micro as .005 and .0005, respectively. The slopes, m, for these cases
-are 0.0036191 (inclined) and 0.0036178 (micro). Thus, the products, $m
-\delta x_1$ will be: 
-\begin{eqnarray}
-1.80955e-05 \text{ Volts} & (\text{inclined}) \\
-1.80890e-06 \text{ Volts} & (\text{micro}). 
-\end{eqnarray}
+
+
+
+The results of this error estimate are shown in Figure \ref{error-incl} 
+for the inclined manometer, and  Figure \ref{error-micro} for the micro-manometer.
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 12 cm]{figs/error-incl.png}
+    \caption{Linear Regression alongside the error estimates for the inclined manometer. }
+    \label{error-incl}
+  \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 12 cm]{figs/error-micro.png}
+    \caption{Linear Regression alongside the error estimates for the micro-manometer. }
+    \label{error-micro}
+  \end{center}
+\end{figure}
+
+%% The forward propagation of uncertainty will be performed here the
+%% ``Standard technique'' of Moffat. In general, this applies to
+%% functionals of the form, 
+%% \begin{equation}
+%%   R_0 = f(x_1,x_2, \ldots ,x_N)
+%% \end{equation}
+%% Where the individual contribution is of each variable to uncertainty is,
+%% \begin{equation}
+%%   \delta R_i = \frac{\partial R_0}{\partial x_i} \delta x_i
+%% \end{equation}
+%% and the total uncertainty may be calculated as, 
+%% \begin{equation}
+%%   \delta R_0 = \left(\delta R_1^2 + \delta R_2^2 + \ldots + \delta R_N^2 \right)^{1/2}
+%% \end{equation}
+%% However, we implicitly assume a linear fit of the form, 
+%% \begin{equation}
+%%   V = m*x_1 + b. 
+%% \end{equation}
+%% This implies our functional is a function of only one variable, $\Delta p$, 
+%% \begin{equation}
+%%   R_0 = f(x_1)
+%% \end{equation}
+%% and therefore,
+%% \begin{equation}
+%%   \delta R_0 = \left(\delta R_1^2 \right)^{1/2} = \delta R_1 =
+%%    \frac{\partial R_0}{\partial x_1} \delta x_1.
+%% \end{equation}
+%%  Notice however that we can evaluate this partial derivative, 
+%% \begin{equation}
+%%  \frac{\partial R_0}{\partial x_1} \delta x_1 = \frac{\partial}{\partial
+%%   x_1}\left( m*x_1 +b \right) \delta x_1 = m \delta x_1. 
+%% \end{equation}
+%% In words, this means that the uncertainty of our voltage prediction can
+%% be calculated as the uncertainty measured in the heights multiplied by
+%% the slope of the best fit line. The smallest units of measurement were
+%% .01 for the inclined and .001 for the micro. We can likely measure these
+%% by another half, by assessing the height of the column between these two
+%% keys. As a result, we will estimate $\delta x_1$ for the inclined and
+%% micro as .005 and .0005, respectively. The slopes, m, for these cases
+%% are 0.0036191 (inclined) and 0.0036178 (micro). Thus, the products, $m
+%% \delta x_1$ will be: 
+%% \begin{eqnarray}
+%% 1.80955e-05 \text{ Volts} & (\text{inclined}) \\
+%% 1.80890e-06 \text{ Volts} & (\text{micro}). 
+%% \end{eqnarray}
 
 
 
@@ -296,7 +334,7 @@ Our model for the pressure differential utilizes the Bernoilli equation
 differs only by height. As a result, the equation has the form,
 \begin{equation}
  \rho g \Delta h = \Delta P. 
-  \ref{bern}
+ \label{bern}
 \end{equation}
 We have previously established that the smallest height that can be
 measured is .005 and .0005 for the inclined and micro cases. Values of
@@ -315,11 +353,11 @@ measure, which are:
 
 It is difficult for me to estimate if this is a reasonable
 answer. Atmospheric pressure is 101,325 Pascals, so the micro-manomter would in
-principle be able to detect .047\% changes in pressure, which sounds
+principle be able to detect .047\% changes in pressure near sea-level, which sounds
 small but not implausible. If we imagine this working as a static tube,
 then using,
 \begin{equation}
-V = \left(\frac{2 \Delta P}{\rho}\right)^1/2
+V = \left(\frac{2 \Delta P}{\rho}\right)^{1/2}
 \end{equation}
 we would be able to estimate changes in velocity as small as 0.313 m/s,
 which certainly seems reasonable, and perhaps larger than I would have
