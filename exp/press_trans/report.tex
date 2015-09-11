@@ -256,14 +256,13 @@ size, due to the central limit theorem). In other words,
   t_{0.05} = 2 \sigma.
 \end{equation}
 
-
-
-The results of this error estimate are shown in Figure \ref{error-incl} 
-for the inclined manometer, and  Figure \ref{error-micro} for the micro-manometer.
+The results of this uncertainty estimate are shown in Figure \ref{error-incl} 
+for the inclined manometer, and  Figure \ref{error-micro} for the micro-manometer. 
+The uncertainty is quite small for all points, remaining a fraction of a percent. 
 
 \begin{figure}[!htb]
   \begin{center}
-    \includegraphics[width = 12 cm]{figs/error-incl.png}
+    \includegraphics[width = 12 cm]{figs/incl-error.png}
     \caption{Linear Regression alongside the error estimates for the inclined manometer. }
     \label{error-incl}
   \end{center}
@@ -271,11 +270,24 @@ for the inclined manometer, and  Figure \ref{error-micro} for the micro-manomete
 
 \begin{figure}[!htb]
   \begin{center}
-    \includegraphics[width = 12 cm]{figs/error-micro.png}
+    \includegraphics[width = 12 cm]{figs/micro-error.png}
     \caption{Linear Regression alongside the error estimates for the micro-manometer. }
     \label{error-micro}
   \end{center}
 \end{figure}
+
+How do these estimates compare to the stated manufacturer accuracy? 
+Under general specifications, the $P_2 < P_1$ linearity is quoted as being $\pm 0.50\%$ F.S.O.  
+for pressure ranges between 0-5 inches H20. Now I had no idea what F.S.O. was previously, but this 
+means ``full scale output''. Given that the full scale output is 5 inches H20, 1\% of this is then 
+0.5 inches uncertainty. This is therefore a bound that is significantly larger than our measured uncertainty. 
+
+It is difficult for me to account for why this would be so much larger, but my 
+guess is that this is artificial, and that the manfacturer has inflated the uncertainty estimates
+to provide some ``wiggle-room'' as a sort of safety factor. Presumably they are liable or at least open
+to criticism if these pressure sensors systematically under-represent error, and so this is a larger 
+bound than we have measured in order so that they can provide a strong guarantee of reliability.
+
 
 %% The forward propagation of uncertainty will be performed here the
 %% ``Standard technique'' of Moffat. In general, this applies to
