@@ -96,7 +96,44 @@ layer thickness is $\approx 10$ cm. This provides
 an estimate of 1144.26 Watts as the incoming kinetic energy flux. Or,
 approximately 1.14 kW.  
 
+Now we estimate the gravitational potential energy flux by integrating 
+the boussinesq term by the height of the vanes, 
+\begin{align*}
+  \text{Potential Energy Flux} & = \int_{-h}^0 u(z) \Delta \rho g z dz. \\
+  & = \int_{-h}^0 u(z) \rho' g z^2 dz. 
+\end{align*}
+Where the substitution, $\Delta \rho = \rho' z$ was made. At 
+this point we again separate the integral into two components, 
+for the boundary layer and the constant freestream velocity region. 
+\begin{align*}
+  & = \rho' g \left[ \int_{-\delta}^{0} U \left( \frac{z}{\delta} \right)^7 z^2 dz 
+      + \int_{-h}^{-\delta} U z^2 dz \right] \\
+  & = -\rho' g U \left[ \frac{h^3}{3} - \frac{7}{30} \delta^3 \right].
+\end{align*}
+Furthermore, we
+note that $\rho' = -\beta \rho_0 \Delta T$, resulting in, 
+%
+% cite monin-yaglom page 59
+%
+\begin{equation}
+ \text{Power } = U \beta \rho_0 \Delta T g \left[ \frac{h^3}{3} -
+					    \frac{7}{30} \delta^3
+					   \right]. 
+\end{equation}
 
+Using $\rho_0 = 1.225$ Kg/$m^3$, $T_{\text{ref}}=313$m Kelvin, $\beta_T = 0.003194$
+(This is just 1/$T_{\text{ref}}$), $g=9.81$ m/$s^2$, and a freesteam
+velocity of five meters per second results in an
+estimate of 30 Watts for the gravitational potential energy. 
+
+This interesting result implies that the majority of the available
+energy is attributable to kinetic energy, not the gravitational
+energy. This is consistent with the results of Renno, who demonstrated
+that the thermal energy present was not sufficient to account 
+thermodynamic energy 
 %
-% turbulent flow, 
+% finish me!
 %
+While the gravitational potential energy is a small fraction of the
+energy available, that does not imply it is without significant impact. 
+
