@@ -19,31 +19,84 @@ phenomena. We therefore begin this section with a qualitative discussion
 of dust-devils, followed by a review of the known physics and pertinent 
 literature review. 
 
-Our aim is to simulate the formation of synthetic dust devils in the
-field. This requires a model of the ambient conditions for a
-representative case, such as Arizona, where experimental data is
-available from test have been performed. Furthermore, for this to be
-more generally useful in the prediction of flows in a variety of
-conditions, we need a model generally applicable to any flow near the
-surface of the earth.  
+
+\subsection{Phenomenological Character of Dust-Devils}
+\begin{itemize}
+ \item chart from sinclair of frequency (they are driven by delta t)
+ \item turning direction independent
+ \item characteristic velocities and sizes
+ \item genesis diagram (thermal plume) -- mention ambient angular vorticity
+ \item structure diagram and description
+\end{itemize}
+
+
 %
 % good place to ref jacobson2005fundamentals
 %
-This document details an analysis of surface fluid mechanics, and
-develops a theory of turbulence in a thermally stratified medium. As we
-are utilizing a RANS model with spatially variable diffusivity, we are
-particularly interested formulating a model for these quantities. 
 
-We are interested in the operation of the apparatus during the day. 
-At these times, the atmospheric surface layer has the following character. 
-Incident radiation from the sun largely does not interact with the
-air, which is nearly transparent. Instead, this radiation is absorbed by
-the ground, which causes a temperature rise. This results in a thermal
-gradient between the hot ground and the cooler air. The warm ground
-conducts heat to the air, causing an expansion and lowering the density
-of the air. This reduced density air near the surface is driven upwards
-by the force of buoyancy.  
+\subsection{Estimate of Energy Scaling}
 
-For sufficiently large temperature gradients, these motions are
-unstable, and as the warm air is driven upwards the flow will transition
-to turbulence. 
+In this subsection, we attempt to provide a rough estimate of the energy
+available to a Dust-Devil. There are two objectives behind this
+analysis. The first is to provide justification for the concept of
+extracting energy from these phenomena, with the reasoning that should
+sufficient energy be available, then attemping to extract it might be
+worthwhile. The second objective is to provide a simple analysis that
+can serve as a measure of the efficiency of the generation process,
+e.g. ``What fraction of the available energy are we extracting?''.  
+
+At present, we consider only the energy flowing into the entrainment
+region due to the ambient conditions, in particular, the incoming wind
+and heat through the front hemisphere of a cylindrical region. We
+consider a medium-sized (3m radius) dust-devil with an incoming
+freestream velocity of 5 m/s. The surface temperature is 343 Kelvin,
+with a specified inflow boundary layer bridging the ground temperature
+to the ambient air conditions of 313 Kelvin. 
+% cite this?
+These numbers were chosen
+based on information provided by the Georgia Tech field team in Arizona
+during the summer of 2014.  
+
+There are two forms of energy to consider: kinetic and enthalpy. We
+begin by considering the kinetic energy flux through the front of the
+apparatus. From the first law of thermodynamics we can express the
+kinetic energy flux as a surface integral over the upstream face of the device, 
+\begin{equation*}
+\text{KE} = \int_{CS} \frac{\vec V^2}{2} \rho \vec V \cdot \hat n dA.
+\end{equation*}
+%
+% could cite fluid dynamics book here
+% pg. 239
+%
+We assume our freestream velocity has no components in y and z.
+We assume that the variation in z for the streamwise velocity is only on
+account of the thin boundary layer near the ground. We functionally
+approximate this behavior using the common 7th power function for a
+turbulent boundary layer,  
+\begin{equation*}
+  u(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)
+\end{equation*}
+where U is the constant freestream velocity and $\delta$ the assumed
+boundary layer thickness. Our integral can be solved to show, 
+\begin{align*}
+\text{KE} & = -R \rho U^3 \left[ z_{\text{max}} - \frac{10}{11}\delta.
+\right]
+\end{align*}
+
+%%  & = \frac{1}{2} R \rho u^3 z_\text{max}
+%%  \int^{\frac{3\pi}{2}}_{\frac{\pi}{2}} \text{cos}\theta d\theta \\
+%%  & = -R \rho u^3 z_\text{max}. 
+%% \end{align*}
+
+The negative sign here indicates that the kinetic energy is flowing into
+the surface, in opposition to the outward facing unit normal, $\hat
+n$. Characteristic values for this analysis are, $u = 5$ m/s, $\rho =
+1.225$ Kg/$m^3$, $R = 3$ m, and $z_{\text{max}} = 2.5$ m. The boundary
+layer thickness is $\approx 10$ cm. This provides
+an estimate of 1144.26 Watts as the incoming kinetic energy flux. Or,
+approximately 1.14 kW.  
+
+
+%
+% turbulent flow, 
+%
