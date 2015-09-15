@@ -41,14 +41,38 @@ larger values.
 
 
 \subsection*{B}
-\textbf{Describe how you would calibrate the orifice meter giving particular attention to what you
-would do maximize the accuracy of the final calibration for the orifice meter. For this 
-calibration rig, assume that a blower is available that provides a maximum flow rate of 100 
-cfm and is reasonably quiet.}
+\textbf{Describe how you would calibrate the orifice meter giving
+particular attention to what you would do maximize the accuracy of the
+final calibration for the orifice meter. For this calibration rig,
+assume that a blower is available that provides a maximum flow rate of
+100 cfm and is reasonably quiet.} 
+
+If I was absolutely certain that I only needed to measure values between the
+ranges of 0-50 cfm, then I would only calibrate the oriface meter on
+that range of values. If you calibrate for values only inside this
+range, you will necessarily find the best fit for values lying in this
+range. 
 
 \subsection*{C}
-\textbf{Estimate the expected uncertainty for the orifice meter flow measurement after the orifice has
-been calibrated. Give separate values for the precision and bias uncertainties.}
+\textbf{Estimate the expected uncertainty for the orifice meter flow
+measurement after the orifice has been calibrated. Give separate values
+for the precision and bias uncertainties.} 
 
+Bias is tricky here. We have a laminar flow meter with an accuracy of
+$\pm 1\%$. Thus, I expect that ``the best we can do'' is to get our two
+readings (between the oriface meter and the laminar flow meter) to agree
+to within 1\% at 0 cfm. Even then, the reading may be off (biased) by
+1\%. 
+
+Precision is arrived at using the more common precision uncertainty
+estimates, and requires the forward propagation of error through the
+same equation we used previously. As this equation has \emph{numerous}
+parameters that almost certainly have uncertainties attached, the actual
+uncertainty could be substantial. However, outside of the parametric
+uncertainty associated with $d,D,C_d,$ etc. We know that the meter has
+1\% accuracy in the reading. This term is squared when solving for
+$\Delta p$, and so $(1.01)^2 = 1.0201 $, e.g. I expect 2\% error
+to propagate to the oriface entirely due to a 1\% error in measurement
+from the laminar flow meter. 
 
 \end{document}
