@@ -1,17 +1,18 @@
 \section{Physics of Dust-Devils}
 \label{sec:physics}
-\begin{itemize}
-\item phenomenological description
-\item regions/frequency of occurance
-\item review of sinclair, kanak and renno and other pertinent literature
-\item known physics of dust devils and other cyclonic structures
-\item \st{dust-devil/tornado/hurricane genesis}
-\item \st{scaling discussion as estimate of energy}
-\item Dust-Devil Generation Concept
-\item Motivation of computational modeling
-\item draw regions
-\item eyewall
-\end{itemize}
+
+%% \begin{itemize}
+%% \item \st{phenomenological description}
+%% \item \st{regions/frequency of occurance}
+%% \item \st{review of sinclair, kanak and renno and other pertinent literature}
+%% \item \st{known physics of dust devils and other cyclonic structures}
+%% \item \st{dust-devil/tornado/hurricane genesis}
+%% \item \st{scaling discussion as estimate of energy}
+%% \item \st{dust-Devil Generation Concept}
+%% \item \st{motivation of computational modeling{
+%% \item draw regions
+%% %\item eyewall
+%% \end{itemize}
 
 In order to motivate how best to \textit{engineer} a synthetic
 dust-devil, we first address what is known about the naturally occuring
@@ -22,13 +23,14 @@ these physical processess as a method of usable energy generation.
 
 
 \subsection{Phenomenological Character of Dust-Devils}
-\begin{itemize}
- \item chart from sinclair of frequency (they are driven by delta t)
- \item turning direction independent
- \item characteristic velocities and sizes
- %\item genesis diagram (thermal plume) -- mention ambient angular vorticity
- \item structure diagram and description
-\end{itemize}
+
+%\begin{itemize}
+%\item chart from sinclair of frequency (they are driven by delta t)
+%\item turning direction independent
+%\item characteristic velocities and sizes
+  %\item genesis diagram (thermal plume) -- mention ambient angular vorticity
+%\item structure diagram and description
+%\end{itemize}
 
 No rigorous defintion of a Dust devil exists. This cannot be attributed
 to the rarity of the processes. Rather, the phenomena of dust devils are
@@ -41,13 +43,14 @@ intense vorticity and rotation, coupled with strong upward motions.
 They are a self-sustaining vortex that maintains a funnel-like
 chimney driven by hot air moving both upward and circularly. 
 While they typically exist for only a few minutes, some have 
-been observed to exist for significantly longer. 
-
+been observed to exist for significantly longer. While the velocities are 
+typically several meters per second, 
 %
 % solen from: http://glossary.ametsoc.org/wiki/Fujita_scale
 %
-Dust devils occasionally are strong enough to cause damage and injury,
-with some reaching F1 on the Fujita Tornado intensity scale. 
+dust devils occasionally are strong enough to cause damage and injury,
+with some reaching F1 on the Fujita Tornado intensity scale, with velocities 
+between 33 and 49 $m/s$.
 %
 % F1 (moderate damage): 33-49 m s-1
 %
@@ -58,33 +61,70 @@ average height is about thirty meters, but a few have been observed
 as high as 1 km or more. There appears to be no preferred direction, and
 they are observed to rotate anticyclonically as well as
 cyclonically. Although the vertical velocity 
-is predominantly upward, the flow along the axis of large dust devils
-may be downward. Large dust devils may also contain secondary vortices. 
-
+is predominantly upward, the flow along the a central axis of large dust devils
+may be downward. 
 %
 % cite martian dust devils
 %
- 
-Moreover, actual dust devils have been photographed from orbit, with
-some of them as large as 1 to 2 kilometers across at their base and 10
-km tall. 
-
+%Moreover, actual dust devils have been photographed from orbit, with
+%some of them as large as 1 to 2 kilometers across at their base and 10
+%km tall. 
 Similarly visibly structured phenomena have been spotted over water, in
-intense forest fires, 
-
+intense forest fires, or even in cold or freezing environments. 
 %
 % good place to ref jacobson2005fundamentals
 %
 This is to say nothing of other similar cyclonic phenomena, such as
 tornados and hurricanes. 
 
+While the phenomena is pervasive, we can state that certain 
+environmental conditions do impact the frequency of formation
+of dust devils. Sinclair\cite{Sinclair1969} provides perhaps the most 
+systematic investigation characterizing favorable conditions for formation. 
 
-Perhaps the most complete survey of the phenomena came from a series of
-papers by Sinclair
+From these results we can conclude that dust devils are most likely 
+to form at solar noon, the time of the greatest incident radiation 
+on the ground. Furthermore, they are more likely to form in locations 
+with a higher surface temperature. 
+Moderate to high wind speeds (2-5 m/s) encourage dust 
+devil genesis, but greater velocities (11 m/s) appear to impede formation. 
+They are more likely to be observed in relatively flat locations, 
+such as deserts. 
+
+Actual measurements made inside a dust devil are limited. From what data
+is available, the dust devil can be broken into two regions: a low surface 
+layer and a higher invisid region. The low surface region is the 
+principle location of radial inflow. 
+It is at the top of this region that the flow 
+reaches its peak velocity, with that peak dropping with increasing height. 
+The strong radial and azimuthal velocities are drawn into a low pressure core 
+where they gain vertical velocity and are lifted up. Earlier experimental and 
+computational results have both observed a cooler downdraft in the very center 
+of the dust devil. It is not clear what generates the azimuthal velocities. It is 
+possible that ambient vorticity from objects is drawn into the vortex from far 
+field, and which intensifies greatly owing to a $1/r^2$ dependence.
+
+The higher region is characterized by a largely invisid potential flow region 
+that characterized by warm air rising and circling around a cool, 
+low pressure core. This region is typically many times larger in height than the
+surface layer. While this region also has radial inflow, but it is 
+significantly weaker than the lower region. Previous studies have found that
+this region is relatively well described by a Rankine vortex model\cite{}. 
+Both of these regions are sketched out as a simple 
+cartoon in figure \ref{fig:cartoon}. 
+
+  \begin{figure}[!htb]
+    \begin{center}
+     \includegraphics[width = 12 cm]{figs/lab_setup}
+     \caption{Cartoon of the lower structure of a dust devil.}
+     \label{fig:cartoon}
+    \end{center}
+  \end{figure}
+
 
 \subsection{Estimate of Energy Scaling}
 
-In this subsection, we attempt to provide a rough estimate of the energy
+Here we provide a rough estimate of the energy
 available to a Dust devil. There are two objectives behind this
 analysis. The first is to provide justification for the concept of
 extracting energy from these phenomena, with the reasoning that should
@@ -193,17 +233,43 @@ gravitational potential energy from the environment. This
 subsection now provides a brief discussion of how the physics of 
 dust devils informs the generation of a synthetic variety. 
 
+In contrast to the naturally occuring dust devils
+our synthetic solar driven vortex, (SoV) design makes use of
+control surfaces to dictate the
+angle of incoming flow, and in doing so explicitly converts a portion of the 
+incoming radial flow in azimuthal velocity. These turning vanes also serve 
+as an anchor for the snythetic vortex, locking it into a small region. 
+  \begin{figure}[!htb]
+    \begin{center}
+     \includegraphics[width = 12 cm]{figs/lab_setup}
+     \caption{Image of a possible two tier turning vane 
+       configuration for generating synthetic dust devils.}
+     \label{fig:cartoon}
+    \end{center}
+  \end{figure}
 
-need an image of the two tiers
+Our principle objective is to use a synthetic dust devil to produce 
+useable work. In order to extract this energy, a turbine is placed 
+at the top of the vanes, where the blades are driven by the dust devil's 
+azimuthal and vertical velocities. 
 
-curved turning vanes?
+While the turning vanes and turbine  
+paradigm represents a reasonable starting point for design, the parameter space
+of possible system configurations is large. It is unclear how to
+engineer an effective SoV system. Important design consideration include:
+\begin{itemize}
+  \item How should the turning vanes be configured?
+  \item How does the energy produced scale with system diameter?
+  \item Could additional surfaces, such as a cone, capable of further 
+    increasing energy output?
+\end{itemize}
 
-turbine
-
-cone
-
-
-
-ALSO: Motivation of computational modeling
+Questions such as these provide the principle impetus of using computational 
+fluid dynamics (CFD) in order to inform system design. The parameter space of 
+concievable system designs is far larger than can be probed experimentally, and 
+even if such a campaign were to be embarked upon, it would be at significantly
+greater temporal and monitary cost. The subseqent chapter will provide the
+mathematical basis by which we model the system, so that we can then begin to 
+discuss how we might optimize it. 
 
 
