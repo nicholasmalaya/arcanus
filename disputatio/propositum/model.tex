@@ -1,8 +1,8 @@
-\section{Model}
+\section{Mathematical Models}
 
 \begin{itemize}
 \item \st{unstable stratified boundary layers (raleigh number estimate)}
-\item justify incompressible N-S
+\item \st{justify incompressible N-S}
 \item \st{justification of far-field eddy-viscosity model (M-O)}
 \item modeling eddy-viscosity in device 
 \item vane and turbine representation via penalty function // immersed boundary method
@@ -23,11 +23,9 @@ conditions, we need a model generally applicable to any flow near the
 surface of the earth.  
 
 This section details an analysis of surface fluid mechanics, and
-develops a theory of turbulence in a thermally stratified medium. As we
-are utilizing a RANS model with spatially variable diffusivity, we are
-particularly interested formulating a model for these quantities. 
-
-We are interested in the operation of the apparatus during the day. 
+develops a mathematical model for turbulence in a thermally stratified
+medium. 
+We are emulating the operation of the apparatus during the day. 
 At these times, the atmospheric surface layer has the following character. 
 Incident radiation from the sun largely does not interact with the
 air, which is nearly transparent. Instead, this radiation is absorbed by
@@ -40,18 +38,48 @@ by the force of buoyancy.
 For sufficiently large temperature gradients, these motions are
 unstable, and as the warm air is driven upwards the flow will transition
 to turbulence. For the typical use case we consider, namely Arizona in summer, 
-Rayleigh numbers are typically between $10^9 - 10^11$, and are therefore 
+Rayleigh numbers are typically between $10^{9} - 10^{11}$, and are therefore 
 well in excess of the criterion for transition to a turbulent regime. The 
 flow is that of an unstably statified fluid. 
 
-\subsection{equations}
+\subsection{Equations of Fluid Motion}
+%
+% do I need to justify this more? These are pretty critical, after all
+%
 
-then it discusses equations
+The equations describing fluid flow at
+low Mach number with natural convection are, 
+\begin{eqnarray*}
+ \frac{\partial u}{\partial t} + u \cdot \nabla u =&
+  -\frac{1}{\rho}\nabla P + \nu \nabla^2 u - g \frac{T'}{T_0}\\
+ \nabla \cdot u =& 0 \\
+ \rho c_p \frac{\partial T}{\partial t} =& \nabla \cdot ( k \nabla T).
+\end{eqnarray*} 
+Where we have made the assumptions that the temperature gradient is small in
+comparison to the mean temperature of the region. These are the
+Incompressible Navier-Stokes equations for free-convection (or
+``Boussinesq'') coupled with the heat equation. 
+%
+% in full document be sure to mention that neglecting coriolis is legit
+% below 50ms
+%
+%
+As discussed above, we anticipate our flow to be
+turbulent. Turbulence significantly alters the character of the flow,
+and necessitates either resolving the resulting small scales or
+providing a model that emulates their impact. In this case, we utilize 
+essentally a Reynolds Averaged Navier-Stokes (RANS) model, where we
+permit the viscosity and thermal conductivities to vary in space, and
+decompose the flow into constant laminar and varying turbulent and vane
+components,  
+\begin{eqnarray*}
+ \nu =& \nu_{l} + \nu_{T}(z) + \nu_{V}(r,z) \\
+ K =& K_{l} + K_{T}(z) + K_{V}(r,z)
+\end{eqnarray*}
 
-NS
-Bouss
-
-No weak form, yet.
+This is an effective eddy viscosity model, and the subsequent two
+sections will elaborate on the spatial dependence and character of
+$\nu_T$,$K_T$,$\nu_C$ and $K_C$. 
 
 \subsection{Viscosity Model}
 
@@ -60,6 +88,9 @@ a guide to the present development, which we outline below. This work is
 extension of the mixing-length model of Prandtl, where the concepts of
 gradient diffusion and mixing length were generalized to thermally
 stratified flow.  
+%
+% justify prandlt assumption here
+%
 
 We begin by using dimensional analysis, and noting that the dynamics of
 any mean quantity ($\bar f$) in a thermally stratified medium only depend on,
@@ -140,3 +171,22 @@ These functions have been found to be broadly applicable, accurate and
 are easily instantiated in software. 
 
 \subsection{Eddy Viscosity in Device}
+
+The thermal and momentum diffusivities are also higher in the
+device. The vanes generate shear and increase the turbulence. 
+
+$K_{V}(r,z)$ and $\nu_{V}(r,z)$
+
+Calibration problem. 
+
+\subsection{Vane and Turbine Representation}
+
+Cite babuska?
+
+Provide motivation. -- rapidly prototype vanes
+link to immersed boundary methods
+Show how the forcing is rendered. 
+
+\subsection{Cone Representation}
+
+Surface is easy to define

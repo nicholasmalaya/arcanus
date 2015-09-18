@@ -4,7 +4,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{tabularx}
-\usepackage{amsmath}
+\usepackage{amsmath,amssymb}
 \usepackage{mathrsfs}
 \usepackage{setspace}
 \usepackage{enumerate}
@@ -19,6 +19,9 @@
 \usepackage{makecell}
 \usepackage{comment}
 \usepackage{soul}
+\usepackage{bm}
+\usepackage{gensymb}
+
 
 \usepackage[colorlinks=true,
             linkcolor=blue,
@@ -59,6 +62,10 @@
 \newcommand{\sa}{\nu_{\mathrm{sa}}}
 \newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
 
+%
+\newcommand{\uveci}{{\bm{\hat{\textnormal{\bfseries\i}}}}}
+\newcommand{\uvecj}{{\bm{\hat{\textnormal{\bfseries\j}}}}}
+\newcommand{\uveck}{{\bm{\hat{\textnormal{\bfseries\k}}}}}
 
 
 \author{Nicholas Malaya}
@@ -69,7 +76,6 @@
 
 \newpage
 \include{abstract}
-
 
 \newpage
 \tableofcontents

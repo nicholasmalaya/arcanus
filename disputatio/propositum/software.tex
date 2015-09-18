@@ -12,17 +12,21 @@
 
 \subsection{Equations (discretization and finite elements)}
 
+weak form of equations
+motivate finite elements
+
+mention stabilized and reference stabilization
+cite braack here
+cite hughes papers
+
+Refence the paper on sane stabilization parameters. 
+
 \subsection{Modeling the vanes}
 
 Talk about penalty method here
+cite babuska
 
 \subsection{Software}
-
-Cast into weak form. 
-
-Mention stabilization in use. 
-
-Refence the paper on sane stabilization parameters. 
 
 mention the FEM element order, any information about stuff like that
 
@@ -46,9 +50,9 @@ and, eventually, enabling uncertainty quantification.
 
 Thus, GRINS stands for, ``General Reacting Incompressible Navier-Stokes'',
 which roughly encapsulates the physical regimes it was originally
-designed to simulate. 
-The remainder of this subsection is devoted to discussing the underlying
-libraries used and the description of the GRINS framework. 
+designed to simulate. The remainder of this subsection is devoted to
+discussing the underlying libraries used and the description of the
+GRINS framework.  
 
 PETSC\cite{petsc} trilinos\cite{trilinos}
 
@@ -57,15 +61,15 @@ Unsteady solver, backward Euler.
 
 Released under LGPL2.1\cite{lgpl}. 
 
-GRINS also utilizes the fparser\cite{fparser}
-library to support both parsing and compilation of mathematical
-functions into high 
-performance kernels. This capability allows for easy specification of
-boundary conditions, initial conditions, or constitutive equations from an input file. 
+% GRINS also utilizes the fparser\cite{fparser}
+% library to support both parsing and compilation of mathematical
+% functions into high 
+% performance kernels. This capability allows for easy specification of
+% boundary conditions, initial conditions, or constitutive equations from an input file. 
 
-Currently, libMesh has been scaled tens of thousands of cores and has
-been run on over 100,000 cores on the BG/Q machine Mira at Argonne National
-Lab\cite{libmesh-scaling}
+% Currently, libMesh has been scaled tens of thousands of cores and has
+% been run on over 100,000 cores on the BG/Q machine Mira at Argonne National
+% Lab\cite{libmesh-scaling}
 
 Open source, on github\cite{github}
 
@@ -73,7 +77,7 @@ In principle, alternative software libraries/frameworks such as
 FEniCS\cite{fenics}, OpenFOAM\cite{openfoam}, etc. would likely be
 capable of simulating this regime. 
 
-Tried to develop an OpenFOAM system.   
+%Tried to develop an OpenFOAM system.   
 
 \subsection{Tool Chain and Simulation Custodianship}
 
@@ -84,7 +88,9 @@ Discuss how runs are performed, archived, etc.
 check out val doc here
 want a picture of the mesh too
 
+explain how cell reynolds number is maintained for each grid
+
 do you want boundary conditions? would have to mention both the lab and
-the field
+the field and wind!
 
 be sure to mention the 'sponge' layer. would also be nice to have references to papers on it
