@@ -15,28 +15,33 @@
 weak form of equations
 motivate finite elements
 
+The resulting system of ODEs are discretized in time using a theta-method. 
+Unsteady solver, backward Euler. 
+
 mention stabilized and reference stabilization
 cite braack here
 cite hughes papers
 
-Refence the paper on sane stabilization parameters. 
+Reference the paper on sane stabilization parameters. 
 
-\subsection{Modeling the vanes}
+\subsection{Penalty Method Implementation}
 
 Talk about penalty method here
 cite babuska
+cite immersed bounday methods?
 
 \subsection{Software}
 
-mention the FEM element order, any information about stuff like that
+mention the FEM element order, any information about 
+stuff like that
 
-The libMesh\cite{libmesh} finite element library
+The libMesh\cite{libMeshPaper} finite element library
 provides a wide set of tools with which to build a mesh-based
 application. However, originally libMesh applications were required to
 reimplement many kernels common to finite element applications,
 including assembly loops, time integration schemes, etc. 
 
-We therefore utilize the Finite Element GRINS library\cite{grins}.
+We therefore utilize the Finite Element GRINS library\cite{GRINSpaper}.
 GRINS was designed to support multiphysics finite element
 applications, the reusability and extensibility of mathematical
 modeling kernels, supporting interfaces to existing solver and
@@ -48,18 +53,16 @@ GRINS provides a platform that enables powerful numerical algorithms
 such as adjoint-based AMR, adaptive modeling, sensitivity analysis,
 and, eventually, enabling uncertainty quantification.
 
-Thus, GRINS stands for, ``General Reacting Incompressible Navier-Stokes'',
+GRINS stands for, ``General Reacting Incompressible Navier-Stokes'',
 which roughly encapsulates the physical regimes it was originally
-designed to simulate. The remainder of this subsection is devoted to
-discussing the underlying libraries used and the description of the
-GRINS framework.  
+designed to simulate. 
+GRINS is open source, and available on github\cite{github}. It is
+released under LGPL2.1\cite{lgpl}. 
 
-PETSC\cite{petsc} trilinos\cite{trilinos}
-
-The resulting system of ODEs are discretized using a theta-method. 
-Unsteady solver, backward Euler. 
-
-Released under LGPL2.1\cite{lgpl}. 
+%The remainder of this subsection is devoted to
+%discussing the underlying libraries used and the description of the
+%GRINS framework.  
+% PETSC\cite{petsc} trilinos\cite{trilinos}
 
 % GRINS also utilizes the fparser\cite{fparser}
 % library to support both parsing and compilation of mathematical
@@ -71,17 +74,36 @@ Released under LGPL2.1\cite{lgpl}.
 % been run on over 100,000 cores on the BG/Q machine Mira at Argonne National
 % Lab\cite{libmesh-scaling}
 
-Open source, on github\cite{github}
-
-In principle, alternative software libraries/frameworks such as
-FEniCS\cite{fenics}, OpenFOAM\cite{openfoam}, etc. would likely be
-capable of simulating this regime. 
-
-%Tried to develop an OpenFOAM system.   
+%In principle, alternative software libraries/frameworks such as
+%FEniCS\cite{fenics}, OpenFOAM\cite{openfoam}, etc. would likely be
+%capable of simulating this regime. 
 
 \subsection{Tool Chain and Simulation Custodianship}
 
-Discuss how runs are performed, archived, etc. 
+Runs are queued on TACC\cite{tacc} supercomputer's 
+Lonestar Four and Stampede. Run durations are typically 
+twelve hours to perform several hundred timesteps. 
+These runs are generally submitted to the production queue and are  
+264-528 processing cores, 
+or 22-44 nodes on lonestar (with 12 cores per node), and a similar number
+for Stampede. The runs typically have several million degrees of freedom (DoF), 
+and thus the local (per core) DoF maintained at $O(10^4)$. This was selected due to 
+memory considerations and after a strong scaling analysis of the codebase on these 
+resources, as well as consulting with the software primary developers. 
+
+After a run terminates, several worker scripts are automatically invoked. 
+These scripts automatically archive the run (outside of the volatile /scratch 
+production directories) and simultaneously, label the concluded run with unique metadata
+that defines the system environment, the jobs input files and run definitions, as well as 
+information detailing the hypothesis or physics the job was intended to investigate.
+Finally, once a week an rsync is performed on the entire archived database to ensure 
+more than single redundancy for the runs.
+
+In other words, the workflow is sufficiently advanced as to permit rapidly queuing 
+a series of runs (in parallel) that are intended to investigate a variety of conditions or 
+scenario parameters. This capabilty is necessary for the optimization campaign detailed 
+in \ref{sec:future_work}, where running many concurent investigations will be required to
+adaquetly sample the configuration space. 
 
 \subsection{Simulation Geometry and Boundary Conditions}
 
@@ -93,4 +115,4 @@ explain how cell reynolds number is maintained for each grid
 do you want boundary conditions? would have to mention both the lab and
 the field and wind!
 
-be sure to mention the 'sponge' layer. would also be nice to have references to papers on it
+be sure to mention the 'sponge' layer. would also be nice to have references to papers on it!
