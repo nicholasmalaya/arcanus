@@ -1,5 +1,6 @@
-\section{Summary and Remaining Work}
-\label{sec:future_work}
+%\section{Summary and Remaining Work}
+\section{Proposed Research Campaign}
+\label{sec:proposed_work}
 
 \begin{itemize}
 \item \st{main event!}
@@ -63,7 +64,29 @@ with existing technologies.
 % introduce concept of subdomains
 %
 We now outline a program of runs designed to explore a wide
-configuration space. 
+configuration space. We begin by noting that we have three 
+optimization domains, for the cone, turbine and vanes. Table \ref{tab:params}
+\begin{center}
+\begin{table}[h]
+  \begin{tabular}{| l | c | r |}
+    \hline
+    Parameter & Description & Range \\
+    \hline
+    $\theta^{\text{t}}_{\text{min}}$ & Starting, minimum angle of the top tier & \{0-$\theta^{\text{t}}_{\text{max}}$\} \\
+    $\theta^{\text{t}}_{\text{max}}$ & Ending, maximum angle of the top tier & \{0-90\} \\
+    $\theta^{\text{b}}_{\text{min}}$ & Starting, minimum angle of the bottom tier & \{0-$\theta^{\text{b}}_{\text{max}}$\} \\
+    $\theta^{\text{b}}_{\text{max}}$ & Ending, maximum angle of the bottom tier & \{0-90\} \\
+
+    4 & 5 & 6 \\
+    7 & 8 & 9 \\
+    \hline
+  \end{tabular}
+  \caption{Vane Optimization Parameters.}
+  \label{tab:params}
+\end{table}
+\end{center}
+shed light on 
+the mechanisms by which the apparatus configuration dictates the flow 
 
 %
 % can we optimize? DAKOTA
@@ -83,6 +106,8 @@ to be finished to fulfill the goals of this project:
 %
 % discussion of risk mitigation 
 %
+\subsection{Risks and Mitigation}
+
 code ready
 expertise ready
 plan outlined
