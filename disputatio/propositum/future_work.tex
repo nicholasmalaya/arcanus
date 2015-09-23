@@ -89,10 +89,14 @@ vanes.
     $\theta^{\text{b}}_{\text{max}}$ & Ending, maximum angle of the
        bottom tier & ( 0 - 90 ) \\
    $\gamma$ & Rate of curving & ( 0 - 3 ) \\
-   $1 - (r_{\text{min}} / r_{\text{max}})_{\text{t}}$ & Length of the top
+   $1 - (r_{\text{min}} / r_{\text{max}})^{\text{t}}$ & Length of the top
        tier vane & ( 0 - 1 ) \\
-   $1 - (r_{\text{min}} / r_{\text{max}})_{\text{b}}$ & Length of the bottom
+   $1 - (r_{\text{min}} / r_{\text{max}})^{\text{b}}$ & Length of the bottom
        tier vane & ( 0 - 1 ) \\
+   $H^b/H^t$ & Ratio of heights between bottom and top tiers & ( 0 -
+	   0.25 ) \\ 
+   $D/H$ & Ratio of apparatus diameter and total vane height & ( 0.5 -
+	   4.0 ) \\ 
     \hline
   \end{tabular}
   \caption{Vane Optimization Parameters.}
@@ -100,6 +104,8 @@ vanes.
 \end{table}
 \end{center}
 \normalsize
+
+explain why 4.0 is plausible
 
 %
 % turbine optimization
