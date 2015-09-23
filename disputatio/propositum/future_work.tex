@@ -118,17 +118,11 @@ explain why 4.0 is plausible
     \hline
     Parameter & Description & Range \\
     \hline
-    $\theta^{\text{t}}_{\text{min}}$ & Starting, minimum angle of the
-       top tier & ( 0 - $\theta^{\text{t}}_{\text{max}}$ ) \\
-    $\theta^{\text{t}}_{\text{max}}$ & Ending, maximum angle of the top
-       tier & ( 0 - 90 ) \\
-    $\theta^{\text{b}}_{\text{min}}$ & Starting, minimum angle of the
-       bottom tier & ( 0 - $\theta^{\text{b}}_{\text{max}}$ ) \\
-    $\theta^{\text{b}}_{\text{max}}$ & Ending, maximum angle of the
-       bottom tier & ( 0 - 90 ) \\
-
-   $\gamma$ & Rate of curving & ( 0 - 3 ) \\
-   $r_{\text{min}}$ & 8 & 9 \\
+    $N_B$ & Number of blades & ( 1 - 12 ) \\
+    $I$ & Moment of inertia & ( 1 - 12 ) \\
+    $r_B/r_{\text{min}}^t$ & Radius of blade versus the inner radius of
+       the top tier vanes & ( 0 - 1 ) \\
+   $H_B/H$ & Height of the turbine blades versus system height & ( 0 - 1.2 ) \\
     \hline
   \end{tabular}
   \caption{Turbine Optimization Parameters.}
@@ -148,14 +142,10 @@ explain why 4.0 is plausible
     \hline
     Parameter & Description & Range \\
     \hline
-    $\theta^{\text{t}}_{\text{min}}$ & Starting, minimum angle of the
-       top tier & ( 0 - $\theta^{\text{t}}_{\text{max}}$ ) \\
-    $\theta^{\text{t}}_{\text{max}}$ & Ending, maximum angle of the top
-       tier & ( 0 - 90 ) \\
-    $\theta^{\text{b}}_{\text{min}}$ & Starting, minimum angle of the
-       bottom tier & ( 0 - $\theta^{\text{b}}_{\text{max}}$ ) \\
-    $\theta^{\text{b}}_{\text{max}}$ & Ending, maximum angle of the
-       bottom tier & ( 0 - 90 ) \\
+    $H_C/D_C$ & Ratio of the height of the cone versus the cone diameter & ( 0 - 2.0 ) \\
+    $D_{\text{C}}/D$ & Ratio of the cone diameter versus the system
+       diameter & ( 0.5 - 1.5 ) \\
+    $D_{\text{out}}/D_C$ & Ratio of the cone exit diameter versus the cone diameter & ( 0.25 - 1.0 ) \\
     \hline
   \end{tabular}
   \caption{Cone Optimization Parameters.}
