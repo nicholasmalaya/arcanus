@@ -7,7 +7,7 @@
 \item ``proposed'' new runs and physical investigation
 \item rough time line
 \item discuss the program of runs designed to explore a wide configuration space
-\item calibrated turbine -- and what else?
+\item \st{calibrated turbine -- and what else?}
 \item \st{make clear the objective is to assess feasibility, not to prove it can work}
 \item make table of 'state of the art' or novel work expected to have been performed
 \item what (fundamental) questions do you want to ask?
@@ -55,19 +55,34 @@ with existing technologies.
 %
 % outline parameter space, as we see it
 %
-
-%
-% how many runs are we capable of performing, realistically
-%
-
-%
-% introduce concept of subdomains
-%
 We now outline a program of runs designed to explore a wide
 configuration space. We begin by noting that we have three 
 optimization domains, for the cone, turbine and vanes. Table
 \ref{tab:vane} lists the proposed optimization parameters for the
-vanes.  
+vanes. We propose nine parameters to optimize for the
+vanes. $\theta^{\text{t}}_{\text{min}}$ and
+$\theta^{\text{b}}_{\text{min}}$ are the top and bottom tier minimum
+angles. This is essentially the starting angle for the curved
+vanes. Preliminary investigations have given no indication that the
+bottom tier is receptive to anything but a fully radial angle
+(e.g. $0^{\circ}$). For the top tier, however, a non-zero
+$\theta_{\text{min}}$ has been found to increase the kinetic energy
+flux. For both of the maximum angles we have reasonable starting
+points. Previously, we have found that a larger angle at the bottom tier
+is ideal, as it serves to ``spin-up'' a small core region.
+
+We have less strongly informed prior expectations of reasonable values
+for the rate of curvature, $\gamma$, the ratio of heights between the
+top and bottom tiers ($H^b/H^t$) as well as the lengths of the
+vanes. The generated flux is certainly sensitive to $\gamma$, but
+optimal value is certainly not known. Likewise, while we have operated
+with shorter vanes lengths on the top than the bottom, as well as a
+shorter height, we are not certain that these configurations are
+remotely optimal. Finally, for $D/H$, the ratio between the apparatus
+diameter and total vane height, we have only operated near a ratio of
+1.0. However, as noted in \cite{ROG:ROG1635}, ``Most dust devils are at 
+least 5 times higher than they are wide''.  
+
 
 %
 % vane optimization
@@ -94,9 +109,9 @@ vanes.
    $1 - (r_{\text{min}} / r_{\text{max}})^{\text{b}}$ & Length of the bottom
        tier vane & ( 0 - 1 ) \\
    $H^b/H^t$ & Ratio of heights between bottom and top tiers & ( 0 -
-	   0.25 ) \\ 
+	   0.5 ) \\ 
    $D/H$ & Ratio of apparatus diameter and total vane height & ( 0.5 -
-	   4.0 ) \\ 
+	   5.0 ) \\ 
     \hline
   \end{tabular}
   \caption{Vane Optimization Parameters.}
@@ -105,7 +120,7 @@ vanes.
 \end{center}
 \normalsize
 
-explain why 4.0 is plausible
+Turbine
 
 %
 % turbine optimization
@@ -145,7 +160,8 @@ explain why 4.0 is plausible
     $H_C/D_C$ & Ratio of the height of the cone versus the cone diameter & ( 0 - 2.0 ) \\
     $D_{\text{C}}/D$ & Ratio of the cone diameter versus the system
        diameter & ( 0.5 - 1.5 ) \\
-    $D_{\text{out}}/D_C$ & Ratio of the cone exit diameter versus the cone diameter & ( 0.25 - 1.0 ) \\
+    $D_{\text{out}}/D_C$ & Ratio of the cone exit diameter versus the
+       cone diameter & ( 0.25 - 1.0 ) \\ 
     \hline
   \end{tabular}
   \caption{Cone Optimization Parameters.}
@@ -156,6 +172,16 @@ explain why 4.0 is plausible
 
 shed light on 
 the mechanisms by which the apparatus configuration dictates the flow 
+
+
+%
+% how many runs are we capable of performing, realistically
+%
+
+%
+% introduce concept of subdomains
+%
+
 
 %
 % can we optimize? DAKOTA
