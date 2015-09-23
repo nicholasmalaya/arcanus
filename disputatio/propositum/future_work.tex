@@ -65,26 +65,99 @@ with existing technologies.
 %
 We now outline a program of runs designed to explore a wide
 configuration space. We begin by noting that we have three 
-optimization domains, for the cone, turbine and vanes. Table \ref{tab:params}
+optimization domains, for the cone, turbine and vanes. Table
+\ref{tab:vane} lists the proposed optimization parameters for the
+vanes.  
+
+%
+% vane optimization
+%
+\large
 \begin{center}
 \begin{table}[h]
-  \begin{tabular}{| l | c | r |}
+ \centering
+  \begin{tabular}{| l | c | l |}
     \hline
     Parameter & Description & Range \\
     \hline
-    $\theta^{\text{t}}_{\text{min}}$ & Starting, minimum angle of the top tier & \{0-$\theta^{\text{t}}_{\text{max}}$\} \\
-    $\theta^{\text{t}}_{\text{max}}$ & Ending, maximum angle of the top tier & \{0-90\} \\
-    $\theta^{\text{b}}_{\text{min}}$ & Starting, minimum angle of the bottom tier & \{0-$\theta^{\text{b}}_{\text{max}}$\} \\
-    $\theta^{\text{b}}_{\text{max}}$ & Ending, maximum angle of the bottom tier & \{0-90\} \\
-
-    4 & 5 & 6 \\
-    7 & 8 & 9 \\
+    $\theta^{\text{t}}_{\text{min}}$ & Starting, minimum angle of the
+       top tier & ( 0 - $\theta^{\text{t}}_{\text{max}}$ ) \\
+    $\theta^{\text{t}}_{\text{max}}$ & Ending, maximum angle of the top
+       tier & ( 0 - 90 ) \\
+    $\theta^{\text{b}}_{\text{min}}$ & Starting, minimum angle of the
+       bottom tier & ( 0 - $\theta^{\text{b}}_{\text{max}}$ ) \\
+    $\theta^{\text{b}}_{\text{max}}$ & Ending, maximum angle of the
+       bottom tier & ( 0 - 90 ) \\
+   $\gamma$ & Rate of curving & ( 0 - 3 ) \\
+   $1 - (r_{\text{min}} / r_{\text{max}})_{\text{t}}$ & Length of the top
+       tier vane & ( 0 - 1 ) \\
+   $1 - (r_{\text{min}} / r_{\text{max}})_{\text{b}}$ & Length of the bottom
+       tier vane & ( 0 - 1 ) \\
     \hline
   \end{tabular}
   \caption{Vane Optimization Parameters.}
-  \label{tab:params}
+  \label{tab:vane}
 \end{table}
 \end{center}
+\normalsize
+
+%
+% turbine optimization
+%
+\large
+\begin{center}
+\begin{table}[h]
+ \centering
+  \begin{tabular}{| l | c | l |}
+    \hline
+    Parameter & Description & Range \\
+    \hline
+    $\theta^{\text{t}}_{\text{min}}$ & Starting, minimum angle of the
+       top tier & ( 0 - $\theta^{\text{t}}_{\text{max}}$ ) \\
+    $\theta^{\text{t}}_{\text{max}}$ & Ending, maximum angle of the top
+       tier & ( 0 - 90 ) \\
+    $\theta^{\text{b}}_{\text{min}}$ & Starting, minimum angle of the
+       bottom tier & ( 0 - $\theta^{\text{b}}_{\text{max}}$ ) \\
+    $\theta^{\text{b}}_{\text{max}}$ & Ending, maximum angle of the
+       bottom tier & ( 0 - 90 ) \\
+
+   $\gamma$ & Rate of curving & ( 0 - 3 ) \\
+   $r_{\text{min}}$ & 8 & 9 \\
+    \hline
+  \end{tabular}
+  \caption{Turbine Optimization Parameters.}
+  \label{tab:turbine}
+\end{table}
+\end{center}
+\normalsize
+
+%
+% cone optimization
+%
+\large
+\begin{center}
+\begin{table}[h]
+ \centering
+  \begin{tabular}{| l | c | l |}
+    \hline
+    Parameter & Description & Range \\
+    \hline
+    $\theta^{\text{t}}_{\text{min}}$ & Starting, minimum angle of the
+       top tier & ( 0 - $\theta^{\text{t}}_{\text{max}}$ ) \\
+    $\theta^{\text{t}}_{\text{max}}$ & Ending, maximum angle of the top
+       tier & ( 0 - 90 ) \\
+    $\theta^{\text{b}}_{\text{min}}$ & Starting, minimum angle of the
+       bottom tier & ( 0 - $\theta^{\text{b}}_{\text{max}}$ ) \\
+    $\theta^{\text{b}}_{\text{max}}$ & Ending, maximum angle of the
+       bottom tier & ( 0 - 90 ) \\
+    \hline
+  \end{tabular}
+  \caption{Cone Optimization Parameters.}
+  \label{tab:cone}
+\end{table}
+\end{center}
+\normalsize
+
 shed light on 
 the mechanisms by which the apparatus configuration dictates the flow 
 
