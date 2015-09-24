@@ -81,8 +81,13 @@ shorter height, we are not certain that these configurations are
 remotely optimal. Finally, for $D/H$, the ratio between the apparatus
 diameter and total vane height, we have only operated near a ratio of
 1.0. However, as noted in \cite{ROG:ROG1635}, ``Most dust devils are at 
-least 5 times higher than they are wide''.  
-
+least 5 times higher than they are wide''. While increasing the height
+of the apparatus would greatly increase the cost and inaccessibility of
+the device for maintainance, this indicates that it is necessary to
+examine the dependence of energy produce by the vortex at greater system
+heights. We expect to increase beyond this aspect ratio of $\approx 1$
+towards the naturally occuring ratio of 5. If this is found to greatly
+enhance energy output, we will then consider even larger ratios. 
 
 %
 % vane optimization
@@ -103,10 +108,12 @@ least 5 times higher than they are wide''.
        bottom tier & ( 0 - $\theta^{\text{b}}_{\text{max}}$ ) \\
     $\theta^{\text{b}}_{\text{max}}$ & Ending, maximum angle of the
        bottom tier & ( 0 - 90 ) \\
-   $\gamma$ & Rate of curving & ( 0 - 3 ) \\
+   $\gamma^t$ & Rate of curving, vane top tier & ( 0 - 3 ) \\
+   $\gamma^b$ & Rate of curving, vane bottom tier & ( 0 - 3 ) \\
    $1 - (r_{\text{min}} / r_{\text{max}})^{\text{t}}$ & Length of the top
        tier vane & ( 0 - 1 ) \\
-   $1 - (r_{\text{min}} / r_{\text{max}})^{\text{b}}$ & Length of the bottom
+   $1 - (r_{\text{min}} / r_{\text{max}})^{\text{b}}$ & Length of the
+       bottom 
        tier vane & ( 0 - 1 ) \\
    $H^b/H^t$ & Ratio of heights between bottom and top tiers & ( 0 -
 	   0.5 ) \\ 
@@ -170,24 +177,118 @@ Turbine
 \end{center}
 \normalsize
 
-shed light on 
-the mechanisms by which the apparatus configuration dictates the flow 
+\subsection{Risks and Challenges to the Optimization Efforts}
 
+A challenge inherent to this optimization effort is that while the
+principle quantity of interest is the kinetic energy flux, we also seek
+to use these runs to shed light on the mechanisms by which the apparatus
+configuration dictates the flow. In other words, we are trying learn
+more than \textbf{which} configurations optimize the flow, but also 
+\textbf{why} they do so. This presents an programmatic challenge, as
+optimization will involve additional analysis and postprocessing at each
+iteration.  
 
 %
 % how many runs are we capable of performing, realistically
 %
+An additional challenge is the computational expense of each run. Each
+parameter exploration requires approximately 12 wall-clock hours to run
+the simulation for a sufficient time to pass any initial transient in
+the solution and then permit adequate statistical averaging at steady
+state. Runs generally require approximately 264 processors on Lonestar
+(for example) and therefore the cost of a forward run is $\approx 3,200$
+core hours. Our overall compute budget will likely be between one hundred
+thousand to one million core hours. In other words, our present
+computational budge will support running between roughly 30 to 300
+instances for our parameter sweep. While this is not insubstantial, this
+is likeyly not a sufficient number of evaluations to support formal
+optimization algorithms. We do not, \textit{a priori} know the number of
+iterations necessary to solve the system, as it is non-linear. Gradient
+and derivative information is also difficult to access, as solving the
+adjoint problem is expensive for unsteady systems. 
+
+Thus, while any individual run is relative inexpensive, we do not expect
+to be able to mount an exhaustive campaign to formally optimize the
+configuration given the dimension of the parameter space and the
+structure of the problem. 
 
 %
 % introduce concept of subdomains
 %
+Our expectation then, is to proceed with optimization in a manner
+similar to the examples outlined in \ref{sec:results}, where new
+parameter values are introduced, a run is performed, and then the output
+is postprocessed and evaluated before the process begins again. Each
+iteration is therefore much more expensive, as it requires human
+intervention between simulation runs. Nevertheless, it is not infeasible
+to expect that several hundred runs can be performed. In general the
+runs require twelve hours, which provides for a workflow loop between
+runs and the evaluation of the output by an expert that roughly fits
+into a daily routine.
 
+Furthermore, the time requires to perform this simulation campaign could
+be greatly reduced if several problems were to be undertaken in
+parallel. This ``divide and conquor'' approach requires subdividing the
+optimization effort into several ``subdomains''. 
+The problem is nonlinear, and so some of the parameters are coupled and
+cannot be easily optimized independent of each another, as adjustments
+to one impact the desired value of the other. However, we expect that
+optimizations on the cone, turbine and vanes can be peformed largely
+independent of each another. We further propose to subdivide the vanes
+into upper and lower tiers, optimize them individually, and then perform
+rudimentary sensitivity checks to ensure that the coupled product does
+in fact represent a near optimal flux output. We further expect that the
+remaining parameters in the vanes, namely $H^b/H^t$, $D/H$ are ameniable
+to optimization independent of the particular parametric configuration
+of the vane tiers. 
+
+The subdomains for the vanes are are summarized in Table
+\ref{tab:opt}. This neatly divides the vane optimization effort into
+three independent problems with 4 or fewer parameters each.
+
+\begin{center}
+\begin{table}[h]
+ \centering
+  \begin{tabular}{|l | l | l |}
+   \multicolumn{3}{c}{Subdomains} \\
+    \hline
+   Top Tier & Bottom Tier & Misc. \\
+   \hline
+   $\theta^{\text{t}}_{\text{min}}$ & $\theta^{\text{b}}_{\text{min}}$ &
+       $H^b/H^t$ \\
+   $\theta^{\text{t}}_{\text{max}}$ & $\theta^{\text{b}}_{\text{max}}$&
+	   $D/H$ \\ 
+   $\gamma^t$ & $\gamma^b$ & \\
+   $1 - (r_{\text{min}} / r_{\text{max}})^{\text{t}}$ & $1 -
+       (r_{\text{min}} / r_{\text{max}})^{\text{b}}$ & \\
+   \hline
+  \end{tabular}
+  \caption{Vane optimization parameters, divided into parallizable
+ subdomains.} 
+  \label{tab:opt}
+\end{table}
+\end{center}
 
 %
 % can we optimize? DAKOTA
 %
 
 
+\subsection{Summary and Proposed Timeline}
+
+
+
+%
+% discussion of risk mitigation 
+%
+
+code ready
+expertise ready
+plan outlined
+ls5 delay?
+more compute time
+need more runs? this is a serious concern
+do we need a comprehensive metric for success?
 
 
 In summary, in addition to the preliminary results, several tasks need
@@ -197,16 +298,3 @@ to be finished to fulfill the goals of this project:
 \item blah
 \item yar
 \end{itemize}
-
-%
-% discussion of risk mitigation 
-%
-\subsection{Risks and Mitigation}
-
-code ready
-expertise ready
-plan outlined
-ls5 delay?
-more compute time
-need more runs? this is a serious concern
-do we need a comprehensive metric for success?
