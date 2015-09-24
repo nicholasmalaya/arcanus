@@ -32,7 +32,7 @@ def plot_series(time,voltage,name):
     # first, time series data
     #
     plt.subplot(1, 1, 1)
-    plt.title('Inclined Manometer Raw Time Series Data')
+    plt.title('Oriface Meter Raw Time Series Data')
     plt.plot(t,v,  'ko-',color='blue') #label=name,
     plt.ylabel('Voltage')
     plt.xlabel('Time (Seconds)')
@@ -50,11 +50,11 @@ def plot_series(time,voltage,name):
     #
     # now, make a histogram!
     # 
-    bin_number=50
+    bin_number=25
     pdf,bins,patches = plt.hist(v,bin_number,normed=0)
     plt.ylabel('Frequency')
     plt.xlabel('Voltage')
-    plt.savefig('incl_hist.png')
+    plt.savefig('oriface_hist.png')
     plt.close()
 
     #
