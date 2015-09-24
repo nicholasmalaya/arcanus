@@ -1,28 +1,4 @@
-LabVIEW Measurement	
-Writer_Version	2
-Reader_Version	2
-Separator	Tab
-Decimal_Separator	.
-Multi_Headings	No
-X_Columns	One
-Time_Pref	Absolute
-Operator	Methods Students
-Description	Don't delete initial header
-Date	2015/09/23
-Time	14:31:40.0245987999999923786
-***End_of_Header***	
-	
-Channels	1	
-Samples	300	
-Date	2015/09/23	
-Time	14:31:40.0245987999999923786	
-Y_Unit_Label	Volts	
-X_Dimension	Time	
-X0	0.0000000000000000E+0	
-Delta_X	0.010000	
-***End_of_Header***		
-X_Value	Pressure Transducer Voltage	Comment
-0.000000	1.201021	100Hz, 300 samples
+0.000000	1.201021
 0.010000	1.207973
 0.020000	1.210185
 0.030000	1.203865
