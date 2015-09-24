@@ -1,0 +1,29 @@
+LabVIEW Measurement	
+Writer_Version	2
+Reader_Version	2
+Separator	Tab
+Decimal_Separator	.
+Multi_Headings	No
+X_Columns	One
+Time_Pref	Relative
+Operator	Methods Students
+Description	Don't delete initial header
+Date	2015/09/23
+Time	14:23:21.3099026679992675781
+***End_of_Header***	
+	
+Channels	2		
+Samples	1	1	
+Date	2015/09/23	2015/09/23	
+Time	14:23:21.3099026679992675781	14:23:21.3099026679992675781	
+X_Dimension	Time	Time	
+X0	0.0000000000000000E+0	0.0000000000000000E+0	
+Delta_X	1.000000	1.000000	
+***End_of_Header***			
+X_Value	Untitled	Untitled 1	Comment
+0.000000	-0.030572	-0.029313	100Hz, 300 samples
+0.000000	-0.005367	0.002517	100Hz, 300 samples, C2 (A) = -1.05, C1 (B) = -1.00
+0.000000	0.004216	0.003674	100Hz, 300 samples, C2 (A) = -1.05, C1 (B) = -0.99
+0.000000	0.002832	-0.007642	100Hz, 300 samples, C2 (A) = -1.06, C1 (B) = -0.99
+0.000000	0.002005	0.003692	100Hz, 300 samples, PT B, 1inh2o
+0.000000	0.001536	-0.003743	after series 1
