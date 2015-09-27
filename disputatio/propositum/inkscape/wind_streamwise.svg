@@ -17,8 +17,8 @@
    id="svg4247"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="thermal_only.svg"
-   inkscape:export-filename="C:\Users\nick\Desktop\inkscape work/thermal_only.png"
+   sodipodi:docname="wind_streamwise.svg"
+   inkscape:export-filename="C:\Users\nick\Desktop\inkscape work/wind_streamwise.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -54,6 +54,7 @@
          id="stop6382" />
     </linearGradient>
     <linearGradient
+       inkscape:collect="always"
        id="linearGradient6366"
        osb:paint="gradient">
       <stop
@@ -104,7 +105,18 @@
        y1="381.62091"
        x2="404.04074"
        y2="496.77829"
-       gradientUnits="userSpaceOnUse" />
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.5217898,0,0,1,-92.777964,0)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6439"
+       id="linearGradient6445-7"
+       x1="588.51599"
+       y1="441.83249"
+       x2="182.31049"
+       y2="441.63123"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.40090797,0,0,3.6259427,576.2438,-1002.1679)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -113,16 +125,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="140.64549"
-     inkscape:cy="456.28536"
+     inkscape:zoom="0.35"
+     inkscape:cx="459.12195"
+     inkscape:cy="629.38503"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1303"
-     inkscape:window-height="833"
-     inkscape:window-x="73"
-     inkscape:window-y="155"
+     inkscape:window-width="1106"
+     inkscape:window-height="830"
+     inkscape:window-x="261"
+     inkscape:window-y="162"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata4252">
@@ -132,7 +144,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -198,12 +210,12 @@
        x="105.05586"
        y="308.88992" />
     <rect
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:4.95732832;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect4825"
-       width="410.12195"
-       height="410.12195"
-       x="181.07617"
-       y="384.99146" />
+       width="631.39819"
+       height="409.16461"
+       x="181.55484"
+       y="385.47012" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 533.5571,796.57824 -30,41.42857"
@@ -233,57 +245,105 @@
        id="text4856-6"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan7040">T = T<tspan
+         id="tspan7044">T = T<tspan
    style="font-size:65%;baseline-shift:sub"
-   id="tspan7042">ground</tspan></tspan></text>
+   id="tspan7046">ground</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="608.01031"
-       y="660.42303"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="836.30481"
+       y="654.34186"
        id="text4880"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan4882"
-         x="608.01031"
-         y="660.42303">Periodic</tspan></text>
+         id="tspan7048"
+         x="836.30481"
+         y="654.34186">Neumann</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="8.38937"
-       y="660.42273"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-33.712154"
+       y="593.75269"
        id="text4880-7"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
-         id="tspan4882-0"
-         x="8.38937"
-         y="660.42273">Periodic</tspan></text>
+         id="tspan7127"
+         x="-33.712154"
+         y="593.75269">T = T<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan7129">in</tspan> (z)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
-       x="265.02399"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="422.60779"
        y="344.30548"
        id="text4856-6-6"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan4920">Neumann</tspan></text>
+         id="tspan4920"
+         x="422.60779"
+         y="344.30548">Neumann</tspan></text>
     <rect
-       style="stroke:none;fill:url(#linearGradient6445);fill-opacity:1;fill-rule:evenodd"
-       width="418.16254"
+       style="fill:url(#linearGradient6445);fill-opacity:1;fill-rule:evenodd;stroke:none"
+       width="636.35547"
        height="113.09647"
        x="177.80716"
        y="381.6412"
        id="rect6397" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="242.49753"
-       y="518.81891"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="309.77676"
+       y="543.06256"
        id="text6362"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan6364"
-         x="242.49753"
-         y="518.81891">Sponge Layer</tspan></text>
+         id="tspan7121"
+         x="309.77676"
+         y="543.06256">Sponge Layer(s)</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 594.85934,793.98651 -30,41.42857"
+       id="path3362-9-2"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 624.85934,793.98651 -30,41.42857"
+       id="path3362-7-0"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 656.28791,792.55794 -30,41.42857"
+       id="path3362-2-5"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 684.21648,793.7008 -30,41.42857"
+       id="path3362-6-0"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 716.64505,792.7008 -30,41.42857"
+       id="path3362-4-8-0"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 748.64505,792.98652 -30,41.42857"
+       id="path3362-40-0-3"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 779.50219,792.7008 -30,41.42857"
+       id="path3362-8-9-5"
+       inkscape:connector-curvature="0" />
+    <rect
+       style="fill:url(#linearGradient6445-7);fill-opacity:1;fill-rule:evenodd;stroke:none"
+       width="167.64468"
+       height="410.08133"
+       x="647.52808"
+       y="381.6412"
+       id="rect6397-4" />
   </g>
 </svg>

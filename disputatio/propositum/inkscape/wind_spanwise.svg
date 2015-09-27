@@ -17,8 +17,8 @@
    id="svg4247"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="thermal_only.svg"
-   inkscape:export-filename="C:\Users\nick\Desktop\inkscape work/thermal_only.png"
+   sodipodi:docname="wind_spanwise.svg"
+   inkscape:export-filename="C:\Users\nick\Desktop\inkscape work/wind_spanwise.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -54,6 +54,7 @@
          id="stop6382" />
     </linearGradient>
     <linearGradient
+       inkscape:collect="always"
        id="linearGradient6366"
        osb:paint="gradient">
       <stop
@@ -114,15 +115,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="140.64549"
+     inkscape:cx="369.13413"
      inkscape:cy="456.28536"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1303"
-     inkscape:window-height="833"
-     inkscape:window-x="73"
-     inkscape:window-y="155"
+     inkscape:window-width="1106"
+     inkscape:window-height="700"
+     inkscape:window-x="261"
+     inkscape:window-y="292"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata4252">
@@ -132,7 +133,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -233,31 +234,31 @@
        id="text4856-6"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan7040">T = T<tspan
+         id="tspan7044">T = T<tspan
    style="font-size:65%;baseline-shift:sub"
-   id="tspan7042">ground</tspan></tspan></text>
+   id="tspan7046">ground</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;-inkscape-font-specification:'sans-serif, Normal';font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;"
        x="608.01031"
        y="660.42303"
        id="text4880"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan4882"
-         x="608.01031"
-         y="660.42303">Periodic</tspan></text>
+         id="tspan7048">Neumann</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="8.38937"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-23.61063"
        y="660.42273"
        id="text4880-7"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
-         id="tspan4882-0"
-         x="8.38937"
-         y="660.42273">Periodic</tspan></text>
+         id="tspan7050"
+         x="-23.61063"
+         y="660.42273">Neumann</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
