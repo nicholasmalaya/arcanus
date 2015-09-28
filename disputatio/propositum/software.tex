@@ -140,15 +140,12 @@ set along the top and back of the box.
 
 \subsection{Software}
 
-
-A natural 
-
-
-The libMesh\cite{libMeshPaper} finite element library
-provides a wide set of tools with which to build a mesh-based
-application. However, originally libMesh applications were required to
-reimplement many kernels common to finite element applications,
-including assembly loops, time integration schemes, etc. 
+A natural choice for FEM software is the
+libMesh\cite{libMeshPaper}. Libmesh provides a wide set of tools with
+which to build a mesh-based application. However, originally libMesh
+applications were required to reimplement many kernels common to finite
+element applications, including assembly loops, time integration
+schemes, etc.  
 
 We therefore utilize the GRINS library\cite{GRINSpaper}.
 GRINS was designed to support multiphysics FEM
@@ -165,7 +162,7 @@ and, eventually, enabling uncertainty quantification.
 GRINS stands for, ``General Reacting Incompressible Navier-Stokes'',
 which roughly encapsulates the physical regimes it was originally
 designed to simulate. GRINS is open-source, and available on
-\hyperref[https://github.com/grinsfem/grins]{''github''}. It is released
+\hyperref[www.github.com/grinsfem/grins]{github}. It is released 
 under LGPL2.1.  
 
 %The remainder of this subsection is devoted to
@@ -190,8 +187,8 @@ under LGPL2.1.
 
 \subsection{Tool Chain and Simulation Custodianship}
 
-Runs are queued on Texas Advanced Computing Center (TACC) supercomputer's 
-Lonestar Four and Stampede. Run durations are typically 
+Runs are queued on Texas Advanced Computing Center (TACC)
+supercomputer's Lonestar Four and Stampede. Run durations are typically  
 twelve hours to perform several hundred timesteps. 
 These runs are generally submitted to the production queue and are  
 264-528 processing cores, 
