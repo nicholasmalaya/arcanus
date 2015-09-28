@@ -1,14 +1,14 @@
 \section{Mathematical Models}
 \label{sec:mathmodel}
 
-\begin{itemize}
-\item \st{unstable stratified boundary layers (raleigh number estimate)}
-\item \st{justify incompressible N-S}
-\item \st{justification of far-field eddy-viscosity model (M-O)}
-\item modeling eddy-viscosity in device 
-\item vane and turbine representation via penalty function // immersed boundary method
-\item cone representation
-\end{itemize}
+% \begin{itemize}
+% \item \st{unstable stratified boundary layers (raleigh number estimate)}
+% \item \st{justify incompressible N-S}
+% \item \st{justification of far-field eddy-viscosity model (M-O)}
+% \item modeling eddy-viscosity in device 
+% \item vane and turbine representation via penalty function // immersed boundary method
+% \item cone representation
+% \end{itemize}
 
 %remember that \st{} is strikethrough
 %
@@ -25,8 +25,7 @@ surface of the earth.
 
 This section details an analysis of surface fluid mechanics, and
 develops a mathematical model for turbulence in a thermally stratified
-medium. 
-We are emulating the operation of the apparatus during the day. 
+medium. We seek to emulate the operation of the apparatus during the day. 
 At these times, the atmospheric surface layer has the following character. 
 Incident radiation from the sun largely does not interact with the
 air, which is nearly transparent. Instead, this radiation is absorbed by
@@ -174,11 +173,32 @@ are easily instantiated in software.
 \subsection{Eddy Viscosity in Device}
 
 The thermal and momentum diffusivities are also higher in the
-device. The vanes generate shear and increase the turbulence. 
+device. The vanes produce shear and generate turbulence. Our model for 
+the diffusivities inside the vanes should be higher than the ambient
+(and empty) regions outside the vanes. However, this is also a more
+difficult regime to model. In order to successfully do so, source terms
+for production of diffusivity would need to be formulated to properly
+account for the generation of turbulence in the region of the
+vanes. This diffusivity would then convect and diffuse through space. In
+order to avoid modeling a temporal and three-dimensionally spatially
+varying field of diffusivities, we have instead calibrated the field
+based on data provided by our partners at Georgia Tech. This calibration
+is detailed in Section \ref{sec:validation}. We then set the eddy-viscosity in
+the region of the vanes and interior to them based on scaling relations
+for a turbulent self-similar circular jet, as in
+Pope\cite{pope2000turbulent},
+ 
+\begin{equation}
+ \nu_C(r) = U_0(r) y_{1/2}(r) \bar \nu_C
+\end{equation}
 
-$K_{V}(r,z)$ and $\nu_{V}(r,z)$
-
-Calibration problem. 
+Where $U_0$ is the peak velocity, $y_{1/2}$ the jet half-width (here
+taken to be the dust devil half-width). In words, we are scaling the
+calibrated viscosity by the velocity and length scale of the
+apparatus. $\bar \nu_C $ is input, measured from the experimental
+laboratory.  The diffusivity here is essentially a top hat filter, which
+radial values interior to the vanes the nominal calibrated value, and
+those outside the vanes zero, e.g. $\nu_C(r>r_{\text{vane}})=0$.
 
 \subsection{Vane and Turbine Representation}
 
@@ -187,8 +207,16 @@ Provide motivation. -- rapidly prototype vanes
 link to immersed boundary methods
 Show how the forcing is rendered. 
 
+Need a forcing image here? or just picture of vane?
+
 write up seperation model as well!
 
 \subsection{Cone Representation}
 
 Surface is easy to define
+
+\subsection{Surface Forcing}
+
+Surface is easy to define
+
+
