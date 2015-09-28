@@ -110,7 +110,12 @@ measured by our experimental partners in the field.
 The thermal boundary layer is assumed to have a similar boundary layer,
 but, as observed in real atmospheric flows, there remains a vertical
 temperature gradient outside the thin boundary layer. Based on
-literature
+literature a $2/3$ Kelvin per meter gradient has been
+selected\cite{}. The sides, outflow and top are all set to modified
+neumann boundary conditions, as described above. The outlfow region in
+the back also needs the modified neumann as it does occassionally
+exhibit mild inflow on account of the unsteady wake. Sponge layers are
+set along the top and back of the box. 
 
 %
 %335+18*tanh(-z/0.1)-z*2/3
