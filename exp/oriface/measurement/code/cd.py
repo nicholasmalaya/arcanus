@@ -38,6 +38,7 @@ def read_set(path):
     return set_names,orm,lfe
 
 if __name__ == "__main__":
+    import numpy as np
 
     # -------------------------------------------------------------------------------
     # open and read file
@@ -51,45 +52,55 @@ if __name__ == "__main__":
     # -------------------------------------------------------------------------------
     # Calculate Qs
     # -------------------------------------------------------------------------------
+    rho = 0.074887
+    mu  = 3.8364971e-7
+    nu  = mu/rho
+    d   = 1.8227
+    D   = 4.0
+    beta = d/D
 
-    ql = 20.5*1.004*l1
+    l1 = np.array(map(float, l1))
+    l2 = np.array(map(float, l2))
+
+    q1 = 20.5*1.004*l1
     q2 = 20.5*1.004*l2
 
-    re1 = q1 * L /(np.pi*nu*(d**2.0)/4.0)
-    re2 = q2 * L /(np.pi*nu*(d**2.0)/4.0)
+    re1 = q1 * D /(np.pi*nu*(d**2.0)/4.0)
+    re2 = q2 * D /(np.pi*nu*(d**2.0)/4.0)
 
-    cd1 = q1 * ((1-beta**4)**(0.5) /(np.pi*(d**2.0)/4.0)) * (rho/(2*dp)**0.5
+    cd1 = q1 * ((1-beta**4)**(0.5) /(np.pi*(d**2.0)/4.0)) * (rho/(2*l1))**0.5
+    cd2 = q2 * ((1-beta**4)**(0.5) /(np.pi*(d**2.0)/4.0)) * (rho/(2*l2))**0.5
 
     # -------------------------------------------------------------------------------
     # least squares curve fit
     # -------------------------------------------------------------------------------
 
-    import numpy as np
-    from scipy import stats
-    height  = [float(i) for i in height]
-    voltage = [float(i) for i in voltage]
-    (slope, intercept, r_value, p_value, std_err) = stats.linregress(height,voltage)
-    print "r-squared:", r_value**2
-    print  'p_value', p_value
-    print 'slope: ', slope
-
+    # import numpy as np
+    # from scipy import stats
+    # height  = [float(i) for i in height]
+    # voltage = [float(i) for i in voltage]
+    # (slope, intercept, r_value, p_value, std_err) = stats.linregress(height,voltage)
+    # print "r-squared:", r_value**2
+    # print  'p_value', p_value
+    # print 'slope: ', slope
 
     # -------------------------------------------------------------------------------
     # plot it!
     # -------------------------------------------------------------------------------
     import matplotlib.pyplot as plt
     plt.subplot(1, 1, 1)
-    plt.plot(height, voltage,  'ko',label='First Calibration Set',color='blue')
-    plt.plot(height2, voltage2,'ko',label='Second Calibration Set',color='black')
+    plt.plot(re1, cd1, 'ko',label='First Calibration Set',color='blue')
+    plt.plot(re2, cd2, 'ko',label='Second Calibration Set',color='black')
 
-    line = slope*np.array(height) + intercept
-    print line
-    plt.plot(height, line, '--k',label='Least Squares Fit') 
-    plt.title('Calibration of an Pressure Transducer: Inclined Manometer')
-    plt.ylabel('Voltage')
-    plt.xlabel('Height (Inches)')
+    #line = slope*np.array(height) + intercept
+    #print line
+    #plt.plot(height, line, '--k',label='Least Squares Fit') 
+
+    plt.title('Calibration of an Oriface Meter')
+    plt.ylabel(r'$C_d$')
+    plt.xlabel('Re')
     plt.legend(loc='best')
-    plt.savefig('inclined.png')
+    plt.savefig('cd.png')
     plt.close()
 
     #
