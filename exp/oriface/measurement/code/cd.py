@@ -6,88 +6,146 @@
 #
 import sys
 
-#
-# open and read file
-#
-path="../data/statistics_incl.lvm"
-file = open(path, "r+")
-
-#
-# data objects
-#
-set_names = []
-voltage   = []
-std       = []
-height    = []
-
-voltage2  = []
-std2      = []
-height2   = []
-
-for line in file:
+def read_set(path):
+    
     #
-    # sep by whitespace
+    # data
+    # 
+    set_names = []
+    orm       = []
+    lfe       = []
+
+    file = open(path, "r+")
+    for line in file:
+        #
+        # sep by whitespace
+        #
+        line_list = line.split()
+        set_name=line_list[3:]
+        set_names.append(' '.join(set_name))
+
+        orm.append(line_list[1])
+        lfe.append(line_list[2])
+
     #
-    line_list = line.split()
-    set_name=line_list[5:]
-    set_names.append(' '.join(set_name))
+    # clean up
+    #
+    file.close()       
 
-    if( len(set_names) > 9):
-        height2.append(line_list[8])
-        voltage2.append(line_list[2])
-        std2.append(line_list[3])
+    #
+    # exit
+    #
+    return set_names,orm,lfe
 
-    else:
-        height.append(line_list[8])
-        voltage.append(line_list[2])
-        std.append(line_list[3])
-#
-# clean up
-#
-file.close()       
+if __name__ == "__main__":
 
-#
-# least squares curve fit
-#
-import numpy as np
-from scipy import stats
-height  = [float(i) for i in height]
-voltage = [float(i) for i in voltage]
-(slope, intercept, r_value, p_value, std_err) = stats.linregress(height,voltage)
-print "r-squared:", r_value**2
-print  'p_value', p_value
-print 'slope: ', slope
-#
-# plot it!
-#
-import matplotlib.pyplot as plt
-plt.subplot(1, 1, 1)
-plt.plot(height, voltage,  'ko',label='First Calibration Set',color='blue')
-plt.plot(height2, voltage2,'ko',label='Second Calibration Set',color='black')
+    # -------------------------------------------------------------------------------
+    # open and read file
+    # -------------------------------------------------------------------------------
+    path1="../data/series1.lvm"
+    path2="../data/series2.lvm"
 
-line = slope*np.array(height) + intercept
-print line
-plt.plot(height, line, '--k',label='Least Squares Fit') 
-plt.title('Calibration of an Pressure Transducer: Inclined Manometer')
-plt.ylabel('Voltage')
-plt.xlabel('Height (Inches)')
-plt.legend(loc='best')
-plt.savefig('inclined.png')
-plt.close()
-#
-# steady as she goes
-#
-sys.exit(0)
+    s1,o1,l1 = read_set(path1)
+    s2,o2,l2 = read_set(path2)    
 
-#
+    # -------------------------------------------------------------------------------
+    # Calculate Qs
+    # -------------------------------------------------------------------------------
+
+    ql = 20.5*1.004*l1
+    q2 = 20.5*1.004*l2
+
+    re1 = q1 * L /(np.pi*nu*(d**2.0)/4.0)
+    re2 = q2 * L /(np.pi*nu*(d**2.0)/4.0)
+
+    cd1 = q1 * ((1-beta**4)**(0.5) /(np.pi*(d**2.0)/4.0)) * (rho/(2*dp)**0.5
+
+    # -------------------------------------------------------------------------------
+    # least squares curve fit
+    # -------------------------------------------------------------------------------
+
+    import numpy as np
+    from scipy import stats
+    height  = [float(i) for i in height]
+    voltage = [float(i) for i in voltage]
+    (slope, intercept, r_value, p_value, std_err) = stats.linregress(height,voltage)
+    print "r-squared:", r_value**2
+    print  'p_value', p_value
+    print 'slope: ', slope
+
+
+    # -------------------------------------------------------------------------------
+    # plot it!
+    # -------------------------------------------------------------------------------
+    import matplotlib.pyplot as plt
+    plt.subplot(1, 1, 1)
+    plt.plot(height, voltage,  'ko',label='First Calibration Set',color='blue')
+    plt.plot(height2, voltage2,'ko',label='Second Calibration Set',color='black')
+
+    line = slope*np.array(height) + intercept
+    print line
+    plt.plot(height, line, '--k',label='Least Squares Fit') 
+    plt.title('Calibration of an Pressure Transducer: Inclined Manometer')
+    plt.ylabel('Voltage')
+    plt.xlabel('Height (Inches)')
+    plt.legend(loc='best')
+    plt.savefig('inclined.png')
+    plt.close()
+
+    #
+    # steady as she goes
+    #
+    sys.exit(0)
+
+# -------------------------------------------------------------------------------
 # nick 
-# 9/9/15
+# 9/29/15
+# -------------------------------------------------------------------------------
+# LabVIEW Measurement	
+# Writer_Version	2
+# Reader_Version	2
+# Separator	Tab
+# Decimal_Separator	.
+# Multi_Headings	No
+# X_Columns	One
+# Time_Pref	Relative
+# Operator	Methods Students
+# Description	Don't delete initial header
+# Date	2015/09/23
+# Time	15:07:04.9949688911437988282
+# ***End_of_Header***	
+	
+# Channels	2		
+# Samples	1	1	
+# Date	2015/09/23	2015/09/23	
+# Time	15:07:04.9949688911437988282	15:07:04.9949688911437988282	
+# X_Dimension	Time	Time	
+# X0	0.0000000000000000E+0	0.0000000000000000E+0	
+# Delta_X	1.000000	1.000000	
+# ***End_of_Header***			
+# X_Value	Untitled	Untitled 1	Comment
 #
-# old header:
-#
-# X_Dimension     Time    Time    Time    Time
-# X0      0.0000000000000000E+0   0.0000000000000000E+0   0.0000000000000000E+0   0.0000000000000000E+0
-# Delta_X 0.001000        0.001000        0.001000        0.001000
-# ***End_of_Header***
-# X_Value Pressure Transducer Voltage (Arith. Mean)       Pressure Transducer Voltage (Std Dev)   Pressure Transducer Voltage (Variance)  Pressure Transduce\
-# r Voltage (Total Samples)     Comment
+# set 2--
+# LabVIEW Measurement	
+# Writer_Version	2
+# Reader_Version	2
+# Separator	Tab
+# Decimal_Separator	.
+# Multi_Headings	No
+# X_Columns	One
+# Time_Pref	Relative
+# Operator	Methods Students
+# Description	Don't delete initial header
+# Date	2015/09/23
+# Time	14:23:21.3099026679992675781
+# ***End_of_Header***	
+	
+# Channels	2		
+# Samples	1	1	
+# Date	1903/12/31	1903/12/31	
+# Time	18:00:00	18:00:00	
+# X_Dimension	Time	Time	
+# X0	0.0000000000000000E+0	0.0000000000000000E+0	
+# Delta_X	1.000000	1.000000	
+# ***End_of_Header***			
+# X_Value	Untitled	Untitled 1	Comment
