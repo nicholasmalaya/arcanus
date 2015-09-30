@@ -59,8 +59,8 @@ if __name__ == "__main__":
     D   = 4.0
     beta = d/D
 
-    l1 = np.array(map(float, l1))
-    l2 = np.array(map(float, l2))
+    l1 = np.array(map(float, o1))
+    l2 = np.array(map(float, o2))
 
     q1 = 20.5*1.004*l1
     q2 = 20.5*1.004*l2
@@ -87,14 +87,13 @@ if __name__ == "__main__":
     # -------------------------------------------------------------------------------
     # plot it!
     # -------------------------------------------------------------------------------
+    import matplotlib
+    matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    plt.subplot(1, 1, 1)
-    plt.plot(re1, cd1, 'ko',label='First Calibration Set',color='blue')
-    plt.plot(re2, cd2, 'ko',label='Second Calibration Set',color='black')
 
-    #line = slope*np.array(height) + intercept
-    #print line
-    #plt.plot(height, line, '--k',label='Least Squares Fit') 
+    plt.subplot(1, 1, 1)
+    plt.plot(re1, cd1, 'ko-',label='First Calibration Set',color='blue')
+    plt.plot(re2, cd2, 'ko--',label='Second Calibration Set',color='black')
 
     plt.title('Calibration of an Oriface Meter')
     plt.ylabel(r'$C_d$')
