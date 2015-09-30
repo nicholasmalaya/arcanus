@@ -37,10 +37,11 @@ by the force of buoyancy.
 
 For sufficiently large temperature gradients, these motions are
 unstable, and as the warm air is driven upwards the flow will transition
-to turbulence. For the typical use case we consider, namely Arizona in summer, 
-Rayleigh numbers are typically between $10^{9} - 10^{11}$, and are therefore 
-well in excess of the criterion for transition to a turbulent regime. The 
-flow is that of an unstably statified fluid. 
+to turbulence. For the typical use case we consider, namely Arizona in
+summer, the temperature gradient can be in excess of 30 Kelvin. 
+Rayleigh numbers associated with this are typically between $10^{9} -
+10^{11}$, and therefore meet the criterion for transition to a turbulent
+regime. The flow is that of an unstably statified fluid. 
 
 \subsection{Equations of Fluid Motion}
 %
@@ -57,7 +58,7 @@ low Mach number with natural convection are,
 \end{eqnarray*} 
 Where we have made the assumptions that the temperature gradient is small in
 comparison to the mean temperature of the region. These are the
-Incompressible Navier-Stokes equations for free-convection (or
+incompressible Navier-Stokes equations for free-convection (or
 ``Boussinesq'') coupled with the heat equation. 
 %
 % in full document be sure to mention that neglecting coriolis is legit
@@ -118,9 +119,9 @@ $q$.
 % add refence to dynamical and physical meteorology 
 % 
 These quantities depend on
-four dimensions: length, time, temperature and mass. As a result,
+four dimensions: length, time, temperature and mass. As a result, 
 Buckingham Pi theorem implies that only one dimension-less group can be
-formed\cite{}.%munson 
+formed\cite{munson2012fundamentals}.%munson 
 
 This group is chosen to be,
 \begin{equation}
@@ -158,7 +159,7 @@ $-\frac{4}{3}$ power. The resulting function appears as,
 for } z \gg L. 
 \end{equation}
 
-So long as the Prandtl number remains constant in space\cite{}, then
+So long as the Prandtl number remains constant in space, then
 % todo: provide discussion as to why this is not an unreasonable expectation
 identical arguments as to the asymptotic behaviour at large $\xi$ provide
 the analogous result for the eddy viscosity's variation with respect to
@@ -174,8 +175,9 @@ are easily instantiated in software.
 
 \subsection{Eddy Viscosity in Device}
 
-The thermal and momentum diffusivities are also higher in the
-device. The vanes produce shear and generate turbulence. Our model for 
+The thermal and momentum diffusivities are expected to be even larger in the
+device where the flow across the vanes produces shear and generates
+turbulence. Our model for  
 the diffusivities inside the vanes should be higher than the ambient
 (and empty) regions outside the vanes. However, this is also a more
 difficult regime to model. In order to successfully do so, source terms
@@ -221,6 +223,11 @@ Surface is easy to define
 
 \subsection{Surface Forcing}
 \todo{write me!}
-Surface is easy to define
+
+surface roughness impact\cite{oke1987boundary}
+Volumetric force
+expected to mimic surface roughness of flow
+cite for surface roughness
+energy introduced into flow is small fraction of total flow energy
 
 
