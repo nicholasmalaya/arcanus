@@ -17,10 +17,10 @@ Galerkin finite element discretization (FEM), with linear basis functions for
 both the velocity and pressure. Unlike the typical FEM formulations,
 this scheme circumvents the Babuska-Brezzi conditions and permits use of
 equal-order elements for velocity and 
-pressure through the introduction of a stabilization term first
-introduced by Hughes\cite{Hughes198685} and expanded to a natural
-convection domain (with sane choices of stabilization parameters) by
-Becker and Braack\cite{Becker2002428}. 
+pressure. This is accomplished through the introduction of a
+stabilization term first described by Hughes\cite{Hughes198685} and
+expanded to a natural convection domain (with sane choices of
+stabilization parameters) by Becker and Braack\cite{Becker2002428}. 
 
 Newton iterations are then used for solving the nonlinear problem. 
 The resulting system of ODEs are discretized in time using a theta-method. 
@@ -111,7 +111,7 @@ but, as observed in real atmospheric flows, there remains a vertical
 temperature gradient outside the thin boundary layer. Based on
 literature a $2/3$ Kelvin per meter gradient has been
 selected\cite{}. The sides, outflow and top are all set to modified
-neumann boundary conditions, as described above. The outlfow region in
+neumann boundary conditions, as described above. The outflow region in
 the back also needs the modified neumann as it does occassionally
 exhibit mild inflow on account of the unsteady wake. Sponge layers are
 set along the top and back of the box. 
