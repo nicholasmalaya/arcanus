@@ -15,7 +15,7 @@
 %% \end{itemize}
 
 In order to motivate how best to \textit{engineer} a synthetic
-dust-devil, we first address what is known about the naturally occuring
+dust devil, we first address what is known about the naturally occuring
 phenomena. We therefore begin this section with a qualitative discussion
 of dust-devils, followed by a review of the known physics and pertinent 
 literature review. We then briefly outline how we intend to leverage
@@ -33,7 +33,7 @@ these physical processess as a method of usable energy generation.
 %\item structure diagram and description
 %\end{itemize}
 
-No rigorous definition of a Dust devil exists. This cannot be attributed
+No rigorous definition of a dust devil exists. This cannot be attributed
 to the rarity of the process. Rather, the phenomena of dust devils are
 remarkably ubiquitous. These whirlwinds have been
 observed across a wide variety of terrains, climates and even on several
@@ -100,7 +100,7 @@ It is at the top of this region that the flow
 reaches its peak velocity, with that peak dropping with increasing height. 
 The strong radial and azimuthal velocities are drawn into a low pressure core 
 where they gain vertical velocity and are lifted up. Earlier experimental and 
-computational results have both observed a cooler downdraft in the very center 
+computational results have both observed a cooler downdraft in the center 
 of the dust devil. It is not clear what generates the azimuthal velocities. It is 
 possible that ambient vorticity from objects is drawn into the vortex from far 
 field, and which intensifies greatly owing to a $1/r^2$ dependence.
@@ -127,7 +127,7 @@ cartoon in Figure \ref{fig:cartoon}.
 \subsection{Estimate of Energy Scaling}
 
 Here we provide a rough estimate of the energy
-available to a Dust devil. There are two objectives behind this
+available to a dust devil. There are two objectives behind this
 analysis. The first is to provide justification for the concept of
 extracting energy from these phenomena, with the reasoning that should
 sufficient energy be available, then attemping to extract it might be
@@ -147,8 +147,8 @@ to the ambient air conditions of 313 Kelvin.
 provided by the Georgia Tech field team in Arizona during the summer of
 2014.} 
 
-There are two forms of energy to consider: kinetic and enthalpy. We
-begin by considering the kinetic energy flux through the front of the
+There are two forms of energy to consider: kinetic and enthalpy. First,
+we examine the kinetic energy flux through the front of the
 apparatus. From the first law of thermodynamics we can express the
 kinetic energy flux as a surface integral over the upstream face of the device, 
 \begin{equation*}
@@ -158,8 +158,9 @@ kinetic energy flux as a surface integral over the upstream face of the device,
 % could cite fluid dynamics book here
 % pg. 239
 %
-We assume our freestream velocity has no components in y and z.
-We assume that the variation in z for the streamwise velocity is only on
+We make several simplyfying assumptions. We assume our freestream
+velocity has no components in y and z. 
+We assume that the variation in height for the streamwise velocity is only on
 account of the thin boundary layer near the ground. We functionally
 approximate this behavior using the common 7th power function for a
 turbulent boundary layer,  
@@ -233,7 +234,7 @@ gravitational potential energy is a small fraction of the energy
 available, that does not imply it is without significant impact. The
 extend to which the thermal energy acts as an assisting mechanism for 
 ``lifting-up'' the flow is unclear, but given the observed increase in dust
-devil formation during peak thermal gradients, it is certainly expected
+devil formation during peak thermal gradients, it is expected
 to play an important role. 
 
 \subsection{Dust Devil Generation Concept}
@@ -247,11 +248,31 @@ phenomena might be used as a means of extracting usable work.
 
 In contrast to the naturally occuring dust devils
 our synthetic solar driven vortex, (SoV) design makes use of
-control surfaces to dictate the
-angle of incoming flow, and in doing so explicitly converts a portion of
-the incoming radial flow in azimuthal velocity. These turning vanes also
-serve as an anchor for the synthetic vortex, locking it into a small
-region.  
+control surfaces to dictate the angle of incoming flow, and in doing so
+explicitly converts a portion of the incoming radial flow in azimuthal
+velocity. These turning vanes also serve as an anchor for the synthetic
+vortex, locking it into a small region.   
+
+Our observations of the naturally occuring dust devils informs some of
+our \textit{a priori} expectations for the design of the turning
+vanes. The bottom tier are designed to reside in the lower region, where
+the principle inflow will occur. We therefore expect a radial or nearly
+radial start to the vanes, which becomes increasingly tangential as the
+flow moves towards the center. The inner radius of the bottom tier will
+correspond to the outer radius of the generated vortex. 
+
+The top tier serves a different purpose. We expect a non-zero initial
+angle, as this tier is also designed to protect the rising vortex from
+being blow away by ambient winds. The vanes radius will be shorter, as
+the flow from this tier becomes entrained and the vortex grows in
+size. 
+
+For both the upper and lower tiers, our objective is to strike a balance
+between effectively turning the incoming flow to introduce azimuthal
+velocity, while simultaneously not resulting in such a high angle that
+the vanes act as a blocking surface which the incoming flow will move
+around (as if the surface was a cylinder, for instance). 
+
   \begin{figure}[!htb]
     \begin{center}
      \includegraphics[width = 8 cm]{figs/ground_vanes}
@@ -273,10 +294,19 @@ region.
 %% \end{figure}
 
 Our principle objective is to use a synthetic dust devil to produce 
-useable work. In order to extract this energy, a turbine is placed 
-at the top of the vanes, where the blades are driven by the dust devil's 
-azimuthal and vertical velocities. \todo{need to expand this section
-with two tier idea}
+useable work. In order to extract the energy from the synthetic dust
+devil we have generated, a turbine is placed 
+at or near the top of the 2nd tier of turning vanes. 
+The blades of the turbine will be driven by the dust devil's azimuthal
+and vertical velocities. While the Betz limit gives a reasonable
+expectation of the efficiency with which energy can be expected to be
+extracted from the ambient dust devil velocity field, there are other
+non-trivial design considerations. In particular, the impact of the
+turbine on the dust devil's vortex, and any potential distruption of the
+flow on account of the turbine must be investigated. Optimizing the
+turbine to maximize the energy extraction while simultaneously
+minimizing it's impact on the character of the dust devil's solution
+will be an important issue.
 
 While the turning vanes and turbine  
 paradigm represents a reasonable starting point for design, the
