@@ -33,14 +33,15 @@ these physical processess as a method of usable energy generation.
 %\item structure diagram and description
 %\end{itemize}
 
-No rigorous defintion of a Dust devil exists. This cannot be attributed
-to the rarity of the processes. Rather, the phenomena of dust devils are
+No rigorous definition of a Dust devil exists. This cannot be attributed
+to the rarity of the process. Rather, the phenomena of dust devils are
 remarkably ubiquitous. These whirlwinds have been
 observed across a wide variety of terrains, climates and even on several
 other planets\cite{Sinclair1969,Bluestein2004,JGR:JGR13978,JGRE:JGRE1660}. 
 While it is difficult to pin down a precise definition, several features 
 are characteristic of a dust devil. They are regions of
-intense vorticity and rotation, coupled with strong upward motions. 
+intense vorticity and rotation, coupled with strong upward motions 
+that are strong enough draw and lift particles along with the flow.
 They are a self-sustaining vortex that maintains a funnel-like
 chimney driven by hot air moving both upward and circularly. 
 While they typically exist for only a few minutes, some have 
@@ -50,8 +51,9 @@ typically several meters per second,
 % solen from: http://glossary.ametsoc.org/wiki/Fujita_scale
 %
 dust devils occasionally are strong enough to cause damage and injury,
-with some reaching F1 on the Fujita Tornado intensity scale, with
-velocities between 33 and 49 $m/s$.
+with some reaching F1 on the Fujita Tornado intensity
+scale\cite{}\todo{missing cite here}, with velocities between 33 and 49
+$m/s$. 
 %
 % F1 (moderate damage): 33-49 m s-1
 %
@@ -110,9 +112,10 @@ that characterized by warm air rising and circling around a cool,
 low pressure core. This region is typically many times larger in height than the
 surface layer. While this region also has radial inflow, but it is 
 significantly weaker than the lower region. Previous studies have found that
-this region is relatively well described by a Rankine vortex model\cite{}. 
+this region is relatively well described by a Rankine vortex
+model\cite{}\todo{missing cite}. 
 Both of these regions are sketched out as a simple 
-cartoon in figure \ref{fig:cartoon}. 
+cartoon in Figure \ref{fig:cartoon}. 
 
   \begin{figure}[!htb]
     \begin{center}
@@ -191,16 +194,20 @@ energy flux by integrating the boussinesq term by the height of the vanes,
   \text{Potential Energy Flux} & = \int_{-h}^0 u(z) \Delta \rho g z dz. \\
   & = \int_{-h}^0 u(z) \rho' g z^2 dz. 
 \end{align*}
-Where the substitution, $\Delta \rho = \rho' z$ was made. At 
-this point we again separate the integral into two components, 
-for the boundary layer and the constant freestream velocity region. 
-\begin{align*}
-  & = \rho' g \left[ \int_{-\delta}^{0} U \left( \frac{z}{\delta} \right)^7 z^2 dz 
-      + \int_{-h}^{-\delta} U z^2 dz \right] \\
-  & = -\rho' g U \left[ \frac{h^3}{3} - \frac{7}{30} \delta^3 \right].
-\end{align*}
-Furthermore, we
-note that $\rho' = -\beta \rho_0 \Delta T$, resulting in, 
+Where the substitution, $\Delta \rho = \rho' z$ was made. We again
+assume the boundary layer follows the 7th order profile, and we 
+
+% At 
+% this point we again separate the integral into two components, 
+% for the boundary layer and the constant freestream velocity region. 
+% \begin{align*}
+%   & = \rho' g \left[ \int_{-\delta}^{0} U \left( \frac{z}{\delta} \right)^7 z^2 dz 
+%       + \int_{-h}^{-\delta} U z^2 dz \right] \\
+%   & = -\rho' g U \left[ \frac{h^3}{3} - \frac{7}{30} \delta^3 \right].
+% \end{align*}
+% Furthermore, we note 
+%
+that $\rho' = -\beta \rho_0 \Delta T$, resulting in, 
 %
 % cite monin-yaglom page 59
 %
@@ -217,7 +224,8 @@ estimate of 30 Watts for the gravitational potential energy.
 
 This interesting result implies that the majority of the available
 energy is attributable to kinetic energy, not the gravitational
-energy. This is consistent with the results of Renno\cite{}, who demonstrated
+energy. This is consistent with the results of Renno\cite{}\todo{missing
+cite here}, who demonstrated \todo{not sure what to say about renno here}
 that the available thermal energy present was not sufficient to account
 for the velocities measured in dust devils. However, while the
 gravitational potential energy is a small fraction of the energy
@@ -230,10 +238,11 @@ to play an important role.
 \subsection{Dust Devil Generation Concept}
 
 The preceeding discussion has provided justification for the idea of
-using dust devils as a method of extracting ambient kinetic and
+dust devils as carriers of non-trivial levels ambient kinetic and
 gravitational potential energy from the environment. This  
 subsection now provides a brief discussion of how the physics of 
-dust devils informs the generation of a synthetic variety. 
+dust devils informs the generation of a synthetic variety, so that these
+phenomena might be used as a means of extracting usable work. 
 
 In contrast to the naturally occuring dust devils
 our synthetic solar driven vortex, (SoV) design makes use of
@@ -254,7 +263,8 @@ region.
 Our principle objective is to use a synthetic dust devil to produce 
 useable work. In order to extract this energy, a turbine is placed 
 at the top of the vanes, where the blades are driven by the dust devil's 
-azimuthal and vertical velocities. 
+azimuthal and vertical velocities. \todo{need to expand this section
+with two tier idea}
 
 While the turning vanes and turbine  
 paradigm represents a reasonable starting point for design, the
