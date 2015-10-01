@@ -23,6 +23,8 @@
 \usepackage{gensymb}
 \usepackage{todonotes}
 \usepackage{multirow}
+\usepackage[utf8]{inputenc}
+\usepackage[TS1,T1]{fontenc}
 
 \usepackage[colorlinks=true,
             linkcolor=blue,
@@ -30,6 +32,14 @@
             citecolor=blue,
             final,
             hypertexnames=true]{hyperref}
+
+\newcommand\ytl[2]{
+\parbox[b]{8em}{\hfill{\color{black}\bfseries\sffamily
+#1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad
+\parbox[c]{4.5cm}{\vspace{7pt}\color{black}\raggedright\sffamily
+#2.\\[7pt]}\\[-3pt]} 
+
+
 \newcommand\myworries[1]{\textcolor{red}{#1}}
 \newcommand{\abs}[1]{\ensuremath{ \left|#1\right|}}
 \newcommand{\norm}[1]{\ensuremath{ \left|\left|#1\right|\right|}}
