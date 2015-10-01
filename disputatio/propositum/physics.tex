@@ -271,7 +271,17 @@ For both the upper and lower tiers, our objective is to strike a balance
 between effectively turning the incoming flow to introduce azimuthal
 velocity, while simultaneously not resulting in such a high angle that
 the vanes act as a blocking surface which the incoming flow will move
-around (as if the surface was a cylinder, for instance). 
+around. For instance, when the inlet angles are too severe, the vanes
+block the incoming flow, which results in an adverse pressure gradient
+existing near the outside edge of the 
+vanes. This serves to force fluid around and over the system, instead
+of inside the turning vanes. This reduces the velocity of flow inside
+the system, resulting in a weaker thermal vortex.  In order to reduce
+the flow blockage, we use gently curving vanes. A gentler angle permits
+more flow to enter the vane region, after which the curvature increases
+toward the center of the vanes. In this way, the angle smoothly varies
+between a nearly zero angle at the outside edge of the vanes to a
+maximum angle at a specified inner radius.
 
   \begin{figure}[!htb]
     \begin{center}
@@ -281,7 +291,6 @@ around (as if the surface was a cylinder, for instance).
      \label{fig:cartoon}
     \end{center}
   \end{figure}
-
 
 %% \Begin{figure}[h]
 %%  \begin{center}
