@@ -157,7 +157,7 @@ Neglecting uncertainties in $A_o$, $\beta$, and $\rho$, the percent error for $C
 For the subsequent calculations, we assume $U_Q$ and $U_{\Delta P}$ are bias uncertainties and cannot be 
 made more accurate by taking multiple measurements. Taking the specifications given in the lab 
 guidelines, $U_{\Delta P}$ is assumed to be a constant 0.002 in. H20. $U_Q$ is a piecewise function equal to 
-0.2\%*RDG from $10-100\%$ FS and 0.02%*FS below 10% FS. Full scale for the laminar flow element is 160 
+0.2\%*RDG from $10-100\%$ FS and 0.02\%*FS below 10\% FS. Full scale for the laminar flow element is 160 
 CFM, so the measurements at 5, 10, and 15 CFM use this latter value for uncertainty.
 
 Results: 
@@ -193,7 +193,7 @@ Having calibrated the orifice meter by determining the best obtainable value for
 calculate the uncertainty of subsequent measurements of flow rate, $Q_{\text{orifice}}$, using this device.
 
 \begin{equation}
-  Q_{\text{LFE}} = C_d * A_0 * (1-\beta^4)^{1/2} * \left(\frac{\rho}{\Delta P_{\text{trans}}}\right)^{1/2}
+  Q_{\text{orifice}} = \frac{C_d * A_0}{(1-\beta^4)^{1/2}} \left(\frac{2 \Delta P_{\text{trans}}}{\rho}\right)^{1/2}
 \end{equation}
 
 Neglecting uncertainties in $A_o$, $\beta$, and $\rho$, the percent error for $Q_{\text{orifice}}$ 
