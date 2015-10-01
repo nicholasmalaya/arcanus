@@ -21,7 +21,6 @@ Hz. The results are shown in Figure
 \ref{oriface-time}, below. The samples appear to still be correlated in
 time. 
 
-
 \begin{figure}[!htb]
   \begin{center}
     \includegraphics[width = 12 cm]{figs/oriface_time.png}
@@ -80,12 +79,40 @@ This can be manipulated to provide an equation for $C_d$ as,
 					      P}\right)^{1/2}.
 \end{equation}
 
+The results of $C_d$ vs. Re are plotted in Figure \ref{orif}. We can see a general trend of increasing 
+values of $C_d$ as a function of $Re$, followed by the curve ``flattening out''. For flow in a duct, 
+the transition between laminar and turbulent flow occurs around a few thousand Re, so the vast majority 
+of our data lies in the turbulent regime. Our expectation is that the $C_d$ becomes independent of Re at high 
+(e.g. turbulent) Re, and the data appears to be consistent with this. The value of $C_d$ asymptotes to a value near 0.6, which is roughly in line with values we found in the literature for these aspect ratios ($\beta$ values).
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/cd_v_re_zero_axis.jpg}
+    \caption{A plot of $C_d$ as a function of Reynolds Number. Only the first point is likely to be 
+outside of the fully developed turbulence regime. }
+    \label{orif}
+   \end{center}
+  \end{figure}
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/cd_v_re.jpg}
+    \caption{A plot of $C_d$ as a function of Reynolds Number. This plot is zoomed into the region of the data, 
+    to make the difference between points more pronounced.}
+    \label{orif-zoom}
+   \end{center}
+  \end{figure}
+
+The first data point, as previously mentioned, appears to be anamalously low. The value of this point is 
+still high enough ($\approx 5000$) that we would expect it to be turbulent. However, it is possibly close enough 
+to the transition that it is not yet fully developed. A zoomed in version of this plot is shown in figure \ref{orif-zoom}
+
 \newpage
 \section{Uncertainty Analysis}
 
 \textbf{Uncertainty of flow rate measured using the orifice meter with
 your calibration.} 
 
-\todo{how do we want to approach this?}
+
 
 \end{document}
