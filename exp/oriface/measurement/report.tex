@@ -132,6 +132,33 @@ and the ratio of diameters from the pipe and orifice meter, $\beta$, because the
 when calibrating $C_d$ as a correction factor. Changes in the density of air, $\rho$, are neglected because our 
 reynolds number while turbulent should remain well below Mach 0.3.
 
+Neglecting uncertainties in $A_o$, $\beta$, and $\rho$, the percent error for $C_d$ can be expressed as:
+\begin{equation}
+  \frac{U_{C_d}}{C_d} = \sqrt{ \left(\frac{U_{Q}}{Q}\right)^2 + \left( 0.5 \frac{U_{C_d}}{C_d} \right)^2}
+\end{equation}
+
+For the subsequent calculations, we assume $U_Q$ and $U_{\Delta P}$ are bias uncertainties and cannot be 
+made more accurate by taking multiple measurements. Taking the specifications given in the lab 
+guidelines, $U_{\Delta P}$ is assumed to be a constant 0.002 in. H20. $U_Q$ is a piecewise function equal to 
+0.2\%*RDG from $10-100\%$ FS and 0.02%*FS below 10% FS. Full scale for the laminar flow element is 160 
+CFM, so the measurements at 5, 10, and 15 CFM use this latter value for uncertainty.
+
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/PercentUncertaintyQVsQ_Series1.jpg}
+    \caption{fig1}
+    \label{orif-s1}
+   \end{center}
+  \end{figure}
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/PercentUncertaintyQVsQ_Series2.jpg}
+    \caption{fig2}
+    \label{orif-s2}
+   \end{center}
+  \end{figure}
 
 %
 %
