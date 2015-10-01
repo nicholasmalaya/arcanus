@@ -105,7 +105,7 @@ outside of the fully developed turbulence regime. }
 
 The first data point, as previously mentioned, appears to be anamalously low. The value of this point is 
 still high enough ($\approx 5000$) that we would expect it to be turbulent. However, it is possibly close enough 
-to the transition that it is not yet fully developed. A zoomed in version of this plot is shown in figure \ref{orif-zoom}
+to the transition that it is not yet fully developed. A zoomed in version of this plot is shown in figure \ref{orif-zoom}. 
 
 \newpage
 \section{Uncertainty Analysis}
@@ -113,6 +113,17 @@ to the transition that it is not yet fully developed. A zoomed in version of thi
 \textbf{Uncertainty of flow rate measured using the orifice meter with
 your calibration.} 
 
+Taking the differences in pressure measured across the laminar flow element and orifice meter, 
+we can calculate the discharge coefficent using the equations below. The average discharge coeffient 
+calculated from our pressure measurements was nominally 0.615 across both series.
+
+\begin{equation}
+  C_d = \frac{Q_{\text{LFE}} }{A_0} * (1-\beta^4)^{1/2} * \left(\frac{\rho}{\Delta P_{\text{trans}}}\right)^{1/2}
+\end{equation}
+where, 
+\begin{equation}
+  Q_{\text{LFE}} = 20.5 \Delta P_{\text{LFE}} * \frac{\mu(21 C)}{\mu(\text{actual})}
+\end{equation}
 
 
 \end{document}
