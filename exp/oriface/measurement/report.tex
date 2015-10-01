@@ -160,6 +160,33 @@ CFM, so the measurements at 5, 10, and 15 CFM use this latter value for uncertai
    \end{center}
   \end{figure}
 
+Both series of measurements showed the percent error of Cd decreasing exponentially as flow 
+rate increased. Upon examination of our sources of error this makes sense. At low flow rates, i.e. Q < 15 
+CFM, we need to detect a smaller change in pressure. The constant uncertainty of 0.002 in H20 for our 
+pressure transducer is a much greater percentage of the pressure readings at these low flow rates. The 
+change in pressure increases non-linearly as flow rate increases, and so at high CFMs the percent error is 
+not as significant.
+
+Having calibated the orifice meter by determining the best obtainable value for $C_d$, we can 
+calculate the uncertainty of subsequent measurements of flow rate, $Q_{\text{orifice}}$, using this device.
+
+\begin{equation}
+  Q_{\text{LFE}} = C_d * A_0 * (1-\beta^4)^{1/2} * \left(\frac{\rho}{\Delta P_{\text{trans}}}\right)^{1/2}
+\end{equation}
+
+Neglecting uncertainties in $A_o$, $\beta$, and $\rho$, the percent error for $Q_{\text{orifice}}$ 
+can be expressed using the equation below. Uncertainties for Q were calculated 
+assuming a best and worst case scenario: where $U_{\Delta P}$ is a precision
+ and bias uncertainty, respectively.
+
+\begin{equation}
+  \frac{U_{Q}}{Q} = \sqrt{ \left(\frac{U_{C_d}}{C_d}\right)^2 + \left( 0.5 \frac{U_{\Delta P}}{\Delta P} \right)^2}
+\end{equation}
+
+These results show a similar trend as the uncertainty of the discharge coefficient, decreasing 
+exponentially as flow rate increases. For flow rates above 20 CFM, both series predict an uncertainty 
+well below 1\% of the flow rate measurement from the orifice meter.
+
 %
 %
 %
