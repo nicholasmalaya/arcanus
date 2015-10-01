@@ -4,7 +4,7 @@
 \usepackage{graphicx}
 \usepackage{todonotes}
 
-\title{\bf{Laboratory Project Two: Calibration of an Oriface Meter}}
+\title{\bf{Laboratory Project Two: Calibration of an Orifice Meter}}
 \author{Jon Langston \& Nicholas Malaya \& Owen O'Neal \\ Department of Mechanical Engineering \\ University of Texas at Austin} \date{}
 
 \begin{document}
@@ -24,7 +24,7 @@ time.
 \begin{figure}[!htb]
   \begin{center}
     \includegraphics[width = 12 cm]{figs/oriface_time.png}
-    \caption{Example raw time series data from a single oriface meter 
+    \caption{Example raw time series data from a single orifice meter 
       run. The calculated mean of the signal is shown in black, along with
       the two $\sigma$ (standard deviation) confidence interval in
       red.}
@@ -40,7 +40,7 @@ tend to be correlated with each other.
 \begin{figure}[!htb]
   \begin{center}
     \includegraphics[width = 12 cm]{figs/oriface_time_04.png}
-    \caption{Example raw time series data from a single oriface meter 
+    \caption{Example raw time series data from a single orifice meter 
       run, plotted over a shorter time period.}
     \label{oriface-time-4}
   \end{center}
@@ -73,7 +73,7 @@ The Reynolds number is defined as,
  \text{Re} = \frac{UL}{\nu}.
 \end{equation}
 
-The kinematic viscosity ($\nu$) and the oriface diameter ($L$) are
+The kinematic viscosity ($\nu$) and the orifice diameter ($L$) are
 given. We can calculate the bulk fluid velocity ($U$) from our knowledge
 of the flow rate and the system dimensions, 
 \begin{equation}
@@ -116,13 +116,58 @@ outside of the fully developed turbulence regime. }
     \includegraphics[width = 12 cm]{figs/cd_v_re.jpg}
     \caption{A plot of $C_d$ as a function of Reynolds Number. This plot is zoomed into the region of the data, 
     to make the difference between points more pronounced.}
-    \label{orif-zoom}
+    \label{orif}
    \end{center}
   \end{figure}
 
 The first data point, as previously mentioned, appears to be anomalously low. The value of this point is 
 still high enough ($\approx 5000$) that we would expect it to be turbulent. However, it is possibly close enough 
-to the transition that it is not yet fully developed. A zoomed in version of this plot is shown in figure \ref{orif-zoom}. 
+to the transition that it is not yet fully developed. A zoomed in version of this plot is shown 
+in figure \ref{oriface-time-4}.  
+
+\subsection{Checking the Zero Setting}
+
+Before beginning data collection, the pressure transducers were both recorded at zero 
+flow in order to ensure zero pressure measurement.  The constants for the intercepts 
+of the given calibrations were adjusted so that the transducers output zero pressure 
+drop when disconnected from the laminar flow element (transducer A) and orifice meter 
+(transducer B).  The intercept constant for transducer A was changed from -1.075 inH2O 
+to -1.06 inH2O; for transducer B, from -1.026 inH2O to -1.00 inH2O.  As the LabVIEW 
+Virtual Instrument limited these calibration constants to the hundredths place, 
+these options provided zero pressure drop within $\pm .005$ inH2O.
+ 
+In order to further ensure accuracy of the given transducer calibrations, each transducer 
+was separately coupled to a micro-manometer and measurements were taken at the selected 
+pressures of 1 and 2 inH2O.  Transducer A output readings of 0.9919 and 1.9920 inH2O, 
+respectively, while B output readings of 0.9842 and 1.9716 inH2O, respectively.  
+Considering the uncertainty associated with setting the manometer at the desired 
+pressure, these results corroborate the stated accuracy of the transducer calibrations.
+
+\subsection{Repeatibility of the Measurements}
+
+We attempted to control for several factors to enhance repeatability of the experiment. 
+We observed a large transient period  between adjusting the voltage and the measured 
+pressure drop. It is our expectation that the blower had a long equilibration time 
+before reaching a statistically steady state. Small fluctuations in voltage, on 
+the order of 0.01-0.02 volts, which persisted after the blower reached 
+quasi-steady state can be attributed to variations in velocity associated with turbulent flow. 
+
+We have qualitatively assessed the repeatability of measurements in this case by gathering 
+a second set of statistics. This was conducted with the same practitioners at the same time 
+of day, after the first set of experimental data had been saved. The air blower was 
+turned off and the zero-flow measurements were checked; once again, both transducers 
+output $\pm0.005$ inH2O of a zero reading.  The data were not gathered at precisely 
+the same pressure drop locations, making direct comparison between data gathering 
+series impossible. However, the results from both series, when plotted 
+against each other clearly exhibit the same trend to within a small margin. 
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/Q_dP_fits.jpg}
+    \caption{A plot of repeatability of the experiment. }
+    \label{orif-zoom}
+   \end{center}
+  \end{figure}
 
 \newpage
 \section{Uncertainty Analysis}
@@ -238,4 +283,4 @@ well below 1\% of the flow rate measurement from the orifice meter.
 %
 \end{document}
 
-% LocalWords:  reynolds H20 piecewise RDG
+% LocalWords:  reynolds H20 piecewise RDG yar
