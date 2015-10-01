@@ -32,9 +32,26 @@ time.
   \end{center}
 \end{figure}
 
+Let's go deeper, and look at the samples over a shorter period of time. Instead of the full 3 
+second sampling time, we examine just 0.4 seconds. The result of this is shown in \ref{oriface-time-4}.
+From this perspective, it appears we are still indeed oversampling, as at least subsequent points 
+tend to be correlated with each other. 
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 12 cm]{figs/oriface_time_04.png}
+    \caption{Example raw time series data from a single oriface meter 
+      run, plotted over a shorter time period.}
+    \label{oriface-time-4}
+  \end{center}
+\end{figure}
+
+
 Examining the probability distribution functions in Figure \ref{oriface-hist},
-we can see that while the results are clearly better and closer to that
-of a gaussian, they are still not normally distributed. 
+we can see that while the results are clearly better than the other lab, where we used 1000 Hz and 1000 samples. 
+However, while these results are closer to that of a gaussian, 
+they are still not normally distributed. In other words, we still have not found an ideal data sampling rate 
+for the pressure transducer.  
 
   \begin{figure}[!htb]
    \begin{center}
@@ -56,7 +73,7 @@ The Reynolds number is defined as,
  \text{Re} = \frac{UL}{\nu}.
 \end{equation}
 
-The kinematic viscosity ($\nu$) and the pipe diameter ($L$) are
+The kinematic viscosity ($\nu$) and the oriface diameter ($L$) are
 given. We can calculate the bulk fluid velocity ($U$) from our knowledge
 of the flow rate and the system dimensions, 
 \begin{equation}
@@ -103,7 +120,7 @@ outside of the fully developed turbulence regime. }
    \end{center}
   \end{figure}
 
-The first data point, as previously mentioned, appears to be anamalously low. The value of this point is 
+The first data point, as previously mentioned, appears to be anomalously low. The value of this point is 
 still high enough ($\approx 5000$) that we would expect it to be turbulent. However, it is possibly close enough 
 to the transition that it is not yet fully developed. A zoomed in version of this plot is shown in figure \ref{orif-zoom}. 
 
@@ -114,7 +131,7 @@ to the transition that it is not yet fully developed. A zoomed in version of thi
 your calibration.} 
 
 Taking the differences in pressure measured across the laminar flow element and orifice meter, 
-we can calculate the discharge coefficent using the equations below. The average discharge coeffient 
+we can calculate the discharge coefficient using the equations below. The average discharge coefficient 
 calculated from our pressure measurements was nominally 0.615 across both series.
 
 \begin{equation}
@@ -125,7 +142,7 @@ where,
   Q_{\text{LFE}} = 20.5 \Delta P_{\text{LFE}} * \frac{\mu(21 C)}{\mu(\text{actual})}
 \end{equation}
 
-The uncertainty in the discharge coefficent, $U_{C_d}$, has contributions from the uncertainties in
+The uncertainty in the discharge coefficient, $U_{C_d}$, has contributions from the uncertainties in
 the flow rate, $U_Q$, measured from the laminar flow element and the change in pressure, $U_{\Delta P}$, 
 measured from the pressure transducer. We can neglect uncertainties in the area of the orifice, $A_o$, 
 and the ratio of diameters from the pipe and orifice meter, $\beta$, because they are taken into account 
@@ -143,19 +160,24 @@ guidelines, $U_{\Delta P}$ is assumed to be a constant 0.002 in. H20. $U_Q$ is a
 0.2\%*RDG from $10-100\%$ FS and 0.02%*FS below 10% FS. Full scale for the laminar flow element is 160 
 CFM, so the measurements at 5, 10, and 15 CFM use this latter value for uncertainty.
 
+Results: 
+\begin{itemize}
+\item Series 1: $\frac{U_{C_d}}{C_d} = 0.066$ @ 5 CFM and 0.0021 @ 50 CFM
+\item Series 2: $\frac{U_{C_d}}{C_d} = 0.076$ @ 5 CFM and 0.0021 @ 50 CFM
+\end{itemize}
 
   \begin{figure}[!htb]
    \begin{center}
-    \includegraphics[width = 12 cm]{figs/PercentUncertaintyQVsQ_Series1.jpg}
-    \caption{fig1}
+    \includegraphics[width = 12 cm]{figs/PercentUncertaintyCdVsQ_Series1.jpg}
+    \caption{The uncertainty quantification for discharge coefficient, $C_d$ for the first series of measurements.}
     \label{orif-s1}
    \end{center}
   \end{figure}
 
   \begin{figure}[!htb]
    \begin{center}
-    \includegraphics[width = 12 cm]{figs/PercentUncertaintyQVsQ_Series2.jpg}
-    \caption{fig2}
+    \includegraphics[width = 12 cm]{figs/PercentUncertaintyCdVsQ_Series2.jpg}
+    \caption{The uncertainty quantification for discharge coefficient, $C_d$ for the second series of measurements.}
     \label{orif-s2}
    \end{center}
   \end{figure}
@@ -167,7 +189,7 @@ pressure transducer is a much greater percentage of the pressure readings at the
 change in pressure increases non-linearly as flow rate increases, and so at high CFMs the percent error is 
 not as significant.
 
-Having calibated the orifice meter by determining the best obtainable value for $C_d$, we can 
+Having calibrated the orifice meter by determining the best obtainable value for $C_d$, we can 
 calculate the uncertainty of subsequent measurements of flow rate, $Q_{\text{orifice}}$, using this device.
 
 \begin{equation}
@@ -183,11 +205,37 @@ assuming a best and worst case scenario: where $U_{\Delta P}$ is a precision
   \frac{U_{Q}}{Q} = \sqrt{ \left(\frac{U_{C_d}}{C_d}\right)^2 + \left( 0.5 \frac{U_{\Delta P}}{\Delta P} \right)^2}
 \end{equation}
 
+Results:
+\begin{itemize}
+\item Series 1: Worst: $\frac{U_Q}{Q} = 0.093$ @ 5CFM and 0.0023 @ 50 CFM
+\item Series 1: Best:  $\frac{U_Q}{Q} = 0.066$ @ 5CFM and 0.00084 @ 50 CFM
+\item Series 2: Worst: $\frac{U_Q}{Q} = 0.11$ @ 5CFM and 0.0023 @ 50 CFM
+\item Series 2: Best:  $\frac{U_Q}{Q} = 0.076$ @ 5CFM and 0.00084 @ 50 CFM
+\end{itemize}
+
 These results show a similar trend as the uncertainty of the discharge coefficient, decreasing 
 exponentially as flow rate increases. For flow rates above 20 CFM, both series predict an uncertainty 
 well below 1\% of the flow rate measurement from the orifice meter.
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/PercentUncertaintyQVsQ_Series1.jpg}
+    \caption{The uncertainty quantification for flow rate, $Q$ for the first series of measurements.}
+    \label{orif-s1}
+   \end{center}
+  \end{figure}
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/PercentUncertaintyQVsQ_Series2.jpg}
+    \caption{The uncertainty quantification for flow rate, $Q$ for the second series of measurements.}
+    \label{orif-s2}
+   \end{center}
+  \end{figure}
 
 %
 %
 %
 \end{document}
+
+% LocalWords:  reynolds H20 piecewise RDG

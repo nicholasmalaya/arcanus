@@ -58,6 +58,7 @@ if __name__ == "__main__":
     d   = 1.8227
     D   = 4.0
     beta = d/D
+    print 'beta is', beta
 
     l1 = np.array(map(float, o1))
     l2 = np.array(map(float, o2))

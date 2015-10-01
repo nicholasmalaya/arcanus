@@ -26,6 +26,8 @@ def plot_series(time,voltage,name):
     print 'mean: ', avg
     print 'std : ', sig
 
+    import matplotlib
+    matplotlib.use('Agg')
     import matplotlib.pyplot as plt
 
     #
@@ -41,7 +43,7 @@ def plot_series(time,voltage,name):
     plt.axhline(y=up, xmin=0, xmax=1, hold=None,linewidth=4.0,color='red',label=r'$2\sigma$')
     plt.axhline(y=down, xmin=0, xmax=1, hold=None,linewidth=4.0,color='red')
 
-    plt.axis([0,1,1.19,1.215])
+    plt.axis([0,0.4,1.19,1.215])
 
     plt.legend(loc='best')
     plt.savefig('oriface_time.png')
