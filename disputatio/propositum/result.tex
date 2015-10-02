@@ -31,6 +31,8 @@ Potential Temperature is defined as,\todo{where are you using this fellow}
   \theta(x,y,z) = T(x,y,z) -T_{in}(z) 
 \end{equation}
 
+\todo{add energy flux calculation}
+
 \subsection{Thermal Only}
 
 While ambient winds in the field do impact system performance, it is
@@ -40,11 +42,42 @@ thermal-only flow is intended to optimize the SoV apparatus to form a
 strong thermal plume even in the absence of wind. After a system is
 engineered to form a strong thermal plume, we can investigate to ensure
 that the existing thermal vortex will be strengthened by the addition of
-winds.
+winds. 
 
-Two hundred Watts?\todo{fix these shitty figures}
+Here we show a representative case of an optimized thermal-only SoV
+configuration. The results shown are the averages of several snapshots
+from the field written over the course of several minutes. In general,
+the averaging times are on the order of 20-30 wash-out times, where a
+wash-out is defined as the time required for a particle at the base of
+the apparatus to flow out through the top boundary. The energy flux
+through the top of the vanes is roughly 88 watts. The solution
+demonstrates several features characteristic of naturally occuring dust
+devils. Figure \ref{fig:thermal} shows that we have formed a tight,
+coherent thermal plume roughly the same size as the inner diameter of the
+lower vanes. As anticipated, this hot flow is acting like a chimney,
+generating a large vertical velocity which in turn entrains and draws in
+outside flow. An image of the entrainment is shown in figure
+\ref{fig:entrain}. 
+
+
+
+
+This lends some credibilty to the notion that our turning vane
+configuration is generating something with parallels to a real dust
+devil.  
+
+\todo{fix these shitty figures}
 
   \begin{figure}[htp]
+   
+   \centering
+   \begin{minipage}{0.47\textwidth}
+    \includegraphics[width =0.9\textwidth]{figs/3d}
+    \caption{This image depicts isocountours of the inner thermal core
+    visible through semi-transparent contour around azimuthal velocity,
+    colored by vertical velocity. }
+   \end{minipage}      
+   \label{fig:thermal}  
 
    \centering   
    \begin{minipage}{0.47\textwidth}
@@ -55,17 +88,8 @@ Two hundred Watts?\todo{fix these shitty figures}
     vanes, as well as a broader region of entrained fluid through the
     second tier.} 
    \end{minipage}   
-   
-   \centering
-   \begin{minipage}{0.47\textwidth}
-    \includegraphics[width =0.9\textwidth]{figs/3d}
-    \caption{This image depicts isocountours of the inner thermal core
-    visible through semi-transparent contour around azimuthal velocity,
-    colored by vertical velocity. }
-   \end{minipage}      
    \label{fig:entrain}  
-  \end{figure}
-
+  \end{figure}   
 
 
 Rotating air induces low pressure core, as observed in:
@@ -91,7 +115,4 @@ Discussion thermal + wind
 
 \subsection{Optimization}
 
-%
-%\subsection{Character of the Solution}
-%
-%Talk about how the vortex transitions from phase 1 to 2, etc. 
+addin opt!
