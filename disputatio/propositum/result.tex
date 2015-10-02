@@ -2,15 +2,6 @@
 \section{Preliminary Results}
 \label{sec:results}
 
-\begin{itemize}
-\item need a coherent story here (organize as a story!)
-\item show some optimization examples, provide story
-\item character of solution(s), observations
-\item define how we measure flux!
-\end{itemize}
-
-
-
 The computer simulations of this proposal are intended to discover the
 optimal system configuration for a range of scenarios and system
 sizes. The results of these simulations will be used as input for the
@@ -37,9 +28,8 @@ thermal-only flow is intended to optimize the SoV apparatus to form a
 strong thermal plume even in the absence of wind. After a system is
 engineered to form a strong thermal plume, we can investigate to ensure
 that the existing thermal vortex will be strengthened by the addition of
-winds. 
+winds. \todo{do I need image of vanes?}
 
-\todo{fix these shitty figures}
 \begin{figure}[htb]
 
  \begin{subfigure}{.55\textwidth}
@@ -117,9 +107,14 @@ Figure \ref{fig:to-vert} depicts several vertical slices through the SoV
 for various state variables. One can see that there is a tight core
 vortex with azimuthal and vertical velocities of several meters per
 second. The tight vortex region coincides with a high temperature, low
-pressure core region. On the vertical velocity plot, notice that a small
+pressure core region. The rapidly rotating air near the center induces
+a low pressure core, as observed in real dust devils.
+On the vertical velocity plot, notice that a small
 downward flow region has formed in the middle of the vortex. 
 
+
+Rotating air induces low pressure core, as observed in:
+Dust Devils
 \begin{figure}[htb]
 
  \begin{subfigure}{.5\textwidth}
@@ -174,26 +169,103 @@ conditions, and operates as the ``prime-mover'' of the entire
 process. Broadening this plume will necessarily enhance the energy
 flux that can be extracted. However, the general physical
 mechanisms that determine the thermal plume's thickness are not
-presently understood. 
-
-
- \todo{fix these images}
-These slices lend credibilty to the notion that our turning vane
-configuration is generating something with parallels to a real dust
+presently understood. \todo{fix these images}
+Regardless, these slices lend credibilty to the notion that our turning
+vane configuration is generating something with parallels to a real dust 
 devil.   
-
-
-Rotating air induces low pressure core, as observed in:
-Dust Devils
 
 \subsection{Wind}
 
-Potential Temperature is defined as,\todo{where are you using this fellow}
-\begin{equation}
-  \theta(x,y,z) = T(x,y,z) -T_{in}(z) 
-\end{equation}
 
-Discussion thermal + wind
+
+%
+% horizontal slices
+%
+\begin{figure}[htb]
+
+ \begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.75\linewidth]{figs/wind_u}
+  \caption{Streamwise}
+  \label{fig:vt-wind}
+ \end{subfigure}%
+ \begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{figs/wind_w}
+  \caption{Vertical Velocity}
+  \label{fig:vz-wind}
+ \end{subfigure}%
+
+
+ \begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.85\linewidth]{figs/wind_t}
+  \caption{Temperature}
+  \label{fig:t-wind}
+ \end{subfigure}%
+ \begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.75\linewidth]{figs/wind_p}
+  \caption{Pressure}
+  \label{fig:p-wind}
+ \end{subfigure}%
+
+ \caption{Horizontal slices for the wind cases.}
+ \label{fig:wind-hor}
+\end{figure}
+
+%
+% vertical
+%
+\begin{figure}[htb]
+
+ \begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.75\linewidth]{figs/wind_u_vertical}
+  \caption{Streamwise}
+  \label{fig:vt-wind-vert}
+ \end{subfigure}%
+ \begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{figs/wind_w_vertical}
+  \caption{Vertical Velocity}
+  \label{fig:vz-wind-vert}
+ \end{subfigure}%
+
+
+ \begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.85\linewidth]{figs/wind_t_vertical}
+  \caption{Temperature}
+  \label{fig:t-wind-vert}
+ \end{subfigure}%
+ \begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.75\linewidth]{figs/wind_p_vertical}
+  \caption{Pressure}
+  \label{fig:p-wind-vert}
+ \end{subfigure}%
+
+ \caption{Vertical slices for the wind cases.}
+ \label{fig:wind-ver}
+\end{figure}
+
+
+%
+% t iso
+%
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/t_iso}
+    \caption{Isocountor of the Thermal Plume}
+    \label{fig:field_real}
+   \end{center}
+  \end{figure}
+
+%Potential Temperature is defined as,\todo{where are you using this fellow}
+%\begin{equation}
+%  \theta(x,y,z) = T(x,y,z) -T_{in}(z) 
+%\end{equation}
 
 \subsection{Optimization}
 
