@@ -50,7 +50,7 @@ regime. The flow is that of an unstably statified fluid.
 %
 
 The equations describing fluid flow at
-low Mach number with natural convection are, 
+low Mach number with natural convection are, \todo{fix me up}
 \begin{eqnarray*}
  \frac{\partial u}{\partial t} + u \cdot \nabla u =&
   -\frac{1}{\rho}\nabla P + \nu \nabla^2 u - g \frac{T'}{T_0}\\
@@ -208,22 +208,84 @@ thermal diffusivity inside the device, $K_C$, is then set with the
 assumption that the Prandlt number is unity.  
 
 \subsection{Vane and Turbine Representation}
-\todo{write me!}
 
-Provide motivation. -- rapidly prototype vanes
+In order to rapidly prototype general system configurations, the
+computational effort must be able to explore a large space of possible
+geometries and settings. This presents a significant meshing
+problem. In the region near the vanes, where a no-slip boundary
+condition is imposed, the flow will necessarily form a thin momentum
+boundary layer. Resolving this boundary layer requires high resolutions
+immediately adjacent to the walls. Thus, altering the location of vanes
+alters the location of the boundary layer mesh. This is a significant
+challenge, as the development of a new mesh often requires significant
+human effort and time. Furthermore, the process is extremely
+error-prone, and would require each simulation using a mesh undergo
+some form of solution verification. 
 
-Show how the forcing is rendered. 
+Instead, we have developed a modeling method that does not require
+explicitly meshing the turning vanes, or any surface. Instead, we impose
+a forcing designed to closely mimic the forces a fluid would experience
+in the region of such a surface. For example, instead of explicitly
+gridding twelve turning vanes, we define a region of forcing within the
+outer and inner radii where the vanes would be. This region of ``virtual
+vanes'' is akin to an infinite number of vanes all arranged identically
+with an angular symmetry. However, in reality the flow can penetrate a
+finite thickness $\delta$ before it impinges upon a vane and is
+necessarily turned. Thus, while our model 
 
-Need a forcing image here? or just picture of vane?
+We 
+
+do not model drag. 
+
+infinite vanes
+
+necessarily results in a modest loss of accuracy
+
+
+To implement a distributed representation of the vanes and turbine, it
+is necessary to determine the normal to a vane passing through a point
+(x,y), since we desire for the velocity has no component in the normal
+direction. 
+
+Forcing designed in such a manner is
+not unique to this project, and is closely related to (among others) the
+``immersed boundary technique'' used by various other researchers\cite{immersed}.
+More details on how the forcing itself is imposed on the fluid are
+discussed in the subsequent section \ref{sec:software}. 
 
 write up seperation model as well!
 
 \subsection{Cone Representation}
-\todo{write me!}
+
+We also desire to model rigid surfaces, such as a cone or cylinder, that
+permit no penetrating flow. As with the vanes, we would prefer to avoid
+any methods that would require explicit meshing and imposition of an
+additional boundary condition at the surface of the object. Rather, we
+desire to again weakly impose a forcing that we expect to be consistent
+with the forcing a fluid would see in the vicinity of a rigid surface. 
+
+The surface of a rigid object requires simply that we
+define a normal vector that would permit no flow. In other words, we
+define an outward pointing normal vector from the surface of the object
+with a sufficiently large penalty vector so as to ensure that the
+penetration distance is small, e.g. 
+
+
 Surface is easy to define
+
+
+
+A weakness of this technique is that for
+any finite penetration distance, some fluid will necessarily bleed
+through. We expect to consider investigating other results in 
+immersed boundary methods and related literature to investigate this
+impact more fully. 
 
 \subsection{Surface Roughness}
 \todo{write me!}
+
+Finally, we have need to also invoke more abstract forcing
+
 
 surface roughness impact\cite{oke1987boundary}
 Volumetric force
@@ -231,4 +293,4 @@ expected to mimic surface roughness of flow
 cite for surface roughness
 energy introduced into flow is small fraction of total flow energy
 
-
+kick up ramps as well as surface roughness
