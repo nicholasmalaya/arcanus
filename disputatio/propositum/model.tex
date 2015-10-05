@@ -274,10 +274,6 @@ is not unique to this project, and is closely related to (among others)
 the ``immersed boundary technique'' used by various other
 researchers\cite{immersed}. 
 
-\subsection{Separation Model}
-
-
-
 \subsection{Cone Representation}
 
 We also desire to model rigid surfaces, such as a cone or cylinder, that
@@ -291,12 +287,12 @@ The surface of a rigid object requires simply that we
 define a normal vector that would permit no flow. In other words, we
 define an outward pointing normal vector from the surface of the object
 with a sufficiently large penalty vector so as to ensure that the
-penetration distance is small, e.g. 
+penetration distance is small, e.g. significantly larger than in the
+case of the vanes. Furthermore, the penalty parameter in this case is
+not associated with a physical lengthscale, but rather, a modeling
+artifact. 
 
-
-Surface is easy to define
-
-
+%Surface is easy to define
 
 A weakness of this technique is that for
 any finite penetration distance, some fluid will necessarily bleed
@@ -304,16 +300,29 @@ through. We expect to consider investigating other results in
 immersed boundary methods and related literature to investigate this
 impact more fully. 
 
+
+\subsection{Separation Model}
+
+mention how this is similar to the other\todo{finish me!}
+
 \subsection{Surface Roughness}
-\todo{write me!}
 
-Finally, we have need to also invoke more abstract forcing
-
-
-surface roughness impact\cite{oke1987boundary}
-Volumetric force
-expected to mimic surface roughness of flow
-cite for surface roughness
-energy introduced into flow is small fraction of total flow energy
-
-kick up ramps as well as surface roughness
+Finally, we also have need to invoke more abstract body forces. 
+Our principle use case is model the surface roughness
+impact, which is expected to be non-trivial\cite{oke1987boundary}. This
+is more straight-forward than the previous cases, where the forcing is
+simply defined uniformly over a region and set based on, 
+\begin{equation}
+ F = \frac{1}{2}\rho V^2 A_F. 
+\end{equation}
+We ensure that the energy introduced into flow is small fraction of
+total flow energy by comparing with the energy flux through the top of
+the vanes with the total volumetric forcing, e.g. 
+\begin{equation}
+ E_{\text{injected}} = \int_0^\infty F dz. 
+\end{equation}
+This general forcing provides additional capabilities including the
+ability to investigate engineering greater surface roughness or
+structures that could provide greater ``kick-up'' of the thin thermal
+layer near the surface into the flowing regime. It can also support more
+general turning configurations than the virtual vanes outlined above. 
