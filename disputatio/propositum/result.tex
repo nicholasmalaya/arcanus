@@ -248,6 +248,27 @@ devil.
  \label{fig:wind-ver}
 \end{figure}
 
+Observe that in all the plots, the thermal plume is significantly less
+visible than in the thermal-only cases. While the
+thermal-plume is necessarily weaker relative to the wind, some of this
+is also due to the plume no longer being directly centered in the
+flow. The plume is more visible using isocountors to render a
+three-dimensional surface. Unlike the thermal-only, the flow in the wind
+cases has a strong thermal gradient even exterior to the device. In
+order to capture the difference between the ambient vertical temperature
+and the warmer thermal plume, we use the potential temperature, defined
+as, 
+\begin{equation}
+  \theta(x,y,z) = T(x,y,z) -T_{in}(z) 
+   \label{eqn:theta}
+\end{equation}
+where $T_{in}$ is the proscribed inflow boundary temperature, described
+in section \ref{sec:bc}. In this way the background potential
+temperature is nearly zero, and larger values represent deviations from
+the base flow temperature. The isocountour of a three Kelvin delta is 
+depicted in figure \ref{fig:field_real}. This gradient was selected as
+it was noted as sufficient for formation of a dust devil by
+Sinclair\cite{Sinclair1969}. 
 
 %
 % t iso
@@ -255,15 +276,11 @@ devil.
   \begin{figure}[!htb]
    \begin{center}
     \includegraphics[width = 12 cm]{figs/t_iso}
-    \caption{Isocountor of the Thermal Plume}
+    \caption{Isocountor of the Thermal Plume. Here, the isocontour is
+    labelled by the potential temperature, $\theta$, as defined in \ref{eqn:theta}.}
     \label{fig:field_real}
    \end{center}
   \end{figure}
-
-%Potential Temperature is defined as,\todo{where are you using this fellow}
-%\begin{equation}
-%  \theta(x,y,z) = T(x,y,z) -T_{in}(z) 
-%\end{equation}
 
 \subsection{Optimization}
 
@@ -294,9 +311,9 @@ results in,
  \dot E = -\frac{\rho }{2} \int V_z (V_{\theta}^2 + V_z^2 ) dA
  \end{equation}
 This shows the energy each unit mass of fluid carries with it as it
-moves through the 
+moves through the defined surface. 
 
-\begin{figure}[htb]
+\begin{figure}[htb!]
  \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=.75\linewidth]{figs/before_vanes}
@@ -314,7 +331,7 @@ moves through the
 
 image of flow before after
 
-\begin{figure}[htb]
+\begin{figure}[htb!]
  \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=.75\linewidth]{figs/before_opt}
