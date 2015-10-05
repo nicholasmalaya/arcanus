@@ -229,31 +229,54 @@ in the region of such a surface. For example, instead of explicitly
 gridding twelve turning vanes, we define a region of forcing within the
 outer and inner radii where the vanes would be. This region of ``virtual
 vanes'' is akin to an infinite number of vanes all arranged identically
-with an angular symmetry. However, in reality the flow can penetrate a
-finite thickness $\delta$ before it impinges upon a vane and is
-necessarily turned. Thus, while our model 
+with angular symmetry. To formulate a penalty function, we want to
+penalize any component of the velocity vector $\textbf{u}$ in the region
+of forcing in the \textbf{n} direction. We also desire that the penalty
+function not do any work on the flow, so it must be normal to
+\textbf{u}. Our forcing will have no variation in height (z), and the
+forcing will scale quadratically in velocity. For a penalty, $\textbf{p}$, this
+will have the form,   
 
-We 
+\begin{equation}
+ \textbf{p} \propto -\left(\textbf{u} \cdot \textbf{n}\right)
+  \Vert \textbf{u} \Vert \textbf{n}.
+\end{equation}
 
-do not model drag. 
+However, in reality the flow can penetrate a finite thickness $\delta$
+before it impinges upon a vane and is necessarily turned. Thus, and in
+contrast to typical penalty methods, the scaling parameter for the
+enforcement of the condition is weakly imposed. We scale the penalty
+function by, 
 
-infinite vanes
+\begin{equation}
+ \textbf{p} = - \frac{1}{\epsilon r_0} \left(\textbf{u} \cdot \textbf{n}\right)
+  \Vert \textbf{u} \Vert \textbf{n}.
+\end{equation}
 
-necessarily results in a modest loss of accuracy
+Our penalty parameter, $\epsilon$, now has a physical interpretation,
+which is the distance in units of $r_0$ over which the normal component
+of \textbf{u} of the velocity decays exponentially. We therefore set
+this value to be roughly the distance between the individual vanes,
+which is roughly the extent we expect the vanes to constrain the flow
+over. This is easily scaled for larger or small system diameters. 
+Notice also that we are not modeling drag. Assigning a small, quadratic
+in velocity non-normal component of forcing in opposition to the flow direction
+would be consistent with our expectations for a small drag force. 
+
+To implement this distributed representation of the vanes and turbine,
+we need only determine the normal to a vane passing through a
+point (x,y), since we desire for the velocity has no component in the
+normal direction. This is a very broad and general formulation that can
+support a wide variety of vane curvatures and angles. More details on
+how the forcing itself is imposed on the fluid are discussed in the
+subsequent section \ref{sec:software}. Forcing designed in such a manner
+is not unique to this project, and is closely related to (among others)
+the ``immersed boundary technique'' used by various other
+researchers\cite{immersed}. 
+
+\subsection{Separation Model}
 
 
-To implement a distributed representation of the vanes and turbine, it
-is necessary to determine the normal to a vane passing through a point
-(x,y), since we desire for the velocity has no component in the normal
-direction. 
-
-Forcing designed in such a manner is
-not unique to this project, and is closely related to (among others) the
-``immersed boundary technique'' used by various other researchers\cite{immersed}.
-More details on how the forcing itself is imposed on the fluid are
-discussed in the subsequent section \ref{sec:software}. 
-
-write up seperation model as well!
 
 \subsection{Cone Representation}
 
