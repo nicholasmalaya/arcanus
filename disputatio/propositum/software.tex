@@ -13,10 +13,10 @@
 \subsection{Discretization Scheme}
 
 To instantiate the Navier-Stokes equations on computer, we utilize a
-Galerkin finite element discretization (FEM), with linear basis functions for
-both the velocity and pressure. Unlike the typical FEM formulations,
-this scheme circumvents the Babuska-Brezzi conditions and permits use of
-equal-order elements for velocity and 
+Galerkin finite element method discretization (FEM), with linear basis
+functions for both the velocity and pressure. Unlike the typical FEM formulations,
+this scheme circumvents the Babuska-Brezzi conditions\cite{bb-cond} and
+permits use of equal-order elements for velocity and 
 pressure. This is accomplished through the introduction of a
 stabilization term first described by Hughes\cite{Hughes198685} and
 expanded to a natural convection domain (with sane choices of
@@ -31,18 +31,18 @@ stability regardless of timestep size.
 \todo{write me!}
 Talk about penalty method here
 cite babuska
-cite immersed bounday methods?
+cite immersed boundary methods?
 
 
 \subsection{Simulation Geometry and Boundary Conditions}
-
+\label{sec:bc}
 %
 % be sure to mention the 'sponge' layer. would also be nice to have
 % references to papers on it! 
 %
 
 
-All simulations are perfomed in a cuboid domain, with 6 faces. We
+All simulations are performed in a cuboid domain, with 6 faces. We
 utilize a uniform mesh in the lateral directions, and a non-uniform mesh
 in height to resolve the boundary layer. The meshes are scaled by system
 diameter. So the same number of grid points are used for every
@@ -72,9 +72,9 @@ the vanes, the concentrated hot plume is lifted by buoyancy
 upward and out of the simulation domain. However, the radial inflow
 towards the apparatus is drawn in by large scale convection cells larger
 than the system diameter. Thus, our boundary conditions must permit
-inflow along the areas above and external to the vanes. To prevent the
-problem being ill-posed, the ``v'' and ``u'' components of inflow
-velocity are set to zero. 
+inflow along the areas above and external to the vanes. To avoid an
+ill-posed problem, the ``v'' and ``u'' components of inflow velocity are
+set to zero.  
 
 Finally, a ``sponge layer'' is labeled near the top boundary. This layer
 artificially increases the momentum diffusivity by ten times the nominal
@@ -86,7 +86,8 @@ that the character of solution not important in this region, and that
 our physical interest remains focused on the region inside and
 in immediate proximity to the vanes, we introduced a higher diffusivity
 ``sponge'' region that would diffuse the high velocity exiting jets
-sufficiently to prevent numerically un-physical behavior. 
+sufficiently to prevent numerically un-physical behavior. No results are
+quoted from this region, as it is not considered meaningful. 
 
 \begin{figure}[!htb]
   \begin{center}
@@ -110,11 +111,11 @@ The thermal boundary layer is assumed to have a similar boundary layer,
 but, as observed in real atmospheric flows, there remains a vertical
 temperature gradient outside the thin boundary layer. Based on
 literature a $2/3$ Kelvin per meter gradient has been
-selected\cite{}. The sides, outflow and top are all set to modified
-neumann boundary conditions, as described above. The outflow region in
-the back also needs the modified neumann as it does occassionally
-exhibit mild inflow on account of the unsteady wake. Sponge layers are
-set along the top and back of the box. 
+selected\cite{Blocken2007238}. The sides, outflow and top are all set to
+modified neumann boundary conditions, as described above. The outflow
+region in the back also needs the modified neumann as it does
+occasionally exhibit mild inflow on account of the unsteady wake. Sponge
+layers are set along the top and back (outflow) of the box. 
 
 %
 %335+18*tanh(-z/0.1)-z*2/3
@@ -140,15 +141,15 @@ set along the top and back of the box.
 
 \subsection{Software Stack}
 
-A natural choice for FEM software is the
+A natural choice for FEM software is 
 libMesh\cite{libMeshPaper}. Libmesh provides a wide set of tools with
 which to build a mesh-based application. However, originally libMesh
 applications were required to reimplement many kernels common to finite
 element applications, including assembly loops, time integration
 schemes, etc.  
 
-We therefore utilize the GRINS library\cite{GRINSpaper}.
-GRINS was designed to support multiphysics FEM
+We therefore utilize the GRINS library\cite{GRINSpaper}, which sits on
+top of the libMesh kernel. GRINS was designed to support multiphysics FEM
 applications, the reusability and extensibility of mathematical
 modeling kernels, supporting interfaces to existing solver and
 discretization libraries to enable modern solution strategies, while, at
@@ -157,7 +158,9 @@ or engineering problem of focus.
 
 GRINS provides a platform that enables powerful numerical algorithms
 such as adjoint-based AMR, adaptive modeling, sensitivity analysis,
-and, eventually, enabling uncertainty quantification.
+and, eventually, enabling uncertainty quantification. While few of these
+capabilities are in use for the present work, they could be useful in
+future investigations. 
 
 GRINS stands for, ``General Reacting Incompressible Navier-Stokes'',
 which roughly encapsulates the physical regimes it was originally
@@ -193,11 +196,12 @@ supercomputer's Lonestar Four and Stampede. Run durations are typically
 twelve hours to perform several hundred timesteps. 
 These runs are generally submitted to the production queue and are  
 264-528 processing cores, 
-or 22-44 nodes on lonestar (with 12 cores per node), and a similar number
+or 22-44 nodes on Lonestar (with 12 cores per node), and a similar number
 for Stampede. The runs typically have several million degrees of freedom (DoF), 
-and thus the local (per core) DoF maintained at $O(10^4)$. This was selected due to 
-memory considerations and after a strong scaling analysis of the codebase on these 
-resources, as well as consulting with the software primary developers. 
+and the local (per core) DoF is maintained at $O(10^4)$. This was
+selected due to memory considerations, after a strong scaling
+analysis of the performance of the codebase on these resources, and
+after consulting with the software developers.  
 
 After a run terminates, several worker scripts are automatically invoked. 
 These scripts automatically archive the run (outside of the volatile /scratch 
@@ -205,12 +209,12 @@ production directories) and simultaneously, label the concluded run with
 unique metadata that defines the system environment, the jobs input
 files and run definitions, as well as information detailing the
 hypothesis or physics the job was intended to investigate. Finally, once
-a week an rsync is performed on the entire archived database to ensure
-more than single redundancy for the runs. 
+a week a script performs \textbf{rsync} on the entire archived database to
+ensure more than single redundancy for the runs. 
 
 In other words, the workflow is sufficiently advanced as to permit
-rapidly queuing a series of runs (in parallel) that are intended to
+rapidly queuing a series of runs (in parallel) so as to
 investigate a variety of conditions or scenario parameters. This
-capabilty is necessary for the optimization campaign detailed in
-\ref{sec:proposed_work}, where running many concurent investigations
-will be required to adaquetly sample the configuration space. 
+capability is necessary for the optimization campaign detailed in
+\ref{sec:proposed_work}, where running many concurrent investigations
+will be required to adequately sample the configuration space. 
