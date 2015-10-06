@@ -19,7 +19,7 @@ dust devil, we first address what is known about the naturally occuring
 phenomena. We therefore begin this section with a qualitative discussion
 of dust-devils, followed by a review of the known physics and pertinent 
 literature review. We then briefly outline how we intend to leverage
-these physical processess as a method of usable energy generation. 
+these physical processes as a method of usable energy generation. 
 
 
 \subsection{Phenomenological Character of Dust Devils}
@@ -48,11 +48,11 @@ While they typically exist for only a few minutes, some have
 been observed to exist for significantly longer. While the velocities are 
 typically several meters per second, 
 %
-% solen from: http://glossary.ametsoc.org/wiki/Fujita_scale
+% stolen from: http://glossary.ametsoc.org/wiki/Fujita_scale
 %
 dust devils occasionally are strong enough to cause damage and injury,
 with some reaching F1 on the Fujita Tornado intensity
-scale\cite{}\todo{missing cite here}, with velocities between 33 and 49
+scale\cite{Edwards_tornadointensity}, with velocities between 33 and 49
 $m/s$. 
 %
 % F1 (moderate damage): 33-49 m s-1
@@ -111,8 +111,7 @@ low pressure core. This region is typically many times larger in height than the
 surface layer. While this region also has radial inflow, but it is 
 significantly weaker than the lower region. Previous studies have found that
 this region is relatively well described by a Rankine vortex
-model\cite{}\todo{missing cite}. 
-Both of these regions are sketched out as a simple 
+model\cite{Sinclair1973}. Both of these regions are sketched out as a simple 
 cartoon in Figure \ref{fig:cartoon}. 
 
   \begin{figure}[!htb]
@@ -130,7 +129,7 @@ Here we provide a rough estimate of the energy
 available to a dust devil. There are two objectives behind this
 analysis. The first is to provide justification for the concept of
 extracting energy from these phenomena, with the reasoning that should
-sufficient energy be available, then attemping to extract it might be
+sufficient energy be available, then attempting to extract it might be
 worthwhile. The second objective is to provide a simple analysis that
 can serve as a measure of the efficiency of the generation process,
 e.g. ``What fraction of the available energy are we extracting?''.  
@@ -158,7 +157,7 @@ kinetic energy flux as a surface integral over the upstream face of the device,
 % could cite fluid dynamics book here
 % pg. 239
 %
-We make several simplyfying assumptions. We assume our freestream
+We make several simplifying assumptions. We assume our freestream
 velocity has no components in y and z. 
 We assume that the variation in height for the streamwise velocity is only on
 account of the thin boundary layer near the ground. We functionally
@@ -218,7 +217,7 @@ that $\rho' = -\beta \rho_0 \Delta T$, resulting in,
 
 Using $\rho_0 = 1.225$ Kg/$m^3$, $T_{\text{ref}}=313$m Kelvin, $\beta_T
 = 0.003194$ (This is just 1/$T_{\text{ref}}$), $g=9.81$ m/$s^2$, and a
-freesteam velocity of five meters per second results in an
+freestream velocity of five meters per second results in an
 estimate of 30 Watts for the gravitational potential energy. 
 
 This interesting result implies that the majority of the available
@@ -239,7 +238,7 @@ to play an important role.
 
 \subsection{Dust Devil Generation Concept}
 
-The preceeding discussion has provided justification for the idea of
+The preceding discussion has provided justification for the idea of
 dust devils as carriers of non-trivial levels ambient kinetic and
 gravitational potential energy from the environment. This  
 subsection now provides a brief discussion of how the physics of 
@@ -303,7 +302,7 @@ maximum angle at a specified inner radius.
 %% \end{figure}
 
 Our principle objective is to use a synthetic dust devil to produce 
-useable work. In order to extract the energy from the synthetic dust
+usable work. In order to extract the energy from the synthetic dust
 devil we have generated, a turbine is placed 
 at or near the top of the 2nd tier of turning vanes. 
 The blades of the turbine will be driven by the dust devil's azimuthal
@@ -311,7 +310,7 @@ and vertical velocities. While the Betz limit gives a reasonable
 expectation of the efficiency with which energy can be expected to be
 extracted from the ambient dust devil velocity field, there are other
 non-trivial design considerations. In particular, the impact of the
-turbine on the dust devil's vortex, and any potential distruption of the
+turbine on the dust devil's vortex, and any potential disruption of the
 flow on account of the turbine must be investigated. Optimizing the
 turbine to maximize the energy extraction while simultaneously
 minimizing it's impact on the character of the dust devil's solution
@@ -330,9 +329,9 @@ consideration include:
 
 Questions such as these provide the principle impetus of using
 computational fluid dynamics (CFD) in order to inform system design. The
-parameter space of concievable system designs is far larger than can be
+parameter space of conceivable system designs is far larger than can be
 probed experimentally, and even if such a campaign were to be embarked
-upon, it would be at significantly greater temporal and monitary
+upon, it would be at significantly greater temporal and monetary
 cost. The subsequent chapter will provide the mathematical basis by which
 we model the system, so that we can then begin to discuss how we might
 optimize it computationally.  
