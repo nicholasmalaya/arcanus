@@ -63,7 +63,7 @@ optimization domains, for the cone, turbine and vanes. Table
 vanes. We propose nine parameters to optimize for the
 vanes. $\theta^{\text{t}}_{\text{min}}$ and
 $\theta^{\text{b}}_{\text{min}}$ are the top and bottom tier minimum
-angles. This is essentially the starting angle for the curved
+angles. This is essentially the starting (and minimum) angle for the curved
 vanes. Preliminary investigations have given no indication that the
 bottom tier is receptive to anything but a fully radial angle
 (e.g. $0^{\circ}$). For the top tier, however, a non-zero
@@ -202,7 +202,7 @@ core hours. Our overall compute budget will likely be between one hundred
 thousand to one million core hours. In other words, our present
 computational budge will support running between roughly 30 to 300
 instances for our parameter sweep. While this is not insubstantial, this
-is likeyly not a sufficient number of evaluations to support formal
+is not a sufficient number of evaluations to support formal
 optimization algorithms. We do not, \textit{a priori} know the number of
 iterations necessary to solve the system, as it is non-linear. Gradient
 and derivative information is also difficult to access, as solving the
@@ -216,8 +216,8 @@ structure of the problem.
 %
 % introduce concept of subdomains
 %
-Our expectation then, is to proceed with optimization in a manner
-similar to the examples outlined in \ref{sec:results}, where new
+Our expectation is that we will proceed with optimization in a manner
+similar to the examples outlined in section \ref{sec:results}, where new
 parameter values are introduced, a run is performed, and then the output
 is postprocessed and evaluated before the process begins again. Each
 iteration is therefore much more expensive, as it requires human
