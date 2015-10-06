@@ -26,7 +26,7 @@ surface of the earth.
 This section details an analysis of surface fluid mechanics, and
 develops a mathematical model for turbulence in a thermally stratified
 medium. We seek to emulate the operation of the apparatus during the day, 
-when dust devils are observed to form for readily. 
+when dust devils are observed to form readily. 
 At these times, the atmospheric surface layer has the following character. 
 Incident radiation from the sun largely does not interact with the
 air, which is nearly transparent. Instead, this radiation is absorbed by
@@ -42,7 +42,7 @@ to turbulence. For the typical use case we consider, namely Arizona in
 summer, the temperature gradient can be in excess of 30 Kelvin. 
 Rayleigh numbers associated with this are typically between $10^{9} -
 10^{11}$, and therefore meet the criterion for transition to a turbulent
-regime. The flow is that of an unstably statified fluid. 
+regime. The flow is that of an unstably stratified fluid. 
 
 \subsection{Equations of Fluid Motion}
 %
@@ -70,7 +70,7 @@ As discussed above, we anticipate our flow to be
 turbulent. Turbulence significantly alters the character of the flow,
 and necessitates either resolving the resulting small scales or
 providing a model that emulates their impact. In this case, we utilize 
-essentally a Reynolds Averaged Navier-Stokes (RANS) model, where we
+essentially a Reynolds Averaged Navier-Stokes (RANS) model, where we
 permit the viscosity and thermal conductivities to vary in space, and
 decompose the flow into constant laminar and varying turbulent and vane
 components,  
@@ -81,7 +81,8 @@ components,
 
 This is an effective eddy viscosity model, and the subsequent two
 sections will elaborate on the spatial dependence and character of
-$\nu_T$, $K_T$, $\nu_C$ and $K_C$. 
+$\nu_T$, $K_T$, $\nu_C$ and $K_C$. $\nu_l$ and $K_l$ are the laminar,
+base diffusivities and do not vary in space. 
 
 \subsection{Viscosity Model}
 
@@ -100,17 +101,17 @@ We begin by using dimensional analysis, and noting that the dynamics of
 any mean quantity ($\bar f$) in a thermally stratified medium only depend on,
 
 \begin{equation}
-\bar f = f(z_0,\frac{g}{T_0},\rho_0,\nu,k,u^*,q)
+\bar f = f(z_0,\frac{g}{T_0},\rho_0,\nu_l,K_l,u^*,q)
 \end{equation}
 
-We expect that aside from very near the surface, the diffusivities $\nu$
-and $k$ will be small compared to their turbulent counter-parts, $\nu_T$
+We expect that aside from very near the surface, the diffusivities $\nu_l$
+and $K_l$ will be small compared to their turbulent counter-parts, $\nu_T$
 and $K_T$. Likewise, if we define $z-z_0$ as an ``effective roughness
 height'' or displacement distance, we can reasonably neglect $z_0$ from these
 considerations. While the roughness height can be large (for instance in
 a cornfield, where the roughness height could reasonably be several
 meters), for our present study the expectation is that this roughness
-height will be on the order of centimeters\cite{}. 
+height will be on the order of centimeters\cite{oke1987boundary}. 
 
 This leaves only five parameters: the distance from the ground, z; the
 buoyancy coefficient, $\frac{g}{T_0}$; the density of the fluid,
@@ -187,8 +188,10 @@ account for the generation of turbulence in the region of the
 vanes. This diffusivity would then convect and diffuse through space. In
 order to avoid modeling a temporal and three-dimensionally spatially
 varying field of diffusivities, we have instead calibrated the field
-based on data provided by our partners at Georgia Tech. This calibration
-is detailed in Section \ref{sec:validation}. We then set the eddy-viscosity in
+based on data provided by our partners at Georgia Tech. 
+%This calibration
+%is detailed in Section \ref{sec:validation}. 
+We then set the eddy-viscosity in
 the region of the vanes and interior to them based on scaling relations
 for a turbulent self-similar circular jet, as in
 Pope\cite{pope2000turbulent},
@@ -204,7 +207,7 @@ apparatus. $\bar \nu_C $ is input, measured from the experimental
 laboratory.  The diffusivity here is essentially a top hat filter, which
 radial values interior to the vanes the nominal calibrated value, and
 those outside the vanes zero, e.g. $\nu_C(r>r_{\text{vane}})=0$. The
-thermal diffusivity inside the device, $K_C$, is then set with the
+thermal diffusivity inside the device, $K_C$, is then fixed with the
 assumption that the Prandlt number is unity.  
 
 \subsection{Vane and Turbine Representation}
@@ -226,7 +229,8 @@ Instead, we have developed a modeling method that does not require
 explicitly meshing the turning vanes, or any surface. Instead, we impose
 a forcing designed to closely mimic the forces a fluid would experience
 in the region of such a surface. For example, instead of explicitly
-gridding twelve turning vanes, we define a region of forcing within the
+assembling grids for twelve turning vanes, we define a region of forcing
+within the 
 outer and inner radii where the vanes would be. This region of ``virtual
 vanes'' is akin to an infinite number of vanes all arranged identically
 with angular symmetry. To formulate a penalty function, we want to
@@ -234,27 +238,28 @@ penalize any component of the velocity vector $\textbf{u}$ in the region
 of forcing in the \textbf{n} direction. We also desire that the penalty
 function not do any work on the flow, so it must be normal to
 \textbf{u}. Our forcing will have no variation in height (z), and the
-forcing will scale quadratically in velocity. For a penalty, $\textbf{p}$, this
-will have the form,   
+forcing hold quadratic scaling in velocity. For a penalty,
+$\textbf{p}$, this will have the form,   
 
 \begin{equation}
- \textbf{p} \propto -\left(\textbf{u} \cdot \textbf{n}\right)
-  \Vert \textbf{u} \Vert \textbf{n}.
+ \textbf{p} \propto -\Vert \textbf{u} \Vert \left(\textbf{u} \cdot
+					     \textbf{n} \right) 
+  \textbf{n}.
 \end{equation}
 
-However, in reality the flow can penetrate a finite thickness $\delta$
+However, in reality the flow can penetrate a finite thickness
 before it impinges upon a vane and is necessarily turned. Thus, and in
 contrast to typical penalty methods, the scaling parameter for the
 enforcement of the condition is weakly imposed. We scale the penalty
 function by, 
 
 \begin{equation}
- \textbf{p} = - \frac{1}{\epsilon r_0} \left(\textbf{u} \cdot \textbf{n}\right)
-  \Vert \textbf{u} \Vert \textbf{n}.
+ \textbf{p} = - \frac{1}{\epsilon r_0} \Vert \textbf{u} \Vert
+  \left(\textbf{u} \cdot \textbf{n}\right) \textbf{n}.
 \end{equation}
 
-Our penalty parameter, $\epsilon$, now has a physical interpretation,
-which is the distance in units of $r_0$ over which the normal component
+Our penalty parameter, $\epsilon$, now has a physical interpretation.
+It is the distance in units of $r_0$ over which the normal component
 of \textbf{u} of the velocity decays exponentially. We therefore set
 this value to be roughly the distance between the individual vanes,
 which is roughly the extent we expect the vanes to constrain the flow
@@ -271,8 +276,8 @@ support a wide variety of vane curvatures and angles. More details on
 how the forcing itself is imposed on the fluid are discussed in the
 subsequent section \ref{sec:software}. Forcing designed in such a manner
 is not unique to this project, and is closely related to (among others)
-the ``immersed boundary technique'' used by various other
-researchers\cite{immersed}. 
+the ``immersed boundary methods'' used by various other
+researchers\cite{doi:10.1146/annurev.fluid.37.061903.175743}. 
 
 \subsection{Cone Representation}
 
@@ -289,7 +294,7 @@ define an outward pointing normal vector from the surface of the object
 with a sufficiently large penalty vector so as to ensure that the
 penetration distance is small, e.g. significantly larger than in the
 case of the vanes. Furthermore, the penalty parameter in this case is
-not associated with a physical lengthscale, but rather, a modeling
+not associated with a physical length scale, but rather, a modeling
 artifact. 
 
 %Surface is easy to define
@@ -315,12 +320,13 @@ simply defined uniformly over a region and set based on,
 \begin{equation}
  F = \frac{1}{2}\rho V^2 A_F. 
 \end{equation}
-We ensure that the energy introduced into flow is small fraction of
-total flow energy by comparing with the energy flux through the top of
-the vanes with the total volumetric forcing, e.g. 
+The total energy injected into the flow can be measured as, 
 \begin{equation}
  E_{\text{injected}} = \int_0^\infty F dz. 
 \end{equation}
+We ensure that the energy introduced into flow is small fraction of
+total flow energy by comparing this with the energy flux through the top
+of the vanes. 
 This general forcing provides additional capabilities including the
 ability to investigate engineering greater surface roughness or
 structures that could provide greater ``kick-up'' of the thin thermal
