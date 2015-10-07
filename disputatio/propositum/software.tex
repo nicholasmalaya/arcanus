@@ -69,15 +69,19 @@ scaling artificially introduced in order to ensure that the no-slip
 condition approximately holds. So long as the value of $\epsilon$ is
 sufficiently small, the velocities will closely match. 
 
-While this method is typically used as \todo{finish me}
+While this method is typically used as a means to enforce boundary
+conditions, it is perfectly amenable for our purposes, where a much lower
+value of the penalty parameter ensures that the region where the penalty
+is applied will gently transition to the enforced value, instead of
+behaving like a rigid surface as is common for the penalty methods.
 
 \subsection{Simulation Geometry and Boundary Conditions}
 \label{sec:bc}
+
 %
 % be sure to mention the 'sponge' layer. would also be nice to have
 % references to papers on it! 
 %
-
 
 All simulations are performed in a cuboid domain, with 6 faces. We
 utilize a uniform mesh in the lateral directions, and a non-uniform mesh
@@ -116,7 +120,7 @@ set to zero.
 Finally, a ``sponge layer'' is labeled near the top boundary. This layer
 artificially increases the momentum diffusivity by ten times the nominal
 value. This was designed in response to instabilities in the modified
-neumann boundary condition that occured when small, high velocity fluid
+neumann boundary condition that occurred when small, high velocity fluid
 parsels would exit the top. This would create high velocity inflows, and
 the feedback loop would result in numerical blow-up. Mindful of the fact
 that the character of solution not important in this region, and that
