@@ -28,12 +28,48 @@ The unsteady solver used is typically backward Euler for the corresponding
 stability regardless of timestep size. 
 
 \subsection{Penalty Method Implementation}
-\todo{write me!}
-Talk about penalty method here
-cite babuska\cite{1973fempen}
 
-cite immersed boundary methods?
+In the previous section we discussed imposing a forcing on 
+the flow subject to a weakly enforced constraint. In this way we ensure 
+the flow will align with the normal vector we proscribe to meet our
+modeling intentions for how we expect the flow to behave, be that for
+turning vanes, rigid surfaces, or a turbine. 
 
+We actually enforce this penalty method numerically by using Babuska's
+penalty method\cite{1973fempen}, which we outline below. 
+Consider Laplace's equation as a test problem, 
+\begin{equation}
+ \nabla^2 u = 0 
+\end{equation}
+We can incorporate a Dirichlet boundary condition, 
+\begin{equation}
+ u|_{\Gamma_D} = g
+\end{equation}
+with a penalty function using penalty value $\frac{1}{\epsilon}$.
+With a test function, $v$, the inexact weak formulation is now
+\begin{equation}
+\int_{\Omega}  - \nabla u \cdot \nabla v - \frac{1}{\epsilon}
+ \int_{\partial \Omega} (u-g) \cdot v = 0 
+\end{equation}
+Comparing to an exact weak formulation for the unconstrained problem, 
+\begin{equation}
+\int_{\Omega}  - \nabla u \cdot \nabla v - 
+ \int_{\partial \Omega} v \partial_n u = 0 
+\end{equation}
+we can derive a Robin boundary condition which is equivalent to the
+penalty-Dirichlet condition,
+\begin{align}
+-\frac{1}{\epsilon}(u-g) = \partial_n u \\
+ u = g - \epsilon \partial_n u 
+\end{align}
+In this manner, we can see that the velocity in the penalty function
+region is constrained to be near the value $g$, much like a
+slip-condition. Here, $\epsilon$ is a small
+scaling artificially introduced in order to ensure that the no-slip
+condition approximately holds. So long as the value of $\epsilon$ is
+sufficiently small, the velocities will closely match. 
+
+While this method is typically used as \todo{finish me}
 
 \subsection{Simulation Geometry and Boundary Conditions}
 \label{sec:bc}
