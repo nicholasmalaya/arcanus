@@ -117,8 +117,9 @@ inflow along the areas above and external to the vanes. To avoid an
 ill-posed problem, the ``v'' and ``u'' components of inflow velocity are
 set to zero.  
 
-Finally, a ``sponge layer'' is labeled near the top boundary. This layer
-artificially increases the momentum diffusivity by ten times the nominal
+Finally, a ``sponge layer'' is labeled near the top boundary. 
+This layer
+artificially increases the momentum diffusivity by up to ten times the nominal
 value. This was designed in response to instabilities in the modified
 neumann boundary condition that occurred when small, high velocity fluid
 parsels would exit the top. This would create high velocity inflows, and
@@ -128,7 +129,10 @@ our physical interest remains focused on the region inside and
 in immediate proximity to the vanes, we introduced a higher diffusivity
 ``sponge'' region that would diffuse the high velocity exiting jets
 sufficiently to prevent numerically un-physical behavior. No results are
-quoted from this region, as it is not considered meaningful. 
+quoted from this ``sacrificial'' region, as it is not considered
+meaningful. These regions are referred to by many names in the
+literature\cite{doi:10.1146/annurev.fluid.36.050802.121930}, such as
+absorbing layers, fringe regions, buffer zones, sponges, etc.
 
 \begin{figure}[!htb]
   \begin{center}
