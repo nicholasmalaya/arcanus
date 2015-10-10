@@ -308,7 +308,39 @@ impact more fully.
 
 \subsection{Separation Model}
 
-mention how this is similar to the other\todo{finish me!}
+We observed a large portion of the flow exiting out of the back of 
+the device with non-negligable velocities for the cases with large winds. 
+This was obviously inconsistent with the observations of our colleagues 
+in the field, who saw very modest outflows (if any) out of the back of device. 
+Moreover, this was resulting in large model errors between our predictions and the 
+field results, almost certainly because of the large amount of kinetic and thermal 
+energy that our vane representation was permitting to leave the device. 
+
+We believe that this shed light on a weakness of the turning vane representation 
+outlined previously. This was due to the flow to turning rapidly at the ends of the vane
+region at which point it enters the vanes again and flows out. This is in contrast to our 
+physical intuition in these cases, where we expect the flow (in aggregate) to continue along an 
+averaged streamline off the trailing edges of the vanes. These averaged streamlines 
+(e.g. the statistically average behavior, not an instant flow field) will continue 
+past the trailing edge of the vane due to the seperation of the boundary layer off the edge surface.
+
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 12 cm]{figs/sep_model}
+    \caption{Scematic depicting the separation model that extends past the tailing edge of the vanes.}
+    \label{fig:sep_model}
+  \end{center}
+\end{figure}
+
+We have therefore introduced a simple separation model that modifies the forcing in use for an extended
+region past the edges of the vanes. In the case where the flow is both leaving the vane region and 
+the velocity vector of the fluid is pointing across the tangent line from the trailing edge of the vane edge, 
+we force the flow as if the vane continued in a straight line past the trailing edge. This is designed to 
+act as if there was a rigid surface past the vane edge, and gives the appearance of a special 
+``no-penetration'' condition for the velocity for these cases. An image depicting these two cases in shown in 
+figure \ref{fig:sep_model}. The addition of this simple separation model significantly reduced the flow that 
+penetrated the vanes, and was consistent with the observations provided by our experimental colleagues. 
 
 \subsection{Surface Roughness}
 
