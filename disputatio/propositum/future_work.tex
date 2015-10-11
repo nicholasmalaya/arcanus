@@ -128,7 +128,45 @@ enhance energy output, we will then consider even larger ratios.
 \end{center}
 \normalsize
 
-Turbine\todo{talk about turbine optimization params here}
+The three cone parameters we propose to optimize are shown in figure \ref{tab:cone}. 
+We expect to optimize the cone after the bottom and top tiers are adjusted. 
+For the cone, we expect the height, maximum diameter and inner exit diameter to 
+all impact the flow. While it is not known what the ideal cone geometry will look like, 
+our expectation is that the cone has to important roles. The first is acting
+as a converging nozzle for the flow, increasing the vertical velocity as it exits 
+out the top of the device. In the wind, the cone also acts as a shield, preventing
+the high velocity freesteam flow from disrupting the vortex before it has run through the 
+turbine. 
+
+%
+% cone optimization
+%
+\large
+\begin{center}
+\begin{table}[h]
+ \centering
+  \begin{tabular}{| l | c | l |}
+    \hline
+    Parameter & Description & Range \\
+    \hline
+    $H_C/D_C$ & Ratio of the height of the cone versus the cone diameter & ( 0 - 2.0 ) \\
+    $D_{\text{C}}/D$ & Ratio of the cone diameter versus the system
+       diameter & ( 0.5 - 1.5 ) \\
+    $D_{\text{out}}/D_C$ & Ratio of the cone exit diameter versus the
+       cone diameter & ( 0.25 - 1.0 ) \\ 
+    \hline
+  \end{tabular}
+  \caption{Cone Optimization Parameters.}
+  \label{tab:cone}
+\end{table}
+\end{center}
+\normalsize
+
+The turbine parameters to be optimized are shown in figure \ref{tab:turbine}. 
+The expectation is that the turbine optimization will be performed after the other
+optimization efforts (top and bottom vanes, as well as cone). This is because the parameters 
+of the turbine almost certainly are impacted by the geometric form of the dust devil. 
+For instance, a wider dust devil may necessitate longer turbine blades. 
 
 %
 % turbine optimization
@@ -154,29 +192,6 @@ Turbine\todo{talk about turbine optimization params here}
 \end{center}
 \normalsize
 
-%
-% cone optimization
-%
-\large
-\begin{center}
-\begin{table}[h]
- \centering
-  \begin{tabular}{| l | c | l |}
-    \hline
-    Parameter & Description & Range \\
-    \hline
-    $H_C/D_C$ & Ratio of the height of the cone versus the cone diameter & ( 0 - 2.0 ) \\
-    $D_{\text{C}}/D$ & Ratio of the cone diameter versus the system
-       diameter & ( 0.5 - 1.5 ) \\
-    $D_{\text{out}}/D_C$ & Ratio of the cone exit diameter versus the
-       cone diameter & ( 0.25 - 1.0 ) \\ 
-    \hline
-  \end{tabular}
-  \caption{Cone Optimization Parameters.}
-  \label{tab:cone}
-\end{table}
-\end{center}
-\normalsize
 
 \subsection{Risks and Challenges to the Optimization Efforts}
 
