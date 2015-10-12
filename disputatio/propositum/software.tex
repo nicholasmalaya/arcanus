@@ -14,8 +14,9 @@
 
 To instantiate the Navier-Stokes equations on computer, we utilize a
 Galerkin finite element method discretization (FEM), with linear basis
-functions for both the velocity and pressure. Unlike the typical FEM formulations,
-this scheme circumvents the Babuska-Brezzi conditions\cite{bb-cond} and
+functions for both the velocity and pressure. Unlike the typical FEM
+formulations, this scheme circumvents the Babuska-Brezzi
+conditions\cite{bb-cond} and 
 permits use of equal-order elements for velocity and 
 pressure. This is accomplished through the introduction of a
 stabilization term first described by Hughes\cite{Hughes198685} and
