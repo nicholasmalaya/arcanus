@@ -36,7 +36,11 @@ modeling intentions for how we expect the flow to behave, be that for
 turning vanes, rigid surfaces, or a turbine. 
 
 We actually enforce this penalty method numerically by using Babuska's
-penalty method\cite{1973fempen,ZAMM:ZAMM19880680925}, which we outline below. 
+penalty method\cite{1973fempen,ZAMM:ZAMM19880680925}.
+The method was developed as a technique for enforcing constrains. 
+The constraint is embedded in a revised variation formulation by means
+of a penalty term instead of using a constraint, such as lagrangian
+multipliers. We briefly outline the method below.  
 Consider Laplace's equation as a test problem, 
 \begin{equation}
  \nabla^2 u = 0 
