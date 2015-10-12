@@ -16,6 +16,7 @@ MAILTO=""
 0   4 30 1 * ~/bin/msg/reminder Sanjenis 
 
 #FEBRUARY
+0   4 02 2 * ~/bin/msg/reminder chris_kyle_day
 0   4 05 2 * ~/bin/msg/reminder_all Callie!
 0   4 05 2 * ~/bin/msg/reminder_all aunt_annie 
 0   4 08 2 * ~/bin/msg/reminder Mk
@@ -68,7 +69,7 @@ MAILTO=""
 #JULY
 0   4 03 7 * ~/bin/msg/reminder Chad
 # winner gets to pick dinner location 
-0   4 07 7 * ~/bin/msg/reminder Is_a_st_regis_open_in_austin_2yrs
+0   4 07 7 * ~/bin/msg/reminder Is_a_st_regis_open_in_austin_1yrs
 0   4 08 7 * ~/bin/msg/reminder Mike_dodd
 0   4 09 7 * ~/bin/msg/reminder sarah_dodd
 0   4 10 7 * ~/bin/msg/reminder kristin_brudy
@@ -111,11 +112,11 @@ MAILTO=""
 0   4 23 12 * ~/bin/msg/reminder Kevin_Kim 
 
 #To be executed each hour
-5  *  * * * ~/src/pass/shredder.sh
+5  *  * * * /h2/nick/src/pass/shredder.sh
 
 #To be executed each day
 #30  12  * * * /h2/nick/bin/paleologos/dotfiles/sync.sh
-20  9   * * * ~/bin/msg/morrow
+#20  9   * * * ~/bin/msg/morrow
 #0  6   * * * ~/bin/msg/litany.sh 
 
 #To be executed each week (monday)
