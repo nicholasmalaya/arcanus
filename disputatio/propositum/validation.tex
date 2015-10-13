@@ -57,17 +57,15 @@ the purposes of validation.
 %\subsection{Model Validation}
 
 
-  % \begin{figure}[!htb]
-  %   \begin{center}
-  %    \includegraphics[width = 12 cm]{figs/lab_setup}
-  %    \caption{The laboratory configuration, with straight vanes. The
-  %    configuration is shown with a turbine, but it was removed for data
-  %    gathering.}
-  %    \label{fig:lab}
-  %   \end{center}
-  % \end{figure}
-
-\todo{mention georgia tech room}
+  \begin{figure}[!htb]
+    \begin{center}
+     \includegraphics[width = 12 cm]{figs/lab_setup}
+     \caption{The single tier straight vane laboratory configuration. The
+     apparatus is shown with a turbine, but it was removed for data
+     gathering.}
+     \label{fig:lab}
+    \end{center}
+  \end{figure}
 
 While no sensitivity analysis has been performed, it is likely that the
 largest uncertainty in the laboratory simulation is a result of the
@@ -113,24 +111,27 @@ of the sides of the room.
     \end{center}
   \end{figure}
 
-%
-%
-%
+Figure \ref{fig:lab} shows direct comparisons between laboratory measurements for a simple 
+two tier configuration ($55^{\circ}$ top, $30^{\circ}$ bottom and 
+a nominally identical simulation. The simulation and experiment broadly agree. The simulation 
+correctly reproduces the twin peak structure in the azimuthal velocity 
+observed for this configuration in the experiment. The radial location of peak vertical velocity also 
+closely agrees with experiment. The largest observed difference is near the center, where the simulation predicts 
+a downward vertical velocity, in contrast to the modest vertical flows measured in the laboratory. 
 
-\subsection{Further Concerns}
-%
-% no quantitative data from wind cases! 
-%
-Qualitative agreement between our results and wind tunnel agreement
-within 15\% of energy fluxes. Measured in field.\todo{write me!}
-%
-
+Similar validation comparisons have been made between several other configurations, notably the $30^{\circ}$ 
+and $60^{\circ}$ singly tier straight vane cases, with similar levels of agreement. 
+This represents the totality of quantitiative data available for comparison. Qualitative comparisons have been made
+between the our simulation results with a mean velocity and with wind tunnel pictures. These images showed
+roughly consistent structure between simulation and experiment. Finally. estimates of the energy fluxes between
+the field configuration and our simulation results agreed within 15\%. These validation studies have provided a modest 
+level of confidence that our simulations accurately reproduce the dynamics observed in real vane configurations. 
 
 %
 % turbine (explain why we dont need to do it)
 %
 
-Another significant validation challenge is in modeling the
-turbines. This is in essence a new embedded 
-submodel that we will add after validation of the initial configuration
-is completed. 
+%% Another significant validation challenge is in modeling the
+%% turbines. This is in essence a new embedded 
+%% submodel that we will add after validation of the initial configuration
+%% is completed. 
