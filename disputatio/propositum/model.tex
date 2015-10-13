@@ -88,13 +88,13 @@ base diffusivities and do not vary in space.
 
 We utilize the celebrated similarity model of Monin and
 Yaglom\cite{monin2007statistical,monin1954basic} as a guide to the
-present development, which we outline below. This work is extension of
+present development, which we outline below. Their work is extension of
 the mixing-length model of Prandtl, where the concepts of gradient
 diffusion and mixing length were generalized to thermally stratified
 flow.   
 
 %
-% justify prandlt assumption here
+% justify prandtl assumption here
 %
 
 We begin by using dimensional analysis, and noting that the dynamics of
@@ -111,7 +111,8 @@ height'' or displacement distance, we can reasonably neglect $z_0$ from these
 considerations. While the roughness height can be large (for instance in
 a cornfield, where the roughness height could reasonably be several
 meters), for our present study the expectation is that this roughness
-height will be on the order of centimeters\cite{oke1987boundary}. 
+height will be on the order of centimeters\cite{oke1987boundary}, and
+therefore negligible.  
 
 This leaves only five parameters: the distance from the ground, z; the
 buoyancy coefficient, $\frac{g}{T_0}$; the density of the fluid,
@@ -123,9 +124,7 @@ $q$.
 These quantities depend on
 four dimensions: length, time, temperature and mass. As a result, 
 Buckingham Pi theorem implies that only one dimension-less group can be
-formed\cite{munson2012fundamentals}.%munson 
-
-This group is chosen to be,
+formed\cite{munson2012fundamentals}. This group is chosen to be,
 \begin{equation}
  \xi = \frac{z}{L}.
 \end{equation}
@@ -208,7 +207,7 @@ laboratory.  The diffusivity here is essentially a top hat filter, which
 radial values interior to the vanes the nominal calibrated value, and
 those outside the vanes zero, e.g. $\nu_C(r>r_{\text{vane}})=0$. The
 thermal diffusivity inside the device, $K_C$, is then fixed with the
-assumption that the Prandlt number is unity.  
+assumption that the Prandtl number is unity.  
 
 \subsection{Vane and Turbine Representation}
 
@@ -218,7 +217,7 @@ geometries and settings. This presents a significant meshing
 problem. In the region near the vanes, where a no-slip boundary
 condition is imposed, the flow will necessarily form a thin momentum
 boundary layer. Resolving this boundary layer requires high resolutions
-immediately adjacent to the walls. Thus, altering the location of vanes
+immediately adjacent to the walls. Altering the location of vanes
 alters the location of the boundary layer mesh. This is a significant
 challenge, as the development of a new mesh often requires significant
 human effort and time. Furthermore, the process is extremely
@@ -266,7 +265,8 @@ which is roughly the extent we expect the vanes to constrain the flow
 over. This is easily scaled for larger or small system diameters. 
 Notice also that we are not modeling drag. Assigning a small, quadratic
 in velocity non-normal component of forcing in opposition to the flow direction
-would be consistent with our expectations for a small drag force. 
+would be consistent with our expectations for a small drag force, but
+has not been included here. 
 
 To implement this distributed representation of the vanes and turbine,
 we need only determine the normal to a vane passing through a
@@ -274,7 +274,7 @@ point (x,y), since we desire for the velocity has no component in the
 normal direction. This is a very broad and general formulation that can
 support a wide variety of vane curvatures and angles. More details on
 how the forcing itself is imposed on the fluid are discussed in the
-subsequent section \ref{sec:software}. Forcing designed in such a manner
+subsequent section \ref{sec:software}. Forcing designed to act like a surface
 is not unique to this project, and is closely related to (among others)
 the ``immersed boundary methods'' used by various other
 researchers\cite{doi:10.1146/annurev.fluid.37.061903.175743}. 
@@ -302,8 +302,8 @@ artifact.
 A weakness of this technique is that for
 any finite penetration distance, some fluid will necessarily bleed
 through. We expect to consider investigating other results in 
-immersed boundary methods and related literature to investigate this
-impact more fully. 
+immersed boundary methods and related literature to more completely
+investigate and characterize the impact of this model error.  
 
 
 \subsection{Separation Model}
