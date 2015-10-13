@@ -8,7 +8,7 @@ sizes. The results of these simulations will be used as input for the
 design of a pilot site in Mesa, Arizona, and eventually, over a range of
 scenarios and system sizes. 
 
-\todo{add photo}
+% \todo{add photo}
   % \begin{figure}[!htb]
   %  \begin{center}
   %   \includegraphics[width = 12 cm]{figs/sov_field}
@@ -27,7 +27,7 @@ thermal-only flow is intended to optimize the SoV apparatus to form a
 strong thermal plume even in the absence of wind. After a system is
 engineered to form a strong thermal plume, we can investigate to ensure
 that the existing thermal vortex will be strengthened by the addition of
-winds. \todo{do I need image of vanes? and explain how calculated}
+winds. %\todo{do I need image of vanes? and explain how calculated}
 
 \begin{figure}[htb]
 
@@ -218,6 +218,16 @@ devil.
 %
 \begin{figure}[htb]
 
+Horizontal slices of the azimuthal and vertical velocities, as well as the 
+temperature and pressure fields are shown in figure \ref{fig:vz-wind-vert}. The freestream velocity
+is traveling from left to right at $5 m/s$, which was set based on ambient velocity measurements made by 
+the experimental team from the field. 
+While the structure is undoubtedly different than the thermal-only cases shown previously, 
+we can nevertheless see that a thermal plume is forming along with a 
+rotating velocity structure. In general the wind cases are more disorganized, with less obviously 
+visible coherent structure. Notice however that the magnitude of velocities are several times larger than 
+in the thermal-only cases, and the kinetic energy flux through the vanes is also significantly higher. 
+
  \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=.75\linewidth]{figs/wind_u_vertical}
@@ -249,7 +259,12 @@ devil.
  \label{fig:wind-ver}
 \end{figure}
 
-Observe that in all the plots, the thermal plume is significantly less
+The vertical slices are shown in figure \ref{fig:wind-ver}. Here, it can be 
+clearly seen that lower tier of vanes are where the majority of flow is 
+entering the center of the apparatus, while the second tier of vanes are blocking 
+the ambient wind and providing protection to the vortex column. 
+
+The thermal plume is significantly less
 visible than in the thermal-only cases. While the
 thermal-plume is necessarily weaker relative to the wind, some of this
 is also due to the plume no longer being directly centered in the
@@ -269,7 +284,8 @@ temperature is nearly zero, and larger values represent deviations from
 the base flow temperature. The isocountour of a three Kelvin delta is 
 depicted in figure \ref{fig:field_real}. This gradient was selected as
 it was noted as sufficient for formation of a dust devil by
-Sinclair\cite{Sinclair1969}.\todo{write more! speak to images}
+Sinclair\cite{Sinclair1969}. It is clear from the image that a 
+strong thermal column does exist even in the $5 m/s$ wind cases. 
 
 %
 % t iso
@@ -309,40 +325,42 @@ results in,
  \begin{equation}
  \dot E = -\frac{\rho }{2} \int V_z (V_{\theta}^2 + V_z^2 ) dA
  \end{equation}
-This shows the energy each unit mass of fluid carries with it as it
-moves through the defined surface. 
 
+\begin{figure}[htb]
+ \centering
+ \includegraphics[width=.75\linewidth]{figs/opt_plot}
+ \caption{This plot diagrams the improvements to the calculated flux for  
+ each iteration of system configuration.}
+ \label{fig:opt_plot}
+\end{figure}
 
-88X improvement in kinetic energy flux
-
-from optimization 
-
- Major adjustments to design in:
-» Vane Shape
-» Vane Angles
-» Ground treatment
-
- Qualitative differences in flow 
- characteristics – more like a “dust-devil”
 
 \begin{figure}[htb!]
  \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=.75\linewidth]{figs/before_vanes}
   \caption{Vanes before optimization}
-  \label{fig:vt-wind-vert}
  \end{subfigure}%
  \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=.8\linewidth]{figs/after_vanes}
   \caption{Vanes after optimization}
-  \label{fig:vz-wind-vert}
  \end{subfigure}%
+ \label{fig:vt-wind-vert}
 \end{figure}
 
-
-image of flow before after
-
+This shows the energy each unit mass of fluid carries with it as it
+moves through the defined surface. Using the kinetic flux as a qoi, 
+we have performed an optimization of the vane geometry. Over approximately 
+tens of iterations, we have produced an 88X improvement in kinetic energy flux 
+from the initial baseline. Several of these iterations are documented in 
+figure \ref{fig:opt_plot}. Over these iterations we performed major adjustments 
+to design in the the vane shape and angles, with before and after images shown in 
+\ref{fig:vt-wind-vert}. During this optimization the qualitative character 
+of the solution changed substantially, moving from a mild upward flow with little rotation
+into a strongly organized vortex with a downward central flow and strong azimuthal velocities. 
+%
+%
 \begin{figure}[htb!]
  \begin{subfigure}{.5\textwidth}
   \centering
@@ -356,14 +374,5 @@ image of flow before after
  \end{subfigure}%
   \label{fig:opt_flow}
 \end{figure}
-
-table of energy flux increase\todo{write me!}
-
-
-\begin{figure}[htb]
- \centering
- \includegraphics[width=.75\linewidth]{figs/opt_plot}
- \caption{This plot diagrams the improvements to the calculated flux for  
- each iteration of system configuration.}
- \label{fig:opt_plot}
-\end{figure}
+%
+Before and after vertical slices are shown in figure \ref{fig:opt_flow}.
