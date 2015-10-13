@@ -80,11 +80,11 @@ intense forest fires, or even in cold or freezing environments.
 This is to say nothing of other similar cyclonic phenomena, such as
 tornados and hurricanes. 
 
-While the phenomena is pervasive, we can state that certain 
+While the phenomena is pervasive, certain 
 environmental conditions do impact the frequency of formation
 of dust devils. Sinclair\cite{Sinclair1969} provides perhaps the most 
 systematic investigation characterizing favorable conditions for
-formation. From these results we can conclude that dust devils are most
+formation. From these results we conclude that dust devils are most
 likely to form at solar noon, the time of the greatest incident radiation 
 on the ground. Furthermore, they are more likely to form in locations 
 with a higher surface temperature. Moderate to high wind speeds (2-5
@@ -97,7 +97,7 @@ devils, they are typically LES simulations that point
 towards the occurance of similar phenomena within existing climate and
 atmospheric models\cite{QJ:QJ200513160722,doi:10.3137/ao.420105}. Actual
 measurements made inside a dust devil 
-are limited. From what data is available, the dust devil can be broken
+are limited. The available data hints that dust devils can be broken
 into two regions: a low surface layer and a higher invisid region. The
 low surface region is the  principle location of radial inflow. 
 It is at the top of this region that the flow 
@@ -112,8 +112,8 @@ field, and which intensifies greatly owing to a $1/r^2$ dependence.
 The higher region is characterized by a largely invisid potential flow region 
 that characterized by warm air rising and circling around a cool, 
 low pressure core. This region is typically many times larger in height than the
-surface layer. While this region also has radial inflow, but it is 
-significantly weaker than the lower region. Previous studies have found that
+surface layer. While this region also has radial inflow, it is 
+significantly weaker than the lower region. Previous studies have found 
 this region is relatively well described by a Rankine vortex
 model\cite{Sinclair1973}. Both of these regions are sketched out as a simple 
 cartoon in Figure \ref{fig:cartoon}.
@@ -121,7 +121,9 @@ cartoon in Figure \ref{fig:cartoon}.
   \begin{figure}[!htb]
     \begin{center}
      \includegraphics[width = 10 cm]{figs/ground}
-     \caption{Cartoon of the structure of a dust devil.}
+     \caption{Cartoon of the structure of a dust devil. The lower region
+     is the principle location of radial inflow, with the higher second
+     layer flow becoming entrained by the upwardly circulating vortex. }
      \label{fig:cartoon}
     \end{center}
   \end{figure}
@@ -150,10 +152,11 @@ to the ambient air conditions of 313 Kelvin.
 provided by the Georgia Tech field team in Arizona during the summer of
 2014.} 
 
-There are two forms of energy to consider: kinetic and enthalpy. First,
-we examine the kinetic energy flux through the front of the
-apparatus. From the first law of thermodynamics we can express the
-kinetic energy flux as a surface integral over the upstream face of the device, 
+There are two forms of energy to consider: kinetic and gravitational
+potential. First, we examine the kinetic energy flux through the front
+of the apparatus. From the first law of thermodynamics we can express
+the kinetic energy flux as a surface integral over the upstream face of
+the device,  
 \begin{equation*}
 \text{KE} = \int_{CS} \frac{\vec V^2}{2} \rho \vec V \cdot \hat n dA.
 \end{equation*}
@@ -161,12 +164,12 @@ kinetic energy flux as a surface integral over the upstream face of the device,
 % could cite fluid dynamics book here
 % pg. 239
 %
-We make several simplifying assumptions. We assume our freestream
-velocity has no components in y and z. 
-We assume that the variation in height for the streamwise velocity is only on
-account of the thin boundary layer near the ground. We functionally
-approximate this behavior using the common 7th power function for a
-turbulent boundary layer,  
+We make several simplifying assumptions. We assume our freestream 
+velocity has no components in the span and height. 
+We further assume that the variation in height for the streamwise
+velocity is only on account of the thin boundary layer near the
+ground. We functionally approximate this behavior using the common 7th
+power function for a turbulent boundary layer,  
 \begin{equation*}
   u(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)
 \end{equation*}
@@ -197,8 +200,7 @@ energy flux by integrating the boussinesq term by the height of the vanes,
   & = \int_{-h}^0 u(z) \rho' g z^2 dz. 
 \end{align*}
 Where the substitution, $\Delta \rho = \rho' z$ was made. We again
-assume the boundary layer follows the 7th order profile, and we 
-
+assume the boundary layer follows the 7th order profile, and 
 % At 
 % this point we again separate the integral into two components, 
 % for the boundary layer and the constant freestream velocity region. 
