@@ -18,3 +18,7 @@ Channel 2 (blue):
 Wavelength: 488 nm
 Focal length: 363 mm
 Beam separation: 50 mm
+
+------------
+
+We first calculate the difference between the two mean velocity measurements we have at each point. After grouping the set of deviations by turbulence level, we can calculate the standard deviation of that set of deviations, sigma. The precision uncertainty can then be calculated as 2*sigma/sqrt(N). Can the same procedure be repeated for rms velocities?
