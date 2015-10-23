@@ -4,7 +4,7 @@
 \usepackage{graphicx}
 \usepackage{todonotes}
 
-\title{\bf{Laboratory Project Two: Calibration of an Orifice Meter}}
+\title{\bf{Laboratory Project Three: Laser Doppler Velocimetry}}
 \author{Nicholas Malaya \\ Department of Mechanical Engineering \\
 University of Texas at Austin} \date{} 
 
@@ -56,12 +56,7 @@ processing, the frequency of the signal of reflected light can be used
 to calculate the quantity of interest, the particle's velocity. 
 
 \textbf{Explain what frequency
-shifting is, and why it is used. Calculate the following: 
-\begin{itemize}
- \item Size of the Probe Volume
- \item Expected frequency response of the glass sphere seed particles
-\end{itemize}
-}   
+shifting is, and why it is used.} 
 
 We use frequency shifting so that we can measure flow
 reversals. The frequency of light cannot be negative. 
@@ -72,13 +67,40 @@ forward. Instead, by shifting the frequency forward, we can measure
 frequencies that are lower than the effective frequency shift, which
 permits us to determine the sign of the velocity.
 
+\textbf{Calculate the size of the Probe Volume}
+
 The size of the probe volume is given by Stavros on page 267, 
 \begin{equation}
- V_p = \frac{\pi d_{fe}^3}{6\text{Cos}(\theta/2)\text{Sin}(\theta/2)}
+ V_p = \frac{\pi d_{fe}^3}{6\text{ Cos}(\theta/2)\text{
+  Sin}(\theta/2)}. 
 \end{equation}
 
-However, we also need $\theta$, the intersection angle, here. 
+$d_{fe}$ is the focused beam diameter, which is expressed on the same
+page as,  
+\begin{equation}
+ d_{fe} \approx \frac{4f_T \lambda}{\pi d_e}
+\end{equation}
+with $f_T$ the lens focal length, $\lambda$ the laser wavelength, $d_e$
+the beam diameter. The laser beam diameter was given as 1.3mm. The
+wavelength of channel one was 514.5 nm, and channel two was 488 nm. The
+lens focal length is 363mm for both beams. This provides an estimated
+beam diameter of 0.1829 mm and 0.1735 mm. 
 
+However, we also need $\theta/2$, the half intersection angle, here. We
+can calculate this using, 
+\begin{equation}
+ \theta/2 = \text{tan}^{-1}\left(\frac{d/2}{f_T}\right)
+\end{equation}
+where d is the distance between beams and f is the focal length. For
+both our beams, the focal length is 363 mm and the beam separation is 50
+mm. This gives 0.687 radians or 3.94 degrees for the half angle. That
+sounds approximately correct, the angle certainly appeared to be quite
+shallow. 
+
+Our probe volume then is expected to be, $0.001397 m^3$ for probe volume
+one, and $0.001325 m^3$ for probe volume two. 
+
+ \textbf{Calculate the expected frequency response of the glass sphere seed particles.}
 
 % the doppler frequency of the particle is the normal velocity over the
 % fringe spacing, which was: X-direction: 3.744um; y-direction: 3.551um
