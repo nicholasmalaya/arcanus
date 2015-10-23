@@ -260,18 +260,123 @@ our uncertainty bounds, so I expect this is a real effect. Otherwise,
 the turbulence intensity levels are roughly about where we would expect
 them to be for free-stream turbulence. 
 
+% As for the bias stuff, I'm just looking at the equation he gave us in
+% Lecture 13 where U_meas/U_actual=1+(u_rms/U)^2.  Calculating the right
+% half gives values of ~1.03 for the higher turbulence intensities and
+% ~1-1.01 for the lower, which seems to match up with the ranges he told
+% us. 
+
 \section{Experiment Two: Wake Measurements}
 
 \textbf{Present results from your wake measurements, including
 uncertainty of the measurements. Compare your results with data in the
 literature and comment on similarities and differences. } 
 
+I am comparing the wake measurements to an interesting paper by Ong and
+Wallace, entitled, ``The velocity field of the turbulent very near wake
+of a circular cylinder''. I like this paper because it provides
+measurements from circular cylinders at Reynolds numbers approximately
+near our conditions (Re $\approx 2000$ versus 3900, versus many papers
+at substantially larger Re) and at values that are nominally identical
+to our location, e.g. $x/d < 10$. A deficiency of this paper for our
+purposes is that the measurements were conducted with a hot wire, and
+not the present LDV system. 
+
+We measured the diameter of the cylinder with a set of calipers. 
+for a $d=0.374$ inches we desire to measure 5d downstream, or $1.87$
+inches. We then moved another 1.87 inches and repeated out measurements
+(10d). However, we had to convert from inches to mm for the arm
+readings. This I wrote down as, $d=0.374$ inches or $9.5$ mm, so $5d =
+47.5 mm$. The arm moves 1/10mm, so 475 was the reading placed into the
+box to move the laser. We then checked both times the distance with the
+micrometer, and it appeared to be correct. 
+
+In order to investigate the histeresis and repeatability of our
+measurements, we started at zero, moved down two diameter widths, then
+back up through to positive two diameters, and then back down to
+zero. We ``snaked'' through. In this way, we made a clean sweep through
+two full sets of data, while simultaneously approaching from a different
+direction for each set. 
+
+\begin{figure}[!htb]
+ \begin{center}
+  \includegraphics[width = 12 cm]{figs/defect}
+  \caption{The streamwise velocity normalize by freestream velocity. We
+  show both sets for a discussion of repeatability.}
+  \label{repeat}
+ \end{center}
+\end{figure}
+
+The streamwise velocity is shown in figure \ref{repeat}. Both repeated
+experiments are shown. The good news is that the data is relatively
+repeatable, with each point somewhat close to the other set. 
+Immediately one sees a major issue with the data,
+namely, that several anomalous data points exist. For instance, in the
+first data set, the point slightly less than zero at $y/d=0.25$ is
+actually lower than the point directly behind the cylinder. Was this
+just a very bad data point, or did some other more systematic error
+appear? It is not clear, but it gives the appearance of skewness to the
+entire output. Another issue is that we clearly did not take enough
+points past $y/d=2$. From our literature search we had believed that
+this was far enough to go to be back into the freestream, and actually
+the data appears to support this, but we should have taken more points
+so as to ensure that this is indeed truly the case, and that the points
+beyond $y/d=2$ do continue to flatten out.
+
+So far, this data compares reasonably well with the literature. The
+bottom of our peak (at the centerline) corresponds to a value of
+0.75. The paper by Ong et al. has a minimum at 5d of 0.73, which is at
+least close, if not completely identical. Some of this difference might
+be attributable the different reynolds numbers between the cases. 
+
+Another issue with the data is shown in figure \ref{10v5}. 
+
+\begin{figure}[!htb]
+ \begin{center}
+  \includegraphics[width = 12 cm]{figs/backflow}
+  \caption{}
+  \label{back}
+ \end{center}
+\end{figure}
+
+Notice that near the centerline we found significantly bimodal
+distributions of velocity in the spanwise component of velocity. This is
+shown in figure \ref{back}. This is as expected, because the spanwise
+velocity is either going above or below the cylinder, and that tends to
+favorably impart a spanwise velocity as it does. While at the centerline
+these components were competing, above and below the centerline this
+introduced considerable skewness in the observed histograms of spanwise
+velocity. 
+
+The uncertainty was bounded in estimation using either the repeated
+measurements at the center ($y=0$) where the turbulence was at a peak,
+versus the freestream uncertainty estimates provided previously. We
+expect that the freestream is more accurate away from the cylinder, but
+an underestimate of the variability as you approach the centerline. Vice
+versa, the centerline error would be more accurate near the center, but
+overestimating the uncertainty near the freestream. \todo{finish me!}
 
 \section{Conclusions}
 
-
 \textbf{Conclude by giving your opinion about whether your measurements
 are more or less reliable than measurements in the literature.} 
+
+I absolutely do not believe our measurements are more accurate than the
+rival paper. I'll admit I am somewhat disappointed in the results
+presented here, but in particular given the shortcomings presented in
+the previous section with respect to several anomalous points, I would
+want to perform additional measurements. 
+
+In theory, however, I do believe that an LDV could be accurate. Some of
+the major disadvantages of LDV are the cost and the problems associated
+with near wall features. However, neither of those impact the
+measurements here. While we needed to perform more measurements and
+possibly more laser and sensor adjustments, the LDV I believe in
+principle can be more accurate than it appears here. Another
+advantage of the LDV is that it can measure backflow which as mentioned
+previously appeared in the spanwise component of velocity. 
+
+
 
 %
 %
