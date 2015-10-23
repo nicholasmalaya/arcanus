@@ -137,13 +137,6 @@ any fluctuations observed in our runs.
 % fringe spacing, which was: X-direction: 3.744um; y-direction: 3.551um
 % (taken from Flowsizer) 
 
-  % \begin{figure}[!htb]
-  %  \begin{center}
-  %   \includegraphics[width = 12 cm]{figs/Q_dP_fits.jpg}
-  %   \caption{A plot of repeatability of the experiment. }
-  %   \label{orif-zoom}
-  %  \end{center}
-  % \end{figure}
 
 \section{Experiment One: Freestream}
 
@@ -160,6 +153,97 @@ velocity shifts the doppler from the particles by as much as 112 kHz,
 meaning that for both our cases, our total 
 frequency response was about 40-50kHz, which fits right in our
 bandpass region of 10-100kHz.   
+
+We visually verified that the histograms were well centered in our
+bandpass region, and that the tails were not being cut off. 
+
+% add histogram showing it is not cut off?
+   % \begin{figure}[!htb]
+   %  \begin{center}
+   %   \includegraphics[width = 12 cm]{figs/Q_dP_fits.jpg}
+   %   \caption{}
+   %   \label{orif-zoom}
+   %  \end{center}
+   % \end{figure}
+
+\textbf{Indicate the laser power and PMT voltage settings used, and why
+these values were selected.} 
+
+The PMT for channel one was 600 V, and 500 for channel two. The laser
+power was set at 1 W. We did not adjust the laser power much at all, as
+we started with a reasonable count number. We did adjust the PMT down
+for channel two because the number of events was much higher than the
+freestream, and we were trying to get slightly more even numbers of
+counts. 
+
+\textbf{Indicate the ``Burst Threshold'' and ``SNR'' settings used, and why
+these values were selected.} 
+
+
+The burst threshold was set to 30 mV and 60 mV for channel's one and
+two, respectively. We used a higher burst threshold for channel two
+because the mean was typically zero here, and we were getting lower data
+rates.\todo{do you believe this?} 
+
+We set the SNR settings to ``very low'' because our burst efficiencies
+were always quite high (often above 80\%). The lab guidelines mentioned
+that anything over 50\% is good, so we felt there was no need to further
+filter the data beyond the minimum settings. 
+
+We would often look at the oscilloscope to examine the bursts incoming. 
+After adjustment, we had very smooth and continuous (with reasonable
+amplitude) bursts appearing. We thought that this was an indication that
+the laser and signal processing was working quite well. Our filters were
+much higher than the ambient noise, but seldom higher than obviously
+incoming signals, so we were also happy with the settings in that
+context. 
+
+These settings were used both both the freestream as well as the wake
+measurements, so that we could make direct comparisons between data
+gathered at each point. 
+
+%
+% add chart of oscilloscope?
+%
+%
+
+\textbf{Present the mean and RMS velocities measured, including
+uncertainties for these measurements.} 
+
+The mean and RMS for the freestream velocity were measured as, 
+-0.4141 m/s and 0.00328 m/s, respectively. These were calculated by
+taking the mean of 5 samples from the LDV. However, each of these
+samples was taken from 2000 samples aggregated together as a
+histogram. Thus, the uncertainty of these calculations
+can be gleaned from our estimate of the of the variance of the mean, or
+the ``sample error'', $2\sigma/\sqrt{n}$. This provides uncertainty
+estimates of, .0016 m/s for the mean, e.g. $0.4141 \pm
+0.0016$ which is .3\%. Likewise, our estimate for the uncertainty in the
+streamwise RMS is 0.0002072 m/s, giving, $0.00328 m/s \pm 0.0002072$ or
+about 6\%. We estimate the average and precision uncertainty for the v
+mean and RMS as, $0.00344 m/s \pm 4.8e-5$ (1.4\%) and $0.00168 m/s \pm
+6.7e-4$ (3.9\%). 
+
+These numbers seem reasonable to me. The fluctuating turbulence
+provides an inherent variability, but we were throwing a fair number of
+samples at the problem (2000) and this was resulting in very smooth
+histograms. Furthermore, unlike the next results section, these
+histrograms were not particularly skewed, but were evenly distributed
+around the mean. The PDFs were not quite gaussian, with some visible
+kurtosis, so they did exhibit some tendencies towards extreme events,
+which we likely did have trouble catching with our sample size. 
+
+
+\textbf{Comment on the turbulence intensities,
+$\frac{u_{\text{rms}}}{U}$ and $\frac{v_{\text{rms}}}{U}$, do they make sense?}
+
+$\frac{v_{\text{rms}}}{U}$ certainly does not as measured on the
+laboratory equipment. I suspect that this was actually
+$\frac{v_{\text{rms}}}{V}$, which was dividing essentially by a small number,
+because the turbulence intensities were often shown to exceed 40\%. 
+$\frac{u_{\text{rms}}}{U}$ (the freestream component) appeared to be
+reasonable. We observed turbulence intensities slightly below one
+percent. 
 
 \section{Experiment Two: Wake Measurements}
 
