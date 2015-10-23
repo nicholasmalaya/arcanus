@@ -102,6 +102,37 @@ one, and $0.001325 m^3$ for probe volume two.
 
  \textbf{Calculate the expected frequency response of the glass sphere seed particles.}
 
+Stavros give the characteristic time of the particles as, 
+\begin{equation}
+ \tau_p = \frac{\rho_P d_p^2}{18 \mu_F}
+\end{equation}
+where $\rho_p $ and $d_p$ are the density and diameters of the
+particles, respectively. $\mu_F$ is the dynamic viscosity of the fluid. 
+This provides a characteristic frequency, as
+\begin{equation}
+ \omega_c = 1/\tau_p.
+\end{equation}
+This is important because this represents the highest frequency of
+turbulent fluctuation that the particles could accurately track in a
+flow. With diameters of 12 $\mu m$ (this will give the most restrictive
+frequency) and density of $1.1$ g/cc, we find a frequency response of 47
+KHz. 
+
+This now naturally bears questioning: are we actually able to resolve the
+velocities we are measuring? The doppler frequency is measured as,
+\begin{equation}
+ f_d = u_x / d_f 
+\end{equation}
+Where $u_x = 0.42 m/s$ and $d_f$ is given as $3.75 \mu m$. Our doppler
+frequency is therefore 112 kHz, which is higher than our mean. However,
+the mean does not change, so the particles naturally equilibrate. A more
+meaningful measure is the RMS, which is on the order of the velocity
+fluctuations. This is in general much smaller than 0.42, and in the
+freestream, was $\approx 0.01$, giving a doppler frequency of just 2
+kHz. We can easily measure this. We expect to be able to resolve roughly
+any fluctuations less than 0.2 m/s, which is more than
+any fluctuations observed in our runs. 
+
 % the doppler frequency of the particle is the normal velocity over the
 % fringe spacing, which was: X-direction: 3.744um; y-direction: 3.551um
 % (taken from Flowsizer) 
@@ -118,6 +149,17 @@ one, and $0.001325 m^3$ for probe volume two.
 
 \textbf{Indicate the frequency shift and bandpass filter settings used,
 and why.} 
+
+The Bragg cell shifts by 40 MHz. Our downmix frequency was set to 39.85
+for channel one, and 39.95 for channel two. The different settings were
+due to the fact that the velocity components have different mean
+velocities ($\approx 0.41$ and 0) and so produce a different shift. As a
+result of this downmix, our effective shifting frequency was 150kHz (and
+50 kHz for channel 2). As mentioned in the previous section, the mean
+velocity shifts the doppler from the particles by as much as 112 kHz,
+meaning that for both our cases, our total 
+frequency response was about 40-50kHz, which fits right in our
+bandpass region of 10-100kHz.   
 
 \section{Experiment Two: Wake Measurements}
 
