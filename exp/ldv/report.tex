@@ -46,11 +46,14 @@ I see the LDV as a four step process.
  \item Laser Crossing
  \item Particle movement through the fringes
  \item Light collected
- \item Postprocessing
+ \item Signal postprocessing
 \end{itemize}
 
-Two laser beams cross, creating an interference pattern.\todo{finish me}
-
+Two laser beams cross, creating an interference pattern. Particles,
+moving through this pattern reflect light in a similar oscillating
+pattern, (some of) which is reflected back and collected. After signal
+processing, the frequency of the signal of reflected light can be used
+to calculate the quantity of interest, the particle's velocity. 
 
 \textbf{Explain what frequency
 shifting is, and why it is used. Calculate the following: 
@@ -60,12 +63,22 @@ shifting is, and why it is used. Calculate the following:
 \end{itemize}
 }   
 
-We use frequency shifting so that we can measure flow reversals.\todo{expand}
+We use frequency shifting so that we can measure flow
+reversals. The frequency of light cannot be negative. 
+If we did not shift the frequency of light scattered off
+particles, we would have instances where particles moving backward
+appeared to have the same frequency as particles moving
+forward. Instead, by shifting the frequency forward, we can measure
+frequencies that are lower than the effective frequency shift, which
+permits us to determine the sign of the velocity.
 
 The size of the probe volume is given by Stavros on page 267, 
 \begin{equation}
  V_p = \frac{\pi d_{fe}^3}{6\text{Cos}(\theta/2)\text{Sin}(\theta/2)}
 \end{equation}
+
+However, we also need $\theta$, the intersection angle, here. 
+
 
 % the doppler frequency of the particle is the normal velocity over the
 % fringe spacing, which was: X-direction: 3.744um; y-direction: 3.551um
