@@ -218,7 +218,7 @@ histogram. Thus, the uncertainty of these calculations
 can be gleaned from our estimate of the of the variance of the mean, or
 the ``sample error'', $2\sigma/\sqrt{n}$. This provides uncertainty
 estimates of, .0016 m/s for the mean, e.g. $0.4141 \pm
-0.0016$ which is .3\%. Likewise, our estimate for the uncertainty in the
+0.0016$ which is 0.3\%. Likewise, our estimate for the uncertainty in the
 streamwise RMS is 0.0002072 m/s, giving, $0.00328 m/s \pm 0.0002072$ or
 about 6\%. We estimate the average and precision uncertainty for the v
 mean and RMS as, $0.00344 m/s \pm 4.8e-5$ (1.4\%) and $0.00168 m/s \pm
@@ -231,7 +231,9 @@ histograms. Furthermore, unlike the next results section, these
 histrograms were not particularly skewed, but were evenly distributed
 around the mean. The PDFs were not quite gaussian, with some visible
 kurtosis, so they did exhibit some tendencies towards extreme events,
-which we likely did have trouble catching with our sample size. 
+which we likely did have trouble catching with our sample
+size.\todo{bias estimate}
+
 
 
 \textbf{Comment on the turbulence intensities,
@@ -244,6 +246,19 @@ because the turbulence intensities were often shown to exceed 40\%.
 $\frac{u_{\text{rms}}}{U}$ (the freestream component) appeared to be
 reasonable. We observed turbulence intensities slightly below one
 percent. 
+
+Calculating the turbulence intensities from our raw data, we found that
+the freestream intensity was $0.00793 \pm 0.000510$, or less than one
+percent in magnitude, and slightly less than six (relative to the
+average ) percent uncertainty on that number. Likewise, the spanwise
+velocity measurements were $0.004065 \pm 0.00015$ and an uncertainty of
+closer to 4\%. I'll admit this result surprised me.
+I expect the flow is roughly isotropic, since we are not near any walls. 
+Thus, I expected the turbulence intensities to be about the same as
+well. However, they are patently not, and they are farther apart than
+our uncertainty bounds, so I expect this is a real effect. Otherwise,
+the turbulence intensity levels are roughly about where we would expect
+them to be for free-stream turbulence. 
 
 \section{Experiment Two: Wake Measurements}
 
