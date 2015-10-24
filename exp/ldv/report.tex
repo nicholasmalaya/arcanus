@@ -183,7 +183,7 @@ these values were selected.}
 The burst threshold was set to 30 mV and 60 mV for channel's one and
 two, respectively. We used a higher burst threshold for channel two
 because the mean was typically zero here, and we were getting lower data
-rates.\todo{do you believe this?} 
+rates.
 
 We set the SNR settings to ``very low'' because our burst efficiencies
 were always quite high (often above 80\%). The lab guidelines mentioned
@@ -232,8 +232,15 @@ histrograms were not particularly skewed, but were evenly distributed
 around the mean. The PDFs were not quite gaussian, with some visible
 kurtosis, so they did exhibit some tendencies towards extreme events,
 which we likely did have trouble catching with our sample
-size.\todo{bias estimate}
+size.
 
+Finally, as discussed in class, this data is also polluted by bias. 
+We can estimate the bias uncertainty as,
+\begin{equation}
+  \frac{U_\text{measured}}{U_\text{actual}} = 1 + \left(u_{\text{rms}}/U\right)^2
+\end{equation}
+At our peak turbulence intensities behind the cylinder, we find this can be as large at 1.03, or a 3\% bias error.
+However, for the freestream velocities, with lower turbulence intensities, this is less than one percent. 
 
 
 \textbf{Comment on the turbulence intensities,
@@ -454,7 +461,9 @@ or an astounding (27\%). This is the highly qustionable data. Finally, the V RMS
 Most of these numbers are quite sane, aside from the average of V, which remains anomalously highly. 
 
 What is also interesting is that while the values of the uncertainty are larger than in the freestream, they are seldom 
-so substantially larger than they are over-riding any conclusions that one could make. 
+so substantially larger than they are over-riding any conclusions that one could make. While the error bars are 
+larger in this region, they are actually smaller than I expected for a strongly turbulent region behind a cylinder. 
+
 \section{Conclusions}
 
 \textbf{Conclude by giving your opinion about whether your measurements
