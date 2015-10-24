@@ -6,6 +6,9 @@
 #
 import sys
 import numpy as np
+import matplotlib
+matplotlib.use('Agg') # Must be before importing matplotlib.pyplot or pylab!
+import matplotlib.pyplot as plt
 
 #
 # open and read file
@@ -40,10 +43,9 @@ print len(yd)
 #
 # plot
 #
-import matplotlib.pyplot as plt
 plt.subplot(1, 1, 1)
 plt.plot(yd,defect1,color='blue',marker='o',label=r'$y/d=5$')
-plt.plot(yd2,defect2,color='none', marker='v',label=r'$y/d=10$')
+plt.plot(yd2,defect2,color='black', marker='v',label=r'$y/d=10$')
 plt.title('LDV VMEAN')
 plt.ylabel(r'$V_{mean}/U_{\infty}$')
 plt.xlabel('y/d')
