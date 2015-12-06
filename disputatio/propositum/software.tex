@@ -12,7 +12,7 @@
 
 \subsection{Discretization Scheme}
 
-To instantiate the Navier-Stokes equations on computer, we utilize a
+To instantiate the Navier-Stokes equations on computer, we use a
 Galerkin finite element method discretization (FEM), with linear basis
 functions for both the velocity and pressure. Unlike the typical FEM
 formulations, this scheme circumvents the Babuska-Brezzi
@@ -89,7 +89,7 @@ behaving like a rigid surface as is common for the penalty methods.
 %
 
 All simulations are performed in a cuboid domain, with 6 faces. We
-utilize a uniform mesh in the lateral directions, and a non-uniform mesh
+use a uniform mesh in the lateral directions, and a non-uniform mesh
 in height to resolve the boundary layer. The meshes are scaled by system
 diameter. So the same number of grid points are used for every
 simulation, with the total domain extents scaled up with system size. In
@@ -105,7 +105,7 @@ that the qualitative character of the solution does not change.
 %
 
 For the ``thermal-only'' case study (no mean wind), the simulation
-utilizes periodic boundary conditions on the four sides, a modified
+uses periodic boundary conditions on the four sides, a modified
 neumann condition on the top boundary, and dirichlet boundary conditions
 on the bottom (the ground). These are shown schematically in Figure
 \ref{fig:thermalbc}. On the ground, a ``no-slip'' velocity boundary
@@ -198,7 +198,7 @@ applications were required to reimplement many kernels common to finite
 element applications, including assembly loops, time integration
 schemes, etc.  
 
-We therefore utilize the GRINS library\cite{GRINSpaper}, which sits on
+We therefore use the GRINS library\cite{GRINSpaper}, which sits on
 top of the libMesh kernel. GRINS was designed to support multiphysics FEM
 applications, the reusability and extensibility of mathematical
 modeling kernels, supporting interfaces to existing solver and
@@ -224,7 +224,7 @@ available to ensure the accuracy of results regardless of install platform.
 %GRINS framework.  
 % PETSC\cite{petsc} trilinos\cite{trilinos}
 
-% GRINS also utilizes the fparser\cite{fparser}
+% GRINS also uses the fparser\cite{fparser}
 % library to support both parsing and compilation of mathematical
 % functions into high 
 % performance kernels. This capability allows for easy specification of
