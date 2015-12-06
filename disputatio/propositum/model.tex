@@ -104,7 +104,7 @@ any mean quantity ($\bar f$) in a thermally stratified medium only depend on,
 \bar f = f(z_0,\frac{g}{T_0},\rho_0,\nu_l,K_l,u^*,q)
 \end{equation}
 
-We expect that aside from very near the surface, the diffusivities $\nu_l$
+We expect that aside from near the surface, the diffusivities $\nu_l$
 and $K_l$ will be small compared to their turbulent counter-parts, $\nu_T$
 and $K_T$. Likewise, if we define $z-z_0$ as an ``effective roughness
 height'' or displacement distance, we can reasonably neglect $z_0$ from these
@@ -220,8 +220,8 @@ boundary layer. Resolving this boundary layer requires high resolutions
 immediately adjacent to the walls. Altering the location of vanes
 alters the location of the boundary layer mesh. This is a significant
 challenge, as the development of a new mesh often requires significant
-human effort and time. Furthermore, the process is extremely
-error-prone, and would require each simulation using a mesh undergo
+human effort and time. Furthermore, the process is error-prone, 
+and would require each simulation using a mesh undergo 
 some form of solution verification. 
 
 Instead, we have developed a modeling method that does not require
@@ -271,7 +271,7 @@ has not been included here.
 To implement this distributed representation of the vanes and turbine,
 we need only determine the normal to a vane passing through a
 point (x,y), since we desire for the velocity has no component in the
-normal direction. This is a very broad and general formulation that can
+normal direction. This is a broad and general formulation that can
 support a wide variety of vane curvatures and angles. More details on
 how the forcing itself is imposed on the fluid are discussed in the
 subsequent section \ref{sec:software}. Forcing designed to act like a surface
@@ -311,7 +311,7 @@ investigate and characterize the impact of this model error.
 We observed a large portion of the flow exiting out of the back of 
 the device with non-negligable velocities for the cases with large winds. 
 This was obviously inconsistent with the observations of our colleagues 
-in the field, who saw very modest outflows (if any) out of the back of device. 
+in the field, who observed no outflows out of the back of device. 
 Moreover, this was resulting in large model errors between our predictions and the 
 field results, almost certainly because of the large amount of kinetic and thermal 
 energy that our vane representation was permitting to leave the device. 
