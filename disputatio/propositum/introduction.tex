@@ -12,56 +12,57 @@ energy industry.
 % \cite{arpa-e}
 % proposal
 %
-This proposal details a research plan perform a numerical investigation
-for the design and optimization of a novel device for renewable, clean
-energy generation. 
+This proposal details a research plan to perform a numerical
+investigation and design optimization of a novel renewable energy concept. 
 
 Much of the solar energy incident on the Earth's surface is absorbed
 into the ground, which in turn heats the air layer above the surface.
 This buoyant air layer contains considerable gravitational potential
 energy. 
 With nearly one-third of global land mass covered by deserts, there are huge
-untapped regions for capturing solar heat (about 200 W/$\text{m}^2$ averaged over
-a 24-hour day, and up to 1000 W/$\text{m}^2$ peak)\cite{Hoyt197827}.
-The available power is competitive in magnitude with worldwide power
-generation from fossil sources. If successful, this could result in a
-low-cost, scalable approach to electrical power generation that could
-create a new class of renewable energy ideally suited for arid low-wind regions. 
+untapped regions for capturing solar heat (about 200 W/$\text{m}^2$
+averaged over a 24-hour day, and up to 1000 W/$\text{m}^2$
+peak)\cite{Hoyt197827}. The available power is competitive in magnitude
+with worldwide power generation from fossil sources. If a technology
+could effectively extract this energy, it would result in a low-cost,
+scalable approach to electrical power generation that could create a new
+class of renewable energy ideally suited for arid regions.  
 
 How then, is one to efficiently extract this gravitational potential
 energy and convert it into usable work? We turn to Nature to provide a 
 guide, with the observation that objects already
 exist that provide precisely this mechanism. Namely, the phenomena is
-that of a naturally 
+that of a naturally occurring ``dust devil'' 
 %
 % are we certain this is baroclinic? montegomery might argue it is not.
 % update: I think montgomery is wrong here, or at best nitty.  
 % BAROCLINIC: essentially just that temp fronts exist
 %
-occurring ``dust devil'' with baroclinic generation of vorticity in a
-vertically stratified, ground-heated air layer producing a coherent
-columnar vortex. These ``dust devil''s are ubiquitous, naturally appearing in
-regions as diverse as Arizona, Siberia, over water, or even
+% update: oops, bob agrees! killing it
+%with baroclinic generation of vorticity in a
+characterized by a vertically stratified, ground-heated air layer
+producing a coherent columnar vortex. These ``dust devil''s are
+ubiquitous, naturally appearing in regions as diverse as Arizona,
+Siberia, over water, or even
 Mars\cite{Sinclair1969,ROG:ROG1635,JGRE:JGRE1660}.  
-% arizona, indiana, oregon, yukon, colorado
+ % arizona, indiana, oregon, yukon, colorado
 They are observed to occur over a wide range of length scales (1 - 30
 meters) with large variations in velocities (1 to over 40
 m/s)\cite{Sinclair1969}. 
 
-Thus, the basic idea behind this engineering approach is to convert the 
+The basic idea behind the proposed energy harvesting approach is to convert the 
 potential energy in this buoyant air layer to kinetic energy in an
 anchored vortex, and to use that kinetic energy to drive a
 vertical-axis turbine coupled with an electric generator  to
 produce electrical power. 
-The Solar-Driven Vortex (SoV) phenomena has already been demonstrated in
-an experimental setup by our partners at Georgia Tech. However,  to 
-move beyond proof-of-concept, this effort uses Computational Fluid 
-Dynamics (CFD) to simulate the SoV. This simulation capability provides 
-fundamental insight into the 
-driving dynamics of the system, generates high resolution data that is 
-experimentally inaccessible (or at least, prohibitively difficult to gather) 
-and can be used to rapidly optimize the geometry and configuration of 
-the SoV apparatus. 
+The Solar-Driven Vortex (SoV) phenomena has been demonstrated in
+an experimental setup by our partners at Georgia Tech. However, to 
+move beyond proof-of-concept, Computational Fluid 
+Dynamics (CFD) is needed to simulate the SoV. Such simulations will
+provide fundamental insight into the 
+driving dynamics of the system, generate high resolution data that is 
+experimentally inaccessible that can be used to rapidly optimize the
+geometry and configuration of the SoV apparatus. 
 
 %This is a considerable effort. 
 
@@ -72,22 +73,20 @@ the SoV apparatus.
 The objective of this project is to assess the technological feasibility of 
 using synthetic columnar vortices to generate usable energy. 
 This proposal begins in section \ref{sec:physics} with a discussion of the 
-naturally occurring phenomena. We 
-review the presently understood dynamics of dust-devils and similar
-columnar vortices, and how this informs the general concepts of system 
-design for the synthetic counterparts we desire to generate. 
-In section \ref{sec:mathmodel}, we outline a mathematical formulation of
-the entire system. This leads naturally to section \ref{sec:software},
-where we discuss the algorithms and software implementation used to
-solve the equations of interest and arrive at numerical
-solutions of our phenomena. Section \ref{sec:validation} discusses the
+naturally occurring phenomenon, the presently understood dynamics of
+dust-devils and similar columnar vortices, and the implications for systems
+designed to generate their synthetic counterparts. 
+In section \ref{sec:mathmodel}, we outline a mathematical model of
+the entire system, and in section \ref{sec:software}, we discuss the
+algorithms and software implementation used to simulate the
+system. Section \ref{sec:validation} discusses the 
 validation of these results against existing experimental data and high
 fidelity simulations. Section \ref{sec:results} details the preliminary
 predictions of system performance in the field, as well as detailing the 
 several examples of a numerical optimization of the apparatus. Finally, with the 
 preceding sections outlining the present simulation capabilities, 
 section \ref{sec:proposed_work} proposes a course of investigation
-designed to broadly probe the design space and in doing so, provide a
+designed to broadly probe the design space and provide a
 definitive assessment of the technological feasibility of the entire 
 synthetic columnar vortex concept. 
 
@@ -95,7 +94,7 @@ synthetic columnar vortex concept.
 %study performed by comparing between the available experimental
 %measurements and the simulations results. 
 
-%In order for these simulations to be generally useful, they must first
+%For these simulations to be generally useful, they must first
 %be validated against existing experimental data and high fidelity
 %simulations. These models will then explore regimes and scales where no
 %experimental measurements presently exist. 
