@@ -14,43 +14,34 @@
 %% %\item eyewall
 %% \end{itemize}
 
-To motivate how best to \textit{engineer} a synthetic
-dust devil, we first address what is known about the naturally occuring
-phenomena. We therefore begin this section with a qualitative discussion
-of dust-devils, followed by a review of the known physics and pertinent 
-literature review. We then briefly outline how we intend to leverage
-these physical processes as a method of usable energy generation. 
+This section addresses what is known about naturally occurring dust
+devil's, to motivate how best to \textit{engineer} a synthetic version. 
+It begins with a qualitative discussion of dust-devils, followed by a
+review of the known physics and pertinent literature review. Finally, it
+ends with an plan on how best to leverage these physical processes as a
+method of usable energy generation.   
 
 
 \subsection{Phenomenological Character of Dust Devils}
 
-%\begin{itemize}
-%\item chart from sinclair of frequency (they are driven by delta t)
-%\item turning direction independent
-%\item characteristic velocities and sizes
-  %\item genesis diagram (thermal plume) -- mention ambient angular
-  %vorticity 
-%\item structure diagram and description
-%\end{itemize}
 
-No rigorous definition of a dust devil exists. This cannot be attributed
-to the rarity of the process. Rather, the phenomena of dust devils are
-remarkably ubiquitous. These whirlwinds have been
+There is no rigorous definition of a dust devil, despite the fact that
+the phenomenon is remarkably ubiquitous. These whirlwinds have been
 observed across a wide variety of terrains, climates and even on several
 other planets\cite{Sinclair1969,Bluestein2004,JGR:JGR13978,JGRE:JGRE1660}. 
 While it is difficult to pin down a precise definition, several features 
 are characteristic of a dust devil. They are regions of
 intense vorticity and rotation, coupled with strong upward motions 
-that are strong enough draw and lift particles along with the flow.
+that are strong enough draw and lift particles into the flow.
 They are a self-sustaining vortex that maintains a funnel-like
 chimney driven by hot air moving both upward and circularly. 
-While they typically exist for only a few minutes, some have 
-been observed to exist for significantly longer. While the velocities are 
-typically several meters per second, 
+While they typically survive for only a few minutes, some have 
+been observed to endure for significantly longer. The velocities are 
+typically several meters per second, but
 %
 % stolen from: http://glossary.ametsoc.org/wiki/Fujita_scale
 %
-dust devils occasionally are strong enough to cause damage and injury,
+dust devils are occasionally strong enough to cause damage and injury,
 with some reaching F1 on the Fujita Tornado intensity
 scale\cite{Edwards_tornadointensity}, with velocities between 33 and 49
 $m/s$. 
@@ -61,9 +52,8 @@ $m/s$.
 % or overturned; moving autos pushed off road. ``
 Diameters range from about one meter to greater than thirty.  Their
 average height is about thirty meters, but a few have been observed 
-as high as 1 km or more. There appears to be no preferred direction, and
-they are observed to rotate anticyclonically as well as
-cyclonically. Although the vertical velocity 
+as high as one kilometer or more. Dust devils do not appear to have a
+preferred rotation direction. Although the vertical velocity 
 is predominantly upward, the flow along the a central axis of large dust
 devils may be downward. 
 %
@@ -72,19 +62,19 @@ devils may be downward.
 %Moreover, actual dust devils have been photographed from orbit, with
 %some of them as large as 1 to 2 kilometers across at their base and 10
 %km tall. 
-Similarly visibly structured phenomena have been spotted over water, in
-intense forest fires, or even in cold or freezing environments. 
+Visibly similar structured phenomena have been observed over water, in
+intense forest fires, and in cold or freezing environments. 
 %
 % good place to ref jacobson2005fundamentals
 %
 This is to say nothing of other similar cyclonic phenomena, such as
 tornados and hurricanes. 
 
-While the phenomena is pervasive, certain 
-environmental conditions do impact the frequency of formation
-of dust devils. Sinclair\cite{Sinclair1969} provides perhaps the most 
-systematic investigation characterizing favorable conditions for
-formation. From these results we conclude that dust devils are most
+While the phenomenon is pervasive, certain 
+environmental conditions impact the frequency of dust devil formation.
+Sinclair\cite{Sinclair1969} performed perhaps the most 
+systematic investigation characterizing conditions favorable for
+formation. He noted that dust devils are most
 likely to form at solar noon, the time of the greatest incident radiation 
 on the ground. Furthermore, they are more likely to form in locations 
 with a higher surface temperature. Moderate to high wind speeds (2-5
@@ -92,25 +82,28 @@ m/s) encourage dust devil genesis, but greater velocities (11 m/s)
 appear to impede formation. They are more likely to be observed in
 relatively flat locations, such as deserts.  
 
-While there are existing publications on the numerical simulation of dust
-devils, they are typically LES simulations that point
+Numerical simulations of dust devils have been previously
+reported. However, they are typically large eddy simulations (LES) that point
 towards the occurance of similar phenomena within existing climate and
 atmospheric models\cite{QJ:QJ200513160722,doi:10.3137/ao.420105}. Actual
 measurements made inside a dust devil 
 are limited. The available data hints that dust devils can be broken
 into two regions: a low surface layer and a higher invisid region. The
 low surface region is the  principle location of radial inflow. 
-It is at the top of this region that the flow 
+At the top of this region the flow 
 reaches its peak velocity, with that peak dropping with increasing height. 
-The strong radial and azimuthal velocities are drawn into a low pressure core 
-where they gain vertical velocity and are lifted up. Earlier experimental and 
-computational results have both observed a cooler downdraft in the center 
-of the dust devil. It is not clear what generates the azimuthal velocities. It is 
-possible that ambient vorticity from objects is drawn into the vortex from far 
-field, and which intensifies greatly owing to a $1/r^2$ dependence.
+The strong radial and azimuthal flow is drawn into a low pressure core 
+where it gains vertical velocity and is lifted up. Earlier experimental and 
+computational studies have observed a cooler downdraft in the center 
+of the dust devil\cite{}. It is not clear what generates the azimuthal velocities. It is 
+possible that ambient vorticity in the atmosphere is drawn into the
+vortex from the far field, 
+%and which intensifies greatly owing to a
+%$1/r^2$ dependence. 
+and intensifies due to vortex stretching. 
 
 The higher region is characterized by a largely invisid potential flow region 
-that characterized by warm air rising and circling around a cool, 
+with warm air rising and circling around a cool, 
 low pressure core. This region is typically many times larger in height than the
 surface layer. While this region also has radial inflow, it is 
 significantly weaker than the lower region. Previous studies have found 
@@ -132,9 +125,9 @@ cartoon in Figure \ref{fig:cartoon}.
 \subsection{Estimate of Energy Scaling}
 
 Here we provide a rough estimate of the energy
-available to a dust devil. There are two objectives behind this
+available to a dust devil. There are two objectives of this
 analysis. The first is to provide justification for the concept of
-extracting energy from these phenomena, with the reasoning that should
+extracting energy from them, with the reasoning that should
 sufficient energy be available, then attempting to extract it might be
 worthwhile. The second objective is to provide a simple analysis that
 can serve as a measure of the efficiency of the generation process,
@@ -142,7 +135,7 @@ e.g. ``What fraction of the available energy are we extracting?''.
 
 At present, we consider only the energy flowing into the entrainment
 region due to the ambient conditions, in particular, the incoming wind
-and heat through the front hemisphere of a cylindrical region. We
+and heat flowing through a cylindrical region. We
 consider a medium-sized (3m radius) dust devil with an incoming
 freestream velocity of 5 m/s. The surface temperature is 343 Kelvin,
 with a specified inflow boundary layer bridging the ground temperature
@@ -154,69 +147,52 @@ provided by the Georgia Tech field team in Arizona during the summer of
 
 There are two forms of energy to consider: kinetic and gravitational
 potential. First, we examine the kinetic energy flux through the front
-of the apparatus. From the first law of thermodynamics we can express
-the kinetic energy flux as a surface integral over the upstream face of
+of the apparatus. 
+%From the first law of thermodynamics we can express
+The kinetic energy flux is a surface integral over the upstream face of
 the device,  
 \begin{equation*}
-\text{KE} = \int_{CS} \frac{\vec V^2}{2} \rho \vec V \cdot \hat n dA.
+\text{KE} = \int \frac{\vec V^2}{2} \rho \vec V \cdot \hat n dA.
 \end{equation*}
 %
 % could cite fluid dynamics book here
 % pg. 239
 %
-We make several simplifying assumptions. We assume our freestream 
-velocity has no components in the span and height. 
-We further assume that the variation in height for the streamwise
-velocity is only on account of the thin boundary layer near the
-ground. We functionally approximate this behavior using the common 7th
+We make several simplifying assumptions. We assume the freestream 
+velocity has no components in the span and height and
+that the variation in height of the streamwise
+velocity is only due to the thin boundary layer near the
+ground. The boundary layer profile is modeled using the common 7th
 power function for a turbulent boundary layer,  
 \begin{equation*}
   u(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)
 \end{equation*}
 where U is the constant freestream velocity and $\delta$ the assumed
-boundary layer thickness. Our integral can be solved to show, 
+boundary layer thickness. 
+The result for the kinetic energy is then, 
 \begin{align*}
-\text{KE} & = -R \rho U^3 \left[ z_{\text{max}} - \frac{10}{11}\delta.
+\text{KE} & = R \rho U^3 \left[ z_{\text{max}} - \frac{10}{11}\delta.
 \right]
 \end{align*}
+Where R is the radius of the vortex. Typical quantities values are, $u = 5$ m/s, $\rho =
+1.225$ Kg/$m^3$, $R = 3$ m, $z_{\text{max}} = 2.5$ m and $\delta \approx
+10$ cm. This provides an estimate of 1144 Watts as the incoming kinetic
+energy flux. 
 
-%%  & = \frac{1}{2} R \rho u^3 z_\text{max}
-%%  \int^{\frac{3\pi}{2}}_{\frac{\pi}{2}} \text{cos}\theta d\theta \\
-%%  & = -R \rho u^3 z_\text{max}. 
-%% \end{align*}
-
-The negative sign here indicates that the kinetic energy is flowing into
-the surface, in opposition to the outward facing unit normal, $\hat
-n$. Characteristic values for this analysis are, $u = 5$ m/s, $\rho =
-1.225$ Kg/$m^3$, $R = 3$ m, and $z_{\text{max}} = 2.5$ m. The boundary
-layer thickness is $\approx 10$ cm. This provides
-an estimate of 1144.26 Watts as the incoming kinetic energy flux. Or,
-approximately 1.14 kW.  
-
-We estimate the gravitational potential
-energy flux by integrating the boussinesq term by the height of the vanes, 
+We estimate the gravitational potential energy flux by integrating the
+boussinesq potential energy flux over the upstream,  
 \begin{align*}
   \text{Potential Energy Flux} & = \int_{-h}^0 u(z) \Delta \rho g z dz. \\
   & = \int_{-h}^0 u(z) \rho' g z^2 dz. 
 \end{align*}
 Where the substitution, $\Delta \rho = \rho' z$ was made. We again
 assume the boundary layer follows the 7th order profile, and 
-% At 
-% this point we again separate the integral into two components, 
-% for the boundary layer and the constant freestream velocity region. 
-% \begin{align*}
-%   & = \rho' g \left[ \int_{-\delta}^{0} U \left( \frac{z}{\delta} \right)^7 z^2 dz 
-%       + \int_{-h}^{-\delta} U z^2 dz \right] \\
-%   & = -\rho' g U \left[ \frac{h^3}{3} - \frac{7}{30} \delta^3 \right].
-% \end{align*}
-% Furthermore, we note 
-%
 that $\rho' = -\beta \rho_0 \Delta T$, resulting in, 
 %
 % cite monin-yaglom page 59
 %
 \begin{equation}
- \text{Power } = U \beta \rho_0 \Delta T g \left[ \frac{h^3}{3} -
+ \text{Power } = U \beta \rho_0 \Delta T g \left[ \frac{z_\text{max}^3}{3} -
 					    \frac{7}{30} \delta^3
 					   \right]. 
 \end{equation}
