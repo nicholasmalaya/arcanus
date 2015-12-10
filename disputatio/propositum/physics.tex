@@ -202,68 +202,36 @@ Using $\rho_0 = 1.225$ Kg/$m^3$, $T_{\text{ref}}=313$m Kelvin, $\beta_T
 freestream velocity of five meters per second results in an
 estimate of 30 Watts for the gravitational potential energy. 
 
-This interesting result implies that the majority of the available
-energy is attributable to kinetic energy, not the gravitational
-energy. 
+The majority of the available energy is thus attributable from the
+kinetic energy of the wind, not the gravitational potential energy of
+the actual air. 
 % todo: think about renno
 %This is inconsistent with the results of
 %Renno\cite{}\todo{missing cite here}, who demonstrated
 %that the available thermal energy present was not sufficient to account
 %for the velocities measured in dust devils. 
-However, while the
-gravitational potential energy is a small fraction of the energy
-available, that does not imply it is without significant impact. The
-extent to which the thermal energy acts as an assisting mechanism for 
-``lifting-up'' the flow is unclear, but given the observed increase in dust
-devil formation during peak thermal gradients, it is expected
-to play an important role. 
+However, while the gravitational potential energy is a small fraction of
+the energy available, that does not imply it is without significant
+impact. 
+%The extent to which the thermal energy acts as an assisting mechanism for 
+%``lifting-up'' the flow is unclear, but 
+Given the observed increase in dust devil formation during peak thermal
+gradients, it is expected to play an important role. 
 
 \subsection{Dust Devil Generation Concept}
 
-The preceding discussion has justified the idea that 
-dust devils are carriers of non-trivial levels ambient kinetic and
+The preceding discussion suggests that 
+dust devils are carriers of significant levels ambient kinetic and
 gravitational potential energy from the environment. This  
-subsection now provides a brief discussion of how the physics of 
-dust devils informs the generation of a synthetic variety, so that these
-phenomena might be used as a means of extracting usable work. 
+subsection provides a brief discussion of how the physics of 
+dust devils informs the generation of a synthetic variety, that might be
+used as a means of extracting usable work.  
 
 In contrast to the naturally occuring dust devils
 our synthetic solar driven vortex, (SoV) design makes use of
-control surfaces to dictate the angle of incoming flow, and in doing so
-explicitly converts a portion of the incoming radial flow in azimuthal
-velocity. These turning vanes also serve as an anchor for the synthetic
-vortex, locking it into a small region. An abstract concept of the turning
-vane geometry is shown in figure \ref{fig:cartoon_vanes}.
-
-Our observations of the naturally occuring dust devils informs some of
-our \textit{a priori} expectations for the design of the turning
-vanes. The bottom tier are designed to reside in the lower region, where
-the principle inflow will occur. We therefore expect a radial or nearly
-radial start to the vanes, which becomes increasingly tangential as the
-flow moves towards the center. The inner radius of the bottom tier will
-correspond to the outer radius of the generated vortex. 
-
-The top tier serves a different purpose. We expect a non-zero initial
-angle, as this tier is also designed to protect the rising vortex from
-being blow away by ambient winds. The vanes radius will be shorter, as
-the flow from this tier becomes entrained and the vortex grows in
-size. 
-
-For both the upper and lower tiers, our objective is to strike a balance
-between effectively turning the incoming flow to impart azimuthal
-velocity, while simultaneously not introducing such a high angle that
-the vanes act as a blocking surface which the incoming flow will move
-around. For instance, when the inlet angles are too severe, the vanes
-block the incoming flow, which results in an adverse pressure gradient
-existing near the outside edge of the 
-vanes. This serves to force fluid around and over the system, instead
-of inside the turning vanes. This reduces the velocity of flow inside
-the system, resulting in a weaker thermal vortex.  To reduce
-the flow blockage, we use gently curving vanes. A gentler angle permits
-more flow to enter the vane region, after which the curvature increases
-toward the center of the vanes. In this way, the angle smoothly varies
-between a nearly zero angle at the outside edge of the vanes to a
-maximum angle at a specified inner radius.
+control surfaces. These turning vanes also serve as an anchor for the
+synthetic vortex, locking it into a small region. An abstract concept of
+the turning vane geometry is shown in figure \ref{fig:cartoon_vanes}.
 
   \begin{figure}[!htb]
     \begin{center}
@@ -274,49 +242,122 @@ maximum angle at a specified inner radius.
     \end{center}
   \end{figure}
 
-%% \Begin{figure}[h]
-%%  \begin{center}
-%%   \includegraphics[width=.5\linewidth]{fig/power_generation.png}
-%%    \caption{The Sov facility, showing the vanes, rotor and anchoring
-%%    protrusion, as well as the buoyancy-driven vortex used to drive the
-%%    turbine.}
-%%    \label{facility}
-%%   \end{center}
-%% \end{figure}
+% Our observations of the naturally occuring dust devils informs some of
+% our \textit{a priori} expectations for the design of the turning
+% vanes. The bottom tier are designed to reside in the lower region, where
+% the principle inflow will occur. We therefore expect a radial or nearly
+% radial start to the vanes, which becomes increasingly tangential as the
+% flow moves towards the center. The inner radius of the bottom tier will
+% correspond to the outer radius of the generated vortex. 
 
-Our principle objective is to use a synthetic dust devil to produce 
-usable work. To extract the energy from the synthetic dust
-devil, a turbine is placed 
-at or near the top of the second tier of turning vanes. 
-The blades of the turbine will be driven by the dust devil's azimuthal
-and vertical velocities. While the Betz limit\cite{betz} gives a reasonable
-expectation of the efficiency with which energy can be expected to be
-extracted from the ambient dust devil velocity field, there are other
-non-trivial design considerations. In particular, the impact of the
-turbine on the dust devil's vortex, and any potential disruption of the
-flow on account of the turbine must be investigated. Optimizing the
-turbine to maximize the energy extraction while simultaneously
-minimizing it's impact on the character of the dust devil's solution
-will be an important issue.
+% The top tier serves a different purpose. We expect a non-zero initial
+% angle, as this tier is also designed to protect the rising vortex from
+% being blow away by ambient winds. The vanes radius will be shorter, as
+% the flow from this tier becomes entrained and the vortex grows in
+% size. 
 
-While the turning vanes and turbine  
-paradigm represents a reasonable starting point for design, the
-parameter space of possible system configurations is large. It is
-unclear how to engineer an effective SoV system. Important design
-consideration include: 
-\begin{itemize}
-  \item How should the turning vanes be configured?
-  \item How does the energy produced scale with system diameter?
-  \item Are additional surfaces, such as a cone, capable of increasing energy output?
-\end{itemize}
+% For both the upper and lower tiers, our objective is to strike a balance
+% between effectively turning the incoming flow to impart azimuthal
+% velocity, while simultaneously not introducing such a high angle that
+% the vanes act as a blocking surface which the incoming flow will move
+% around. For instance, when the inlet angles are too severe, the vanes
+% block the incoming flow, which results in an adverse pressure gradient
+% existing near the outside edge of the 
+% vanes. This serves to force fluid around and over the system, instead
+% of inside the turning vanes. This reduces the velocity of flow inside
+% the system, resulting in a weaker thermal vortex.  To reduce
+% the flow blockage, we use gently curving vanes. A gentler angle permits
+% more flow to enter the vane region, after which the curvature increases
+% toward the center of the vanes. In this way, the angle smoothly varies
+% between a nearly zero angle at the outside edge of the vanes to a
+% maximum angle at a specified inner radius.
 
-Questions such as these provide the principle impetus of using
-computational fluid dynamics (CFD) to inform system design. The
-parameter space of conceivable system designs is far larger than can be
-probed experimentally, and even if such a campaign were to be embarked
-upon, it would be at significantly greater temporal and monetary
-cost. The subsequent chapter will provide the mathematical basis by which
-we model the system, so that we can then begin to discuss how we might
-optimize it computationally.  
+The characteristics of natural dust devils shown in figure
+\ref{fig:cartoon} suggest that the turning vanes be structured with two
+tiers (see figure \ref{fig:cartoon_vanes}). The lower tier would be
+designed to manipulate the surface layer 
+that lifts up into the core of the vortex, while the upper tier would
+control entrainment into the vortex. In both tiers, the design of the
+turning vanes must balance between the need to turn the flow from the
+radial direction to the azimuthal direction to create vortical motion
+and the requirement to not block flow into the vortex. Furthermore, in
+the presence of a cross wind, the vanes need to prevent flow that
+would pass right through the device, which would disrupt the vortex.
+Finally, in field tests of design concepts for a solar vortex device
+conducted by our colleagues at the GA Tech, it was found that cross
+winds over the facility will also disrupt the vortical flow, and that
+this could be controlled by introducing a conical wind-block on top of
+the upper tier of vanes. One such field test configuration is shown in
+figure \ref{fig:field_test}. Within this broad conceptual design, there
+remains a large design space to explore, including design parameters for
+both tiers of vanes and the wind-block cone.
+
+  \begin{figure}[!htb]
+    \begin{center}
+     \includegraphics[width = 8 cm]{figs/TODO}
+     \caption{todo}
+     \label{fig:field_test}
+    \end{center}
+  \end{figure}
+
+To extract energy from the synthetic dust devil formed by the vane
+system described briefly above, a turbine would be placed near the top
+of the upper vanes. The turbine would extract energy from both the
+vertical and azimuthal flow in the vortex, and so the design
+considerations are different from those for a classical wind turbine.
+Furthermore, there is presumably an analog to the Betz limit on how
+much of the energy can be extracted, without disrupting the flow so
+much that the vortex cannot be maintained. This will need to be
+explored as part of the turbine design process.
+
+In the research proposed here, the design and performance of a dust
+devil energy harvesting system will be explored using computational
+models. Computer models will enable a more extensive exploration of
+the design space than would be possible experimentally. The design
+concept described above will be analyzed to maximize the the
+power that can be generated by the system and to develop scaling
+describing how power depends on device size, wind speed and thermal
+conditions. Further new design concepts that may be formulated will
+also be evaluated. The subsequent chapter will provide the mathematical
+representation used to model the system.  
+
+%
+%
+%
+
+% Our principle objective is to use a synthetic dust devil to produce 
+% usable work. To extract the energy from the synthetic dust
+% devil, a turbine is placed 
+% at or near the top of the second tier of turning vanes. 
+% The blades of the turbine will be driven by the dust devil's azimuthal
+% and vertical velocities. While the Betz limit\cite{betz} gives a reasonable
+% expectation of the efficiency with which energy can be expected to be
+% extracted from the ambient dust devil velocity field, there are other
+% non-trivial design considerations. In particular, the impact of the
+% turbine on the dust devil's vortex, and any potential disruption of the
+% flow on account of the turbine must be investigated. Optimizing the
+% turbine to maximize the energy extraction while simultaneously
+% minimizing it's impact on the character of the dust devil's solution
+% will be an important issue.
+
+% While the turning vanes and turbine  
+% paradigm represents a reasonable starting point for design, the
+% parameter space of possible system configurations is large. It is
+% unclear how to engineer an effective SoV system. Important design
+% consideration include: 
+% \begin{itemize}
+%   \item How should the turning vanes be configured?
+%   \item How does the energy produced scale with system diameter?
+%   \item Are additional surfaces, such as a cone, capable of increasing energy output?
+% \end{itemize}
+
+% Questions such as these provide the principle impetus of using
+% computational fluid dynamics (CFD) to inform system design. The
+% parameter space of conceivable system designs is far larger than can be
+% probed experimentally, and even if such a campaign were to be embarked
+% upon, it would be at significantly greater temporal and monetary
+% cost. The subsequent chapter will provide the mathematical basis by which
+% we model the system, so that we can then begin to discuss how we might
+% optimize it computationally.  
 
 
