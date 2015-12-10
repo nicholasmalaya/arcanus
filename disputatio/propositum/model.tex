@@ -15,10 +15,10 @@
 % should this all be math modeling?
 %
 
-Our aim is to simulate the formation of synthetic dust devils in the
-field. This requires a model of the ambient conditions for a
+The aim of the proposed work is to simulate the formation of synthetic
+dust devils in the field. This requires a model of the ambient conditions for a
 representative case, such as Arizona, where experimental data is
-available from test have been performed. Furthermore, for this to be
+available from test that have been performed. Furthermore, for this to be
 more generally useful in the prediction of flows in a variety of
 conditions, we need a model generally applicable to any flow near the
 surface of the earth.  
@@ -28,21 +28,22 @@ develops a mathematical model for turbulence in a thermally stratified
 medium. We seek to emulate the operation of the apparatus during the day, 
 when dust devils are observed to form readily. 
 At these times, the atmospheric surface layer has the following character. 
-Incident radiation from the sun largely does not interact with the
+Incident radiation from the sun does not significantly interact with the
 air, which is nearly transparent. Instead, this radiation is absorbed by
-the ground, which causes a temperature rise. This results in a thermal
+the ground, which causes it's temperature to rise. This results in a thermal
 gradient between the hot ground and the cooler air. The warm ground
-conducts heat to the air, causing an expansion and lowering the density
+conducts heat to the air, causing expansion and lowering the density
 of the air. This reduced density air near the surface is driven upwards
 by the force of buoyancy.  
 
 For sufficiently large temperature gradients, these motions are
 unstable, and as the warm air is driven upwards the flow will transition
 to turbulence. For the typical use case we consider, namely Arizona in
-summer, the temperature gradient can be in excess of 30 Kelvin. 
-Rayleigh numbers associated with this are typically between $10^{9} -
-10^{11}$, and therefore meet the criterion for transition to a turbulent
-regime. The flow is that of an unstably stratified fluid. 
+summer, the temperature difference can be in excess of 30 Kelvin. 
+Rayleigh numbers associated with temperature gradients of this magnitude
+this are between $10^{9} - 10^{11}$, and therefore meet the criterion
+for transition to a turbulent regime. The flow is that of an unstably
+stratified fluid.  
 
 \subsection{Equations of Fluid Motion}
 %
@@ -55,12 +56,13 @@ low Mach number with natural convection are, %\todo{fix me up}
  \frac{\partial u}{\partial t} + u \cdot \nabla u =&
   -\frac{1}{\rho}\nabla P + \nu \nabla^2 u - g \frac{T'}{T_0}\\
  \nabla \cdot u =& 0 \\
- \rho c_p \frac{\partial T}{\partial t} =& \nabla \cdot ( k \nabla T).
+ \rho c_p \frac{\partial T}{\partial t} + u \cdot \nabla T =& \nabla \cdot ( k \nabla T).
 \end{eqnarray*} 
-Where we have made the assumptions that the temperature gradient is small in
+
+Where we have made the assumptions that the temperature variation is small in
 comparison to the mean temperature of the region. These are the
-incompressible Navier-Stokes equations for free-convection (or
-``Boussinesq'') coupled with the heat equation. 
+incompressible Navier-Stokes equations with Boussinesq representation of
+buoyancy coupled with the heat equation.  
 %
 % in full document be sure to mention that neglecting coriolis is legit
 % below 50ms
@@ -69,8 +71,8 @@ incompressible Navier-Stokes equations for free-convection (or
 As discussed above, we anticipate our flow to be
 turbulent. Turbulence significantly alters the character of the flow,
 and necessitates either resolving the resulting small scales or
-providing a model that emulates their impact. In this case, we use
-essentially a Reynolds Averaged Navier-Stokes (RANS) model, where we
+providing a model that emulates their impact. In this case, we use a
+Reynolds Averaged Navier-Stokes (RANS) formulation, where we 
 permit the viscosity and thermal conductivities to vary in space, and
 decompose the flow into constant laminar and varying turbulent and vane
 components,  
@@ -88,17 +90,18 @@ base diffusivities and do not vary in space.
 
 We use the celebrated similarity model of Monin and
 Yaglom\cite{monin2007statistical,monin1954basic} as a guide to the
-present development, which we outline below. Their work is extension of
-the mixing-length model of Prandtl, where the concepts of gradient
-diffusion and mixing length were generalized to thermally stratified
-flow.   
+present development, which we outline below. Their formulation is an
+extension of the mixing-length model of Prandtl, where the concepts of
+gradient diffusion and mixing length were generalized to thermally
+stratified flow.   
 
 %
 % justify prandtl assumption here
 %
 
-We begin by using dimensional analysis, and noting that the dynamics of
-any mean quantity ($\bar f$) in a thermally stratified medium only depend on,
+Using dimensional analysis, and noting that the dynamics of
+any mean quantity ($\bar f$) in a thermally stratified medium only
+depend on, 
 
 \begin{equation}
 \bar f = f(z_0,\frac{g}{T_0},\rho_0,\nu_l,K_l,u^*,q)
@@ -110,7 +113,7 @@ and $K_T$. Likewise, if we define $z-z_0$ as an ``effective roughness
 height'' or displacement distance, we can reasonably neglect $z_0$ from these
 considerations. While the roughness height can be large (for instance in
 a cornfield, where the roughness height could reasonably be several
-meters), for our present study the expectation is that this roughness
+meters), for the present study the expectation is that this roughness
 height will be on the order of centimeters\cite{oke1987boundary}, and
 therefore negligible.  
 
