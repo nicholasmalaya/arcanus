@@ -76,6 +76,12 @@ Reynolds Averaged Navier-Stokes (RANS) formulation, where we
 permit the viscosity and thermal conductivities to vary in space, and
 decompose the flow into constant laminar and varying turbulent and vane
 components,  
+
+% \begin{eqnarray*}
+%  \nu =& \nu_{l} + \nu_{T}(z) + \nu_{V}(r,z) \\
+%  K =& K_{l} + K_{T}(z) + K_{V}(r,z)
+% \end{eqnarray*}
+
 \begin{eqnarray*}
  \nu =& \nu_{l} + \nu_{T}(z) + \nu_{V}(r,z) \\
  K =& K_{l} + K_{T}(z) + K_{V}(r,z)
@@ -99,23 +105,24 @@ stratified flow.
 % justify prandtl assumption here
 %
 
-Using dimensional analysis, and noting that the dynamics of
-any mean quantity ($\bar f$) in a thermally stratified medium only
-depend on, 
+Using dimensional analysis, note that the dynamics of
+any mean turbulent quantity ($\bar f$) in a thermally stratified medium
+only depend on,  
 
 \begin{equation}
-\bar f = f(z_0,\frac{g}{T_0},\rho_0,\nu_l,K_l,u^*,q)
+\bar f = f(z,\frac{g}{T_0},\rho_0,\nu_l,K_l,u^*,q)
 \end{equation}
 
 We expect that aside from near the surface, the diffusivities $\nu_l$
 and $K_l$ will be small compared to their turbulent counter-parts, $\nu_T$
-and $K_T$. Likewise, if we define $z-z_0$ as an ``effective roughness
-height'' or displacement distance, we can reasonably neglect $z_0$ from these
-considerations. While the roughness height can be large (for instance in
-a cornfield, where the roughness height could reasonably be several
-meters), for the present study the expectation is that this roughness
-height will be on the order of centimeters\cite{oke1987boundary}, and
-therefore negligible.  
+and $K_T$. 
+%Likewise, if we define $z-z_0$ as an ``effective roughness
+%height'' or displacement distance, we can reasonably neglect $z_0$ from these
+%considerations. While the roughness height can be large (for instance in
+%a cornfield, where the roughness height could reasonably be several
+%meters), for the present study the expectation is that this roughness
+%height will be on the order of centimeters\cite{oke1987boundary}, and
+%therefore negligible.  
 
 This leaves only five parameters: the distance from the ground, z; the
 buoyancy coefficient, $\frac{g}{T_0}$; the density of the fluid,
@@ -126,8 +133,10 @@ $q$.
 % 
 These quantities depend on
 four dimensions: length, time, temperature and mass. As a result, 
-Buckingham Pi theorem implies that only one dimension-less group can be
-formed\cite{munson2012fundamentals}. This group is chosen to be,
+Buckingham Pi theorem implies that 
+the original equations can be rewritten in terms of a 
+single dimension-less group.\cite{munson2012fundamentals}. This is
+chosen to be,
 \begin{equation}
  \xi = \frac{z}{L}.
 \end{equation}
@@ -138,16 +147,15 @@ Here, $L$ is the famous, ``Monin-Obukhov'' length,
 where $\kappa$ is the (dimensionless) Von-Karman constant. Notice that
 our interest lies in regimes where $L<0$, as $q<0$ (e.g. heat from the
 ground into the fluid), which corresponds to the unstable stratification 
-we expect during a sunny day. 
-
-We are now in a position to state that the mean quantity has a
-functional representation to the effect,
+we expect during a sunny day. The mean quantity $\bar f$ has a
+functional representation to the effect
 \begin{equation}
  \bar f = C \phi(\xi)
 \end{equation}
 with C a multiplicative constant with units of $\bar f$, and $\phi$ is a
 function only of $\xi$. We are interested in the case where $\xi<0$, which
-corresponds to heat flux from the ground into the air.  
+corresponds to heat flux from the ground into the air.\todo{clean the
+rest of this up}
 
 The case where $\xi \to -\infty $ implies $\frac{z}{L} \to
 -\infty $ and $z>>L$. This is most readily interpreted as the instance
@@ -194,7 +202,7 @@ based on data provided by our partners at Georgia Tech.
 %This calibration
 %is detailed in Section \ref{sec:validation}. 
 We then set the eddy-viscosity in
-the region of the vanes and interior to them based on scaling relations
+the region of the vanes and interior based on scaling relations
 for a turbulent self-similar circular jet, as in
 Pope\cite{pope2000turbulent},
  
@@ -202,87 +210,84 @@ Pope\cite{pope2000turbulent},
  \nu_C(r) = U_0(r) y_{1/2}(r) \bar \nu_C
 \end{equation}
 
-Where $U_0$ is the peak velocity, $y_{1/2}$ the jet half-width (here
-taken to be the dust devil half-width). In words, we are scaling the
-calibrated viscosity by the velocity and length scale of the
-apparatus. $\bar \nu_C $ is input, measured from the experimental
-laboratory.  The diffusivity here is essentially a top hat filter, which
-radial values interior to the vanes the nominal calibrated value, and
-those outside the vanes zero, e.g. $\nu_C(r>r_{\text{vane}})=0$. The
-thermal diffusivity inside the device, $K_C$, is then fixed with the
+Where $U_0$ is the peak velocity, and $y_{1/2}$ the jet half-width
+(taken to be the dust devil half-width).  
+% In words, we are scaling the
+% calibrated viscosity by the velocity and length scale of the
+% apparatus. $\bar \nu_C $ is input, measured from the experimental
+% laboratory.  The diffusivity here is essentially a top hat filter, which
+% radial values interior to the vanes the nominal calibrated value, and
+% those outside the vanes zero, e.g. $\nu_C(r>r_{\text{vane}})=0$. 
+The dimensionless constant $\bar \nu_C $ is calibrated based on
+experimental data, and is set to zero outside the device. 
+The thermal diffusivity inside the device, $K_C$, is then fixed with the 
 assumption that the Prandtl number is unity.  
 
 \subsection{Vane and Turbine Representation}
 
 To rapidly prototype general system configurations, the
-computational effort must be able to explore a large space of possible
-geometries and settings. This presents a significant meshing
-problem. In the region near the vanes, where a no-slip boundary
+computations must be able to explore a large space of possible
+geometries and settings. This presents a significant meshing and 
+computational challenge if the detailed flow around the vanes is to be
+computed. In the region near the vanes, where a no-slip boundary
 condition is imposed, the flow will necessarily form a thin momentum
 boundary layer. Resolving this boundary layer requires high resolutions
-immediately adjacent to the walls. Altering the location of vanes
-alters the location of the boundary layer mesh. This is a significant
+immediately adjacent to the walls. Changing the vane location requires
+that a new mesh be generated.
+This is a significant
 challenge, as the development of a new mesh often requires significant
 human effort and time. Furthermore, the process is error-prone, 
-and would require each simulation using a mesh undergo 
-some form of solution verification. 
+and would require that each simulation using a new mesh undergo 
+detailed solution verification. 
 
-Instead, we have developed a modeling method that does not require
-explicitly meshing the turning vanes, or any surface. Instead, we impose
-a forcing designed to closely mimic the forces a fluid would experience
-in the region of such a surface. For example, instead of explicitly
-assembling grids for twelve turning vanes, we define a region of forcing
-within the 
-outer and inner radii where the vanes would be. This region of ``virtual
-vanes'' is akin to an infinite number of vanes all arranged identically
-with angular symmetry. To formulate a penalty function, we want to
-penalize any component of the velocity vector $\textbf{u}$ in the region
-of forcing in the \textbf{n} direction. We also desire that the penalty
-function not do any work on the flow, so it must be normal to
-\textbf{u}. Our forcing will have no variation in height (z), and the
-forcing hold quadratic scaling in velocity. For a penalty,
-$\textbf{p}$, this will have the form,   
 
+% Your text on the virtual vanes does not provide enough information to
+% know exactly what we did. It is needlessly vague, and does not
+% adequately connect to the real vane geometry. I propose the following
+% more direct and more precise text. Further, the penalty nomenclature
+% is inappropriate.
+
+Instead, we have developed a modeling formulation that does not require
+explicitly meshing the turning vanes, or any surface. These so-called
+"virtual vanes" are implemented as a body force that 
+is applied in the annular region that contains the vanes. Vane
+geometry is specified by the angle $\phi$ a vane makes with a radial
+line as a function of the radial coordinate $r$. A unit normal to vane
+surfaces ${\bf n}$ is thus defined as
+%
 \begin{equation}
- \textbf{p} \propto -\Vert \textbf{u} \Vert \left(\textbf{u} \cdot
-					     \textbf{n} \right) 
-  \textbf{n}.
+ {\bf n}({\bf x}) = \sin \phi(r) \hat{{\bf r}}+ \cos\phi(r) \hat{{\bf \theta}}
 \end{equation}
-
-However, in reality the flow can penetrate a finite thickness
-before it impinges upon a vane and is necessarily turned. Thus, and in
-contrast to typical penalty methods, the scaling parameter for the
-enforcement of the condition is weakly imposed. We scale the penalty
-function by, 
-
+%
+where $\hat{{\bf r}}$ and $\hat{{\bf \theta}}$ are unit
+vectors in the radial and azimuthal directions respectively.
+With this vane-normal vector field specified, a body force ${\bf f_v}$
+is defined
+that will drive the velocity in the ${\bf n}$ direction toward zero,
+effectively turning the flow to be parallel to the vanes. The body
+force is defined:
 \begin{equation}
- \textbf{p} = - \frac{1}{\epsilon r_0} \Vert \textbf{u} \Vert
-  \left(\textbf{u} \cdot \textbf{n}\right) \textbf{n}.
+ {\bf f}_v= -\frac{1}{\ell_v}|{\bf u}|({\bf u}\cdot{\bf n}){\bf n}
 \end{equation}
+where ${\bf u}$ is the velocity and $\ell_v$ is a specified length
+scale. The length scale $\ell_v$ represents the distance over which the
+flow must evolve under the influence of the body force before the
+velocity in the normal direction is reduced by a factor of $1/{\bf
+e}$. It is a modeling constant and is specified to be of order the
+separation distance between neighboring vanes in the physical vane
+configuration, since entry lengths in internal flows scale with the
+size of the channel.
 
-Our penalty parameter, $\epsilon$, now has a physical interpretation.
-It is the distance in units of $r_0$ over which the normal component
-of \textbf{u} of the velocity decays exponentially. We therefore set
-this value to be roughly the distance between the individual vanes,
-which is roughly the extent we expect the vanes to constrain the flow
-over. This is easily scaled for larger or small system diameters. 
-Notice also that we are not modeling drag. Assigning a small, quadratic
-in velocity non-normal component of forcing in opposition to the flow direction
-would be consistent with our expectations for a small drag force, but
-has not been included here. 
+This virtual vane formulation is similar to the actuator disk model
+commonly used to represent the rotor of a wind turbine \cite{betz}.
 
-To implement this distributed representation of the vanes and turbine,
-we need only determine the normal to a vane passing through a
-point (x,y), since we desire for the velocity has no component in the
-normal direction. This is a broad and general formulation that can
-support a wide variety of vane curvatures and angles. More details on
-how the forcing itself is imposed on the fluid are discussed in the
-subsequent section \ref{sec:software}. Forcing designed to act like a surface
-is not unique to this project, and is closely related to (among others)
-the ``immersed boundary methods'' used by various other
-researchers\cite{doi:10.1146/annurev.fluid.37.061903.175743}. 
 
 \subsection{Cone Representation}
+
+Forcing designed to act like a surface
+is not unique to this project, and is closely related to (among others)
+the ``immersed boundary methods'' used by various other
+researchers\cite{doi:10.1146/annurev.fluid.37.061903.175743}.\todo{put this in cone section!}
 
 We also desire to model rigid surfaces, such as a cone or cylinder, that
 permit no penetrating flow. As with the vanes, we would prefer to avoid
