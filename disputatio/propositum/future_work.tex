@@ -44,14 +44,16 @@ of the SoV apparatus. Coupled with the scaling analysis presented in
 section \ref{sec:physics}, we will then be able to predict the
 conditions (if any) under which the SoV apparatus will be
 technologically competitive with different methods of energy
-generation. In other words, the proposed research is designed to assess
-feasibility, and it is not expected that actual experimental validation
-will accompany the computational results. Furthermore, it must also be
-emphasized that feasibility here is focused on technological capability,
-and will not include an economic assessment. In other words, it is
-possible that the SoV will produce energy, but the design required to do
-is prohibitively expensive, and therefore not economically competitive
-with existing technologies. 
+generation. We will also be a position to investigate the physics of the
+apparatus, and to assess how closely our synthetic dust devils mimic the
+natural variety. In other words, the proposed research is designed to
+assess feasibility, and it is not expected that actual experimental
+validation will accompany the computational results. Furthermore, it
+must also be emphasized that feasibility here is focused on
+technological capability, and will not include an economic
+assessment. In other words, it is possible that the SoV will produce
+energy, but the design required to do is prohibitively expensive, and
+therefore not economically competitive with existing technologies. 
 
 %
 % outline parameter space, as we see it
@@ -132,7 +134,7 @@ The three cone parameters we propose to optimize are shown in table \ref{tab:con
 We expect to optimize the cone after the bottom and top tiers are adjusted. 
 For the cone, we expect the height, maximum diameter and inner exit diameter to 
 all impact the flow. While it is not known what the ideal cone geometry will look like, 
-our expectation is that the cone has to important roles. The first is acting
+our expectation is that the cone plays at least two important role. The first is acting
 as a converging nozzle for the flow, increasing the vertical velocity as it exits 
 out the top of the device. In the wind, the cone also acts as a shield, preventing
 the high velocity freesteam flow from disrupting the vortex before it has run through the 
@@ -200,9 +202,11 @@ principle quantity of interest is the kinetic energy flux, we also seek
 to use these runs to shed light on the mechanisms by which the apparatus
 configuration dictates the flow. In other words, we are trying learn
 more than \textbf{which} configurations optimize the flow, but also 
-\textbf{why} they do so. This presents an programmatic challenge, as
-optimization will involve additional analysis and postprocessing at each
-iteration.  
+\textbf{why} they do so. 
+
+% This presents an programmatic challenge, as
+% optimization will involve additional analysis and postprocessing at each
+% iteration.  
 
 %
 % how many runs are we capable of performing, realistically
@@ -216,13 +220,14 @@ state. Runs generally require approximately 264 processors on Lonestar
 core hours. Our overall compute budget will likely be between one hundred
 thousand to one million core hours. In other words, our present
 computational budge will support running between roughly 30 to 300
-instances for our parameter sweep. While this is not insubstantial, this
+instances for our parameter sweeps. While this is not insubstantial, this
 is not a sufficient number of evaluations to support formal
-optimization algorithms. We do not, \textit{a priori} know the number of
-iterations necessary to solve the system, as it is non-linear. Gradient
-and derivative information is also difficult to access, as solving the
-adjoint problem is expensive for unsteady systems. 
-
+optimization algorithms. While we admittedly do not, \textit{a priori},
+know the number of iterations necessary to solve the system, as it is
+non-linear, our expectation is that thousands of forward solves would be
+necessary. Using higher order methods could reduce the number of
+iterations, but gradient and derivative information is difficult to
+access, as solving the adjoint problem is expensive for unsteady systems. 
 Thus, while any individual run is relative inexpensive, we do not expect
 to be able to mount an exhaustive campaign to formally optimize the
 configuration given the dimension of the parameter space and the
@@ -235,7 +240,7 @@ Our expectation is that we will proceed with optimization in a manner
 similar to the examples outlined in section \ref{sec:results}, where new
 parameter values are introduced, a run is performed, and then the output
 is postprocessed and evaluated before the process begins again. Each
-iteration is therefore much more expensive, as it requires human
+iteration is therefore more expensive, as it requires human
 intervention between simulation runs. Nevertheless, it is not infeasible
 to expect that several hundred runs can be performed. In general the
 runs require twelve hours, which provides for a workflow loop between
@@ -244,19 +249,17 @@ into a daily routine.
 
 Furthermore, the time requires to perform this simulation campaign could
 be greatly reduced if several problems were to be undertaken in
-parallel. This ``divide and conquor'' approach requires subdividing the
+parallel. This ``divide and conquer'' approach requires subdividing the
 optimization effort into several ``subdomains''. 
 The problem is nonlinear, and so some of the parameters are coupled and
 cannot be easily optimized independent of each another, as adjustments
-to one impact the desired value of the other. However, we expect that
-optimizations on the cone, turbine and vanes can be peformed largely
-independent of each another. We further propose to subdivide the vanes
-into upper and lower tiers, optimize them individually, and then perform
-rudimentary sensitivity checks to ensure that the coupled product does
-in fact represent a near optimal flux output. We further expect that the
-remaining parameters in the vanes, namely $H^b/H^t$, $D/H$ are ameniable
-to optimization independent of the particular parametric configuration
-of the vane tiers. 
+to one impact the desired value of the other. 
+We propose to subdivide the vanes into upper and lower tiers, optimize
+them individually, and then perform rudimentary sensitivity checks to
+ensure that the coupled product does in fact represent a near optimal
+flux output. We further expect that the remaining parameters in the
+vanes, namely $H^b/H^t$, $D/H$ are amenable to optimization independent
+of the particular parametric configuration of the vane tiers. 
 
 The subdomains for the vanes are are summarized in Table
 \ref{tab:opt}. This neatly divides the vane optimization effort into
@@ -285,49 +288,99 @@ three independent problems with 4 or fewer parameters each.
 \end{table}
 \end{center}
 
+\subsection{Proposed Timeline}
+
+
+
+% %
+% % discussion of risk mitigation 
+% %
+
+% code ready
+% expertise ready
+% plan outlined
+% ls5 delay?
+% more compute time
+% need more runs? this is a serious concern
+% do we need a comprehensive metric for success?
+
+
+%
+% timeline
+%
+A rough timeline of the proposed work is presented in table
+\ref{tab:prop}. The date of each bullet is the planned completion of the
+deliverable. Bullets items in black are required, while those in blue
+are optional, and do not need to be completed to ensure the
+success of this project. 
+
 % 
 % can we optimize? DAKOTA
 % 
-
-We will consider formal optimization of these subproblems. 
+We propose to investigate formal optimization of these subproblems. 
 We will consider sensitivity calcuations (forward, not adjoint)
-\todo{actual optimization and sensitivity discussion}
-
-\subsection{Summary and Proposed Timeline}
-\todo{write me!}
-
-
-%
-% discussion of risk mitigation 
-%
-
-code ready
-expertise ready
-plan outlined
-ls5 delay?
-more compute time
-need more runs? this is a serious concern
-do we need a comprehensive metric for success?
-
+to (possibly) reduce the problem dimension and inform our expectations
+of system performance under adjustment. This feature is in development
+in GRINS and should be available within the year. We are also interested
+in using either the DAKOTA\cite{adams2013dakota} or
+TAO\cite{tao-user-ref} libraries on the bottom tier subproblem. These
+libraries have suites of algorithms for non-linear optimization
+problems. Evaluating the results of the most appropriate ``out of the
+box'' available optimization algorithm on a small test problem will
+provide an opportunity to ensure that our expectations on the number of
+iterations necessary for formal optimization of our problem are correct. 
+We note these two libraries because DAKOTA is well known as a library
+with extensive ``black-box'' optimization support, and TAO is already
+made available through pre-existing libMesh dependencies. We anticipate
+this to be completed by end of year, 2015. Should the test problem
+discover that algorithmic optimization is a viable option, we will
+consider using this approach for the other subdomain problems. 
 %
 % short summary of tasks
 %
-Finally, it is possible that this project will permit some glimpses 
+
+The second, third and fourth bullet in table \ref{tab:prop} provide
+estimated ending dates for the principle subdomain optimization
+efforts. Given our previous experiences, we expect to be able to rapidly
+iterate through these optimization efforts over the course of several
+months, with the final optimization work on the turbine completing in
+March, 2016. At this time we will proceed with ``coupling tests'' to
+ensure that the parameters are indeed still appropriate. For example,
+after having optimized the turbine parameters, it will be necessary to
+perturb the lower tier vane parameters to ensure that the selected set
+is nearly optimal even with the addition of a turbine. While we do not
+expect this to be the case, this item is a large uncertainty in the
+proposed timeline and could
+require significant additional work and expert evaluation. 
+
+We expect to provide the results of our computational
+simulation efforts to the experimental group in the early summer of 2016
+so that they can use this information in the design of the
+Arizona field tests in summer, 2016. We have proposed preparing this
+information in June, but the date of the actual field test has not been
+set, and this item may move up or down in priority given the needs of
+our experimental colleagues. 
+
+As mentioned in the second to last bullet, it is possible that this
+project will permit some glimpses  
 at the fundamental processes underlying the naturally dust devil
 phenomena. To accomplish this, the synthetic dust devils must be
 compared to data from the naturally occuring variety,  with some
 appropriate scaling. While it is not a significant component of the
 proposal, this and several simple investigations into related phenomena
 such as tornados and hurricanes will also  be investigated. A literature
-review of the physics of general cyclonic structures and any   observed
+review of the physics of general cyclonic structures and any observed
 intensification mechanisms may provide hints of the geometries 
 by which the flow is intensified, and why. 
 
+Finally, we anticipate a detailed accounting of the entire project as
+the final deliverable. We expect that the investigations detailed
+above will result in several publications, as well. 
 %
 % itemize tasks
 %
 % In summary, in addition to the preliminary results, several tasks will be
-% accomplished in order to fulfill the goals of this project:
+% accomplished  to fulfill the goals of this project:
 
 % \begin{itemize}
 %  \item validate turbine
@@ -336,14 +389,9 @@ by which the flow is intensified, and why.
 %  \item feasibility study?
 % \end{itemize}
 
-%
-% timeline
-%
-A rough timeline of the proposed work is presented in table \ref{tab:prop}
-
 \begin{center}
 \begin{table}
-\caption{Timeline of Proposed Work. Bullets are dates of planned
+\caption{Timeline of proposed work. Bullets are dates of planned
  completion of deliverables. Black items are requisite, blue optional.}
 \centering
 \begin{minipage}[t]{.7\linewidth}
@@ -352,11 +400,13 @@ A rough timeline of the proposed work is presented in table \ref{tab:prop}
 \ytb{Dec. 2015}{Algorithmic optimization subdomain problem proof-of-concept}
 \ytl{Jan. 2016}{Conclude Parameter sweeps through all vane sub-domains}
 \ytl{Feb. 2016}{Cone sub-domain optimization complete}
-\ytl{Mar. 2016}{Turbine sub-domain optimization complete}
+\ytl{Mar 2016}{Turbine sub-domain optimization complete}
 \ytl{April 2016}{Coupling tests for parameters}
-\ytb{April 2016}{Conclude Additional Parameter sweeps}
-\ytl{May 2016}{Field configuration runs and predictions for
+\ytb{May 2016}{Conclude Additional Parameter sweeps}
+\ytl{June 2016}{Field configuration runs and predictions for
  experimental team}
+\ytl{July 2016}{Comparisons between synthetic and natural dust devil physics}
+\ytl{Aug  2016}{Dissertation detailing SoV feasibility assessment.}
 \bigskip
 \rule{\linewidth}{1pt}%
 \end{minipage}%
@@ -364,24 +414,23 @@ A rough timeline of the proposed work is presented in table \ref{tab:prop}
 \label{tab:prop}
 \end{center}
 
-\subsection{Additional Investigations}
+% \subsection{Additional Investigations}
 
-
-% 
-% control for inter unit spacing
-% 
-In addition to the system configuration, it would be interest to consider the
-effect of local conditions on SoV performance. Characterizing the impact
-of variations in ambient conditions on the SoV will guide the
-commercialization strategy of the product, by determining optimal
-install locations across the country. It is therefore desirable to have
-models that are capable of accounting for variation in field conditions,
-such as solar input, cross-winds and topography. Furthermore, it is
-expected that large ``farms'' of SoVs (akin to the wind and solar farms
-for wind turbines and photovoltaics, respectively) may be used by
-commercial or utility-scale energy generation. In order for this to be
-effective,  the inter-unit spacing must also be optimized, as a single
-SoV collects from a large area. These computations will guide
-commercialization planning, where decision-makers will need to assess
-optimum unit size, spacing, and geographic location for utility-scale
-deployment.   
+% % 
+% % control for inter unit spacing
+% % 
+% In addition to the system configuration, it would be interest to consider the
+% effect of local conditions on SoV performance. Characterizing the impact
+% of variations in ambient conditions on the SoV will guide the
+% commercialization strategy of the product, by determining optimal
+% install locations across the country. It is therefore desirable to have
+% models that are capable of accounting for variation in field conditions,
+% such as solar input, cross-winds and topography. Furthermore, it is
+% expected that large ``farms'' of SoVs (akin to the wind and solar farms
+% for wind turbines and photovoltaics, respectively) may be used by
+% commercial or utility-scale energy generation. For this to be
+% effective,  the inter-unit spacing must also be optimized, as a single
+% SoV collects from a large area. These computations will guide
+% commercialization planning, where decision-makers will need to assess
+% optimum unit size, spacing, and geographic location for utility-scale
+% deployment.   

@@ -15,10 +15,10 @@
 % should this all be math modeling?
 %
 
-Our aim is to simulate the formation of synthetic dust devils in the
-field. This requires a model of the ambient conditions for a
+The aim of the proposed work is to simulate the formation of synthetic
+dust devils in the field. This requires a model of the ambient conditions for a
 representative case, such as Arizona, where experimental data is
-available from test have been performed. Furthermore, for this to be
+available from test that have been performed. Furthermore, for this to be
 more generally useful in the prediction of flows in a variety of
 conditions, we need a model generally applicable to any flow near the
 surface of the earth.  
@@ -28,21 +28,22 @@ develops a mathematical model for turbulence in a thermally stratified
 medium. We seek to emulate the operation of the apparatus during the day, 
 when dust devils are observed to form readily. 
 At these times, the atmospheric surface layer has the following character. 
-Incident radiation from the sun largely does not interact with the
+Incident radiation from the sun does not significantly interact with the
 air, which is nearly transparent. Instead, this radiation is absorbed by
-the ground, which causes a temperature rise. This results in a thermal
+the ground, which causes it's temperature to rise. This results in a thermal
 gradient between the hot ground and the cooler air. The warm ground
-conducts heat to the air, causing an expansion and lowering the density
+conducts heat to the air, causing expansion and lowering the density
 of the air. This reduced density air near the surface is driven upwards
 by the force of buoyancy.  
 
 For sufficiently large temperature gradients, these motions are
 unstable, and as the warm air is driven upwards the flow will transition
 to turbulence. For the typical use case we consider, namely Arizona in
-summer, the temperature gradient can be in excess of 30 Kelvin. 
-Rayleigh numbers associated with this are typically between $10^{9} -
-10^{11}$, and therefore meet the criterion for transition to a turbulent
-regime. The flow is that of an unstably stratified fluid. 
+summer, the temperature difference can be in excess of 30 Kelvin. 
+Rayleigh numbers associated with temperature gradients of this magnitude
+this are between $10^{9} - 10^{11}$, and therefore meet the criterion
+for transition to a turbulent regime. The flow is that of an unstably
+stratified fluid.  
 
 \subsection{Equations of Fluid Motion}
 %
@@ -50,17 +51,18 @@ regime. The flow is that of an unstably stratified fluid.
 %
 
 The equations describing fluid flow at
-low Mach number with natural convection are, \todo{fix me up}
+low Mach number with natural convection are, %\todo{fix me up}
 \begin{eqnarray*}
  \frac{\partial u}{\partial t} + u \cdot \nabla u =&
   -\frac{1}{\rho}\nabla P + \nu \nabla^2 u - g \frac{T'}{T_0}\\
  \nabla \cdot u =& 0 \\
- \rho c_p \frac{\partial T}{\partial t} =& \nabla \cdot ( k \nabla T).
+ \rho c_p \frac{\partial T}{\partial t} + u \cdot \nabla T =& \nabla \cdot ( k \nabla T).
 \end{eqnarray*} 
-Where we have made the assumptions that the temperature gradient is small in
+
+Where we have made the assumptions that the temperature variation is small in
 comparison to the mean temperature of the region. These are the
-incompressible Navier-Stokes equations for free-convection (or
-``Boussinesq'') coupled with the heat equation. 
+incompressible Navier-Stokes equations with Boussinesq representation of
+buoyancy coupled with the heat equation.  
 %
 % in full document be sure to mention that neglecting coriolis is legit
 % below 50ms
@@ -69,8 +71,8 @@ incompressible Navier-Stokes equations for free-convection (or
 As discussed above, we anticipate our flow to be
 turbulent. Turbulence significantly alters the character of the flow,
 and necessitates either resolving the resulting small scales or
-providing a model that emulates their impact. In this case, we utilize 
-essentially a Reynolds Averaged Navier-Stokes (RANS) model, where we
+providing a model that emulates their impact. In this case, we use a
+Reynolds Averaged Navier-Stokes (RANS) formulation, where we 
 permit the viscosity and thermal conductivities to vary in space, and
 decompose the flow into constant laminar and varying turbulent and vane
 components,  
@@ -86,32 +88,34 @@ base diffusivities and do not vary in space.
 
 \subsection{Viscosity Model}
 
-We utilize the celebrated similarity model of Monin and
+We use the celebrated similarity model of Monin and
 Yaglom\cite{monin2007statistical,monin1954basic} as a guide to the
-present development, which we outline below. This work is extension of
-the mixing-length model of Prandtl, where the concepts of gradient
-diffusion and mixing length were generalized to thermally stratified
-flow.   
+present development, which we outline below. Their formulation is an
+extension of the mixing-length model of Prandtl, where the concepts of
+gradient diffusion and mixing length were generalized to thermally
+stratified flow.   
 
 %
-% justify prandlt assumption here
+% justify prandtl assumption here
 %
 
-We begin by using dimensional analysis, and noting that the dynamics of
-any mean quantity ($\bar f$) in a thermally stratified medium only depend on,
+Using dimensional analysis, and noting that the dynamics of
+any mean quantity ($\bar f$) in a thermally stratified medium only
+depend on, 
 
 \begin{equation}
 \bar f = f(z_0,\frac{g}{T_0},\rho_0,\nu_l,K_l,u^*,q)
 \end{equation}
 
-We expect that aside from very near the surface, the diffusivities $\nu_l$
+We expect that aside from near the surface, the diffusivities $\nu_l$
 and $K_l$ will be small compared to their turbulent counter-parts, $\nu_T$
 and $K_T$. Likewise, if we define $z-z_0$ as an ``effective roughness
 height'' or displacement distance, we can reasonably neglect $z_0$ from these
 considerations. While the roughness height can be large (for instance in
 a cornfield, where the roughness height could reasonably be several
-meters), for our present study the expectation is that this roughness
-height will be on the order of centimeters\cite{oke1987boundary}. 
+meters), for the present study the expectation is that this roughness
+height will be on the order of centimeters\cite{oke1987boundary}, and
+therefore negligible.  
 
 This leaves only five parameters: the distance from the ground, z; the
 buoyancy coefficient, $\frac{g}{T_0}$; the density of the fluid,
@@ -123,9 +127,7 @@ $q$.
 These quantities depend on
 four dimensions: length, time, temperature and mass. As a result, 
 Buckingham Pi theorem implies that only one dimension-less group can be
-formed\cite{munson2012fundamentals}.%munson 
-
-This group is chosen to be,
+formed\cite{munson2012fundamentals}. This group is chosen to be,
 \begin{equation}
  \xi = \frac{z}{L}.
 \end{equation}
@@ -182,11 +184,11 @@ device where the flow across the vanes produces shear and generates
 turbulence. Our model for  
 the diffusivities inside the vanes should be higher than the ambient
 (and empty) regions outside the vanes. However, this is also a more
-difficult regime to model. In order to successfully do so, source terms
+difficult regime to model. To successfully accomplish this, source terms
 for production of diffusivity would need to be formulated to properly
 account for the generation of turbulence in the region of the
-vanes. This diffusivity would then convect and diffuse through space. In
-order to avoid modeling a temporal and three-dimensionally spatially
+vanes. This diffusivity would then convect and diffuse through space. 
+To avoid modeling a temporal and three-dimensionally spatially
 varying field of diffusivities, we have instead calibrated the field
 based on data provided by our partners at Georgia Tech. 
 %This calibration
@@ -208,21 +210,21 @@ laboratory.  The diffusivity here is essentially a top hat filter, which
 radial values interior to the vanes the nominal calibrated value, and
 those outside the vanes zero, e.g. $\nu_C(r>r_{\text{vane}})=0$. The
 thermal diffusivity inside the device, $K_C$, is then fixed with the
-assumption that the Prandlt number is unity.  
+assumption that the Prandtl number is unity.  
 
 \subsection{Vane and Turbine Representation}
 
-In order to rapidly prototype general system configurations, the
+To rapidly prototype general system configurations, the
 computational effort must be able to explore a large space of possible
 geometries and settings. This presents a significant meshing
 problem. In the region near the vanes, where a no-slip boundary
 condition is imposed, the flow will necessarily form a thin momentum
 boundary layer. Resolving this boundary layer requires high resolutions
-immediately adjacent to the walls. Thus, altering the location of vanes
+immediately adjacent to the walls. Altering the location of vanes
 alters the location of the boundary layer mesh. This is a significant
 challenge, as the development of a new mesh often requires significant
-human effort and time. Furthermore, the process is extremely
-error-prone, and would require each simulation using a mesh undergo
+human effort and time. Furthermore, the process is error-prone, 
+and would require each simulation using a mesh undergo 
 some form of solution verification. 
 
 Instead, we have developed a modeling method that does not require
@@ -266,15 +268,16 @@ which is roughly the extent we expect the vanes to constrain the flow
 over. This is easily scaled for larger or small system diameters. 
 Notice also that we are not modeling drag. Assigning a small, quadratic
 in velocity non-normal component of forcing in opposition to the flow direction
-would be consistent with our expectations for a small drag force. 
+would be consistent with our expectations for a small drag force, but
+has not been included here. 
 
 To implement this distributed representation of the vanes and turbine,
 we need only determine the normal to a vane passing through a
 point (x,y), since we desire for the velocity has no component in the
-normal direction. This is a very broad and general formulation that can
+normal direction. This is a broad and general formulation that can
 support a wide variety of vane curvatures and angles. More details on
 how the forcing itself is imposed on the fluid are discussed in the
-subsequent section \ref{sec:software}. Forcing designed in such a manner
+subsequent section \ref{sec:software}. Forcing designed to act like a surface
 is not unique to this project, and is closely related to (among others)
 the ``immersed boundary methods'' used by various other
 researchers\cite{doi:10.1146/annurev.fluid.37.061903.175743}. 
@@ -302,8 +305,8 @@ artifact.
 A weakness of this technique is that for
 any finite penetration distance, some fluid will necessarily bleed
 through. We expect to consider investigating other results in 
-immersed boundary methods and related literature to investigate this
-impact more fully. 
+immersed boundary methods and related literature to more completely
+investigate and characterize the impact of this model error.  
 
 
 \subsection{Separation Model}
@@ -311,7 +314,7 @@ impact more fully.
 We observed a large portion of the flow exiting out of the back of 
 the device with non-negligable velocities for the cases with large winds. 
 This was obviously inconsistent with the observations of our colleagues 
-in the field, who saw very modest outflows (if any) out of the back of device. 
+in the field, who observed no outflows out of the back of device. 
 Moreover, this was resulting in large model errors between our predictions and the 
 field results, almost certainly because of the large amount of kinetic and thermal 
 energy that our vane representation was permitting to leave the device. 
@@ -327,8 +330,8 @@ past the trailing edge of the vane due to the seperation of the boundary layer o
 
 \begin{figure}[!htb]
   \begin{center}
-    \includegraphics[width = 12 cm]{figs/sep_model}
-    \caption{Scematic depicting the separation model that extends past the tailing edge of the vanes.}
+    \includegraphics[width = 6 cm]{figs/sep_model}
+    \caption{Schematic depicting the separation model that extends past the tailing edge of the vanes.}
     \label{fig:sep_model}
   \end{center}
 \end{figure}

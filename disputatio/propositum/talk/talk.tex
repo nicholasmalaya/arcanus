@@ -1,0 +1,165 @@
+\documentclass[mathserif]{beamer}
+\graphicspath{{figs}}
+\mode<presentation>
+{
+%\usetheme{CambridgeUS}
+\usetheme{Boadilla}
+%\usetheme{Malmoe}
+\setbeamercovered{transparent}
+%\setbeamercovered{dynamic}
+}
+% \usepackage{beamerthemesplit} // Activate for custom appearance
+
+%% Additional packages and new commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{colortbl}
+\usepackage{amsmath}
+\usepackage{graphicx,color}
+%\usepackage[tiny,moretight]{subfigure}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{movie15}
+\usepackage{hyperref}
+\usepackage{booktabs} 
+ 
+
+\long\def\symbolfootnote[#1]#2{\begingroup%
+\def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup}
+
+ \newcommand{\dxdy}[2]{\frac{\partial #1}{\partial #2}}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% useful symbols: \dag, \ddag, \diamond, \P
+\definecolor{arired1}{RGB}{168,53,66}
+\definecolor{arired2}{RGB}{176,0,0}
+\definecolor{ariblue1}{RGB}{60,51,144}
+\definecolor{ariblue2}{RGB}{11,0,200}
+\definecolor{arigreen}{RGB}{91,172,157}
+
+\setbeamercolor{frametitle}{fg=ariblue1}
+\setbeamercolor{item}{fg=arired2}
+\setbeamercolor{subitem}{fg=arired2}
+\setbeamercolor{itemize/enumerate subbody}{fg=ariblue2}
+\setbeamercolor{itemize/enumerate subsubbody}{fg=arigreen}
+\setbeamerfont{itemize/enumerate subbody}{size=\small}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\scriptsize}
+\setbeamertemplate{itemize item}[circle]
+%\setbeamertemplate{itemize subitem}{{\Tiny $\gg$}}
+\setbeamertemplate{itemize subitem}{\raisebox{2pt}{\Tiny $\mathbf{\rangle\hskip -2pt\rangle}$}}
+\setbeamertemplate{itemize subsubitem}{-}
+\setbeamertemplate{frametitle}
+{
+\begin{centering}
+\insertframetitle\par
+\end{centering}
+\vskip 10pt
+{\color{arired1} \hrule height 1.5pt}
+}
+
+\setbeamertemplate{footline}[text line]{
+\raise 0.02in \hbox{\includegraphics[width=3.5in]{figs/SoV_Footer.png}}\hfill
+\raise 0.06in \hbox{\includegraphics[width=0.55in]{figs/ARPAE_Footer.png}}}
+
+%\usetheme[secheader]{pecostalk}
+\graphicspath{{figs/}} 
+
+%\usepackage{verbatim}
+\usepackage{tikz}
+
+\newcommand{\red}[1]{{\color{red}#1}}
+
+\newcommand{\UQ}[1]{{\color{red}{#1}}}
+
+\newcommand{\abs}[1]{\ensuremath{ \left|#1\right|}}
+\newcommand{\norm}[1]{\ensuremath{ \left|\left|#1\right|\right|}}
+\newcommand{\orderof}[1]{\ensuremath{ {\cal O}\left(#1\right)}}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\grad}[1]{\bv{\nabla} {#1}}
+\newcommand{\bv}[1]{{\ensuremath{\boldsymbol{#1}}}}
+\newcommand{\bt}[1]{{\ensuremath{\boldsymbol{#1}}}}
+
+\newcommand{\Res}{{\ensuremath{\mathcal R}}}
+\newcommand{\Unknowns}{{\ensuremath{\bf{U}}}}
+\newcommand{\UnknownsR}{{\ensuremath{\bf{U^R}}}}
+\newcommand{\unknown}{{\ensuremath{\bv{u}}}}
+\newcommand{\primalsol}{{\ensuremath{\bv{\tilde{u}}}}}
+\newcommand{\primalsolh}{{\ensuremath{\bv{\tilde{u}^h}}}}
+\newcommand{\adjointsol}{{\ensuremath{\bv{\tilde{z}}}}}
+\newcommand{\adjointsolh}{{\ensuremath{\bv{\tilde{z}^h}}}}
+\newcommand{\adjointsolH}{{\ensuremath{\bv{\tilde{z}^H}}}}
+\newcommand{\Testfuncs}{{\ensuremath{\bf{V}}}}
+\newcommand{\testfunc}{{\ensuremath{\bv{v}}}}
+
+\newcommand{\intO}{\ensuremath{\int_\Omega}}
+\newcommand{\elem}{\ensuremath{E}}
+\newcommand{\qoi}{{\ensuremath{q}}}
+\newcommand{\qoih}{\ensuremath{q^h}}
+\newcommand{\Qoi}{{\ensuremath{Q}}}
+\newcommand{\param}{{\ensuremath{\xi}}}
+\newcommand{\params}{{\ensuremath{\bv{\param}}}}
+\newcommand{\PDF}{\ensuremath{p}}
+\newcommand{\Params}{{\ensuremath{\bf{\Xi}}}}
+\newcommand{\ParamsR}{{\ensuremath{\bf{\Xi^R}}}}
+
+\newcommand{\Reals}{{\ensuremath{\mathbb{R}}}}
+
+
+\newcommand{\sa}{\nu_{\mathrm{sa}}}
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+
+\newcommand{\software}[1]{\texttt{#1}}
+\newcommand{\code}[1]{\software{#1}}
+\newcommand{\GRINS}{\software{GRINS}}
+\newcommand{\libMesh}{\software{libMesh}}
+\newcommand{\FEMSystem}{\software{FEMSystem}}
+\newcommand{\PETSc}{\software{PETSc}}
+\newcommand{\AMGCL}{\software{AMGCL}}
+\newcommand{\Trilinos}{\software{Trilinos}}
+\newcommand{\QUESO}{\software{QUESO}}
+\newcommand{\DAKOTA}{\software{DAKOTA}}
+
+\definecolor{DarkGreen}{rgb}{0.13,0.55,0.13}
+\definecolor{DarkRed}{rgb}{0.55,0.13,0.13}
+%\newcommand{\CVer}[1]{{\color{DarkGreen}{#1}}}
+\newcommand{\CVer}[1]{#1}
+%\newcommand{\CVal}[1]{{\color{blue}{#1}}}
+\newcommand{\CVal}[1]{#1}
+%\newcommand{\CUQ}[1]{{\color{purple}{#1}}}
+\newcommand{\CUQ}[1]{#1}
+%\newcommand{\CInt}[1]{{\color{orange}{#1}}}
+\newcommand{\CInt}[1]{#1}
+%\newcommand{\CExa}[1]{{\color{brown}{#1}}}
+\newcommand{\CExa}[1]{#1}
+
+\date{March 30th, 2015}
+\author[Malaya, Stogner, Moser]{Nicholas Malaya, Roy H. Stogner, Robert
+D. Moser}   
+\institute{The University of Texas at Austin}
+\title[\libMesh]{Recent SoV CFD Efforts}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Validation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%=============================================================
+% Single Tier Forced
+%=============================================================
+
+\begin{frame}
+ \frametitle{Forcing Scaling}
+ \begin{itemize}
+ \item Forcing in region between vanes
+ \item Modest force on vertical velocity
+ \item Scaled as $\frac{1}{2}\rho V^2 / L$, w/ L the thermal b.l. thickness
+ \end{itemize}
+\end{frame}
+
+% \begin{center}
+%  \includegraphics[width=.55\linewidth]{2nd/forcing_region}\\
+% \end{center}
+
+%
+% fins
+%
+\end{document}
+%========================================================================
+% END OF FILE
+%========================================================================

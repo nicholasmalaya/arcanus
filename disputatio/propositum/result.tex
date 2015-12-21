@@ -2,13 +2,14 @@
 \section{Preliminary Results}
 \label{sec:results}
 
-The computer simulations of this proposal are intended to discover the
-optimal system configuration for a range of scenarios and system
+The computer simulations in this proposal study 
+are intended to discover the
+optimal solar vortex system configuration for a range of scenarios and system
 sizes. The results of these simulations will be used as input for the
-design of a pilot site in Mesa, Arizona, and eventually, over a range of
-scenarios and system sizes. 
+design of a prototype to be tested in Mesa, Arizona. Some preliminary simulations 
+are discussed in the following subsections.
 
-\todo{add photo}
+% \todo{add photo}
   % \begin{figure}[!htb]
   %  \begin{center}
   %   \includegraphics[width = 12 cm]{figs/sov_field}
@@ -20,14 +21,15 @@ scenarios and system sizes.
 
 \subsection{Thermal Only}
 
-While ambient winds in the field do impact system performance, it is
+While ambient winds in the field impact system performance, it is
 also illuminating to consider an idealized scenario with natural convection
-driven only by thermal instabilities. Investigating this baseline,
-thermal-only flow is intended to optimize the SoV apparatus to form a
-strong thermal plume even in the absence of wind. After a system is
-engineered to form a strong thermal plume, we can investigate to ensure
-that the existing thermal vortex will be strengthened by the addition of
-winds. \todo{do I need image of vanes? and explain how calculated}
+driven only by thermal instabilities. Simulations of this baseline,
+thermal-only flow are intended to ensure the SoV apparatus to form a
+strong thermal plume even in the absence of wind. 
+%After a system is
+%engineered to form a strong thermal plume, we can investigate to ensure
+%that the existing thermal vortex will be strengthened by the addition of
+%winds. %\todo{do I need image of vanes? and explain how calculated}
 
 \begin{figure}[htb]
 
@@ -36,35 +38,40 @@ winds. \todo{do I need image of vanes? and explain how calculated}
   \includegraphics[width =0.7\textwidth]{figs/3d}
   \caption{Isocountours of the inner thermal core
   visible through semi-transparent contour around azimuthal velocity,
-  colored by vertical velocity. }
+  colored by vertical velocity. An outline of the region of virtual
+  vanes has been drawn.}
   \label{fig:thermal}  
  \end{subfigure}%
  \begin{subfigure}{.4\textwidth}
   \centering
   \includegraphics[width =0.8\textwidth]{figs/entrainment}%
-  \caption{Fluid entrainment around the apparatus.} 
+  \caption{Fluid entrainment around the apparatus. An outline of the
+  virtual vanes are drawn to show the region of forcing.} 
   \label{fig:entrain}  
  \end{subfigure}%
 \end{figure}
 
-In this subsection we show a representative case of an optimized thermal-only SoV
-configuration. The results shown are the averages of several snapshots
-from the field written over the course of several minutes. In general,
-the averaging times are on the order of 20-30 wash-out times, where a
+In this subsection a representative case of an optimized thermal-only SoV
+configuration is presented.\todo{what are the conditions of this case} 
+The results shown are the averages of fifty snapshots of the solution 
+taken over the course of ten minutes. In general,
+the averaging times are selected to be approximately 20 to 30 wash-out 
+times, where a
 wash-out is defined as the time required for a particle at the base of
 the apparatus to flow out through the top boundary. The energy flux
-through the top of the vanes is roughly 53 watts. The solution
+through the top of the vanes for this case is about 53 watts. The solution
 demonstrates several features characteristic of naturally occuring dust
-devils. Figure \ref{fig:thermal} shows that we have formed a tight,
+devils. Figure \ref{fig:thermal} shows that there is a tight,
 coherent thermal plume roughly the same size as the inner diameter of the
 lower vanes. As anticipated, this hot flow is acting like a chimney,
-generating a large vertical velocity which in turn entrains and draws in
-outside flow. An image of the entrainment is shown in figure
-\ref{fig:entrain}. The image was created by seeind particles advancing
-them through the velocity field, showing the velocity field. One can
-observe a tight inner vortex with significant azimuthal velocity formed
-through the bottom tier of vanes, as well as a broader region of
-entrained fluid through the second tier. 
+generating a large vertical velocity which in turn entrains air from the outside.
+An image of the entrainment is shown in figure
+\ref{fig:entrain}. The image was created by tracking particles as they 
+convect through the device. 
+One can
+observe a tight inner vortex with significant azimuthal velocity 
+as well as a broader region of entraining fluid through the 
+upper tier of vanes. 
 
 \begin{figure}[htb]
 
@@ -95,7 +102,8 @@ entrained fluid through the second tier.
   \label{fig:p-to}
  \end{subfigure}%
 
- \caption{Vertical slices for the thermal-only cases.}
+ \caption{Vertical slices through the center of the device for the thermal-only cases. Black lines 
+   indicate the location of the vanes.}
  \label{fig:to-vert}
 \end{figure}
 
@@ -111,9 +119,6 @@ a low pressure core, as observed in real dust devils.
 On the vertical velocity plot, notice that a small
 downward flow region has formed in the middle of the vortex. 
 
-
-Rotating air induces low pressure core, as observed in:
-Dust Devils
 \begin{figure}[htb]
 
  \begin{subfigure}{.5\textwidth}
@@ -147,9 +152,9 @@ Dust Devils
  \label{fig:to-hor}
 \end{figure}
 
-Figure \ref{fig:to-hor}, in turn,  depicts several horizontal slices
+Figure \ref{fig:to-hor}, depicts several horizontal slices
 through the SoV for the same state variables. It can be seen that the
-large velocities are highly limited to a region just inside the
+large velocities are highly localized to a region just inside the
 vanes. Likewise, the entrainment of fluid is limited to a region
 immediately surrounding the vanes. 
 %
@@ -157,25 +162,23 @@ immediately surrounding the vanes.
 %
 Finally, the thermal plume is relatively
 narrow compared to the diameter of the device. It is desirable to
-broaden the thermal plume, as this in turn creates a larger vertical
-momentum flux due to the effects of buoyancy. This will presumably
-entrain more surrounding fluid, driving it through the vanes and
-imparting kinetic energy to the flow. The kinetic energy grows as the
-square of the radius, so any broadening of the vortex core can greatly
-enhance the kinetic energy flux. The diameter of the thermal core is
-therefore a critical driver to the energy of the thermal-only
-conditions, and operates as the ``prime-mover'' of the entire
-process. Broadening this plume will necessarily enhance the energy
-flux that can be extracted. However, the general physical
-mechanisms that determine the thermal plume's thickness are not
-presently understood. \todo{fix these images}
-Regardless, these slices lend credibilty to the notion that our turning
-vane configuration is generating something with parallels to a real dust 
-devil.   
+broaden the thermal plume, as this would create a larger vertical
+momentum flux and consequentally a larger kinetic energy flux. 
+%% This will presumably
+%% entrain more surrounding fluid, driving it through the vanes and
+%% imparting kinetic energy to the flow. The kinetic energy grows as the
+%% square of the radius, so any broadening of the vortex core can greatly
+%% enhance the kinetic energy flux. 
+The diameter of the thermal core is
+therefore a critical flow characteristic in the thermal-only
+conditions. However, a means of determing the thermal plume's thickness 
+is not presently known. Regardless, these slices lend credibilty to the
+notion that our turning vane configuration is generating something with
+visible parallels to a naturally occurring dust devil.   
 
 \subsection{Wind}
 
-
+todo\todo{what case is this?}
 
 %
 % horizontal slices
@@ -213,6 +216,17 @@ devil.
  \label{fig:wind-hor}
 \end{figure}
 
+
+Horizontal slices of the azimuthal and vertical velocities, as well as the 
+temperature and pressure fields are shown in figure \ref{fig:vz-wind-vert}. The freestream velocity
+is traveling from left to right at $5 m/s$, which was set based on ambient velocity measurements made by 
+the experimental team from the field. 
+While the structure is undoubtedly different than the thermal-only cases shown previously, 
+we can nevertheless see that a thermal plume is forming along with a 
+rotating velocity structure. In general the wind cases are more disorganized, with less obviously 
+visible coherent structure. Notice however that the magnitude of velocities are several times larger than 
+in the thermal-only cases, and the kinetic energy flux through the vanes is also significantly higher. 
+
 %
 % vertical
 %
@@ -249,100 +263,111 @@ devil.
  \label{fig:wind-ver}
 \end{figure}
 
-Observe that in all the plots, the thermal plume is significantly less
+The vertical slices are shown in figure \ref{fig:wind-ver}. In this
+case, the lower tier of vanes are where the majority of flow is 
+entering the center of the apparatus, while the second tier of vanes are
+blocking the ambient wind and providing protection to the vortex column. 
+
+The thermal plume is significantly less
 visible than in the thermal-only cases. While the
 thermal-plume is necessarily weaker relative to the wind, some of this
 is also due to the plume no longer being directly centered in the
 flow. The plume is more visible using isocountors to render a
-three-dimensional surface. Unlike the thermal-only, the flow in the wind
-cases has a strong thermal gradient even exterior to the device. In
-order to capture the difference between the ambient vertical temperature
+three-dimensional surface. 
+To visualize the difference between the vertically varying ambient temperature
 and the warmer thermal plume, we use the potential temperature, defined
 as, 
 \begin{equation}
   \tau(x,y,z) = T(x,y,z) -T_{in}(z) 
    \label{eqn:tau}
 \end{equation}
-where $T_{in}$ is the proscribed inflow boundary temperature, described
+where $T_{in}$ is the inflow temperature, described
 in section \ref{sec:bc}. In this way the background potential
 temperature is nearly zero, and larger values represent deviations from
-the base flow temperature. The isocountour of a three Kelvin delta is 
-depicted in figure \ref{fig:field_real}. This gradient was selected as
+the base flow temperature. The isocountour of a three Kelvin is 
+shown in figure \ref{fig:field_real}. This value was selected as
 it was noted as sufficient for formation of a dust devil by
-Sinclair\cite{Sinclair1969}.\todo{write more! speak to images}
+Sinclair\cite{Sinclair1969}. It is clear from the image that a 
+strong thermal column does exist even in the $5 m/s$ wind cases. 
 
 %
-% t iso
+% tiso
 %
   \begin{figure}[!htb]
    \begin{center}
     \includegraphics[width = 12 cm]{figs/t_iso}
-    \caption{Isocountor of the Thermal Plume. Here, the isocontour is
-    labelled by the potential temperature, $\tau$, as defined in \ref{eqn:tau}.}
+    \caption{Isocountor of the thermal plume. Here, the isocontour is
+    labelled by the potential temperature, $\tau$, as defined in \ref{eqn:tau}.\todo{don't understand}}
     \label{fig:field_real}
    \end{center}
   \end{figure}
 
 \subsection{Optimization}
 
-In this section we show results from a representative optimization
-effort for a thermal-only case, in order to detail the mode of operation
-these efforts have presently followed. This is a typical mode of
-scientific and engineering inquiry, where a hypothesis of system
+In this section results from a representative optimization
+in a thermal-only case are discussed, to demonstrate the optimization 
+process employed so far. 
+This is a typical mode of
+scientific and engineering inquiry, where a hypothesis regarding system
 operation is developed, followed by testing of the hypothesis, and
-further interation. 
+further interations. 
 
-Our principle quantity of interest (qoi) is the energy that we can
-extract from the synthetic dust devil. As a surrogate to this quantity,
-we consider the energy flux through a region near the top of the vanes,
-where we expect to add a turbine that will be driven by the flow. The
-flux here is the magnitude of energy passing in unit time through the
-unit area pertpendicular to the direction of the velocity. This is a
-simple path integral that has the form\cite{landau1959fm},  
-\begin{equation}
- \dot E = -\oint \rho \textbf{v}(\frac{1}{2}v^2 + \epsilon) \cdot d \textbf{f}
-\end{equation}
-where $\epsilon$ is the internal energy. % and $d\textbf{f}$ the. 
-For our problem, we consider an incompressible fluid flowing through a
-flat horizontal region interior to the vanes in the x-y plane, which
-results in, 
+Our principle objective is to maximize the energy that can be 
+extracted from the synthetic dust devil. As a surrogate to this quantity,
+consider the kinetic energy flux through a horizontal plane near the top of the vanes,
+where a turbine will ultimately be placed. This is a
+surface integral\cite{landau1959fm}
+
+%% \begin{equation}
+%%  \dot E = -\oint \rho \textbf{v}(\frac{1}{2}v^2 + e) \cdot d \textbf{f}
+%% \end{equation}
+%% where $e$ is the internal energy. % and $d\textbf{f}$ the. 
+%% For our problem, we consider an incompressible fluid flowing through a
+%% flat horizontal region interior to the vanes in the x-y plane, which
+%% results in, 
+
  \begin{equation}
- \dot E = -\frac{\rho }{2} \int V_z (V_{\theta}^2 + V_z^2 ) dA
+ \dot E = -\frac{\rho }{2} \int V_z (V_{\theta}^2 + V_z^2 ) dA.
  \end{equation}
-This shows the energy each unit mass of fluid carries with it as it
-moves through the defined surface. 
 
+Using the kinetic energy flux as an objective, 
+the vane geometry has been optimized. Over approximately 
+tens of iterations, we have increased the kinetic energy flux by 
+a factor of 88 relative to the baseline.
+Results of several of these iterations are documented in 
+figure \ref{fig:opt_plot}. Major adjustments 
+to design in the the vane shape and angles were made to obtain this improvement. 
+Before and after images shown in \ref{fig:vt-wind-vert}. 
+During this optimization the qualitative character 
+of the solution changed substantially, changing from a mild upward flow with little rotation
+to a strongly organized vortex with a downward central flow and strong azimuthal velocities. 
 
-88X improvement in kinetic energy flux
+\begin{figure}[htb]
+ \centering
+ \includegraphics[width=.75\linewidth]{figs/opt_plot}
+ \caption{This plot diagrams the improvements to the calculated flux for  
+ each iteration of system configuration.}
+ \label{fig:opt_plot}
+\end{figure}
 
-from optimization 
-
- Major adjustments to design in:
-» Vane Shape
-» Vane Angles
-» Ground treatment
-
- Qualitative differences in flow 
- characteristics – more like a “dust-devil”
 
 \begin{figure}[htb!]
  \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=.75\linewidth]{figs/before_vanes}
   \caption{Vanes before optimization}
-  \label{fig:vt-wind-vert}
  \end{subfigure}%
  \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=.8\linewidth]{figs/after_vanes}
-  \caption{Vanes after optimization}
-  \label{fig:vz-wind-vert}
+  \caption{Vanes after optimization\todo{need better figure}}
  \end{subfigure}%
+ \label{fig:vt-wind-vert}
 \end{figure}
 
 
-image of flow before after
-
+%
+%
 \begin{figure}[htb!]
  \begin{subfigure}{.5\textwidth}
   \centering
@@ -356,14 +381,5 @@ image of flow before after
  \end{subfigure}%
   \label{fig:opt_flow}
 \end{figure}
-
-table of energy flux increase\todo{write me!}
-
-
-\begin{figure}[htb]
- \centering
- \includegraphics[width=.75\linewidth]{figs/opt_plot}
- \caption{This plot diagrams the improvements to the calculated flux for  
- each iteration of system configuration.}
- \label{fig:opt_plot}
-\end{figure}
+%
+Before and after vertical slices are shown in figure \ref{fig:opt_flow}.

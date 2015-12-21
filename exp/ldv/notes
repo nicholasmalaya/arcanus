@@ -1,0 +1,24 @@
+Just received a note asking about the Lexel laser diameter, and I realized that it was not in the guidelines.  The diameter is 1.3 mm.
+
+
+-------
+
+Have any of you calculated the doppler frequency of our freestream measurements by chance? I am using the expression f_d = u_x / d_f where u_x = -0.4117 m/s and d_f is given as ~3.75 um. This gives me a doppler frequency greater than 100 KHz, which seems way too large.
+
+That actually sounds spot on.  Our effective shifting frequency was 150kHz, meaning that our total frequency response was about 40-50kHz, which fights right in our bandpass of 10-100kHz. 
+
+-------------
+
+Channel 1 (green):
+Wavelength: 514.5nm
+Focal length: 363 mm
+Beam separation: 50 mm
+
+Channel 2 (blue):
+Wavelength: 488 nm
+Focal length: 363 mm
+Beam separation: 50 mm
+
+------------
+
+We first calculate the difference between the two mean velocity measurements we have at each point. After grouping the set of deviations by turbulence level, we can calculate the standard deviation of that set of deviations, sigma. The precision uncertainty can then be calculated as 2*sigma/sqrt(N). Can the same procedure be repeated for rms velocities?
