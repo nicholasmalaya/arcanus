@@ -29,7 +29,7 @@ MAILTO=""
 
 #MARCH 
 0   4 08 3 * ~/bin/msg/reminder_all Wifeie 
-0   4 12 3 * ~/bin/msg/reminder_all damon
+0   4 12 3 * ~/bin/msg/reminder_all damon_broforce
 0   4 13 3 * ~/bin/msg/reminder lauren_mardis
 0   4 15 3 * ~/bin/msg/reminder_all celia 
 0   4 18 3 * ~/bin/msg/reminder_all Tasha_cousin 
