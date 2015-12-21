@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+# script that finds bad technical document language
+# 
+
+echo 'Replace "in order to" with "to":'
+grep --color 'in order to' *.tex
+if [ $? -eq 1 ]; then
+    echo 'none found'
+fi
+echo ''
+
+echo 'Replace "utilize" with "use":'
+grep --color 'utilize' *.tex 
+if [ $? -eq 1 ]; then
+    echo 'none found'
+fi
+echo ''
+
+echo 'Remove "very":'
+grep --color 'very' *.tex 
+if [ $? -eq 1 ]; then
+    echo 'none found'
+fi
+echo ''
+
+echo 'Remove "extremely":'
+grep --color 'extremely' *.tex
+if [ $? -eq 1 ]; then
+    echo 'none found'
+fi
+
+echo 'Remove "we show":'
+grep --color 'we show' *.tex
+if [ $? -eq 1 ]; then
+    echo 'none found'
+fi
+
+#
+# nick 
+# 12.7.15
+#
