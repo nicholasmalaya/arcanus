@@ -74,8 +74,8 @@ reported. However, they are typically large eddy simulations (LES) that point
 towards the occurance of similar phenomena within existing climate and
 atmospheric models\cite{QJ:QJ200513160722,doi:10.3137/ao.420105}. Actual
 measurements made inside a dust devil 
-are limited. The available data hints that dust devils can be broken
-into two regions: a low surface layer and a higher invisid region. The
+are limited. The available data hints that dust devils contain
+two regions: a low surface layer and a higher invisid region. The
 low surface region is the  principle location of radial inflow. 
 At the top of this region the flow 
 reaches its peak velocity, with that peak dropping with increasing height. 
@@ -166,23 +166,48 @@ Where R is the radius of the vortex. Typical quantities values are, $u = 5$ m/s,
 10$ cm. This provides an estimate of 1144 Watts as the incoming kinetic
 energy flux. 
 
-We estimate the gravitational potential energy flux by integrating the
-boussinesq potential energy flux over the upstream,  
+The gravitational potential energy flux is estimated by integrating the
+boussinesq potential energy flux over the upstream flow. 
+This is the maximum energy that could be extracted from the flow by an 
+adiabatic redistribution of the density variation from the ambient 
+density of the freestream flow, $\rho_\infty$. 
+This potential energy ($E_p$) has the form of a surface integral over 
+the front half of the vanes, 
 \begin{align*}
-  \text{Potential Energy Flux} & = \int_{-z_\text{max}}^0 u(z) \Delta \rho g z dz. \\
-  & = \int_{-z_\text{max}}^0 u(z) \rho' g z^2 dz. 
+  E_p & = \int (\rho(z)-\rho_\infty) u(z) g dA. 
 \end{align*}
-Where the substitution, $\Delta \rho = \rho' z$ was made. We again
-assume the boundary layer follows the 7th order profile, and 
-that $\rho' = -\beta \rho_0 \Delta T$, resulting in, 
-%
-% cite monin-yaglom page 59
-%
-\begin{equation}
- \text{Power } = U \beta \rho_0 \Delta T g \left[ \frac{z_\text{max}^3}{3} -
-					    \frac{7}{30} \delta^3
-					   \right]. 
-\end{equation}
+The density only varies with height, and so the integral is simplified to only vary in 
+this direction
+\begin{align*}
+  E_p  & = g \int^{z_\text{max}}_0 \pi R (\rho(z)-\rho_\infty) u(z) dz.
+\end{align*}
+Using the bousinesq approximation,
+\begin{align*}
+   (\rho-\rho_\infty) & = - \rho_0 \beta \Delta T \\
+   (\rho-\rho_\infty) & = - \rho_0 \beta (T(z) - T_\infty),
+\end{align*}
+the integral is, 
+\begin{align*}
+  E_p & = -g  \pi R \beta \rho_0 \int^{z_\text{max}}_0 (T(z)-T_\infty) u(z) dz.
+\end{align*}
+
+
+% old text:::
+%% \begin{align*}
+%%   \text{Potential Energy Flux} & = \int_{-z_\text{max}}^0 u(z) \Delta \rho g z dz. \\
+%%   & = \int_{-z_\text{max}}^0 u(z) \rho' g z^2 dz. 
+%% \end{align*}
+%% Where the substitution, $\Delta \rho = \rho' z$ was made. We again
+%% assume the boundary layer follows the 7th order profile, and 
+%% that $\rho' = -\beta \rho_0 \Delta T$, resulting in, 
+%% %
+%% % cite monin-yaglom page 59
+%% %
+%% \begin{equation}
+%%  \text{Power } = U \beta \rho_0 \Delta T g \left[ \frac{z_\text{max}^3}{3} -
+%% 					    \frac{7}{30} \delta^3
+%% 					   \right]. 
+%% \end{equation}
 
 Using $\rho_0 = 1.225$ Kg/$m^3$, $T_{\text{ref}}=313$m Kelvin, $\beta_T
 = 0.003194$ (This is just 1/$T_{\text{ref}}$), $g=9.81$ m/$s^2$, and a
