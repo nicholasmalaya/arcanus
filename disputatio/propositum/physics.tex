@@ -161,7 +161,7 @@ The result for the kinetic energy is then,
 \text{KE} & = R \rho U^3 \left[ z_{\text{max}} - \frac{10}{11}\delta.
 \right]
 \end{align*}
-Where R is the radius of the vortex. Typical quantities values are, $u = 5$ m/s, $\rho =
+Where R is the radius of the vortex. Typical quantities values are, $U = 5$ m/s, $\rho =
 1.225$ Kg/$m^3$, $R = 3$ m, $z_{\text{max}} = 2.5$ m and $\delta \approx
 10$ cm. This provides an estimate of 1144 Watts as the incoming kinetic
 energy flux. 
@@ -174,24 +174,29 @@ density of the freestream flow, $\rho_\infty$.
 This potential energy ($E_p$) has the form of a surface integral over 
 the front half of the vanes, 
 \begin{align*}
-  E_p & = \int (\rho(z)-\rho_\infty) u(z) g dA. 
+  E_p & = \int u(z) (\rho(z)-\rho_\infty) g z dA. 
 \end{align*}
-The density only varies with height, and so the integral is simplified to only vary in 
+As the density only varies with height, the integral is simplified to only vary in 
 this direction
 \begin{align*}
-  E_p  & = g \int^{z_\text{max}}_0 \pi R (\rho(z)-\rho_\infty) u(z) dz.
+  E_p  & = g \int^{z_\text{max}}_0 u(z) (\rho(z)-\rho_\infty) z  \pi R dz.
 \end{align*}
-Using the bousinesq approximation,
+Using the bousinesq approximation, $(\rho(z)-\rho_\infty)  = \rho_0 \beta \Delta T$,
+%\begin{align*}
+%   (\rho(z)-\rho_\infty) & = - \rho_0 \beta \Delta T 
+%   (\rho(z)-\rho_\infty) & = - \rho_0 \beta (T(z) - T_\infty),
+%\end{align*}
+the integral becomes, 
 \begin{align*}
-   (\rho-\rho_\infty) & = - \rho_0 \beta \Delta T \\
-   (\rho-\rho_\infty) & = - \rho_0 \beta (T(z) - T_\infty),
+  E_p & = g  \pi R \beta \rho_0 \Delta T \int^{z_\text{max}}_0 u(z) z dz.
 \end{align*}
-the integral is, 
+This can be solved to show that 
 \begin{align*}
-  E_p & = -g  \pi R \beta \rho_0 \int^{z_\text{max}}_0 (T(z)-T_\infty) u(z) dz.
+  E_p & = g  \pi R \beta \rho_0 U \Delta T \left[ \frac{z_\text{max}^2}{2} - \frac{7 \delta^2}{18} \right].
 \end{align*}
 
 
+%Once again assuming the 7th order power function for a turbulent boundary layer, 
 % old text:::
 %% \begin{align*}
 %%   \text{Potential Energy Flux} & = \int_{-z_\text{max}}^0 u(z) \Delta \rho g z dz. \\
@@ -209,10 +214,11 @@ the integral is,
 %% 					   \right]. 
 %% \end{equation}
 
-Using $\rho_0 = 1.225$ Kg/$m^3$, $T_{\text{ref}}=313$m Kelvin, $\beta_T
-= 0.003194$ (This is just 1/$T_{\text{ref}}$), $g=9.81$ m/$s^2$, and a
-freestream velocity of five meters per second results in an
-estimate of 30 Watts for the gravitational potential energy. 
+Characteristic values for a dust devil are $\rho_0 = 1.225$ Kg/$m^3$, 
+$\Delta T= 30$ Kelvin, $\beta = 0.003194$ (This is 1/$T_{\text{ground}}$), 
+$R = 3 $ m, $z_\text{max} = 2.5$ m, $\delta \approx 10$ cm, $g=9.81$ m/$s^2$, and a
+freestream velocity of five meters per second results in an estimate of 33.82 Watts 
+for the gravitational potential energy. 
 
 The majority of the available energy is thus attributable from the
 kinetic energy of the wind, not the gravitational potential energy of
