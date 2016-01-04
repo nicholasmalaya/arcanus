@@ -106,7 +106,7 @@ stratified flow.
 %
 
 Using dimensional analysis, note that the dynamics of
-any mean turbulent quantity ($\bar f$) in a thermally stratified medium
+any mean turbulent quantity ($\bar f$) in a thermally stratified medium 
 only depend on,  
 
 \begin{equation}
@@ -317,44 +317,72 @@ researchers\cite{doi:10.1146/annurev.fluid.37.061903.175743}.
 
 \subsection{Separation Model}
 
-In the presence of wind, it was found that there was a significant flow out through 
-the vanes in the back of the device. 
-This was obviously inconsistent with the findings of our colleagues 
-in the field, who observed no outflows out of the back of device. 
-Moreover, this resulted in large inconsistencies between our predictions and the 
-field results, almost certainly because of the kinetic and thermal 
-energy that our vane representation was permitting to leave out the back of the device. 
+In the presence of wind, it was found that there was a significant flow
+out through the vanes in the back of the device. This was obviously
+inconsistent with the findings of our colleagues in the field, who
+observed no outflows out of the back of device. Moreover, this resulted
+in large inconsistencies between our predictions and the field results,
+almost certainly because of the kinetic and thermal energy that our vane
+representation was permitting to leave out the back of the device.  
 
-This exposed a weakness of the turning vane representation 
-outlined previously. Due to the flow to turning rapidly at the ends of the vane
-region at which point it enters the vanes again and flows out. This is in contrast to our 
-physical intuition in these cases, where we expect the flow (in aggregate) to continue along an 
-averaged streamline off the trailing edges of the vanes. These averaged streamlines 
-(e.g. the statistically average behavior, not an instant flow field) will continue 
-past the trailing edge of the vane due to the seperation of the boundary layer off the edge surface.
+This exposed a weakness of the turning vane representation outlined
+previously. When the flow entered the virtual vane forcing region it was
+always turned to align with the vane angle, even when the forcing was in
+the opposite direction of the present velocity.\todo{add image?}
+This is in contrast to our physical intuition, where we
+expect the flow to continue along an averaged streamline
+off the trailing edges of the vanes, instead of turning around. 
+The averaged streamline (e.g. the statistically average behavior, not
+an instant flow field) will continue past the trailing edge of the vane
+due to the separation of the boundary layer off the edge surface. An
+image depicting these two cases in shown in figure \ref{fig:sep_model}.  
 
 \begin{figure}[!htb]
   \begin{center}
     \includegraphics[width = 6 cm]{figs/sep_model}
-    \caption{Schematic depicting the separation model that extends past the trailing edge of the vanes.}
+    \caption{Schematic depicting the separation model that extends past
+   the trailing edge of the vanes. In the top case, the flow entering
+   the virtual vane region is forced to align with the vane angle despite
+   this resulting in a reversal of the flow direction. In the second
+   case, the flow continues to move tangent to the vanes due to the
+   separation of the boundary layer off the trailing edge.} 
     \label{fig:sep_model}
   \end{center}
 \end{figure}
 
-We have therefore introduced a simple separation model that modifies the forcing in use for an extended
-region past the edges of the vanes. In the case where the flow is both leaving the vane region and 
-the velocity vector of the fluid is pointing across the tangent line from the trailing edge of the vane edge, 
-we force the flow as if the vane continued in a straight line past the trailing edge. This is designed to 
-act as if there was a rigid surface past the vane edge, and gives the appearance of a special 
-``no-penetration'' condition for the velocity for these cases. An image depicting these two cases in shown in 
-figure \ref{fig:sep_model}. The addition of this simple separation model significantly reduced the flow that 
-penetrated the vanes, and was consistent with the observations provided by our experimental colleagues. 
+Let $\bf n^v$ be the normal vector to the vanes, and $\bf n^r$ the
+normal vector pointing out of the vane region. Then, $\bf t^v$ is the
+tangential vector to the vanes pointing out of the vane region and is
+defined as
+\begin{equation}
+ \bf t^v = \left( {\bf n^v_y},{\bf -n_x^v} \right) \text{sign}\left[
+	    \left( {\bf n^v_y},{\bf -n_x^v} \right) \cdot {\bf n^r} \right].
+\end{equation}
+
+The forcing is modified when the velocity vector of the local flow, $\bf
+u$ is pointing in to the forcing region: ${\bf u} \cdot {\bf n^r} < 0$, and
+when the velocity vector is in the same direction as the tangent line to
+the vanes: ${\bf u} \cdot {\bf t^v} > 0 $. In these instances, the
+forcing acts as if there was a rigid surface past the vane edge, and
+gives the appearance of a special ``no-penetration'' condition for the
+velocity for these cases.  
+
+The addition of this simple separation model significantly reduced the
+flow that penetrated the back of the vanes, and produces results
+consistent with the observations provided by our experimental
+colleagues.  
 
 \subsection{Surface Roughness}
 
+%%
+%% this does not say enough about the surface roughness
+%% motivate that and explain how it is used, than show your estimate 
+%% to argue it is small
+%%
+
 Finally, we also have need to invoke more abstract body forces. \todo{rewrite}
 Our principle use case is model the surface roughness
-impact, which is expected to be non-trivial\cite{oke1987boundary}. This
+impact, which is expected to contribute  non-trivial\cite{oke1987boundary}. This
 is more straight-forward than the previous cases, where the forcing is
 simply defined uniformly over a region and set based on, 
 \begin{equation}
