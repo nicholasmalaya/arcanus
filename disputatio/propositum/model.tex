@@ -135,7 +135,7 @@ These quantities depend on
 four dimensions: length, time, temperature and mass. As a result, 
 Buckingham Pi theorem implies that 
 the original equations can be rewritten in terms of a 
-single dimension-less group.\cite{munson2012fundamentals}. This is
+single dimensionless group.\cite{munson2012fundamentals}. This is
 chosen to be,
 \begin{equation}
  \xi = \frac{z}{L}.
@@ -192,7 +192,8 @@ device where the flow across the vanes produces shear and generates
 turbulence. Our model for  
 the diffusivities inside the vanes should be higher than the ambient
 (and empty) regions outside the vanes. However, this is also a more
-difficult regime to model. To successfully accomplish this, source terms
+difficult regime to model.\todo{poor justification} 
+To successfully accomplish this, source terms
 for production of diffusivity would need to be formulated to properly
 account for the generation of turbulence in the region of the
 vanes. This diffusivity would then convect and diffuse through space. 
@@ -207,7 +208,8 @@ for a turbulent self-similar circular jet, as in
 Pope\cite{pope2000turbulent},
  
 \begin{equation}
- \nu_C(r) = U_0(r) y_{1/2}(r) \bar \nu_C
+  \nu_C = U_0 y_{1/2} \bar \nu_C
+  %\nu_C(r) = U_0(r) y_{1/2}(r) \bar \nu_C
 \end{equation}
 
 Where $U_0$ is the peak velocity, and $y_{1/2}$ the jet half-width
@@ -256,7 +258,7 @@ line as a function of the radial coordinate $r$. A unit normal to vane
 surfaces ${\bf n}$ is thus defined as
 %
 \begin{equation}
- {\bf n}({\bf x}) = \sin \phi(r) \hat{{\bf r}}+ \cos\phi(r) \hat{{\bf \theta}}
+ {\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos \left(\phi(r) \right) \hat{{\bf \theta}}
 \end{equation}
 %
 where $\hat{{\bf r}}$ and $\hat{{\bf \theta}}$ are unit
@@ -268,6 +270,7 @@ effectively turning the flow to be parallel to the vanes. The body
 force is defined:
 \begin{equation}
  {\bf f}_v= -\frac{1}{\ell_v}|{\bf u}|({\bf u}\cdot{\bf n}){\bf n}
+ \label{eqn:body_force}
 \end{equation}
 where ${\bf u}$ is the velocity and $\ell_v$ is a specified length
 scale. The length scale $\ell_v$ represents the distance over which the
@@ -282,61 +285,58 @@ This virtual vane formulation is similar to the actuator disk model
 commonly used to represent the rotor of a wind turbine \cite{betz}.
 
 
-\subsection{Cone Representation}
+\subsection{Solid Surface Representation}
+
+This subsection details the model used for rigid, impermiable surfaces such as the 
+wind break (``cone'') on the top of the facility. As with the turning vanes, 
+this is accomplished without explicitly meshing the surface nor imposing 
+a boundary condition at the surface. This permits rapid exploration of configurations 
+with different solid surfaces to control and manipulate the fluid flow. These solid surfaces
+are also represented by a body force region applied where the wall is set to be located in. 
+A vector normal to the surface is defined in this region so that a body force will push 
+the velocity to zero, resulting in the flow moving only parallel to the virtual surface. 
+For instance, the outward facing unit normal for a cylindrical surface is represented as
+\begin{equation}
+ {\bf n}({\bf x}) = \hat{{\bf r}}+ \sin \left(\theta\right) \hat{{\bf \theta}}
+\end{equation}
+where $\theta$ the angle between the spatial location and radial line. 
+The body force is defined as in equation \ref{eqn:body_force}; however, 
+the length scale $\ell_v$ is specified to be identical to the width 
+of the surface being represented. This is typically two or three grid points. 
+While the actual surface we are emulating is thin, the numerical method cannot resolve
+surfaces smaller than the grid size. 
 
 Forcing designed to act like a surface
 is not unique to this project, and is closely related to (among others)
 the ``immersed boundary methods'' used by various other
-researchers\cite{doi:10.1146/annurev.fluid.37.061903.175743}.\todo{put this in cone section!}
+researchers\cite{doi:10.1146/annurev.fluid.37.061903.175743}. 
+%It is likely that 
+%the formulation described above could be shown to be equivalent to these methods
 
-We also desire to model rigid surfaces, such as a cone or cylinder, that
-permit no penetrating flow. As with the vanes, we would prefer to avoid
-any methods that would require explicit meshing and imposition of an
-additional boundary condition at the surface of the object. Rather, we
-desire to again weakly impose a forcing that we expect to be consistent
-with the forcing a fluid would see in the vicinity of a rigid surface. 
-
-The surface of a rigid object requires simply that we
-define a normal vector that would permit no flow. In other words, we
-define an outward pointing normal vector from the surface of the object
-with a sufficiently large penalty vector so as to ensure that the
-penetration distance is small, e.g. significantly larger than in the
-case of the vanes. Furthermore, the penalty parameter in this case is
-not associated with a physical length scale, but rather, a modeling
-artifact. 
-
-%Surface is easy to define
-
-A weakness of this technique is that for
-any finite penetration distance, some fluid will necessarily bleed
-through. We expect to consider investigating other results in 
-immersed boundary methods and related literature to more completely
-investigate and characterize the impact of this model error.  
 
 
 \subsection{Separation Model}
 
-We observed a large portion of the flow exiting out of the back of 
-the device with non-negligable velocities for the cases with large winds. 
-This was obviously inconsistent with the observations of our colleagues 
+In the presence of wind, it was found that there was a significant flow out through 
+the vanes in the back of the device. 
+This was obviously inconsistent with the findings of our colleagues 
 in the field, who observed no outflows out of the back of device. 
-Moreover, this was resulting in large model errors between our predictions and the 
-field results, almost certainly because of the large amount of kinetic and thermal 
-energy that our vane representation was permitting to leave the device. 
+Moreover, this resulted in large inconsistencies between our predictions and the 
+field results, almost certainly because of the kinetic and thermal 
+energy that our vane representation was permitting to leave out the back of the device. 
 
-We believe that this shed light on a weakness of the turning vane representation 
-outlined previously. This was due to the flow to turning rapidly at the ends of the vane
+This exposed a weakness of the turning vane representation 
+outlined previously. Due to the flow to turning rapidly at the ends of the vane
 region at which point it enters the vanes again and flows out. This is in contrast to our 
 physical intuition in these cases, where we expect the flow (in aggregate) to continue along an 
 averaged streamline off the trailing edges of the vanes. These averaged streamlines 
 (e.g. the statistically average behavior, not an instant flow field) will continue 
 past the trailing edge of the vane due to the seperation of the boundary layer off the edge surface.
 
-
 \begin{figure}[!htb]
   \begin{center}
     \includegraphics[width = 6 cm]{figs/sep_model}
-    \caption{Schematic depicting the separation model that extends past the tailing edge of the vanes.}
+    \caption{Schematic depicting the separation model that extends past the trailing edge of the vanes.}
     \label{fig:sep_model}
   \end{center}
 \end{figure}
@@ -352,7 +352,7 @@ penetrated the vanes, and was consistent with the observations provided by our e
 
 \subsection{Surface Roughness}
 
-Finally, we also have need to invoke more abstract body forces. 
+Finally, we also have need to invoke more abstract body forces. \todo{rewrite}
 Our principle use case is model the surface roughness
 impact, which is expected to be non-trivial\cite{oke1987boundary}. This
 is more straight-forward than the previous cases, where the forcing is
