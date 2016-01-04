@@ -372,31 +372,40 @@ flow that penetrated the back of the vanes, and produces results
 consistent with the observations provided by our experimental
 colleagues.  
 
-\subsection{Surface Roughness}
+\subsection{Effect of Surface Roughness}
 
+%%
+%% this does not describe the phenomena being modeled or the precise
+%% model -- rewrite
+%%
 %%
 %% this does not say enough about the surface roughness
 %% motivate that and explain how it is used, than show your estimate 
 %% to argue it is small
 %%
 
-Finally, we also have need to invoke more abstract body forces. \todo{rewrite}
-Our principle use case is model the surface roughness
-impact, which is expected to contribute  non-trivial\cite{oke1987boundary}. This
-is more straight-forward than the previous cases, where the forcing is
-simply defined uniformly over a region and set based on, 
+Finally, surface roughness effects have been shown to play a role in the
+formation of dust-devils and related atmospheric
+phenomena\cite{oke1987boundary}. For the flat and sandy regions we are
+simulating, the impact is expected to be a small thermal ``kick-up''
+versus an entirely flat surface. This is modeled as a volumetric 
+forcing over a narrow height over the surface, 
 \begin{equation}
- F = \frac{1}{2}\rho V^2 A_F. 
+ F^{'''}_{z_0} = \frac{1}{2}\rho V_z^2/z_{0} 
 \end{equation}
-The total energy injected into the flow can be measured as, 
+where $z_{0}$ is the roughness height. We ensure that the energy
+introduced into flow is small fraction of total flow energy by comparing
+this with the energy flux through the top of the vanes. The total energy
+added is measured as,  
 \begin{equation}
- E_{\text{injected}} = \int_0^\infty F dz. 
+ E_{\text{injected}} = \int_0^{2\pi} \int_0^R \int_0^{z_0} F^{'''}_{z_0} dz dr d\theta. 
 \end{equation}
-We ensure that the energy introduced into flow is small fraction of
-total flow energy by comparing this with the energy flux through the top
-of the vanes. 
-This general forcing provides additional capabilities including the
-ability to investigate engineering greater surface roughness or
-structures that could provide greater ``kick-up'' of the thin thermal
-layer near the surface into the flowing regime. It can also support more
-general turning configurations than the virtual vanes outlined above. 
+R is the outer diameter of the vanes. 
+The value of $E_{\text{injected}}$ is typically a few percent of the
+total energy kinetic energy flux measured through the top of the vanes. 
+
+%This general forcing provides additional capabilities including the
+%ability to investigate engineering greater surface roughness or
+%structures that could provide greater ``kick-up'' of the thin thermal
+%layer near the surface into the flowing regime. It can also support more
+%general turning configurations than the virtual vanes outlined above. 
