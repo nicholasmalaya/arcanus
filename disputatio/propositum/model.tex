@@ -187,24 +187,31 @@ are easily instantiated in software.
 
 \subsection{Eddy Viscosity in Device}
 
-The thermal and momentum diffusivities are expected to be even larger in the
+%However, this is also a more
+%difficult regime to model.\todo{poor justification} 
+The validation process identified a refinement to the virtual vane
+formulation that results in a better representation of the vane
+effects in a broader range of flows. 
+
+The thermal and momentum diffusivities are even larger in the
 device where the flow across the vanes produces shear and generates
-turbulence. Our model for  
-the diffusivities inside the vanes should be higher than the ambient
-(and empty) regions outside the vanes. However, this is also a more
-difficult regime to model.\todo{poor justification} 
-To successfully accomplish this, source terms
-for production of diffusivity would need to be formulated to properly
-account for the generation of turbulence in the region of the
-vanes. This diffusivity would then convect and diffuse through space. 
-To avoid modeling a temporal and three-dimensionally spatially
-varying field of diffusivities, we have instead calibrated the field
-based on data provided by our partners at Georgia Tech. 
+turbulence. The model now include an enhanced turbulent diffusivity in
+the vortical plume region to account for the effects of vortex shedding
+from the trailing edge of the vanes, which is not inherent in the
+virtual vane representation.   
+
+% To successfully accomplish this, source terms
+% for production of diffusivity were formulated to properly
+% account for the generation of turbulence in the region of the
+% vanes. This diffusivity would then convect and diffuse through space. 
+% To avoid modeling a temporal and three-dimensionally spatially
+% varying field of diffusivities, we have instead calibrated the field
+% based on data provided by our partners at Georgia Tech. 
+
 %This calibration
 %is detailed in Section \ref{sec:validation}. 
-We then set the eddy-viscosity in
-the region of the vanes and interior based on scaling relations
-for a turbulent self-similar circular jet, as in
+The eddy-viscosity in the region of the vanes and interior is set based
+on scaling relations for a turbulent self-similar circular jet, as in 
 Pope\cite{pope2000turbulent},
  
 \begin{equation}
@@ -224,6 +231,13 @@ The dimensionless constant $\bar \nu_C $ is calibrated based on
 experimental data, and is set to zero outside the device. 
 The thermal diffusivity inside the device, $K_C$, is then fixed with the 
 assumption that the Prandtl number is unity.  
+
+%The thermal and momentum diffusivities are expected to be even larger in the
+%device where the flow across the vanes produces shear and generates
+%turbulence. Our model for the diffusivities inside the vanes should
+%therefore be higher than the ambient regions outside the vanes. 
+
+
 
 \subsection{Vane and Turbine Representation}
 
