@@ -223,13 +223,13 @@ These runs are generally submitted to the production queue and are
 264-528 processing cores, 
 or 22-44 nodes on Lonestar (with 12 cores per node), and a similar number
 for Stampede. The runs typically have several million degrees of freedom (DoF), 
-and the local (per core) DoF is maintained at $O(10^4)$. This was
+and the local number of DoF per core is maintained at $O(10^4)$. This was
 selected due to memory considerations, after a strong scaling
-analysis of the performance of the codebase on these resources, and
+analysis of the performance of the code on these resources, and
 after consulting with the software developers.  
 
-After a run terminates, several worker scripts are automatically invoked. 
-These scripts automatically archive the run (outside of the volatile /scratch 
+After a run terminates, several scripts are automatically invoked. 
+These scripts archive the run (outside of the volatile /scratch 
 production directories) and simultaneously, label the concluded run with
 unique metadata that defines the system environment, the jobs input
 files and run definitions, as well as information detailing the
@@ -238,7 +238,7 @@ a week a script performs \textbf{rsync} on the entire archived database to
 ensure more than single redundancy for the runs. 
 
 In other words, the workflow is sufficiently advanced as to permit
-rapidly queuing a series of runs (in parallel) so as to
+rapidly queuing a series of runs (in parallel) to
 investigate a variety of conditions or scenario parameters. This
 capability is necessary for the optimization campaign detailed in
 \ref{sec:proposed_work}, where running many concurrent investigations
