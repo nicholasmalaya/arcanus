@@ -12,73 +12,55 @@
 
 \subsection{Discretization Scheme}
 
-To instantiate the Navier-Stokes equations on computer, we use a
-Galerkin finite element method discretization (FEM), with linear basis
-functions for both the velocity and pressure. Unlike the typical FEM
-formulations, this scheme circumvents the Babuska-Brezzi
-conditions\cite{bb-cond} and 
-permits use of equal-order elements for velocity and 
-pressure. This is accomplished through the introduction of a
-stabilization term first described by Hughes\cite{Hughes198685} and
-expanded to a natural convection domain (with sane choices of
-stabilization parameters) by Becker and Braack\cite{Becker2002428}. 
+To solve the Navier-Stokes equations on a computer, a
+Galerkin finite element method (FEM) is used, with linear basis
+functions for both the velocity and pressure. This scheme circumvents
+the Babuska-Brezzi conditions\cite{bb-cond} and 
+uses equal-order elements for velocity and 
+pressure,  by introducing a stabilization term as first described by
+Hughes\cite{Hughes198685} and extended to natural convection as in
+Becker and Braack\cite{Becker2002428}.  
 
-Newton iterations are then used for solving the nonlinear problem. 
-The resulting system of ODEs are discretized in time using a theta-method. 
-The unsteady solver used is typically backward Euler for the corresponding
-stability regardless of timestep size. 
+The system of ODEs are discretized in time using a theta-method. 
+Newton iterations are used to for solve the resulting nonlinear problem. 
+The unsteady solver used is typically backward Euler for the
+corresponding stability regardless of timestep size. 
 
 \subsection{Penalty Method Implementation}
 
-In the previous section we discussed imposing a forcing on 
-the flow subject to a weakly enforced constraint. In this way we ensure 
-the flow will align with the normal vector we proscribe to meet our
-modeling intentions for how we expect the flow to behave, be that for
-turning vanes, rigid surfaces, or a turbine. 
+In the previous section it was noted that a penalty method is used to
+represent impermiable surfaces such as the wind block cone. Babuska's
+penalty treatment of constraints\cite{1973fempen,ZAMM:ZAMM19880680925}
+is used. This was selected because it is easily imposed in the FEM
+context, and the method has been explored in detail in the literature. 
 
-We actually enforce this penalty method numerically by using Babuska's
-penalty method\cite{1973fempen,ZAMM:ZAMM19880680925}.
-The method was developed as a technique for enforcing constrains. 
-The constraint is embedded in a revised variation formulation by means
-of a penalty term instead of using a constraint, such as lagrangian
-multipliers. We briefly outline the method below.  
-Consider Laplace's equation as a test problem, 
+In this approach, a penalty for violating the constraint is included in
+a variation formulation. As an example, consider Laplace's equation on a
+domain $\Omega$ with boundary $\partial\Omega$, 
 \begin{equation}
- \nabla^2 u = 0 
+ \nabla^2 u = 0. 
 \end{equation}
-We can incorporate a Dirichlet boundary condition, 
+Dirichlet boundary conditions are introduced into the weak form
 \begin{equation}
- u|_{\Gamma_D} = g
+ u|_{\partial \Omega} = g
 \end{equation}
-with a penalty function using penalty value $\frac{1}{\epsilon}$.
-With a test function, $v$, the inexact weak formulation is now
+which becomes 
 \begin{equation}
-\int_{\Omega}  - \nabla u \cdot \nabla v - \frac{1}{\epsilon}
- \int_{\partial \Omega} (u-g) \cdot v = 0 
+\int_{\Omega}  - \nabla u \cdot \nabla v dx - \frac{1}{\epsilon}
+ \int_{\partial \Omega} (u-g) \cdot v ds = 0 \quad \forall v \in H^1
 \end{equation}
-Comparing to an exact weak formulation for the unconstrained problem, 
-\begin{equation}
-\int_{\Omega}  - \nabla u \cdot \nabla v - 
- \int_{\partial \Omega} v \partial_n u = 0 
-\end{equation}
-we can derive a Robin boundary condition which is equivalent to the
-penalty-Dirichlet condition,
+where $\frac{1}{\epsilon}$ is the penalty parameter. This is the weak
+form for Laplace's equation with a Robin boundary condition 
 \begin{align}
--\frac{1}{\epsilon}(u-g) = \partial_n u \\
- u = g - \epsilon \partial_n u 
+ u = g - \epsilon \partial_n u. 
 \end{align}
-In this manner, we can see that the velocity in the penalty function
-region is constrained to be near the value $g$, much like a
-slip-condition. Here, $\epsilon$ is a small
-scaling artificially introduced to ensure that the no-slip
-condition approximately holds. So long as the value of $\epsilon$ is
-sufficiently small, the velocities will closely match. 
+For sufficiently small $\epsilon$, the original Dirichlet boundary
+conditions will be satisfied approximately. Clearly, $\epsilon$ has
+units of length, and can be interpreted as a ``slip length''. In the
+Navier-Stokes solver, this penalty formulation is used to approximately
+impose the no-flow through for impermiable surfaces, such as the
+cone.\todo{need explicit mathematical description of exactly the formulation}
 
-While this method is typically used as a means to enforce boundary
-conditions, it is perfectly amenable for our purposes, where a much lower
-value of the penalty parameter ensures that the region where the penalty
-is applied will gently transition to the enforced value, instead of
-behaving like a rigid surface as is common for the penalty methods.
 
 \subsection{Simulation Geometry and Boundary Conditions}
 \label{sec:bc}
