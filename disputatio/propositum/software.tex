@@ -72,23 +72,25 @@ cone.\todo{need explicit mathematical description of exactly the formulation}
 All simulations are performed in a cuboid domain, with 6 faces. We
 use a uniform mesh in the lateral directions, and a non-uniform mesh
 in height to resolve the boundary layer. The meshes are scaled by system
-diameter. So the same number of grid points are used for every
+diameter. The same number of grid points are used for every
 simulation, with the total domain extents scaled up with system size. In
 this way the ratio of the domain diameter to system diameter remains
 fixed. Likewise, the diffusivities are proportionally scaled with grid
 size to ensure that the cell Reynolds number is maintained for
 every simulation. After operation, solutions are evaluated to ensure
-that the qualitative character of the solution does not change. 
+that the qualitative character of the solution does not
+change.\todo{define cell reynolds number here}
 
 
 %
 % explain how cell reynolds number is maintained for each grid
 %
 
-For the ``thermal-only'' case study (no mean wind), the simulation
-uses periodic boundary conditions on the four sides, a modified
+For the ``thermal-only'' case study (no mean wind), 
+periodic boundary conditions are used on the four sides, a modified
 neumann condition on the top boundary, and dirichlet boundary conditions
-on the bottom (the ground). These are shown schematically in Figure
+on the bottom (the ground).\todo{write down the math} 
+These are shown schematically in Figure
 \ref{fig:thermalbc}. On the ground, a ``no-slip'' velocity boundary
 condition is imposed on the velocity field, and a dirichlet condition
 uniformly fixes the temperature of the surface. 
