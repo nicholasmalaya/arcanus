@@ -61,7 +61,6 @@ Navier-Stokes solver, this penalty formulation is used to approximately
 impose the no-flow through for impermiable surfaces, such as the
 cone.\todo{need explicit mathematical description of exactly the formulation}
 
-
 \subsection{Simulation Geometry and Boundary Conditions}
 \label{sec:bc}
 
@@ -173,20 +172,14 @@ layers are set along the top and back (outflow) of the box.
 
 \subsection{Software Stack}
 
-A natural choice for FEM software is 
-libMesh\cite{libMeshPaper}. Libmesh provides a wide set of tools with
-which to build a mesh-based application. However, originally libMesh
-applications were required to reimplement many kernels common to finite
-element applications, including assembly loops, time integration
-schemes, etc.  
-
-We therefore use the GRINS library\cite{GRINSpaper}, which sits on
-top of the libMesh kernel. GRINS was designed to support multiphysics FEM
+The numerical approximations described above were implemented using the
+GRINS library\cite{GRINSpaper} in Libmesh\cite{libMeshPaper}. 
+It was designed to support multiphysics FEM
 applications, the reusability and extensibility of mathematical
 modeling kernels, supporting interfaces to existing solver and
 discretization libraries to enable modern solution strategies, while, at
-the same time, retaining flexibility to effectively tackle the science
-or engineering problem of focus. 
+the same time, retaining flexibility to effectively address a wide range
+of science or engineering problems. 
 
 GRINS provides a platform that enables powerful numerical algorithms
 such as adjoint-based AMR, adaptive modeling, sensitivity analysis,
@@ -199,7 +192,7 @@ which roughly encapsulates the physical regimes it was originally
 designed to simulate. GRINS is open-source, and available on
 \hyperref[www.github.com/grinsfem/grins]{github}. It is released 
 under LGPL2.1.  GRINS is heavily unit tested, with over 60 tests
-available to ensure the accuracy of results regardless of install platform.
+available to ensure the reliability of results regardless of install platform.
 
 %The remainder of this subsection is devoted to
 %discussing the underlying libraries used and the description of the
