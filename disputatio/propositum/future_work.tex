@@ -282,27 +282,13 @@ three independent problems with 4 or fewer parameters each.
        (r_{\text{min}} / r_{\text{max}})^{\text{b}}$ & \\
    \hline
   \end{tabular}
-  \caption{Vane optimization parameters, divided into parallizable
+  \caption{Vane optimization parameters, divided into parallelizable
  subdomains.} 
   \label{tab:opt}
 \end{table}
 \end{center}
 
 \subsection{Proposed Timeline}
-
-
-
-% %
-% % discussion of risk mitigation 
-% %
-
-% code ready
-% expertise ready
-% plan outlined
-% ls5 delay?
-% more compute time
-% need more runs? this is a serious concern
-% do we need a comprehensive metric for success?
 
 
 %
@@ -317,49 +303,50 @@ success of this project.
 % 
 % can we optimize? DAKOTA
 % 
-We propose to investigate formal optimization of these subproblems. 
-We will consider sensitivity calculations (forward, not adjoint)
-to (possibly) reduce the problem dimension and inform our expectations
-of system performance under adjustment. We are also interested
-in using either the DAKOTA\cite{adams2013dakota} or
-TAO\cite{tao-user-ref} libraries on the bottom tier subproblem. These
-libraries have suites of algorithms for non-linear optimization
-problems. Evaluating the results of the most appropriate ``out of the
-box'' available optimization algorithm on a small test problem will
-provide an opportunity to ensure that our expectations on the number of
-iterations necessary for formal optimization of our problem are correct. 
-We note these two libraries because DAKOTA is well known as a library
+We propose to investigate algorithmic optimization as a tool to discover
+locally optimal system configurations. 
+This will take the form of using either the DAKOTA\cite{adams2013dakota}
+or TAO\cite{tao-user-ref} libraries. These libraries have suites of
+algorithms for non-linear optimization problems without gradient
+information (e.g. simplex methods). Evaluating the results of the most
+appropriate ``out of the box'' available optimization algorithm on a
+small test problem will provide an opportunity to ensure that our
+expectations on the number of iterations necessary for formal
+optimization of our problem are reasonably correct. 
+We propose these two libraries because DAKOTA is well-known as a library
 with extensive ``black-box'' optimization support, and TAO is already
 made available through pre-existing libMesh dependencies. Should the
 test problem discover that algorithmic optimization is a viable option,
-we will consider using this approach for the other subdomain problems. 
+we will consider using this approach for optimization of the
+configuration. 
+
 %
 % short summary of tasks
 %
 
-The second, third and fourth bullet in table \ref{tab:prop} provide
-estimated ending dates for the principle subdomain optimization
-efforts. Given our previous experiences, we expect to be able to rapidly
+The second bullet in table \ref{tab:prop} provide
+estimated ending dates for the exploration of the configuration space. 
+Given our previous experiences, we expect to be able to rapidly
 iterate through these optimization efforts over the course of several
-months, with the final optimization work on the turbine. At this time we
-will proceed with ``coupling tests'' to 
+months, with the final optimization work on the turbine. 
+At this time we will proceed with ``coupling tests'' to 
 ensure that the parameters are indeed still appropriate. For example,
 after having optimized the turbine parameters, it will be necessary to
 perturb the lower tier vane parameters to ensure that the selected set
 is nearly optimal even with the addition of a turbine. While we do not
 expect this to be the case, this item is a large uncertainty in the
-proposed timeline and could
-require significant additional work and expert evaluation. 
+proposed timeline and could require significant additional work and
+expert evaluation.  
 
 %
 % probably ok below:
 %
-We expect to provide the results of our computational
-simulation efforts to the experimental group in late Spring/early Summer
-of 2016 so that they can use this information in the design of the
-Arizona field tests in Summer, 2016. We have proposed preparing this
-information in June, but the date of the actual field test has not yet been
-set. 
+The third bullet is the expected deadline to provide the results of our
+computational simulation efforts to the experimental group in late
+Spring/early Summer of 2016 so that they can use this information in the
+design of the system to be used for the Arizona field tests in Summer,
+2016. We have proposed preparing this information in June, but the date
+of the actual field test has not yet been set and may change. 
 
 As mentioned in the second to last bullet, it is possible that this
 project will permit some glimpses  
@@ -374,8 +361,9 @@ intensification mechanisms may provide hints of the geometries
 by which the flow is intensified, and why. 
 
 Finally, we anticipate a detailed accounting of the entire project as
-the final deliverable. We expect that the investigations detailed
+the final deliverable. We expect that all of the investigations detailed 
 above will result in several publications, as well. 
+
 %
 % itemize tasks
 %
@@ -397,7 +385,7 @@ above will result in several publications, as well.
 \begin{minipage}[t]{.7\linewidth}
 \color{black}
 \rule{\linewidth}{1pt}
-\ytb{Dec. 2015}{Algorithmic optimization subdomain problem proof-of-concept}
+\ytb{Feb. 2016}{Algorithmic optimization subdomain problem proof-of-concept}
 \ytl{April 2016}{Conclude parameter sweeps and optimization of apparatus}
 %\ytb{May 2016}{Conclude Additional Parameter sweeps}
 \ytl{June 2016}{Proposed configuration and predictions for
