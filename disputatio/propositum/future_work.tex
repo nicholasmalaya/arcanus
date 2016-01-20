@@ -23,12 +23,12 @@ assessment of the technological feasibility of the entire synthetic
 columnar vortex concept as a means of generating usable energy. In the 
 previous sections we have briefed the reader on the present state of the
 simulation capability. In doing so, we have discussed the physics that
-influence dust devils formation, as well as our particular mathematical
-models for the ambient conditions as well as the SoV vanes, cone and
+influence dust devils formation, our particular mathematical
+models for the ambient conditions, as well as the SoV vanes, cone and
 turbine. We summarized the numerical discretizations used, the software
 stack and the calibration, verification and validation of these
 components. The purpose of these sections was to convince the reader of
-two major points. The first point is that an accurate, verified and
+two major points. The first is that an accurate, verified and
 validated simulation capability has been developed that can quickly
 investigate a wide variety of system and scenario settings at a modest
 computational cost. The second point is that we have developed
@@ -43,23 +43,23 @@ of the SoV apparatus. Coupled with the scaling analysis presented in
 section \ref{sec:physics}, we will then be able to predict the
 conditions (if any) under which the SoV apparatus will be
 technologically competitive with different methods of energy
-generation. We will also be a position to investigate the physics of the
-apparatus, and to assess how closely our synthetic dust devils mimic the
-natural variety. In other words, the proposed research is designed to
+generation. This will lead to investigating the physics of the
+apparatus, to assess how closely the synthetic dust devils mimic the
+natural variety. The proposed research is designed to
 assess feasibility, and it is not expected that actual experimental
 validation will accompany the computational results. Furthermore, it
-must also be emphasized that feasibility here is focused on
-technological capability, and will not include an economic
-assessment. In other words, it is possible that the SoV will produce
-energy, but the design required to do is prohibitively expensive, and
-therefore not economically competitive with existing technologies. 
+must also be emphasized that feasibility is focused on
+technological competitiveness, as defined by energy produced, and will
+not include an economic assessment. In other words, it is possible that
+the SoV will produce energy, but the design required to do is
+prohibitively expensive, and therefore not economically competitive with
+existing technologies.  
 
-%
-% outline parameter space, as we see it
-%
-We now outline a program of runs designed to explore a wide
-configuration space. We begin by noting that we have three 
-optimization domains, for the cone, turbine and vanes. Table
+The following is a proposed program of runs designed to explore a wide
+configuration space. This focuses on optimization for the cone, turbine
+and vanes. 
+
+Table 
 \ref{tab:vane} lists the proposed optimization parameters for the
 vanes. We propose nine parameters to optimize for the
 vanes. $\theta^{\text{t}}_{\text{min}}$ and
@@ -210,7 +210,8 @@ more than \textbf{which} configurations optimize the flow, but also
 %
 % how many runs are we capable of performing, realistically
 %
-An additional challenge is the computational expense of each run. Each
+
+An additional challenge is the computational expense of each run. Each\todo{obsolete}
 parameter exploration requires approximately 12 wall-clock hours to run
 the simulation for a sufficient time to pass any initial transient in
 the solution and then permit adequate statistical averaging at steady
@@ -319,8 +320,7 @@ success of this project.
 We propose to investigate formal optimization of these subproblems. 
 We will consider sensitivity calculations (forward, not adjoint)
 to (possibly) reduce the problem dimension and inform our expectations
-of system performance under adjustment. This feature is in development
-in GRINS and should be available within the year. We are also interested
+of system performance under adjustment. We are also interested
 in using either the DAKOTA\cite{adams2013dakota} or
 TAO\cite{tao-user-ref} libraries on the bottom tier subproblem. These
 libraries have suites of algorithms for non-linear optimization
@@ -330,10 +330,9 @@ provide an opportunity to ensure that our expectations on the number of
 iterations necessary for formal optimization of our problem are correct. 
 We note these two libraries because DAKOTA is well known as a library
 with extensive ``black-box'' optimization support, and TAO is already
-made available through pre-existing libMesh dependencies. We anticipate
-this to be completed by end of year, 2015. Should the test problem
-discover that algorithmic optimization is a viable option, we will
-consider using this approach for the other subdomain problems. 
+made available through pre-existing libMesh dependencies. Should the
+test problem discover that algorithmic optimization is a viable option,
+we will consider using this approach for the other subdomain problems. 
 %
 % short summary of tasks
 %
@@ -342,8 +341,8 @@ The second, third and fourth bullet in table \ref{tab:prop} provide
 estimated ending dates for the principle subdomain optimization
 efforts. Given our previous experiences, we expect to be able to rapidly
 iterate through these optimization efforts over the course of several
-months, with the final optimization work on the turbine completing in
-March, 2016. At this time we will proceed with ``coupling tests'' to
+months, with the final optimization work on the turbine. At this time we
+will proceed with ``coupling tests'' to 
 ensure that the parameters are indeed still appropriate. For example,
 after having optimized the turbine parameters, it will be necessary to
 perturb the lower tier vane parameters to ensure that the selected set
@@ -352,13 +351,15 @@ expect this to be the case, this item is a large uncertainty in the
 proposed timeline and could
 require significant additional work and expert evaluation. 
 
+%
+% probably ok below:
+%
 We expect to provide the results of our computational
-simulation efforts to the experimental group in the early summer of 2016
-so that they can use this information in the design of the
-Arizona field tests in summer, 2016. We have proposed preparing this
-information in June, but the date of the actual field test has not been
-set, and this item may move up or down in priority given the needs of
-our experimental colleagues. 
+simulation efforts to the experimental group in late Spring/early Summer
+of 2016 so that they can use this information in the design of the
+Arizona field tests in Summer, 2016. We have proposed preparing this
+information in June, but the date of the actual field test has not yet been
+set. 
 
 As mentioned in the second to last bullet, it is possible that this
 project will permit some glimpses  
