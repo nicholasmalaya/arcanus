@@ -53,44 +53,9 @@ technological competitiveness, as defined by energy produced, and will
 not include an economic assessment. In other words, it is possible that
 the SoV will produce energy, but the design required to do is
 prohibitively expensive, and therefore not economically competitive with
-existing technologies.  
-
-The following is a proposed program of runs designed to explore a wide
-configuration space. This focuses on optimization for the cone, turbine
-and vanes. 
-
-Table 
-\ref{tab:vane} lists the proposed optimization parameters for the
-vanes. We propose nine parameters to optimize for the
-vanes. $\theta^{\text{t}}_{\text{min}}$ and
-$\theta^{\text{b}}_{\text{min}}$ are the top and bottom tier minimum
-angles. This is essentially the starting (and minimum) angle for the curved
-vanes. Preliminary investigations have given no indication that the
-bottom tier is receptive to anything but a fully radial angle
-(e.g. $0^{\circ}$). For the top tier, however, a non-zero
-$\theta_{\text{min}}$ has been found to increase the kinetic energy
-flux. For both of the maximum angles we have reasonable starting
-points. Previously, we have found that a larger angle at the bottom tier
-is ideal, as it serves to ``spin-up'' a small core region.
-
-We have less strongly informed prior expectations of reasonable values
-for the rate of curvature, $\gamma$, the ratio of heights between the
-top and bottom tiers ($H^b/H^t$) as well as the lengths of the
-vanes. The generated flux is certainly sensitive to $\gamma$, but
-optimal value is certainly not known. Likewise, while we have operated
-with shorter vanes lengths on the top than the bottom, as well as a
-shorter height, we are not certain that these configurations are
-remotely optimal. Finally, for $D/H$, the ratio between the apparatus
-diameter and total vane height, we have only operated near a ratio of
-1.0. However, as noted in \cite{ROG:ROG1635}, ``Most dust devils are at 
-least 5 times higher than they are wide''. While increasing the height
-of the apparatus would greatly increase the cost and inaccessibility of
-the device for maintainance, this indicates that it is necessary to
-examine the dependence of energy produce by the vortex at greater system
-heights. We expect to increase beyond this aspect ratio of $\approx 1$
-towards the naturally occuring ratio of 5. If this is found to greatly
-enhance energy output, we will then consider even larger ratios. 
-
+existing technologies. The following is a proposed program of runs
+designed to explore a wide configuration space. This focuses on
+optimization for the cone, turbine and vanes. 
 %
 % vane optimization
 %
@@ -129,15 +94,16 @@ enhance energy output, we will then consider even larger ratios.
 \end{center}
 \normalsize
 
-The three cone parameters we propose to optimize are shown in table \ref{tab:cone}. 
-We expect to optimize the cone after the bottom and top tiers are adjusted. 
-For the cone, we expect the height, maximum diameter and inner exit diameter to 
-all impact the flow. While it is not known what the ideal cone geometry will look like, 
-our expectation is that the cone plays at least two important role. The first is acting
-as a converging nozzle for the flow, increasing the vertical velocity as it exits 
-out the top of the device. In the wind, the cone also acts as a shield, preventing
-the high velocity freesteam flow from disrupting the vortex before it has run through the 
-turbine. 
+The three cone parameters we propose to optimize are shown in table
+\ref{tab:cone}. We expect to optimize the cone after the bottom and top
+tiers are adjusted. For the cone, we expect the height, maximum diameter
+and inner exit diameter to all impact the flow. While it is not known
+what form the ideal cone geometry will take, our expectation is that the
+cone plays at least two important roles. The first is acting as a
+converging nozzle for the flow, increasing the vertical velocity as it
+exits  out the top of the device. In the wind, the cone also acts as a
+shield, preventing the high velocity freestream flow from disrupting the
+vortex before it has run through the turbine. 
 
 %
 % cone optimization
@@ -163,11 +129,11 @@ turbine.
 \end{center}
 \normalsize
 
-The turbine parameters to be optimized are shown in table \ref{tab:turbine}. 
-The expectation is that the turbine optimization will be performed after the other
-optimization efforts (top and bottom vanes, as well as cone). This is because the parameters 
-of the turbine almost certainly are impacted by the geometric form of the dust devil. 
-For instance, a wider dust devil may necessitate longer turbine blades. 
+The turbine parameters to be optimized are shown in table
+\ref{tab:turbine}. In addition to these configuration parameters, the
+location of the turbine will likely need to be optimized to be centered
+on the vortex, which may not be centered inside the vanes due to
+asymmetric effects of wind, vane geometry, etc. 
 
 %
 % turbine optimization
@@ -193,8 +159,61 @@ For instance, a wider dust devil may necessitate longer turbine blades.
 \end{center}
 \normalsize
 
+Proposed designs for the vanes are much more abstract. Presently, the
+workflow consists of weekly calls with the experimental team to discuss
+possible system designs, which typically consist of vane sketches or
+drawings. One such proposed design is shown in figure \ref{fig:sketch}. 
 
-\subsection{Risks and Challenges to the Optimization Efforts}
+\begin{figure}[htb]
+ \centering
+ \includegraphics[width=.75\linewidth]{figs/sketch}
+ \caption{This is an example image of a proposed vane design. Sketches
+ and diagrams such as this are typically generated by various members of
+ the team and then simulated. If the initial results are promising, then
+ further exploration of that configuration may be pursued.}
+ \label{fig:sketch}
+\end{figure}
+
+
+% Table \ref{tab:vane} lists the proposed optimization parameters for the
+% vanes. We propose nine parameters to optimize for the
+% vanes. $\theta^{\text{t}}_{\text{min}}$ and
+% $\theta^{\text{b}}_{\text{min}}$ are the top and bottom tier minimum
+% angles. This is essentially the starting (and minimum) angle for the curved
+% vanes. Preliminary investigations have given no indication that the
+% bottom tier is receptive to anything but a fully radial angle
+% (e.g. $0^{\circ}$). For the top tier, however, a non-zero
+% $\theta_{\text{min}}$ has been found to increase the kinetic energy
+% flux. For both of the maximum angles we have reasonable starting
+% points. Previously, we have found that a larger angle at the bottom tier
+% is ideal, as it serves to ``spin-up'' a small core region.
+
+% We have less strongly informed prior expectations of reasonable values
+% for the rate of curvature, $\gamma$, the ratio of heights between the
+% top and bottom tiers ($H^b/H^t$) as well as the lengths of the
+% vanes. The generated flux is certainly sensitive to $\gamma$, but
+% optimal value is certainly not known. Likewise, while we have operated
+% with shorter vanes lengths on the top than the bottom, as well as a
+% shorter height, we are not certain that these configurations are
+% remotely optimal. Finally, for $D/H$, the ratio between the apparatus
+% diameter and total vane height, we have only operated near a ratio of
+% 1.0. However, as noted in \cite{ROG:ROG1635}, ``Most dust devils are at 
+% least 5 times higher than they are wide''. While increasing the height
+% of the apparatus would greatly increase the cost and inaccessibility of
+% the device for maintainance, this indicates that it is necessary to
+% examine the dependence of energy produce by the vortex at greater system
+% heights. We expect to increase beyond this aspect ratio of $\approx 1$
+% towards the naturally occuring ratio of 5. If this is found to greatly
+% enhance energy output, we will then consider even larger
+% ratios.\todo{add image}
+%
+% need to expand this to discuss huge space of vanes
+% add image too?
+%
+
+
+
+%\subsection{Risks and Challenges to the Optimization Efforts}
 
 A challenge inherent to this optimization effort is that while the
 principle quantity of interest is the kinetic energy flux, we also seek
@@ -209,29 +228,29 @@ more than \textbf{which} configurations optimize the flow, but also
 
 %
 % how many runs are we capable of performing, realistically
-%
+% largely obsolete!
 
-An additional challenge is the computational expense of each run. Each\todo{obsolete}
-parameter exploration requires approximately 12 wall-clock hours to run
-the simulation for a sufficient time to pass any initial transient in
-the solution and then permit adequate statistical averaging at steady
-state. Runs generally require approximately 264 processors on Lonestar
-(for example) and therefore the cost of a forward run is $\approx 3,200$
-core hours. Our overall compute budget will likely be between one hundred
-thousand to one million core hours. In other words, our present
-computational budge will support running between roughly 30 to 300
-instances for our parameter sweeps. While this is not insubstantial, this
-is not a sufficient number of evaluations to support formal
-optimization algorithms. While we admittedly do not, \textit{a priori},
-know the number of iterations necessary to solve the system, as it is
-non-linear, our expectation is that thousands of forward solves would be
-necessary. Using higher order methods could reduce the number of
-iterations, but gradient and derivative information is difficult to
-access, as solving the adjoint problem is expensive for unsteady systems. 
-Thus, while any individual run is relative inexpensive, we do not expect
-to be able to mount an exhaustive campaign to formally optimize the
-configuration given the dimension of the parameter space and the
-structure of the problem. 
+% An additional challenge is the computational expense of each run. 
+% Each parameter exploration requires approximately 12 wall-clock hours to run
+% the simulation for a sufficient time to pass any initial transient in
+% the solution and then permit adequate statistical averaging at steady
+% state. Runs generally require approximately 264 processors on Lonestar
+% (for example) and therefore the cost of a forward run is $\approx 3,200$
+% core hours. Our overall compute budget will likely be between one hundred
+% thousand to one million core hours. In other words, our present
+% computational budge will support running between roughly 30 to 300
+% instances for our parameter sweeps. While this is not insubstantial, this
+% is not a sufficient number of evaluations to support formal
+% optimization algorithms. While we admittedly do not, \textit{a priori},
+% know the number of iterations necessary to solve the system, as it is
+% non-linear, our expectation is that thousands of forward solves would be
+% necessary. Using higher order methods could reduce the number of
+% iterations, but gradient and derivative information is difficult to
+% access, as solving the adjoint problem is expensive for unsteady systems. 
+% Thus, while any individual run is relative inexpensive, we do not expect
+% to be able to mount an exhaustive campaign to formally optimize the
+% configuration given the dimension of the parameter space and the
+% structure of the problem. 
 
 %
 % introduce concept of subdomains
@@ -247,46 +266,46 @@ runs require twelve hours, which provides for a workflow loop between
 runs and the evaluation of the output by an expert that roughly fits
 into a daily routine.
 
-Furthermore, the time requires to perform this simulation campaign could
-be greatly reduced if several problems were to be undertaken in
-parallel. This ``divide and conquer'' approach requires subdividing the
-optimization effort into several ``subdomains''. 
-The problem is nonlinear, and so some of the parameters are coupled and
-cannot be easily optimized independent of each another, as adjustments
-to one impact the desired value of the other. 
-We propose to subdivide the vanes into upper and lower tiers, optimize
-them individually, and then perform rudimentary sensitivity checks to
-ensure that the coupled product does in fact represent a near optimal
-flux output. We further expect that the remaining parameters in the
-vanes, namely $H^b/H^t$, $D/H$ are amenable to optimization independent
-of the particular parametric configuration of the vane tiers. 
+% Furthermore, the time requires to perform this simulation campaign could
+% be greatly reduced if several problems were to be undertaken in
+% parallel. This ``divide and conquer'' approach requires subdividing the
+% optimization effort into several ``subdomains''. 
+% The problem is nonlinear, and so some of the parameters are coupled and
+% cannot be easily optimized independent of each another, as adjustments
+% to one impact the desired value of the other. 
+% We propose to subdivide the vanes into upper and lower tiers, optimize
+% them individually, and then perform rudimentary sensitivity checks to
+% ensure that the coupled product does in fact represent a near optimal
+% flux output. We further expect that the remaining parameters in the
+% vanes, namely $H^b/H^t$, $D/H$ are amenable to optimization independent
+% of the particular parametric configuration of the vane tiers. 
 
-The subdomains for the vanes are are summarized in Table
-\ref{tab:opt}. This neatly divides the vane optimization effort into
-three independent problems with 4 or fewer parameters each.
+% The subdomains for the vanes are are summarized in Table
+% \ref{tab:opt}. This neatly divides the vane optimization effort into
+% three independent problems with 4 or fewer parameters each.
 
-\begin{center}
-\begin{table}[h]
- \centering
-  \begin{tabular}{|l | l | l |}
-   \multicolumn{3}{c}{Subdomains} \\
-    \hline
-   Top Tier & Bottom Tier & Misc. \\
-   \hline
-   $\theta^{\text{t}}_{\text{min}}$ & $\theta^{\text{b}}_{\text{min}}$ &
-       $H^b/H^t$ \\
-   $\theta^{\text{t}}_{\text{max}}$ & $\theta^{\text{b}}_{\text{max}}$&
-	   $D/H$ \\ 
-   $\gamma^t$ & $\gamma^b$ & \\
-   $1 - (r_{\text{min}} / r_{\text{max}})^{\text{t}}$ & $1 -
-       (r_{\text{min}} / r_{\text{max}})^{\text{b}}$ & \\
-   \hline
-  \end{tabular}
-  \caption{Vane optimization parameters, divided into parallelizable
- subdomains.} 
-  \label{tab:opt}
-\end{table}
-\end{center}
+% \begin{center}
+% \begin{table}[h]
+%  \centering
+%   \begin{tabular}{|l | l | l |}
+%    \multicolumn{3}{c}{Subdomains} \\
+%     \hline
+%    Top Tier & Bottom Tier & Misc. \\
+%    \hline
+%    $\theta^{\text{t}}_{\text{min}}$ & $\theta^{\text{b}}_{\text{min}}$ &
+%        $H^b/H^t$ \\
+%    $\theta^{\text{t}}_{\text{max}}$ & $\theta^{\text{b}}_{\text{max}}$&
+% 	   $D/H$ \\ 
+%    $\gamma^t$ & $\gamma^b$ & \\
+%    $1 - (r_{\text{min}} / r_{\text{max}})^{\text{t}}$ & $1 -
+%        (r_{\text{min}} / r_{\text{max}})^{\text{b}}$ & \\
+%    \hline
+%   \end{tabular}
+%   \caption{Vane optimization parameters, divided into parallelizable
+%  subdomains.} 
+%   \label{tab:opt}
+% \end{table}
+% \end{center}
 
 \subsection{Proposed Timeline}
 
