@@ -153,16 +153,33 @@ asymmetric effects of wind, vane geometry, etc.
    $H_B/H$ & Height of the turbine blades versus system height & ( 0 - 1.2 ) \\
     \hline
   \end{tabular}
-  \caption{Turbine Optimization Parameters.}
+  \caption{Proposed Turbine Optimization Parameters.}
   \label{tab:turbine}
 \end{table}
 \end{center}
 \normalsize
 
-Proposed designs for the vanes are much more abstract. Presently, the
+The possible configuration space for the vanes is much larger. 
+Presently, the
 workflow consists of weekly calls with the experimental team to discuss
 possible system designs, which typically consist of vane sketches or
 drawings. One such proposed design is shown in figure \ref{fig:sketch}. 
+These vanes are highly asymmetric with variation in the length and 
+curvature as a function of spatial location. Furthermore, in this design 
+the downwind side of the apparatus is enclosed by a solid cylinderical wall. 
+While the vane representation outlined in \ref{subsec:vane} is expected to be 
+sufficiently general to support a wide variety of vane configurations, it is not at this time
+clear what form of parameterization for vane angle is sufficiently general as to support 
+this exploration, and so a table such as shown for the cone and turbine is not yet available.
+At present the expectation is to proceed with this conceptual phase in order to generate a wide
+range of possible configurations. The designs that have initially promising results will then be 
+proceed with optimization in a manner
+similar to the examples outlined in section \ref{sec:results}, where new
+parameter values are introduced, a run is performed, and then the output
+is postprocessed and evaluated before the process begins again. 
+In this way it is not infeasible to expect that several hundred 
+optimization runs can be performed. The next subsection also briefly outlines a proposal 
+to investigate algorithmic optimization on these designs. 
 
 \begin{figure}[htb]
  \centering
@@ -173,6 +190,7 @@ drawings. One such proposed design is shown in figure \ref{fig:sketch}.
  further exploration of that configuration may be pursued.}
  \label{fig:sketch}
 \end{figure}
+
 
 
 % Table \ref{tab:vane} lists the proposed optimization parameters for the
@@ -215,12 +233,12 @@ drawings. One such proposed design is shown in figure \ref{fig:sketch}.
 
 %\subsection{Risks and Challenges to the Optimization Efforts}
 
-A challenge inherent to this optimization effort is that while the
-principle quantity of interest is the kinetic energy flux, we also seek
-to use these runs to shed light on the mechanisms by which the apparatus
-configuration dictates the flow. In other words, we are trying learn
-more than \textbf{which} configurations optimize the flow, but also 
-\textbf{why} they do so. 
+%% A challenge inherent to this optimization effort is that while the
+%% principle quantity of interest is the kinetic energy flux, we also seek
+%% to use these runs to shed light on the mechanisms by which the apparatus
+%% configuration dictates the flow. In other words, we are trying learn
+%% more than \textbf{which} configurations optimize the flow, but also 
+%% \textbf{why} they do so. 
 
 % This presents an programmatic challenge, as
 % optimization will involve additional analysis and postprocessing at each
@@ -255,16 +273,6 @@ more than \textbf{which} configurations optimize the flow, but also
 %
 % introduce concept of subdomains
 %
-Our expectation is that we will proceed with optimization in a manner
-similar to the examples outlined in section \ref{sec:results}, where new
-parameter values are introduced, a run is performed, and then the output
-is postprocessed and evaluated before the process begins again. Each
-iteration is therefore more expensive, as it requires human
-intervention between simulation runs. Nevertheless, it is not infeasible
-to expect that several hundred runs can be performed. In general the
-runs require twelve hours, which provides for a workflow loop between
-runs and the evaluation of the output by an expert that roughly fits
-into a daily routine.
 
 % Furthermore, the time requires to perform this simulation campaign could
 % be greatly reduced if several problems were to be undertaken in
