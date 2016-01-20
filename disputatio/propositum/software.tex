@@ -24,7 +24,14 @@ Becker and Braack\cite{Becker2002428}.
 The system of ODEs are discretized in time using a theta-method. 
 Newton iterations are used to for solve the resulting nonlinear problem. 
 The unsteady solver used is typically backward Euler for the
-corresponding stability regardless of timestep size. 
+corresponding stability regardless of timestep size.\todo{inadequate} 
+
+%
+% gave not completely described numerical methods
+% for instance, have not indicated the stabilization schemes
+% do not need complete equations, but should permit someone to access 
+% the literature and construct precisely the numerical formulations used
+%
 
 \subsection{Penalty Method Implementation}
 
@@ -70,7 +77,8 @@ cone.\todo{need explicit mathematical description of exactly the formulation}
 %
 
 All simulations are performed in a cuboid domain, with 6 faces. We
-use a uniform mesh in the lateral directions, and a non-uniform mesh
+use a uniform mesh in the lateral directions, and a non-uniform
+mesh\todo{makes no sense}
 in height to resolve the boundary layer. The meshes are scaled by system
 diameter. The same number of grid points are used for every
 simulation, with the total domain extents scaled up with system size. In
@@ -105,9 +113,9 @@ inflow along the areas above and external to the vanes. To avoid an
 ill-posed problem, the ``v'' and ``u'' components of inflow velocity are
 set to zero.  
 
-Finally, a ``sponge layer'' is labeled near the top boundary. 
-This layer
-artificially increases the momentum diffusivity by up to ten times the nominal
+Finally, a ``sponge layer'' is labeled near the top boundary.\todo{need
+3d image}
+This layer artificially increases the momentum diffusivity by up to ten times the nominal
 value. This was designed in response to instabilities in the modified
 neumann boundary condition that occurred when small, high velocity fluid
 parsels would exit the top. This would create high velocity inflows, and
