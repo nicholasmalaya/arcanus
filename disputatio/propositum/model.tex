@@ -123,7 +123,6 @@ and $K_T$.
 %meters), for the present study the expectation is that this roughness
 %height will be on the order of centimeters\cite{oke1987boundary}, and
 %therefore negligible.  
-
 This leaves only five parameters: the distance from the ground, z; the
 buoyancy coefficient, $\frac{g}{T_0}$; the density of the fluid,
 $\rho_0$; a velocity scale, $u^*$; and the heat flux from the ground,
@@ -371,7 +370,7 @@ defined as
 \begin{equation}
  \bf t^v = \left( {\bf n^v_y},{\bf -n_x^v} \right) \text{sign}\left[
 	    \left( {\bf n^v_y},{\bf -n_x^v} \right) \cdot {\bf n^r} \right].
-\end{equation}
+\end{equation}\todo{not sure I like this notation}
 
 The forcing is modified when the velocity vector of the local flow, $\bf
 u$ is pointing in to the forcing region: ${\bf u} \cdot {\bf n^r} < 0$, and
@@ -398,11 +397,11 @@ colleagues.
 %% to argue it is small
 %%
 
-Finally, surface roughness effects have been shown to play a role in the
+Surface roughness effects have been shown to play a role in the
 formation of dust-devils and related atmospheric
 phenomena\cite{oke1987boundary}. For the flat and sandy regions we are
 simulating, the impact is expected to be a small thermal ``kick-up''
-versus an entirely flat surface. This is modeled as a volumetric 
+versus an entirely smooth surface. This is modeled as a volumetric 
 forcing over a narrow height over the surface, 
 \begin{equation}
  F^{'''}_{z_0} = \frac{1}{2}\rho V_z^2/z_{0} 
@@ -416,7 +415,8 @@ added is measured as,
 \end{equation}
 R is the outer diameter of the vanes. 
 The value of $E_{\text{injected}}$ is typically a few percent of the
-total energy kinetic energy flux measured through the top of the vanes. 
+total energy kinetic energy flux measured through the top of the
+vanes.\todo{surface roughness citation here?}
 
 %This general forcing provides additional capabilities including the
 %ability to investigate engineering greater surface roughness or
