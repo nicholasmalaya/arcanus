@@ -17,62 +17,92 @@
 %
 
 The previous sections briefly outlined the physical phenomenon under
-consideration, the mathematical models proposed to simulate this phenomenon,
-and the numerical solution of these models 
-for a variety of system configurations and scenarios. Before these
-simulations can be used as a tool to evaluate proposed system  designs,
-it is necessary to validate that the model accurately represents the
-real system.  
+consideration, the mathematical models proposed to simulate it,
+and the numerical solution of these models for a variety of system 
+configurations and scenarios. Before these simulations can be used 
+as a tool to evaluate proposed system designs,
+it is necessary to validate that the model accurately represents reality.  
+This section contains a discussion of the validation of the computational models
+against existing experimental data and high fidelity simulations.
 
-%% However, for our simulations to be useful for prediction, we
-%% need to evaluate models against experimental data so
-%% as to ensure that the entire formulation accurately reflects reality. 
-Here, the validation of the computational models
-against existing experimental data and high fidelity simulations is 
-discussed.\todo{need to describe the experiment}
+A challenge in this project is the scarcity of experimental data. Only two or three cases of 
+experimental measurements are available. These measurements, for reasons detailed in the next subsection, 
+are not sufficient to provide confidence in the output of simulations across a wide variety 
+of scenarios. Thus, a high fidelity model using explicitly gridded vanes with enforced no-slip 
+velocity boundary conditions on the surface of the vane has been developed. These ``gridded'' runs have been
+evaluated against the experimental data, where they match quite closely. However, as 
+detailed in \ref{subsec:vane}, explicitly meshing the vanes would be far too prohibitively expensive to 
+permit a rapid exploration of a variety of system configurations. Instead, this high fidelity model is used 
+as a means to generate additional truth data to permit validation of lower fidelity models, such as the virtual vanes. 
+Likewise, the results of the unsteady virtual vane simulations can be used as validation data for a further 
+reduced order, steady navier-stokes model. This hierarchy of validation is depicted in \ref{fig:val_hier}, with 
+data sources that generate more reliable data at the top, and models that are less reliable, but also 
+less computationally expensive at the bottom. In terms of expense, the reduced order model (ROM) 
+generates a solution in approximately two minutes, versus twelve hours for the unsteady virtual vane model. 
+The gridded vanes require another factor of ten in computational time, and many more man-hours hours of work
+to generate the mesh. Therefore, it is unrealistic to perform parameter sweeps or system configuration investigations
+with the gridded vanes. Instead, the ROM is used, with promising results re-evaluated in the unsteady VV models, 
+and so on up the hierarchy if more confidence is necessary. 
+The remainder of this section discusses the validations performed between
+the different models and the experimental data. 
 
  \begin{figure}[!htb]
    \begin{center}
     \includegraphics[width = 12 cm]{figs/validation_hierarchy}
-    \caption{fill me please}
+    \caption{This figures depicts the validation hierarchy between different 
+      sources of data generation. The experimental measurements lies at the top, 
+      where the data is expected to be the most reliable, but simultaneously the most rare. 
+      Moving down the table leads to simulated data sources that are less reliable but 
+      increasingly cheaper in time to generate. At the bottom is the reduced order model (ROM).}
     \label{fig:val_hier}
    \end{center}
  \end{figure}
 
+%
+%
+%
+%
+% http://www.tablesgenerator.com/
+%
 
 %
 % experimental challenges
 %
 
-The general system configuration is depicted
-in Figure \ref{fig:lab_image}. 
+\subsection{Experimental Data}
+
+Experimental data has been generated 
+The existing available data from the ``truth'' cases (experiment and gridded vanes) 
+are summarized in table \ref{tab:val_data}. 
+
+\large
+\begin{table}[h]
+\centering
+\label{my-label}
+\begin{tabular}{l|l|l|}
+           & Wind                      & Thermal-Only              \\
+  \hline 
+Experiment & Straight Vanes $60^{\circ}$ & Straight Vanes $60^{\circ}$ \\
+           &                           & Straight Vanes $30^{\circ}$ \\
+           &                           & Hybrid                    \\
+  \hline 
+Gridded    & Straight Vanes $60^{\circ}$ & Straight Vanes $60^{\circ}$ \\
+           & Straight Vanes $30^{\circ}$ & Straight Vanes $30^{\circ}$ \\
+  \hline 
+\end{tabular}
+  \caption{Presently available data from experiment and 
+    the gridded vanes. }
+  \label{tab:val_data}
+\end{table}
+
+The general system configuration is depicted in Figure \ref{fig:lab_image}. 
 Several challenges arise in performing a validation comparison between the
 simulation output and the experimental data. These data were taken using
 particle image velocimetery (PIV), and the errors in 
 in measurement and sampling are not known. 
 In addition, only velocity measurements are available. Several
 potentially important quantities of interest, such as the pressure field
-or the temperature, have not been measured.
-
-
-% The validation challenge is compounded by the fact that little is
-% known about the uncertainties in the observation data. PIV is a
-% non-intrusive technique, but it does rely upon large sample sizes 
-% to generate reliable statistics. While several hundred PIV
-% snapshots are available, no quantified uncertainties for the averaged fields
-% presently exist.  
-
-
-
-%
-%\subsection{Model Calibration}
-%
-%
-% viscosity calibrated
-% 
-%
-%
-%\subsection{Model Validation}
+or the temperature, have not been measured.\todo{need to describe the experiment}
 
 
 %  \begin{figure}[!htb]
@@ -174,15 +204,5 @@ configurations.\todo{incomplete, should reflect entire validation plan}
 %
 %
 % You need to discuss what needs to be validated -- the
-% compare to gridded vanes is a useful validation tool 
+% comparison to gridded vanes is a useful validation tool 
 %
-
-
-%
-% turbine (explain why we dont need to do it)
-%
-
-%% Another significant validation challenge is in modeling the
-%% turbines. This is in essence a new embedded 
-%% submodel that we will add after validation of the initial configuration
-%% is completed. 
