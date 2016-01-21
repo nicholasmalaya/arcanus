@@ -52,7 +52,7 @@ more confidence is necessary.
 %
  \begin{figure}[!htb]
    \begin{center}
-    \includegraphics[width = 12 cm]{figs/validation_hierarchy}
+    \includegraphics[width = 8 cm]{figs/validation_hierarchy}
     \caption{This figures depicts the validation hierarchy between different 
       sources of data generation. The experimental measurements lies at the top, 
       where the data is expected to be the most reliable, but simultaneously the most rare. 
@@ -99,9 +99,8 @@ Gridded    & Straight Vanes $60^{\circ}$ & Straight Vanes $60^{\circ}$ & \\
 %
 % experimental challenges
 %
-
+\normalsize
 \subsection{Thermal-Only Validation}
-
 This section provides examples of the validation performed on the richest data set, 
 the measurements in the laboratory. 
 All of the thermal-only the data was generated in a laboratory setting at Georgia Tech. 
@@ -181,43 +180,44 @@ global energy balance in the room. The flow rate into the room is adjusted to
  \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width =1.0\textwidth]{figs/sim_vs_exp_30_vt}
-  \caption{Azimuthal velocity as a function of radius for the thermal-only cases.}
+  \caption{Azimuthal velocity as a function of radius for the thermal-only cases.
+    The gold line is the virtual vane case, blue the experiment, and red the gridded.}
  \end{subfigure}%
  \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width =1.0\textwidth]{figs/sim_vs_exp_30_vz}%
-  \caption{Vertical velocity as a function of radius for the thermal-only cases.} 
+  \caption{Vertical velocity as a function of radius for the thermal-only cases. 
+The gold line is the virtual vane case, blue the experiment, and red the gridded. } 
  \end{subfigure}%
   \label{fig:val_lab}  
 \end{figure}
 
 
 Figure \ref{fig:lab} is a direct comparisons between laboratory measurements for a simple 
-single tier configuration ($55^{\circ}$ top, $30^{\circ}$ bottom) and 
-nominally identical simulations with the gridded and virtual vanes .
-The simulations and experiment broadly
-agree. 
-
-%%%
-The simulation correctly reproduces the twin peak structure in
+single tier configuration ($30^{\circ}$ straight vanes) and 
+nominally identical simulations with the gridded and virtual vanes. The simulations 
+and experiment broadly agree. 
+The simulation correctly reproduces the peak structure in
 the azimuthal velocity observed for this configuration in the
-experiment. The radial location of peak vertical velocity also closely
-agrees with experiment. The largest observed difference is near the
-center, where the simulation predicts a downward vertical velocity, in
-contrast to the modest vertical flows measured in the laboratory.  
+experiment. The gridded vanes very closely represent the peaks radial location, 
+while the virtual vanes over-predict the location. 
+The radial location of peak vertical velocity also closely
+agrees with experiment.
 
 Similar validation comparisons have been made between several other
-configurations, notably the $30^{\circ}$ and $60^{\circ}$ singly tier
-straight vane cases, with similar levels of agreement. This represents
-the totality of quantitiative data available for comparison. Qualitative
-comparisons have been made between the our simulation results with a
-mean velocity and with wind tunnel pictures. These images showed roughly
-consistent structure between simulation and
-experiment. Finally. estimates of the energy fluxes between the field
+configurations with similar levels of agreement, 
+notably the $60^{\circ}$ single tier
+straight vane case, and the two tier hybrid vane. 
+Finally. estimates of the energy fluxes between the field
 configuration and our simulation results agreed within 15\%. These
 validation studies have provided a modest level of confidence that our
 simulations accurately reproduce the dynamics observed in real vane
-configurations.\todo{incomplete, should reflect entire validation plan} 
+configurations.\todo{finish discussion here}
+
+Qualitative comparisons have been made between the our simulation results with a
+mean velocity and with wind tunnel pictures. These images showed roughly
+consistent structure between simulation and
+experiment. 
 
 %
 % validation story is incomplete
