@@ -26,26 +26,30 @@ This section contains a discussion of the validation of the computational models
 against existing experimental data and high fidelity simulations.
 
 A challenge in this project is the scarcity of experimental data. Only two or three cases of 
-experimental measurements are available. These measurements, for reasons detailed in the next subsection, 
-are not sufficient to provide confidence in the output of simulations across a wide variety 
+experimental measurements are available. These measurements, for reasons detailed in the next 
+subsection, are not sufficient to provide confidence in the output of simulations across a wide variety 
 of scenarios. Thus, a high fidelity model using explicitly gridded vanes with enforced no-slip 
-velocity boundary conditions on the surface of the vane has been developed. These ``gridded'' runs have been
-evaluated against the experimental data, where they match quite closely. However, as 
+velocity boundary conditions on the surface of the vane has been developed. These ``gridded'' runs 
+have been evaluated against the experimental data, which they match quite closely 
+(as described in the next subsection). However, as 
 detailed in \ref{subsec:vane}, explicitly meshing the vanes would be far too prohibitively expensive to 
-permit a rapid exploration of a variety of system configurations. Instead, this high fidelity model is used 
-as a means to generate additional truth data to permit validation of lower fidelity models, such as the virtual vanes. 
-Likewise, the results of the unsteady virtual vane simulations can be used as validation data for a further 
-reduced order, steady navier-stokes model. This hierarchy of validation is depicted in \ref{fig:val_hier}, with 
-data sources that generate more reliable data at the top, and models that are less reliable, but also 
+permit a rapid exploration of a variety of system configurations. Instead, this high fidelity model 
+is used as a means to generate additional truth data to permit validation of lower fidelity 
+models, such as the virtual vanes. Likewise, the results of the unsteady virtual vane simulations 
+can be used as validation data for a further reduced order, steady navier-stokes model. This 
+hierarchy of validation is depicted in \ref{fig:val_hier}, with data sources that generate more 
+reliable data at the top, and models that are less reliable, but also 
 less computationally expensive at the bottom. In terms of expense, the reduced order model (ROM) 
-generates a solution in approximately two minutes, versus twelve hours for the unsteady virtual vane model. 
-The gridded vanes require another factor of ten in computational time, and many more man-hours hours of work
-to generate the mesh. Therefore, it is unrealistic to perform parameter sweeps or system configuration investigations
-with the gridded vanes. Instead, the ROM is used, with promising results re-evaluated in the unsteady VV models, 
-and so on up the hierarchy if more confidence is necessary. 
-The remainder of this section discusses the validations performed between
-the different models and the experimental data. 
+generates a solution in approximately two minutes, versus twelve hours for the unsteady virtual vane 
+model. The gridded vanes require another factor of ten in computational time, and many more 
+man-hours hours of work to generate the mesh. Therefore, it is unrealistic to perform parameter 
+sweeps or system configuration investigations with the gridded vanes. Instead, the ROM is used, 
+with promising results re-evaluated in the unsteady VV models, and so on up the hierarchy if 
+more confidence is necessary. 
 
+%
+% https://www.draw.io/
+%
  \begin{figure}[!htb]
    \begin{center}
     \includegraphics[width = 12 cm]{figs/validation_hierarchy}
@@ -58,6 +62,33 @@ the different models and the experimental data.
    \end{center}
  \end{figure}
 
+Three kinds of validation data are available. Thes are comparisons between data generated in the 
+heated laboratory and the gridded and (steady) virtual vanes (``thermal-only''), comparisons between 
+experiments in a wind tunnel against gridded and virtual vanes (``Wind-only''), and comparisons 
+between the virtual vanes and the field tests (``Field'') conducted in Arizona. 
+The existing available data from these cases as well as the gridded vanes created 
+to mimic them are are summarized in table \ref{tab:val_data}. Due to the formulation ease, 
+every case shown has been simulated using the virtual vanes. 
+
+\large
+\begin{table}[h]
+\centering
+\label{my-label}
+\begin{tabular}{l|l|l|l|}
+           & Wind-Only                   & Thermal-Only               & Field  \\
+  \hline 
+Experiment & Straight Vanes $60^{\circ}$ & Straight Vanes $60^{\circ}$ & June 2014   \\
+           &                           & Straight Vanes $30^{\circ}$   & August 2014 \\
+           &                           & Hybrid                        & August 2015 \\
+  \hline 
+Gridded    & Straight Vanes $60^{\circ}$ & Straight Vanes $60^{\circ}$ & \\
+           & Straight Vanes $30^{\circ}$ & Straight Vanes $30^{\circ}$ & \\
+  \hline 
+\end{tabular}
+  \caption{Presently available data from the laboratory experiments 
+    (cold wind and thermal-only) as well as the field test as well as the gridded vanes. }
+  \label{tab:val_data}
+\end{table}
 %
 %
 %
@@ -69,51 +100,31 @@ the different models and the experimental data.
 % experimental challenges
 %
 
-\subsection{Experimental Data}
+\subsection{Thermal-Only Validation}
 
-Experimental data has been generated 
-The existing available data from the ``truth'' cases (experiment and gridded vanes) 
-are summarized in table \ref{tab:val_data}. 
-
-\large
-\begin{table}[h]
-\centering
-\label{my-label}
-\begin{tabular}{l|l|l|}
-           & Wind                      & Thermal-Only              \\
-  \hline 
-Experiment & Straight Vanes $60^{\circ}$ & Straight Vanes $60^{\circ}$ \\
-           &                           & Straight Vanes $30^{\circ}$ \\
-           &                           & Hybrid                    \\
-  \hline 
-Gridded    & Straight Vanes $60^{\circ}$ & Straight Vanes $60^{\circ}$ \\
-           & Straight Vanes $30^{\circ}$ & Straight Vanes $30^{\circ}$ \\
-  \hline 
-\end{tabular}
-  \caption{Presently available data from experiment and 
-    the gridded vanes. }
-  \label{tab:val_data}
-\end{table}
-
-The general system configuration is depicted in Figure \ref{fig:lab_image}. 
-Several challenges arise in performing a validation comparison between the
-simulation output and the experimental data. These data were taken using
+This section provides examples of the validation performed on the richest data set, 
+the measurements in the laboratory. 
+All of the thermal-only the data was generated in a laboratory setting at Georgia Tech. 
+This general system configuration is depicted in Figure \ref{fig:lab_image}. 
+These data were taken using
 particle image velocimetery (PIV), and the errors in 
 in measurement and sampling are not known. 
 In addition, only velocity measurements are available. Several
 potentially important quantities of interest, such as the pressure field
-or the temperature, have not been measured.\todo{need to describe the experiment}
+or the temperature, have not been measured.
 
-
-%  \begin{figure}[!htb]
-%    \begin{center}
-%     \includegraphics[width = 12 cm]{figs/lab_setup}
-%     \caption{The single tier straight vane laboratory configuration. The
-%     apparatus is shown with a turbine, but it was removed for data
-%     gathering.}
-%     \label{fig:lab_image}
-%    \end{center}
-%  \end{figure}
+%
+% http://convertonlinefree.com/ConvertImageEN.aspx
+%
+ \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 12 cm]{figs/Optimized-lab_setup}
+    \caption{The single tier straight vane laboratory configuration. The
+    apparatus is shown with a turbine, but it was removed for data
+    gathering.}
+    \label{fig:lab_image}
+   \end{center}
+ \end{figure}
 
 While no sensitivity analysis has been performed, it is likely that the
 largest uncertainty in the laboratory simulation is a result of the
@@ -154,22 +165,41 @@ was not sensistive to these boundary condition details. The important element is
 global energy balance in the room. The flow rate into the room is adjusted to 
 1.3 $m^3$/s for the validation results discussed here. 
 
+%% \begin{figure}[!htb]
+%%   \begin{center}
+%%    \includegraphics[width = 12 cm]{figs/hybrid_profile}
+%%    \caption{Azimuthal and vertical velocity profiles as a function of
+%%    radius. The simulation and experimental data broadly agree, with
+%%    the simulation also exhibiting the characteristic ``twin-peak''
+%%    structure of the hybrid vanes in the azimuthal velocity. }
+%%    \label{fig:lab}
+%%   \end{center}
+%% \end{figure}
 
-  \begin{figure}[!htb]
-    \begin{center}
-     \includegraphics[width = 12 cm]{figs/hybrid_profile}
-     \caption{Azimuthal and vertical velocity profiles as a function of
-     radius. The simulation and experimental data broadly agree, with
-     the simulation also exhibiting the characteristic ``twin-peak''
-     structure of the hybrid vanes in the azimuthal velocity. }
-     \label{fig:lab}
-    \end{center}
-  \end{figure}
+\begin{figure}[htb]
+
+ \begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width =1.0\textwidth]{figs/sim_vs_exp_30_vt}
+  \caption{Azimuthal velocity as a function of radius for the thermal-only cases.}
+ \end{subfigure}%
+ \begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width =1.0\textwidth]{figs/sim_vs_exp_30_vz}%
+  \caption{Vertical velocity as a function of radius for the thermal-only cases.} 
+ \end{subfigure}%
+  \label{fig:val_lab}  
+\end{figure}
+
 
 Figure \ref{fig:lab} is a direct comparisons between laboratory measurements for a simple 
-two tier configuration ($55^{\circ}$ top, $30^{\circ}$ bottom)\todo{add gridded vanes} and 
-a nominally identical simulation. The simulation and experiment broadly
-agree. The simulation correctly reproduces the twin peak structure in
+single tier configuration ($55^{\circ}$ top, $30^{\circ}$ bottom) and 
+nominally identical simulations with the gridded and virtual vanes .
+The simulations and experiment broadly
+agree. 
+
+%%%
+The simulation correctly reproduces the twin peak structure in
 the azimuthal velocity observed for this configuration in the
 experiment. The radial location of peak vertical velocity also closely
 agrees with experiment. The largest observed difference is near the
