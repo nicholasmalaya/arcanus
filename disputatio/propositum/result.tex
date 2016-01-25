@@ -10,17 +10,23 @@
 %
 %
 
-It is unrealistic to perform parameter sweeps or system configuration investigations
-with the gridded vanes. Instead, the ROM and unsteady VV models are used and promising results can be re-evaluated for 
-accuracy 
+The computer simulations in this proposal study are intended to discover
+the optimal solar vortex system configuration for a range of scenarios
+and system sizes. 
+This section contains discussions of the preliminary simulation results 
+to motivate that the existing simulation capability is sufficiently well
+developed and understood to permit an efficient exploration of the SoV
+configuration space. 
+This section begins with a discussion of the structure of solutions from
+a representative case with no ambient winds, the ``thermal only''
+situation. Next, a case with strong ambient horizontal winds (``Wind'')
+is discussed. Finally, the results from a series of runs are shown to
+demonstrate heuristic by which incremental optimization of the system
+configuration will be conducted. 
 
-
-The computer simulations in this proposal study 
-are intended to discover the
-optimal solar vortex system configuration for a range of scenarios and system
-sizes. The results of these simulations will be used as input for the
-design of a prototype to be tested in Mesa, Arizona. Some preliminary simulations 
-are discussed in the following subsections.
+%The results of these optimized configurations will be used as input
+%for the design of a prototype to be tested in Mesa, Arizona this
+%summer. 
 
 % \todo{add photo}
   % \begin{figure}[!htb]
@@ -79,10 +85,9 @@ coherent thermal plume roughly the same size as the inner diameter of the
 lower vanes. As anticipated, this hot flow is acting like a chimney,
 generating a large vertical velocity which in turn entrains air from the outside.
 An image of the entrainment is shown in figure
-\ref{fig:entrain}. The image was created by tracking particles as they 
-convect through the device. 
-One can
-observe a tight inner vortex with significant azimuthal velocity 
+\ref{fig:entrain}\todo{fix text of this image}. The image was created by
+tracking particles as they convect through the device. 
+One can observe a tight inner vortex with significant azimuthal velocity  
 as well as a broader region of entraining fluid through the 
 upper tier of vanes. 
 
@@ -319,17 +324,21 @@ strong thermal column does exist even in the $5 m/s$ wind cases.
 
 In this section results from a representative optimization
 in a thermal-only case are discussed, to demonstrate the optimization 
-process employed so far. 
-This is a typical mode of
-scientific and engineering inquiry, where a hypothesis regarding system
-operation is developed, followed by testing of the hypothesis, and
-further interations. 
+process employed so far. This is a typical mode of scientific and
+engineering inquiry, where a hypothesis regarding system operation is
+developed, followed by testing of the hypothesis, and further
+iterations.  
 
-Our principle objective is to maximize the energy that can be 
-extracted from the synthetic dust devil. As a surrogate to this quantity,
-consider the kinetic energy flux through a horizontal plane near the top of the vanes,
-where a turbine will ultimately be placed. This is a
-surface integral\cite{landau1959fm}
+This series of simulations are all runs with different system
+configurations conducted in a common ambient scenario, that of the
+unsteady thermal-only simulations described \todo{add pertinent bcs
+here}. 
+
+Our objective is to maximize the energy that can be 
+extracted from the synthetic dust devil. As a surrogate to this
+quantity, consider the kinetic energy flux through a horizontal plane
+near the top of the vanes, where a turbine will ultimately be
+placed. This is a surface integral\cite{landau1959fm}
 
 %% \begin{equation}
 %%  \dot E = -\oint \rho \textbf{v}(\frac{1}{2}v^2 + e) \cdot d \textbf{f}
@@ -343,17 +352,16 @@ surface integral\cite{landau1959fm}
  \dot E = -\frac{\rho }{2} \int V_z (V_{\theta}^2 + V_z^2 ) dA.
  \end{equation}
 
-Using the kinetic energy flux as an objective, 
-the vane geometry has been optimized. Over approximately 
-tens of iterations, we have increased the kinetic energy flux by 
-a factor of 88 relative to the baseline.
-Results of several of these iterations are documented in 
-figure \ref{fig:opt_plot}. Major adjustments 
-to design in the the vane shape and angles were made to obtain this improvement. 
-Before and after images shown in \ref{fig:vt-wind-vert}. 
-During this optimization the qualitative character 
-of the solution changed substantially, changing from a mild upward flow with little rotation
-to a strongly organized vortex with a downward central flow and strong azimuthal velocities. 
+Using the kinetic energy flux as an objective, the vane geometry has
+been optimized. Over approximately  tens of iterations, we have
+increased the kinetic energy flux by  a factor of 88 relative to the
+baseline. Results of several of these iterations are documented in
+figure \ref{fig:opt_plot}. Major adjustments  to design in the the vane
+shape and angles were made to obtain this improvement.  Before and after
+images shown in \ref{fig:vt-wind-vert}. During this optimization the
+qualitative character of the solution changed substantially, changing
+from a mild upward flow with little rotation to a strongly organized
+vortex with a downward central flow and strong azimuthal velocities.  
 
 \begin{figure}[htb]
  \centering
