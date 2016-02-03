@@ -299,25 +299,28 @@ commonly used to represent the rotor of a wind turbine \cite{betz}.
 
 
 \subsection{Solid Surface Representation}
+\label{subsec:solid_surface}
 
-This subsection details the model used for rigid, impermiable surfaces such as the 
-wind break (``cone'') on the top of the facility. As with the turning vanes, 
-this is accomplished without explicitly meshing the surface nor imposing 
-a boundary condition at the surface. This permits rapid exploration of configurations 
-with different solid surfaces to control and manipulate the fluid flow. These solid surfaces
-are also represented by a body force region applied where the wall is set to be located in. 
-A vector normal to the surface is defined in this region so that a body force will push 
-the velocity to zero, resulting in the flow moving only parallel to the virtual surface. 
-For instance, the outward facing unit normal for a cylindrical surface is represented as
+This subsection details the model used for rigid, impermiable surfaces
+such as the wind break (``cone'') on the top of the facility. As with
+the turning vanes, this is accomplished without explicitly meshing the
+surface nor imposing  a boundary condition at the surface. This permits
+rapid exploration of configurations  with different solid surfaces to
+control and manipulate the fluid flow. These solid surfaces are also
+represented by a body force region applied where the wall is set to be
+located in.  A vector normal to the surface is defined in this region so
+that a body force will push  the velocity to zero, resulting in the flow
+moving only parallel to the virtual surface. For instance, the outward
+facing unit normal for a cylindrical surface is represented as 
 \begin{equation}
  {\bf n}({\bf x}) = \hat{{\bf r}}+ \sin \left(\theta\right) \hat{{\bf \theta}}
 \end{equation}
 where $\theta$ the angle between the spatial location and radial line. 
 The body force is defined as in equation \ref{eqn:body_force}; however, 
 the length scale $\ell_v$ is specified to be identical to the width 
-of the surface being represented. This is typically two or three grid points. 
-While the actual surface we are emulating is thin, the numerical method cannot resolve
-surfaces smaller than the grid size. 
+of the surface being represented. This is typically two or three grid
+points. While the actual surface we are emulating is thin, the numerical
+method cannot resolve surfaces smaller than the grid size. 
 
 Forcing designed to mimic a surface
 is not unique to this project, and is closely related to (among others)
