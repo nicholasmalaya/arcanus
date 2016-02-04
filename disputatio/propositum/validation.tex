@@ -87,19 +87,18 @@ simulated using the virtual vanes.
 \centering
 \label{my-label}
 \begin{tabular}{l|l|l|l|}
-           & Wind-Only                   & Thermal-Only               & Field  \\
+           & Wind-Only                   & Thermal-Only                & Field  \\
   \hline 
 Experiment & Straight Vanes $60^{\circ}$ & Straight Vanes $60^{\circ}$ & June 2014   \\
            &                           & Straight Vanes $30^{\circ}$   & August 2014 \\
-           &                           & Hybrid                        & August 2015 \\
+           &                           & Hybrid (Two tier)             & August 2015 \\
   \hline 
 Gridded    & Straight Vanes $60^{\circ}$ & Straight Vanes $60^{\circ}$ & \\
            & Straight Vanes $30^{\circ}$ & Straight Vanes $30^{\circ}$ & \\
   \hline 
 \end{tabular}
   \caption{Available truth data from the laboratory experiments 
-    (cold wind and thermal-only) as well as the field test as well as
- the gridded vanes.} 
+    (cold wind and thermal-only), the field test, and the gridded vanes.} 
   \label{tab:val_data}
 \end{table}
 %
@@ -131,7 +130,7 @@ the pressure field or the temperature, have not been measured.
    \begin{center}
     \includegraphics[width = 12 cm]{figs/Optimized-lab_setup}
     \caption{The single tier straight vane laboratory configuration. The
-    apparatus is shown with a turbine, but it was removed for data
+    apparatus is shown with a turbine, but that was removed for data
     gathering.}
     \label{fig:lab_image}
    \end{center}
@@ -186,7 +185,7 @@ adjusted to  1.3 $m^3$/s for the validation results discussed here.
 %%   \end{center}
 %% \end{figure}
 
-\begin{figure}[]
+\begin{figure}[htp!]
 
  \begin{subfigure}{.5\textwidth}
   \centering
@@ -204,8 +203,7 @@ adjusted to  1.3 $m^3$/s for the validation results discussed here.
   \label{fig:val_lab}  
 \end{figure}
 
-Figure \ref{fig:val_lab}\todo{fix this image} is a direct comparisons
-between laboratory 
+Figure is a direct comparison between laboratory 
 measurements for a simple single tier configuration ($30^{\circ}$
 straight vanes) and nominally identical simulations with the gridded and
 virtual vanes. The simulations and experiment broadly agree. The
@@ -297,10 +295,10 @@ validations performed.
   \begin{center}
    \includegraphics[width = 12 cm]{figs/validate_field}
    \caption{Azimuthal velocity data from the August 2015 field test is
-   shown in blue. Two simulations with different scenario parameters are
-   shown in red and gold. The velocity field was temporally averaged but
-   not averaged in space, in order to reproduce the measurements from
-   the field.}
+   shown in blue. Two virtual vane simulations with different scenario
+   parameters are shown in red and gold. The velocity field was
+   temporally averaged but not averaged in space, in order to reproduce
+   the measurements from the field.}
    \label{fig:field_val}
   \end{center}
  \end{figure}
