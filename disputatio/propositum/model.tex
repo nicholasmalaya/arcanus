@@ -162,7 +162,7 @@ this case, the function $\varphi_T$ must hold no dependence on $u^*$,
 and will approach a constant value. Scaling analysis implies that the
 overall function will not depend on $u^*$ only when the function
 $\varphi$ scales to the $-\frac{4}{3}$ power. The resulting function
-appears as,  
+appears as
 
 \begin{equation}
  K_T = \frac{1}{C_T} \left( \frac{q}{c_p \rho_0} \frac{g}{T_0}
@@ -211,15 +211,15 @@ virtual vane representation.
 %is detailed in Section \ref{sec:validation}. 
 The eddy-viscosity in the region of the vanes and interior is set based
 on scaling relations for a turbulent self-similar circular jet, as in 
-Pope\cite{pope2000turbulent},
+Pope\cite{pope2000turbulent}
  
 \begin{equation}
-  \nu_C = U_0 y_{1/2} \bar \nu_C
+  \nu_C = U_0 y_{1/2} \bar \nu_C.
   %\nu_C(r) = U_0(r) y_{1/2}(r) \bar \nu_C
 \end{equation}
 
-Where $U_0$ is the peak velocity, and $y_{1/2}$ the jet half-width
-(taken to be the dust devil half-width).  
+In this equation, $U_0$ is the peak velocity, and $y_{1/2}$ the jet
+half-width (taken to be the dust devil half-width).  
 % In words, we are scaling the
 % calibrated viscosity by the velocity and length scale of the
 % apparatus. $\bar \nu_C $ is input, measured from the experimental
@@ -285,7 +285,7 @@ force is defined:
  {\bf f}_v= -\frac{1}{\ell_v}|{\bf u}|({\bf u}\cdot{\bf n}){\bf n}
  \label{eqn:body_force}
 \end{equation}
-where ${\bf u}$ is the velocity and $\ell_v$ is a specified length
+with ${\bf u}$ the velocity and $\ell_v$ is a specified length
 scale. The length scale $\ell_v$ represents the distance over which the
 flow must evolve under the influence of the body force before the
 velocity in the normal direction is reduced by a factor of $1/{\bf
@@ -313,14 +313,14 @@ that a body force will push  the velocity to zero, resulting in the flow
 moving only parallel to the virtual surface. For instance, the outward
 facing unit normal for a cylindrical surface is represented as 
 \begin{equation}
- {\bf n}({\bf x}) = \hat{{\bf r}}+ \sin \left(\theta\right) \hat{{\bf \theta}}
+ {\bf n}({\bf x}) = \hat{{\bf r}}+ \sin \left(\theta\right) \hat{{\bf \theta}}.
 \end{equation}
-where $\theta$ the angle between the spatial location and radial line. 
-The body force is defined as in equation \ref{eqn:body_force}; however, 
-the length scale $\ell_v$ is specified to be identical to the width 
-of the surface being represented. This is typically two or three grid
-points. While the actual surface we are emulating is thin, the numerical
-method cannot resolve surfaces smaller than the grid size. 
+In this equation, $\theta$ is the angle between the spatial location and
+radial line. The body force is defined as in equation
+\ref{eqn:body_force}; however, the length scale $\ell_v$ is specified to
+be identical to the width  of the surface being represented. This is
+typically two or three grid points. While the actual surface we are
+emulating is thin, the numerical method cannot resolve surfaces smaller than the grid size. 
 
 Forcing designed to mimic a surface
 is not unique to this project, and is closely related to (among others)
@@ -407,9 +407,9 @@ simulating, the impact is expected to be a small thermal ``kick-up''
 versus an entirely smooth surface. This is modeled as a volumetric 
 forcing over a narrow height over the surface, 
 \begin{equation}
- F^{'''}_{z_0} = \frac{1}{2}\rho V_z^2/z_{0} 
+ F^{'''}_{z_0} = \frac{1}{2}\rho V_z^2/z_{0}, 
 \end{equation}
-where $z_{0}$ is the roughness height. We ensure that the energy
+and $z_{0}$ is the roughness height. We ensure that the energy
 introduced into flow is small fraction of total flow energy by comparing
 this with the energy flux through the top of the vanes. The total energy
 added is measured as,  
