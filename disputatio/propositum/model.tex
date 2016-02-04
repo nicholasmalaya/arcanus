@@ -84,7 +84,7 @@ components,
 
 \begin{eqnarray*}
  \nu =& \nu_{l} + \nu_{T}(z) + \nu_{V}(r,z) \\
- K =& K_{l} + K_{T}(z) + K_{V}(r,z)
+ K =& K_{l} + K_{T}(z) + K_{V}(r,z).
 \end{eqnarray*}
 
 This is an effective eddy viscosity model, and the subsequent two
@@ -95,7 +95,7 @@ base diffusivities and do not vary in space.
 \subsection{Viscosity Model}
 
 We use the celebrated similarity model of Monin and
-Yaglom\cite{monin2007statistical,monin1954basic} as a guide to the
+Obukhov\cite{monin2007statistical,monin1954basic} as a guide to the
 present development, which we outline below. Their formulation is an
 extension of the mixing-length model of Prandtl, where the concepts of
 gradient diffusion and mixing length were generalized to thermally
@@ -105,37 +105,36 @@ stratified flow.
 % justify prandtl assumption here
 %
 
-Using dimensional analysis, note that the dynamics of
-any mean turbulent quantity ($\bar f$) in a thermally stratified medium 
-only depend on,  
+Under temporally steady, horizontally homogeneous conditions, the 
+dynamics of any mean turbulent quantity ($\bar f$) in a 
+thermally stratified medium which depends only on,  
 
 \begin{equation}
-\bar f = f(z,\frac{g}{T_0},\rho_0,\nu_l,K_l,u^*,q)
+\bar f = f(z,\frac{g}{T_0},\rho_0,\nu_l,K_l,u^*,q).
 \end{equation}
 
-We expect that aside from near the surface, the diffusivities $\nu_l$
-and $K_l$ will be small compared to their turbulent counter-parts, $\nu_T$
-and $K_T$. 
-%Likewise, if we define $z-z_0$ as an ``effective roughness
-%height'' or displacement distance, we can reasonably neglect $z_0$ from these
-%considerations. While the roughness height can be large (for instance in
-%a cornfield, where the roughness height could reasonably be several
-%meters), for the present study the expectation is that this roughness
-%height will be on the order of centimeters\cite{oke1987boundary}, and
-%therefore negligible.  
-This leaves only five parameters: the distance from the ground, z; the
+These five parameters are: the distance from the ground, z; the
 buoyancy coefficient, $\frac{g}{T_0}$; the density of the fluid,
 $\rho_0$; a velocity scale, $u^*$; and the heat flux from the ground,
 $q$. 
+
+
+% Aside from near the surface, the diffusivities $\nu_l$ and $K_l$ will be
+% small compared to their turbulent counter-parts, $\nu_T$ and $K_T$. 
+% Likewise, if we define $z-z_0$ as an ``effective roughness
+% height'' or displacement distance, we can reasonably neglect $z_0$ from these
+% considerations. While the roughness height can be large (for instance in
+% a cornfield, where the roughness height could reasonably be several
+% meters), for the present study the expectation is that this roughness
+% height will be on the order of centimeters\cite{oke1987boundary}, and
+% therefore negligible.  
 %
 % add refence to dynamical and physical meteorology 
 % 
-These quantities depend on
-four dimensions: length, time, temperature and mass. As a result, 
-Buckingham Pi theorem implies that 
-the original equations can be rewritten in terms of a 
-single dimensionless group.\cite{munson2012fundamentals}. This is
-chosen to be,
+These quantities depend on four dimensions: length, time, temperature
+and mass. Dimensional analysis implies that this mean turbulent quantity
+($\bar f$) should then only be a function of a single dimensionless
+group.\cite{munson2012fundamentals}. This is chosen to be,
 \begin{equation}
  \xi = \frac{z}{L}.
 \end{equation}
@@ -147,7 +146,7 @@ where $\kappa$ is the (dimensionless) Von-Karman constant. Notice that
 our interest lies in regimes where $L<0$, as $q<0$ (e.g. heat from the
 ground into the fluid), which corresponds to the unstable stratification 
 we expect during a sunny day. The mean quantity $\bar f$ has a
-functional representation to the effect
+functional representation to the effect,
 \begin{equation}
  \bar f = C \phi(\xi)
 \end{equation}
@@ -158,11 +157,12 @@ rest of this up}
 
 The case where $\xi \to -\infty $ implies $\frac{z}{L} \to
 -\infty $ and $z>>L$. This is most readily interpreted as the instance
-where $u^* \to 0$, e.g. the case with no wind. For this case, the
-function $\varphi_T$ must hold no dependence on $u^*$, and will approach
-a constant value. Scaling analysis implies that the overall function
-will not depend on $u^*$ only when the function $\varphi$ scales to the
-$-\frac{4}{3}$ power. The resulting function appears as, 
+where $u^* \to 0$, e.g. the buoyancy-dominated case with no wind. For
+this case, the function $\varphi_T$ must hold no dependence on $u^*$,
+and will approach a constant value. Scaling analysis implies that the
+overall function will not depend on $u^*$ only when the function
+$\varphi$ scales to the $-\frac{4}{3}$ power. The resulting function
+appears as,  
 
 \begin{equation}
  K_T = \frac{1}{C_T} \left( \frac{q}{c_p \rho_0} \frac{g}{T_0}
@@ -181,8 +181,8 @@ distance from the ground,
 for } z \gg L. 
 \end{equation}
 
-These functions have been found to be broadly applicable, accurate and 
-are easily instantiated in software. 
+These functions have been found to be broadly applicable and
+accurate\cite{Foken2006}, and are easily instantiated in software.
 
 \subsection{Eddy Viscosity in Device}
 
