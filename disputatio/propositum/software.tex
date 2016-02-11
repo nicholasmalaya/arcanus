@@ -29,7 +29,15 @@ stabiliziation used}
 
 todo\todo{need enough to construct numerical formulation you used}
 
-todo\todo{move discussion of gridding here}
+The meshes are scaled by system
+diameter. The same number of grid points are used for every
+simulation, with the total domain extents scaled up with system size. In
+this way the ratio of the domain diameter to system diameter remains
+fixed. Likewise, the diffusivities are proportionally scaled with grid
+size to ensure that the cell Reynolds number is maintained for
+every simulation. After operation, solutions are evaluated to ensure
+that the qualitative character of the solution does not
+change.\todo{define cell reynolds number here}
 %
 % gave not completely described numerical methods
 % for instance, have not indicated the stabilization schemes
@@ -82,15 +90,6 @@ use a uniform mesh in the lateral directions, and a non-uniform
 mesh\todo{makes no sense}
 in height to resolve the boundary layer. \todo{sizes relative to device
 typical for wind and no wind}
-The meshes are scaled by system
-diameter. The same number of grid points are used for every
-simulation, with the total domain extents scaled up with system size. In
-this way the ratio of the domain diameter to system diameter remains
-fixed. Likewise, the diffusivities are proportionally scaled with grid
-size to ensure that the cell Reynolds number is maintained for
-every simulation. After operation, solutions are evaluated to ensure
-that the qualitative character of the solution does not
-change.\todo{define cell reynolds number here}
 
 \textbf{Wall Boundary Conditions} 
 
