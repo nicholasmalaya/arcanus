@@ -24,8 +24,12 @@ Becker and Braack\cite{Becker2002428}.
 The system of ODEs are discretized in time using a theta-method. 
 Newton iterations are used to for solve the resulting nonlinear problem. 
 The unsteady solver used is typically backward Euler for the
-corresponding stability regardless of timestep size.\todo{inadequate} 
+corresponding stability regardless of timestep size.\todo{indicate
+stabiliziation used}
 
+todo\todo{need enough to construct numerical formulation you used}
+
+todo\todo{move discussion of gridding here}
 %
 % gave not completely described numerical methods
 % for instance, have not indicated the stabilization schemes
@@ -71,15 +75,14 @@ cone.\todo{need explicit mathematical description of exactly the formulation}
 \subsection{Simulation Geometry and Boundary Conditions}
 \label{sec:bc}
 
-%
-% be sure to mention the 'sponge' layer. would also be nice to have
-% references to papers on it! 
-%
+\textbf{Computational Domain} 
 
 All simulations are performed in a cuboid domain, with 6 faces. We
 use a uniform mesh in the lateral directions, and a non-uniform
 mesh\todo{makes no sense}
-in height to resolve the boundary layer. The meshes are scaled by system
+in height to resolve the boundary layer. \todo{sizes relative to device
+typical for wind and no wind}
+The meshes are scaled by system
 diameter. The same number of grid points are used for every
 simulation, with the total domain extents scaled up with system size. In
 this way the ratio of the domain diameter to system diameter remains
@@ -89,20 +92,21 @@ every simulation. After operation, solutions are evaluated to ensure
 that the qualitative character of the solution does not
 change.\todo{define cell reynolds number here}
 
-
-%
-% explain how cell reynolds number is maintained for each grid
-%
+\textbf{Wall Boundary Conditions} 
 
 For the ``thermal-only'' case study (no mean wind), 
 periodic boundary conditions are used on the four sides, a modified
 neumann condition\cite{gunzburger1989finite} on the top boundary, and
-dirichlet boundary conditions 
-on the bottom (the ground).\todo{write down the math} 
-These are shown schematically in Figure
+dirichlet boundary conditions on the bottom (the ground).\todo{write
+down the math} These are shown schematically in Figure
 \ref{fig:thermalbc}. On the ground, a ``no-slip'' velocity boundary
 condition is imposed on the velocity field, and a dirichlet condition
 uniformly fixes the temperature of the surface. 
+
+\textbf{Inflow Boundary Conditions} 
+
+
+\textbf{Mixed inflow/outflow Boundary Conditions} 
 
 The modified neumann condition is necessary due to the presence of both
 inflow and outflow across the face. In the region approximately above
@@ -112,12 +116,12 @@ towards the apparatus is drawn in by large scale convection cells larger
 than the system diameter. Thus, our boundary conditions must permit
 inflow along the areas above and external to the vanes. To avoid an
 ill-posed problem, the ``v'' and ``u'' components of inflow velocity are
-set to zero.  
+set to zero. \todo{explain cell reynolds}
 
 Finally, a ``sponge layer'' is labeled near the top boundary.\todo{need
-3d image}
-This layer artificially increases the momentum diffusivity by up to ten times the nominal
-value. This was designed in response to instabilities in the modified
+3d image} This layer artificially increases the momentum diffusivity by
+up to ten times the nominal value. This was designed in response to
+instabilities in the modified 
 neumann boundary condition that occurred when small, high velocity fluid
 parsels would exit the top. This would create high velocity inflows, and
 the feedback loop would result in numerical blow-up. Mindful of the fact
