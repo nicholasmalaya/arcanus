@@ -15,13 +15,13 @@
 To solve the Navier-Stokes equations on a computer, a
 Galerkin finite element method (FEM) is used, with linear basis
 functions for both the velocity and pressure. This scheme circumvents
-the Babuska-Brezzi conditions\cite{bb-cond} and 
-uses equal-order elements for velocity and 
-pressure,  by introducing a stabilization term as first described by
-Hughes\cite{Hughes198685} and extended to natural convection as in
-Becker and Braack\cite{Becker2002428}.  
+the Babuska-Brezzi conditions\cite{bb-cond} and uses equal-order
+elements for velocity and  pressure, by introducing a stabilization
+term as first described by Hughes\cite{Hughes198685} and extended to
+natural convection as in Becker and Braack\cite{Becker2002428}.  
 
-The system of ODEs are discretized in time using a theta-method. 
+The system of ODEs are discretized in time using a
+theta-method.\todo{show theta}
 Newton iterations are used to for solve the resulting nonlinear problem. 
 The unsteady solver used is typically backward Euler for the
 corresponding stability regardless of timestep size.\todo{indicate
