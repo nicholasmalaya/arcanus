@@ -16,12 +16,12 @@
 %
 
 The aim of the proposed work is to simulate the formation of synthetic
-dust devils in the field. This requires a model of the ambient conditions for a
-representative case, such as Arizona, where experimental data is
-available from test that have been performed. Furthermore, for this to be
-more generally useful in the prediction of flows in a variety of
-conditions, we need a model generally applicable to any flow near the
-surface of the earth.  
+dust devils in the field. This requires a model of the ambient
+conditions for a representative case, such as Arizona, where
+experimental data is available from test that have been
+performed. Furthermore, for this to be more generally useful in the
+prediction of flows in a variety of conditions, we need a model generally
+applicable to any flow near the surface of the earth.  
 
 This section details an analysis of surface fluid mechanics, and
 develops a mathematical model for turbulence in a thermally stratified
@@ -45,7 +45,11 @@ this are between $10^{9} - 10^{11}$, and therefore meet the criterion
 for transition to a turbulent regime. The flow is that of an unstably
 stratified fluid.  
 
-This section begins with\todo{write me!}
+This section begins by describing the governing equations of the system
+of interest. It then proceeds to the development of a viscosity model
+used to resolve the large scale features of the solution. Next, models
+used to represent the vanes and turbine, as well as the separation of
+fluid off of these modeled surfaces, is introduced.  
 
 Note that a complete mathematical specification of all the model
 parameters introduced in this section are provided in a table in
@@ -294,8 +298,8 @@ with ${\bf u}$ the velocity and $\ell_v$ is a specified length
 scale. The length scale $\ell_v$ represents the distance over which the
 flow must evolve under the influence of the body force before the
 velocity in the normal direction is reduced by a factor of $1/{\bf
-e}$. It is a modeling constant and is specified to be of order the
-separation distance between neighboring vanes in the physical vane
+e}$. It is a modeling constant and is specified to be the same order as
+the separation distance between neighboring vanes in the physical vane 
 configuration, since entry lengths in internal flows scale with the
 size of the channel.
 
@@ -330,10 +334,43 @@ emulating is thin, the numerical method cannot resolve surfaces smaller than the
 Forcing designed to mimic a surface
 is not unique to this project, and is closely related to (among others)
 the ``immersed boundary methods'' used by various other
-researchers\cite{doi:10.1146/annurev.fluid.37.061903.175743}. 
-%It is likely that 
-%the formulation described above could be shown to be equivalent to these methods
-\todo{add babuska form here}
+researchers\cite{doi:10.1146/annurev.fluid.37.061903.175743}. What is
+unique about this approach is the use of Babuska's penalty treatment of
+constraints\cite{1973fempen,ZAMM:ZAMM19880680925} to enforce the
+behavior at the boundary. This method was selected because it is easily
+imposed in the FEM context, and the method has been explored in detail
+in the literature. Typically, the enforcement occurs along a domain
+boundary, but in this work it is used in the interior. 
+
+This approach includes a penalty term for violating a selected
+constraint in a variation formulation. As an example, consider Laplace's  
+equation on a domain $\Omega$ with boundary $\partial\Omega$, 
+\begin{equation}
+ \nabla^2 u = 0. 
+\end{equation}
+Dirichlet boundary conditions are introduced into the weak form
+\begin{equation}
+ u|_{\partial \Omega} = g
+\end{equation}
+which becomes 
+\begin{equation}
+\int_{\Omega}  - \nabla u \cdot \nabla v \, dx - \frac{1}{\epsilon}
+ \int_{\partial \Omega} (u-g) \cdot v ds = 0 \quad \forall v \in H^1
+\end{equation}
+where $\frac{1}{\epsilon}$ is the penalty parameter. This is the weak
+form for Laplace's equation with a Robin boundary condition 
+\begin{align}
+ u = g - \epsilon \partial_n u. 
+\end{align}
+For sufficiently small $\epsilon$, the original Dirichlet boundary
+conditions will be satisfied approximately. Clearly, $\epsilon$ has
+units of length, and can be interpreted as a ``slip length''. In the
+Navier-Stokes solver, this penalty formulation is used to approximately
+impose the no-flow through for impermiable surfaces, such as the
+cone.\todo{need explicit mathematical description of exactly the formulation}
+
+
+
 
 
 \subsection{Separation Model}
