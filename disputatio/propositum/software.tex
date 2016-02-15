@@ -1,6 +1,8 @@
 \section{Computational Methods and Software}
 \label{sec:software}
 
+write an intro discussing what is in this section\todo{write me}
+
 % \begin{itemize}
 %  \item \st{discretized equations, finite elements, stabilized}
 %  \item penalty formulation, also consider discussing sep model
@@ -12,6 +14,9 @@
 
 \subsection{Discretization Scheme}
 
+
+Weak form \todo{write down weak form}
+
 To solve the Navier-Stokes equations on a computer, a
 Galerkin finite element method (FEM) is used, with linear basis
 functions for both the velocity and pressure. This scheme circumvents
@@ -20,12 +25,22 @@ elements for velocity and  pressure, by introducing a stabilization
 term as first described by Hughes\cite{Hughes198685} and extended to
 natural convection as in Becker and Braack\cite{Becker2002428}.  
 
-The system of ODEs are discretized in time using a
-theta-method.\todo{show theta}
-Newton iterations are used to for solve the resulting nonlinear problem. 
-The unsteady solver used is typically backward Euler for the
-corresponding stability regardless of timestep size.\todo{indicate
-stabiliziation used}
+This system of ODEs are discretized in time using the 
+backward Euler method\cite{moin2010fundamentals}. The time interval
+$(0,T)$ is sliced into $N_t$ steps of 
+uniform temporal length,  $\Delta t$, where $n = 0,\dots,N_t$. 
+This has the form, 
+\begin{equation}
+ y_{n+1} = y_n + \Delta t \, f(y_{n+1},t_{n+1}).
+\end{equation}
+As $f$ is non-linear, a Newton–Raphson method is used to solve the
+resulting nonlinear problem. While an iterative method is significantly
+more computationally expensive per timestep than a similar explicit
+method, the method was selected due to its unconditional stability and
+ease of statistical sampling for a uniform timestep. 
+
+
+stabilization\todo{indicate stabiliziation used}
 
 todo\todo{need enough to construct numerical formulation you used}
 
@@ -44,41 +59,6 @@ change.\todo{define cell reynolds number here}
 % do not need complete equations, but should permit someone to access 
 % the literature and construct precisely the numerical formulations used
 %
-
-\subsection{Penalty Method Implementation}
-
-In the previous section it was noted that a penalty method is used to
-represent impermiable surfaces such as the wind block cone. Babuska's
-penalty treatment of constraints\cite{1973fempen,ZAMM:ZAMM19880680925}
-is used. This was selected because it is easily imposed in the FEM
-context, and the method has been explored in detail in the literature. 
-
-In this approach, a penalty for violating the constraint is included in
-a variation formulation. As an example, consider Laplace's equation on a
-domain $\Omega$ with boundary $\partial\Omega$, 
-\begin{equation}
- \nabla^2 u = 0. 
-\end{equation}
-Dirichlet boundary conditions are introduced into the weak form
-\begin{equation}
- u|_{\partial \Omega} = g
-\end{equation}
-which becomes 
-\begin{equation}
-\int_{\Omega}  - \nabla u \cdot \nabla v dx - \frac{1}{\epsilon}
- \int_{\partial \Omega} (u-g) \cdot v ds = 0 \quad \forall v \in H^1
-\end{equation}
-where $\frac{1}{\epsilon}$ is the penalty parameter. This is the weak
-form for Laplace's equation with a Robin boundary condition 
-\begin{align}
- u = g - \epsilon \partial_n u. 
-\end{align}
-For sufficiently small $\epsilon$, the original Dirichlet boundary
-conditions will be satisfied approximately. Clearly, $\epsilon$ has
-units of length, and can be interpreted as a ``slip length''. In the
-Navier-Stokes solver, this penalty formulation is used to approximately
-impose the no-flow through for impermiable surfaces, such as the
-cone.\todo{need explicit mathematical description of exactly the formulation}
 
 \subsection{Simulation Geometry and Boundary Conditions}
 \label{sec:bc}
@@ -104,6 +84,7 @@ uniformly fixes the temperature of the surface.
 
 \textbf{Inflow Boundary Conditions} 
 
+text
 
 \textbf{Mixed inflow/outflow Boundary Conditions} 
 
