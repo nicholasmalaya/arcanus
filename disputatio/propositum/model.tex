@@ -298,10 +298,10 @@ with ${\bf u}$ the velocity and $\ell_v$ is a specified length
 scale. The length scale $\ell_v$ represents the distance over which the
 flow must evolve under the influence of the body force before the
 velocity in the normal direction is reduced by a factor of $1/{\bf
-e}$. It is a modeling constant and is specified to be the same order as
-the separation distance between neighboring vanes in the physical vane 
-configuration, since entry lengths in internal flows scale with the
-size of the channel.
+e}$.\todo{what is e} It is a modeling constant and is specified to be
+the same order as the separation distance between neighboring vanes in
+the physical vane configuration, since entry lengths in internal flows
+scale with the size of the channel.
 
 This virtual vane formulation is similar to the actuator disk model
 commonly used to represent the rotor of a wind turbine \cite{betz}.
@@ -329,13 +329,14 @@ radial line. The body force is defined as in equation
 \ref{eqn:body_force}; however, the length scale $\ell_v$ is specified to
 be identical to the width  of the surface being represented. This is
 typically two or three grid points. While the actual surface we are
-emulating is thin, the numerical method cannot resolve surfaces smaller than the grid size. 
+emulating is thin, the numerical method has difficulty converging for
+surfaces smaller than the grid size.  
 
 Forcing designed to mimic a surface
 is not unique to this project, and is closely related to (among others)
 the ``immersed boundary methods'' used by various other
-researchers\cite{doi:10.1146/annurev.fluid.37.061903.175743}. What is
-unique about this approach is the use of Babuska's penalty treatment of
+researchers\cite{doi:10.1146/annurev.fluid.37.061903.175743}. 
+This approach is unique in its use of Babuska's penalty treatment of
 constraints\cite{1973fempen,ZAMM:ZAMM19880680925} to enforce the
 behavior at the boundary. This method was selected because it is easily
 imposed in the FEM context, and the method has been explored in detail
@@ -343,7 +344,7 @@ in the literature. Typically, the enforcement occurs along a domain
 boundary, but in this work it is used in the interior. 
 
 This approach includes a penalty term for violating a selected
-constraint in a variation formulation. As an example, consider Laplace's  
+constraint in a variation formulation. As an example, consider Laplace's 
 equation on a domain $\Omega$ with boundary $\partial\Omega$, 
 \begin{equation}
  \nabla^2 u = 0. 
@@ -355,19 +356,41 @@ Dirichlet boundary conditions are introduced into the weak form
 which becomes 
 \begin{equation}
 \int_{\Omega}  - \nabla u \cdot \nabla v \, dx - \frac{1}{\epsilon}
- \int_{\partial \Omega} (u-g) \cdot v ds = 0 \quad \forall v \in H^1
+ \int_{\partial \Omega} (u-g) \cdot v \, ds = 0 \quad \forall v \in H^1(\Omega)
 \end{equation}
-where $\frac{1}{\epsilon}$ is the penalty parameter. This is the weak
-form for Laplace's equation with a Robin boundary condition 
+where $v$ is an appropriate test function, $\frac{1}{\epsilon}$ is the
+penalty parameter and $H^1(\Omega)$ is the Sobolev space of functions on
+$\Omega$. This is the weak form for Laplace's equation with a Robin boundary condition 
 \begin{align}
- u = g - \epsilon \partial_n u. 
+ u = g - \epsilon \, \partial_n u. 
 \end{align}
 For sufficiently small $\epsilon$, the original Dirichlet boundary
 conditions will be satisfied approximately. Clearly, $\epsilon$ has
-units of length, and can be interpreted as a ``slip length''. In the
-Navier-Stokes solver, this penalty formulation is used to approximately
-impose the no-flow through for impermiable surfaces, such as the
-cone.\todo{need explicit mathematical description of exactly the formulation}
+units of length, and can be interpreted as a ``slip length''. 
+
+%
+% In the
+% Navier-Stokes solver, this penalty formulation is used to approximately
+% impose the no-flow through for impermiable surfaces, such as the
+% cone.
+%
+%
+% you will need to motivate and then write down your actual formulation
+% including the finite width of the forcing layer
+%
+% these should be written down mathematically
+%
+
+By analogy with the method above, we add a penalty term to the weak
+form of the Navier-Stokes momentum equation \ref{eq:ns_weak} that has
+the form, 
+\begin{equation}
+P_\epsilon = \int_\Omega ({\bf f_v} \cdot v) \, dx
+\end{equation}
+where ${\bf f_v}$ is as described in equation \ref{eqn:body_force}. Note
+that unlike some penalty methods, this one does not automatically
+satisfy continuity. Rather, the velocity field remains divergence free
+through a separate constraint.\todo{finite forcing layer width -- e.g. x<0}
 
 
 
