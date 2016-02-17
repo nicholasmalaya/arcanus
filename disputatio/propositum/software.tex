@@ -17,13 +17,19 @@ write an intro discussing what is in this section\todo{write me}
 
 Weak form \todo{write down weak form}
 
+mention what happens when steady
+
 To solve the Navier-Stokes equations on a computer, a
 Galerkin finite element method (FEM) is used, with linear basis
 functions for both the velocity and pressure. This scheme circumvents
 the Babuska-Brezzi conditions\cite{bb-cond} and uses equal-order
-elements for velocity and  pressure, by introducing a stabilization
-term as first described by Hughes\cite{Hughes198685} and extended to
-natural convection as in Becker and Braack\cite{Becker2002428}.  
+elements for velocity and  pressure, by introducing a streamline
+upwind/Petrov-Galerkin (SUPG) stabilization term as first described by
+Hughes\cite{Hughes198685,supg} and extended to natural convection as in
+Becker and Braack\cite{Becker2002428}. The stabilization of the
+underlying Navier-Stokes equations is accomplished by the introduction
+of additional terms ($epsilon( )$)
+has the flavor 
 
 This system of ODEs are discretized in time using the 
 backward Euler method\cite{moin2010fundamentals}. The time interval
@@ -34,10 +40,10 @@ This has the form,
  y_{n+1} = y_n + \Delta t \, f(y_{n+1},t_{n+1}).
 \end{equation}
 As $f$ is non-linear, a Newton–Raphson method is used to solve the
-resulting nonlinear problem. While an iterative method is significantly
-more computationally expensive per timestep than a similar explicit
-method, the method was selected due to its unconditional stability and
-ease of statistical sampling for a uniform timestep. 
+resulting implicit nonlinear problem. While an iterative method is
+significantly more computationally expensive per timestep than a similar
+explicit method, the method was selected due to its unconditional
+stability and ease of statistical sampling for a uniform timestep. 
 
 
 stabilization\todo{indicate stabiliziation used}
@@ -65,7 +71,8 @@ change.\todo{define cell reynolds number here}
 
 \textbf{Computational Domain} 
 
-All simulations are performed in a cuboid domain, with 6 faces. We
+All simulations are performed in a cuboid domain, with six
+faces. We\todo{move section}
 use a uniform mesh in the lateral directions, and a non-uniform
 mesh\todo{makes no sense}
 in height to resolve the boundary layer. \todo{sizes relative to device
