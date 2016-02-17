@@ -61,12 +61,15 @@ appendix \ref{app:model_param}.
 %
 
 The equations describing fluid flow with natural convection are,
-\begin{eqnarray*}
+\begin{eqnarray}
  \frac{\partial u}{\partial t} + u \cdot \nabla u =&
   -\frac{1}{\rho}\nabla P + \nu \nabla^2 u - g \frac{T'}{T_0}\\
+  \label{eqn:ns_mom}
  \nabla \cdot u =& 0 \\
+  \label{eqn:ns_cont}
  \rho c_p \frac{\partial T}{\partial t} + u \cdot \nabla T =& \nabla \cdot ( k \nabla T).
-\end{eqnarray*} 
+  \label{eqn:ns_en}
+\end{eqnarray} 
 
 Where we have made the assumptions that the temperature variation is small in
 comparison to the mean temperature of the region. These are the
@@ -501,16 +504,20 @@ the vane region and is defined as,
 %
 \begin{center}
  \begin{algorithm}
-  \caption{Separation model}
+  \caption{The crude separation model. This model identifies if the flow
+  is coming into or out of the vane region, and if the velocity vector
+  is in the same direction as the tangent line of the vanes. In the
+  algorithm below, $r_0$ is the max radius of vanes, $r_i$ the minimum
+  radius of vanes, and $\delta$ is the width of the separation region.}
   \label{alg:sep}
   \begin{algorithmic}[1]
-   \If{($r_0 > r > r_i$)}
+   \If{($r_0 > r > r_i$)} 
    \If{$(r_0 - r) < \delta$ \textbf{or} $((r - r_i) < \delta)$}
-   \State $\overrightarrow{n_r} = \overrightarrow{r}/|r|$
+   \State $\overrightarrow{n^r} = \overrightarrow{r}/|r|$
    \If{$(r - r_i) < \delta$} 
-   \State $\overrightarrow{n_r} = -\overrightarrow{n_r}$
+   \State $\overrightarrow{n^r} = -\overrightarrow{n^r}$
    \EndIf
-   \State $\overrightarrow{t_v} = (n_y^v , -n_x^v) \text{ sign
+   \State $\overrightarrow{t^v} = (n_y^v , -n_x^v) \text{ sign
    }((n_y^v,-n_x^v) \cdot \overrightarrow{n^r})$
    \If{$v \cdot t^v > 0$ \textbf{and} $v \cdot n^r < 0 $}
    \State Special Forcing
