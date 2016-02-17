@@ -437,10 +437,7 @@ P_\epsilon = \int_\Omega ({\bf f_v} \cdot v) \, dx
 where ${\bf f_v}$ is as described in equation \ref{eqn:body_force}. Note
 that unlike some penalty methods, this one does not automatically
 satisfy continuity. Rather, the velocity field remains divergence free
-through a separate constraint.\todo{finite forcing layer width -- e.g. x<0}
-
-
-
+through a separate constraint. 
 
 
 \subsection{Separation Model}
@@ -456,7 +453,7 @@ representation was permitting to leave out the back of the device.
 This exposed a weakness of the turning vane representation outlined
 previously. When the flow entered the virtual vane forcing region it was
 always turned to align with the vane angle, even when the forcing was in
-the opposite direction of the present velocity.\todo{add image?}
+the opposite direction of the present velocity.
 This is in contrast to our physical intuition, where we
 expect the flow to continue along an averaged streamline
 off the trailing edges of the vanes, instead of turning around. 
@@ -471,9 +468,13 @@ image depicting these two cases in shown in figure \ref{fig:sep_model}.
     \caption{Schematic depicting the separation model that extends past
    the trailing edge of the vanes. In the top case, the flow entering
    the virtual vane region is forced to align with the vane angle despite
-   this resulting in a reversal of the flow direction. In the second
-   case, the flow continues to move tangent to the vanes due to the
-   separation of the boundary layer off the trailing edge.} 
+   this resulting in a reversal of the flow direction. This is a
+   consequence of the forcing function acting on the fluid to ensure the
+   velocity vector aligns with the vane. 
+   The second case depicts the separation
+   model, where the flow under certain conditions is not forced and
+   continues to move tangent to the vanes due to 
+   the separation of the boundary layer off the trailing edge.} 
     \label{fig:sep_model}
   \end{center}
 \end{figure}
@@ -487,13 +488,45 @@ defined as
 	    \left( {\bf n^v_y},{\bf -n_x^v} \right) \cdot {\bf n^r} \right].
 \end{equation}\todo{not sure I like this notation}
 
+
+%
+% example of an algorithm
+%
+\begin{center}
+ \begin{algorithm}
+  \caption{Separation model}
+  \label{alg:sep}
+  \begin{algorithmic}[1]
+   \If{($r_0 > r > r_i$)}
+   \If{$(r_0 - r) < \delta$ \textbf{or} $((r - r_i) < \delta)$}
+   \State $\overrightarrow{n_r} = \overrightarrow{r}/|r|$
+   \If{$(r - r_i) < \delta$} 
+   \State $\overrightarrow{n_r} = -\overrightarrow{n_r}$
+   \EndIf
+   \State $\overrightarrow{t_v} = (n_y^v , -n_x^v) \text{ sign
+   }((n_y^v,-n_x^v) \cdot \overrightarrow{n^r})$
+   \If{$v \cdot t^v > 0$ \textbf{and} $v \cdot n^r < 0 $}
+   \State Special Forcing
+   \Else
+   \State Normal Forcing
+   \EndIf
+   \Else
+   \State Normal Forcing
+   \EndIf
+   \EndIf
+  \end{algorithmic}
+ \end{algorithm}
+\end{center}
+%
+
 The forcing is modified when the velocity vector of the local flow, $\bf
 u$ is pointing in to the forcing region: ${\bf u} \cdot {\bf n^r} < 0$, and
 when the velocity vector is in the same direction as the tangent line to
 the vanes: ${\bf u} \cdot {\bf t^v} > 0 $. In these instances, the
 forcing acts as if there was a rigid surface past the vane edge, and
 gives the appearance of a special ``no-penetration'' condition for the
-velocity for these cases.  
+velocity for these cases. The pseudo-code for this procedure is shown in
+algorithm~\ref{alg:sep}.
 
 The addition of this simple separation model significantly reduced the
 flow that penetrated the back of the vanes, and produces results
