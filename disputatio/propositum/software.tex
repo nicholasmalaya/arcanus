@@ -3,33 +3,32 @@
 
 write an intro discussing what is in this section\todo{write me}
 
-% \begin{itemize}
-%  \item \st{discretized equations, finite elements, stabilized}
-%  \item penalty formulation, also consider discussing sep model
-%  \item \st{software (GRINS+Libmesh)}
-%  \item \st{verification of software}
-%  \item \st{tool-chain, simulation machine and hardware}
-%  \item \st{simulation geometry and boundary conditions for wind/thermal-only}
-% \end{itemize}
-
 \subsection{Discretization Scheme}
 
-
-Weak form \todo{write down weak form}
+To solve the Navier-Stokes equations on a computer, a
+Galerkin finite element method (FEM) discretization is used, which
+requires that the equations of interest, equations
+\ref{eqn:ns_mom}-\ref{eqn:ns_en} be cast into the weak form. Casting
+these partial differential equations into a variation formulation is
+accomplished by multiplying the equations by appropriate test vector
+functions and integrating over the domain, $\Omega$. This has the
+form,\todo{write down weak form}  
+\begin{equation}
+ NS
+  \label{eqn:ns_weak}
+\end{equation}
 
 mention what happens when steady
 
-To solve the Navier-Stokes equations on a computer, a
-Galerkin finite element method (FEM) is used, with linear basis
-functions for both the velocity and pressure. This scheme circumvents
+Using linear basis functions for both the velocity and pressure. 
+This scheme circumvents
 the Babuska-Brezzi conditions\cite{bb-cond} and uses equal-order
 elements for velocity and  pressure, by introducing a streamline
 upwind/Petrov-Galerkin (SUPG) stabilization term as first described by
 Hughes\cite{Hughes198685,supg} and extended to natural convection as in
 Becker and Braack\cite{Becker2002428}. The stabilization of the
 underlying Navier-Stokes equations is accomplished by the introduction
-of additional terms ($epsilon( )$)
-has the flavor 
+of additional terms ($\tau()$) that have the flavor\todo{indicate stabiliziation used}
 
 This system of ODEs are discretized in time using the 
 backward Euler method\cite{moin2010fundamentals}. The time interval
@@ -45,20 +44,23 @@ significantly more computationally expensive per timestep than a similar
 explicit method, the method was selected due to its unconditional
 stability and ease of statistical sampling for a uniform timestep. 
 
-
-stabilization\todo{indicate stabiliziation used}
-
-todo\todo{need enough to construct numerical formulation you used}
-
+\subsection{Mesh Discretization}
+%
+% what about mesh...
+%
 The meshes are scaled by system
 diameter. The same number of grid points are used for every
 simulation, with the total domain extents scaled up with system size. In
 this way the ratio of the domain diameter to system diameter remains
 fixed. Likewise, the diffusivities are proportionally scaled with grid
-size to ensure that the cell Reynolds number is maintained for
+size to ensure that the cell Reynolds number,
+\begin{equation}
+ \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y) u}{\nu_T}
+\end{equation}
+ is maintained for
 every simulation. After operation, solutions are evaluated to ensure
 that the qualitative character of the solution does not
-change.\todo{define cell reynolds number here}
+change.
 %
 % gave not completely described numerical methods
 % for instance, have not indicated the stabilization schemes
