@@ -343,9 +343,11 @@ force is defined:
 \end{equation}
 with ${\bf u}$ the velocity and $\ell_v$ is a specified length
 scale. The length scale $\ell_v$ represents the distance over which the
-flow must evolve under the influence of the body force before the
+flow evolves under the influence of the body force before the
 velocity in the normal direction is reduced by a factor of $1/{\bf
-e}$.\todo{what is e} It is a modeling constant and is specified to be
+e}$. In other words, this is the distance over which the
+normal component of the velocity decays exponentially.
+It is a modeling constant and is specified to be
 the same order as the separation distance between neighboring vanes in
 the physical vane configuration, since entry lengths in internal flows
 scale with the size of the channel.
@@ -488,7 +490,7 @@ the vane region and is defined as,
 \begin{equation}
  \bf t^v = \left( {\bf n^v_y},{\bf -n_x^v} \right) \text{sign}\left[
 	    \left( {\bf n^v_y},{\bf -n_x^v} \right) \cdot {\bf n^r} \right].
-\end{equation}\todo{not sure I like this notation}
+\end{equation}
 
 
 %
