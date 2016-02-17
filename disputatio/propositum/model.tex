@@ -352,7 +352,7 @@ the same order as the separation distance between neighboring vanes in
 the physical vane configuration, since entry lengths in internal flows
 scale with the size of the channel.
 
-This virtual vane formulation is similar to the actuator disk model
+This virtual vane formulation is similar to the ``actuator disk'' model
 commonly used to represent the rotor of a wind turbine \cite{betz}.
 
 
@@ -436,11 +436,12 @@ the form,
 \begin{equation}
 P_\epsilon = \int_\Omega ({\bf f_v} \cdot v) \, dx
 \end{equation}
-where ${\bf f_v}$ is as described in equation \ref{eqn:body_force}. Note
-that unlike some penalty methods, this one does not automatically
-satisfy continuity. Rather, the velocity field remains divergence free
-through a separate constraint. 
-
+where ${\bf f_v}$ is as described in equation \ref{eqn:body_force}. 
+This is a variation formulation that seeks to minimize the test function
+$v$. Thus, any velocity that is not aligned with the vane normal will be
+penalized. Note that unlike some penalty methods, this does not
+automatically satisfy continuity. Rather, the velocity field remains
+divergence free through a separately enforced constraint. 
 
 \subsection{Separation Model}
 
