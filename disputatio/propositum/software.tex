@@ -18,17 +18,24 @@ form,\todo{write down weak form}
   \label{eqn:ns_weak}
 \end{equation}
 
-mention what happens when steady
+Some of the simulations presented here were conducted under steady
+conditions, for which the $\frac{\partial}{\partial t}$ terms vanish. 
+All of the simulations discussed in this work were accomplished using
+linear basis functions for both the velocity and pressure.
+Typically, the use of equal order elements for velocity and pressure is
+ruled out in the standard Galerkin FEM formulation by the Babuska-Brezzi
+condition\cite{bb-cond}. The numerical scheme used in this work is
+stable with equal-order elements for velocity and pressure through the
+introduction of streamline upwind/Petrov-Galerkin (SUPG) stabilization
+terms as first described by Hughes\cite{Hughes198685,supg} and extended
+to natural convection as in Becker and Braack\cite{Becker2002428}. The
+stabilization terms add artificial dissipation that approaches zero in
+the limit of smooth solutions. This scheme is ``consistent'' because the
+underlying order of convergence of the numerical method is not 
+affected\ref{hughes2000finite}. 
 
-Using linear basis functions for both the velocity and pressure. 
-This scheme circumvents
-the Babuska-Brezzi conditions\cite{bb-cond} and uses equal-order
-elements for velocity and  pressure, by introducing a streamline
-upwind/Petrov-Galerkin (SUPG) stabilization term as first described by
-Hughes\cite{Hughes198685,supg} and extended to natural convection as in
-Becker and Braack\cite{Becker2002428}. The stabilization of the
-underlying Navier-Stokes equations is accomplished by the introduction
-of additional terms ($\tau()$) that have the flavor\todo{indicate stabiliziation used}
+least-squares 
+ ($\tau$) have the flavor\todo{indicate stabiliziation used}
 
 This system of ODEs are discretized in time using the 
 backward Euler method\cite{moin2010fundamentals}. The time interval
