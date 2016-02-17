@@ -431,17 +431,19 @@ units of length, and can be interpreted as a ``slip length''.
 %
 
 By analogy with the method above, we add a penalty term to the weak
-form of the Navier-Stokes momentum equation \ref{eq:ns_weak} that has
-the form, 
+form of the Navier-Stokes momentum equation described in the subsequent
+section %\ref{eq:ns_weak} 
+that has the form, 
 \begin{equation}
 P_\epsilon = \int_\Omega ({\bf f_v} \cdot v) \, dx
 \end{equation}
 where ${\bf f_v}$ is as described in equation \ref{eqn:body_force}. 
-This is a variation formulation that seeks to minimize the test function
-$v$. Thus, any velocity that is not aligned with the vane normal will be
-penalized. Note that unlike some penalty methods, this does not
-automatically satisfy continuity. Rather, the velocity field remains
-divergence free through a separately enforced constraint. 
+As the system is formulated as a variation problem that seeks to
+minimize the test function $v$, any velocity that is not aligned with
+the vane normal will incur a penalty versus one that does. Note that unlike
+some penalty methods, this does not automatically satisfy
+continuity. Rather, the velocity field remains divergence free through a
+separately enforced constraint.  
 
 \subsection{Separation Model}
 
