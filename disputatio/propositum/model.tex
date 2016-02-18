@@ -604,7 +604,18 @@ The mesh is  non-uniform in height to resolve the boundary layer,
 \todo{sizes relative to device
 typical for wind and no wind}
 
-\textbf{Wall Boundary Conditions} 
+%% hmin = 0.001  
+%% hmax = 0.4  
+%% zb = 2.0
+%% zmax = ${mesh-options/domain_x3_max}
+%% loghrat = ${= log ${mesh-options/hrat}}
+%% c2 = ${/ ${mesh-options/zb} ${- ${mesh-options/hrat} 1}} 
+%% zetab = ${/ ${mesh-options/zmax} ${+ 1 ${/ ${- ${mesh-options/zmax} ${mesh-options/zb}} ${* ${mesh-options/c2} ${mesh-options/hrat} ${mesh-options/loghrat}}}}}
+%% c3 = ${/ ${mesh-options/loghrat} ${mesh-options/zetab}}
+%% mesh_nx3 = ${= ceil ${/ ${* ${mesh-options/zmax} ${mesh-options/c2} ${mesh-options/c3}} ${mesh-options/hmin}}}
+%% c1 = ${* ${mesh-options/c2} ${mesh-options/c3} ${= exp ${* ${mesh-options/c3} ${mesh-options/zetab}}}}
+%% redistribute = '{x}{y}{if(z>${mesh-options/zetab},${mesh-options/c1}*(z-${mesh-options/zmax})+${mesh-options/zmax},${mesh-options/c2}*(exp(${mesh-options/c3}*z)-1))}' 
+
 
 For the ``thermal-only'' case study (no mean wind), 
 periodic boundary conditions are used on the four sides, a modified
@@ -615,13 +626,15 @@ down the math} These are shown schematically in Figure
 condition is imposed on the velocity field, and a dirichlet condition
 uniformly fixes the temperature of the surface. 
 
+\textbf{Wall Boundary Conditions} 
+
 \textbf{Inflow Boundary Conditions} 
 
-text
+
 
 \textbf{Mixed inflow/outflow Boundary Conditions} 
 
-The modified neumann condition is necessary due to the presence of both
+The modified neumann condition is necessary due to the presence of both\todo{write the math}
 inflow and outflow across the face. In the region approximately above
 the vanes, the concentrated hot plume is lifted by buoyancy
 upward and out of the simulation domain. However, the radial inflow
@@ -629,15 +642,15 @@ towards the apparatus is drawn in by large scale convection cells larger
 than the system diameter. Thus, our boundary conditions must permit
 inflow along the areas above and external to the vanes. To avoid an
 ill-posed problem, the ``v'' and ``u'' components of inflow velocity are
-set to zero. \todo{explain cell reynolds}
+set to zero.
 
-Finally, a ``sponge layer'' is labeled near the top boundary.\todo{need
-3d image} This layer artificially increases the momentum diffusivity by
-up to ten times the nominal value. This was designed in response to
-instabilities in the modified 
+Finally, a ``sponge layer'' is often used near these boundaries.
+This layer artificially increases the momentum diffusivity by
+up to ten times the nominal value. 
+This was designed in response to instabilities in the modified 
 neumann boundary condition that occurred when small, high velocity fluid
-parsels would exit the top. This would create high velocity inflows, and
-the feedback loop would result in numerical blow-up. Mindful of the fact
+parsels would exit the boundary. This would create small high velocity inflows, and
+the feedback loop would result in instabilities and numerical blow-up. Mindful of the fact 
 that the character of solution not important in this region, and that
 our physical interest remains focused on the region inside and
 in immediate proximity to the vanes, we introduced a higher diffusivity
@@ -656,8 +669,8 @@ absorbing layers, fringe regions, buffer zones, sponges, etc.
   \end{center}
 \end{figure}
 
-The wind cases are diagrammed in figures \ref{fig:windstream} and
-\ref{fig:windspan}. The wind case has a proscribed inlet boundary layer
+The wind cases are diagrammed in figures \ref{fig:windstream} and\todo{need
+3d image} \ref{fig:windspan}. The wind case has a proscribed inlet boundary layer
 for both the temperature profile as well as the velocity. The velocity
 boundary layer is set to the common 7th power function for a
 turbulent boundary layer,  
@@ -673,8 +686,10 @@ literature a $2/3$ Kelvin per meter gradient has been
 selected\cite{Blocken2007238}. The sides, outflow and top are all set to
 modified neumann boundary conditions, as described above. The outflow
 region in the back also needs the modified neumann as it does
-occasionally exhibit mild inflow on account of the unsteady wake. Sponge
-layers are set along the top and back (outflow) of the box. 
+occasionally exhibit mild inflow on account of the unsteady wake. 
+
+%Sponge
+%layers are set along the top and back (outflow) of the box. 
 
 %
 %335+18*tanh(-z/0.1)-z*2/3
