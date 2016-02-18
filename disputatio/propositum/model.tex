@@ -594,9 +594,14 @@ vanes.
 \textbf{Computational Domain} 
 
 All simulations are performed in a cuboid domain, with six
-faces. We use a uniform mesh in the lateral directions, and a non-uniform
-mesh\todo{makes no sense}
-in height to resolve the boundary layer. \todo{sizes relative to device
+faces. The mesh has a uniform spacing in the lateral directions, 
+except for a double refinement in the region of the vanes. 
+The mesh is  non-uniform in height to resolve the boundary layer, 
+\begin{equation}
+  
+\end{equation}
+
+\todo{sizes relative to device
 typical for wind and no wind}
 
 \textbf{Wall Boundary Conditions} 
