@@ -601,34 +601,27 @@ choice of domain extent as well as the boundary conditions.
 \textbf{Computational Domain} 
 
 All simulations are performed in a cuboid domain, with six
-faces. The domain extents are scaled by system diameter. 
+faces. The domain extents are scaled by system diameter, (D). For the
+thermal-only, which is identical in $L_x$ and $L_y$, the system extents
+($L_x/D$,($L_y/D$) are chosen to be 6. The height ($L_z/D$) is three
+times the system diameter, which is typically nearly equal to the height
+of the vanes.  
 
-\todo{sizes relative to device
-typical for wind and no wind}
+For the wind cases, the streamwise extent, $L_x$, is no longer equal to
+the spanwise length, $L_y$. In these cases, the domain length extends
+two diameters in front of the vanes and three behind ($L_x/D = 5$). The
+spanwise direction extends two diameters in each direct from the center
+($L_y/D = 4$). 
 
 A 3d diagram of the ``thermal-only'' simulation is shown in
 Figure~\ref{fig:thermal3d}. For this case study (no mean wind), 
 periodic boundary conditions are used on the four sides, a modified
 ``inflow-outflow'' neumann condition\cite{gunzburger1989finite} on the
 top boundary, and dirichlet boundary conditions on the bottom (the
-ground).\todo{write down the math} On the ground, a ``no-slip'' velocity
-boundary condition is imposed on the velocity field, and a dirichlet
-condition uniformly fixes the temperature of the surface. These boundary
-conditions are mathematically defined in the subsequent labeled
-paragraphs. 
-
-A 3d diagram of the ``wind'' simulation is shown in
-Figure~\ref{fig:wind3d}. For this particular study (a heated ground with
-an ambient wind), 
-
-periodic boundary conditions are used on the four sides, a modified
-``inflow-outflow'' neumann condition\cite{gunzburger1989finite} on the
-top boundary, and dirichlet boundary conditions on the bottom (the
-ground).\todo{write down the math} On the ground, a no-slip velocity
-boundary condition is imposed on the velocity field, and a dirichlet
-condition uniformly fixes the temperature of the surface. These boundary
-conditions are mathematically defined in the subsequent labeled
-paragraphs. 
+ground). On the ground, a ``no-slip'' velocity boundary condition is
+imposed on the velocity field, and a dirichlet condition uniformly fixes
+the temperature of the surface. These boundary conditions are
+mathematically defined in the subsequent labeled paragraphs. 
 
 \begin{figure}[!htb]
   \begin{center}
@@ -638,10 +631,32 @@ paragraphs.
    the SoV apparatus in the center, which provides perspective on the
    extent of the domain with respect to the turning vane diameter. The
    ground, sides and top boundaries are labeled with the discussion the
-   precise boundary conditions on each provided in section~\ref{sec:bc}.} 
+   precise boundary conditions on each provided in
+   section~\ref{sec:bc}. Notice also the finite thickness, high
+   viscosity ``sponge layer'' at the top of the domain.} 
     \label{fig:thermal3d}
   \end{center}
 \end{figure}
+
+A 3d diagram of the ``wind'' simulation is shown in
+Figure~\ref{fig:wind3d}. For this particular study (a heated ground with
+an ambient wind), 
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 14 cm]{figs/thermal_only_3d}
+    \caption{Domain for the wind and thermal scenario. The diagram scale
+   is representative of typical cases. Note the SoV apparatus which
+   provides perspective on the extent of the domain with respect to the
+   turning vane diameter. The ground, sides, inflow, back and top
+   boundaries are labeled with the discussion the precise boundary
+   conditions on each provided in section~\ref{sec:bc}. Notice also the
+   finite thickness, high viscosity ``sponge layer'' at the top and back
+   of the domain.}   
+    \label{fig:thermal3d}
+  \end{center}
+\end{figure}
+
 
 
 \textbf{Side Boundary Conditions} 
