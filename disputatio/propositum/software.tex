@@ -76,20 +76,19 @@ stability and ease of statistical sampling for a uniform timestep.
 % what about mesh...
 %
 The domain's described in subsection~\ref{sec:bc} are
-discretized\todo{what to say...}
-
-The meshes are scaled by system diameter. The same number of grid points are used for every
-simulation, with the total domain extents scaled up with system size. In
-this way the ratio of the domain diameter to system diameter remains
+discretized in a consistent manner. 
+The domain extents are scaled by system diameter. 
+The same number of grid points are used for every
+simulation. In this way the ratio of the domain length to system diameter remains
 fixed. Likewise, the diffusivities are proportionally scaled with grid
 size to ensure that the cell Reynolds number,
 \begin{equation}
  \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y) u}{\nu_T}
 \end{equation}
- is maintained for
-every simulation. After operation, solutions are evaluated to ensure
-that the qualitative character of the solution does not
-change.
+ is maintained for every simulation to ensure stability. 
+
+%After operation, solutions are evaluated to ensure that 
+%the qualitative character of the solution does not change.
 
 \subsection{Software Stack}
 
