@@ -76,16 +76,38 @@ stability and ease of statistical sampling for a uniform timestep.
 % what about mesh...
 %
 The domain's described in subsection~\ref{sec:bc} are
-discretized in a consistent manner. 
-The domain extents are scaled by system diameter. 
-The same number of grid points are used for every
-simulation. In this way the ratio of the domain length to system diameter remains
-fixed. Likewise, the diffusivities are proportionally scaled with grid
-size to ensure that the cell Reynolds number,
+discretized in a consistent manner. The domain extents are scaled by
+system diameter. The same number of grid points are used for every
+simulation. In this way the ratio of the domain length to system
+diameter remains fixed. Likewise, the diffusivities are proportionally
+scaled with grid size to ensure that the cell Reynolds number, 
 \begin{equation}
  \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y) u}{\nu_T}
 \end{equation}
- is maintained for every simulation to ensure stability. 
+ is maintained for every simulation to ensure stability.
+
+The mesh has a uniform spacing in the lateral directions, except for a
+double refinement in the region of the vanes. \todo{give
+characteristic \# of points}
+
+The mesh is non-uniform in height to resolve the boundary layer, and is
+functionally parameterized according to,
+\begin{equation}
+mesh eq  
+\end{equation}
+where $yar$ is.
+
+%% hmin = 0.001  
+%% hmax = 0.4  
+%% zb = 2.0
+%% zmax = ${mesh-options/domain_x3_max}
+%% loghrat = ${= log ${mesh-options/hrat}}
+%% c2 = ${/ ${mesh-options/zb} ${- ${mesh-options/hrat} 1}} 
+%% zetab = ${/ ${mesh-options/zmax} ${+ 1 ${/ ${- ${mesh-options/zmax} ${mesh-options/zb}} ${* ${mesh-options/c2} ${mesh-options/hrat} ${mesh-options/loghrat}}}}}
+%% c3 = ${/ ${mesh-options/loghrat} ${mesh-options/zetab}}
+%% mesh_nx3 = ${= ceil ${/ ${* ${mesh-options/zmax} ${mesh-options/c2} ${mesh-options/c3}} ${mesh-options/hmin}}}
+%% c1 = ${* ${mesh-options/c2} ${mesh-options/c3} ${= exp ${* ${mesh-options/c3} ${mesh-options/zetab}}}}
+%% redistribute = '{x}{y}{if(z>${mesh-options/zetab},${mesh-options/c1}*(z-${mesh-options/zmax})+${mesh-options/zmax},${mesh-options/c2}*(exp(${mesh-options/c3}*z)-1))}' 
 
 %After operation, solutions are evaluated to ensure that 
 %the qualitative character of the solution does not change.
