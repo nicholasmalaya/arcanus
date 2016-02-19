@@ -595,8 +595,16 @@ This project has two principle modeling regimes. One for the
 ``thermal-only'' simulations,  which is a domain with no ambient
 velocities and an imposed temperature on the ground.  The other
 simulation regime of interest is where ambient winds also contribute
-(``wind'' cases). We now describe these two conditions in terms of the
+(``wind'' cases). We now describe these two scenarios in terms of the
 choice of domain extent as well as the boundary conditions. 
+
+\textbf{Computational Domain} 
+
+All simulations are performed in a cuboid domain, with six
+faces. The domain extents are scaled by system diameter. 
+
+\todo{sizes relative to device
+typical for wind and no wind}
 
 A 3d diagram of the ``thermal-only'' simulation is shown in
 Figure~\ref{fig:thermal3d}. For this case study (no mean wind), 
@@ -616,7 +624,7 @@ an ambient wind),
 periodic boundary conditions are used on the four sides, a modified
 ``inflow-outflow'' neumann condition\cite{gunzburger1989finite} on the
 top boundary, and dirichlet boundary conditions on the bottom (the
-ground).\todo{write down the math} On the ground, a ``no-slip'' velocity
+ground).\todo{write down the math} On the ground, a no-slip velocity
 boundary condition is imposed on the velocity field, and a dirichlet
 condition uniformly fixes the temperature of the surface. These boundary
 conditions are mathematically defined in the subsequent labeled
@@ -636,37 +644,9 @@ paragraphs.
 \end{figure}
 
 
-\textbf{Computational Domain} 
-
-All simulations are performed in a cuboid domain, with six
-faces. The mesh has a uniform spacing in the lateral directions, 
-except for a double refinement in the region of the vanes. 
-The mesh is  non-uniform in height to resolve the boundary layer, 
-
-\begin{equation}
-mesh eq  
-\end{equation}
-
-\todo{sizes relative to device
-typical for wind and no wind}
-
-%% hmin = 0.001  
-%% hmax = 0.4  
-%% zb = 2.0
-%% zmax = ${mesh-options/domain_x3_max}
-%% loghrat = ${= log ${mesh-options/hrat}}
-%% c2 = ${/ ${mesh-options/zb} ${- ${mesh-options/hrat} 1}} 
-%% zetab = ${/ ${mesh-options/zmax} ${+ 1 ${/ ${- ${mesh-options/zmax} ${mesh-options/zb}} ${* ${mesh-options/c2} ${mesh-options/hrat} ${mesh-options/loghrat}}}}}
-%% c3 = ${/ ${mesh-options/loghrat} ${mesh-options/zetab}}
-%% mesh_nx3 = ${= ceil ${/ ${* ${mesh-options/zmax} ${mesh-options/c2} ${mesh-options/c3}} ${mesh-options/hmin}}}
-%% c1 = ${* ${mesh-options/c2} ${mesh-options/c3} ${= exp ${* ${mesh-options/c3} ${mesh-options/zetab}}}}
-%% redistribute = '{x}{y}{if(z>${mesh-options/zetab},${mesh-options/c1}*(z-${mesh-options/zmax})+${mesh-options/zmax},${mesh-options/c2}*(exp(${mesh-options/c3}*z)-1))}' 
-
-
-\textbf{Wall Boundary Conditions} 
+\textbf{Side Boundary Conditions} 
 
 \textbf{Inflow Boundary Conditions} 
-
 
 
 \textbf{Mixed inflow/outflow Boundary Conditions} 
