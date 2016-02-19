@@ -591,11 +591,50 @@ vanes.
 \subsection{Simulation Geometry and Boundary Conditions}
 \label{sec:bc}
 
-This project has two principle modeling regimes. One for the ``thermal-only'' simulations, 
-which is a domain with no ambient velocities and an imposed temperature on the ground. 
-The other simulation regime of interest is where ambient winds also contribute 
-(``wind'' cases). We now describe these two conditions in terms of the choice of domain
-extent as well as the boundary conditions. 
+This project has two principle modeling regimes. One for the
+``thermal-only'' simulations,  which is a domain with no ambient
+velocities and an imposed temperature on the ground.  The other
+simulation regime of interest is where ambient winds also contribute
+(``wind'' cases). We now describe these two conditions in terms of the
+choice of domain extent as well as the boundary conditions. 
+
+A 3d diagram of the ``thermal-only'' simulation is shown in
+Figure~\ref{fig:thermal3d}. For this case study (no mean wind), 
+periodic boundary conditions are used on the four sides, a modified
+``inflow-outflow'' neumann condition\cite{gunzburger1989finite} on the
+top boundary, and dirichlet boundary conditions on the bottom (the
+ground).\todo{write down the math} On the ground, a ``no-slip'' velocity
+boundary condition is imposed on the velocity field, and a dirichlet
+condition uniformly fixes the temperature of the surface. These boundary
+conditions are mathematically defined in the subsequent labeled
+paragraphs. 
+
+A 3d diagram of the ``wind'' simulation is shown in
+Figure~\ref{fig:wind3d}. For this particular study (a heated ground with
+an ambient wind), 
+
+periodic boundary conditions are used on the four sides, a modified
+``inflow-outflow'' neumann condition\cite{gunzburger1989finite} on the
+top boundary, and dirichlet boundary conditions on the bottom (the
+ground).\todo{write down the math} On the ground, a ``no-slip'' velocity
+boundary condition is imposed on the velocity field, and a dirichlet
+condition uniformly fixes the temperature of the surface. These boundary
+conditions are mathematically defined in the subsequent labeled
+paragraphs. 
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 14 cm]{figs/thermal_only_3d}
+    \caption{Domain for the thermal-only
+   scenario. The diagram scale is representative of typical cases. Note
+   the SoV apparatus in the center, which provides perspective on the
+   extent of the domain with respect to the turning vane diameter. The
+   ground, sides and top boundaries are labeled with the discussion the
+   precise boundary conditions on each provided in section~\ref{sec:bc}.} 
+    \label{fig:thermal3d}
+  \end{center}
+\end{figure}
+
 
 \textbf{Computational Domain} 
 
@@ -603,6 +642,7 @@ All simulations are performed in a cuboid domain, with six
 faces. The mesh has a uniform spacing in the lateral directions, 
 except for a double refinement in the region of the vanes. 
 The mesh is  non-uniform in height to resolve the boundary layer, 
+
 \begin{equation}
 mesh eq  
 \end{equation}
@@ -622,15 +662,6 @@ typical for wind and no wind}
 %% c1 = ${* ${mesh-options/c2} ${mesh-options/c3} ${= exp ${* ${mesh-options/c3} ${mesh-options/zetab}}}}
 %% redistribute = '{x}{y}{if(z>${mesh-options/zetab},${mesh-options/c1}*(z-${mesh-options/zmax})+${mesh-options/zmax},${mesh-options/c2}*(exp(${mesh-options/c3}*z)-1))}' 
 
-
-For the ``thermal-only'' case study (no mean wind), 
-periodic boundary conditions are used on the four sides, a modified
-neumann condition\cite{gunzburger1989finite} on the top boundary, and
-dirichlet boundary conditions on the bottom (the ground).\todo{write
-down the math} These are shown schematically in Figure
-\ref{fig:thermalbc}. On the ground, a ``no-slip'' velocity boundary
-condition is imposed on the velocity field, and a dirichlet condition
-uniformly fixes the temperature of the surface. 
 
 \textbf{Wall Boundary Conditions} 
 
@@ -693,9 +724,6 @@ selected\cite{Blocken2007238}. The sides, outflow and top are all set to
 modified neumann boundary conditions, as described above. The outflow
 region in the back also needs the modified neumann as it does
 occasionally exhibit mild inflow on account of the unsteady wake. 
-
-%Sponge
-%layers are set along the top and back (outflow) of the box. 
 
 %
 %335+18*tanh(-z/0.1)-z*2/3
