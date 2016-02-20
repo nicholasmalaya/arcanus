@@ -732,7 +732,7 @@ selected\cite{Blocken2007238}. This has the form,
 % 335+18*tanh(-z/0.1)-z*2/3
 This boundary lies on the upstream face, e.g. $\Gamma_I = \{(-L_x,y,z) \subset \partial \Omega \} $. 
 
-\textbf{Mixed inflow/outflow Boundary Conditions on $\Gamma_T$,($\Gamma_S$) and ($\Gamma_B$)} 
+\textbf{Mixed inflow/outflow Boundary Conditions on $\Gamma_T$,$\Gamma_S$ and $\Gamma_B$} 
 
 A modified Neumann condition is necessary due to the presence of
 both inflow and outflow across the face. 
@@ -770,7 +770,7 @@ conditions will set ``w'' and ``v'' to zero, and T to the value defined by equat
 \textbf{Sponge Layer} 
 
 Finally, a finite thickness ``sponge layer'' is used in front of the
-mixed inflow/outflow boundaries $\gamma_T$ and $\gamma_B$.
+mixed inflow/outflow boundaries $\Gamma_T$ and $\Gamma_B$.
 This layer artificially increases the momentum diffusivity by
 up to ten times the nominal value. This was designed in response to
 instabilities in the modified Neumann boundary condition that occurred
