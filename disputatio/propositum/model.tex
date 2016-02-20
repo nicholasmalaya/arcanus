@@ -629,6 +629,8 @@ top boundary, On the ground, a ``no-slip'' velocity boundary condition is
 imposed on the velocity field, and a Dirichlet condition uniformly fixes
 the temperature of the surface. 
 Each of the $\Gamma$ boundary terms are defined in the subsequent labeled paragraphs.  
+Note that a finite thickness ``Sponge Layer'' is labelled on the figure along 
+the top boundary and is defined in a section below.
 
 \begin{figure}[!htb]
   \begin{center}
@@ -645,15 +647,19 @@ Each of the $\Gamma$ boundary terms are defined in the subsequent labeled paragr
   \end{center}
 \end{figure}
 
-A 3d diagram of the ``wind'' simulation is diagrammed in
-Figure~\ref{fig:wind3d}. For this particular study (a heated ground with 
-an ambient wind), the wind case has a proscribed inlet boundary layer
-for both the temperature profile as well as the velocity. The ground 
-boundary is identical to the thermal-only case. The sides, outflow and
-top are all set to modified neumann boundary conditions. 
-The outflow region in the back also needs the modified neumann as
-it does occasionally exhibit mild inflow on account of the unsteady wake. 
-$\partial \Omega_W = \Gamma_G \bigcup \Gamma_T \bigcup \Gamma_B \bigcup \Gamma_S $. 
+The boundary for the wind cases is decomposed as,
+$\partial \Omega_W = \Gamma_G \bigcup \Gamma_T \bigcup \Gamma_O \bigcup \Gamma_I \bigcup \Gamma_S $. 
+Where $\Gamma_G$ corresponds to the boundary along the ``Ground'', $\Gamma_T$ the ``Top'' boundary, 
+$\Gamma_S$ the two ``Sides'', $\Gamma_I$ the inflow boundary, and $\Gamma_O$ the outflow boundary.
+A 3d representation of the ``wind'' simulation is diagrammed in
+Figure~\ref{fig:wind3d} and labels the boundaries. 
+For this particular study (a heated ground with 
+an ambient wind), the wind case has a proscribed inlet boundary layer along the 
+upstream streamwise face ($\Gamma_I$)
+for both the temperature profile as well as the velocity. The ``Ground''
+boundary is identical to the thermal-only case. The ``Sides'', ``Outflow'' and
+``Top'' are all set to modified Neumann boundary conditions. 
+Note that ``Sponge Layers'' are used on both the back boundary as well as the top.
 
 \begin{figure}[!htb]
   \begin{center}
@@ -671,7 +677,6 @@ $\partial \Omega_W = \Gamma_G \bigcup \Gamma_T \bigcup \Gamma_B \bigcup \Gamma_S
   \end{center}
 \end{figure}
 
-
 \textbf{Ground Boundary Conditions} 
 
 For both the wind and thermal-only cases the ground has a fixed
@@ -687,17 +692,31 @@ Where $\Gamma_G = \{(x,y,0) \subset \partial \Omega \} $.
 % http://fenicsproject.org/documentation/dolfin/dev/python/demo/documented/periodic/python/documentation.html 
 %
 %
-\textbf{Side Boundary Conditions} 
+\textbf{Periodic Boundary Conditions} 
 
-periodic is used in thermal only
-
+A periodic boundary condition $\Gamma_P$ is used in the thermal only cases, 
+along the streamwise and spanwise boundary faces. In these cases the state variables 
+are made to agree with the value at the opposite face, for instance the 
+streamwise boundary will have the form, 
+\begin{align}
+ u(-L_x,y,z) &= u(L_x,y,z) \quad \text{ on } \Gamma_P \\
+ T(-L_x,y,z) &= T(L_x,y,z). 
+\end{align}
+And the spanwise boundary will enforce, 
+\begin{align}
+ u(x,-L_y,z) &= u(x,L_y,z) \quad \text{ on } \Gamma_P \\
+ T(x,-L_y,z) &= T(x,L_y,z). 
+\end{align}
 
 \textbf{Inflow Boundary Conditions} 
 
-wind case
+The inflow boundary condition ($\Gamma_I$) 
+is used on the upwind streamwise face for the wind cases. For this case, 
+the ``v'' and ``w'' inflow components of velocity are set to zero. 
 
-The velocity boundary layer is set to the common 7th power function for a
-turbulent boundary layer,  
+The streamwise component of velocity must reflect the freestream velocity as 
+well as a reasonable boundary layer profile. 
+The common 7th power function for a turbulent boundary layer is used,   
 \begin{equation*}
   u_{in}(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)
 \end{equation*}
@@ -707,19 +726,31 @@ The thermal boundary layer is assumed to have a similar boundary layer,
 but, as observed in real atmospheric flows, there remains a vertical
 temperature gradient outside the thin boundary layer. Based on
 literature a $2/3$ Kelvin per meter gradient has been
-selected\cite{Blocken2007238}. 
+selected\cite{Blocken2007238}. This has the form, 
+\begin{equation*}
+  u_{in}(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right).
+\end{equation*}
+
 
 \textbf{Mixed inflow/outflow Boundary Conditions} 
 
-A modified neumann condition is necessary due to the presence of
-both\todo{write the math} inflow and outflow across the face. In the
+A modified Neumann condition is necessary due to the presence of
+both inflow and outflow across the face. For example, in the
 region approximately above the vanes, the concentrated hot plume is
 lifted by buoyancy upward and out of the simulation domain. However, the
 radial inflow towards the apparatus is drawn in by large scale
 convection cells larger than the system diameter. Thus, our boundary
 conditions must permit inflow along the areas above and external to the
-vanes. To avoid an ill-posed problem, the ``v'' and ``u'' components of
+vanes. 
+
+
+
+To avoid an ill-posed problem, the ``v'' and ``u'' components of
 inflow velocity are set to zero.
+
+\textbf{Side Boundary Conditions} 
+
+identical to outflow but now for v insteady of w
 
 \textbf{Sponge Layer} 
 
@@ -727,7 +758,7 @@ Finally, a finite thickness ``sponge layer'' is used in front of the
 mixed inflow/outflow boundaries. 
 This layer artificially increases the momentum diffusivity by
 up to ten times the nominal value. This was designed in response to
-instabilities in the modified  neumann boundary condition that occurred
+instabilities in the modified  Neumann boundary condition that occurred
 when small, high velocity fluid parsels would exit the boundary. This
 would create small high velocity inflows, and the feedback loop would
 result in instabilities and numerical blow-up. Mindful of the fact that
