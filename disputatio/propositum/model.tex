@@ -713,7 +713,6 @@ And the spanwise boundary will enforce,
 The inflow boundary condition ($\Gamma_I$) 
 is used on the upwind streamwise face for the wind cases. For this case, 
 the ``v'' and ``w'' inflow components of velocity are set to zero. 
-
 The streamwise component of velocity must reflect the freestream velocity as 
 well as a reasonable boundary layer profile. 
 The common 7th power function for a turbulent boundary layer is used,   
@@ -728,9 +727,9 @@ temperature gradient outside the thin boundary layer. Based on
 literature a $2/3$ Kelvin per meter gradient has been
 selected\cite{Blocken2007238}. This has the form, 
 \begin{equation*}
-  u_{in}(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right).
+  T_{in}(z) = \Delta T \left(1- \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)\right) + T_0 - 2z/3. 
 \end{equation*}
-
+% 335+18*tanh(-z/0.1)-z*2/3
 
 \textbf{Mixed inflow/outflow Boundary Conditions} 
 
