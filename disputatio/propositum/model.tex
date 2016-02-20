@@ -599,33 +599,36 @@ choice of domain extent as well as the boundary conditions.
 \textbf{Computational Domain} 
 
 All simulations are performed in a cuboid domain, with six
-faces. The domain extents are scaled by system diameter, (D). For the
-thermal-only, which is identical in $L_x$ and $L_y$, the system extents
-($L_x/D$,($L_y/D$) are chosen to be 6. The height ($L_z/D$) is three
+faces.  The domain is defined as $\Omega \subset \mathbb{R}^3$. 
+The domain extents are scaled by the system diameter, D created by the outer vane radius. 
+The extents are defined in terms of $\{L_x,L_y,L_z\}$ indicating the 
+streamwise, spanwise and vertical directions, respectively. 
+For the thermal-only, which is identical in $L_x$ and $L_y$, the system extents
+($L_x/D$,($L_y/D$) are chosen to be 3. The height ($L_z/D$) is three
 times the system diameter, which is typically nearly equal to the height
-of the vanes.  
+of the vanes. This defines the domain $\Omega$, 
+for instance the thermal-only domain is 
+$\Omega_T = \left[-L_x,L_x \right] \times \left[-L_y,L_y \right] \times \left[0,L_z \right]$. 
 
-For the wind cases, the streamwise extent, $L_x$, is no longer equal to
+For the wind cases, the streamwise extent is no longer equal to
 the spanwise length, $L_y$. In these cases, the domain length extends
-two diameters in front of the vanes and three behind ($L_x/D = 5$). The
-spanwise direction extends two diameters in each direct from the center
-($L_y/D = 4$). 
+two diameters in front of the vanes and three behind. The
+spanwise direction is symmetric extends two diameters in each direction 
+from the center ($L_y/D = 2$). The height is identical to the thermal-only case, at
+three system diameters ($L_z/D = 3$). Thus, the wind domain $\Omega_W$ is 
+$\Omega_W = \left[-2D,3D \right] \times \left[-L_y,L_y \right] \times \left[0,L_z \right]$. 
 
-A 3d diagram of the ``thermal-only'' simulation is shown in
+The boundary the the thermal only case is decomposed as,
+$\partial \Omega_T = \Gamma_G \bigcup \Gamma_T \bigcup \Gamma_P $. 
+Where $\Gamma_G$ corresponds to the boundary along the ``Ground'', $\Gamma_T$ the ``Top'' boundary,
+and $\Gamma_P$ the four periodic ``Sides''. A 3d diagram labeling these boundaries is shown in
 Figure~\ref{fig:thermal3d}. For this case study (no mean wind), 
-periodic boundary conditions are used on the four sides, a modified
+periodic boundary conditions are used on the four sides , and a modified
 ``inflow-outflow'' Neumann condition\cite{gunzburger1989finite} on the
-top boundary, and Dirichlet boundary conditions on the bottom (the
-ground). On the ground, a ``no-slip'' velocity boundary condition is
+top boundary, On the ground, a ``no-slip'' velocity boundary condition is
 imposed on the velocity field, and a Dirichlet condition uniformly fixes
 the temperature of the surface. 
-These boundary conditions are mathematically expressed as a boundary
-$\partial \Omega = $ a domain
-$\Omega \subset \mathbb{R}^3$ 
-
-These boundary conditions are
-mathematically defined in the subsequent labeled paragraphs. 
-
+Each of the $\Gamma$ boundary terms are defined in the subsequent labeled paragraphs.  
 
 \begin{figure}[!htb]
   \begin{center}
@@ -647,9 +650,10 @@ Figure~\ref{fig:wind3d}. For this particular study (a heated ground with
 an ambient wind), the wind case has a proscribed inlet boundary layer
 for both the temperature profile as well as the velocity. The ground 
 boundary is identical to the thermal-only case. The sides, outflow and
-top are all set to modified neumann boundary conditions, as described
-above. The outflow region in the back also needs the modified neumann as
+top are all set to modified neumann boundary conditions. 
+The outflow region in the back also needs the modified neumann as
 it does occasionally exhibit mild inflow on account of the unsteady wake. 
+$\partial \Omega_W = \Gamma_G \bigcup \Gamma_T \bigcup \Gamma_B \bigcup \Gamma_S $. 
 
 \begin{figure}[!htb]
   \begin{center}
@@ -685,6 +689,7 @@ Where $\Gamma_G = \{(x,y,0) \subset \partial \Omega \} $.
 %
 \textbf{Side Boundary Conditions} 
 
+periodic is used in thermal only
 
 
 \textbf{Inflow Boundary Conditions} 
