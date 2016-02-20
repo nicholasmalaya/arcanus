@@ -683,7 +683,7 @@ For both the wind and thermal-only cases the ground has a fixed
 temperature and no-slip velocity boundary conditions. This boundary 
 ($\Gamma_G$) is modeled with a Dirichlet boundary condition such that, 
 \begin{align}
- u &= 0 \quad \text{ on } \Gamma_G \\
+ \overrightarrow{u} &= 0 \quad \text{ on } \Gamma_G \\
  T &= T_g
 \end{align}. 
 Where $\Gamma_G = \{(x,y,0) \subset \partial \Omega \} $. 
@@ -699,12 +699,12 @@ along the streamwise and spanwise boundary faces. In these cases the state varia
 are made to agree with the value at the opposite face, for instance the 
 streamwise boundary will have the form, 
 \begin{align}
- u(-L_x,y,z) &= u(L_x,y,z) \quad \text{ on } \Gamma_P \\
+ \overrightarrow{u}(-L_x,y,z) &= \overrightarrow{u}(L_x,y,z) \quad \text{ on } \Gamma_P \\
  T(-L_x,y,z) &= T(L_x,y,z). 
 \end{align}
 And the spanwise boundary will enforce, 
 \begin{align}
- u(x,-L_y,z) &= u(x,L_y,z) \quad \text{ on } \Gamma_P \\
+ \overrightarrow{u}(x,-L_y,z) &= \overrightarrow{u}(x,L_y,z) \quad \text{ on } \Gamma_P \\
  T(x,-L_y,z) &= T(x,L_y,z). 
 \end{align}
 
@@ -730,22 +730,31 @@ selected\cite{Blocken2007238}. This has the form,
   T_{in}(z) = \Delta T \left(1- \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)\right) + T_0 - 2z/3. 
 \end{equation*}
 % 335+18*tanh(-z/0.1)-z*2/3
+This boundary lies on the upstream face, e.g. $\Gamma_I = \{(-L_x,y,z) \subset \partial \Omega \} $. 
 
 \textbf{Mixed inflow/outflow Boundary Conditions} 
 
 A modified Neumann condition is necessary due to the presence of
-both inflow and outflow across the face. For example, in the
-region approximately above the vanes, the concentrated hot plume is
+both inflow and outflow across the face. 
+For example, in the region above the vanes, the concentrated hot plume is
 lifted by buoyancy upward and out of the simulation domain. However, the
 radial inflow towards the apparatus is drawn in by large scale
 convection cells larger than the system diameter. Thus, our boundary
 conditions must permit inflow along the areas above and external to the
-vanes. 
+vanes, while simultaneously permitting outflow in the area above the vanes. 
 
+Thus, the top boundary condition $\Gamma_T$, has the form, 
+\begin{align}
+  \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0 \\
+  blah
+\end{align}
 
-
+Where\todo{fix eqn above} 
+the top boundary condition is defined to lie at the furthest vertical extent of the domain: 
+$\Gamma_T = \{(x,y,L_z) \subset \partial \Omega \} $. 
 To avoid an ill-posed problem, the ``v'' and ``u'' components of
-inflow velocity are set to zero.
+inflow velocity are set to zero for the thermal-only, and $v=0$, 
+$u=U$ for the wind cases. 
 
 \textbf{Side Boundary Conditions} 
 
