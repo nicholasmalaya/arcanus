@@ -144,7 +144,7 @@ $q$.
 These quantities depend on four dimensions: length, time, temperature
 and mass. Dimensional analysis implies that this mean turbulent quantity
 ($\bar f$) should then only be a function of a single dimensionless
-group.\cite{munson2012fundamentals}. This is chosen to be,
+group\cite{munson2012fundamentals}. This is chosen to be,
 \begin{equation}
  \xi = \frac{z}{L_{M-O}}.
 \end{equation}
@@ -162,9 +162,8 @@ by wind shear. When the magnitude of $L_{M-O}$ is large, the flow is dominated
 by shear effects, and the impact of buoyancy is small. Conversely, a small 
 magnitude of $L_{M-O}$ implies that buoyant effects largely dominate the kinetic energy production.
 
-The mean quantity $\bar f$ has a
-functional representation to the effect,
-
+%The mean quantity $\bar f$ has a
+%functional representation to the effect,
 Then appropriately normalized mean turbulent quantities should be
 functions of the only non-dimensional group 
 \begin{equation}
@@ -395,8 +394,7 @@ imposed in the FEM context, and the method has been explored in detail
 in the literature. Typically, the enforcement occurs along a domain
 boundary, but in this work it is used in the interior. 
 
-This approach includes a penalty term for violating a selected
-constraint in a variation formulation. As an example, consider Laplace's 
+As an example, consider Laplace's 
 equation on a domain $\Omega$ with boundary $\partial\Omega$, 
 \begin{equation}
  \nabla^2 u = 0. 
@@ -441,7 +439,7 @@ that has the form,
 P_\epsilon = \int_\Omega ({\bf f_v} \cdot v) \, dx
 \end{equation}
 where ${\bf f_v}$ is as described in equation \ref{eqn:body_force}. 
-As the system is formulated as a variation problem that seeks to
+As the system is formulated as a variational problem that seeks to
 minimize the test function $v$, any velocity that is not aligned with
 the vane normal will incur a penalty versus one that does. Note that unlike
 some penalty methods, this does not automatically satisfy
@@ -677,7 +675,7 @@ Note that ``Sponge Layers'' are used on both the back boundary as well as the to
   \end{center}
 \end{figure}
 
-\textbf{Ground Boundary Conditions} 
+\textbf{Ground Boundary Conditions,($\Gamma_G$)} 
 
 For both the wind and thermal-only cases the ground has a fixed
 temperature and no-slip velocity boundary conditions. This boundary 
@@ -692,7 +690,7 @@ Where $\Gamma_G = \{(x,y,0) \subset \partial \Omega \} $.
 % http://fenicsproject.org/documentation/dolfin/dev/python/demo/documented/periodic/python/documentation.html 
 %
 %
-\textbf{Periodic Boundary Conditions} 
+\textbf{Periodic Boundary Conditions,($\Gamma_P$)} 
 
 A periodic boundary condition $\Gamma_P$ is used in the thermal only cases, 
 along the streamwise and spanwise boundary faces. In these cases the state variables 
@@ -708,7 +706,7 @@ And the spanwise boundary will enforce,
  T(x,-L_y,z) &= T(x,L_y,z). 
 \end{align}
 
-\textbf{Inflow Boundary Conditions} 
+\textbf{Inflow Boundary Condition,$\Gamma_I$} 
 
 The inflow boundary condition ($\Gamma_I$) 
 is used on the upwind streamwise face for the wind cases. For this case, 
@@ -718,6 +716,7 @@ well as a reasonable boundary layer profile.
 The common 7th power function for a turbulent boundary layer is used,   
 \begin{equation*}
   u_{in}(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)
+  \label{eq:bl_u}
 \end{equation*}
 where $\delta$, the boundary layer thickness, is set based on data
 measured by our experimental partners in the field. 
@@ -728,11 +727,12 @@ literature a $2/3$ Kelvin per meter gradient has been
 selected\cite{Blocken2007238}. This has the form, 
 \begin{equation*}
   T_{in}(z) = \Delta T \left(1- \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)\right) + T_0 - 2z/3. 
+  \label{eq:bl_t}
 \end{equation*}
 % 335+18*tanh(-z/0.1)-z*2/3
 This boundary lies on the upstream face, e.g. $\Gamma_I = \{(-L_x,y,z) \subset \partial \Omega \} $. 
 
-\textbf{Mixed inflow/outflow Boundary Conditions} 
+\textbf{Mixed inflow/outflow Boundary Conditions on $\Gamma_T$,($\Gamma_S$) and ($\Gamma_B$)} 
 
 A modified Neumann condition is necessary due to the presence of
 both inflow and outflow across the face. 
@@ -752,21 +752,28 @@ Thus, the top boundary condition $\Gamma_T$, has the form,
 Where\todo{fix eqn above} 
 the top boundary condition is defined to lie at the furthest vertical extent of the domain: 
 $\Gamma_T = \{(x,y,L_z) \subset \partial \Omega \} $. 
-To avoid an ill-posed problem, the ``v'' and ``u'' components of
+To ensure the problem is well-posed, the ``v'' and ``u'' components of
 inflow velocity are set to zero for the thermal-only, and $v=0$, 
 $u=U$ for the wind cases. 
 
-\textbf{Side Boundary Conditions} 
-
-identical to outflow but now for v insteady of w
+Nearly identical conditions are imposed on the sides and back boundaries in the wind case. 
+In these cases, instead of evaluating if the vertical velocity ``w'' is less than zero, 
+the appropriate normal component of velocity to that face is considered. For instance, the 
+along the side boundaries, $\Gamma_S$ in the wind, the spanwise velocity component ``v'' 
+must be less than zero at $y=L_y$, or $v>0$ at $y=-L_y$ to trigger an inflow condition. 
+In these cases, the vertical velocity $w$ is set to zero, and the streamwise velocity component and
+the temperature field are set according to equations~\ref{eq:bl_u}~and~\ref{eq:bl_t}, respectively.
+Likewise, the back boundary condition ($\Gamma_B$) is tested to ensure that the streamwise 
+velocity ``u'' is not less than zero at the back face ($x=L_x$), and if it is then the inflow 
+conditions will set ``w'' and ``v'' to zero, and T to the value defined by equation~\ref{eq:bl_t}.
 
 \textbf{Sponge Layer} 
 
 Finally, a finite thickness ``sponge layer'' is used in front of the
-mixed inflow/outflow boundaries. 
+mixed inflow/outflow boundaries $\gamma_T$ and $\gamma_B$.
 This layer artificially increases the momentum diffusivity by
 up to ten times the nominal value. This was designed in response to
-instabilities in the modified  Neumann boundary condition that occurred
+instabilities in the modified Neumann boundary condition that occurred
 when small, high velocity fluid parsels would exit the boundary. This
 would create small high velocity inflows, and the feedback loop would
 result in instabilities and numerical blow-up. Mindful of the fact that
