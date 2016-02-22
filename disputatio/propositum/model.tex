@@ -41,7 +41,7 @@ unstable, and as the warm air is driven upwards the flow will transition
 to turbulence. For the typical use case we consider, namely Arizona in
 summer, the temperature difference can be in excess of 30 Kelvin. 
 Rayleigh numbers associated with temperature gradients of this magnitude
-this are between $10^{9} - 10^{11}$, and therefore meet the criterion
+are between $10^{9} - 10^{11}$, and therefore meet the criterion
 for transition to a turbulent regime. The flow is that of an unstably
 stratified fluid.  
 
@@ -65,10 +65,10 @@ appendix \ref{app:model_param}.
 
 The equations describing fluid flow with natural convection are,
 \begin{align}
-  \frac{\partial u}{\partial t} + u \cdot \nabla u =&
+  \frac{\partial u}{\partial t} + u \cdot \nabla u =& \,
   -\frac{1}{\rho}\nabla P + \nu \nabla^2 u - g \frac{T'}{T_0}\\
-  \nabla \cdot u =& 0 \\
-  \rho c_p \frac{\partial T}{\partial t} + u \cdot \nabla T =& \nabla \cdot ( k \nabla T).
+  \nabla \cdot u =& \, 0 \\
+  \rho c_p \frac{\partial T}{\partial t} + u \cdot \nabla T =& \, \nabla \cdot ( k \nabla T).
 \end{align} 
 
 The makes the assumptions that the temperature variation is small in
@@ -613,7 +613,7 @@ the spanwise length, $L_y$. In these cases, the domain length extends
 two diameters in front of the vanes and three behind. The
 spanwise direction is symmetric extends two diameters in each direction 
 from the center ($L_y/D = 2$). The height is identical to the thermal-only case, at
-three system diameters ($L_z/D = 3$). Thus, the wind domain $\Omega_W$ is 
+three system diameters ($L_z/D = 3$). Thus, the wind domain is 
 $\Omega_W = \left[-2D,3D \right] \times \left[-L_y,L_y \right] \times \left[0,L_z \right]$. 
 
 The boundary the the thermal only case is decomposed as,
@@ -693,19 +693,22 @@ Where $\Gamma_G = \{(x,y,0) \subset \partial \Omega \} $.
 %
 \textbf{Periodic Boundary Conditions, $\Gamma_P$} 
 
-A periodic boundary condition $\Gamma_P$ is used in the thermal only cases, 
-along the streamwise and spanwise boundary faces. In these cases the state variables 
+A periodic boundary condition is used in the thermal only cases, 
+along the streamwise and spanwise boundary faces 
+(denoted $\Gamma_{P,x}$ and $\Gamma_{P,y}$, respectively). In these cases the state variables 
 are made to agree with the value at the opposite face, for instance the 
 streamwise boundary will have the form, 
 \begin{align}
- \overrightarrow{u}(-L_x,y,z) &= \overrightarrow{u}(L_x,y,z) \quad \text{ on } \Gamma_P \\
+ \overrightarrow{u}(-L_x,y,z) &= \overrightarrow{u}(L_x,y,z) \quad \text{ on } \Gamma_{P,x} \\
  T(-L_x,y,z) &= T(L_x,y,z). 
 \end{align}
 And the spanwise boundary will enforce, 
 \begin{align}
- \overrightarrow{u}(x,-L_y,z) &= \overrightarrow{u}(x,L_y,z) \quad \text{ on } \Gamma_P \\
+ \overrightarrow{u}(x,-L_y,z) &= \overrightarrow{u}(x,L_y,z) \quad \text{ on } \Gamma_{P,y} \\
  T(x,-L_y,z) &= T(x,L_y,z). 
 \end{align}
+Where $\Gamma_{P,x} = \{(-L_x,y,z) \bigcup (L_x,y,z) \subset \partial \Omega \}$ 
+and $\Gamma_{P,y} = \{(x,-L_y,z) \bigcup (x,L_y,z) \subset \partial \Omega \}$.
 
 \textbf{Inflow Boundary Condition, $\Gamma_I$} 
 
@@ -735,7 +738,18 @@ This boundary lies on the upstream face, e.g. $\Gamma_I = \{(-L_x,y,z) \subset \
 
 \textbf{Mixed inflow/outflow Boundary Conditions on $\Gamma_T$, $\Gamma_S$ and $\Gamma_B$} 
 
-A modified Neumann condition is necessary due to the presence of
+A common outflow boundary condition using FEM is the so-called, ``Do nothing'' condition. 
+This is so-named because the condition is automatically satisfied on the boundary 
+from the partial integration of the viscous term and the pressure gradient. Thus, unless
+further boundary terms are added, this boundary condition is automatically satisfied, 
+and is equivalent to,
+\begin{align}
+  \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0
+  \frac{\partial T}{\partial n}\bigg|_{\Gamma_T} = 0
+\end{align}
+e.g. a Neumann condition on the outward going velocity and temperature. 
+However, for the particular cases in this study, 
+a modified Neumann condition is necessary due to the (possible) presence of
 both inflow and outflow across the face. 
 For example, in the region above the vanes, the concentrated hot plume is
 lifted by buoyancy upward and out of the simulation domain. However, the
@@ -744,18 +758,17 @@ convection cells larger than the system diameter. Thus, our boundary
 conditions must permit inflow along the areas above and external to the
 vanes, while simultaneously permitting outflow in the area above the vanes. 
 
-Thus, the top boundary condition $\Gamma_T$, has the form, 
+Thus, the top boundary condition $\Gamma_T$, has the modified form, 
 \begin{align}
   \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0 \\
-  blah
+  \text{if }(w<0) \text{ then} \\
+  
 \end{align}
 
-Where\todo{fix eqn above} 
-the top boundary condition is defined to lie at the furthest vertical extent of the domain: 
-$\Gamma_T = \{(x,y,L_z) \subset \partial \Omega \} $. 
-To ensure the problem is well-posed, the ``v'' and ``u'' components of
-inflow velocity are set to zero for the thermal-only, and $v=0$, 
-$u=U$ for the wind cases. 
+This ensures that the problem is well-posed, by full defining the incoming flow. 
+The ``v'' and ``u'' components of inflow velocity are set to zero for the thermal-only, and $v=0$, 
+$u=U$ for the wind cases. This top boundary condition is defined to lie at the furthest 
+vertical extent of the domain: $\Gamma_T = \{(x,y,L_z) \subset \partial \Omega \} $. 
 
 Nearly identical conditions are imposed on the ``Sides'' and ``Outflow'' 
 boundaries in the wind case. 
