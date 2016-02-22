@@ -683,8 +683,8 @@ temperature and no-slip velocity boundary conditions. This boundary
 ($\Gamma_G$) is modeled with a Dirichlet boundary condition such that, 
 \begin{align}
  \overrightarrow{u} &= 0 \quad \text{ on } \Gamma_G \\
- T &= T_g
-\end{align}. 
+ T &= T_g.
+\end{align}
 Where $\Gamma_G = \{(x,y,0) \subset \partial \Omega \} $. 
 
 %
@@ -738,20 +738,16 @@ This boundary lies on the upstream face, e.g. $\Gamma_I = \{(-L_x,y,z) \subset \
 
 \textbf{Mixed inflow/outflow Boundary Conditions on $\Gamma_T$, $\Gamma_S$ and $\Gamma_B$} 
 
-% Roy Stogner: Okay, so this DDN is basically no-traction when there's 
-% outflow and Tn=v when there's inflow?  We have no-traction for v*n, 
-% no-traction for anything else when there's outflow, and Dirichlet v.cross.n = 0 when there's inflow.
-
 A common outflow boundary condition using FEM is the so-called, ``Do nothing'' condition. 
 This is so-named because the condition is automatically satisfied on the boundary 
 from the partial integration of the viscous term and the pressure gradient. Thus, unless
 further boundary terms are added, this boundary condition is automatically satisfied, 
 and is equivalent to,
 \begin{align}
-  \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0
+  \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0 \\
   \frac{\partial T}{\partial n}\bigg|_{\Gamma_T} = 0
 \end{align}
-e.g. a Neumann condition on the outward going velocity and temperature. 
+e.g. a Neumann condition on the outward moving velocity and temperature. 
 However, for the particular cases in this study, 
 a modified Neumann condition is necessary due to the (possible) presence of
 both inflow and outflow across the face. 
@@ -762,11 +758,18 @@ convection cells larger than the system diameter. Thus, our boundary
 conditions must permit inflow along the areas above and external to the
 vanes, while simultaneously permitting outflow in the area above the vanes. 
 
-Thus, the top boundary condition $\Gamma_T$, has the modified form, 
+% Roy Stogner: Okay, so this DDN is basically no-traction when there's 
+% outflow and Tn=v when there's inflow?  We have no-traction for v*n, 
+% no-traction for anything else when there's outflow, and Dirichlet v.cross.n = 0 when there's inflow.
+
+Thus, the top boundary condition, $\Gamma_T$, has the modified form, 
 \begin{align}
   \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0 \\
-  \text{if }(w<0) \text{ then} \\
-  
+  \text{if } (w<0) \text{ then} \begin{cases}
+    u = 0\\
+    v = 0\\
+    T = T_{in}
+  \end{cases}
 \end{align}
 
 This ensures that the problem is well-posed, by full defining the incoming flow. 
