@@ -738,6 +738,10 @@ This boundary lies on the upstream face, e.g. $\Gamma_I = \{(-L_x,y,z) \subset \
 
 \textbf{Mixed inflow/outflow Boundary Conditions on $\Gamma_T$, $\Gamma_S$ and $\Gamma_B$} 
 
+% Roy Stogner: Okay, so this DDN is basically no-traction when there's 
+% outflow and Tn=v when there's inflow?  We have no-traction for v*n, 
+% no-traction for anything else when there's outflow, and Dirichlet v.cross.n = 0 when there's inflow.
+
 A common outflow boundary condition using FEM is the so-called, ``Do nothing'' condition. 
 This is so-named because the condition is automatically satisfied on the boundary 
 from the partial integration of the viscous term and the pressure gradient. Thus, unless
