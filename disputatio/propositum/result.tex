@@ -21,7 +21,7 @@ This section begins with a discussion of the structure of solutions from
 a representative case with no ambient winds, the ``thermal only''
 situation. Next, a case with strong ambient horizontal winds (``Wind'')
 is discussed. Finally, the results from a series of runs are shown to
-demonstrate heuristic by which incremental optimization of the system
+demonstrate a heuristic by which incremental optimization of the system
 configuration will be conducted. 
 
 %The results of these optimized configurations will be used as input
@@ -141,8 +141,14 @@ fluid through the upper tier of vanes.
   \label{fig:p-to}
  \end{subfigure}%
 
- \caption{Vertical slices through the center of the device for the thermal-only cases. Black lines 
-   indicate the location of the vanes.}
+ \caption{Time averaged vertical slices through the center of the device
+ for the thermal-only cases. Black lines indicate the location of the
+ vanes. A strong thermal plume is visible at the center of the device,
+ which drives a vertical velocity. The fluid flow is entrained by this
+ vertical movement and pulled radially into the center while being
+ turned by the turning vanes. Notice also the low pressure ``eye'' at
+ the center of the flow, as well as the modest downward flow in the
+ center of the vertical velocity, consistent with figure \ref{fig:cartoon}.}
  \label{fig:to-vert}
 \end{figure}
 
@@ -155,8 +161,9 @@ vortex with azimuthal and vertical velocities of several meters per
 second. The tight vortex region coincides with a high temperature, low
 pressure core region. The rapidly rotating air near the center induces
 a low pressure core, as observed in real dust devils.
-On the vertical velocity plot, notice that a small
-downward flow region has formed in the middle of the vortex. 
+On the vertical velocity plot, a small downward flow region has formed in
+the middle of the vortex, consistent with the sketch in figure
+\ref{fig:cartoon}.  
 
 \begin{figure}[htb]
 
@@ -187,7 +194,11 @@ downward flow region has formed in the middle of the vortex.
   \label{fig:p-to}
  \end{subfigure}%
 
- \caption{Horizontal slices for the thermal-only cases.}
+ \caption{Time averaged horizontal slices taken at the height of the second tier of
+ vanes for the thermal-only cases. These images show a clear thermal
+ plume driving a strong vertical velocity. Notice also the low pressure
+ ``eye of the storm''. In contrast to the wind cases, the vortex is
+ well-anchored in the center of the apparatus. }
  \label{fig:to-hor}
 \end{figure}
 
@@ -302,7 +313,14 @@ flux through the vanes is also significantly higher.
   \label{fig:p-wind-vert}
  \end{subfigure}%
 
- \caption{Vertical slices for the wind cases.}
+ \caption{Time averaged vertical slices from the center of the device
+ for the wind cases. A great deal of flow is radially entrained by the
+ first tier of vanes, consistent with the approach proposed in
+ \ref{fig:cartoon_vanes}. 
+ Notice that while the temperature field appears to
+ be quite modest, this is due to the fact that the thermal column is not
+ well centered. The full column is quite visible in figure
+ \ref{fig:field_real}.}  
  \label{fig:wind-ver}
 \end{figure}
 
@@ -339,8 +357,11 @@ strong thermal column does exist even in the $5 m/s$ wind cases.
   \begin{figure}[!htb]
    \begin{center}
     \includegraphics[width = 12 cm]{figs/t_iso}
-    \caption{Isocountor of the thermal plume. Here, the isocontour is
-    labelled by the potential temperature, $\tau$, as defined in \ref{eqn:tau}.(make this understandible!)}
+    \caption{Iso-contour of the thermal plume. Here, the isocontour is
+    labelled by the potential temperature, $\tau$, as defined in
+    \ref{eqn:tau}. A strong thermal column has visibly formed. The
+    figure is colored by the streamwise velocity, and shows the thermal
+    column also has rotation.} 
     \label{fig:field_real}
    \end{center}
   \end{figure}
@@ -387,20 +408,20 @@ placed. This is a surface integral\cite{landau1959fm}
 \end{figure}
 
 
-\begin{figure}[htb!]
- \begin{subfigure}{.5\textwidth}
-  \centering
-  \includegraphics[width=.75\linewidth]{figs/before_vanes}
-  \caption{Vanes before optimization}
- \end{subfigure}%
- \begin{subfigure}{.5\textwidth}
-  \centering
-  \includegraphics[width=.8\linewidth]{figs/after_vanes}
-  \caption{Vanes after optimization}
- \end{subfigure}%
-  \caption{Can we do this}
- \label{fig:vt-wind-vert}
-\end{figure}\todo{need better figure}
+% \begin{figure}[htb!]
+%  \begin{subfigure}{.5\textwidth}
+%   \centering
+%   \includegraphics[width=.75\linewidth]{figs/before_vanes}
+%   \caption{Vanes before optimization}
+%  \end{subfigure}%
+%  \begin{subfigure}{.5\textwidth}
+%   \centering
+%   \includegraphics[width=.8\linewidth]{figs/after_vanes}
+%   \caption{Vanes after optimization}
+%  \end{subfigure}%
+%   \caption{Can we do this}
+%  \label{fig:vt-wind-vert}
+% \end{figure}\todo{need better figure}
 
 
 %
@@ -416,7 +437,14 @@ placed. This is a surface integral\cite{landau1959fm}
   \includegraphics[width=.8\linewidth]{figs/after_opt}
   \caption{Flow after optimization}
  \end{subfigure}%
-  \caption{Can we do this}
+  \caption{These are vertical slices taken at the center of the vanes of
+ the vertical velocity taken before and after the numerous optimizations
+ of the turning vanes detailed in \ref{fig:opt_plot}. In the
+ original figure, the flow produces a narrow plume. In the second, the
+ flow shows stronger vertical velocities in a much larger and more
+ organized vortex. The flow has also transitioned into a ``two-cell''
+ structure akin to that observed in the naturally occuring phenomena as
+ discussed in subsection \ref{subsec:phenomena}}
   \label{fig:opt_flow}
 \end{figure}
 %
