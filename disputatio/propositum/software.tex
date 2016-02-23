@@ -119,19 +119,25 @@ scaled with grid size to ensure that the cell Reynolds number,
  is maintained for every simulation to ensure stability.
 
 The mesh has a uniform spacing in the lateral directions, except for a
-double refinement in the region of the vanes. \todo{give
-characteristic \# of points}
-
-The mesh is non-uniform in height to resolve the boundary layer, and is
-functionally parameterized according to,
+double refinement in the region of the vanes. Typically, the grid is 
+roughly one hundred points in the streamwise and spanwise directions
+before the double refinement. The mesh is non-uniform in height to
+resolve the boundary layer. This is accomplished by redistributing a
+mesh uniform in height, z, according to,
 \begin{equation}
-mesh eq  
+ z = \begin{cases} C_1(z-L_z)+L_z,& \text{if } z \geq z_\delta\\
+      C_2 \text{ exp}(C_3 z - 1),                 & \text{otherwise}
+     \end{cases}
 \end{equation}
-where $yar$ is.
+where $z_\delta$ is the chosen height of the boundary layer mesh, and
+$C_1-C_3$ are scaling coefficients. This gives the mesh an exponentially
+varying character, with the coefficients chosen to ensure ten or more
+points in the boundary layer and nearly isotropic cells outside of it.
 
 %% hmin = 0.001  
 %% hmax = 0.4  
 %% zb = 2.0
+%% hrat = ${/ ${mesh-options/hmax} ${mesh-options/hmin}}
 %% zmax = ${mesh-options/domain_x3_max}
 %% loghrat = ${= log ${mesh-options/hrat}}
 %% c2 = ${/ ${mesh-options/zb} ${- ${mesh-options/hrat} 1}} 
@@ -166,7 +172,8 @@ which roughly encapsulates the physical regimes it was originally
 designed to simulate. GRINS is open-source, and available on
 \hyperref[www.github.com/grinsfem/grins]{github}. It is released 
 under LGPL2.1.  GRINS is heavily unit tested, with over 60 tests
-available to ensure the reliability of results regardless of install platform.
+available to ensure the reliability of results regardless of install
+platform. 
 
 %The remainder of this subsection is devoted to
 %discussing the underlying libraries used and the description of the
