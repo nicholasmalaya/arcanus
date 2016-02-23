@@ -209,10 +209,10 @@ While eddy thermal diffusivity (defined as, $q = c_p \rho_0 K_T
 Note that while we have differentiated between $\varphi_u$ and
 $\varphi_T$, for turbulent Prandtl numbers near unity (e.g. $Pr_T
 \approx 1$) the functions will be identical. The asymptotic behavior of
-the $\varphi_T$ and $\varphi_u$ at 
-large and small values of $\xi$ provides guidance on more general character of the
-functions. We are interested in the case where $L_{M-O}<0$, which corresponds to 
-heat flux from the ground into the air. 
+the $\varphi_T$ and $\varphi_u$ at large and small values of $\xi$
+provides guidance on more general character of the functions. We are
+interested in the case where $L_{M-O}<0$, which corresponds to heat flux
+from the ground into the air.  
 %
 
 
@@ -414,7 +414,8 @@ which becomes
 \end{equation}
 where $v$ is an appropriate test function, $\frac{1}{\epsilon}$ is the
 penalty parameter and $H^1(\Omega)$ is the Sobolev space of functions on
-$\Omega$. This is the weak form for Laplace's equation with a Robin boundary condition 
+$\Omega$. This is the weak form for Laplace's equation with a Robin
+boundary condition  
 \begin{align}
  u = g - \epsilon \, \partial_n u. 
 \end{align}
@@ -575,7 +576,8 @@ introduced into flow is small fraction of total flow energy by comparing
 this with the energy flux through the top of the vanes. The total energy
 added is measured as,  
 \begin{equation}
- E_{\text{injected}} = \int_0^{2\pi} \int_0^R \int_0^{z_0} F^{'''}_{z_0} dz dr d\theta. 
+ E_{\text{injected}} = \int_0^{2\pi} \int_0^R \int_0^{z_0} F^{'''}_{z_0}
+  dz dr d\theta.  
 \end{equation}
 R is the outer diameter of the vanes. 
 The value of $E_{\text{injected}}$ is typically a few percent of the
@@ -602,35 +604,39 @@ choice of domain extent as well as the boundary conditions.
 
 All simulations are performed in a cuboid domain, with six
 faces.  The domain is defined as $\Omega \subset \mathbb{R}^3$. 
-The domain extents are scaled by the system diameter, D created by the outer vane radius. 
+The domain extents are scaled by the system diameter, D created by the
+outer vane radius.  
 The extents are defined in terms of $\{L_x,L_y,L_z\}$ indicating the 
 streamwise, spanwise and vertical directions, respectively. 
-For the thermal-only, which is identical in $L_x$ and $L_y$, the system extents
-($L_x/D$,($L_y/D$) are chosen to be 3. The height ($L_z/D$) is three
-times the system diameter, which is typically nearly equal to the height
-of the vanes. This defines the domain $\Omega$, 
-for instance the thermal-only domain is 
-$\Omega_T = \left[-L_x,L_x \right] \times \left[-L_y,L_y \right] \times \left[0,L_z \right]$. 
+For the thermal-only, which is identical in $L_x$ and $L_y$, the system
+extents ($L_x/D$,($L_y/D$) are chosen to be 3. The height ($L_z/D$) is
+three times the system diameter, which is typically nearly equal to the
+height of the vanes. This defines the domain $\Omega$, for instance the
+thermal-only domain is $\Omega_T = \left[-L_x,L_x \right] \times
+\left[-L_y,L_y \right] \times \left[0,L_z \right]$.  
 
 For the wind cases, the streamwise extent is no longer equal to
 the spanwise length, $L_y$. In these cases, the domain length extends
 two diameters in front of the vanes and three behind. The
 spanwise direction is symmetric extends two diameters in each direction 
-from the center ($L_y/D = 2$). The height is identical to the thermal-only case, at
-three system diameters ($L_z/D = 3$). Thus, the wind domain is 
-$\Omega_W = \left[-2D,3D \right] \times \left[-L_y,L_y \right] \times \left[0,L_z \right]$. 
+from the center ($L_y/D = 2$). The height is identical to the
+thermal-only case, at three system diameters ($L_z/D = 3$). Thus, the
+wind domain is $\Omega_W = \left[-2D,3D \right] \times \left[-L_y,L_y
+\right] \times \left[0,L_z \right]$.  
 
 The boundary the the thermal only case is decomposed as,
 $\partial \Omega_T = \Gamma_G \bigcup \Gamma_T \bigcup \Gamma_P $. 
-$\Gamma_G$ corresponds to the boundary along the ``Ground'', $\Gamma_T$ the ``Top'' boundary,
-and $\Gamma_P$ the four periodic ``Sides''. A 3d diagram labeling these boundaries is shown in
-Figure~\ref{fig:thermal3d}. For this case study (no mean wind), 
-periodic boundary conditions are used on the four sides , and a modified
+$\Gamma_G$ corresponds to the boundary along the ``Ground'', $\Gamma_T$
+the ``Top'' boundary, and $\Gamma_P$ the four periodic ``Sides''. A 3d
+diagram labeling these boundaries is shown in
+Figure~\ref{fig:thermal3d}. For this case study (no mean wind),
+periodic boundary conditions are used on the four sides , and a modified 
 ``inflow-outflow'' Neumann condition\cite{gunzburger1989finite} on the
 top boundary, On the ground, a ``no-slip'' velocity boundary condition is
 imposed on the velocity field, and a Dirichlet condition uniformly fixes
 the temperature of the surface. 
-Each of the $\Gamma$ boundary terms are defined in the subsequent labeled paragraphs.  
+Each of the $\Gamma$ boundary terms are defined in the subsequent
+labeled paragraphs.   
 Note that a finite thickness ``Sponge Layer'' is labelled on the figure along 
 the top boundary and is defined in a section below.
 
@@ -650,19 +656,21 @@ the top boundary and is defined in a section below.
 \end{figure}
 
 The boundary for the wind cases is decomposed as,
-$\partial \Omega_W = \Gamma_G \bigcup \Gamma_T \bigcup \Gamma_O \bigcup \Gamma_I \bigcup \Gamma_S $. 
-Where $\Gamma_G$ corresponds to the boundary along the ``Ground'', $\Gamma_T$ the ``Top'' boundary, 
-$\Gamma_S$ the two ``Sides'', $\Gamma_I$ the inflow boundary, and $\Gamma_O$ the ``Outflow'' 
+$\partial \Omega_W = \Gamma_G \bigcup \Gamma_T \bigcup \Gamma_O \bigcup
+\Gamma_I \bigcup \Gamma_S $.  
+Where $\Gamma_G$ corresponds to the boundary along the ``Ground'',
+$\Gamma_T$ the ``Top'' boundary, $\Gamma_S$ the two ``Sides'',
+$\Gamma_I$ the inflow boundary, and $\Gamma_O$ the ``Outflow''  
 boundary.
 A 3d representation of the ``wind'' simulation is diagrammed in
 Figure~\ref{fig:wind3d} and labels the boundaries. 
 For this particular study (a heated ground with 
-an ambient wind), the wind case has a proscribed inlet boundary layer along the 
-upstream streamwise face ($\Gamma_I$)
-for both the temperature profile as well as the velocity. The ``Ground''
-boundary is identical to the thermal-only case. The ``Sides'', ``Outflow'' and
-``Top'' are all set to modified Neumann boundary conditions. 
-Note that ``Sponge Layers'' are used on both the back boundary as well as the top.
+an ambient wind), the wind case has a proscribed inlet boundary layer
+along the upstream streamwise face ($\Gamma_I$) for both the temperature
+profile as well as the velocity. The ``Ground'' boundary is identical to
+the thermal-only case. The ``Sides'', ``Outflow'' and ``Top'' are all
+set to modified Neumann boundary conditions. Note that ``Sponge Layers''
+are used on both the back boundary as well as the top. 
 
 \begin{figure}[!htb]
   \begin{center}
@@ -699,7 +707,8 @@ Where $\Gamma_G = \{(x,y,0) \subset \partial \Omega \} $.
 
 A periodic boundary condition is used in the thermal only cases, 
 along the streamwise and spanwise boundary faces 
-(denoted $\Gamma_{P,x}$ and $\Gamma_{P,y}$, respectively). In these cases the state variables 
+(denoted $\Gamma_{P,x}$ and $\Gamma_{P,y}$, respectively). In these
+cases the state variables  
 are made to agree with the value at the opposite face, for instance the 
 streamwise boundary will have the form, 
 \begin{align}
@@ -711,8 +720,10 @@ And the spanwise boundary will enforce,
  \overrightarrow{u}(x,-L_y,z) &= \overrightarrow{u}(x,L_y,z) \quad \text{ on } \Gamma_{P,y} \\
  T(x,-L_y,z) &= T(x,L_y,z). 
 \end{align}
-Where $\Gamma_{P,x} = \{(-L_x,y,z) \bigcup (L_x,y,z) \subset \partial \Omega \}$ 
-and $\Gamma_{P,y} = \{(x,-L_y,z) \bigcup (x,L_y,z) \subset \partial \Omega \}$.
+Where $\Gamma_{P,x} = \{(-L_x,y,z) \bigcup (L_x,y,z) \subset \partial
+\Omega \}$  
+and $\Gamma_{P,y} = \{(x,-L_y,z) \bigcup (x,L_y,z) \subset \partial
+\Omega \}$. 
 
 \textbf{Inflow Boundary Condition, $\Gamma_I$} 
 
@@ -734,19 +745,24 @@ temperature gradient outside the thin boundary layer. Based on
 literature a $2/3$ Kelvin per meter gradient has been
 selected\cite{Blocken2007238}. This has the form, 
 \begin{equation*}
-  T_{in}(z) = \Delta T \left(1- \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)\right) + T_0 - 2z/3. 
+  T_{in}(z) = \Delta T \left(1- \text{ min
+			}\left(\left(\frac{z}{\delta}\right)^7,1\right)\right)
+  + T_0 - 2z/3.  
   \label{eq:bl_t}
 \end{equation*}
 % 335+18*tanh(-z/0.1)-z*2/3
-This boundary lies on the upstream face, e.g. $\Gamma_I = \{(-L_x,y,z) \subset \partial \Omega \} $. 
+This boundary lies on the upstream face, e.g. $\Gamma_I = \{(-L_x,y,z)
+\subset \partial \Omega \} $.  
 
-\textbf{Mixed inflow/outflow Boundary Conditions on $\Gamma_T$, $\Gamma_S$ and $\Gamma_B$} 
+\textbf{Mixed inflow/outflow Boundary Conditions on $\Gamma_T$,
+$\Gamma_S$ and $\Gamma_B$}  
 
-A common outflow boundary condition using FEM is the so-called, ``Do nothing'' condition. 
-This is named so because the condition is automatically satisfied on the boundary 
-from the partial integration of the viscous term and the pressure gradient. Thus, unless
-further boundary terms are added, this boundary condition is automatically satisfied, 
-and is equivalent to,
+A common outflow boundary condition using FEM is the so-called, ``Do
+nothing'' condition. This is named so because the condition is
+automatically satisfied on the boundary from the partial integration of
+the viscous term and the pressure gradient. Thus, unless further
+boundary terms are added, this boundary condition is automatically
+satisfied, and is equivalent to,
 \begin{align}
   \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0 \\
   \frac{\partial T}{\partial n}\bigg|_{\Gamma_T} = 0
@@ -764,7 +780,8 @@ vanes, while simultaneously permitting outflow in the area above the vanes.
 
 % Roy Stogner: Okay, so this DDN is basically no-traction when there's 
 % outflow and Tn=v when there's inflow?  We have no-traction for v*n, 
-% no-traction for anything else when there's outflow, and Dirichlet v.cross.n = 0 when there's inflow.
+% no-traction for anything else when there's outflow, and Dirichlet
+% v.cross.n = 0 when there's inflow. 
 
 Thus, the top boundary condition, $\Gamma_T$, has the modified form, 
 \begin{align}
@@ -776,24 +793,28 @@ Thus, the top boundary condition, $\Gamma_T$, has the modified form,
   \end{cases}
 \end{align}
 
-This ensures that the problem is well-posed, by full defining the incoming flow. 
-The ``v'' and ``u'' components of inflow velocity are set to zero for the thermal-only, and $v=0$, 
-$u=U$ for the wind cases. This top boundary condition is defined to lie at the furthest 
-vertical extent of the domain: $\Gamma_T = \{(x,y,L_z) \subset \partial \Omega \} $. 
+This ensures that the problem is well-posed, by full defining the
+incoming flow. The ``v'' and ``u'' components of inflow velocity are set
+to zero for the thermal-only, and $v=0$, $u=U$ for the wind cases. This
+top boundary condition is defined to lie at the furthest vertical extent
+of the domain: $\Gamma_T = \{(x,y,L_z) \subset \partial \Omega \} $.  
 
-Nearly identical conditions are imposed on the ``Sides'' and ``Outflow'' 
-boundaries in the wind case. 
-In these cases, instead of evaluating if the vertical velocity ``w'' is less than zero, 
-the appropriate normal component of velocity to that face is considered. For instance, the 
-along the side boundaries, $\Gamma_S$ in the wind, the spanwise velocity component ``v'' 
-must be less than zero at $y=L_y$, or $v>0$ at $y=-L_y$ to trigger an inflow condition. 
-In these cases, the vertical velocity $w$ is set to zero, and the streamwise velocity component and
-the temperature field are set according to equations~\ref{eq:bl_u}~and~\ref{eq:bl_t}, respectively.
-Likewise, the outflow boundary condition ($\Gamma_B$) is tested to ensure that the streamwise 
-velocity ``u'' is not less than zero at the back face ($x=L_x$), and if it is then the inflow 
-conditions will set ``w'' and ``v'' to zero, and T to the value defined by equation~\ref{eq:bl_t}.
-This was found necessary because small inflows were found to occur intermittently 
-in the unsteady wake region. 
+Nearly identical conditions are imposed on the ``Sides'' and ``Outflow''
+boundaries in the wind case. In these cases, instead of evaluating if
+the vertical velocity ``w'' is less than zero, the appropriate normal
+component of velocity to that face is considered. For instance, the
+along the side boundaries, $\Gamma_S$ in the wind, the spanwise velocity
+component ``v'' must be less than zero at $y=L_y$, or $v>0$ at $y=-L_y$
+to trigger an inflow condition. In these cases, the vertical velocity
+$w$ is set to zero, and the streamwise velocity component and the
+temperature field are set according to
+equations~\ref{eq:bl_u}~and~\ref{eq:bl_t}, respectively. Likewise, the
+outflow boundary condition ($\Gamma_B$) is tested to ensure that the
+streamwise  velocity ``u'' is not less than zero at the back face
+($x=L_x$), and if it is then the inflow  conditions will set ``w'' and
+``v'' to zero, and T to the value defined by
+equation~\ref{eq:bl_t}. This was found necessary because small inflows
+were found to occur intermittently in the unsteady wake region. 
 
 \textbf{Sponge Layer} 
 
