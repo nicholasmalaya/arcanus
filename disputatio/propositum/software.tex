@@ -36,7 +36,7 @@ functions and integrating over the domain, $\Omega$. The result is
 \end{equation}
 
 Where $(u,v) = \int_\Omega u \cdot v dx$ and $v \in H^1(\Omega)$ is an
-appropriate test function  in the Sobolev space of functions on
+appropriate test function in the Sobolev space of functions on
 $\Omega$. Some of the simulations presented here were conducted under
 steady conditions, for which the $\frac{\partial}{\partial t}$ terms
 vanish.  
@@ -49,20 +49,30 @@ stable with equal-order elements for velocity and pressure through the
 introduction of streamline upwind/Petrov-Galerkin (SUPG) stabilization
 terms as first described by Hughes\cite{Hughes198685,supg} and extended
 to natural convection as in Becker and Braack\cite{Becker2002428}. The
-stabilization terms add artificial dissipation that approaches zero in
-the limit of smooth solutions. This scheme is ``consistent'' because the
+stabilization terms add artificial dissipation that approaches zero as the
+residual converges. This scheme is ``consistent'' because the
 underlying order of convergence of the numerical method is not 
 affected\cite{hughes2000finite}. 
 
+This stabilization is accomplished by introducing additional terms to
+the weak form such that, 
 \begin{equation}
- \langle Lu,S\phi \rangle_\tau = \Sigma_K \left\{
-					 \right\}
+ a_s(c,\phi) = a(c,\phi) + \langle Lc,S\phi \rangle_\tau 
 \end{equation}
-least-squares 
-
-
-Stabilization operator
-($\tau$) have the flavor\todo{indicate stabiliziation used}
+Where $a(.,.)$ is the discrete semi-linear form of equations
+\ref{eqn:ns_weak}, $L()$ are the PDEs from subsection
+\ref{sub_sec:ns_en} in operator form and S is a stabilization operator
+which is chosen to be the negative adjoint of the differential terms of
+$L()$. Finally, $c$ and $\phi$ are the state vectors, e.g.$c= (u,p,T)$
+and $\phi = ( v,\psi,q )$, the state vector of test functions. 
+These stabilization terms are added at each element cell, K,  
+\begin{equation}
+ \langle u,v \rangle_\tau = \sum_K \tau_K(u,v)_K.
+\end{equation}
+This results in three stabilization parameters, $\tau_P, \tau_v, \tau_T$ 
+which are selected according to the values proposed in Becker and Braack. 
+A full derivation of the weak form and stabilization terms will be
+provided in an appendix of the full thesis. 
 
 This system of ODEs are discretized in time using the 
 backward Euler method\cite{moin2010fundamentals}. The time interval
@@ -78,8 +88,6 @@ significantly more computationally expensive per timestep than a similar
 explicit method, the method was selected due to its unconditional
 stability and ease of statistical sampling for a uniform timestep. 
 
-A full derivation of the weak form and stabilization terms will be
-provided in an appendix of the full thesis. 
 
 %
 % gave not completely described numerical methods
