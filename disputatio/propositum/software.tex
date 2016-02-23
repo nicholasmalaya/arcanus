@@ -18,7 +18,8 @@ software tools are briefly introduced.
 
 To solve the Navier-Stokes equations on a computer, a
 Galerkin finite element method (FEM) discretization is used, which
-requires that the equations shown previously in section~\ref{sub_sec:ns_en}
+requires that the equations shown previously in
+section~\ref{sub_sec:ns_en} 
 be cast into the weak form. Manipulating
 these partial differential equations into a variation formulation is
 accomplished by multiplying the equations by appropriate test vector
@@ -28,14 +29,17 @@ functions and integrating over the domain, $\Omega$. The result is
 % http://www.numerik.uni-hd.de/Oberwolfach-Seminar/CFD-Course.pdf
 %
 \begin{equation}
-  (\frac{\partial u}{\partial t}, v) + \nu (\nabla u, \nabla v) + (u \cdot \nabla u,v)
-  -(p,\nabla \cdot u) = (
+  (\frac{\partial u}{\partial t}, v) + (u \cdot \nabla u,v) + \nu
+   (\nabla u, \nabla v)  
+  -(p,\nabla \cdot u) = (gT'/T_0,v).
   \label{eqn:ns_weak}
 \end{equation}
 
-Where $(u,v) = \int_\Omega u \cdot v dx$. 
-Some of the simulations presented here were conducted under steady
-conditions, for which the $\frac{\partial}{\partial t}$ terms vanish. 
+Where $(u,v) = \int_\Omega u \cdot v dx$ and $v \in H^1(\Omega)$ is an
+appropriate test function  in the Sobolev space of functions on
+$\Omega$. Some of the simulations presented here were conducted under
+steady conditions, for which the $\frac{\partial}{\partial t}$ terms
+vanish.  
 All of the simulations discussed in this work were accomplished using
 linear basis functions for both the velocity and pressure.
 Typically, the use of equal order elements for velocity and pressure is
@@ -50,9 +54,15 @@ the limit of smooth solutions. This scheme is ``consistent'' because the
 underlying order of convergence of the numerical method is not 
 affected\cite{hughes2000finite}. 
 
+\begin{equation}
+ \langle Lu,S\phi \rangle_\tau = \Sigma_K \left\{
+					 \right\}
+\end{equation}
 least-squares 
 
- ($\tau$) have the flavor\todo{indicate stabiliziation used}
+
+Stabilization operator
+($\tau$) have the flavor\todo{indicate stabiliziation used}
 
 This system of ODEs are discretized in time using the 
 backward Euler method\cite{moin2010fundamentals}. The time interval
