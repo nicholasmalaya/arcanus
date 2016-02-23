@@ -147,15 +147,15 @@ temperature by two inlet HVAC ducts into the room.
 %While efforts have been made to characterize the level of ventilation being
 %used, these numbers come with non-trivial uncertainties attached. 
 One vent runs continuously at 288 Kelvin with a flow rate estimated 
-to be 1 $m^3$/s.
+to be 1 $\text{m}^3$/s.
 %(4-6 m/s with an approximate area of 0.2 $m^2$)
 The other vent is active only if the room temperature exceeds 301 Kelvin, 
-with a flow rate also estimated at 1 $m^3$/s.
+with a flow rate also estimated at 1 $\text{m}^3$/s.
 Finally, the air leaves through the cracks around the laboratory doors and 
 exhaust vents. Preliminary results indicated that an inflow rate of 1
-$m^3$/s, the lower bound of the possible inflow rates results in
+$\text{m}^3$/s, the lower bound of the possible inflow rates results in
 excessive heating of the room, while inflow conditions at the maximum
-inflow rate of 2 $m^3$/s result in a simulated room that is too cold,
+inflow rate of 2 $\text{m}^3$/s result in a simulated room that is too cold,
 compared to the laboratory.  
 
 Our simulated vortices are sensitive to ambient room temperature and thus 
@@ -267,8 +267,14 @@ the wind tunnel did not include a hot plate.
   \caption{Spanwise Velocity: Virtual Vanes}
  \end{subfigure}%
 
- \caption{Vertical slices through the center of the device for the
- thermal-only cases. Black lines indicate the location of the vanes.}
+ \caption{Horizontal slices through the top of the vanes for the
+ wind validation cases. On the left are the explicitly gridded vanes,
+ and on the right the virtual vanes. The streamwise velocity shows
+ penetration through the region where the vanes are aligned with the
+ flow in both the gridded as well as virtual vanes. In addition, the
+ virtual vane case correctly reproduces the direction and magnitude of
+ the spanwise velocity inside the vanes. Finally, the wake has similar
+ structure between the two cases.}
  \label{fig:wind_val}
 \end{figure}
 
