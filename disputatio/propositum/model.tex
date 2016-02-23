@@ -28,9 +28,9 @@ develops a mathematical model for turbulence in a thermally stratified
 medium. We seek to emulate the operation of the apparatus during the
 day, when dust devils are observed to form readily. 
 At these times, the atmospheric surface layer has the following
-character. Incident radiation from the sun does not significantly
+character. Incident radiation from the Sun does not significantly
 interact with the air, which is nearly transparent. Instead, this
-radiation is absorbed by the ground, which causes it's temperature to
+radiation is absorbed by the ground, which causes its temperature to
 rise. This results in a thermal gradient between the hot ground and the
 cooler air. The warm ground conducts heat to the air, causing expansion
 and lowering the density of the air. This reduced density air near the
@@ -41,7 +41,8 @@ unstable, and as the warm air is driven upwards the flow will transition
 to turbulence. For the typical use case we consider, namely Arizona in
 summer, the temperature difference can be in excess of 30 Kelvin. 
 Rayleigh numbers associated with temperature gradients of this magnitude
-are between $10^{9} - 10^{11}$, and therefore meet the criterion
+are between $10^{9} - 10^{11}$ and therefore meet the criterion
+% ref thermo book here?
 for transition to a turbulent regime. The flow is that of an unstably
 stratified fluid.  
 
@@ -72,7 +73,7 @@ The equations describing fluid flow with natural convection are,
  \cdot ( k \nabla T). 
 \end{align} 
 
-The makes the assumptions that the temperature variation is small in
+The makes the assumption that the temperature variation is small in
 comparison to the mean temperature of the region. These are the
 incompressible Navier-Stokes equations with Boussinesq representation of
 buoyancy coupled with the heat equation.  
@@ -194,13 +195,13 @@ necessarily,
 Notice that $\phi$ and $\varphi$ are different universal functions. Eddy
 viscosity is defined as, $u'v' = \nu_T \frac{\partial
 u}{\partial z}$\cite{durbin2001statistical}, in which case, using
-equation \ref{eq:uz}, it must scale as,  
+equation \ref{eq:uz}, it must scale as
 \begin{equation}
  \nu_T = \frac{{u^*}^2}{\frac{\partial \bar u}{\partial z}} = \frac{u^*
   \kappa L_{M-O}}{\varphi_u(\xi)}.
 \end{equation}
 While eddy thermal diffusivity (defined as, $q = c_p \rho_0 K_T
-\frac{\partial T}{\partial z}$) is, 
+\frac{\partial T}{\partial z}$) is 
 \begin{equation}
  K_T = \frac{q/c_p \rho_0}{\frac{\partial \bar T}{\partial z}} = \frac{u^*
   \kappa L_{M-O}}{\varphi_T(\xi)}.
@@ -251,14 +252,13 @@ accurate\cite{Foken2006}, and are easily instantiated in software.
 %difficult regime to model.\todo{poor justification} 
 The validation process identified a refinement to the virtual vane
 formulation that results in a better representation of the vane
-effects in a broader range of flows. 
-
-The thermal and momentum diffusivities are even larger in the
-device where the flow across the vanes produces shear and generates
-turbulence. The model now include an enhanced turbulent diffusivity in
-the vortical plume region to account for the effects of vortex shedding
-from the trailing edge of the vanes, which is not inherent in the
-virtual vane representation.   
+effects in a broader range of flows. The thermal and momentum
+diffusivities are even larger in the device where the flow across the
+vanes produces shear and generates turbulence. The model now include an
+enhanced turbulent diffusivity in the vortical plume region to account
+for the effects of vortex shedding from the trailing edge of the vanes,
+which is not inherent in the virtual vane representation (discussed in
+\ref{subsec:vane}). 
 
 % To successfully accomplish this, source terms
 % for production of diffusivity were formulated to properly
@@ -271,8 +271,8 @@ virtual vane representation.
 %This calibration
 %is detailed in Section \ref{sec:validation}. 
 The eddy-viscosity in the region of the vanes and interior is set based
-on scaling relations for a turbulent self-similar circular jet, as in 
-Pope\cite{pope2000turbulent}
+on scaling relations for a turbulent self-similar circular jet, as
+described in Pope\cite{pope2000turbulent},
  
 \begin{equation}
   \nu_C = U_0 y_{1/2} \bar \nu_C.
@@ -325,11 +325,11 @@ detailed solution verification.
 
 Instead, we have developed a modeling formulation that does not require
 explicitly meshing the turning vanes, or any surface. These so-called
-"virtual vanes" are implemented as a body force that 
+``virtual vanes'' are implemented as a body force that 
 is applied in the annular region that contains the vanes. Vane
 geometry is specified by the angle $\phi$ a vane makes with a radial
 line as a function of the radial coordinate $r$. A unit normal to vane
-surfaces ${\bf n}$ is thus defined as
+surfaces ${\bf n}$ is defined as
 %
 \begin{equation}
  {\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
@@ -384,8 +384,8 @@ radial line. The body force is defined as in equation
 \ref{eqn:body_force}; however, the length scale $\ell_v$ is specified to
 be identical to the width  of the surface being represented. This is
 typically two or three grid points. While the actual surface we are
-emulating is thin, the numerical method has difficulty converging for
-surfaces smaller than the grid size.  
+emulating is thinner than this, the numerical method has difficulty
+converging for surfaces smaller than the grid size.  
 
 Forcing designed to mimic a surface
 is not unique to this project, and is closely related to (among others)
@@ -471,7 +471,7 @@ off the trailing edges of the vanes, instead of turning around.
 The averaged streamline (e.g. the statistically average behavior, not
 an instant flow field) will continue past the trailing edge of the vane
 due to the separation of the boundary layer off the edge surface. An
-image depicting these two cases in shown in figure \ref{fig:sep_model}.  
+image depicting these two cases in shown in Figure \ref{fig:sep_model}.  
 
 \begin{figure}[!htb]
   \begin{center}
@@ -543,7 +543,7 @@ the vanes: ${\bf u} \cdot {\bf t^v} > 0 $. In these instances, the
 forcing acts as if there was a rigid surface past the vane edge, and
 gives the appearance of a special ``no-penetration'' condition for the
 velocity for these cases. The pseudo-code for this procedure is shown in
-algorithm~\ref{alg:sep}.
+Algorithm~\ref{alg:sep}.
 
 The addition of this simple separation model significantly reduced the
 flow that penetrated the back of the vanes, and produces results
@@ -563,7 +563,7 @@ colleagues.
 %%
 
 Surface roughness effects have been shown to play a role in the
-formation of dust-devils and related atmospheric
+formation of dust devils and related atmospheric
 phenomena\cite{oke1987boundary}. For the flat and sandy regions we are
 simulating, the impact is expected to be a small thermal ``kick-up''
 versus an entirely smooth surface. This is modeled as a volumetric 
@@ -604,16 +604,16 @@ choice of domain extent as well as the boundary conditions.
 
 All simulations are performed in a cuboid domain, with six
 faces.  The domain is defined as $\Omega \subset \mathbb{R}^3$. 
-The domain extents are scaled by the system diameter, D created by the
+The domain extents are scaled by the system diameter, D, created by the
 outer vane radius.  
 The extents are defined in terms of $\{L_x,L_y,L_z\}$ indicating the 
 streamwise, spanwise and vertical directions, respectively. 
 For the thermal-only, which is identical in $L_x$ and $L_y$, the system
-extents ($L_x/D$,($L_y/D$) are chosen to be 3. The height ($L_z/D$) is
+extents $L_x/D$ and $L_y/D$ are chosen to be 3. The height ($L_z/D$) is
 three times the system diameter, which is typically nearly equal to the
-height of the vanes. This defines the domain $\Omega$, for instance the
-thermal-only domain is $\Omega_T = \left[-L_x,L_x \right] \times
-\left[-L_y,L_y \right] \times \left[0,L_z \right]$.  
+height of the vanes. This defines the thermal-only domain $\Omega_T$, 
+as $\Omega_T = \left[-L_x,L_x \right] \times \left[-L_y,L_y \right]
+\times \left[0,L_z \right]$.   
 
 For the wind cases, the streamwise extent is no longer equal to
 the spanwise length, $L_y$. In these cases, the domain length extends
@@ -621,8 +621,8 @@ two diameters in front of the vanes and three behind. The
 spanwise direction is symmetric extends two diameters in each direction 
 from the center ($L_y/D = 2$). The height is identical to the
 thermal-only case, at three system diameters ($L_z/D = 3$). Thus, the
-wind domain is $\Omega_W = \left[-2D,3D \right] \times \left[-L_y,L_y
-\right] \times \left[0,L_z \right]$.  
+wind domain is defined as $\Omega_W = \left[-2D,3D \right] \times
+\left[-L_y,L_y \right] \times \left[0,L_z \right]$.   
 
 The boundary the the thermal only case is decomposed as,
 $\partial \Omega_T = \Gamma_G \bigcup \Gamma_T \bigcup \Gamma_P $. 
@@ -636,9 +636,9 @@ top boundary, On the ground, a ``no-slip'' velocity boundary condition is
 imposed on the velocity field, and a Dirichlet condition uniformly fixes
 the temperature of the surface. 
 Each of the $\Gamma$ boundary terms are defined in the subsequent
-labeled paragraphs.   
-Note that a finite thickness ``Sponge Layer'' is labelled on the figure along 
-the top boundary and is defined in a section below.
+labeled paragraphs. Note that a finite thickness ``Sponge Layer'' is
+labelled on the figure along the top boundary and is defined in a
+section below. 
 
 \begin{figure}[!htb]
   \begin{center}
@@ -703,7 +703,7 @@ Where $\Gamma_G = \{(x,y,0) \subset \partial \Omega \} $.
 % http://fenicsproject.org/documentation/dolfin/dev/python/demo/documented/periodic/python/documentation.html 
 %
 %
-\textbf{Periodic Boundary Conditions, $\Gamma_P$} 
+\textbf{Periodic Boundary Condition, $\Gamma_P$} 
 
 A periodic boundary condition is used in the thermal only cases, 
 along the streamwise and spanwise boundary faces 
@@ -734,7 +734,7 @@ The streamwise component of velocity must reflect the freestream velocity as
 well as a reasonable boundary layer profile. 
 The common 7th power function for a turbulent boundary layer is used,   
 \begin{equation*}
-  u_{in}(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)
+  u_{\text{in}}(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)
   \label{eq:bl_u}
 \end{equation*}
 where $\delta$, the boundary layer thickness, is set based on data
@@ -742,8 +742,8 @@ measured by our experimental partners in the field.
 The thermal boundary layer is assumed to have a similar boundary layer,
 but, as observed in real atmospheric flows, there remains a vertical
 temperature gradient outside the thin boundary layer. Based on
-literature a $2/3$ Kelvin per meter gradient has been
-selected\cite{Blocken2007238}. This has the form, 
+results in the literature a $2/3$ Kelvin per meter gradient has been
+selected\cite{Blocken2007238}. The thermal inflow is then  
 \begin{equation*}
   T_{in}(z) = \Delta T \left(1- \text{ min
 			}\left(\left(\frac{z}{\delta}\right)^7,1\right)\right)
@@ -808,12 +808,12 @@ component ``v'' must be less than zero at $y=L_y$, or $v>0$ at $y=-L_y$
 to trigger an inflow condition. In these cases, the vertical velocity
 $w$ is set to zero, and the streamwise velocity component and the
 temperature field are set according to
-equations~\ref{eq:bl_u}~and~\ref{eq:bl_t}, respectively. Likewise, the
+Equations~\ref{eq:bl_u}~and~\ref{eq:bl_t}, respectively. Likewise, the
 outflow boundary condition ($\Gamma_B$) is tested to ensure that the
 streamwise  velocity ``u'' is not less than zero at the back face
 ($x=L_x$), and if it is then the inflow  conditions will set ``w'' and
 ``v'' to zero, and T to the value defined by
-equation~\ref{eq:bl_t}. This was found necessary because small inflows
+Equation~\ref{eq:bl_t}. This was found necessary because small inflows
 were found to occur intermittently in the unsteady wake region. 
 
 \textbf{Sponge Layer} 
