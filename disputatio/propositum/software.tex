@@ -22,13 +22,18 @@ requires that the equations shown previously in section~\ref{sub_sec:ns_en}
 be cast into the weak form. Manipulating
 these partial differential equations into a variation formulation is
 accomplished by multiplying the equations by appropriate test vector
-functions and integrating over the domain, $\Omega$. The resulting system 
-of equation is \todo{write weak form}
+functions and integrating over the domain, $\Omega$. The result is
+
+%
+% http://www.numerik.uni-hd.de/Oberwolfach-Seminar/CFD-Course.pdf
+%
 \begin{equation}
- NS
+  (\frac{\partial u}{\partial t}, v) + \nu (\nabla u, \nabla v) + (u \cdot \nabla u,v)
+  -(p,\nabla \cdot u) = (
   \label{eqn:ns_weak}
 \end{equation}
 
+Where $(u,v) = \int_\Omega u \cdot v dx$. 
 Some of the simulations presented here were conducted under steady
 conditions, for which the $\frac{\partial}{\partial t}$ terms vanish. 
 All of the simulations discussed in this work were accomplished using
