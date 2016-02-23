@@ -28,15 +28,19 @@ functions and integrating over the domain, $\Omega$. The result is
 %
 % http://www.numerik.uni-hd.de/Oberwolfach-Seminar/CFD-Course.pdf
 %
-\begin{equation}
+\begin{align}
   (\frac{\partial u}{\partial t}, v) + (u \cdot \nabla u,v) + \nu
    (\nabla u, \nabla v)  
   -(p,\nabla \cdot u) = (gT'/T_0,v).
-  \label{eqn:ns_weak}
-\end{equation}
+ \label{eqn:ns_weak} \\
+ (\nabla \cdot u,q)=0
+ \label{eqn:cont_weak} \\
+ (\frac{\partial u}{\partial t}, w) + (u \cdot \nabla T, w) + (k \nabla
+ T, \nabla w)
+\end{align}
 
-Where $(u,v) = \int_\Omega u \cdot v dx$ and $v \in H^1(\Omega)$ is an
-appropriate test function in the Sobolev space of functions on
+Where $(u,v) = \int_\Omega u \cdot v dx$ and $v,w,q \in H^1(\Omega)$ are
+appropriate test functions in the Sobolev space of functions on 
 $\Omega$. Some of the simulations presented here were conducted under
 steady conditions, for which the $\frac{\partial}{\partial t}$ terms
 vanish.  
@@ -64,7 +68,7 @@ Where $a(.,.)$ is the discrete semi-linear form of equations
 \ref{sub_sec:ns_en} in operator form and S is a stabilization operator
 which is chosen to be the negative adjoint of the differential terms of
 $L()$. Finally, $c$ and $\phi$ are the state vectors, e.g.$c= (u,p,T)$
-and $\phi = ( v,\psi,q )$, the state vector of test functions. 
+and $\phi = ( v,w,q )$, the state vector of test functions. 
 These stabilization terms are added at each element cell, K,  
 \begin{equation}
  \langle u,v \rangle_\tau = \sum_K \tau_K(u,v)_K.
@@ -74,7 +78,7 @@ which are selected according to the values proposed in Becker and Braack.
 A full derivation of the weak form and stabilization terms will be
 provided in an appendix of the full thesis. 
 
-This system of ODEs are discretized in time using the 
+The system of ODEs are discretized in time using the 
 backward Euler method\cite{moin2010fundamentals}. The time interval
 $(0,T)$ is sliced into $N_t$ steps of 
 uniform temporal length,  $\Delta t$, where $n = 0,\dots,N_t$. 
