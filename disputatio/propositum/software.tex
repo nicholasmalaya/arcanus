@@ -23,7 +23,8 @@ section~\ref{sub_sec:ns_en}
 be cast into the weak form. Manipulating
 these partial differential equations into a variation formulation is
 accomplished by multiplying the equations by appropriate test vector
-functions and integrating over the domain, $\Omega$. The result is
+functions and integrating over the domain, $\Omega$. The resulting
+system of equations are
 
 %
 % http://www.numerik.uni-hd.de/Oberwolfach-Seminar/CFD-Course.pdf
@@ -36,7 +37,7 @@ functions and integrating over the domain, $\Omega$. The result is
  (\nabla \cdot u,q)=0
  \label{eqn:cont_weak} \\
  (\frac{\partial T}{\partial t}, w) + (u \cdot \nabla T, w) + (k \nabla
- T, \nabla w)
+ T, \nabla w) = 0.
 \end{align}
 
 Where $(u,v) = \int_\Omega u \cdot v dx$ and $v,w,q \in H^1(\Omega)$ are
@@ -44,6 +45,7 @@ appropriate test functions in the Sobolev space of functions on
 $\Omega$. Some of the simulations presented here were conducted under
 steady conditions, for which the $\frac{\partial}{\partial t}$ terms
 vanish.  
+
 All of the simulations discussed in this work were accomplished using
 linear basis functions for both the velocity and pressure.
 Typically, the use of equal order elements for velocity and pressure is
