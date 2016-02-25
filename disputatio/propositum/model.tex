@@ -745,7 +745,7 @@ temperature gradient outside the thin boundary layer. Based on
 results in the literature a $2/3$ Kelvin per meter gradient has been
 selected\cite{Blocken2007238}. The thermal inflow is then  
 \begin{equation*}
-  T_{in}(z) = \Delta T \left(1- \text{ min
+  T_{\text{in}}(z) = \Delta T \left(1- \text{ min
 			}\left(\left(\frac{z}{\delta}\right)^7,1\right)\right)
   + T_0 - 2z/3.  
   \label{eq:bl_t}
@@ -765,6 +765,8 @@ boundary terms are added, this boundary condition is automatically
 satisfied, and is equivalent to,
 \begin{align}
   \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0 \\
+  \frac{\partial v}{\partial n}\bigg|_{\Gamma_T} = 0 \\
+  \frac{\partial w}{\partial n}\bigg|_{\Gamma_T} = 0 \\
   \frac{\partial T}{\partial n}\bigg|_{\Gamma_T} = 0
 \end{align}
 e.g. a Neumann condition on the outward moving velocity and temperature. 
@@ -785,11 +787,16 @@ vanes, while simultaneously permitting outflow in the area above the vanes.
 
 Thus, the top boundary condition, $\Gamma_T$, has the modified form, 
 \begin{align}
-  \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0 \\
+  \frac{\partial w}{\partial n}\bigg|_{\Gamma_T} = 0 \\
   \text{if } (w<0) \text{ then} \begin{cases}
     u = 0\\
     v = 0\\
-    T = T_{in}
+    T = T_{\text{in}}
+  \end{cases}
+  \text{ else} \begin{cases}
+    \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0 \\  
+    \frac{\partial v}{\partial n}\bigg|_{\Gamma_T} = 0 \\  
+    \frac{\partial T}{\partial n}\bigg|_{\Gamma_T} = 0
   \end{cases}
 \end{align}
 
