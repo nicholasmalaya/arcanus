@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\title{\bf{Stabilization}}
+\author{Nicholas Malaya \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
+
+\begin{document}
+\maketitle
+
+Our process is the following: 
+\begin{itemize}
+ \item Strong form Navier Stokes + Bouss
+ \item Cast into weak form
+ \item Prepare as an operator $Lu=f$
+ \item Calculate Fr\'echet derivative
+ \item Separate into differential (P) and constant (Z) components,
+       $L'[u] = P + Z$
+ \item Choose stabilization operator such that $S = -P^*$
+ \item Then stabilization has form, $a_h(u,\phi) = a(u,\phi) + <Lu,S\phi>_\tau$
+\end{itemize}
+
+\end{document}
