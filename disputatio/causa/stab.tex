@@ -1,13 +1,18 @@
 \documentclass{article}
 \usepackage{amsmath,amssymb}
 \usepackage{hyperref}
-\title{\bf{Stabilization}}
+\usepackage{bigints}
+\title{\bf{Stabilization for Navier-Stokes with Boussinesq Buoyancy}}
 \author{Nicholas Malaya \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
 
 \begin{document}
 \maketitle
 
+%
+% intro
+%
 Our process is the following: 
+
 \begin{itemize}
  \item Strong form Navier Stokes + Bouss
  \item Cast into weak form
@@ -16,7 +21,51 @@ Our process is the following:
  \item Separate into differential (P) and constant (Z) components,
        $L'[u] = P + Z$
  \item Choose stabilization operator such that $S = -P^*$
- \item Then stabilization has form, $a_h(u,\phi) = a(u,\phi) + <Lu,S\phi>_\tau$
+ \item Then stabilization has form, $a_h(u,\phi) = a(u,\phi) + \langle
+       Lu,S\phi \rangle_\tau$
 \end{itemize}
+
+This is essentially the least-squares stabilization proposed by Hughes
+and extended to natural convection by Becker and Braack. 
+
+%
+% start the real work
+%
+\newpage
+
+\subsection{Navier-Stokes}
+
+We begin with the incompressible Navier-Stokes equations with Bousinesq
+buoyancy,
+\begin{align}
+ \frac{\partial u}{\partial t} + u \cdot \nabla u &= -\frac{1}{\rho}
+ \nabla p + \nu \nabla^2 u + g \frac{T'}{T_0} \\
+ \nabla \cdot u &= \, 0 \\
+ \rho c_p \frac{\partial T}{\partial t} + u \cdot \nabla T &= \nabla
+ \cdot (k \nabla T)
+\end{align}
+e.g. the momentum, continuity and energy equations, respectively. In
+order to cast these into weak form we multiply by appropriate test
+functions $\phi = \left[v,w,q\right] \in H^1_0(\Omega)$ and integrate over
+the domain, $\Omega \in \mathbb{R}^n$. Our system of equations now
+appears as, 
+\begin{align}
+ yar
+\end{align}
+
+Note that both the pressure term as well as the viscous term were
+integrated by parts to reduce the required order of the solution on those
+state variables. 
+
+We define the inner product by the shorthand notation $(u,v) =
+\bigintsss_\Omega u\cdot v dx $, giving our equations the form,  
+\begin{align}
+ (\dot u,v) + ((u \cdot \nabla) u, v) - (p,\nabla \cdot v) + \nu (\nabla
+ u, \nabla v) = (g \frac{T'}{T_0},v)
+\end{align}
+
+
+Lagrangian is therefore,
+$\mathcal{L}$
 
 \end{document}
