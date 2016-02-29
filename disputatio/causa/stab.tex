@@ -50,18 +50,27 @@ functions $\phi = \left[v,w,q\right] \in H^1_0(\Omega)$ and integrate over
 the domain, $\Omega \in \mathbb{R}^n$. Our system of equations now
 appears as, 
 \begin{align}
- yar
+ \bigintsss_\Omega \dot u \cdot v \, dx +
+ \bigintsss_\Omega  (u \cdot \nabla) \, u \cdot v \, dx &=
+ \bigintsss_\Omega \frac{p}{\rho} \nabla \cdot v \, dx - \nu \bigintsss_\Omega \nabla u \cdot \nabla v
+ \,dx + \bigintsss_\Omega g \frac{T'}{T_0} \cdot v \, dx \\ 
+ - \bigintsss_\Omega q \nabla \cdot u \, dx &= 0 \\
+ \rho c_p \bigintsss_\Omega \dot T \cdot w \, dx + u \cdot \nabla T &= \nabla
+ \cdot (k \nabla T) 
 \end{align}
 
-Note that both the pressure term as well as the viscous term were
-integrated by parts to reduce the required order of the solution on those
-state variables. 
+where an ``over-dot'' denotes time diffentiation, e.g. $\dot u =
+\frac{\partial u}{\partial t}$. Note that both the pressure term as well
+as the viscous term were integrated by parts to reduce the required
+order of the solution on those state variables.  
 
 We define the inner product by the shorthand notation $(u,v) =
 \bigintsss_\Omega u\cdot v dx $, giving our equations the form,  
 \begin{align}
  (\dot u,v) + ((u \cdot \nabla) u, v) - (p,\nabla \cdot v) + \nu (\nabla
- u, \nabla v) = (g \frac{T'}{T_0},v)
+ u, \nabla v) = (g \frac{T'}{T_0},v) \\
+ (\nabla \cdot u, q) = 0 \\
+ yar
 \end{align}
 
 
