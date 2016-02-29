@@ -55,8 +55,9 @@ appears as,
  \bigintsss_\Omega \frac{p}{\rho} \nabla \cdot v \, dx - \nu \bigintsss_\Omega \nabla u \cdot \nabla v
  \,dx + \bigintsss_\Omega g \frac{T'}{T_0} \cdot v \, dx \\ 
  - \bigintsss_\Omega q \nabla \cdot u \, dx &= 0 \\
- \rho c_p \bigintsss_\Omega \dot T \cdot w \, dx + u \cdot \nabla T &= \nabla
- \cdot (k \nabla T) 
+ \rho c_p \bigintsss_\Omega \dot T \cdot w \, dx + \bigintsss_\Omega (u
+ \cdot \nabla) T \cdot w \, dx  &= \bigintsss_\Omega (k \nabla T) \cdot
+ \nabla w \, dx
 \end{align}
 
 where an ``over-dot'' denotes time diffentiation, e.g. $\dot u =
@@ -68,9 +69,9 @@ We define the inner product by the shorthand notation $(u,v) =
 \bigintsss_\Omega u\cdot v dx $, giving our equations the form,  
 \begin{align}
  (\dot u,v) + ((u \cdot \nabla) u, v) - (p,\nabla \cdot v) + \nu (\nabla
- u, \nabla v) = (g \frac{T'}{T_0},v) \\
- (\nabla \cdot u, q) = 0 \\
- yar
+ u, \nabla v) &= (g \frac{T'}{T_0},v) \\
+ (\nabla \cdot u, q) &= 0 \\
+  \rho c_p (\dot T,w) + (u \cdot \nabla T,w) &= (k \nabla T,\nabla w)
 \end{align}
 
 
