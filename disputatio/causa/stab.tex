@@ -117,10 +117,24 @@ the first variation of a function $\Pi(u)$ around a base state, $u$,
 for all $\hat u$ and $\epsilon > 0$ with $u + \epsilon \hat u \in
 H^1_0(\Omega)$.
 
-We not consider the 
-The first variation of state for the
-momentum equation is, 
-
+We now consider the first variation of state for the momentum equation
+term by term. The convective term is, 
+\begin{align}
+ \frac{\partial}{\partial \epsilon} (u + \epsilon \hat u) &\cdot \nabla
+  (u + \epsilon \hat u) \\
+ = \lim_{\epsilon \to 0} \hat u &\cdot \nabla (u + \epsilon \hat u) \\
+ = \hat u & \cdot \nabla u \\
+ = - u &\cdot \nabla \hat u
+\end{align}
+and the viscous term is, 
+\begin{align}
+ \frac{\partial}{\partial \epsilon} \nabla^2 (u + \epsilon \hat u) \\
+ = \nabla^2 \hat u
+\end{align}
 %Lagrangian is therefore, $\mathcal{L}$
+and thus the full adjoint equation for momentum appears as
+\begin{align}
+ - u &\cdot \nabla \hat u - \nabla^2 \hat u = -\frac{1}{\rho} \nabla p.
+\end{align}
 
 \end{document}
