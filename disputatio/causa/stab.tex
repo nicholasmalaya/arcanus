@@ -107,14 +107,17 @@ Where P are the differential terms, and Z the constant terms.
 Our objective is now to construct the adjoint operator of L. This is
 accomplished using the Fr\'echet derivative, which defines the
 functional derivative on L. In general this is accomplished by taking
-the first variation of a function $\Pi(u)$ around a base state, $u^*$,
+the first variation of a function $\Pi(u)$ around a base state, $u$,
 \begin{equation}
- \frac{\partial \Pi(u^* +\epsilon \hat u)}{\partial \epsilon}
+ \delta\, \Pi(u) = \lim_{\epsilon \to 0} \frac{\Pi(u+\epsilon \hat u) -
+  \Pi(u)}{\epsilon} =
+  \frac{\partial \Pi(u +\epsilon \hat u)}{\partial \epsilon}
   \bigg|_{\epsilon = 0}
 \end{equation}
-for all $\hat u$ and $\epsilon > 0$ with $u^* + \epsilon \hat u \in
+for all $\hat u$ and $\epsilon > 0$ with $u + \epsilon \hat u \in
 H^1_0(\Omega)$.
 
+We not consider the 
 The first variation of state for the
 momentum equation is, 
 
