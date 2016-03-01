@@ -90,7 +90,8 @@ The subsequent section will define the operators L and S.
 %
 % subsection
 %
-\subsection{Tau Stabilization and the operators L and S}
+\newpage
+\subsection{The operators L and S}
 
 
 To form the stabilization terms, 
@@ -98,6 +99,7 @@ To form the stabilization terms,
 \begin{equation}
  \langle Lc,S\phi \rangle_\tau
 \end{equation}
+
 we must define the operators L and S. The operator L is simply the PDEs
 in Equations \ref{eq_cont} - \ref{eq_energy} written in operator form. S is
 defined as the negative adjoint of the differential terms in L, e.g.
@@ -190,6 +192,35 @@ While the S matrix is constructed from Equations
     0 & 0 & u \cdot \nabla() + \nabla \cdot k \nabla()
   \end{pmatrix}.
 \end{equation}
+
+%
+% tau!
+%
+\newpage
+\subsection{Tau Stabilization terms}
+
+Finally, we may now form the $\tau$ stabilization terms, 
+\begin{equation}
+ \langle Lc,S\phi \rangle_\tau. 
+\end{equation}
+Where the operator $ \langle \cdot,\cdot \rangle_\tau. $ is shorthand 
+for, 
+\begin{equation}
+ \langle u,v \rangle_\tau = \sum_K \tau_K (u,v)_K.
+\end{equation}
+
+By what Becker and Braack contemptibly referred to as ``elementary
+calculus'', we now discover our stabilization terms, 
+\begin{align}
+ \langle Lc,S\phi \rangle_\tau = \sum_K \{ \quad &\tau_p (\nabla \cdot u,
+ \nabla \cdot v) \\
+ + &\tau_u \,(\nabla p + u \cdot u - \nu \nabla^2 - g \frac{T'}{T_0},
+ \nabla q) \\
+ + &\tau_u \, (\nabla p + u \cdot u - \nu \nabla^2 - g \frac{T'}{T_0},
+ \nabla u \cdot \nabla v + \nu \nabla^2 v) \\
+ + &\tau_T \, (u \cdot T - \nabla \cdot (k \nabla T), \nabla u \cdot \nabla
+ w + \nabla \cdot (k \nabla w)) \}.
+\end{align}
 
 
 \end{document}
