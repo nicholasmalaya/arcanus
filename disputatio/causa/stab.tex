@@ -8,6 +8,7 @@
 \begin{document}
 \maketitle
 
+\section{Stabilization Derivation}
 %
 % intro
 %
@@ -16,13 +17,13 @@ Our process is the following:
 \begin{itemize}
  \item Strong form Navier Stokes + Bouss
  \item Cast into weak form
- \item Prepare as an operator $Lu=f$
+ \item Prepare as an operator $Lc=f$
  \item Calculate Fr\'echet derivative
  \item Separate into differential (P) and constant (Z) components,
-       $L'[u] = P + Z$
+       $L'[c] = P + Z$
  \item Choose stabilization operator such that $S = -P^*$
- \item Then stabilization has form, $a_h(u,\phi) = a(u,\phi) + \langle
-       Lu,S\phi \rangle_\tau$
+ \item Then stabilization has form, $a_h(c,\phi) = a(c,\phi) + \langle
+       Lc,S\phi \rangle_\tau$
 \end{itemize}
 
 This is essentially the least-squares stabilization proposed by Hughes
@@ -33,28 +34,29 @@ and extended to natural convection by Becker and Braack.
 %
 \newpage
 
-\subsection{Navier-Stokes}
+\subsection{Weak Formulation of Equations of Interest}
 
 We begin with the incompressible Navier-Stokes equations with Bousinesq
 buoyancy,
 \begin{align}
+ \nabla \cdot u &= \, 0 \label{eq_cont}\\
  \frac{\partial u}{\partial t} + u \cdot \nabla u &= -\frac{1}{\rho}
- \nabla p + \nu \nabla^2 u + g \frac{T'}{T_0} \\
- \nabla \cdot u &= \, 0 \\
+ \nabla p + \nu \nabla^2 u + g \frac{T'}{T_0} \label{eq_mom}\\
  \rho c_p \frac{\partial T}{\partial t} + u \cdot \nabla T &= \nabla
- \cdot (k \nabla T)
+ \cdot (k \nabla T) \label{eq_energy}
 \end{align}
-e.g. the momentum, continuity and energy equations, respectively. In
-order to cast these into weak form we multiply by appropriate test
-functions $\phi = \left[v,w,q\right] \in H^1_0(\Omega)$ and integrate over
+e.g. the continuity, momentum and energy equations, respectively. Our 
+state vector $c =  \left[p,u,T \right]$ In order to cast these into weak
+form we multiply by appropriate test 
+functions $\phi = \left[q,v,w \right] \in H^1_0(\Omega)$ and integrate over
 the domain, $\Omega \in \mathbb{R}^n$. Our system of equations now
 appears as, 
 \begin{align}
+  \bigintsss_\Omega q \nabla \cdot u \, dx &= 0 \\
  \bigintsss_\Omega \dot u \cdot v \, dx +
  \bigintsss_\Omega  (u \cdot \nabla) \, u \cdot v \, dx &=
  \bigintsss_\Omega \frac{p}{\rho} \nabla \cdot v \, dx - \nu \bigintsss_\Omega \nabla u \cdot \nabla v
  \,dx + \bigintsss_\Omega g \frac{T'}{T_0} \cdot v \, dx \\ 
-  \bigintsss_\Omega q \nabla \cdot u \, dx &= 0 \\
  \rho c_p \bigintsss_\Omega \dot T \cdot w \, dx + \bigintsss_\Omega (u
  \cdot \nabla) T \cdot w \, dx  &= -\bigintsss_\Omega (k \nabla T) \cdot
  \nabla w \, dx
@@ -68,16 +70,29 @@ order of the solution on those state variables.
 We define the inner product by the shorthand notation $(u,v) =
 \bigintsss_\Omega u\cdot v dx $, giving our equations the form,  
 \begin{align}
+ (\nabla \cdot u, q) &= 0 \\
  (\dot u,v) + (u \cdot \nabla u, v) - (p,\nabla \cdot v) + \nu (\nabla
  u, \nabla v) &= (g \frac{T'}{T_0},v) \\
- (\nabla \cdot u, q) &= 0 \\
-  \rho c_p (\dot T,w) + (u \cdot \nabla T,w) + (k \nabla T,\nabla w) &= 0.
+ \rho c_p (\dot T,w) + (u \cdot \nabla T,w) + (k \nabla T,\nabla w) &= 0.
 \end{align}
 
-This defines the operator L. Our objective is now to use the calculus of
-variations in construct the adjoint operator of L. This is accomplished
-using the Fr\'echet derivative, which defines the functional
-derivative. 
+This defines our weak form operator $a(c,\phi)$. Our full equations will
+also include a stabilization term such that,  
+\begin{equation}
+ a_h(c,\phi) = a(c,\phi) +  \langle Lc,S\phi \rangle_\tau
+\end{equation}
+
+The subsequent section will define the operators L and S. 
+
+\subsection{$\tau$ Stabilization and the operators L and S}
+
+
+The operator L is simply the PDEs in Equation
+\ref{eq_cont}-\ref{eq_energy} written in operator form. 
+
+ Our objective is now to use the calculus of variations in construct the
+ adjoint operator of L. This is accomplished using the Fr\'echet
+ derivative, which defines the functional derivative. 
 
 The first variation of state for the momentum equation is,
 
