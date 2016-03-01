@@ -115,7 +115,7 @@ stratified flow.
 
 Monin and Obukhov argued that under statistically stationary, horizontally
 homogeneous conditions, the dynamics of any mean turbulent quantity
-($\bar f$) in a thermally stratified medium which depends only on,  
+($\bar f$) in a thermally stratified medium depend only on,  
 
 \begin{equation}
 \bar f = f(z,\frac{g}{T_0},\rho_0,\nu_l,K_l,u^*,q).
@@ -125,8 +125,8 @@ small compared to their turbulent counterparts, $\nu_T$ and $K_T$, and
 are therefore negligible. 
 The remaining five parameters are: the distance from the ground, z; the
 buoyancy coefficient, $\frac{g}{T_0}$; the density of the fluid,
-$\rho_0$; a velocity scale, $u^*$; and the heat flux from the ground,
-$q$. 
+$\rho_0$; a velocity scale, $u^*$ (in particular, the freestream
+velocity); and the heat flux to the ground, $q$.\todo{is this right?}
 % Likewise, if we define $z-z_0$ as an ``effective roughness
 % height'' or displacement distance, we can reasonably neglect $z_0$ from these
 % considerations. While the roughness height can be large (for instance in
@@ -205,7 +205,7 @@ Note the difference between $\varphi_u$ and
 $\varphi_T$, which for turbulent Prandtl numbers near unity (e.g. $Pr_T
 \approx 1$) the functions will be identical. The asymptotic behavior of
 the $\varphi_T$ and $\varphi_u$ at large and small values of $\xi$
-provides guidance on more general character of the functions. 
+provides guidance to the more general character of the functions. 
 Our interest lies in the case where $L_{M-O}<0$, which corresponds to heat flux
 from the ground into the air.  
 %
@@ -214,8 +214,8 @@ from the ground into the air.
 The case where $\xi \to -\infty $ implies $\frac{z}{L_{M-O}} \to
 -\infty $ and $z>>L_{M-O}$. This is most readily interpreted as the instance
 where $u^* \to 0$, e.g. the buoyancy-dominated case with no wind
-(free-convection). For this case, the function $\varphi_T$ must hold no
-dependence on $u^*$, and will approach a constant value. Scaling
+(free-convection). For this case, the function $\varphi_T$ must have no
+dependence on $u^*$, and will approach a constant. Scaling
 analysis implies that the overall function will not depend on $u^*$ only
 when the function $\varphi$ scales to the $-\frac{4}{3}$ power. The
 function must then be
@@ -228,7 +228,7 @@ for } z \gg L_{M-O}.
 
 So long as the Prandtl number remains constant in space, then
 % todo: provide discussion as to why this is not an unreasonable expectation
-identical arguments as to the asymptotic behaviour at large $\xi$ provide
+identical arguments regarding the asymptotic behaviour at large $\xi$ provide
 the analogous result for the eddy viscosity's variation with respect to
 distance from the ground,  
 \begin{equation}
@@ -238,9 +238,9 @@ for } z \gg L_{M-O}.
 \end{equation}
 
 These functions have been found to be broadly applicable and
-accurate\cite{Foken2006}, and are easily instantiated in software.
+accurate\cite{Foken2006}, and are easily implemented in software.
 
-\subsection{Eddy Viscosity in Device}
+\subsection{Eddy Viscosity in the Device}
 
 %However, this is also a more
 %difficult regime to model.\todo{poor justification} 
@@ -251,7 +251,7 @@ diffusivities are even larger in the device where the flow across the
 vanes produces shear and generates turbulence. The model now include an
 enhanced turbulent diffusivity in the vortical plume region to account
 for the effects of vortex shedding from the trailing edge of the vanes,
-which is not inherent in the virtual vane representation (discussed in
+which is not represented in the virtual vane representation (discussed in
 \ref{subsec:vane}). 
 
 % To successfully accomplish this, source terms
@@ -359,14 +359,14 @@ commonly used to represent the rotor of a wind turbine \cite{betz}.
 \subsection{Solid Surface Representation}
 \label{subsec:solid_surface}
 
-This subsection details the model used for rigid, impermiable surfaces
+In addition to vanes, the SoV device includes impermiable surfaces
 such as the wind break (``cone'') on the top of the facility. As with
 the turning vanes, this is accomplished without explicitly meshing the
-surface nor imposing  a boundary condition at the surface. This permits
+surface nor imposing  a boundary condition at the surface. This allows
 rapid exploration of configurations  with different solid surfaces to
-control and manipulate the fluid flow. These solid surfaces are also
-represented by a body force region applied where the wall is set to be
-located in.  A vector normal to the surface is defined in this region so
+control and manipulate the fluid flow. These solid surfaces are
+represented by a body force acting in a region surrounding the wall. 
+A vector normal to the surface is defined in this region so
 that a body force will push  the velocity to zero, resulting in the flow
 moving only parallel to the virtual surface. For instance, the outward
 facing unit normal for a cylindrical surface is represented as 
