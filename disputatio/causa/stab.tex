@@ -2,6 +2,9 @@
 \usepackage{amsmath,amssymb}
 \usepackage{hyperref}
 \usepackage{bigints}
+\usepackage{etoolbox}
+\AtBeginEnvironment{pmatrix}{\setlength{\arraycolsep}{15pt}}
+
 \title{\bf{Stabilization for Navier-Stokes with Boussinesq Buoyancy}}
 \author{Nicholas Malaya \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
 
@@ -96,7 +99,7 @@ To form the stabilization terms,
  \langle Lc,S\phi \rangle_\tau
 \end{equation}
 we must define the operators L and S. The operator L is simply the PDEs
-in Equation \ref{eq_cont}-\ref{eq_energy} written in operator form. S is
+in Equations \ref{eq_cont}-\ref{eq_energy} written in operator form. S is
 defined as the negative adjoint of the differential terms in L, e.g.
 \begin{align}
  L'[c] = P + Z \\
@@ -134,7 +137,59 @@ and the viscous term is,
 %Lagrangian is therefore, $\mathcal{L}$
 and thus the full adjoint equation for momentum appears as
 \begin{align}
- - u &\cdot \nabla \hat u - \nabla^2 \hat u = -\frac{1}{\rho} \nabla p.
+ - u &\cdot \nabla \hat u - \nabla^2 \hat u = -\frac{1}{\rho} \nabla p. 
+\label{eq_adjmom}
 \end{align}
+
+The continuity equation is straightforward, 
+\begin{align}
+ \frac{\partial}{\partial \epsilon} \nabla \cdot (u + \epsilon \hat
+ u) = 0 \\
+\nabla \cdot \hat u = 0.
+\label{eq_adjcont}
+\end{align}
+
+Finally, consider the convective term of the energy equation, 
+\begin{align}
+ \frac{\partial}{\partial \epsilon} u \cdot \nabla (T + \epsilon \hat T)
+ = u \cdot \nabla \hat T
+\end{align}
+and the thermal diffusion term, 
+\begin{align}
+ \frac{\partial}{\partial \epsilon} \cdot (-k \nabla (T + \epsilon \hat
+ T)) = \nabla \cdot (-k \nabla \hat T).
+\end{align}
+The full adjoint energy equation is therefore, 
+\begin{align}
+ u \cdot \nabla \hat T + \nabla \cdot (k \nabla \hat T) =0.
+\label{eq_adjen}
+\end{align}
+
+We are now in a position to define the matricies L and S. L comes
+directly from the PDEs in Equations \ref{eq_cont}-\ref{eq_energy} and is
+defined as thus, 
+
+\begin{equation}
+\renewcommand\arraystretch{2}
+ L = 
+  \begin{pmatrix}
+    0 & \nabla \cdot () & 0   \\
+    \nabla \,() & u \cdot \nabla() - \nu \nabla^2() & -g \frac{T'}{T_0}  \\
+    0 & 0 & u \cdot \nabla() - \nabla \cdot (k \nabla() \,)
+  \end{pmatrix}.
+\end{equation}
+
+While the S matrix is constructed from Equations
+\ref{eq_adjmom},\ref{eq_adjcont},\ref{eq_adjen} and must be, 
+\begin{equation}
+\renewcommand\arraystretch{2}
+ S = -P^* = 
+  \begin{pmatrix}
+    0 & \nabla \cdot () & 0   \\
+    \nabla \,() & u \cdot \nabla() + \nu \nabla^2() & 0  \\
+    0 & 0 & u \cdot \nabla() + \nabla \cdot k \nabla()
+  \end{pmatrix}.
+\end{equation}
+
 
 \end{document}
