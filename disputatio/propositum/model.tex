@@ -70,31 +70,25 @@ The equations describing fluid flow with natural convection are,
   -\frac{1}{\rho}\nabla P + \nu \nabla^2 u - g \frac{T'}{T_0}\\
   \nabla \cdot u =& \, 0 \\
   \rho c_p \frac{\partial T}{\partial t} + u \cdot \nabla T =& \, \nabla
- \cdot ( k \nabla T). 
+ \cdot ( k \nabla T)
 \end{align} 
-
-The makes the assumption that the temperature variation is small in
+under the assumption that the temperature variation is small in
 comparison to the mean temperature of the region. These are the
-incompressible Navier-Stokes equations with Boussinesq representation of
-buoyancy coupled with the heat equation.  
+incompressible Navier-Stokes equations with Boussinesq, a representation
+of buoyancy coupled with the heat equation.  
 %
 % in full document be sure to mention that neglecting coriolis is legit
 % below 50ms
 %
 %
-As discussed above, we anticipate our flow to be
+As discussed above, we anticipate that the flow will be
 turbulent. Turbulence significantly alters the character of the flow,
 and necessitates either resolving the resulting small scales or
 providing a model that emulates their impact. In this case, a
 Reynolds Averaged Navier-Stokes (RANS) formulation is used, where the 
-viscosity and thermal conductivities are permitted to vary in space, and
-the flow is decomposed into constant laminar and varying turbulent and vane
-components,  
-
-% \begin{eqnarray*}
-%  \nu =& \nu_{l} + \nu_{T}(z) + \nu_{V}(r,z) \\
-%  K =& K_{l} + K_{T}(z) + K_{V}(r,z)
-% \end{eqnarray*}
+turbulent viscosity and thermal conductivities are permitted to vary in
+space, and the flow is decomposed into constant laminar and varying
+turbulent and vane components,  
 
 \begin{eqnarray*}
  \nu =& \nu_{l} + \nu_{T}(z) + \nu_{V}(r,z) \\
@@ -103,14 +97,14 @@ components,
 
 This is an effective eddy viscosity model, and the subsequent two
 sections will elaborate on the spatial dependence and character of
-$\nu_T$, $K_T$, $\nu_C$ and $K_C$. $\nu_l$ and $K_l$ are the laminar,
-base diffusivities and do not vary in space. 
+$\nu_T$, $K_T$, $\nu_C$ and $K_C$. The laminar, base diffusivities 
+are $\nu_l$ and $K_l$, which do not vary in space. 
 
 \subsection{Viscosity Model}
 
-We use the celebrated similarity model of Monin and
+We use the well-known similarity model of Monin and
 Obukhov\cite{monin2007statistical,monin1954basic} as a guide to the
-present development, which is outlined below. This formulation is an
+specification of an eddy viscosity model. This formulation is an
 extension of the mixing-length model of Prandtl, where the concepts of
 gradient diffusion and mixing length were generalized to thermally
 stratified flow.   
@@ -119,7 +113,7 @@ stratified flow.
 % justify prandtl assumption here
 %
 
-Monin and Obukhov argued that under temporally steady, horizontally
+Monin and Obukhov argued that under statistically stationary, horizontally
 homogeneous conditions, the dynamics of any mean turbulent quantity
 ($\bar f$) in a thermally stratified medium which depends only on,  
 
