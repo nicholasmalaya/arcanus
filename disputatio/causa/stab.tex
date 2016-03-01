@@ -6,12 +6,16 @@
 \AtBeginEnvironment{pmatrix}{\setlength{\arraycolsep}{15pt}}
 
 \title{\bf{Stabilization for Navier-Stokes with Boussinesq Buoyancy}}
-\author{Nicholas Malaya \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
+\author{Nicholas Malaya \\ Institute for Computational Engineering and
+Sciences \\ University of Texas at Austin} \date{} 
 
 \begin{document}
 \maketitle
+\begin{center}
+Dated: \date{\today}
+\end{center}
 
-\section{Stabilization Derivation}
+\section{Outline of work}
 %
 % intro
 %
@@ -82,10 +86,12 @@ We define the inner product by the shorthand notation $(u,v) =
 This defines our weak form operator $a(c,\phi)$. Our full equations will
 also include a stabilization term such that,  
 \begin{equation}
- a_h(c,\phi) = a(c,\phi) +  \langle Lc,S\phi \rangle_\tau
+ a_h(c,\phi) = a(c,\phi) +  \langle Lc,S\phi \rangle_\tau. 
 \end{equation}
 
-The subsequent section will define the operators L and S. 
+The subsequent section will define the operators L and S, so that we
+might then fully define the stabilization term $\langle Lc,S\phi
+\rangle_\tau$. 
 
 %
 % subsection
@@ -204,23 +210,23 @@ Finally, we may now form the $\tau$ stabilization terms,
  \langle Lc,S\phi \rangle_\tau. 
 \end{equation}
 Where the operator $ \langle \cdot,\cdot \rangle_\tau. $ is shorthand 
-for, 
+and denotes
 \begin{equation}
  \langle u,v \rangle_\tau = \sum_K \tau_K (u,v)_K.
 \end{equation}
-
-By what Becker and Braack contemptibly referred to as ``elementary
-calculus'', we now discover our stabilization terms, 
-\begin{align}
+Where $K$ denotes the FEM cells. Now, through what Becker and Braack
+contemptibly referred to as ``elementary calculus'', we now discover our
+stabilization terms,  
+\begin{align*}
  \langle Lc,S\phi \rangle_\tau = \sum_K \{ \quad &\tau_p (\nabla \cdot u,
  \nabla \cdot v) \\
- + &\tau_u \,(\nabla p + u \cdot u - \nu \nabla^2 - g \frac{T'}{T_0},
+ +\quad &\tau_u \,(\nabla p + u \cdot \nabla u - \nu \nabla^2 - g \frac{T'}{T_0},
  \nabla q) \\
- + &\tau_u \, (\nabla p + u \cdot u - \nu \nabla^2 - g \frac{T'}{T_0},
+ +\quad &\tau_u \, (\nabla p + u \cdot \nabla u - \nu \nabla^2 - g \frac{T'}{T_0},
  \nabla u \cdot \nabla v + \nu \nabla^2 v) \\
- + &\tau_T \, (u \cdot T - \nabla \cdot (k \nabla T), \nabla u \cdot \nabla
+ +\quad &\tau_T \, (u \cdot T - \nabla \cdot (k \nabla T), \nabla u \cdot \nabla
  w + \nabla \cdot (k \nabla w)) \}.
-\end{align}
+\end{align*}
 
 
 \end{document}
