@@ -84,19 +84,34 @@ also include a stabilization term such that,
 
 The subsequent section will define the operators L and S. 
 
-\subsection{$\tau$ Stabilization and the operators L and S}
+%
+% subsection
+%
+\subsection{Tau Stabilization and the operators L and S}
 
 
-The operator L is simply the PDEs in Equation
-\ref{eq_cont}-\ref{eq_energy} written in operator form. 
+To form the stabilization terms, 
 
- Our objective is now to use the calculus of variations in construct the
- adjoint operator of L. This is accomplished using the Fr\'echet
- derivative, which defines the functional derivative. 
+\begin{equation}
+ \langle Lc,S\phi \rangle_\tau
+\end{equation}
+we must define the operators L and S. The operator L is simply the PDEs
+in Equation \ref{eq_cont}-\ref{eq_energy} written in operator form. S is
+defined as the negative adjoint of the differential terms in L, e.g.
+\begin{align}
+ L'[c] = P + Z \\
+ S = -P^*. 
+\end{align}
+Where P are the differential terms, and Z the constant terms. 
+
+
+
+Our objective is now to use the calculus of variations in construct the
+adjoint operator of L. This is accomplished using the Fr\'echet 
+derivative, which defines the functional derivative on L. 
 
 The first variation of state for the momentum equation is,
 
-Lagrangian is therefore,
-$\mathcal{L}$
+%Lagrangian is therefore, $\mathcal{L}$
 
 \end{document}
