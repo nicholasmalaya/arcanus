@@ -24,3 +24,8 @@ Brextrap        (10 slides)
 ---------------------------
 
 50 slides
+
+
+
+IDEAS
+cone behaves like wind tunnel contraction
