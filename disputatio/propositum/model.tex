@@ -661,7 +661,7 @@ are used on both the back boundary and the top.
 
 For both the wind and thermal-only cases the ground has a fixed
 temperature and no-slip velocity boundary conditions. This boundary 
-($\Gamma_G$) is modeled with a Dirichlet boundary condition such that, 
+($\Gamma_G$) is modeled with a Dirichlet boundary condition, 
 \begin{align}
  \overrightarrow{u} &= 0 \quad \text{ on } \Gamma_G \\
  T &= T_g.
@@ -678,13 +678,13 @@ A periodic boundary condition is used in the thermal only cases,
 along the streamwise and spanwise boundary faces 
 (denoted $\Gamma_{P,x}$ and $\Gamma_{P,y}$, respectively). In these
 cases the state variables  
-are made to agree with the value at the opposite face, for instance the 
-streamwise boundary will have the form, 
+are contrained to have the same value on the opposite faces of the domain, 
+for instance in the streamwise direction the boundary conditions are, 
 \begin{align}
  \overrightarrow{u}(-L_x,y,z) &= \overrightarrow{u}(L_x,y,z) \quad \text{ on } \Gamma_{P,x} \\
- T(-L_x,y,z) &= T(L_x,y,z). 
+ T(-L_x,y,z) &= T(L_x,y,z)
 \end{align}
-And the spanwise boundary will enforce, 
+and in the spanwise direction,
 \begin{align}
  \overrightarrow{u}(x,-L_y,z) &= \overrightarrow{u}(x,L_y,z) \quad \text{ on } \Gamma_{P,y} \\
  T(x,-L_y,z) &= T(x,L_y,z). 
@@ -696,12 +696,11 @@ and $\Gamma_{P,y} = \{(x,-L_y,z) \bigcup (x,L_y,z) \subset \partial
 
 \textbf{Inflow Boundary Condition, $\Gamma_I$} 
 
-The inflow boundary condition ($\Gamma_I$) 
-is used on the upwind streamwise face for the wind cases. For this case, 
-the ``v'' and ``w'' inflow components of velocity are set to zero. 
-The streamwise component of velocity must reflect the freestream velocity as 
-well as a reasonable boundary layer profile. 
-The common 7th power function for a turbulent boundary layer is used,   
+On the inflow boundary $(\Gamma_I$), dirichlet conditions are used for both
+velocity and temperature. The boundary-normal, or streamwise component 
+is a function of the surface normal coordinate (z), representing a boundary 
+layer below a uniform velocity, U.
+The common 7th power model of a turbulent boundary layer is used,   
 \begin{equation*}
   u_{\text{in}}(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)
   \label{eq:bl_u}
@@ -711,8 +710,8 @@ measured by our experimental partners in the field.
 The thermal boundary layer is assumed to have a similar boundary layer,
 but, as observed in real atmospheric flows, there remains a vertical
 temperature gradient outside the thin boundary layer. Based on
-results in the literature a $2/3$ Kelvin per meter gradient has been
-selected\cite{Blocken2007238}. The thermal inflow is then  
+results in the literature a $2/3$ Kelvin per meter gradient is 
+imposed\cite{Blocken2007238}. The thermal inflow is then  
 \begin{equation*}
   T_{\text{in}}(z) = \Delta T \left(1- \text{ min
 			}\left(\left(\frac{z}{\delta}\right)^7,1\right)\right)
@@ -720,28 +719,19 @@ selected\cite{Blocken2007238}. The thermal inflow is then
   \label{eq:bl_t}
 \end{equation*}
 % 335+18*tanh(-z/0.1)-z*2/3
-This boundary lies on the upstream face, e.g. $\Gamma_I = \{(-L_x,y,z)
-\subset \partial \Omega \} $.  
+The inflow boundary is at the surface $x=-L_x$.
 
 \textbf{Mixed inflow/outflow Boundary Conditions on $\Gamma_T$,
 $\Gamma_S$ and $\Gamma_B$}  
 
-A common outflow boundary condition using FEM is the so-called, ``Do
-nothing'' condition. This is named so because the condition is
-automatically satisfied on the boundary from the partial integration of
-the viscous term and the pressure gradient. Thus, unless further
-boundary terms are added, this boundary condition is automatically
-satisfied, and is equivalent to,
+At outflow boundaries, a homogeneous Neumann condition is appropriate,
 \begin{align}
   \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0 \\
-  \frac{\partial v}{\partial n}\bigg|_{\Gamma_T} = 0 \\
-  \frac{\partial w}{\partial n}\bigg|_{\Gamma_T} = 0 \\
   \frac{\partial T}{\partial n}\bigg|_{\Gamma_T} = 0
 \end{align}
-e.g. a Neumann condition on the outward moving velocity and temperature. 
-However, for the particular cases in this study, 
-a modified Neumann condition is necessary due to the (possible) presence of
-both inflow and outflow across the face. 
+However, for the cases in this study, 
+a modified Neumann condition is necessary due to the possibility that there will
+be an inflow on these boundaries.
 For example, in the region above the vanes, the concentrated hot plume is
 lifted by buoyancy upward and out of the simulation domain. However, the
 radial inflow towards the apparatus is drawn in by large scale
@@ -754,43 +744,22 @@ vanes, while simultaneously permitting outflow in the area above the vanes.
 % no-traction for anything else when there's outflow, and Dirichlet
 % v.cross.n = 0 when there's inflow. 
 
-Thus, the top boundary condition, $\Gamma_T$, has the modified form, 
+To accomplish this, the boundary condition is,
 \begin{align}
-  \frac{\partial w}{\partial n}\bigg|_{\Gamma_T} = 0 \\
+  \frac{\partial u_n}{\partial n}\bigg|_{\Gamma_T} = 0 \\
   \text{if } (w<0) \text{ then}& \begin{cases}
-    u = 0,\\
-    v = 0,\\
+    u_t = 0,\\
     T = T_{\text{in}}
   \end{cases} \\
   \text{ else}& \begin{cases}
-    \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0, \\  
-    \frac{\partial v}{\partial n}\bigg|_{\Gamma_T} = 0, \\  
+    \frac{\partial u_t}{\partial n}\bigg|_{\Gamma_T} = 0, \\  
     \frac{\partial T}{\partial n}\bigg|_{\Gamma_T} = 0
   \end{cases}
 \end{align}
 
-This ensures that the problem is well-posed, by full defining the
-incoming flow. The ``v'' and ``u'' components of inflow velocity are set
-to zero for the thermal-only, and $v=0$, $u=U$ for the wind cases. This
-top boundary condition is defined to lie at the furthest vertical extent
-of the domain: $\Gamma_T = \{(x,y,L_z) \subset \partial \Omega \} $.  
-
-Nearly identical conditions are imposed on the ``Sides'' and ``Outflow''
-boundaries in the wind case. In these cases, instead of evaluating if
-the vertical velocity ``w'' is less than zero, the appropriate normal
-component of velocity to that face is considered. For instance, the
-along the side boundaries, $\Gamma_S$ in the wind, the spanwise velocity
-component ``v'' must be less than zero at $y=L_y$, or $v>0$ at $y=-L_y$
-to trigger an inflow condition. In these cases, the vertical velocity
-$w$ is set to zero, and the streamwise velocity component and the
-temperature field are set according to
-Equations~\ref{eq:bl_u}~and~\ref{eq:bl_t}, respectively. Likewise, the
-outflow boundary condition ($\Gamma_B$) is tested to ensure that the
-streamwise  velocity ``u'' is not less than zero at the back face
-($x=L_x$), and if it is then the inflow  conditions will set ``w'' and
-``v'' to zero, and T to the value defined by
-Equation~\ref{eq:bl_t}. This was found necessary because small inflows
-were found to occur intermittently in the unsteady wake region. 
+where $u_n$ and $u_t$ are normal and tangential components of the velocity, 
+respectively. This boundary condition is applied on the top boundary
+$\Gamma_T$ ($z=L_z$) and downstream side boundary  $\Gamma_B$ in the wind case.
 
 \textbf{Sponge Layer} 
 
