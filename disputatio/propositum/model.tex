@@ -763,22 +763,25 @@ $\Gamma_T$ ($z=L_z$) and downstream side boundary  $\Gamma_B$ in the wind case.
 
 \textbf{Sponge Layer} 
 
-Finally, a finite thickness ``sponge layer'' is used in front of the
-mixed inflow/outflow boundaries $\Gamma_T$ and $\Gamma_B$.
+Finally, a finite thickness ``sponge layer'' is used in the region adjacent 
+to the mixed inflow/outflow boundaries $\Gamma_T$ and $\Gamma_B$.
 This layer artificially increases the momentum diffusivity by
-up to ten times the nominal value. This was designed in response to
-instabilities in the modified Neumann boundary condition that occurred
-when small, high velocity fluid parsels would exit the boundary. This
-would create small high velocity inflows, and the feedback loop would
-result in instabilities and numerical blow-up. Mindful of the fact that
-the character of solution not important in this region, and that our
-physical interest remains focused on the region inside and in immediate
-proximity to the vanes, we introduced a higher diffusivity ``sponge''
-region that would diffuse the high velocity exiting jets sufficiently to
-prevent numerically un-physical behavior. No results are quoted from
-this ``sacrificial'' region, as it is not considered physically
-meaningful. These regions are referred to by many names in the
+up to a factor of ten times the nominal value. This was designed to stabilize
+the modified Neumann boundary conditions which can exhibit an instability
+when there is a compact jet of fluid leaving the domain. 
+These regions are referred to by many names in the
 literature\cite{doi:10.1146/annurev.fluid.36.050802.121930}, such as
 absorbing layers, fringe regions, buffer zones, sponges, etc. 
 
+
+%%  This
+%% would create small high velocity inflows, and the feedback loop would
+%% result in instabilities and numerical blow-up. Mindful of the fact that
+%% the character of solution not important in this region, and that our
+%% physical interest remains focused on the region inside and in immediate
+%% proximity to the vanes, we introduced a higher diffusivity ``sponge''
+%% region that would diffuse the high velocity exiting jets sufficiently to
+%% prevent numerically un-physical behavior. No results are quoted from
+%% this ``sacrificial'' region, as it is not considered physically
+%% meaningful.
 
