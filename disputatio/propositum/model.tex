@@ -371,6 +371,7 @@ disk model is under development and will be detailed in the dissertation.
 
 \subsection{Solid Surface Representation}
 \label{subsec:solid_surface}
+\todo{this section has been edited heavily}
 
 In addition to vanes, the SoV device includes impermeable surfaces
 such as the wind break (``cone'') on the top of the facility. As with
@@ -380,70 +381,30 @@ rapid exploration of configurations  with different solid surfaces to
 control and manipulate the fluid flow. These solid surfaces are
 represented by a body force acting in a region surrounding the wall. 
 A vector normal to the surface is defined in this region so
-that a body force will push  the velocity to zero, resulting in the flow
-moving only parallel to the virtual surface. For instance, the outward
-facing unit normal for a cylindrical surface is represented as 
-\begin{equation}
- {\bf n}({\bf x}) = \hat{{\bf r}}+ \sin \left(\theta\right) \hat{{\bf \theta}}.
-\end{equation}
-In this equation, $\theta$ is the angle between the spatial location and
-radial line. The body force is defined as in Equation
+that a body force will drive the velocity to zero, resulting in the flow
+moving only parallel to the virtual surface. 
+The body force is defined as in Equation
 \ref{eqn:body_force}; however, the length scale $\ell_v$ is specified to
-be identical to the width  of the surface being represented. This is
-typically two or three grid points. While the actual surface we are
+be identical to the width of the surface being represented. This is
+typically the width of two or three grid cells. While the actual surface we are
 emulating is thinner than this, the numerical method has difficulty
 converging for surfaces smaller than the grid size.  
 
-Forcing designed to mimic a surface
-is not unique to this project, and is closely related to (among others)
-the ``immersed boundary methods'' used by various other
+Forcing models designed to mimic a surface
+are not unique to this project, and the current formulation is
+ closely related to (among others)
+``immersed boundary methods'' as used by various other
 researchers\cite{doi:10.1146/annurev.fluid.37.061903.175743}. 
 This approach is unique in its use of Babuska's penalty treatment of
 constraints\cite{1973fempen,ZAMM:ZAMM19880680925} to enforce the
 behavior at the boundary. This method was selected because it is easily
 imposed in the FEM context, and the method has been explored in detail
 in the literature. Typically, the enforcement occurs along a domain
-boundary, but in this work it is used in the interior. 
+boundary, but in this work it is used in the interior, 
+and is not imposed as a mathematical constraint but rather as a modeling 
+approach. 
 
-As an example, consider Laplace's 
-equation on a domain $\Omega$ with boundary $\partial\Omega$, 
-\begin{equation}
- \nabla^2 u = 0. 
-\end{equation}
-Dirichlet boundary conditions are introduced into the weak form
-\begin{equation}
- u|_{\partial \Omega} = g
-\end{equation}
-which becomes 
-\begin{equation}
-\int_{\Omega}  - \nabla u \cdot \nabla v \, dx - \frac{1}{\epsilon}
- \int_{\partial \Omega} (u-g) \cdot v \, ds = 0 \quad \forall v \in H^1(\Omega)
-\end{equation}
-where $v$ is an appropriate test function, $\frac{1}{\epsilon}$ is the
-penalty parameter and $H^1(\Omega)$ is the Sobolev space of functions on
-$\Omega$. This is the weak form for Laplace's equation with a Robin
-boundary condition  
-\begin{align}
- u = g - \epsilon \, \partial_n u. 
-\end{align}
-For sufficiently small $\epsilon$, the original Dirichlet boundary
-conditions will be satisfied approximately. Clearly, $\epsilon$ has
-units of length, and can be interpreted as a ``slip length''. 
-
-%
-% In the
-% Navier-Stokes solver, this penalty formulation is used to approximately
-% impose the no-flow through for impermiable surfaces, such as the
-% cone.
-%
-%
-% you will need to motivate and then write down your actual formulation
-% including the finite width of the forcing layer
-%
-% these should be written down mathematically
-%
-
-By analogy with the method above, we add a penalty term to the weak
+We add a penalty term to the weak
 form of the Navier-Stokes momentum equation described in the subsequent
 section %\ref{eq:ns_weak} 
 that has the form, 
@@ -451,19 +412,19 @@ that has the form,
 P_\epsilon = \int_\Omega ({\bf f_v} \cdot v) \, dx
 \end{equation}
 where ${\bf f_v}$ is as described in equation \ref{eqn:body_force}. 
-As the system is formulated as a variational problem that seeks to
-minimize the test function $v$, any velocity that is not aligned with
-the vane normal will incur a penalty versus one that does. Note that unlike
-some penalty methods, this does not automatically satisfy
-continuity. Rather, the velocity field remains divergence free through a
-separately enforced constraint.  
+%% As the system is formulated as a variational problem that seeks to
+%% minimize the test function $v$, any velocity that is not aligned with
+%% the vane normal will incur a penalty versus one that does. Note that unlike
+%% some penalty methods, this does not automatically satisfy
+%% continuity. Rather, the velocity field remains divergence free through a
+%% separately enforced constraint.  
 
 \subsection{Separation Model}
 
 In the presence of wind, it was found that there was a significant flow
 out through the vanes in the back of the device. This was obviously
 inconsistent with the findings of our colleagues in the field, who
-observed no outflows out of the back of device. Moreover, this resulted
+observed no outflows out of the back of the device. Moreover, this resulted
 in large inconsistencies between our predictions and the field results,
 almost certainly because of the kinetic and thermal energy that our vane
 representation was permitting to leave out the back of the device.  
@@ -472,11 +433,10 @@ This exposed a weakness of the turning vane representation outlined
 previously. When the flow entered the virtual vane forcing region it was
 always turned to align with the vane angle, even when the forcing was in
 the opposite direction of the present velocity.
-This is in contrast to our physical intuition, where we
-expect the flow to continue along an averaged streamline
-off the trailing edges of the vanes, instead of turning around. 
-The averaged streamline (e.g. the statistically average behavior, not
-an instant flow field) will continue past the trailing edge of the vane
+This is in contrast to the physical situation, in which we
+expect the flow to continue along an averaged streamline separating from the 
+trailing edges of the vanes, instead of turning around it. 
+The averaged streamline will continue past the trailing edge of the vane
 due to the separation of the boundary layer off the edge surface. An
 image depicting these two cases in shown in Figure \ref{fig:sep_model}.  
 
@@ -497,7 +457,7 @@ image depicting these two cases in shown in Figure \ref{fig:sep_model}.
   \end{center}
 \end{figure}
 
-Let $\bf n^v$ be the normal vector to the vanes in a horizontal plane,
+Let $\bf n^v$ be the normal vector to the vanes,
 and $\bf n^r$ the normal vector pointing out of the vane
 region\footnote{\normalsize The superscripts ``v'' and ``r'' stand for
 vane and radial, respectively.}.  
