@@ -321,46 +321,43 @@ success of this project.
 % 
 % can we optimize? DAKOTA
 % 
-We propose to investigate algorithmic optimization as a tool to discover
-locally optimal system configurations. 
-This will take the form of using either the DAKOTA\cite{adams2013dakota}
-or TAO\cite{tao-user-ref} libraries. These libraries have suites of
-algorithms for non-linear optimization problems without gradient
-information (derivative-free optimization, such as Nelder-Mead or downhill simplex methods). 
-Evaluating the results of the most
-appropriate ``out of the box'' available optimization algorithm on a
-small test problem will provide an opportunity to ensure that our
-expectations on the number of iterations necessary for formal
-optimization of our problem are reasonably correct. 
-We propose these two libraries because DAKOTA is well-known as a library
-with extensive ``black-box'' optimization support, and TAO is already
-made available through pre-existing libMesh dependencies. Should the
-test problem discover that algorithmic optimization is a viable option,
-we will consider using this approach for optimization of the
-configuration. 
+% We propose to investigate algorithmic optimization as a tool to discover
+% locally optimal system configurations. 
+% This will take the form of using either the DAKOTA\cite{adams2013dakota}
+% or TAO\cite{tao-user-ref} libraries. These libraries have suites of
+% algorithms for non-linear optimization problems without gradient
+% information (derivative-free optimization, such as Nelder-Mead or downhill simplex methods). 
+% Evaluating the results of the most
+% appropriate ``out of the box'' available optimization algorithm on a
+% small test problem will provide an opportunity to ensure that our
+% expectations on the number of iterations necessary for formal
+% optimization of our problem are reasonably correct. 
+% We propose these two libraries because DAKOTA is well-known as a library
+% with extensive ``black-box'' optimization support, and TAO is already
+% made available through pre-existing libMesh dependencies. Should the
+% test problem discover that algorithmic optimization is a viable option,
+% we will consider using this approach for optimization of the
+% configuration. 
 
 %
 % short summary of tasks
 %
 
-The second bullet in Table \ref{tab:prop} provide
+The first bullet in Table \ref{tab:prop} provide
 estimated ending dates for the exploration of the configuration space. 
 Given our previous experiences, we expect to be able to rapidly
 iterate through these optimization efforts over the course of several
 months, with the final optimization work on the turbine. 
 At this time we will proceed with ``coupling tests'' to 
 ensure that the parameters are indeed still appropriate. For example,
-after having optimized the turbine parameters, it will be necessary to
+after having optimized the turbine parameters, it may be necessary to
 perturb the lower tier vane parameters to ensure that the selected set
-is nearly optimal even with the addition of a turbine. While we do not
-expect this to be the case, this item is a large uncertainty in the
-proposed timeline and could require significant additional work and
-expert evaluation.  
+is nearly optimal even with the addition of a turbine. 
 
 %
 % probably ok below:
 %
-The third bullet is the expected deadline to provide the results of our
+The second bullet is the expected deadline to provide the results of our
 computational simulation efforts to the experimental group in late
 Spring/early Summer of 2016 so that they can use this information in the
 design of the system to be used for the Arizona field tests in Summer,
@@ -404,9 +401,7 @@ above will result in several publications, as well.
 \begin{minipage}[t]{.7\linewidth}
 \color{black}
 \rule{\linewidth}{1pt}
-\ytb{April 2016}{Algorithmic optimization subdomain problem proof-of-concept}
 \ytl{April 2016}{Conclude parameter sweeps and optimization of apparatus}
-%\ytb{May 2016}{Conclude Additional Parameter sweeps}
 \ytl{June 2016}{Proposed configuration and predictions for
  experimental team}
 \ytb{July 2016}{Comparisons between synthetic and natural dust devil physics}
