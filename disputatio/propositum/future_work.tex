@@ -6,13 +6,13 @@
 The objective of this research project is to provide a definitive
 assessment of the technological feasibility of the entire synthetic
 columnar vortex concept as a means of generating usable energy. In the 
-previous sections we have briefed the reader on the present state of the
+previous sections outlined the present state of the
 simulation capability. In doing so, we have discussed the physics that
 influence dust devils formation, our particular mathematical
 models for the ambient conditions, as well as the SoV vanes, cone and
 turbine. We summarized the numerical discretizations used, the software
 stack and the calibration, verification and validation of these
-components. The purpose of these sections was to convince the reader of
+components. The purpose of these sections was to communicate
 two major points. The first is that an accurate, verified and
 validated simulation capability has been developed that can quickly
 investigate a wide variety of system and scenario settings at a modest
@@ -22,23 +22,22 @@ a local maximum of energy production, as measured by kinetic energy flux
 through the top of the SoV vanes.  
 
 These two points justify the proposed course of work, which is to
-broadly sweep through a large space of possible system configurations
+explore a large space of possible system configurations
 and geometries to discover the globally optimal structure
 of the SoV apparatus. Coupled with the scaling analysis presented in
 Section \ref{sec:physics}, we will then be able to predict the
 conditions (if any) under which the SoV apparatus will be
-technologically competitive with different methods of energy
-generation. This will lead to investigating the physics of the
+technologically feasible. This will lead to investigating the physics of the
 apparatus, to assess how closely the synthetic dust devils mimic the
 natural variety. The proposed research is designed to
 assess feasibility, and it is not expected that actual experimental
 validation will accompany the computational results. Furthermore, it
 must also be emphasized that feasibility is focused on
-technological competitiveness, namely energy produced by the apparatus,
+technical viability, namely energy produced by the apparatus,
 and will not include an economic assessment. In other words, it is
 possible that the SoV will produce energy, but the design required to do
 is prohibitively expensive, and therefore not economically competitive
-with existing technologies. The following is a proposed program of runs 
+with existing technologies. The following is a proposed program of simulations 
 designed to explore a wide configuration space. This focuses on
 optimization for the cone, turbine and vanes. 
 
@@ -86,10 +85,10 @@ tiers are adjusted. For the cone, we expect the height, maximum diameter
 and inner exit diameter to all impact the flow. While it is not known
 what form the ideal cone geometry will take, our expectation is that the
 cone plays at least two important roles. The first is acting as a
-converging nozzle for the flow, increasing the vertical velocity as it
-exits  out the top of the device. In the wind, the cone also acts as a
-shield, preventing the high velocity freestream flow from disrupting the
-vortex before it has run through the turbine. 
+converging nozzle for the flow, increasing the vertical and azimuthal
+velocity as it exits out the top of the device. In the wind, the cone
+also acts as a shield, preventing the high velocity freestream flow from
+disrupting the vortex before it has run through the turbine. 
 
 %
 % cone optimization
@@ -155,18 +154,19 @@ in this design the down wind side of the apparatus is enclosed by a
 solid cylindrical wall.  While the vane representation outlined in
 Section \ref{subsec:vane} is expected to be sufficiently general to support a
 wide variety of vane configurations, it is not at this time clear what
-form of parameterization for vane angle is sufficiently general as to
-support this exploration, and so a table such as shown for the cone and
+form of parameterization for vane angle is sufficiently general to
+support this exploration, and so a table like that for the cone and
 turbine is not yet available. At present the expectation is to proceed
 with this conceptual phase to generate a wide  range of possible
 configurations. The designs that have initially promising results will
-then be proceed with optimization in a manner similar to the examples
-outlined in Section \ref{sec:results}, where new parameter values are
+then be optimized similar to the examples outlined in Section
+\ref{sec:results}, where new parameter values are 
 introduced, a run is performed, and then the output is postprocessed and
 evaluated before the process begins again. In this way it is not
 infeasible to expect that several hundred optimization runs can be
-performed. The next subsection also briefly outlines a proposal to
-investigate algorithmic optimization on these designs.  
+performed. 
+%The next subsection also briefly outlines a proposal to
+%investigate algorithmic optimization on these designs.  
 
 \begin{figure}[htb]
  \centering
