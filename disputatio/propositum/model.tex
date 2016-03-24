@@ -462,19 +462,20 @@ and $\bf n^r$ the normal vector pointing out of the vane
 region\footnote{\normalsize The superscripts ``v'' and ``r'' stand for
 vane and radial, respectively.}.  
 Then, $\bf t^v$ is the tangential vector to the vanes pointing out of
-the vane region and is defined as,\todo{does this look correct?}
+the vane region and is defined as,\todo{does this look correct? I'm
+worried I've overloaded the superscript operator too much}
 %\begin{equation}
 % \bf t^v = \left( {\bf n^v_y},{\bf -n_x^v} \right) \text{sign}\left[
 %	    \left( {\bf n^v_y},{\bf -n_x^v} \right) \cdot {\bf n^r} \right].
 %\end{equation}
 \begin{equation}
- \bf t^v = \left( {\bf n^{v\perp}} \right) \text{sign}\left(
-	    {\bf n^{v\perp}} \cdot {\bf n^r} \right).
+ \bf t^v = \left( {\bf n^{v^\perp}} \right) \text{sign}\left(
+	    {\bf n^{v^\perp}} \cdot {\bf n^r} \right).
 \end{equation}
-Here, ${\bf n^{v\perp}}$ is the vector perpendicular to the normal
+Here, ${\bf n^{v^\perp}}$ is the vector perpendicular to the normal
 vector of the vanes, which is simply, 
 \begin{equation*}
- {\bf n^{v\perp}} = \left[ \begin{array}{c}
+ {\bf n^{v^\perp}} = \left[ \begin{array}{c}
 n_x\\
 n_y\\
 \end{array}\right]^{\perp} = 
@@ -491,7 +492,9 @@ n_y\\
  \begin{algorithm}
   \caption{The crude separation model. This model identifies if the flow
   is coming into or out of the vane region, and if the velocity vector
-  is in the same direction as the tangent line of the vanes. In the
+  is in the same direction as the tangent line of the vanes. In the case
+  of the ``special forcing'' the flow is forced as if it was
+  impacting a solid surface. In the
   algorithm below, $r_0$ is the max radius of vanes, $r_i$ the minimum
   radius of vanes, and $\delta$ is the width of the separation region.}
   \label{alg:sep}
@@ -502,8 +505,8 @@ n_y\\
    \If{$(r - r_i) < \delta$} 
    \State $\overrightarrow{n^r} = -\overrightarrow{n^r}$
    \EndIf
-   \State $\overrightarrow{t^v} = (n_y^v , -n_x^v) \text{ sign
-   }((n_y^v,-n_x^v) \cdot \overrightarrow{n^r})$
+   \State  $\bf t^v = \left( {\bf n^{v^\perp}} \right) \text{sign}\left(
+	    {\bf n^{v^\perp}} \cdot {\bf n^r} \right)$
    \If{$v \cdot t^v > 0$ \textbf{and} $v \cdot n^r < 0 $}
    \State ${\bf n}({\bf x}) = \hat r$ \quad (Special Forcing)
    \Else
