@@ -490,12 +490,16 @@ the vane region and is defined as,
    \State $\overrightarrow{t^v} = (n_y^v , -n_x^v) \text{ sign
    }((n_y^v,-n_x^v) \cdot \overrightarrow{n^r})$
    \If{$v \cdot t^v > 0$ \textbf{and} $v \cdot n^r < 0 $}
-   \State Special Forcing
+   \State ${\bf n}({\bf x}) = \hat r$ \quad (Special Forcing)
    \Else
-   \State Normal Forcing
+   \State  ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
+  \left(\phi(r) \right) \hat{{\bf \theta}} $
+  \quad (Normal Forcing)
    \EndIf
    \Else
-   \State Normal Forcing
+   \State ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
+  \left(\phi(r) \right) \hat{{\bf \theta}} $
+  \quad (Normal Forcing)
    \EndIf
    \EndIf
   \end{algorithmic}
