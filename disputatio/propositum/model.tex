@@ -462,12 +462,27 @@ and $\bf n^r$ the normal vector pointing out of the vane
 region\footnote{\normalsize The superscripts ``v'' and ``r'' stand for
 vane and radial, respectively.}.  
 Then, $\bf t^v$ is the tangential vector to the vanes pointing out of
-the vane region and is defined as,
+the vane region and is defined as,\todo{does this look correct?}
+%\begin{equation}
+% \bf t^v = \left( {\bf n^v_y},{\bf -n_x^v} \right) \text{sign}\left[
+%	    \left( {\bf n^v_y},{\bf -n_x^v} \right) \cdot {\bf n^r} \right].
+%\end{equation}
 \begin{equation}
- \bf t^v = \left( {\bf n^v_y},{\bf -n_x^v} \right) \text{sign}\left[
-	    \left( {\bf n^v_y},{\bf -n_x^v} \right) \cdot {\bf n^r} \right].
+ \bf t^v = \left( {\bf n^{v\perp}} \right) \text{sign}\left(
+	    {\bf n^{v\perp}} \cdot {\bf n^r} \right).
 \end{equation}
-
+Here, ${\bf n^{v\perp}}$ is the vector perpendicular to the normal
+vector of the vanes, which is simply, 
+\begin{equation*}
+ {\bf n^{v\perp}} = \left[ \begin{array}{c}
+n_x\\
+n_y\\
+\end{array}\right]^{\perp} = 
+ \left[ \begin{array}{c}
+  -n_y\\
+  n_x\\
+	\end{array}\right].
+\end{equation*}
 
 %
 % example of an algorithm
