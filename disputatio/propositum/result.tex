@@ -45,6 +45,48 @@ driven only by thermal instabilities. Simulations of this baseline,
 thermal-only flow are intended to ensure the SoV apparatus to form a
 strong thermal plume even in the absence of wind. 
 
+In this subsection a representative case of an optimized thermal-only SoV
+configuration is presented. This is a simple curved vane configuration with
+two-tiers with ground temperature of 335 Kelvin and a freestream
+temperature of 313 Kelvin. There is no ambient velocity and the boundary
+conditions are as described in Section \ref{sec:bc}. 
+
+The two tiers of vanes used for these cases are drawn in Figures
+\ref{fig:thermal_vane_bottom} and \ref{fig:thermal_vane_top}.\todo{how
+does this and the accompanying image look?} Note that in the
+configuration, the vanes are 
+aligned radially at the largest radius, and then increasingly curve
+towards azimuthal at smaller radius. Note that these are representative
+curves of the body forcing field, and do not actually represent vane
+surfaces. The vanes are represented as in Section \ref{subsec:vane}. 
+These images are created by tracing the path a particle follows through
+the forcing field. The region of forcing is between $\{0.3-0.9\}$ meters
+for the bottom tier, and $\{0.6-0.9\}$ meters for the top tier. Overall,
+the system is 1.1 meters tall, with the short first tier only standing
+0.132 meters high. The top and bottom tiers have final angles of
+$70^{\circ}$ and $85^{\circ}$, respectively. No cone is used in this
+case. 
+
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+ \includegraphics[width=.8\linewidth]{figs/bottom_thermal_only}
+ \caption{Horizontal drawings of the curvature functions for the bottom tier
+ vanes. The max angle is $85^{\circ}$, or $5^{\circ}$ less than azimuthal.}
+ \label{fig:thermal_vane_bottom}  
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[width =0.8\textwidth]{figs/top_thermal_only}
+\caption{Horizontal drawings of the curvature functions for the top tier
+ vanes. The max angle is $70^{\circ}$, or $20^{\circ}$ less than
+ azimuthal.} 
+ \label{fig:thermal_vane_top}  
+\end{minipage}
+\end{figure}
+
+
 \begin{figure}[htb]
 \centering
 \begin{minipage}{0.45\textwidth}
@@ -89,11 +131,6 @@ strong thermal plume even in the absence of wind.
 %  \end{subfigure}%
 % \end{figure}
 
-In this subsection a representative case of an optimized thermal-only SoV
-configuration is presented. This is a simple curved vane configuration with
-two-tiers with ground temperature of 335 Kelvin and a freestream
-temperature of 313 Kelvin. There is no ambient velocity and the boundary
-conditions are as described in Section \ref{sec:bc}. 
 The results shown are the averages of fifty snapshots of the solution 
 taken over the course of ten minutes. In general, the averaging times
 are selected to be approximately 20 to 30 wash-out times, where a
@@ -462,7 +499,8 @@ increased the kinetic energy flux by a factor of 88 relative to the
 baseline. Results of several of these iterations are documented in
 Figure \ref{fig:opt_plot}. Major adjustments to design in the the vane
 shape and angles were made to obtain this improvement. Before and after
-images are shown in Figure \ref{fig:vt-wind-vert}. During this optimization the
+images are shown in Figure \ref{fig:vt-wind-vert}. During this
+optimization the 
 qualitative character of the solution changed substantially, changing
 from a mild upward flow with little rotation to a strongly organized
 vortex with a downward central flow and strong azimuthal
