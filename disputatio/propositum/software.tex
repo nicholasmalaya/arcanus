@@ -41,8 +41,8 @@ that
  T, \nabla w) &= 0.\label{eqn:en_weak}
 \end{align}
 
-for all $(v,q,w) \in H^1(\Omega)^3 \times L_2(\Omega) \times
-H^1(\Omega)$, where $(u,v) = \int_\Omega u \cdot v \, dx$  
+$\forall (v,q,w) \in H^1(\Omega)^3 \times L_2(\Omega) \times
+H^1(\Omega)$, where $(u,v) = \int_\Omega u \cdot v \, dx$.  
 Some of the simulations presented here were conducted under
 steady conditions, for which the $\frac{\partial}{\partial t}$ terms
 vanish. A Galerkin FEM scheme is obtained by posing the weak form in
@@ -109,20 +109,20 @@ stability and ease of statistical sampling for a uniform timestep.
 % what about mesh...
 %
 The domain's described in subsection~\ref{sec:bc} are
-discretized in a consistent manner. The domain extents are scaled by
-system diameter. The same number of grid points are used for every
-simulation. In this way the ratio of the domain length to system
-diameter remains fixed. Likewise, the diffusivities are proportionally
-scaled with grid size to ensure that the cell Reynolds number, 
-\begin{equation}
- \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y) u}{\nu_T}
-\end{equation}
- is maintained for every simulation to ensure stability.
+consistently discretized. The domain extents
+are scaled by system diameter but the same number of grid points are used
+for every simulation. Thus, while the ratio of the domain length to system
+diameter remains fixed, the grid spacing increases proportionally with
+domain length. 
 
 The mesh has a uniform spacing in the lateral directions, except for a
-double refinement in the region of the vanes. Typically, the grid is 
+single refinement in the region of the vanes. Typically, the grid is 
 roughly one hundred points in the streamwise and spanwise directions
-before the double refinement. The mesh is non-uniform in height to
+before the refinement. The refinement halves the spacing in all three
+coordinate directions, \{x,y,z\} in this region. 
+
+
+The mesh is non-uniform in height to
 resolve the boundary layer. This is accomplished by redistributing a
 mesh uniform in height, z, according to,
 \begin{equation}
@@ -133,7 +133,18 @@ mesh uniform in height, z, according to,
 where $z_\delta$ is the chosen height of the boundary layer mesh, and
 $C_1-C_3$ are scaling coefficients. This gives the mesh an exponentially
 varying character, with the coefficients chosen to ensure ten or more
-points in the boundary layer and nearly isotropic cells outside of it.
+points in the boundary layer, isotropic spacing in cells outside of
+it, and smooth blending between these two regimes. Each boundary layer
+spacing was tested against a finer spacing to ensure that the results
+were not sensitive to the choice of spacing. 
+
+Finally, the diffusivities are proportionally
+scaled with grid size to ensure that the cell Reynolds number, 
+\begin{equation}
+ \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y) u}{\nu_T}
+\end{equation}
+ is maintained for every simulation. This ensures stability.
+
 
 %% hmin = 0.001  
 %% hmax = 0.4  
