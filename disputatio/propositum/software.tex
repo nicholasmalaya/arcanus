@@ -119,8 +119,8 @@ The mesh has a uniform spacing in the lateral directions, except for a
 single refinement in the region of the vanes. Typically, the grid is 
 roughly one hundred points in the streamwise and spanwise directions
 before the refinement. The refinement halves the spacing in all three
-coordinate directions, \{x,y,z\} in this region. 
-
+coordinate directions, \{x,y,z\} in this region. The refinement is made
+from the ground to 1.5 times the height of the vanes and cone. 
 
 The mesh is non-uniform in height to
 resolve the boundary layer. This is accomplished by redistributing a
@@ -130,13 +130,28 @@ mesh uniform in height, z, according to,
       C_2 \text{ exp}(C_3 z - 1),                 & \text{otherwise}
      \end{cases}
 \end{equation}
+
 where $z_\delta$ is the chosen height of the boundary layer mesh, and
 $C_1-C_3$ are scaling coefficients. This gives the mesh an exponentially
 varying character, with the coefficients chosen to ensure ten or more
 points in the boundary layer, isotropic spacing in cells outside of
 it, and smooth blending between these two regimes. Each boundary layer
 spacing was tested against a finer spacing to ensure that the results
-were not sensitive to the choice of spacing. 
+were not sensitive to the choice of spacing. A horizontal slice though a
+representative domain is shown in Figure \ref{fig:meshing}. The single
+refinement in the region of the vanes is visible, as well as the finer
+meshed boundary layer region near the ground. 
+
+  \begin{figure}[!htb]
+    \begin{center}
+     \includegraphics[width = 10 cm]{figs/meshing}
+     \caption{Horizontal slide through the domain, to show a
+     representative meshing. The single refinement region around the
+     vanes is visible, as well as the finer boundary layer mesh near the
+     ground.}
+     \label{fig:meshing}
+    \end{center}
+  \end{figure}
 
 Finally, the diffusivities are proportionally
 scaled with grid size to ensure that the cell Reynolds number, 
