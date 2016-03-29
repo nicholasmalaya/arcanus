@@ -1,0 +1,219 @@
+\section{}
+\label{app:model_param}
+
+This appendix details the weak formulation of the Navier Stokes
+equations instantiated in the software GRINS, as well as providing a
+derivation of the $\tau$ stabilization terms. 
+
+%
+% intro
+%
+\subsection{Outline}
+Our process is the following: 
+
+\begin{itemize}
+ \item Cast Navier Stokes + Boussinesq equations ino weak form
+ \item Prepare as an operator $Lc=f$
+ \item Calculate Fr\'echet derivative
+ \item Separate into differential (P) and constant (Z) components,
+       $L'[c] = P + Z$
+ \item Choose stabilization operator such that $S = -P^*$
+ \item Then stabilization has form, $a_h(c,\phi) = a(c,\phi) + \langle
+       Lc,S\phi \rangle_\tau$
+\end{itemize}
+
+This is essentially the least-squares stabilization proposed by Hughes
+and extended to natural convection by Becker and Braack. 
+
+%
+% start the real work
+%
+\newpage
+
+\subsection{Weak Formulation of Equations of Interest}
+
+We begin with the incompressible Navier-Stokes equations with Bousinesq
+buoyancy,
+\begin{align}
+ \nabla \cdot u &= \, 0 \label{eq_cont}\\
+ \frac{\partial u}{\partial t} + u \cdot \nabla u &= -\frac{1}{\rho}
+ \nabla p + \nu \nabla^2 u + g \frac{T'}{T_0} \label{eq_mom}\\
+ \rho c_p \frac{\partial T}{\partial t} + u \cdot \nabla T &= \nabla
+ \cdot (k \nabla T) \label{eq_energy}
+\end{align}
+e.g. the continuity, momentum and energy equations, respectively. Our 
+state vector is $c =  \left[p,u,T \right]$. To cast these into
+weak form we multiply by appropriate test 
+functions $\phi = \left[q,v,w \right] \in H^1_0(\Omega)$ and integrate over
+the domain, $\Omega \in \mathbb{R}^n$. Our system of equations now
+appears as, 
+\begin{align}
+  \bigintsss_\Omega q \nabla \cdot u \, dx &= 0 \\
+ \bigintsss_\Omega \dot u \cdot v \, dx +
+ \bigintsss_\Omega  (u \cdot \nabla) \, u \cdot v \, dx &=
+ \bigintsss_\Omega \frac{p}{\rho} \nabla \cdot v \, dx - \nu \bigintsss_\Omega \nabla u \cdot \nabla v
+ \,dx + \bigintsss_\Omega g \frac{T'}{T_0} \cdot v \, dx \\ 
+ \rho c_p \bigintsss_\Omega \dot T \cdot w \, dx + \bigintsss_\Omega (u
+ \cdot \nabla) T \cdot w \, dx  &= -\bigintsss_\Omega (k \nabla T) \cdot
+ \nabla w \, dx
+\end{align}
+
+where an ``over-dot'' denotes time diffentiation, e.g. $\dot u =
+\frac{\partial u}{\partial t}$. Note that both the pressure term as well
+as the viscous term were integrated by parts to reduce the required
+order of the solution on those state variables.  
+
+We define the inner product by the shorthand notation $(u,v) =
+\bigintsss_\Omega u\cdot v dx $, giving our equations the form,  
+\begin{align}
+ (\nabla \cdot u, q) &= 0 \\
+ (\dot u,v) + (u \cdot \nabla u, v) - (p,\nabla \cdot v) + \nu (\nabla
+ u, \nabla v) &= (g \frac{T'}{T_0},v) \\
+ \rho c_p (\dot T,w) + (u \cdot \nabla T,w) + (k \nabla T,\nabla w) &= 0.
+\end{align}
+
+This defines our weak form operator $a(c,\phi)$. Our full equations will
+also include a stabilization term such that,  
+\begin{equation}
+ a_h(c,\phi) = a(c,\phi) +  \langle Lc,S\phi \rangle_\tau. 
+\end{equation}
+
+The subsequent section will define the operators L and S, so that we
+might then fully define the stabilization term $\langle Lc,S\phi
+\rangle_\tau$. 
+
+%
+% subsection
+%
+\newpage
+\subsection{The operators L and S}
+
+
+To form the stabilization terms, 
+
+\begin{equation}
+ \langle Lc,S\phi \rangle_\tau
+\end{equation}
+
+we must define the operators L and S. The operator L is simply the PDEs
+in Equations \ref{eq_cont} - \ref{eq_energy} written in operator form. S is
+defined as the negative adjoint of the differential terms in L, e.g.
+\begin{align}
+ L'[c] = P + Z \\
+ S = -P^*. 
+\end{align}
+Where P are the differential terms, and Z the constant terms. 
+
+Our objective is now to construct the adjoint operator of L. This is
+accomplished using the Fr\'echet derivative, which defines the
+functional derivative on L. In general this is accomplished by taking
+the first variation of a function $\Pi(u)$ around a base state, $u$,
+\begin{equation}
+ \delta\, \Pi(u) = \lim_{\epsilon \to 0} \frac{\Pi(u+\epsilon \hat u) -
+  \Pi(u)}{\epsilon} =
+  \frac{\partial \Pi(u +\epsilon \hat u)}{\partial \epsilon}
+  \bigg|_{\epsilon = 0}
+\end{equation}
+for all $\hat u$ and $\epsilon > 0$ with $u + \epsilon \hat u \in
+H^1_0(\Omega)$.
+
+We now consider the first variation of state for the momentum equation
+term by term. The convective term is, 
+\begin{align}
+ \frac{\partial}{\partial \epsilon} (u + \epsilon \hat u) &\cdot \nabla
+  (u + \epsilon \hat u) \\
+ = \lim_{\epsilon \to 0} \hat u &\cdot \nabla (u + \epsilon \hat u) \\
+ = \hat u & \cdot \nabla u \\
+ = - u &\cdot \nabla \hat u
+\end{align}
+and the viscous term is, 
+\begin{align}
+ \frac{\partial}{\partial \epsilon} \nabla^2 (u + \epsilon \hat u) \\
+ = \nabla^2 \hat u
+\end{align}
+%Lagrangian is therefore, $\mathcal{L}$
+and thus the full adjoint equation for momentum appears as
+\begin{align}
+ - u &\cdot \nabla \hat u - \nabla^2 \hat u = -\frac{1}{\rho} \nabla p. 
+\label{eq_adjmom}
+\end{align}
+
+The continuity equation is straightforward, 
+\begin{align}
+ \frac{\partial}{\partial \epsilon} \nabla \cdot (u + \epsilon \hat
+ u) = 0 \\
+\nabla \cdot \hat u = 0.
+\label{eq_adjcont}
+\end{align}
+
+Finally, consider the convective term of the energy equation, 
+\begin{align}
+ \frac{\partial}{\partial \epsilon} u \cdot \nabla (T + \epsilon \hat T)
+ = u \cdot \nabla \hat T
+\end{align}
+and the thermal diffusion term, 
+\begin{align}
+ \frac{\partial}{\partial \epsilon} \cdot (-k \nabla (T + \epsilon \hat
+ T)) = \nabla \cdot (-k \nabla \hat T).
+\end{align}
+The full adjoint energy equation is therefore, 
+\begin{align}
+ u \cdot \nabla \hat T + \nabla \cdot (k \nabla \hat T) =0.
+\label{eq_adjen}
+\end{align}
+
+We are now in a position to define the matricies L and S. L comes
+directly from the PDEs in Equations \ref{eq_cont} - \ref{eq_energy} and is
+defined as thus, 
+
+\begin{equation}
+\renewcommand\arraystretch{2}
+ L = 
+  \begin{pmatrix}
+    0 & \nabla \cdot () & 0   \\
+    \nabla \,() & u \cdot \nabla() - \nu \nabla^2() & -g \frac{T'}{T_0}  \\
+    0 & 0 & u \cdot \nabla() - \nabla \cdot (k \nabla() \,)
+  \end{pmatrix}.
+\end{equation}
+
+While the S matrix is constructed from Equations
+\ref{eq_adjmom}, \ref{eq_adjcont}, and \ref{eq_adjen} must be, 
+\begin{equation}
+\renewcommand\arraystretch{2}
+ S = -P^* = 
+  \begin{pmatrix}
+    0 & \nabla \cdot () & 0   \\
+    \nabla \,() & u \cdot \nabla() + \nu \nabla^2() & 0  \\
+    0 & 0 & u \cdot \nabla() + \nabla \cdot k \nabla()
+  \end{pmatrix}.
+\end{equation}
+
+%
+% tau!
+%
+\newpage
+\subsection{Tau stabilization terms}
+
+Finally, we may now form the $\tau$ stabilization terms, 
+\begin{equation}
+ \langle Lc,S\phi \rangle_\tau. 
+\end{equation}
+Where the operator $ \langle \cdot,\cdot \rangle_\tau. $ is shorthand 
+and denotes
+\begin{equation}
+ \langle u,v \rangle_\tau = \sum_K \tau_K (u,v)_K.
+\end{equation}
+Where $K$ denotes the FEM cells. Now, through what Becker and Braack
+contemptibly referred to as ``elementary calculus'', we now discover our
+stabilization terms,  
+\begin{align*}
+ \langle Lc,S\phi \rangle_\tau = \sum_K \{ \quad &\tau_p (\nabla \cdot u,
+ \nabla \cdot v) \\
+ +\quad &\tau_u \,(\nabla p + u \cdot \nabla u - \nu \nabla^2 - g \frac{T'}{T_0},
+ \nabla q) \\
+ +\quad &\tau_u \, (\nabla p + u \cdot \nabla u - \nu \nabla^2 - g \frac{T'}{T_0},
+ \nabla u \cdot \nabla v + \nu \nabla^2 v) \\
+ +\quad &\tau_T \, (u \cdot T - \nabla \cdot (k \nabla T), \nabla u \cdot \nabla
+ w + \nabla \cdot (k \nabla w)) \}.
+\end{align*}
+
