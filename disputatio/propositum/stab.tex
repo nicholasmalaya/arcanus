@@ -5,14 +5,10 @@ This appendix details the weak formulation of the Navier Stokes
 equations instantiated in the software GRINS, as well as providing a
 derivation of the $\tau$ stabilization terms. 
 
-%
-% intro
-%
-\subsection{Outline}
-Our process is the following: 
+In brief, our process is the following: 
 
 \begin{itemize}
- \item Cast Navier Stokes + Boussinesq equations ino weak form
+ \item Cast Navier Stokes + Boussinesq equations into weak form
  \item Prepare as an operator $Lc=f$
  \item Calculate Fr\'echet derivative
  \item Separate into differential (P) and constant (Z) components,
@@ -28,7 +24,6 @@ and extended to natural convection by Becker and Braack.
 %
 % start the real work
 %
-\newpage
 
 \subsection{Weak Formulation of Equations of Interest}
 
@@ -85,7 +80,6 @@ might then fully define the stabilization term $\langle Lc,S\phi
 %
 % subsection
 %
-\newpage
 \subsection{The operators L and S}
 
 
@@ -191,7 +185,6 @@ While the S matrix is constructed from Equations
 %
 % tau!
 %
-\newpage
 \subsection{Tau stabilization terms}
 
 Finally, we may now form the $\tau$ stabilization terms, 

@@ -26,6 +26,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage[TS1,T1]{fontenc}
 
+\usepackage{bigints}
+\usepackage{etoolbox}
+\AtBeginEnvironment{pmatrix}{\setlength{\arraycolsep}{15pt}}
+
+
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{pifont}
@@ -122,8 +127,11 @@
 
 \newpage
 \appendix
-\include{app_params}
 \include{course_list}
+\newpage
+\include{app_params}
+\newpage
+\include{stab}
 
 \bibliography{ref}
 \bibliographystyle{plain}
