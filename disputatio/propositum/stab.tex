@@ -127,6 +127,16 @@ and the viscous term is,
  \frac{\partial}{\partial \epsilon} \nabla^2 (u + \epsilon \hat u) \\
  = \nabla^2 \hat u
 \end{align}
+while the buoyancy term is, 
+\begin{align}
+ \delta \left(-g \frac{T'}{T_0}\right) &= \delta \left( -g
+ \frac{T-T_0}{T_0} \right) \\
+ &= -g \frac{\partial}{\partial \epsilon} \left( \frac{T-T_0+\epsilon
+ \hat T}{T_0} \right) \\
+ &= -g \left( \frac{\hat T}{T_0} \right) 
+\end{align}
+
+
 %Lagrangian is therefore, $\mathcal{L}$
 and thus the full adjoint equation for momentum appears as
 \begin{align}
@@ -167,7 +177,7 @@ defined as thus,
  L = 
   \begin{pmatrix}
     0 & \nabla \cdot () & 0   \\
-    \nabla \,() & u \cdot \nabla() - \nu \nabla^2() & -g \frac{T'}{T_0}  \\
+    \nabla \,() & u \cdot \nabla() - \nu \nabla^2() & -g \frac{()}{T_0}  \\
     0 & 0 & u \cdot \nabla() - \nabla \cdot (k \nabla() \,)
   \end{pmatrix}.
 \end{equation}
@@ -179,7 +189,7 @@ While the S matrix is constructed from Equations
  S = -P^* = 
   \begin{pmatrix}
     0 & \nabla \cdot () & 0   \\
-    \nabla \,() & u \cdot \nabla() + \nu \nabla^2() & 0  \\
+    \nabla \,() & u \cdot \nabla() + \nu \nabla^2() &  -g \frac{()}{T_0}  \\
     0 & 0 & u \cdot \nabla() + \nabla \cdot k \nabla()
   \end{pmatrix}.
 \end{equation}
