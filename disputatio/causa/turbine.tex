@@ -66,8 +66,14 @@ on the blades.
 
 We have been provided lift and drag as a function of angle of attack for
 two cases, the flat plate and semi-circle turbine blades. 
-For the flat plate, the drag polars 
+For the flat plate, the drag polars are specified as,
 
+\begin{lstlisting}
+    theta := ((t+pi/2)%pi)-pi/2; 
+    lift   = 'if(abs(theta)<pi/24,theta*9,sin(2*theta))'
+    drag   = 'if(abs(theta)<pi/24,0.005+theta*theta*81/25,1-0.8*cos(2*theta))'
+\end{lstlisting}
+for example. 
 
 Then, the force on the turbine is, 
 \begin{equation}
