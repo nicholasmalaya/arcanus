@@ -25,7 +25,19 @@ e.g. pointing ``up''. Then the normal in the radial direction must be,
 \begin{equation}
 n_r = n_B \times n_v. 
 \end{equation}
-Then, the fan-wing-plane component of local relative velocity is
+% The fan-wing-plane bit means that we're only looking at the projection
+% of velocity into the plane that's defined by the base velocity and
+% vertical direction. 
+
+% (01:03:44 PM) Roy Stogner: The "local relative velocity" means that
+% we're taking the velocity not in the reference frame of the domain, but
+% in the reference frame of the wing.  So if the base velocity is U_B and
+% the air velocity is U, then the local relative velocity is U - U_B. 
+% (01:04:25 PM) Roy Stogner: Note that we simplify that equation a tiny
+% bit by using the fact that U_B and N_R are perpendicular. 
+
+Then, the fan-wing-plane component (e.g. the plane perpendicular to the 
+radius) of local relative velocity is
 \begin{equation}
 u_p = u - (u\cdot n_r)\cdot n_r - u_B. 
 \end{equation}
