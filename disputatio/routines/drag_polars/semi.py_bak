@@ -32,8 +32,8 @@ def reader(fl):
 #
 # grab original data
 #
-f1 = "cd_semi.dat"
-f2 = "cl_semi.dat"
+f1 = "cd_flat.dat"
+f2 = "cl_flat.dat"
 anglecd, cd = reader(f1)
 anglecl, cl = reader(f2)
 
@@ -54,8 +54,8 @@ anglecl, cl = reader(f2)
 #from scipy.interpolate import interp1d
 from numpy.polynomial import polynomial as P
 
-inter_cd,stat_cd = P.polyfit(anglecd, cd, 16,full=True)
-inter_cl,stat_cl = P.polyfit(anglecl, cl, 16,full=True)
+inter_cd,stat_cd = P.polyfit(anglecd, cd, 9,full=True)
+inter_cl,stat_cl = P.polyfit(anglecl, cl, 9,full=True)
 
 rad    = np.linspace(-0.99, 0.99)
 t      = (rad+np.pi)%np.pi - np.pi/2.0
@@ -84,7 +84,7 @@ plt.plot(anglei, P.polyval(anglei,inter_cl), color='blue',label='Interpolant')
 plt.ylabel(r'$C_l$')
 plt.xlabel(r'$\alpha$')
 plt.legend()
-plt.savefig("semi.png")
+plt.savefig("flat.png")
 
 
 #
