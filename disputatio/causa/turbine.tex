@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{amsmath,amssymb}
 \usepackage{hyperref}
+\usepackage{graphicx}
 \usepackage{listings}
 \title{\bf{Turbine Formulation}}
 \author{Nicholas Malaya, Roy Stogner, Robert D. Moser \\ Institute for
@@ -61,9 +62,8 @@ u_{\text{up}} = u_p \cdot n_v.
 Finally, we can specify the angle with respect to the fan velocity
 direction as, 
 \begin{equation}
- %\theta_f =
- %\text{atan2}\left(\frac{u_{\text{up}}}{u_{\text{fwd}}}\right)
- \theta_f = \text{tan}^{-1}\left(\frac{u_{\text{up}}}{u_{\text{fwd}}}\right)
+ \theta_f = \text{atan2}\left(\frac{u_{\text{up}}}{u_{\text{fwd}}}\right)
+ %\theta_f = \text{tan}^{-1}\left(\frac{u_{\text{up}}}{u_{\text{fwd}}}\right)
 \end{equation}
 while the angle with respect to the chord is this with the addition of
 the angle of attack of the blade, 
@@ -87,6 +87,15 @@ For the flat plate, the drag polars are specified as,
 \end{lstlisting}
 for example. 
 
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 12 cm]{figs/flat}
+    \caption{The flat plate interpolation.} 
+    \label{flat}
+  \end{center}
+\end{figure}
+As shown in Figure \ref{flat}, the fit is largely accurate. 
+
 Then, the force on the turbine is, 
 \begin{equation}
  \boxed{F = \frac{1}{2}\frac{\rho u_p^2 C}{A}\left(C_l \cdot
@@ -96,7 +105,7 @@ Then, the force on the turbine is,
 Where C is the chord length (specified as input), and A is the area,
 which is also specified. For instance, the area swept might be, 
 \begin{lstlisting}
-     area_swept = '{r:=sqrt(x^2+y^2); 2*pi*r*(.6-.4)/8}'
+     area_swept = '{r:=sqrt(x^2+y^2); 2*pi*r*(.6-.4)/4}'
 \end{lstlisting}
 for a 4 blade fan. The chord is specified similarly, for instance, 
 \begin{lstlisting}
