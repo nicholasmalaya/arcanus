@@ -5,8 +5,15 @@ def poly_print(c,name):
     #
     # prints coefficients for lift or drag functions
     #
-    print c
-    print name
+    p=0
+    print name +" = '",
+
+    for item in c:
+        if(p == len(c)-1):
+            print str(item)+'*x^'+str(p)+"'",
+        else:
+            print str(item)+'*x^'+str(p)+" + ",
+            p=p+1
 
     return 0
 
