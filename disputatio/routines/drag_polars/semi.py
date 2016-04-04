@@ -1,6 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+def poly_print(c,name):
+    #
+    # prints coefficients for lift or drag functions
+    #
+    print c
+    print name
+
+    return 0
+
 def reader(fl):
     #
     # reads a file and returns function values
@@ -47,6 +56,9 @@ anglecl, cl = reader(f2)
 #rad = np.linspace(0.0, 360.0)
 #
 
+anglecd = -1 + 2*np.array(anglecd)/360.0
+anglecl = -1 + 2*np.array(anglecl)/360.0
+
 #
 # interpolate!
 # interp1d(x, y, kind='cubic')
@@ -54,18 +66,24 @@ anglecl, cl = reader(f2)
 #from scipy.interpolate import interp1d
 from numpy.polynomial import polynomial as P
 
+print anglecd
+
 inter_cd,stat_cd = P.polyfit(anglecd, cd, 16,full=True)
 inter_cl,stat_cl = P.polyfit(anglecl, cl, 16,full=True)
 
 rad    = np.linspace(-0.99, 0.99)
 t      = (rad+np.pi)%np.pi - np.pi/2.0
-anglei = (rad+1)*180.0
+#anglei = (rad+1)*180.
+anglei = rad
 
 #cdi = np.cos(2 * np.pi * rad) * np.exp(-rad)
 #cli = np.cos(2 * np.pi * rad)
 
 #cli = np.where(abs(t) > np.pi/24., t, np.sin(2*t))
 #cdi = np.where(abs(t) > np.pi/24., t*t*81/25., 1-0.8*np.cos(2*t))
+
+poly_print(inter_cl,'lift')
+poly_print(inter_cd,'drag')
 
 #
 # plot!
