@@ -6,15 +6,20 @@ def poly_print(c,name):
     # prints coefficients for lift or drag functions
     #
     p=0
-    print name +" = '",
-
+    print ''
     for item in c:
+        # last step
         if(p == len(c)-1):
-            print str(item)+'*x^'+str(p)+"'",
-        else:
-            print str(item)+'*x^'+str(p)+" + ",
+            print '        '+str(item)+'*x^'+str(p)+"'",
+        # first step
+        elif(p==0):
+            print name +" = '"+str(item)+'*x^'+str(p)+" + "
             p=p+1
-
+        # middle steps
+        else:
+            print '        '+str(item)+'*x^'+str(p)+" + "
+            p=p+1
+    print ''
     return 0
 
 def reader(fl):
@@ -72,8 +77,6 @@ anglecl = -1 + 2*np.array(anglecl)/360.0
 #
 #from scipy.interpolate import interp1d
 from numpy.polynomial import polynomial as P
-
-print anglecd
 
 inter_cd,stat_cd = P.polyfit(anglecd, cd, 16,full=True)
 inter_cl,stat_cl = P.polyfit(anglecl, cl, 16,full=True)
