@@ -374,13 +374,13 @@ disk model is under development and will be detailed in the dissertation.
 
 In addition to vanes, the SoV device includes impermeable surfaces
 such as the wind break (``cone'') on the top of the facility. As with
-the turning vanes, this is accomplished without explicitly meshing the
+the turning vanes, this is represented without explicitly meshing the
 surface nor imposing  a boundary condition at the surface. This allows
 rapid exploration of configurations  with different solid surfaces to
 control and manipulate the fluid flow. These solid surfaces are
 represented by a body force acting in a region surrounding the wall. 
-A vector normal to the surface is defined in this region so
-that a body force will drive the velocity to zero, resulting in the flow
+A body force normal to the surface is defined in this region so
+that it will drive the normal velocity to zero, resulting in the flow
 moving only parallel to the virtual surface. 
 The body force is defined as in Equation
 \ref{eqn:body_force}; however, the length scale $\ell_v$ is specified to
@@ -398,19 +398,20 @@ This approach is unique in its use of Babuska's penalty treatment of
 constraints\cite{1973fempen,ZAMM:ZAMM19880680925} to enforce the
 behavior at the boundary. This method was selected because it is easily
 imposed in the FEM context, and the method has been explored in detail
-in the literature. Typically, the enforcement occurs along a domain
-boundary, but in this work it is used in the interior, 
-and is not imposed as a mathematical constraint but rather as a modeling 
-approach. 
+in the literature. 
+%Typically, the enforcement occurs along a domain
+%boundary, but in this work it is used in the interior, 
+%and is not imposed as a mathematical constraint but rather as a modeling 
+%approach. 
 
-We add a penalty term to the weak
-form of the Navier-Stokes momentum equation described in the subsequent
-section %\ref{eq:ns_weak} 
-that has the form, 
-\begin{equation}
-P_\epsilon = \int_\Omega ({\bf f_v} \cdot v) \, dx
-\end{equation}
-where ${\bf f_v}$ is as described in equation \ref{eqn:body_force}. 
+% We add a penalty term to the weak
+% form of the Navier-Stokes momentum equation described in the subsequent
+% section %\ref{eq:ns_weak} 
+% that has the form, 
+% \begin{equation}
+% P_\epsilon = \int_\Omega ({\bf f_v} \cdot v) \, dx
+% \end{equation}
+% where ${\bf f_v}$ is as described in equation \ref{eqn:body_force}. 
 %% As the system is formulated as a variational problem that seeks to
 %% minimize the test function $v$, any velocity that is not aligned with
 %% the vane normal will incur a penalty versus one that does. Note that unlike
