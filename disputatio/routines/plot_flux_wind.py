@@ -26,7 +26,7 @@ it = range(len(flux))
 nts = ['Field Test',
         'Curved vanes',
         'Cylinder',
-        'Linear curvature',
+        'Linear Vanes',
         'Elliptic Vanes',
         'Optimized Elliptic',
         'Horizontal Partitions',
@@ -58,7 +58,7 @@ fsz=32
 fig,ax = plt.subplots()
 plt.plot(it,flux, 'ko-', color='blue')
 plt.xlim(-0.7, it[-1]+0.5)
-plt.ylim(600, 3200)
+plt.ylim(600, 3500)
 plt.ylabel(r'Kinetic Energy Flux (W)',fontsize=fsz)
 plt.xlabel(r'Optimization Case',fontsize=fsz)
 #ax.set_yscale('log')
