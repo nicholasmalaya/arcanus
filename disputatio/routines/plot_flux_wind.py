@@ -57,8 +57,8 @@ fsz=32
 #plt.subplot(1, 1, 1)
 fig,ax = plt.subplots()
 plt.plot(it,flux, 'ko-', color='blue')
-plt.xlim(-0.7, it[-1]+0.5)
-plt.ylim(600, 3500)
+plt.xlim(-1.7, it[-1]+0.5)
+plt.ylim(600, 3800)
 plt.ylabel(r'Kinetic Energy Flux (W)',fontsize=fsz)
 plt.xlabel(r'Optimization Case',fontsize=fsz)
 #ax.set_yscale('log')
@@ -67,10 +67,12 @@ ax.xaxis.set_major_formatter(plt.NullFormatter())
 
 
 #i=0
+# textcoords = 'offset points'
 for i in xrange(len(nts)):
-    ax.annotate(nts[i], xy=(it[i],flux[i]), xytext=(20, 30),
-                textcoords = 'offset points', ha = 'right', va = 'bottom',
-                bbox = dict(boxstyle = 'round,pad=0.5', fc = 'yellow', alpha = 0.5),
+    ax.annotate(nts[i], xy=(it[i],flux[i]), xytext=(10, 40+min(i*15,60)),
+                textcoords = 'offset points', 
+                ha = 'right', va = 'top',
+                bbox = dict(boxstyle = 'round,pad=0.5', fc = 'yellow', alpha = 0.7),
                 arrowprops = dict(arrowstyle = '->', connectionstyle = 'arc3,rad=0'))
 
 #
