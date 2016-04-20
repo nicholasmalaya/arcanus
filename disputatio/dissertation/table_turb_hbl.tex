@@ -1,0 +1,169 @@
+% Source data from production turbulent boundary layer summaries
+%   5c9f94456104cf1772db023f246c2915  relam2.299.h5
+%   805ac7be682012c0dd94c9159b5b671c  turb3.199.h5
+%   7t45cad67daeb545189ac5ea3f6a4e27  turb4.134.h5
+
+\begin{table}
+\makecommand{\z}{\phantom{0}}  % Facilitates column alignment
+\makecommand{\Z}{\phantom{.0}} % Ditto
+\centering
+\caption[Homogenized boundary layer simulations suitable for turbulence model calibration]{%
+    Homogenized boundary layer simulations performed by Suzerain
+    v0.1.6.34-r45407 intended for turbulence model calibration.
+    %
+    For all cases, $\textrm{Pr} = \mu C_p / \kappa = 0.7$, $\alpha=0$ in
+    $\mu_B=\alpha\mu$, $\beta=\nicefrac{2}{3}$ in $\mu / \mu_0={\left(T /
+    T_0\right)}^\beta$, and $\gamma = C_p / C_v = 1.4$.
+    %
+    Extents were $L_x/l_0=10$, $L_y/l_0=2.5$, $L_z/l_0=3$ employing a
+    piecewise-quintic B-spline basis with $N_y$ collocation points stretched
+    per the hyperbolic tangent parameter ``$\tanh$'' following~\eqref{eq:htstretch1}.
+    %
+    Grid spacings are normalized by $\delta_\nu = \mu_w / \rho_w / u_\tau$ where
+    $u_\tau = \sqrt{\tau_w / \rho_w}$ and $\tau_w = \left(\mu \partial_y u\right)_w$.  The
+    distance between the isothermal wall and the first and tenth collocation
+    point is written $y_{1}^{+}$ and $y_{10}^{+}$,
+    respectively.\label{tbl:table_turb_hbl}
+}
+{\renewcommand{\tabcolsep}{0.420em}
+\begin{tabular}{cccccccccccc}
+& \multicolumn{6}{c}{Code inputs} & \\ \cmidrule(lr){2-7}
+Case             &
+$\textrm{Re}$    &
+$\textrm{Ma}$    &
+$N_x$            &
+$N_y$            &
+$N_z$            &
+$\tanh$          &
+$\Delta{}x^{+}$  & % Details from post-processing
+$y_{1}^{+}$      &
+$y_{10}^{+}$     &
+$\Delta{}z^{+}$  &
+Turnovers
+\\
+\toprule\toprule
+%Case   &  Re    &  Ma      &  Nx   &  Ny   &  Nz   &  tanh  &  x+    &  y+1   &  y+10  &  z+     &  Turnovers  \\
+%q2.299 &  1100  &  0.6598  &  256  &  192  &  128  &  2.00  &  13.9  &  0.14  &  6.1   &  \z8.4  &  22.4       \\
+ t3.199 &  2400  &  0.8985  &  512  &  256  &  256  &  2.25  &  13.9  &  0.14  &  6.1   &  \z8.4  &  \z6.4      \\
+ t4.134 &  3250  &  1.1522  &  512  &  256  &  256  &  2.35  &  19.0  &  0.17  &  7.2   &  11.4   &  \z6.9
+\end{tabular}}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}[p]
+\centering
+\caption[Scenario parameters for homogenized boundary layer simulations]{%
+    Input parameters and resulting homogenized boundary layer
+    conditions.  $\textrm{Re}_{99}$ and $\textrm{Ma}_{99}$
+    computed from conditions at $\delta_{99}$.  To properly account
+    for a nonuniform base flow, $\text{Re}_\theta$ is defined
+    per~\eqref{eq:momreynolds_general}.  Wall blowing velocity $v_w^{+}
+    = v_w / u_\tau$.\label{tbl:table_turb_hbl_params}
+    %Case
+    %q2.299 treated all directions linearly implicitly using a time step safety
+    %factor of 0.20.
+}
+{\renewcommand{\tabcolsep}{0.388em}
+\begin{tabular}{cccccccccc}
+& \multicolumn{3}{c}{Code inputs} & \\ \cmidrule(lr){2-4}
+Case                                           &
+$\operatorname{gr}_{t_0}\!\left(\Delta\right)$ &
+$T_w/T_0$                                      &
+$v_w/u_0$                                      &
+$\delta_{99}/l_0$                              &
+$\textrm{Re}_{99}$                             &
+$\textrm{Re}_{\theta}$                         &
+$\textrm{Ma}_{99}$                             &
+$T_{99}/T_w$                                   &
+$v_w^{+}$
+\\
+\toprule\toprule
+%Case   &  grdelta  &  Tw      &  vw             &  delta99  &  Re_delta99  &  Re_theta  &  Ma_99   &  ratio_T  &  vwallplus      \\
+%q2.299 &  0.0100   &  0.2391  &  \num{2.64e-4}  &  1.146    &  1293        &  184       &  0.6598  &  4.107    &  \num{8.98e-3}  \\
+ t3.199 &  0.0135   &  0.2346  &  \num{2.30e-4}  &  1.001    &  2468        &  382       &  0.9041  &  4.128    &  \num{8.52e-3}  \\
+ t4.134 &  0.0200   &  0.2333  &  \num{1.90e-4}  &  1.002    &  3346        &  531       &  1.1523  &  4.201    &  \num{7.18e-3}
+\end{tabular}}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}[p]
+\centering
+\caption[Pressure gradients in homogenized boundary layer simulations]{%
+    Pressure gradient strengths for the simulated boundary layers.
+    %
+    The inviscid base flow was constructed per
+    Appendix~\ref{sec:radialflow} using inputs $\delta/l_0=1$, $\gamma$,
+    $\textrm{Ma}_{e}=\textrm{Ma}$ from \autoref{tbl:table_turb_hbl}
+    and $p_{e,\xi}^{\ast}$.
+    %
+    Observations of $p_{{99},\xi}^{\ast}$, Launder's acceleration
+    parameter $K$~\citep{Launder1964Laminarization},
+    the Pohlhausen parameter~$K_s$, and parameter
+    $\Lambda_n$~\citep{Narasimha1979Relaminarization} are shown evaluated
+    as defined in \autoref{fig:cevisslam_summary_fpg} taking $\delta_{99}$
+    to be the boundary layer edge.\label{tbl:table_turb_hbl_fpg}
+}
+{%\renewcommand{\tabcolsep}{0.395em}
+\begin{tabular}{ccccccc}
+& \multicolumn{1}{c}{Code input} & \\ \cmidrule(lr){2-2}
+Case                                      &
+\raisebox{0.10ex}{$p_{e,\xi}^{\ast}$}     &
+\raisebox{0.10ex}{$p_{{99},\xi}^{\ast}$}  &
+$K,\mu=\mu_{99}$                          &
+$K,\mu=\mu_w$                             &
+$K_s$                                     &
+$\Lambda_n$
+\\
+\toprule\toprule
+%Case   &  target          &  p_ex            &  Launder_e       &  Launder_w       &  Pohlhausen  &  Lambda_n  \\
+%q2.299 &  \num{-0.01269}  &  \num{-0.01452}  &  \num{1.136e-5}  &  \num{4.438e-6}  &  19.00       &  3.902     \\
+ t3.199 &  \num{-0.01019}  &  \num{-0.01025}  &  \num{4.176e-6}  &  \num{1.623e-6}  &  25.44       &  3.345     \\
+ t4.134 &  \num{-0.01234}  &  \num{-0.01233}  &  \num{3.734e-6}  &  \num{1.434e-6}  &  41.81       &  4.113
+\end{tabular}}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}
+% Assuming "a" is a summary file, this computes Nusselt number per Redmine #2563
+% which seems to jive with Schlicting equation 4.16.
+% a['bl.thick'].attrs['delta99'] * a['bar_T_{y'].attrs['mu'][0] / (a['bl.edge99'].attrs['T'] - a['bl.wall'].attrs['T'])}
+\centering
+\makecommand{\z}{\phantom{0}}  % Facilitates column alignment
+\makecommand{\Z}{\phantom{.0}} % Ditto
+\makecommand{\n}{\phantom{-}}  % Ditto
+\centering
+\caption[Edge vs. wall conditions in homogenized boundary layer simulations]{%
+    Edge versus wall conditions in the simulated boundary layers.  Friction
+    quantities $\mathrm{Re}_\tau = \delta_{99} / \delta_\nu$, $\textrm{Ma}_\tau
+    = u_\tau / a_w = u_\tau / \sqrt{T_w}$, and $c_f = 2 \tau_w /
+    \left(\rho_{99} u_{99}^2\right)$.  Nondimensional heat flux $B_q = -
+    \mu_w \left(\partial_y T\right)_w  / \left(\textrm{Pr}\,\rho_w u_\tau
+    T_w\right)$~\citep{Bradshaw1977Compressible} and local Nusselt number
+    $\mathrm{Nu}_{99} = \delta_{99} \left(\partial_y T\right)_w /
+    \left(T_{99} - T_w\right)$.\label{tbl:table_turb_hbl_edgewall}
+}
+{\renewcommand{\tabcolsep}{0.425em}
+\begin{tabular}{ccccccccc}
+Case               &
+$\rho_{99}/\rho_w$ &
+$\mu_{99}/\mu_w$   &
+$v_{99}/v_w$       &
+$\textrm{Re}_\tau$ &
+$\textrm{Ma}_\tau$ &
+$c_f$              &
+$-B_q$             &
+$\textrm{Nu}_{99}$
+\\
+\toprule\toprule
+%Case   &  rho99/rho_w  &  mu99/mu_w  &  v99/v_w      &  Re_tau  &  Ma_tau   &  cf              &  -Bq       &  Nusselt  \\
+%q2.299 &  0.2445       &  2.560      &  $-25.75\z$   &  408     &  0.04028  &  \num{7.443e-3}  &  0.09635   &  \z8.895  \\
+ t3.199 &  0.2427       &  2.573      &  $-\z3.003$   &  714     &  0.05008  &  \num{6.128e-3}  &  0.09765   &  15.59\z  \\
+ t4.134 &  0.2383       &  2.603      &  $\n30.95\z$  &  976     &  0.06311  &  \num{5.994e-3}  &  0.1018\z  &  21.74\z
+\end{tabular}}
+\end{table}

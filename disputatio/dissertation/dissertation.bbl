@@ -1,0 +1,1303 @@
+\begin{thebibliography}{181}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[NAS(2005)]{NASA2005CEVReport}
+{NASA's} exploration systems architecture study, final report.
+\newblock Technical Report NASA TM 214062, November 2005.
+
+\bibitem[{AIAA Computational Fluid Dynamics Committee on
+  Standards}(1998)]{AIAA_Guide_1998}
+{AIAA Computational Fluid Dynamics Committee on Standards}.
+\newblock {AIAA} guide for verification and validation of computational fluid
+  dynamics simulations.
+\newblock AIAA, 1998.
+\newblock G-077-1998.
+
+\bibitem[Arnette et~al.(1998)Arnette, Samimy, and Elliott]{Arnette1998Effects}
+Stephen~A. Arnette, Mo~Samimy, and Gregory~S. Elliott.
+\newblock The effects of expansion on the turbulence structure of compressible
+  boundary layers.
+\newblock \emph{Journal of Fluid Mechanics}, 367:\penalty0 67--105, 1998.
+\newblock \doi{10.1017/S0022112098001475}.
+
+\bibitem[{ASME Committee V\&V 10}(2006)]{ASME_VV10_2006}
+{ASME Committee V\&V 10}.
+\newblock Standard for verification and validation in computational solid
+  mechanics.
+\newblock ASME, 2006.
+
+\bibitem[{ASME Committee V\&V 20}(2009)]{ASME_VV20_2009}
+{ASME Committee V\&V 20}.
+\newblock Standard for verification and validation in computational fluid
+  dynamics and heat transfer.
+\newblock ASME, 2009.
+
+\bibitem[Balay et~al.(1997)Balay, Gropp, McInnes, and
+  Smith]{Balay1997Efficient}
+Satish Balay, William~D. Gropp, Lois~Curfman McInnes, and Barry~F. Smith.
+\newblock Efficient management of parallelism in object oriented numerical
+  software libraries.
+\newblock In E.~Arge, A.~M. Bruaset, and H.~P. Langtangen, editors,
+  \emph{Modern Software Tools in Scientific Computing}, pages 163--202.
+  Birkh{\"{a}}user Press, 1997.
+
+\bibitem[Baum et~al.(1995)Baum, Poinsot, and Th\'{e}venin]{Baum1995Accurate}
+M.~Baum, T.~Poinsot, and D.~Th\'{e}venin.
+\newblock Accurate boundary conditions for multicomponent reactive flows.
+\newblock \emph{Journal of Computational Physics}, 116\penalty0 (2):\penalty0
+  247--261, February 1995.
+\newblock \doi{10.1006/jcph.1995.1024}.
+
+\bibitem[Bauman et~al.(2011)Bauman, Stogner, Carey, Schulz, Upadhyay, and
+  Maurente]{Bauman2011Loose}
+Paul~T. Bauman, Roy Stogner, Graham~F. Carey, Karl~W. Schulz, Rochan Upadhyay,
+  and Andre Maurente.
+\newblock Loose-coupling algorithm for simulating hypersonic flows with
+  radiation and ablation.
+\newblock \emph{Journal of Spacecraft and Rockets}, 48\penalty0 (1):\penalty0
+  72--80, January 2011.
+\newblock \doi{10.2514/1.50588}.
+
+\bibitem[Blackwelder and Kovasznay(1972)]{Blackwelder1972Largescale}
+Ron~F. Blackwelder and Leslie S.~G. Kovasznay.
+\newblock Large-scale motion of a turbulent boundary layer during
+  relaminarization.
+\newblock \emph{Journal of Fluid Mechanics}, 53:\penalty0 61--83, April 1972.
+\newblock \doi{10.1017/S0022112072000047}.
+
+\bibitem[Botella and Shariff(2003)]{Botella2003Bspline}
+Olivier Botella and Karim Shariff.
+\newblock {B}-spline methods in fluid dynamics.
+\newblock \emph{International Journal of Computational Fluid Dynamics},
+  17\penalty0 (2):\penalty0 133--149, March 2003.
+\newblock \doi{10.1080/1061856031000104879}.
+
+\bibitem[Bourassa and Thomas(2009)]{Bourassa2009Experimental}
+C.~Bourassa and F.~O. Thomas.
+\newblock An experimental investigation of a highly accelerated turbulent
+  boundary layer.
+\newblock \emph{Journal of Fluid Mechanics}, 634:\penalty0 359--404, August
+  2009.
+\newblock \doi{10.1017/S0022112009007289}.
+
+\bibitem[Bowersox(1996)]{Bowersox1996Combined}
+Rodney D.~W. Bowersox.
+\newblock Combined laser doppler velocimetry and cross-wire anemometry analysis
+  for supersonic turbulent flow.
+\newblock \emph{AIAA Journal}, 34\penalty0 (11):\penalty0 2269--2275, November
+  1996.
+\newblock \doi{10.2514/3.13390}.
+
+\bibitem[Bowersox and Buter(1996)]{Bowersox1996Turbulence}
+Rodney D.~W. Bowersox and Thomas~A. Buter.
+\newblock Turbulence measurements in a mach 2.9 boundary layer including mild
+  pressure gradients.
+\newblock \emph{AIAA Journal}, 34\penalty0 (12):\penalty0 2479--2483, December
+  1996.
+\newblock \doi{10.2514/3.13427}.
+
+\bibitem[Box et~al.(2008)Box, Jenkins, and Reinsel]{Box2008Time}
+George E.~P. Box, Gwilym~M. Jenkins, and Gregory~C. Reinsel.
+\newblock \emph{Time Series Analysis: Forecasting and Control}.
+\newblock John Wiley, fourth edition, June 2008.
+\newblock ISBN 978-0470272848.
+
+\bibitem[Boyd(2001)]{Boyd2001}
+John~P. Boyd.
+\newblock \emph{Chebyshev and Fourier Spectral Methods}.
+\newblock Dover, 2001.
+\newblock ISBN 978-0486411835.
+
+\bibitem[Bradshaw(1977)]{Bradshaw1977Compressible}
+P.~Bradshaw.
+\newblock Compressible turbulent shear layers.
+\newblock \emph{Annual Review of Fluid Mechanics}, 9\penalty0 (1):\penalty0
+  33--52, 1977.
+\newblock \doi{10.1146/annurev.fl.09.010177.000341}.
+
+\bibitem[Broersen(2000)]{Broersen2000Finite}
+Piet M.~T. Broersen.
+\newblock Finite sample criteria for autoregressive order selection.
+\newblock \emph{IEEE Transactions on Signal Processing}, 48\penalty0
+  (12):\penalty0 3550--3558, December 2000.
+\newblock \doi{10.1109/78.887047}.
+
+\bibitem[Broersen(2002)]{Broersen2002Automatic}
+Piet M.~T. Broersen.
+\newblock Automatic spectral analysis with time series models.
+\newblock \emph{IEEE Transactions on Instrumentation and Measurement},
+  51\penalty0 (2):\penalty0 211--216, April 2002.
+\newblock \doi{10.1109/19.997814}.
+
+\bibitem[Broersen(2006)]{Broersen2006Automatic}
+Piet M.~T. Broersen.
+\newblock \emph{Automatic autocorrelation and spectral analysis}.
+\newblock Springer--Verlag, 2006.
+\newblock \doi{10.1007/1-84628-329-9}.
+
+\bibitem[Brown and Livingood(1952)]{Brown1952Solutions}
+W.~Byron Brown and John N.~B. Livingood.
+\newblock Solutions of laminar-boundary-layer equations which result in
+  specific-weight-flow profiles locally exceeding free-stream values.
+\newblock Technical Report 2800, Lewis Flight Propulsion Laboratory, 1952.
+
+\bibitem[Buell(1990)]{Buell1990Direct}
+J.~C. Buell.
+\newblock Direct simulations of compressible wall-bounded turbulence.
+\newblock \emph{CTR Annual Research Briefs}, pages 347--356, 1990.
+
+\bibitem[Cal and Castillo(2008)]{Cal2008Similarity}
+Ra\'{u}l~B. Cal and Luciano Castillo.
+\newblock Similarity analysis of favorable pressure gradient turbulent boundary
+  layers with eventual quasilaminarization.
+\newblock \emph{Physics of Fluids}, 20\penalty0 (10):\penalty0 105106+, 2008.
+\newblock \doi{10.1063/1.2991433}.
+
+\bibitem[Canuto et~al.(2006)Canuto, Hussaini, Quarteroni, and Zang]{Canuto2006}
+C.~Canuto, M.~Y. Hussaini, A.~Quarteroni, and T.~A. Zang.
+\newblock \emph{Spectral Methods: Fundamentals in Single Domains}.
+\newblock Scientific Computation. Springer-Verlag, 2006.
+\newblock ISBN 3540307257.
+
+\bibitem[Chassaing et~al.(2010)Chassaing, Antonia, Anselmet, and
+  Sarker]{Chassaing2010Variable}
+P.~Chassaing, R.~A. Antonia, L.~Joly Anselmet, and S.~Sarker.
+\newblock \emph{Variable Density Fluid Turbulence}.
+\newblock Kluwer Academic Publishers, 2010.
+\newblock ISBN 978-9048160402.
+
+\bibitem[Cheung et~al.(2011)Cheung, Oliver, Prudencio, Prudhomme, and
+  Moser]{RESS-2010}
+S.~H. Cheung, T.~A. Oliver, E.~E. Prudencio, S.~Prudhomme, and R.~D. Moser.
+\newblock Bayesian uncertainty analysis with applications to turbulence
+  modeling.
+\newblock \emph{Reliability Engineering \& System Safety}, 96:\penalty0
+  1137--1149, 2011.
+\newblock \doi{10.1016/j.ress.2010.09.013}.
+
+\bibitem[Clauser(1954)]{Clauser1954Turbulent}
+Francis~H. Clauser.
+\newblock Turbulent boundary layers in adverse pressure gradients.
+\newblock \emph{Journal of the Aeronautical Sciences}, 21\penalty0
+  (2):\penalty0 91--108, February 1954.
+\newblock \doi{10.2514/8.2938}.
+
+\bibitem[Coleman et~al.(1995)Coleman, Kim, and Moser]{Coleman1995Numerical}
+G.~N. Coleman, J.~Kim, and R.~D. Moser.
+\newblock {A numerical study of turbulent supersonic isothermal-wall channel
+  flow}.
+\newblock \emph{Journal of Fluid Mechanics}, 305:\penalty0 159--183, 1995.
+\newblock \doi{10.1017/S0022112095004587}.
+
+\bibitem[Coleman and Sandberg(2010)]{Coleman2010Primer}
+Gary~N. Coleman and Richard~D. Sandberg.
+\newblock A primer on direct numerical simulation of turbulence - methods,
+  procedures and guidelines.
+\newblock Technical Report AFM 09/01a, March 2010.
+\newblock URL \url{http://eprints.soton.ac.uk/66182/}.
+
+\bibitem[Coleman and Steele(2009)]{Coleman2009Experimentation}
+Hugh~W. Coleman and W.~Glenn Steele.
+\newblock \emph{Experimentation, Validation, and Uncertainty Analysis for
+  Engineers}.
+\newblock John Wiley \& Sons, third edition, 2009.
+\newblock ISBN 978-0470168882.
+
+\bibitem[Davis and Kerczek(1973)]{Davis1973Reformulation}
+Stephen~H Davis and Christian Kerczek.
+\newblock A reformulation of energy stability theory.
+\newblock \emph{Archive for Rational Mechanics and Analysis}, 52\penalty0 (2),
+  1973.
+\newblock \doi{10.1007/BF00282321}.
+
+\bibitem[Del~\'{A}lamo and Jim\'{e}nez(2003)]{DelAlamo2003Spectra}
+Juan~C. Del~\'{A}lamo and Javier Jim\'{e}nez.
+\newblock Spectra of the very large anisotropic scales in turbulent channels.
+\newblock \emph{Physics of Fluids}, 15\penalty0 (6):\penalty0 L41--L44, June
+  2003.
+\newblock \doi{10.1063/1.1570830}.
+
+\bibitem[Del~\'{A}lamo et~al.(2004)Del~\'{A}lamo, Jim\'{e}nez, Zandonade, and
+  Moser]{DelAlamo2004Scaling}
+Juan~C. Del~\'{A}lamo, Javier Jim\'{e}nez, Paulo Zandonade, and Robert~D.
+  Moser.
+\newblock Scaling of the energy spectra of turbulent channels.
+\newblock \emph{Journal of Fluid Mechanics}, 500:\penalty0 135--144, February
+  2004.
+\newblock \doi{10.1017/S002211200300733X}.
+
+\bibitem[Drake and Rossum(2011)]{Drake2011Python}
+Fred~L. Drake and Guido Rossum.
+\newblock \emph{The Python Language Reference Manual}.
+\newblock Network theory Ltd., 2011.
+\newblock ISBN 978-1906966140.
+
+\bibitem[Dudis and Davis(1971{\natexlab{a}})]{Dudis1971Buoyancy}
+Joseph~J. Dudis and Stephen~H. Davis.
+\newblock Energy stability of the buoyancy boundary layer.
+\newblock \emph{Journal of Fluid Mechanics}, 47:\penalty0 381--403, April
+  1971{\natexlab{a}}.
+\newblock \doi{10.1017/S0022112071001113}.
+
+\bibitem[Dudis and Davis(1971{\natexlab{b}})]{Dudis1971Ekman}
+Joseph~J. Dudis and Stephen~H. Davis.
+\newblock Energy stability of the {E}kman boundary layer.
+\newblock \emph{Journal of Fluid Mechanics}, 47\penalty0 (02):\penalty0
+  405--413, April 1971{\natexlab{b}}.
+\newblock \doi{10.1017/S0022112071001125}.
+
+\bibitem[Durbin and Pettersson~Reif(2011)]{Durbin2011Statistical}
+Paul~A. Durbin and Bjorn~A. Pettersson~Reif.
+\newblock \emph{Statistical Theory and Modeling for Turbulent Flows}.
+\newblock Wiley, 2011.
+\newblock ISBN 978-0470689318.
+
+\bibitem[Eaton et~al.(2008)Eaton, Bateman, and Hauberg]{Eaton2008GNU}
+John~W. Eaton, David Bateman, and S{\o}ren Hauberg.
+\newblock \emph{{GNU} Octave Manual Version~3}.
+\newblock Network Theory Limited, 2008.
+\newblock URL \url{http://www.octave.org}.
+
+\bibitem[Ekoto et~al.(2007)Ekoto, Bowersox, and Goss]{Ekoto2007Planar}
+Isaac Ekoto, Rodney Bowersox, and Larry Goss.
+\newblock Planar measurements of supersonic boundary layers with curvature
+  driven pressure gradients.
+\newblock In \emph{45th AIAA Aerospace Sciences Meeting and Exhibit}, January
+  2007.
+\newblock \doi{10.2514/6.2007-1137}.
+
+\bibitem[Ekoto et~al.(2009)Ekoto, Bowersox, Beutner, and
+  Goss]{Ekoto2009Response}
+Isaac~W. Ekoto, Rodney D.~W. Bowersox, Thomas Beutner, and Larry Goss.
+\newblock Response of supersonic turbulent boundary layers to local and global
+  mechanical distortions.
+\newblock \emph{Journal of Fluid Mechanics}, 630:\penalty0 225--265, 2009.
+\newblock \doi{10.1017/S0022112009006752}.
+
+\bibitem[Ekoto et~al.(2008)Ekoto, Bowersox, Beutner, and
+  Goss]{Ekoto2008Supersonic}
+I.W. Ekoto, R.D.W. Bowersox, T.~Beutner, and L.~Goss.
+\newblock Supersonic boundary layers with periodic surface roughness.
+\newblock \emph{AIAA Journal}, 46\penalty0 (2):\penalty0 486--497, 2008.
+\newblock \doi{10.2514/1.31729}.
+
+\bibitem[el~Hak(1995)]{GadelHak1995}
+Mohamed~Gad el~Hak.
+\newblock Questions in fluid mechanics: {S}tokes' hypothesis for a {N}ewtonian,
+  isotropic fluid.
+\newblock \emph{Journal of Fluids Engineering}, 117\penalty0 (1):\penalty0
+  3--5, 1995.
+\newblock \doi{10.1115/1.2816816}.
+
+\bibitem[Engquist and Majda(1977)]{Engquist1977Absorbing}
+Bjorn Engquist and Andrew Majda.
+\newblock {Absorbing boundary conditions for the numerical simulation of
+  waves}.
+\newblock \emph{Mathematics of Computation}, 31\penalty0 (139):\penalty0 629,
+  September 1977.
+\newblock ISSN 0025-5718.
+\newblock \doi{10.1090/S0025-5718-1977-0436612-4}.
+
+\bibitem[Fedorov(2011)]{Federov2011Transition}
+Alexander Fedorov.
+\newblock Transition and stability of high-speed boundary layers.
+\newblock \emph{Annual Review of Fluid Mechanics}, 43\penalty0 (1):\penalty0
+  79--95, 2011.
+\newblock \doi{10.1146/annurev-fluid-122109-160750}.
+
+\bibitem[Fergason and Argrow(2001)]{Fergason2001Simulations}
+Stephen Fergason and Brian Argrow.
+\newblock Simulations of nonclassical dense gas dynamics.
+\newblock In \emph{35th AIAA Thermophysics Conference}. American Institute of
+  Aeronautics and Astronautics, June 2001.
+\newblock \doi{10.2514/6.2001-2752}.
+
+\bibitem[Fernholz and Finley(1977)]{Fernholz1977Critical}
+H.~H. Fernholz and P.~J. Finley.
+\newblock A critical compilation of compressible turbulent boundary layer data.
+\newblock Technical Report AGARDograph 223, June 1977.
+
+\bibitem[Fernholz and Finley(1980)]{Fernholz1980Critical}
+H.~H. Fernholz and P.~J. Finley.
+\newblock A critical commentary on mean flow data for two-dimensional
+  compressible turbulent boundary layers.
+\newblock Technical Report AGARDograph 253, May 1980.
+
+\bibitem[Fernholz et~al.(1981)Fernholz, Finley, and
+  Mikulla]{Fernholz1981Further}
+H.~H. Fernholz, P.~J. Finley, and V.~Mikulla.
+\newblock A further compilation of compressible boundary layer data with a
+  survey of turbulence data.
+\newblock Technical Report AGARDograph 263, November 1981.
+
+\bibitem[Ferrante and Elghobashi(2005)]{Ferrante2005Reynolds}
+Antonino Ferrante and Said Elghobashi.
+\newblock Reynolds number effect on drag reduction in a microbubble-laden
+  spatially developing turbulent boundary layer.
+\newblock \emph{Journal of Fluid Mechanics}, 543:\penalty0 93--106, October
+  2005.
+\newblock \doi{10.1017/S0022112005006440}.
+
+\bibitem[Friedrich(2007)]{Friedrich2007Compressible}
+R.~Friedrich.
+\newblock Compressible turbulent flows: Aspects of prediction and analysis.
+\newblock \emph{{ZAMM} Journal of Applied Mathematics and Mechanics},
+  87\penalty0 (3):\penalty0 189--211, March 2007.
+\newblock \doi{10.1002/zamm.200610312}.
+
+\bibitem[Friedrich et~al.(2004)Friedrich, Foysi, and
+  Sarkar]{Friedrich2004Turbulence}
+R.~Friedrich, H.~Foysi, and S.~Sarkar.
+\newblock Turbulence scalings in supersonic channel flow.
+\newblock \emph{Journal of Fluid Mechanics}, 509:\penalty0 207--216, June 2004.
+\newblock \doi{10.1017/S0022112004009371}.
+
+\bibitem[Galdi and Rionero(1983)]{Galdi1983Local}
+G.~P. Galdi and S.~Rionero.
+\newblock Local estimates and stability of viscous flows in an exterior domain.
+\newblock \emph{Archive for Rational Mechanics and Analysis}, 81\penalty0
+  (4):\penalty0 333--347, 1983.
+\newblock \doi{10.1007/BF00250859}.
+
+\bibitem[Galdi and Straughan(1985)]{Galdi1985Nonlinear}
+G.~P. Galdi and B.~Straughan.
+\newblock A nonlinear analysis of the stabilizing effect of rotation in the
+  {B}enard problem.
+\newblock \emph{Proceedings of the Royal Society of London. A. Mathematical and
+  Physical Sciences}, 402\penalty0 (1823):\penalty0 257--283, December 1985.
+\newblock \doi{10.1098/rspa.1985.0118}.
+
+\bibitem[Galdi and Padula(1990)]{Galdi1990New}
+Giovanni~P. Galdi and Mariarosaria Padula.
+\newblock A new approach to energy theory in the stability of fluid motion.
+\newblock \emph{Archive for Rational Mechanics and Analysis}, 110\penalty0
+  (3):\penalty0 187--286, 1990.
+\newblock \doi{10.1007/BF00375129}.
+
+\bibitem[Ganapathisubramani et~al.(2006)Ganapathisubramani, Clemens, and
+  Dolling]{Ganapathisubramani2006Largescale}
+B.~Ganapathisubramani, N.~T. Clemens, and D.~S. Dolling.
+\newblock Large-scale motions in a supersonic turbulent boundary layer.
+\newblock \emph{Journal of Fluid Mechanics}, 556:\penalty0 271--282, 2006.
+\newblock \doi{10.1017/S0022112006009244}.
+
+\bibitem[Garg and Settles(1998)]{Garg1998Measurements}
+S.~Garg and G.~S. Settles.
+\newblock {Measurements of a supersonic turbulent boundary layer by focusing
+  schlieren deflectometry}.
+\newblock \emph{Experiments in Fluids}, 25\penalty0 (3):\penalty0 254--264,
+  1998.
+\newblock \doi{10.1007/s003480050228}.
+
+\bibitem[Giles(1988)]{Giles1988Nonreflecting}
+M.~Giles.
+\newblock Non-reflecting boundary conditions for the {E}uler equations.
+\newblock Technical Report TR-88-1, MIT CFD Laboratory, Department of
+  Aeronautics and Astronautics, 1988.
+
+\bibitem[Giles(1990)]{Giles1990Nonreflecting}
+Michael~B. Giles.
+\newblock Nonreflecting boundary conditions for {E}uler equation calculations.
+\newblock \emph{AIAA Journal}, 28\penalty0 (12):\penalty0 2050--2058, 1990.
+\newblock \doi{10.2514/3.10521}.
+
+\bibitem[Gran et~al.(1974)Gran, Lewis, and Kubota]{Gran1974Effect}
+R.~L. Gran, J.~E. Lewis, and T.~Kubota.
+\newblock The effect of wall cooling on a compressible turbulent boundary
+  layer.
+\newblock \emph{Journal of Fluid Mechanics}, 66\penalty0 (03):\penalty0
+  507--528, 1974.
+\newblock \doi{10.1017/S0022112074000334}.
+
+\bibitem[Guarini(1998)]{Guarini1998}
+Stephen~E. Guarini.
+\newblock \emph{Direct numerical simulation of supersonic turbulent boundary
+  layers}.
+\newblock PhD thesis, Stanford University, 1998.
+
+\bibitem[Guarini et~al.(2000)Guarini, Moser, Shariff, and
+  Wray]{Guarini2000Direct}
+Stephen~E. Guarini, Robert~D. Moser, Karim Shariff, and Alan Wray.
+\newblock Direct numerical simulation of a supersonic turbulent boundary layer
+  at {M}ach 2.5.
+\newblock \emph{Journal of Fluid Mechanics}, 414:\penalty0 1--33, 2000.
+\newblock \doi{10.1017/S0022112000008466}.
+
+\bibitem[Guennebaud et~al.(2010--2014)Guennebaud, Jacob, et~al.]{eigenweb}
+Ga\"{e}l Guennebaud, Beno\^{i}t Jacob, et~al.
+\newblock Eigen v3.
+\newblock http://eigen.tuxfamily.org, 2010--2014.
+
+\bibitem[Heroux et~al.(2005)Heroux, Bartlett, Howle, Hoekstra, Hu, Kolda,
+  Lehoucq, Long, Pawlowski, Phipps, Salinger, Thornquist, Tuminaro,
+  Willenbring, Williams, and Stanley]{Heroux2005Overview}
+Michael~A. Heroux, Roscoe~A. Bartlett, Vicki~E. Howle, Robert~J. Hoekstra,
+  Jonathan~J. Hu, Tamara~G. Kolda, Richard~B. Lehoucq, Kevin~R. Long, Roger~P.
+  Pawlowski, Eric~T. Phipps, Andrew~G. Salinger, Heidi~K. Thornquist, Ray~S.
+  Tuminaro, James~M. Willenbring, Alan Williams, and Kendall~S. Stanley.
+\newblock An overview of the {Trilinos} project.
+\newblock \emph{ACM Transactions on Mathematical Software}, 31\penalty0
+  (3):\penalty0 397--423, 2005.
+\newblock \doi{10.1145/1089014.1089021}.
+
+\bibitem[Hollis et~al.(2008)Hollis, Berger, Horvath, Coblish, Norris, Lillard,
+  and Kirk]{Hollis2008Aeroheating}
+Brian Hollis, Karen Berger, Thomas Horvath, Joseph Coblish, Joseph Norris,
+  Randolph Lillard, and Benjamin Kirk.
+\newblock Aeroheating testing and predictions for project orion {CEV} at
+  turbulent conditions.
+\newblock In \emph{46th AIAA Aerospace Sciences Meeting and Exhibit}. American
+  Institute of Aeronautics and Astronautics, January 2008.
+\newblock \doi{10.2514/6.2008-1226}.
+
+\bibitem[Honkan and Andreopoulos(1997)]{Honkan1997Vorticity}
+A.~Honkan and Y.~Andreopoulos.
+\newblock Vorticity, strain-rate and dissipation characteristics in the
+  near-wall region of turbulent boundary layers.
+\newblock \emph{Journal of Fluid Mechanics}, 350\penalty0 (1), 1997.
+\newblock \doi{10.1017/S0022112097006770}.
+
+\bibitem[Hoyas and Jim\'{e}nez(2006)]{Hoyas2006Scaling}
+Sergio Hoyas and Javier Jim\'{e}nez.
+\newblock Scaling of the velocity fluctuations in turbulent channels up to
+  $\mbox{Re}_\tau$ = 2003.
+\newblock \emph{Physics of Fluids}, 18\penalty0 (1):\penalty0 011702, January
+  2006.
+\newblock \doi{10.1063/1.2162185}.
+
+\bibitem[Hoyas and Jim\'{e}nez(2008)]{Hoyas2008Reynolds}
+Sergio Hoyas and Javier Jim\'{e}nez.
+\newblock {R}eynolds number effects on the {R}eynolds-stress budgets in
+  turbulent channels.
+\newblock \emph{Physics of Fluids}, 20\penalty0 (10):\penalty0 101511, 2008.
+\newblock \doi{10.1063/1.3005862}.
+
+\bibitem[Huang et~al.(1995)Huang, Coleman, and Bradshaw]{Huang1995Compressible}
+P.~G. Huang, G.~N. Coleman, and P.~Bradshaw.
+\newblock Compressible turbulent channel flows: {DNS} results and modelling.
+\newblock \emph{Journal of Fluid Mechanics}, 305:\penalty0 185--218, 1995.
+\newblock \doi{10.1017/S0022112095004599}.
+
+\bibitem[Ichimiya et~al.(1998)Ichimiya, Nakamura, and
+  Yamashita]{Ichimiya1998Properties}
+Masashi Ichimiya, Ikuo Nakamura, and Shintaro Yamashita.
+\newblock Properties of a relaminarizing turbulent boundary layer under a
+  favorable pressure gradient.
+\newblock \emph{Experimental Thermal and Fluid Science}, 17\penalty0
+  (1-2):\penalty0 37--48, May 1998.
+\newblock \doi{10.1016/S0894-1777(97)10047-4}.
+
+\bibitem[Iida and Nagano(1998)]{Iida1998Relaminarization}
+O.~Iida and Y.~Nagano.
+\newblock The relaminarization mechanisms of turbulent channel flow at low
+  reynolds numbers.
+\newblock \emph{Flow, Turbulence and Combustion}, 60\penalty0 (2):\penalty0
+  193--213, June 1998.
+\newblock \doi{10.1023/A:1009999606355}.
+
+\bibitem[Johnson(2005)]{Johnson2005Higher}
+R.~Johnson.
+\newblock Higher order {B}-spline collocation at the {G}reville abscissae.
+\newblock \emph{Applied Numerical Mathematics}, 52\penalty0 (1):\penalty0
+  63--75, January 2005.
+\newblock \doi{10.1016/j.apnum.2004.04.002}.
+
+\bibitem[Joseph(1965)]{Joseph1965Stability}
+Daniel~D. Joseph.
+\newblock On the stability of the {B}oussinesq equations.
+\newblock 20\penalty0 (1):\penalty0 59--71, 1965.
+\newblock \doi{10.1007/BF00250190}.
+
+\bibitem[Joseph(1966)]{Joseph1966Nonlinear}
+Daniel~D. Joseph.
+\newblock Nonlinear stability of the {B}oussinesq equations by the method of
+  energy.
+\newblock 22\penalty0 (3):\penalty0 163--184, 1966.
+\newblock \doi{10.1007/BF00266474}.
+
+\bibitem[Joson and Aguirre(2013)]{SpaceCom20130722}
+Imelda~B. Joson and Edwin~L. Aguirre.
+\newblock Heat shield for {NASA}'s new {O}rion spacecraft set for 2014 test
+  flight.
+\newblock SPACE.com, July 2013.
+\newblock URL
+  \url{http://www.space.com/22046-nasa-orion-spacecraft-heat-shield.html}.
+
+\bibitem[Khujadze and Oberlack(2004)]{Khujadze2004DNS}
+G.~Khujadze and M.~Oberlack.
+\newblock {DNS} and scaling laws from new symmetry groups of {ZPG} turbulent
+  boundary layer flow.
+\newblock \emph{Theoretical and Computational Fluid Dynamics}, 18\penalty0
+  (5):\penalty0 391--411, November 2004.
+\newblock \doi{10.1007/s00162-004-0149-x}.
+
+\bibitem[Khujadze and Oberlack(2007)]{Khujadze2007New}
+G.~Khujadze and M.~Oberlack.
+\newblock New scaling laws in {ZPG} turbulent boundary layer flow.
+\newblock \emph{Proceedings of 5th International Symposium on Turbulence and
+  Shear Flow Phenomena}, pages 443--448, 2007.
+
+\bibitem[Kim et~al.(1987)Kim, Moin, and Moser]{Kim1987Turbulence}
+John Kim, Parviz Moin, and Robert Moser.
+\newblock Turbulence statistics in fully developed channel flow at low reynolds
+  number.
+\newblock \emph{Journal of Fluid Mechanics}, 177:\penalty0 133--166, 1987.
+\newblock \doi{10.1017/S0022112087000892}.
+
+\bibitem[Kirk et~al.(2014)Kirk, Stogner, Bauman, and Oliver]{Kirk2014Modeling}
+Benjamin~S. Kirk, Roy~H. Stogner, Paul~T. Bauman, and Todd~A. Oliver.
+\newblock Modeling hypersonic entry with the fully-implicit {N}avier-{S}tokes
+  ({FIN}-{S}) stabilized finite element flow solver.
+\newblock \emph{Computers \& Fluids}, 92:\penalty0 281--292, March 2014.
+\newblock \doi{10.1016/j.compfluid.2013.10.003}.
+
+\bibitem[Komminaho and Skote(2002)]{Komminaho2002Reynolds}
+Jukka Komminaho and Martin Skote.
+\newblock Reynolds stress budgets in {C}ouette and boundary layer flows.
+\newblock 68\penalty0 (2):\penalty0 167--192, 2002.
+\newblock \doi{10.1023/A:1020404706293}.
+
+\bibitem[Ku(1966)]{Ku1966Notes}
+H.~H. Ku.
+\newblock Notes on the use of propagation of error formulas.
+\newblock \emph{Journal of Research of the National Bureau of Standards.
+  Section C: Engineering and Instrumentation}, 70C\penalty0 (4):\penalty0
+  263--273, October 1966.
+\newblock ISSN 0022-4316.
+
+\bibitem[Kundu et~al.(2012)Kundu, Cohen, and Dowling]{Dowling2012}
+Pijush~K. Kundu, Ira~M. Cohen, and David~R. Dowling.
+\newblock \emph{Fluid Mechanics}.
+\newblock 2012.
+\newblock ISBN 9780123821003.
+
+\bibitem[Kwok(2002)]{Kwok2002}
+Wai~Y. Kwok.
+\newblock \emph{Growth suppression in simulated compressible turbulent mixing
+  layers}.
+\newblock PhD thesis, University of Illinois at Urbana-Champaign, 2002.
+
+\bibitem[Kwok et~al.(2001)Kwok, Moser, and Jim\'{e}nez]{Kwok2001}
+Wai~Y. Kwok, Robert~D. Moser, and Javier Jim\'{e}nez.
+\newblock A critical evaluation of the resolution properties of {B}-spline and
+  compact finite difference methods.
+\newblock \emph{Journal of Computational Physics}, 174\penalty0 (2):\penalty0
+  510--551, December 2001.
+\newblock \doi{10.1006/jcph.2001.6919}.
+
+\bibitem[Landau and Lifshitz(2004)]{Landau2004Fluid}
+L.~D. Landau and E.~M. Lifshitz.
+\newblock \emph{Fluid Mechanics}.
+\newblock Course of Theoretical Physics, Vol. 6. Butterworth--Heinemann, 2nd
+  edition, 2004.
+\newblock ISBN 0750627670.
+
+\bibitem[Langou et~al.(2006)Langou, Langou, Luszczek, Kurzak, Buttari, and
+  Dongarra]{Langou2006Exploiting}
+Julie Langou, Julien Langou, Piotr Luszczek, Jakub Kurzak, Alfredo Buttari, and
+  Jack Dongarra.
+\newblock Exploiting the performance of 32 bit floating point arithmetic in
+  obtaining 64 bit accuracy (revisiting iterative refinement for linear
+  systems).
+\newblock In \emph{Proceedings of the 2006 ACM/IEEE conference on
+  Supercomputing}, SC '06. ACM, 2006.
+\newblock \doi{10.1145/1188455.1188573}.
+
+\bibitem[Latin and Bowersox(2000)]{Latin2000Flow}
+R.~M. Latin and R.~D.~W. Bowersox.
+\newblock Flow properties of a supersonic turbulent boundary layer with wall
+  roughness.
+\newblock \emph{AIAA Journal}, 38\penalty0 (10):\penalty0 1804--1821, 2000.
+\newblock \doi{10.2514/2.862}.
+
+\bibitem[Launder(1964)]{Launder1964Laminarization}
+B.~E. Launder.
+\newblock Laminarization of the turbulent boundary layer in a severe
+  acceleration.
+\newblock \emph{Journal of Applied Mechanics}, 31\penalty0 (4):\penalty0 707+,
+  1964.
+\newblock \doi{10.1115/1.3629738}.
+
+\bibitem[Lechner et~al.(2001)Lechner, Sesterhenn, and
+  Friedrich]{Lechner2001Turbulent}
+R.~Lechner, J.~Sesterhenn, and R.~Friedrich.
+\newblock Turbulent supersonic channel flow.
+\newblock \emph{J. Turbulence}, 2\penalty0 (1):\penalty0 1--25, 2001.
+\newblock \doi{10.1088/1468-5248/2/1/001}.
+
+\bibitem[Lee and Moser()]{Lee2014Direct}
+Myoungkyu Lee and Robert~D. Moser.
+\newblock Direct numerical simulation of turbulent channel flow up to
+  $\mbox{Re}_\tau$=5200.
+\newblock \emph{In preparation}.
+
+\bibitem[Lee et~al.(2013)Lee, Malaya, and Moser]{Lee2013Petascale}
+Myoungkyu Lee, Nicholas Malaya, and Robert~D. Moser.
+\newblock Petascale direct numerical simulation of turbulent channel flow on up
+  to {786K} cores.
+\newblock In \emph{Proceedings of SC13: International Conference for High
+  Performance Computing, Networking, Storage and Analysis}, SC '13, New York,
+  NY, USA, 2013. ACM.
+\newblock \doi{10.1145/2503210.2503298}.
+
+\bibitem[Lee et~al.(2014)Lee, Ulerich, Malaya, and Moser]{Lee2014Experiences}
+Myoungkyu Lee, Rhys Ulerich, Nicholas Malaya, and Robert Moser.
+\newblock Experiences from leadership computing in simulations of turbulent
+  fluid flows.
+\newblock \emph{Computing in Science and Engineering}, 99:\penalty0 1, 2014.
+\newblock \doi{10.1109/MCSE.2014.51}.
+
+\bibitem[Lele(1994)]{Lele1994Compressibility}
+Sanjiva~K. Lele.
+\newblock Compressibility effects on turbulence.
+\newblock \emph{Annual Review of Fluid Mechanics}, 26\penalty0 (1):\penalty0
+  211--254, 1994.
+\newblock \doi{10.1146/annurev.fl.26.010194.001235}.
+
+\bibitem[Lewis et~al.(1972)Lewis, Gran, and Kubota]{Lewis1972Experiment}
+J.~E. Lewis, R.~L. Gran, and T.~Kubota.
+\newblock An experiment on the adiabatic compressible turbulent boundary layer
+  in adverse and favourable pressure gradients.
+\newblock \emph{Journal of Fluid Mechanics}, 51:\penalty0 657--672, January
+  1972.
+\newblock \doi{10.1017/S0022112072001296}.
+
+\bibitem[Li et~al.(2001)Li, Ma, and Fu]{Li2001DNS}
+X.~Li, Y.~Ma, and D.~Fu.
+\newblock {DNS} and scaling law analysis of compressible turbulent channel
+  flow.
+\newblock \emph{Science in China Series A: Mathematics}, 44\penalty0
+  (5):\penalty0 645--654, 2001.
+\newblock \doi{10.1007/BF02876712}.
+
+\bibitem[Liepmann and Roshko(2002)]{LiepmannRoshko2002}
+H.~W. Liepmann and A~Roshko.
+\newblock \emph{Elements of Gasdynamics}.
+\newblock Dover, New York, 2002.
+\newblock ISBN 0486419630.
+
+\bibitem[Luker et~al.(1998)Luker, Hale, and Bowersox]{Luker1998Experimental}
+Joel~J. Luker, Chad~S. Hale, and Rodney D.~W. Bowersox.
+\newblock Experimental analysis of the turbulent shear stresses for distorted
+  supersonic boundary layers.
+\newblock \emph{Journal of Propulsion and Power}, 14\penalty0 (1):\penalty0
+  110--118, January 1998.
+\newblock \doi{10.2514/2.5256}.
+
+\bibitem[Luker et~al.(2000)Luker, Bowersox, and Buter]{Luker2000Influence}
+Joel~J. Luker, Rodney D.~W. Bowersox, and Thomas~A. Buter.
+\newblock Influence of curvature-driven favorable pressure gradient on
+  supersonic turbulent boundary layer.
+\newblock \emph{AIAA Journal}, 38\penalty0 (8):\penalty0 1351--1359, August
+  2000.
+\newblock \doi{10.2514/2.1134}.
+
+\bibitem[Lund et~al.(1998)Lund, Wu, and Squires]{Lund1998Generation}
+Thomas~S. Lund, Xiaohua Wu, and Kyle~D. Squires.
+\newblock Generation of turbulent inflow data for spatially-developing boundary
+  layer simulations.
+\newblock \emph{Journal of Computational Physics}, 140\penalty0 (2), March
+  1998.
+\newblock \doi{10.1006/jcph.1998.5882}.
+
+\bibitem[Mack(1984)]{Mack1984Boundary}
+L.~M. Mack.
+\newblock Boundary layer linear stability theory.
+\newblock Technical Report 709, AGARD, 1984.
+
+\bibitem[Malaya et~al.(2012{\natexlab{a}})Malaya, Estacio-Hiroms, Stogner,
+  Schulz, Bauman, and Carey]{MASA}
+Nicholas Malaya, Kemelli~C. Estacio-Hiroms, Roy~H. Stogner, Karl~W. Schulz,
+  Paul~T. Bauman, and Graham~F. Carey.
+\newblock {MASA}: a library for verification using manufactured and analytical
+  solutions.
+\newblock \emph{Engineering with Computers}, pages 1--10, 2012{\natexlab{a}}.
+\newblock \doi{10.1007/s00366-012-0267-9}.
+
+\bibitem[Malaya et~al.(2012{\natexlab{b}})Malaya, Oliver, Ulerich, and
+  Moser]{Malaya2012Estimating}
+Nicholas Malaya, Todd~A. Oliver, Rhys Ulerich, and Robert~D. Moser.
+\newblock Estimating uncertainties in statistics computed from {DNS}.
+\newblock In \emph{{65th Annual Meeting of the APS Division of Fluid
+  Dynamics}}, {S}an {D}iego, {CA}, November 2012{\natexlab{b}}.
+
+\bibitem[Maremonti(1984)]{Maremonti1984Asymptotic}
+P.~Maremonti.
+\newblock Asymptotic stability theorems for viscous fluid motions in exterior
+  domains.
+\newblock \emph{Rendiconti del Seminario Matematico della Universit\`a di
+  Padova}, 71:\penalty0 35--72, 1984.
+\newblock URL \url{http://www.numdam.org/item?id=RSMUP_1984__71__35_0}.
+
+\bibitem[Medida(2007)]{Medida2007}
+Shivaji Medida.
+\newblock Curvilinear extension to the {G}iles non-reflecting boundary
+  conditions for wall-bounded flows.
+\newblock Master's thesis, University of Toledo, University of Toledo, 2007.
+
+\bibitem[Morinishi and Tamano(2005)]{Morinishi2005Study}
+Youhei Morinishi and Shinji Tamano.
+\newblock Study on differences in turbulence statistics between compressible
+  and incompressible low-{R}eynolds number turbulent channel flows using
+  semi-local scaling.
+\newblock \emph{JSME International Journal Series B}, 48\penalty0 (4):\penalty0
+  743--749, 2005.
+\newblock \doi{10.1299/jsmeb.48.743}.
+
+\bibitem[Moser et~al.(2012)Moser, Terejanu, Oliver, and
+  Simmons]{Moser2012Validating}
+Robert~D. Moser, Gabriel Terejanu, Todd~A. Oliver, and Christopher~S. Simmons.
+\newblock Validating the prediction of unobserved quantities.
+\newblock ICES Report 12-32, August 2012.
+\newblock URL \url{http://www.ices.utexas.edu/media/reports/2012/1232.pdf}.
+
+\bibitem[Mukund et~al.(2006)Mukund, Viswanath, Narasimha, Prabhu, and
+  Crouch]{Mukund2006Relaminarization}
+R.~Mukund, P.~R. Viswanath, R.~Narasimha, A.~Prabhu, and J.~D. Crouch.
+\newblock Relaminarization in highly favourable pressure gradients on a convex
+  surface.
+\newblock \emph{Journal of Fluid Mechanics}, 566:\penalty0 97--115, October
+  2006.
+\newblock \doi{10.1017/S0022112006002473}.
+
+\bibitem[Narasimha and Sreenivasan(1973)]{Narasimha1973Relaminarization}
+R.~Narasimha and K.~R. Sreenivasan.
+\newblock Relaminarization in highly accelerated turbulent boundary layers.
+\newblock \emph{Journal of Fluid Mechanics}, 61:\penalty0 417--447, October
+  1973.
+\newblock \doi{10.1017/S0022112073000790}.
+
+\bibitem[Narasimha and Sreenivasan(1979)]{Narasimha1979Relaminarization}
+R.~Narasimha and K.~R. Sreenivasan.
+\newblock \emph{Relaminarization of Fluid Flows}, volume~19, pages 221--309.
+\newblock Elsevier, 1979.
+\newblock \doi{10.1016/S0065-2156(08)70311-9}.
+
+\bibitem[Nompelis et~al.(2005)Nompelis, Drayna, and
+  Candler]{Nompelis2005Parallel}
+Ioannis Nompelis, Travis Drayna, and Graham Candler.
+\newblock A parallel unstructured implicit solver for hypersonic reacting flow
+  simulation.
+\newblock In \emph{17th AIAA Computational Fluid Dynamics Conference}, Fluid
+  Dynamics and Co-located Conferences. American Institute of Aeronautics and
+  Astronautics, June 2005.
+\newblock \doi{10.2514/6.2005-4867}.
+
+\bibitem[Oden et~al.(2010{\natexlab{a}})Oden, Moser, and
+  Ghattas]{Oden2010ComputerI}
+Tinsley Oden, Robert Moser, and Omar Ghattas.
+\newblock Computer predictions with quantified uncertainty, part {I}.
+\newblock \emph{SIAM News}, 43\penalty0 (9), November 2010{\natexlab{a}}.
+\newblock URL \url{http://www.siam.org/news/news.php?id=1842}.
+
+\bibitem[Oden et~al.(2010{\natexlab{b}})Oden, Moser, and
+  Ghattas]{Oden2010ComputerII}
+Tinsley Oden, Robert Moser, and Omar Ghattas.
+\newblock Computer predictions with quantified uncertainty, part {II}.
+\newblock \emph{SIAM News}, 43\penalty0 (10), November 2010{\natexlab{b}}.
+\newblock URL \url{http://www.siam.org/news/news.php?id=1857}.
+
+\bibitem[Oliver(2011)]{OliverFANSModels2011}
+Todd~A. Oliver.
+\newblock {F}avre-averaged {N}avier--{S}tokes and turbulence model equation
+  documentation.
+\newblock Technical report, Predictive Engineering and Computational Sciences,
+  University of Texas at Austin, October 2011.
+
+\bibitem[Oliver and Moser(2011)]{ETC13-2011}
+Todd~A. Oliver and Robert~D. Moser.
+\newblock {Bayesian uncertainty quantification applied to RANS turbulence
+  models}.
+\newblock \emph{Journal of Physics: Conference Series}, 318\penalty0
+  (4):\penalty0 042032, 2011.
+\newblock \doi{10.1088/1742-6596/318/4/042032}.
+
+\bibitem[Oliver and Moser(2012)]{Oliver2012Accounting}
+Todd~A. Oliver and Robert~D. Moser.
+\newblock Accounting for uncertainty in the analysis of overlap layer mean
+  velocity models.
+\newblock \emph{Physics of Fluids}, 24\penalty0 (7):\penalty0 075108+, 2012.
+\newblock \doi{10.1063/1.4733455}.
+
+\bibitem[Oliver et~al.(2014)Oliver, Malaya, Ulerich, and
+  Moser]{Oliver2014Estimating}
+Todd~A. Oliver, Nicholas Malaya, Rhys Ulerich, and Robert~D. Moser.
+\newblock Estimating uncertainties in statistics computed from direct numerical
+  simulation.
+\newblock \emph{Physics of Fluids}, 26\penalty0 (3):\penalty0 035101+, March
+  2014.
+\newblock \doi{10.1063/1.4866813}.
+
+\bibitem[Padula(2000)]{Padula2000Stability}
+Mariarosaria Padula.
+\newblock On the stability of a steady state of a viscous compressible fluid.
+\newblock \emph{Chapman and Hall CRC Monographs and Surveys in Pure and Applied
+  Mathematics}, pages 317--326, 2000.
+
+\bibitem[Padula(2011)]{Padula2011Asymptotic}
+Mariarosaria Padula.
+\newblock \emph{Asymptotic Stability of Steady Compressible Fluids}.
+\newblock Springer Verlag, 2011.
+\newblock ISBN 978-3642211362.
+
+\bibitem[Palmer(2007)]{Palmer2007Uncertainty}
+Grant Palmer.
+\newblock Uncertainty analysis of {CEV} {LEO} and lunar return entries.
+\newblock In \emph{39th AIAA Thermophysics Conference}. American Institute of
+  Aeronautics and Astronautics, June 2007.
+\newblock \doi{10.2514/6.2007-4253}.
+
+\bibitem[Pearlman(2014)]{SpaceCom20140317}
+Robert~Z. Pearlman.
+\newblock {NASA} slips first test flight of {O}rion space capsule to
+  {D}ecember.
+\newblock SPACE.com, March 2014.
+\newblock URL
+  \url{http://www.space.com/25086-nasa-orion-space-capsule-test-flight.html}.
+
+\bibitem[{PECOS Development Team}(2010)]{GRVYweb}
+{PECOS Development Team}.
+\newblock The groovy toolkit: {GRVY}.
+\newblock \url{https://red.ices.utexas.edu/projects/software/wiki/ESIO}, 2010.
+
+\bibitem[{PECOS Development Team}(2011)]{ESIOweb}
+{PECOS Development Team}.
+\newblock {ESIO}: {A} parallel {I/O} library for scientific applications.
+\newblock \url{https://red.ices.utexas.edu/projects/software/wiki/ESIO}, 2011.
+
+\bibitem[Pekurovsky(2008)]{P3DFFTweb}
+Dmitry Pekurovsky.
+\newblock {P3DFFT} user guide.
+\newblock \url{http://code.google.com/p/p3dfft/}, 2008.
+
+\bibitem[Pohlhausen(1921)]{Pohlhausen1921Zur}
+K.~Pohlhausen.
+\newblock Zur n\"{a}herungsweisen integration der differentialgleichung der
+  iaminaren grenzschicht.
+\newblock \emph{ZAMM - Journal of Applied Mathematics and Mechanics /
+  Zeitschrift f\"{u}r Angewandte Mathematik und Mechanik}, 1\penalty0
+  (4):\penalty0 252--290, 1921.
+\newblock \doi{10.1002/zamm.19210010402}.
+
+\bibitem[Poinsot and Lele(1992)]{Poinsot1992Boundary}
+T.~Poinsot and S.~Lele.
+\newblock Boundary conditions for direct simulations of compressible viscous
+  flows.
+\newblock \emph{Journal of Computational Physics}, 101\penalty0 (1):\penalty0
+  104--129, July 1992.
+\newblock \doi{10.1016/0021-9991(92)90046-2}.
+
+\bibitem[Pope(2000)]{Pope2000Turbulent}
+Stephen~B. Pope.
+\newblock \emph{Turbulent Flows}.
+\newblock Cambridge University Press, October 2000.
+\newblock ISBN 0521598869.
+
+\bibitem[Priestley(1981{\natexlab{a}})]{Priestley1981SpectralI}
+M.~B. Priestley.
+\newblock \emph{Spectral Analysis and Time Series: Univariate Series.},
+  volume~1.
+\newblock J.W. Arrowsmith, 1981{\natexlab{a}}.
+\newblock ISBN 0125649010.
+
+\bibitem[Priestley(1981{\natexlab{b}})]{Priestley1981SpectralII}
+M.~B. Priestley.
+\newblock \emph{Spectral Analysis and Time Series: Multivariate Series,
+  Prediction and Control}, volume~2.
+\newblock Academic Press, 1981{\natexlab{b}}.
+\newblock ISBN 0125649029.
+
+\bibitem[Reed et~al.(1996)Reed, Saric, and Arnal]{Reed1996Linear}
+H.~L. Reed, W.~S. Saric, and D.~Arnal.
+\newblock Linear stability theory applied to boundary layers.
+\newblock \emph{Annual Review of Fluid Mechanics}, 28\penalty0 (1):\penalty0
+  389--428, 1996.
+\newblock \doi{10.1146/annurev.fl.28.010196.002133}.
+
+\bibitem[Roache(1998)]{Roache1998Verification}
+Patrick~J. Roache.
+\newblock \emph{Verification and Validation in Computational Science and
+  Engineering}.
+\newblock Hermosa Publishers, 1998.
+\newblock ISBN 0913478083.
+
+\bibitem[Roache and Steinberg(1984)]{Roache1984Symbolic}
+Patrick~J Roache and Stanly Steinberg.
+\newblock Symbolic manipulation and computational fluid dynamics.
+\newblock \emph{{AIAA Journal}}, 22\penalty0 (10):\penalty0 {1390--1394}, 1984.
+\newblock \doi{10.1016/0021-9991(85)90045-2}.
+
+\bibitem[Rowley and Colonius(2000)]{Rowley2000Discretely}
+Clarence~W. Rowley and Tim Colonius.
+\newblock Discretely nonreflecting boundary conditions for linear hyperbolic
+  systems.
+\newblock \emph{Journal of Computational Physics}, 157\penalty0 (2):\penalty0
+  500--538, January 2000.
+\newblock \doi{10.1006/jcph.1999.6383}.
+
+\bibitem[Roy(2005)]{Roy2005}
+Christopher~J. Roy.
+\newblock Review of code and solution verification procedures for computational
+  simulation.
+\newblock \emph{Journal of Computational Physics}, 205\penalty0 (1):\penalty0
+  {131--156}, May 2005.
+\newblock \doi{10.1016/j.jcp.2004.10.036}.
+
+\bibitem[Roy and Blottner(2006)]{Roy2006Review}
+Christopher~J. Roy and Frederick~G. Blottner.
+\newblock Review and assessment of turbulence models for hypersonic flows.
+\newblock \emph{Progress in Aerospace Sciences}, 42\penalty0 (7-8):\penalty0
+  469--530, 2006.
+\newblock \doi{10.1016/j.paerosci.2006.12.002}.
+
+\bibitem[Saad et~al.(2011)Saad, Maicke, and Majdalani]{Saad2011Coordinate}
+Tony Saad, Brian Maicke, and Joseph Majdalani.
+\newblock Coordinate independent forms of the compressible potential flow
+  equations.
+\newblock In \emph{47th AIAA/ASME/SAE/ASEE Joint Propulsion Conference \&
+  Exhibit}. American Institute of Aeronautics and Astronautics, 2011.
+\newblock \doi{10.2514/6.2011-5862}.
+
+\bibitem[Saxer and Giles(1993)]{Saxer1993QuasiThreeDimensional}
+Andre Saxer and M.~B. Giles.
+\newblock Quasi-three-dimensional nonreflecting boundary conditions for {E}uler
+  equations calculations.
+\newblock \emph{Journal of Propulsion and Power}, 9\penalty0 (2):\penalty0
+  263--271, April 1993.
+\newblock \doi{10.2514/3.23618}.
+
+\bibitem[Schlatter et~al.(2009{\natexlab{a}})Schlatter, Li, Brethouwer,
+  Johansson, and Henningson]{Schlatter2009High}
+P.~Schlatter, Q.~Li, G.~Brethouwer, A.~V. Johansson, and D.~S. Henningson.
+\newblock High-{R}eynolds number turbulent boundary layers studied by numerical
+  simulation.
+\newblock \emph{Bulletin of the American Physical Society}, 54,
+  2009{\natexlab{a}}.
+\newblock URL \url{http://meetings.aps.org/link/BAPS.2009.DFD.BA.1}.
+
+\bibitem[Schlatter et~al.(2009{\natexlab{b}})Schlatter, \"{O}rl\"{u}, Li,
+  Brethouwer, Fransson, Johansson, Alfredsson, and
+  Henningson]{Schlatter2009Turbulent}
+P.~Schlatter, R.~\"{O}rl\"{u}, Q.~Li, G.~Brethouwer, J.~H.~M. Fransson, A.~V.
+  Johansson, P.~H. Alfredsson, and D.~S. Henningson.
+\newblock Turbulent boundary layers up to $\mbox{Re}_\theta$ = 2500 studied
+  through simulation and experiment.
+\newblock \emph{Physics of Fluids}, 21\penalty0 (5):\penalty0 051702,
+  2009{\natexlab{b}}.
+\newblock \doi{10.1063/1.3139294}.
+
+\bibitem[Schlatter and \"{O}rl\"{u}(2010)]{Schlatter2010Assessment}
+Philipp Schlatter and Ramis \"{O}rl\"{u}.
+\newblock Assessment of direct numerical simulation data of turbulent boundary
+  layers.
+\newblock \emph{Journal of Fluid Mechanics}, 659:\penalty0 116--126, 2010.
+\newblock \doi{10.1017/S0022112010003113}.
+
+\bibitem[Schlichting and Gersten(2000)]{Schlichting2000Boundary}
+Hermann Schlichting and Klaus Gersten.
+\newblock \emph{Boundary Layer Theory}.
+\newblock Springer, eighth edition, 2000.
+\newblock ISBN 3540662707.
+
+\bibitem[Schraub and Kline(1965)]{Schraub1965Study}
+F.A. Schraub and S.J. Kline.
+\newblock A study of the structure of the turbulent boundary layer with and
+  without longitudinal pressure gradients.
+\newblock Technical Report MD-12, Thermosciences Division, Stanford University,
+  1965.
+
+\bibitem[Schulz et~al.(2012)Schulz, Ulerich, Malaya, Bauman, Stogner, and
+  Simmons]{Schulz2012Early}
+Karl~W. Schulz, Rhys Ulerich, Nicholas Malaya, Paul~T. Bauman, Roy Stogner, and
+  Chris Simmons.
+\newblock Early experiences porting scientific applications to the {M}any
+  {I}ntegrated {C}ore ({MIC}) platform.
+\newblock In \emph{{TACC-Intel Highly Parallel Computing Symposium}}, {Austin,
+  Texas}, {A}pril 2012.
+\newblock URL
+  \url{http://www.tacc.utexas.edu/documents/13601/aa8e98bc-3544-4136-81aa-3920ae882a65}.
+
+\bibitem[Schwartz(1987)]{Schwartz1987Perturbation}
+L.~W. Schwartz.
+\newblock A perturbation solution for compressible viscous channel flows.
+\newblock \emph{Journal of Engineering Mathematics}, 21\penalty0 (1):\penalty0
+  69--86, March 1987.
+\newblock \doi{10.1007/BF00127695}.
+
+\bibitem[Serrin(1959)]{Serrin1959Stability}
+James Serrin.
+\newblock {On the stability of viscous fluid motions}.
+\newblock \emph{Archive for Rational Mechanics and Analysis}, 3-3\penalty0
+  (1):\penalty0 1--13, 1959.
+\newblock \doi{10.1007/BF00284160}.
+
+\bibitem[Settles and Dodson(1991)]{Settles1991Hypersonic}
+Gary~S. Settles and Lori~J. Dodson.
+\newblock Hypersonic shock/boundary-layer interaction database.
+\newblock Technical Report NASA CR 177577, 1991.
+
+\bibitem[Settles and Dodson(1993)]{Settles1993Hypersonic}
+Gary~S. Settles and Lori~J. Dodson.
+\newblock Hypersonic turbulent boundary-layer and free sheer database.
+\newblock Technical Report NASA CR 177610, 1993.
+
+\bibitem[Settles and Dodson(1994{\natexlab{a}})]{Settles1994Hypersonic}
+Gary~S. Settles and Lori~J. Dodson.
+\newblock Hypersonic shock/boundary-layer interaction database: New and
+  corrected data.
+\newblock Technical Report NASA CR 177638, 1994{\natexlab{a}}.
+
+\bibitem[Settles and Dodson(1994{\natexlab{b}})]{Settles1994Supersonic}
+Gary~S. Settles and Lori~J. Dodson.
+\newblock Supersonic and hypersonic shock/boundary-layer interaction database.
+\newblock \emph{AIAA Journal}, 32\penalty0 (7):\penalty0 1377--1383, July
+  1994{\natexlab{b}}.
+\newblock \doi{10.2514/3.12205}.
+
+\bibitem[Simens et~al.(2009)Simens, Jim\'{e}nez, Hoyas, and
+  Mizuno]{Simens2009Highresolution}
+Mark~P. Simens, Javier Jim\'{e}nez, Sergio Hoyas, and Yoshinori Mizuno.
+\newblock A high-resolution code for turbulent boundary layers.
+\newblock \emph{Journal of Computational Physics}, 228\penalty0 (11):\penalty0
+  4218--4231, June 2009.
+\newblock \doi{10.1016/j.jcp.2009.02.031}.
+
+\bibitem[Smith and Smits(1994)]{Smith1994Effects}
+Douglas~R. Smith and Alexander~J. Smits.
+\newblock The effects of steamline curvature and pressure gradient on the
+  behavior of turbulent boundary layers in supersonic flow.
+\newblock In \emph{25th AIAA Fluid Dynamics Conference}, June 1994.
+\newblock \doi{10.2514/6.1994-2227}.
+
+\bibitem[Smits and Dussauge(2005)]{Smits2005Turbulent}
+Alexander~J. Smits and Jean-Paul Dussauge.
+\newblock \emph{Turbulent Shear Layers in Supersonic Flow}.
+\newblock Springer Verlag, 2005.
+\newblock ISBN 978-0387261409.
+
+\bibitem[Spalart(1988)]{Spalart1988Direct}
+Philippe~R. Spalart.
+\newblock Direct simulation of a turbulent boundary layer up to
+  $\mbox{Re}_\theta$ = 1410.
+\newblock \emph{Journal of Fluid Mechanics}, 187:\penalty0 61--98, 1988.
+\newblock \doi{10.1017/S0022112088000345}.
+
+\bibitem[Spalart et~al.(1991)Spalart, Moser, and Rogers]{spalart_lowstoragerk}
+Philippe~R. Spalart, Robert~D. Moser, and Michael~M. Rogers.
+\newblock Spectral methods for the {Navier--Stokes} equations with one infinite
+  and two periodic directions.
+\newblock \emph{Journal of Computational Physics}, 96\penalty0 (2):\penalty0
+  297--324, 1991.
+\newblock \doi{10.1016/0021-9991(91)90238-G}.
+
+\bibitem[Sreenivasan(1982)]{Sreenivasan1982Laminarescent}
+Katepalli~R. Sreenivasan.
+\newblock Laminarescent, relaminarizing and retransitional flows.
+\newblock \emph{Acta Mechanica}, 44\penalty0 (1):\penalty0 1--48, March 1982.
+\newblock \doi{10.1007/BF01190916}.
+
+\bibitem[Steinberg and Roache(1985)]{Steinberg1985Symbolic}
+Stanly Steinberg and Patrick~J Roache.
+\newblock Symbolic manipulation and computational fluid dynamics.
+\newblock \emph{Journal of Computational Physics}, 57\penalty0 (2):\penalty0
+  251--284, 1985.
+\newblock \doi{10.1016/0021-9991(85)90045-2}.
+
+\bibitem[Stogner et~al.(2011)Stogner, Bauman, Schulz, Upadhyay, and
+  Maurente]{Stogner2011Uncertainty}
+Roy Stogner, Paul~T. Bauman, Karl~W. Schulz, Rochan Upadhyay, and Andre
+  Maurente.
+\newblock Uncertainty and parameter sensitivity in multiphysics reentry flows.
+\newblock In \emph{49th AIAA Aerospace Sciences Meeting including the New
+  Horizons Forum and Aerospace Exposition}, January 2011.
+\newblock \doi{10.2514/6.2011-764}.
+
+\bibitem[Sumitani and Kasagi(1995)]{Sumitani1995Direct}
+Yasushi Sumitani and Nobuhide Kasagi.
+\newblock Direct numerical simulation of turbulent transport with uniform wall
+  injection and suction.
+\newblock \emph{AIAA Journal}, 33\penalty0 (7):\penalty0 1220--1228, July 1995.
+\newblock \doi{10.2514/3.12363}.
+
+\bibitem[Sutherland(1893)]{Sutherland1893Viscosity}
+William Sutherland.
+\newblock The viscosity of gases and molecular force.
+\newblock \emph{The London, Edinburgh, and Dublin Philosophical Magazine and
+  Journal of Science}, 36\penalty0 (223):\penalty0 507--531, 1893.
+
+\bibitem[Svehla(1962)]{NASA-TR-R-132}
+Roger~A. Svehla.
+\newblock Estimated viscosities and thermal conductivities of gases at high
+  temperatures.
+\newblock Technical Report R-132, Glenn Research Center, January 1962.
+
+\bibitem[{SymPy Development Team}(2009)]{SymPy}
+{SymPy Development Team}.
+\newblock \emph{SymPy: Python library for symbolic mathematics}, 2009.
+\newblock URL \url{http://www.sympy.org}.
+
+\bibitem[Talamelli et~al.(2002)Talamelli, Fornaciari, Westin, and
+  Alfredsson]{Talamelli2002Experimental}
+Alessandro Talamelli, Nicola Fornaciari, Westin, and P.~Henrik Alfredsson.
+\newblock Experimental investigation of streaky structures in a relaminarizing
+  boundary layer.
+\newblock \emph{Journal of Turbulence}, 3, 2002.
+\newblock \doi{10.1088/1468-5248/3/1/018}.
+
+\bibitem[{The Apache Project}(2010)]{log4cxxweb}
+{The Apache Project}.
+\newblock Apache log4cxx.
+\newblock \url{http://logging.apache.org/log4cxx/}, 2010.
+
+\bibitem[{The HDF Group}(2000--2014)]{hdf5}
+{The HDF Group}.
+\newblock Hierarchical data format version 5.
+\newblock \url{http://www.hdfgroup.org/HDF5}, 2000--2014.
+
+\bibitem[Thomann(1968)]{Thomann1968Effect}
+H.~Thomann.
+\newblock Effect of streamwise wall curvature on heat transfer in a turbulent
+  boundary layer.
+\newblock \emph{Journal of Fluid Mechanics}, 33:\penalty0 283--292, July 1968.
+\newblock \doi{10.1017/S0022112068001308}.
+
+\bibitem[Topalian et~al.(2011)Topalian, Sahni, Oliver, and
+  Moser]{Topalian2011Slow}
+Victor Topalian, Onkar Sahni, Todd~A. Oliver, and Robert~D. Moser.
+\newblock Slow growth formulation for {DNS} of temporally evolving boundary
+  layers.
+\newblock In \emph{64th Annual Meeting of the APS Division of Fluid Dynamics},
+  November 2011.
+
+\bibitem[Topalian et~al.(2013)Topalian, Oliver, Ulerich, and
+  Moser]{Topalian2013Direct}
+Victor Topalian, Todd~A. Oliver, Rhys Ulerich, and Robert~D. Moser.
+\newblock Direct numerical simulation of a compressible reacting boundary layer
+  using a temporal slow growth homogenization.
+\newblock In \emph{{66th Annual Meeting of the APS Division of Fluid
+  Dynamics}}, {P}ittsburg, {PA}, November 2013.
+
+\bibitem[Topalian et~al.(2014{\natexlab{a}})Topalian, Oliver, Ulerich, and
+  Moser]{Topalian2014Spatiotemporal}
+Victor Topalian, Todd~A. Oliver, Rhys Ulerich, and Robert~D. Moser.
+\newblock A consistent spatiotemporal slow growth formulation for the
+  calibration and uncertainty quantification of {RANS} turbulence models.
+\newblock \emph{In preparation}, 2014{\natexlab{a}}.
+
+\bibitem[Topalian et~al.(2014{\natexlab{b}})Topalian, Oliver, Ulerich, and
+  Moser]{Topalian2014Temporal}
+Victor Topalian, Todd~A. Oliver, Rhys Ulerich, and Robert~D. Moser.
+\newblock A new temporal slow growth formulation for {DNS} of wall--bounded
+  turbulence.
+\newblock \emph{In preparation}, 2014{\natexlab{b}}.
+
+\bibitem[Trefethen and Halpern(1986)]{Trefethen1986Wellposedness}
+Lloyd~N. Trefethen and Laurence Halpern.
+\newblock Well-posedness of one-way wave equations and absorbing boundary
+  conditions.
+\newblock \emph{Mathematics of Computation}, 47\penalty0 (176):\penalty0 421,
+  1986.
+\newblock \doi{10.1090/S0025-5718-1986-0856695-2}.
+
+\bibitem[Trenberth(1984)]{Trenberth1984Some}
+Kevin~E. Trenberth.
+\newblock Some effects of finite sample size and persistence on meteorological
+  statistics. {P}art {I}: {A}utocorrelations.
+\newblock \emph{Monthly Weather Review}, 112, 1984.
+\newblock \doi{10.1175/1520-0493(1984)112\%3C2359:SEOFSS\%3E2.0.CO;2}.
+
+\bibitem[Ulerich and Moser(2012)]{Ulerich2012Turbulence}
+Rhys Ulerich and Robert~D. Moser.
+\newblock Turbulence statistics with quantified uncertainty in cold-wall
+  supersonic channel flow.
+\newblock In \emph{{65th Annual Meeting of the APS Division of Fluid
+  Dynamics}}, {S}an {D}iego, {CA}, November 2012.
+
+\bibitem[Ulerich et~al.(2012)Ulerich, Estacio-Hiroms, Malaya, and
+  Moser]{Ulerich2012MMS}
+Rhys Ulerich, Kemelli~C. Estacio-Hiroms, Nicholas Malaya, and Robert~D. Moser.
+\newblock A transient manufactured solution for the compressible
+  {Navier--Stokes} equations with a power law viscosity.
+\newblock In \emph{{10th World Congress on Computational Mechanics}}, {S}\~{a}o
+  {P}aulo, {B}razil, {J}uly 2012.
+\newblock \doi{10.5151/meceng-wccm2012-16661}.
+
+\bibitem[Venugopal(2003)]{Venugopal2003}
+Prem Venugopal.
+\newblock \emph{Direct numerical simulation of turbulence in a model solid
+  rocket motor}.
+\newblock PhD thesis, University of Illinois at Urbana-Champaign, 2003.
+
+\bibitem[Vinokur(1983)]{Vinokur1983Onedimensional}
+Marcel Vinokur.
+\newblock On one-dimensional stretching functions for finite-difference
+  calculations.
+\newblock \emph{Journal of Computational Physics}, 50\penalty0 (2):\penalty0
+  215--234, May 1983.
+\newblock \doi{10.1016/0021-9991(83)90065-7}.
+
+\bibitem[von Storch and Zwiers(2001)]{Storch2001Statistical}
+Hans von Storch and Francis~W. Zwiers.
+\newblock \emph{Statistical Analysis in Climate Research}.
+\newblock Cambridge University Press, March 2001.
+\newblock ISBN 0521012309.
+
+\bibitem[Warner et~al.(2003--2014)Warner, Mitchell, et~al.]{Buildbot}
+Brian Warner, Dustin~J. Mitchell, et~al.
+\newblock Buildbot: The continuous integration framework.
+\newblock http://buildbot.net/, 2003--2014.
+
+\bibitem[White(1999)]{White1999Fluid}
+Frank~M. White.
+\newblock \emph{Fluid Mechanics}.
+\newblock McGraw--Hill, 4th edition, 1999.
+\newblock ISBN 978-0070697164.
+
+\bibitem[Wilcox(2006)]{Wilcox2006Turbulence}
+David~C. Wilcox.
+\newblock \emph{Turbulence Modeling for {CFD}}.
+\newblock DCW Industries, third edition, 2006.
+\newblock ISBN 978-1928729082.
+
+\bibitem[Wright et~al.(1996)Wright, Candler, and
+  Prampolini]{Wright1996Dataparallel}
+Michael~J. Wright, Graham~V. Candler, and Marco Prampolini.
+\newblock Data-parallel lower-upper relaxation method for the {N}avier-{S}tokes
+  equations.
+\newblock \emph{AIAA Journal}, 34\penalty0 (7):\penalty0 1371--1377, July 1996.
+\newblock \doi{10.2514/3.13242}.
+
+\bibitem[Wright et~al.(2007)Wright, Bose, and Chen]{Wright2007Probabilistic}
+Michael~J. Wright, Deepak Bose, and Y.~K. Chen.
+\newblock Probabilistic modeling of aerothermal and thermal protection material
+  response uncertainties.
+\newblock \emph{AIAA Journal}, 45\penalty0 (2):\penalty0 399--410, February
+  2007.
+\newblock \doi{10.2514/1.26018}.
+
+\bibitem[Wu and Moin(2009)]{Wu2009Direct}
+Xiaohua Wu and Parviz Moin.
+\newblock Direct numerical simulation of turbulence in a nominally
+  zero-pressure-gradient flat-plate boundary layer.
+\newblock \emph{Journal of Fluid Mechanics}, 630:\penalty0 5--41, 2009.
+\newblock \doi{10.1017/S0022112009006624}.
+
+\bibitem[Wu et~al.(1999)Wu, Jacobs, Hunt, and Durbin]{Wu1999Simulation}
+Xiaohua Wu, Robert~G. Jacobs, Julian C.~R. Hunt, and Paul~A. Durbin.
+\newblock Simulation of boundary layer transition induced by periodically
+  passing wakes.
+\newblock \emph{Journal of Fluid Mechanics}, 398\penalty0 (1):\penalty0
+  109--153, 1999.
+\newblock \doi{10.1017/S0022112099006205}.
+
+\bibitem[Yang(2011)]{ShanYang2011}
+Shan Yang.
+\newblock \emph{A shape {H}essian based analysis of roughness effects on fluid
+  flows}.
+\newblock PhD thesis, The University of Texas at Austin, 2011.
+
+\end{thebibliography}

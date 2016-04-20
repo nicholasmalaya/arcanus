@@ -1,0 +1,62 @@
+% ORDER per https://www.udemy.com/blog/acknowledgement-for-thesis/ ?
+
+% FUNDERS
+% -------
+This material is based in part upon work supported by the Department of
+Energy National Nuclear Security Administration under Award Number
+DE-FC52-08NA28615.
+%
+The author acknowledges the Institute for Computational Science and Engineering
+in conjunction with the Texas Advanced Computing Center at The University of
+Texas at Austin for providing high-performance computing resources that
+contributed to the reported results.
+
+% SUPERVISORS
+% -----------
+I would like to thank my advisor, Dr\@. Robert D\@. Moser, for the
+unwavering support, warm guidance, and considerable latitude he granted
+me throughout my doctoral studies.  I appreciate my committees' patience
+and input.  In particular, I would like to thank Dr\@. Todd A\@. Oliver
+for the years upon years he spent answering five minute questions that
+often turned into hour-long discussions.
+
+% ACADEMICS
+% ---------
+This thesis would not have happened without Dr\@. Victor Topalian's
+willingness to help me apply his spatiotemporal homogenization approach
+for which I am grateful.  Equally important to the research were the Orion
+Multi-Purpose Crew Vehicle solutions provided by Dr\@. Paul T\@. Bauman
+building atop work by Drs\@. Roy H\@. Stogner and Benjamin S\@. Kirk.
+Perspectives I learned from collaborating with Dr\@. Oleg Schilling
+during two summers spent at Lawrence Livermore National Laboratory
+greatly aided me.  He also graciously reviewed drafts of this document.
+%
+I owe much to Drs\@. Christopher S\@. Simmons and Karl W\@. Schulz for
+software-related discussions and, along with the Sysnet group at the
+Institute for Computational Engineering and Sciences, for the exceptional
+computational and project infrastructure they provided.
+
+% COLLEAGUES
+% ----------
+Thanks are extended to Dr\@. Jesse Chan, Dr\@. Henry Chang, Truman E\@. Ellis,
+Myoungkyu Lee, Nicholas Malaya, and Dr\@. Nathan Roberts for many useful fluid
+mechanics discussions of the sort too embarrassing to ask one's advisor.
+Rebecca Morrison and Dr\@. Thomas Kirschenmann helped with similar probability
+and statistics questions.  Dr\@.  Kemelli C\@. Estacio-Hiroms assisted with the
+concepts behind the manufactured solution presented in the appendix and Dr\@.
+Shan Yang showed how to accommodate the associated manufactured forcing within
+the semi-implicit temporal scheme.  Dr\@.  Jesse Windle made several excellent
+suggestions regarding the autoregressive uncertainty estimation technique.
+Dr\@. Damon McDougall kindly answered many Matplotlib questions.  Thank you to
+Nicholas, Damon, and Dr\@. Craig Michoski for reviewing thesis drafts.  I
+appreciate just how often Myoungkyu, Thomas, Rebecca, Dr\@. Michael Borden and
+Dr\@. Omar Al Hinai asked me to go grab lunch and how easily they could be
+talked into it themselves.
+
+% FAMILY
+% ------
+My extended family, by birth and by marriage, has been incredibly
+supportive throughout this seven-year journey.  Thank you to my parents
+for all the times they provided an ear or a hug or both.  Finally, I
+cannot say thank you enough to my wife Michelle for her love, for her
+understanding, and for our children.

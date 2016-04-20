@@ -1,0 +1,174 @@
+% Fonts per http://www.khirevich.com/latex/font/
+% Can drop charter/mathdesign and use amsfonts,amssymb if problematic
+% Will likely need to add package mathrsfs if that is done
+\usepackage[T1]{fontenc}
+\usepackage[charter]{mathdesign}
+\usepackage{amsmath,amsthm}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{color}
+
+\usepackage{accents}
+\usepackage{afterpage}
+\usepackage{array}
+\usepackage{bookmark}
+\usepackage{booktabs}
+\usepackage[english]{babel}
+\usepackage{blindtext}
+\usepackage{bm}
+\usepackage{calc}
+\usepackage{caption}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{floatpag}
+\usepackage{helvet}
+\usepackage[final]{graphicx} % "final" causes images to appear in draft mode
+\usepackage{ifdraft}
+\usepackage{ifthen}
+\usepackage[final]{listings}
+\usepackage{longtable}
+\usepackage{makecell}
+\usepackage[warn]{makecmds}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{nicefrac}
+\usepackage{pgfplotstable}\pgfplotsset{compat=1.8}
+\usepackage{siunitx}
+\usepackage{rotating}
+\usepackage{tabularx}
+\usepackage{textcomp}
+\usepackage{tikz}
+\usepackage{url}
+\usepackage{varioref}
+\usepackage{yhmath}
+\usepackage{xkeyval}
+\usepackage{xspace}
+
+% http://tex.stackexchange.com/questions/110388
+% I want 1e-2 not 1x10^{-2} from siunitx
+\sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}}
+
+% See http://www.khirevich.com/latex/microtype/ for hints re: microtype
+\usepackage[
+    activate={true,nocompatibility},
+    final,
+    tracking=true,
+    kerning=true,
+    spacing=true,
+    stretch=10,
+    shrink=10
+]{microtype}
+
+\usepackage[obeyDraft]{todonotes}
+
+% Hyperref must occur now otherwise the contents are jumbled
+\usepackage[]{hyperref}
+\hypersetup{%
+    bookmarksdepth=3,
+    linktoc=page,
+    hypertexnames=false,
+    pdfnewwindow=true
+}
+\ifdraft{%
+    \hypersetup{%
+        final,
+        colorlinks=false
+    }%
+}{%
+    \hypersetup{%
+        hidelinks
+    }%
+}
+% Per http://tex.stackexchange.com/questions/38149
+\renewcommand*{\backreflastsep}{, }
+\renewcommand*{\backreftwosep}{, }
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+  \ifcase #1 %
+    \relax
+  \or
+    (page #2).%
+  \else
+    (pages #2).%
+  \fi%
+}
+
+% Change autoref names to be uppercase
+% http://tex.stackexchange.com/questions/186946/
+% I hate "Subsection" and "Subsubsection" so just use "Section"
+\addto\extrasenglish{%
+    \def\figureautorefname{Figure}%
+    \def\tableautorefname{Table}%
+    \def\partautorefname{Part}%
+    \def\appendixautorefname{Appendix}%
+    \def\equationautorefname{Equation}%
+    \def\Itemautorefname{Item}%
+    \def\chapterautorefname{Chapter}%
+    \def\sectionautorefname{Section}%
+    \def\subsectionautorefname{Section}%
+    \def\subsubsectionautorefname{Section}%
+    \def\paragraphautorefname{Paragraph}%
+    \def\Hfootnoteautorefname{Footnote}%
+    \def\AMSautorefname{Equation}%
+    \def\theoremautorefname{Theorem}%
+}
+
+% Finally, some things play poorly with hyperref so they appear afterwards
+% (http://j-node.homeip.net/tech_wiki/index.php/LaTeX#Bizarre_LaTeX_Stuff)
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% Hyperlink DOIs in bibliographies
+\newcommand*{\doi}[1]{\href{http://dx.doi.org/\detokenize{#1}}{doi: #1}}
+
+%%% \mathtoolsset{showonlyrefs,showmanualtags}
+%%% \allowdisplaybreaks[1] % Allow grouped equations to be split across pages
+
+% Inform LaTeX that figures are in figures/
+\graphicspath{{figs/}}
+
+% Environment sidewaysfigure from rotating plays poorly with amsart class
+% Fix per http://www.latex-community.org/forum/viewtopic.php?f=4&t=1742
+%\setlength\rotFPtop{0pt plus 1fil}
+
+% Fix Todonotes wrongly placed in the margin
+\setlength{\marginparwidth}{2cm}
+
+% Convince amsart to stop adding colons after description labels
+%\renewcommand{\descriptionlabel}[1]{\hspace\labelsep{}\upshape\bfseries #1}
+
+% Configure inline code listings
+\lstset{%
+  basicstyle=\footnotesize\sffamily,
+  columns=fixed,
+  commentstyle=\color{blue},
+  firstnumber=1,
+  frame=single,
+  keepspaces=true,
+  numbersep=7pt,
+  numbers=left,
+  numberstyle=\tiny\color{darkgray},
+  showstringspaces=false,
+  showtabs=false,
+  stepnumber=3
+}
+
+% Specify some hyphenation fixes
+\hyphenation{aer-o-ther-mal}
+\hyphenation{aer-o-ther-mo-dy-nam-ic}
+\hyphenation{baro-tropic}
+\hyphenation{di-ver-gence}
+\hyphenation{ex-per-i-men-tal}
+\hyphenation{ho-mog-e-nized}
+\hyphenation{lay-er}
+\hyphenation{lay-ers}
+\hyphenation{side-stepped}
+\hyphenation{span-wise}
+\hyphenation{spa-tio-tem-po-ral}
+\hyphenation{stream-wise}
+\hyphenation{stream-wise}
+\hyphenation{su-per-sonic}
+
+% Finally, custom commands loaded from here
+\input{commands}

@@ -1,0 +1,32 @@
+\select@language {english}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Data assessment criteria due to \citeauthor {Settles1991Hypersonic}}}{12}{table.caption.20}
+\contentsline {table}{\numberline {2.2}{\ignorespaces Reacting boundary layer conditions from fully turbulent Orion MPCV TPS simulations}}{34}{table.caption.71}
+\contentsline {table}{\numberline {2.3}{\ignorespaces Perfect gas boundary layer conditions based on fully turbulent Orion MPCV TPS simulations}}{34}{table.caption.72}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Communications overhead inherent to computing quantities without repeated first differentiation. }}{59}{table.caption.178}
+\contentsline {table}{\numberline {4.2}{\ignorespaces B-spline order-specific curve fits for $C_\text {approx}^{(1)}$ for stretching~\textup {\hbox {\mathsurround \z@ \normalfont (\ignorespaces \ref {eq:htstretch2}\unskip \@@italiccorr )}}. }}{67}{table.caption.196}
+\contentsline {table}{\numberline {4.3}{\ignorespaces B-spline order-specific curve fits for $C_\text {approx}^{(1)}$ for stretching~\textup {\hbox {\mathsurround \z@ \normalfont (\ignorespaces \ref {eq:htstretch1}\unskip \@@italiccorr )}}. }}{68}{table.caption.197}
+\contentsline {table}{\numberline {4.4}{\ignorespaces B-spline order-specific curve fits for $C_\text {approx}^{(2)}$ for stretching~\textup {\hbox {\mathsurround \z@ \normalfont (\ignorespaces \ref {eq:htstretch2}\unskip \@@italiccorr )}}. }}{69}{table.caption.198}
+\contentsline {table}{\numberline {4.5}{\ignorespaces B-spline order-specific curve fits for $C_\text {approx}^{(2)}$ for stretching~\textup {\hbox {\mathsurround \z@ \normalfont (\ignorespaces \ref {eq:htstretch1}\unskip \@@italiccorr )}}. }}{70}{table.caption.199}
+\addvspace {10pt}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Isothermal channel simulations}}{113}{table.caption.317}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Relative efficiency of the Navier--Stokes operator implementations}}{120}{table.caption.322}
+\addvspace {10pt}
+\contentsline {table}{\numberline {6.1}{\ignorespaces Homogenized boundary layer simulations suitable for turbulence model calibration}}{128}{table.caption.326}
+\contentsline {table}{\numberline {6.2}{\ignorespaces Scenario parameters for homogenized boundary layer simulations}}{128}{table.caption.327}
+\contentsline {table}{\numberline {6.3}{\ignorespaces Pressure gradients in homogenized boundary layer simulations}}{128}{table.caption.328}
+\contentsline {table}{\numberline {6.4}{\ignorespaces Edge vs. wall conditions in homogenized boundary layer simulations}}{129}{table.caption.329}
+\addvspace {10pt}
+\contentsline {table}{\numberline {7.1}{\ignorespaces Selected locations from the fully laminar Orion MPCV TPS simulation }}{165}{table.caption.365}
+\contentsline {table}{\numberline {7.2}{\ignorespaces Input parameters used in the relaminarization study to obtain Orion MPCV-like boundary layer conditions }}{165}{table.caption.366}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {table}{\numberline {B.1}{\ignorespaces Manufactured solution coefficient recommendations}}{228}{table.caption.687}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {table}{\numberline {D.1}{\ignorespaces Execution details captured from each production batch job}}{248}{table.caption.903}
+\contentsline {table}{\numberline {D.2}{\ignorespaces Instantaneous fields and other details comprising a restart file}}{249}{table.caption.904}
