@@ -1,0 +1,81 @@
+\begin{table}[p]
+\makecommand{\z}{\phantom{0}}  % Facilitates column alignment
+\makecommand{\Z}{\phantom{.0}} % Ditto
+\centering
+\caption[%
+    Selected locations from the fully laminar Orion MPCV TPS simulation
+]{%
+    Selected reacting boundary layer conditions from the symmetry plane
+    on a fully laminar Orion MPCV thermal protection system simulation
+    depicted more fully in Figures~\ref{fig:cevisslam_summary1}
+    and~\ref{fig:cevisslam_summary_fpg}.  Column ``Location'' indicates
+    the number of meters leeward of the stagnation point where the
+    conditions are found.\label{tbl:cevisslam_detail1}
+}
+\begin{tabular}{cccccc}
+Location                              &
+$\textrm{Re}_{\theta}$                & % Re_theta
+$\textrm{Ma}_{e}$                     & % Ma_edge
+$T_{e}/T_w$                           & % T_ratio
+$v_w^{+}$                             & % v_wallplus
+\raisebox{0.10ex}{$p_{e,\xi}^{\ast}$}   % p_exi
+\\
+\toprule\toprule
+%Location  &  Re_theta  &  Ma_edge  &  T_ratio &  v_wallplus  &  p_exi           \\
+4.134~m    &  223       &  1.152\z  &  4.285   &  0.007178    &  \num{-0.01235}  \\
+3.199~m    &  225       &  0.8986   &  4.262   &  0.008387    &  \num{-0.01019}  \\
+2.299~m    &  177       &  0.6597   &  4.182   &  0.009765    &  \num{-0.01269}  \\
+1.389~m    &  114       &  0.4112   &  4.129   &  0.01225\z   &  \num{-0.01793}
+\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}
+\makecommand{\z}{\phantom{0}}  % Facilitates column alignment
+\makecommand{\Z}{\phantom{.0}} % Ditto
+\centering
+\caption[%
+    Input parameters used in the relaminarization study to obtain Orion
+    MPCV-like boundary layer conditions
+]{%
+    Suzerain v0.1.6.34-r45407 input parameters found to approximately
+    match local boundary layer conditions at locations in
+    \autoref{tbl:cevisslam_detail1}.
+    %
+    For all cases, $\textrm{Pr} = \mu C_p / \kappa = 0.7$, $\alpha=0$ in
+    $\mu_B=\alpha\mu$, $\beta=\nicefrac{2}{3}$ in $\mu / \mu_0={\left(T /
+    T_0\right)}^\beta$, and $\gamma = C_p / C_v = 1.4$.
+    %
+    Extents were $L_x/l_0=10$, $L_y/l_0=2.5$, $L_z/l_0=3$ employing a
+    piecewise-quintic B-spline basis with $N_y=192$ collocation points.
+    %
+    Column ``Advance'' reports which linear implicit operator and
+    time step safety factor governed time advance.
+    %
+    Refer to Tables~\ref{tbl:table_turb_hbl}
+    through~\ref{tbl:table_turb_hbl_fpg} for other column
+    definitions.\label{tbl:cevisslam_inputs}
+}
+{\renewcommand{\tabcolsep}{0.345em}
+\begin{tabular}{cccccccccc}
+Location                                        &%  Location
+$\textrm{Re}$                                   &%  Re
+$\textrm{Ma}$                                   &%  Ma
+$\tanh$                                         &%  tanh
+$\operatorname{gr}_{t_0}\!\left(\Delta\right)$  &%  grdelta
+$T_w/T_0$                                       &%  Tw
+$v_w/u_0$                                       &%  vw
+\raisebox{0.10ex}{$p_{e,\xi}^{\ast}$}           &%  p_ex
+\multicolumn{2}{c}{Advance}                      %  implicit,safetyfactor
+\\
+\toprule\toprule
+% DATA DRAWN FROM CASES relam${CASE}/last/restart00000.h5
+%Location &  Re     &  Ma       &  tanh  &  grdelta    &  Tw      &  vw             &  p_ex            &  implicit  &  safetyfactor  \\
+4.134~m   &  1535   &  1.152\z  &  2.2   &  0.02175    &  0.2333  &  \num{1.99e-4}  &  \num{-0.01234}  &  Y         &  0.35\z        \\
+3.199~m   &  1475   &  0.8985   &  2.2   &  0.016\z\z  &  0.2346  &  \num{2.20e-4}  &  \num{-0.01019}  &  XYZ       &  0.2\z\z       \\
+2.299~m   &  1100   &  0.6598   &  2.0   &  0.01\z\z\z &  0.2391  &  \num{2.68e-4}  &  \num{-0.01269}  &  XYZ       &  0.2\z\z       \\
+1.389~m   &  \z800  &  0.4113   &  2.0   &  0.0035\z   &  0.2422  &  \num{3.68e-4}  &  \num{-0.01793}  &  XYZ       &  0.175
+\end{tabular}}
+\end{table}

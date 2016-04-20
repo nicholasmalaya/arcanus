@@ -1,0 +1,32 @@
+Nicholas Malaya
+STC
+tacc user: npm7
+
+Description:
+
+Bayesian Inference is a powerful statistical method that has found a variety of applications in 
+uncertainty quantification, decision theory, model selection and many others. 
+These methods have been applied to diverse fields such as epidemiology, spam filters, computer vision, 
+as well as assessments of the reliability of the readyness of the United States nuclear weapon stockpiles. 
+
+However, Bayes' Theorem, despite existing since the 18th century, has only recently become more prevalent in scientific applications. 
+The recent dramatic growth in Bayesian methods coincides with the exponential expansion of computational power. 
+This is because for all but a small set of models, the posterior distribution is unable to 
+be analytically determined, and must be statistically sampled, often requiring far more samples than are 
+humanly possible to generate. 
+
+We propose to develop a C++ implementation of the Metropolis-Hastings algorithm. 
+This is a Markov Chain Monte Carlo (MCMC) method to sample from a probability distribution. 
+These samples will be generated in order to estimate the posterior of a distribution 
+for a Bayesian Inference problem. We will generate results for a few different models, in order to 
+investigate the model against a known (analytic) conjugate prior, as well as more complicated (non-tracible without sampling) 
+distributions. 
+
+The code will written in C++, and parallelized with openMP. We will present results of this study that have been verified against 
+analytic distributions, and then a strong scaling analysis will be performed to observe the 
+speed-up on a single node of the Texas Advance Supercomputing Center's (TACC) Lonestar supercomputer. 
+
+The codebase for this project will be developed on bitbucket. A fully functioning build system alongside a
+ 'make check' regression suite will be included in order for users to ensure the compiled codebase 
+functions correctly. The output of these simulations will be saved using the HDF-5 library. 
+The resulting datasets will be postprocessed using python with h5py, numpy+scipy and matplotlib. 

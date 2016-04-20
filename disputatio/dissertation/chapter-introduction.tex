@@ -1,0 +1,133 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Motivation}
+\label{sec:motivation}
+
+A vehicle reentering Earth's atmosphere requires a thermal protection system
+(TPS) to mitigate aerothermodynamic heating.  Gauging reentry heat load is
+critical to mission success.  Undersizing a TPS at best destroys expensive
+equipment and at worst causes loss of life.  Oversizing a TPS increases vehicle
+weight and fuel costs and therefore reduces available payload.  Decision makers
+need these heating predictions with quantified uncertainty so they may balance
+reliability requirements against cost constraints.
+
+Turbulence and laminar-turbulent transition enter critically into this balance.
+Turbulence in the fluid boundary layer around a vehicle intensifies heating
+because turbulent mixing enhances momentum, energy, and chemical species
+transport to the TPS\@.  Recent coupled multiphysics studies by
+\citet{Bauman2011Loose} and \citet{Stogner2011Uncertainty} showed that
+ablative TPS predictions are highly sensitive to uncertainty in turbulence model
+calibration parameters.  Further, while low-turbulence freestream conditions allow at
+least the stagnation point region within the flow to be laminar, prediction
+efforts often assume these boundary layers are fully turbulent.  Both
+incorrectly applying turbulence models to laminar regions and neglecting the
+downstream laminar-turbulent transition processes add markedly to heat load
+uncertainty.  Transition models may be employed to relax this assumption by
+accounting for transitional flow.  However, the extreme sensitivity of
+transition phenomena to the upstream environment (see, for example,
+\citet{Federov2011Transition}) brings with those models another uncertainty
+penalty.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Objectives}
+
+This work aims to reduce turbulence- and transition-driven uncertainty in
+aerothermodynamic heating predictions for blunt-bodied reentry vehicles in two
+ways.  The first way will reduce the uncertainty entering through the turbulence
+model calibration parameters.  The second way will reduce the uncertainty
+arising from incorrectly treating laminar regions as fully turbulent.
+
+%\subsection[Producing High-Quality Data for\\Compressible Turbulence Model Calibration]
+%           {Producing High-Quality Data for Compressible Turbulence Model Calibration}
+
+First, we aim to use direct numerical simulation (DNS) of the compressible
+Navier--Stokes equations to generate high-quality supersonic boundary layer data
+for turbulence model calibration.  DNS was selected because the technique
+produces data uncertainties limited only by the available computing resources.
+We have designed and implemented a new, well-verified Fourier/B-spline
+pseudospectral DNS code called Suzerain employing ``slow growth,'' a spatiotemporal boundary layer
+homogenization approach by \citet{Topalian2011Slow, Topalian2014Temporal,
+Topalian2014Spatiotemporal}, to efficiently generate turbulence statistics with
+accurately quantified uncertainties.  The code is used to create a rich database
+of compressible turbulence statistics for use by the reentry community.  In
+addition to the long-lived, public datasets we generate, our modern DNS code can
+serve others as a robust, extensible platform for computational turbulence
+research.
+
+%\subsection[Characterizing Turbulence-Sustaining Regions\\on Blunt-Bodied Reentry Vehicles]
+%           {Characterizing Turbulence-Sustaining Regions on Blunt-Bodied Reentry Vehicles}
+
+Second, we aim to detect which regions of an ablative thermal protection system
+on a blunt-bodied vehicle can sustain turbulence.  Given the strength of the
+favorable pressure gradients found in these flows, it is reasonable to expect
+that a contiguous region extending some distance radially from the stagnation
+point simply cannot maintain turbulence.  Rather than taking the classical
+transition modeling approach and seeking where laminar-turbulent transition
+occurs, this study instead aims to map where turbulence cannot survive.  The
+spatiotemporal boundary layer DNS code is reused to
+parametrically explore
+pointwise flow conditions found within simulations like those of
+\citet{Bauman2011Loose}.  Fully turbulent fields are initialized and evolved at
+local conditions taken from such simulations.  We say the conditions cannot
+sustain turbulence if the field relaminarizes.  By exploring this parameter
+space, we aim to discover where turbulence models might not be employed when
+engineering practitioners simulate these reentry flows.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Outline}
+
+This work is organized as follows:
+
+\autoref{sec:review} provides background on the uncertainties arising from
+applying turbulence models within reentry applications, how calibration data
+impacts these uncertainties, and evaluates potential sources for obtaining that
+data.  It further discusses uncertainties arising from transition phenomena and
+proposes a concrete scenario for study based on the Orion MPCV\@.
+
+\autoref{sec:model} summarizes the mathematical models required to pursue
+the aims of the thesis.  \autoref{sec:techniques} details the computational
+techniques used to apply these models while \autoref{sec:software} describes
+their software implementation.
+
+\autoref{sec:bldata} presents new direct numerical simulations of
+spatiotemporally homogenized turbulent boundary layers with features similar to
+those found on the Orion MPCV thermal protection system.  It investigates
+the character of the turbulence, presents Favre-averaged equation budgets,
+and communicates the information necessary to use the data for turbulence
+model calibration.
+
+\autoref{sec:relam} detects turbulence-sustaining regions on the Orion MPCV
+using spatiotemporally homogenized boundary layers.  The study methodology
+is discussed followed by a collection of results corresponding to locations
+on the MPCV thermal protection system.
+
+Finally, \autoref{sec:conclusions} summarizes the conclusions of this thesis
+and presents recommendations for future work.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Contributions}
+
+% THIS WORK HAS MADE THE FOLLOWING CONTRIBUTIONS ???
+% The contributions of this work include the following:
+This work has made the following contributions:
+
+\begin{enumerate}
+    \item Creation of a well-verified, openly available pseudospectral
+    code for the direct numerical simulation (DNS) of sub- through
+    supersonic turbulent boundary layers using ``slow growth''
+    homogenization techniques.
+
+    \item Generation and characterization of metadata-rich DNS data,
+    with well-quantified sampling uncertainty, for sub- and supersonic
+    spatiotemporally homogenized turbulent boundary layers on cold,
+    transpiring walls and subject to strong favorable pressure gradients.
+
+    \item Design of a novel DNS experiment to determine where on a
+    vehicle surface turbulence can be sustained without requiring the
+    flight environment to be sufficiently well-understood that transition
+    modeling can be reliably applied.
+
+    \item Application of this novel DNS experiment to conditions
+    from the NASA Orion Multi-Purpose Crew Vehicle ablative thermal
+    protection system during atmospheric reentry from the International
+    Space Station.
+\end{enumerate}

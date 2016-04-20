@@ -1,0 +1,101 @@
+\label{sec:mms}
+
+A time-varying manufactured solution is presented for the nondimensional
+governing equations summarized in \autoref{sec:goveqn}.  That is, forcing terms
+$Q_{\rho}$, $\vec{Q}_{\rho{}u}$, and $Q_{\rho{}E}$ are added to the mass,
+momentum, total energy equations so that their solution matches a prescribed
+form.  This particular manufactured solution is the nondimensional analogue of
+that presented in \citet{Ulerich2012MMS}.  The solution was used to verify the
+software described in \autoref{sec:software}.  Additional background on
+manufactured solutions can be found in \citet{MASA}.
+
+%\section{Manufactured Solution}
+%\label{sec:solution}
+
+For $\phi\in\left\{\rho, u, v, w, T\right\}$ analytical solutions are selected
+with the form
+\begin{alignat}{20}%\label{eq:solution}
+  \phi\!\left(x, y, z, t\right)
+  &= &&a_{\phi{}0}  &&          &&             &&               &&  &&            &&       &&          &&             &&                &&  &&            &&        &&\cos\Bigl(&&f_{\phi{}0 } &&t &&+ &&g_{\phi{}0 }&&\Bigr) \notag\\
+  &+ &&a_{\phi{}x } &&\cos\Bigl(&&b_{\phi{}x } &&2\pi x L_x^{-1}&&+ &&c_{\phi{}x }&&\Bigr) &&          &&             &&                &&  &&            &&        &&\cos\Bigl(&&f_{\phi{}x } &&t &&+ &&g_{\phi{}x }&&\Bigr) \notag\\
+  &+ &&a_{\phi{}xy} &&\cos\Bigl(&&b_{\phi{}xy} &&2\pi x L_x^{-1}&&+ &&c_{\phi{}xy}&&\Bigr) &&\cos\Bigl(&&d_{\phi{}xy} &&2\pi y L_y^{-1} &&+ &&e_{\phi{}xy}&&\Bigr)  &&\cos\Bigl(&&f_{\phi{}xy} &&t &&+ &&g_{\phi{}xy}&&\Bigr) \notag\\
+  &+ &&a_{\phi{}xz} &&\cos\Bigl(&&b_{\phi{}xz} &&2\pi x L_x^{-1}&&+ &&c_{\phi{}xz}&&\Bigr) &&\cos\Bigl(&&d_{\phi{}xz} &&2\pi z L_z^{-1} &&+ &&e_{\phi{}xz}&&\Bigr)  &&\cos\Bigl(&&f_{\phi{}xz} &&t &&+ &&g_{\phi{}xz}&&\Bigr) \notag\\
+  &+ &&a_{\phi{}y } &&\cos\Bigl(&&b_{\phi{}y } &&2\pi y L_y^{-1}&&+ &&c_{\phi{}y }&&\Bigr) &&          &&             &&                &&  &&            &&        &&\cos\Bigl(&&f_{\phi{}y } &&t &&+ &&g_{\phi{}y }&&\Bigr) \notag\\
+  &+ &&a_{\phi{}yz} &&\cos\Bigl(&&b_{\phi{}yz} &&2\pi y L_y^{-1}&&+ &&c_{\phi{}yz}&&\Bigr) &&\cos\Bigl(&&d_{\phi{}yz} &&2\pi z L_z^{-1} &&+ &&e_{\phi{}yz}&&\Bigr)  &&\cos\Bigl(&&f_{\phi{}yz} &&t &&+ &&g_{\phi{}yz}&&\Bigr) \notag\\
+  &+ &&a_{\phi{}z } &&\cos\Bigl(&&b_{\phi{}z } &&2\pi z L_z^{-1}&&+ &&c_{\phi{}z }&&\Bigr) &&          &&             &&                &&  &&            &&        &&\cos\Bigl(&&f_{\phi{}z } &&t &&+ &&g_{\phi{}z }&&\Bigr) \notag
+\end{alignat}
+where $a$, $b$, $c$, $d$, $e$, $f$, and $g$ are constant coefficient
+collections indexed by $\phi$ and one or more directions.  To aid in providing
+reusable, physically realizable coefficients for Cartesian domains of arbitrary
+size, domain extents $L_x$, $L_y$, $L_z$ have been introduced.
+%
+Partial derivatives $\phi_{t }$, $\phi_{x }$, $\phi_{y }$, $\phi_{z }$,
+$\phi_{xx}$, $\phi_{xy}$, $\phi_{xz}$, $\phi_{yy}$, $\phi_{yz}$, and $\phi_{zz}$
+may be computed directly from the chosen solutions.
+
+%Computer algebra systems
+%like SymPy~\citep{SymPy} can both compute these derivatives and output C code
+%for computing these values at some $x$, $y$, $z$, and $t$.
+
+%\section{Semi-Discrete Manufactured Forcing}
+
+The above solutions are plugged into the model from
+\autoref{sec:goveqn} and solved for the forcing terms $Q_{\rho}$,
+$\vec{Q}_{\rho{}u}$, and $Q_{\rho{}E}$.  However, solving for these complete
+terms entirely within the context of a computer algebra system causes an
+explosion of terms.  As the fully expanded forcing terms are too large
+to be usable in any meaningful way, they are not shown.
+%
+Instead, starting from the solution and its the analytic derivatives, basic
+calculus followed by algebraic operations performed in floating point are used
+to obtain the necessary forcing \emph{at runtime}.
+%
+Computing the forcing terms looks as follows:
+\lstinputlisting[language=python]{mms/forcing.py}
+%
+The errors arising in this
+process behave like standard floating point truncation issues.  Refer to
+\citet{Ulerich2012MMS} for a more extended discussion of this approach.
+
+%Many of the
+%computations are independent of the constitutive relations used and could be
+%employed for other manufactured solutions.
+
+
+%\section{Suggested Coefficients for Isothermal Channels and Flat Plates}
+
+Employing the manufactured solution requires fixing the more than two hundred
+coefficients appearing in the model and chosen solution forms.  Selecting usable
+values is not difficult but it is time consuming.
+Reasonable coefficient choices for testing channel and flat plate codes
+are therefore presented.
+
+In both geometries the streamwise, wall-normal, and spanwise directions are
+labeled $x$, $y$, and $z$ respectively.  Both $x$ and $z$ are periodic while
+$y\in\left\{0,L_y\right\}$ is not.  Transient tests should likely take place
+within the duration $0\leq{}t\leq{}1/10$ nondimensional time units as the time
+phase offsets (for example, $g_{Tyz}$) have been chosen for appreciable transients to
+occur throughout this time window.
+
+For isothermal channel flow code verification we recommend testing using
+\begin{equation*}
+  b_{\rho{}y} =
+  b_{u{}y}    =
+  b_{v{}y}    =
+  b_{w{}y}    =
+  b_{T{}y}    = \frac{1}{2}
+\end{equation*}
+and the coefficients given in \autoref{tbl:mmscoeff}.  With these choices
+the manufactured solution satisfies isothermal, no-slip conditions at $y = 0,
+L_y$.  For isothermal flat plate code verification we recommend testing using
+\begin{equation*}
+  b_{\rho{}y} =
+  b_{u{}y}    =
+  b_{v{}y}    =
+  b_{w{}y}    =
+  b_{T{}y}    = \frac{1}{4}
+\end{equation*}
+and the coefficients given in \autoref{tbl:mmscoeff}.  With these choices the
+manufactured solution satisfies an isothermal, no-slip condition at $y = 0$.
+
+\input{table_mmscoeff}

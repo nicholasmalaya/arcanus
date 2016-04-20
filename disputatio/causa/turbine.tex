@@ -1,82 +1,167 @@
 \documentclass{article}
 \usepackage{amsmath,amssymb}
 \usepackage{hyperref}
-\title{\bf{Penalty Function and Turbine Modeling}}
-\author{Nicholas Malaya, Roy Stogner, Robert D. Moser \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
+\usepackage{graphicx}
+\usepackage{listings}
+\title{\bf{Turbine Formulation}}
+\author{Nicholas Malaya, Roy Stogner, Robert D. Moser \\ Institute for
+Computational Engineering and Sciences \\ University of Texas at Austin}
+\date{} 
 
 \begin{document}
 \maketitle
+\newpage
+\section{Turbine Definitions}
+
+The normal in the blade's velocity direction is, 
+\begin{equation}
+n_B = \frac{u_B}{||u_B||}. 
+\end{equation}
+Where $u_B$ is the blade velocity and is specified.
+The normal in the fan vertical direction is also set, and is typically, 
+\begin{equation}
+n_v = \left(0,0,1\right)
+\end{equation}
+e.g. pointing ``up''. Then the normal in the radial direction must be, 
+\begin{equation}
+n_r = n_B \times n_v. 
+\end{equation}
+% The fan-wing-plane bit means that we're only looking at the projection
+% of velocity into the plane that's defined by the base velocity and
+% vertical direction. 
+
+% (01:03:44 PM) Roy Stogner: The "local relative velocity" means that
+% we're taking the velocity not in the reference frame of the domain, but
+% in the reference frame of the wing.  So if the base velocity is U_B and
+% the air velocity is U, then the local relative velocity is U - U_B. 
+% (01:04:25 PM) Roy Stogner: Note that we simplify that equation a tiny
+% bit by using the fact that U_B and N_R are perpendicular. 
+
+Then, the fan-wing-plane component (e.g. the plane perpendicular to the 
+radius) of local relative velocity is
+\begin{equation}
+u_p = u - (u\cdot n_r)\cdot n_r - u_B. 
+\end{equation}
+We can now define the lift and drag normals, where the direction
+opposing drag is, 
+\begin{equation}
+n_{\text{drag}} = \frac{u_p}{||u_p||} 
+\end{equation}
+and the direction opposing lift orthogonal to the drag and the radial direction, 
+\begin{equation}
+n_{\text{lift}}= n_{\text{drag}} \times n_r. 
+\end{equation}
+Now the ``forward velocity'' in the reference frame of the turbine is, 
+\begin{equation}
+u_{\text{fwd}}= -u_p \cdot n_B
+\end{equation}
+and the ``upward'' velocity in this frame is, 
+\begin{equation}
+u_{\text{up}} = u_p \cdot n_v. 
+\end{equation}
+Finally, we can specify the angle with respect to the fan velocity
+direction as, 
+\begin{equation}
+ \theta_f = \text{atan2}\left(\frac{u_{\text{up}}}{u_{\text{fwd}}}\right)
+ %\theta_f = \text{tan}^{-1}\left(\frac{u_{\text{up}}}{u_{\text{fwd}}}\right)
+\end{equation}
+while the angle with respect to the chord is this with the addition of
+the angle of attack of the blade, 
+\begin{equation}
+ \theta = \theta_f + \alpha(r).
+\end{equation}
+Now, we only need the drag polars in order to fully specify the force
+on the blades.
 
 \newpage
+\section{Drag Polars}
 
-\section{Penalty Function Formulation}
+We have been provided lift and drag as a function of angle of attack for
+two cases, the flat plate and semi-circle turbine blades. 
+For the flat plate, the drag polars are specified as,
 
-Using Laplace's equation as a test problem, 
+\begin{lstlisting}
+    theta := ((t+pi/2)%pi)-pi/2; 
+    lift   = 'if(abs(theta)<pi/24,theta*9,sin(2*theta))'
+    drag   = 'if(abs(theta)<pi/24,0.005+theta*theta*81/25,1-0.8*cos(2*theta))'
+\end{lstlisting}
+for example. 
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 12 cm]{figs/flat}
+    \caption{The flat plate interpolation.} 
+    \label{flat}
+  \end{center}
+\end{figure}
+As shown in Figure \ref{flat}, the fit is largely accurate. 
+
+The semi-circular plots are more complicated. Here, we use a high order
+polynomial fit to continuously interpolate between drag polars. This
+results in a 
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 12 cm]{figs/semi}
+    \caption{The semi-circular plate interpolation.} 
+    \label{semi}
+  \end{center}
+\end{figure}
+As shown in Figure \ref{semi}, the fit is decent, but not remarkably accurate.
+
+Then, the force on the turbine is, 
 \begin{equation}
- \nabla^2 u = 0 
+ \boxed{F = \frac{1}{2}\frac{\rho u_p^2 C}{A}\left(C_l \cdot
+					      n_\text{lift} + C_d \cdot n_\text{drag}  \right)}
 \end{equation}
-We impose a dirichlet-like boundary condition, 
-\begin{equation}
- u|_{\Gamma_D} = g
-\end{equation}
-With a test function, $v$, the weak formulation is now, 
-\begin{equation}
-\int_{\Omega}  - \nabla u \cdot \nabla v - \frac{1}{\epsilon}
- \int_{\partial \Omega} (u-g) \cdot v = 0 
-\end{equation}
-Given, 
-\begin{equation}
-\int_{\Omega}  - \nabla u \cdot \nabla v - 
- \int_{\partial \Omega} v \partial_n u = 0 
-\end{equation}
-Then, 
-\begin{align}
--\frac{1}{\epsilon}(u-g) = \partial_n u \\
- u = g - \epsilon \partial_n u 
-\end{align}
-In this manner, we can see that the velocity inthe penalty function
-region is constrained to match the value $g$, much like a
-slip-condition. So long as the value of $\epsilon$ is sufficiently
-large, the velocities will closely match. 
 
-%Here, $\beta$ is a large scale factor artificially introduced in order
-%to ensure that the no-slip condition holds. 
+Where C is the chord length (specified as input), and A is the area,
+which is also specified. For instance, the area swept might be, 
+\begin{lstlisting}
+     area_swept = '{r:=sqrt(x^2+y^2); 2*pi*r*(.6-.4)/4}'
+\end{lstlisting}
+for a 4 blade fan. The chord is specified similarly, for instance, 
+\begin{lstlisting}
+     chord_length = '.2*sqrt(2)'
+\end{lstlisting}
+would set a 0.28 meter chord length. 
+%
+% ---------------------------------------------------
+% old turbine discussion:
+% ---------------------------------------------------
 
-\section{Turbine}
+% The penalty function will be added to the navier-stokes as, 
+% % \begin{align}
+% %  \partial_t(\rho u) = \text{NS} &+ \frac{1}{\epsilon}(u-u_t)\cdot n_p \\
+% %                                 &+ \frac{1}{\epsilon}(u-\omega u_t)\cdot n_p \\
+% % \end{align}
 
-The penalty function will be added to the navier-stokes as, 
 % \begin{align}
-%  \partial_t(\rho u) = \text{NS} &+ \frac{1}{\epsilon}(u-u_t)\cdot n_p \\
-%                                 &+ \frac{1}{\epsilon}(u-\omega u_t)\cdot n_p \\
+%  \partial_t(\rho u) = \text{NS} + \frac{1}{\epsilon}(u-\omega u_t)\cdot n_p
 % \end{align}
 
-\begin{align}
- \partial_t(\rho u) = \text{NS} + \frac{1}{\epsilon}(u-\omega u_t)\cdot n_p
-\end{align}
+% We will start by formulating a constant rotation speed
+% turbine. The rotor will have counter-clockwise spin with angular
+% velocity omega.   
 
-We will start by formulating a constant rotation speed
-turbine. The rotor will have counter-clockwise spin with angular
-velocity omega.   
+% \begin{verbatim}
+%   base_velocity=
+%                 '{(r<r_max)*(z<zmax) * r * -sin(theta)*omega}
+%                  {(r<r_max)*(z<zmax) * r * cos(theta)*omega}
+%                  {0}'
+% \end{verbatim}
+% There are a few problems with this formulation. One, in a turbine, the
+% fluid velocity is not necessarily identical to the blade velocity. 
+% The turbine speed can take a range of values, and is often quoted as the
+% `tip-speed ratio'', $\lambda$, which is,
+%  \begin{equation}
+%   \lambda = \frac{\omega R}{v}.
+%  \end{equation}
+% Here, R is the radius of the turbine blades, omega the angular velocity,
+%  and v is the velocity of the fluid. Values for $\lambda$ generate power
+%  in the range of 0-16, and are typically between 4 and 14. 
 
-\begin{verbatim}
-  base_velocity=
-                '{(r<r_max)*(z<zmax) * r * -sin(theta)*omega}
-                 {(r<r_max)*(z<zmax) * r * cos(theta)*omega}
-                 {0}'
-\end{verbatim}
-There are a few problems with this formulation. One, in a turbine, the
-fluid velocity is not necessarily identical to the blade velocity. 
-The turbine speed can take a range of values, and is often quoted as the
-`tip-speed ratio'', $\lambda$, which is,
- \begin{equation}
-  \lambda = \frac{\omega R}{v}.
- \end{equation}
-Here, R is the radius of the turbine blades, omega the angular velocity,
- and v is the velocity of the fluid. Values for $\lambda$ generate power
- in the range of 0-16, and are typically between 4 and 14. 
-
-Zmax will be the height of the vanes, which is approximately 0.84 meters in the laboratory, 
-and 1.0795 meters for the two-meter SoV configuration. Rmax will be the inner diameter of the vanes. 
+% Zmax will be the height of the vanes, which is approximately 0.84 meters in the laboratory, 
+% and 1.0795 meters for the two-meter SoV configuration. Rmax will be the inner diameter of the vanes. 
 
 %
 % ---------------------------------------------------
@@ -107,11 +192,18 @@ and 1.0795 meters for the two-meter SoV configuration. Rmax will be the inner di
 %  \omega = \frac{ 2 V_{\text{in}}\lambda}{3 R_{\text{max}}}.
 % \end{equation}
 
-\section{References}
-Look at penalty function papers: 
-\begin{itemize}
- \item Babuska's paper on the B.C. \url{http://www.ams.org/journals/mcom/1973-27-122/S0025-5718-1973-0351118-5/S0025-5718-1973-0351118-5.pdf}
- \item penalty boundary condition on Navier-Stokes velocity turns out to be equivalent to a "slip" boundary condition: \url{http://onlinelibrary.wiley.com/doi/10.1002/fld.2264/full}
-\end{itemize}
+% ---------------------------------------------------
+% refs
+% ---------------------------------------------------
+
+%
+% https://github.com/grinsfem/grins/tree/master/src/physics/src
+% https://github.com/grinsfem/grins/blob/master/src/physics/src/averaged_fan.C
+% https://github.com/grinsfem/grins/blob/master/src/physics/src/averaged_fan_base.C#L120
+% https://github.com/grinsfem/grins/blob/3f86653ab5ba01981193ccce142ea196d0a192de/src/physics/src/averaged_fan_base.C
+% https://github.com/grinsfem/grins/blob/34e2fc1e7d7143e0080f81c67bd584ce1236e2c1/src/physics/include/grins/averaged_fan.h
+% https://github.com/grinsfem/grins/blob/34e2fc1e7d7143e0080f81c67bd584ce1236e2c1/src/physics/include/grins/averaged_fan_base.h
+%
+
 
 \end{document}

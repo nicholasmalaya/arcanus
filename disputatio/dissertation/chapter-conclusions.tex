@@ -1,0 +1,187 @@
+\label{sec:conclusions}
+
+\section{Summary of the Present Work}
+
+% CLEMENS: "Is this true?" underlining "approximating...on".
+Turbulent boundary layers approximating those found on the NASA Orion
+Multi-Purpose Crew Vehicle (MPCV) thermal protection system during atmospheric
+reentry from the International Space Station have been studied by direct
+numerical simulation, with the ultimate goal of reducing aerothermodynamic heating prediction
+uncertainty.
+%
+Simulations were performed using a new, well-verified, openly available
+Fourier/B-spline pseudospectral code called Suzerain equipped with a recent,
+``slow growth'' spatiotemporal homogenization approximation developed by
+\citet{Topalian2014Spatiotemporal}.
+%
+A first study aimed to reduce turbulence-driven heating prediction uncertainty
+by providing high-quality data suitable for calibrating Reynolds-averaged Navier--Stokes turbulence
+models to address the atypical boundary layer characteristics found in such reentry problems.
+%
+The unique boundary layer data includes strong favorable pressure gradients,
+cold isothermal wall conditions, and wall transpiration effects and has
+well-quantified uncertainties so that it may best inform turbulence models.
+%
+A second study aimed to reduce transition-driven uncertainty by determining where
+on the thermal protection system surface the boundary layer could sustain
+turbulence.
+%
+This study informs where fully laminar and where fully turbulent assumptions are
+appropriate in the reentry scenario without incurring the uncertainties
+associated with transition modeling.
+
+%%%%%%%%%%%
+% CHAPTER 6
+%%%%%%%%%%%
+
+In the first study, the two data sets generated and investigated were a
+$\Mach\approx{}0.9$ and a $\Mach\approx{}1.15$ spatiotemporally homogenized
+boundary layer with $\Reynolds[\theta]{}\approx{}382$ and $\Reynolds[\theta]{}\approx{}531$,
+respectively.  Boundary layer edge-to-wall temperature ratios were approximately
+4.15 and wall blowing velocities, measured in plus units, were in the neighborhood of
+\num{8e-3}.  The favorable pressure gradients, achieved by supplying a
+stationary inviscid flow profile to the homogenization approximation, had
+acceleration parameters~\citep{Launder1964Laminarization} of about \num{4e-6}
+and Pohlhausen parameters between 25 and 42.  Skin frictions coefficients around \num{6e-3}
+and Nusselt numbers under 22 were observed.  Due to the considerable
+thermodynamic property gradients, the subsonic simulation had an unexpectedly
+small displacement thickness while the supersonic simulation exhibited negative
+displacement effects.  As a consequence, the Clauser
+parameter~\citep{Clauser1954Turbulent} was found misleading for characterizing
+these pressure gradients.  Objective uncertainty
+estimates~\citep{Oliver2014Estimating} for the data found coefficients of
+variation of less than \num{8e-3} for density, velocity, temperature, and
+viscosity inside the boundary layer edge and of roughly 10\% for the specific
+turbulent kinetic energy for statistical ensembles gathered for 6.4--6.9 eddy
+turnover times.  Semi-local scaling~\citep{Huang1995Compressible} collapsed all
+profiles investigated.  The near-wall vorticity fluctuations show qualitatively
+different profiles than those from the incompressible~\citep{Spalart1988Direct} or
+compressible literature~\citep{Guarini2000Direct}.  The turbulent Prandtl number
+was above 0.8 inside the boundary layer edge.  Root-mean-squared property
+fluctuations matched expectations for isothermal wall
+conditions~\citep{Coleman1995Numerical} but the supersonic results show evidence
+of minor problems in the numerical formulation related to the spatiotemporal
+homogenization when $\Mach>1$.  Favre-averaged equation budgets were reported and
+show the regions in which the homogenization approximation directly impacts the mean
+flow.  In particular, the direct slow growth influence on the total energy and
+turbulent kinetic energy equations is small enough that
+such homogenized flows can serve as convenient model problems for calibration
+of models to be used in spatially evolving boundary layers.
+
+%%%%%%%%%%%
+% CHAPTER 7
+%%%%%%%%%%%
+
+%A second study aimed to reduce transition-driven uncertainty by detecting where
+%on the thermal protection system surface the boundary layer could sustain
+%turbulence.
+%%
+%This study informs where fully laminar and where fully turbulent assumptions are
+%appropriate in the reentry scenario without incurring the uncertainties
+%associated with transition modeling.
+
+In the second study, local boundary layer conditions were extracted from a
+laminar flow solution over the Orion MPCV thermal protection system during peak
+reentry heating which included shock effects, aerothermochemistry, curvature, and
+ablation.  That information, as a function of leeward distance from the
+stagnation point along the MPCV symmetry plane, was approximated by
+$\Reynolds[\theta]{}$, $\Mach[e]{}$, $p_{e,\xi}^{\ast}=\frac{\delta}{\rho_e
+u_e^2}\frac{\partial\!p_e}{\partial\!\xi}$, $v_w^{+} = v_w / u_\tau$, and
+$T_e/T_w$ along with perfect gas assumptions.
+%
+Homogenized turbulent boundary layers were initialized at those local conditions
+and evolved until either stationarity, implying the conditions could sustain
+turbulence, or relaminarization, implying the conditions could not.
+%
+A computationally convenient periodic domain, which fluctuations cannot exit,
+served as a surrogate for a perturbation-rich flight environment.
+%
+Fully turbulent fields relaminarized subject to conditions
+4.134~m and 3.199~m leeward of the stagnation point.
+%
+At those two locations, $\Reynolds[\theta]{}\approx{}225$, $\Mach[e]{}>0.9$, and
+$T_e/T_w\approx{}4.1$ all approach maxima over the heat shield while
+$p_{e,\xi}^\ast$ and $v_w^{+}$ become small (see
+Figures~\ref{fig:cevisslam_summary1} and~\ref{fig:cevisslam_summary_fpg}).
+%
+These results suggest that nowhere on the MPCV thermal protection system can
+sustain turbulence in this reentry scenario.
+%
+However, different and somewhat pathological initial conditions unexpectedly
+produced a long-lived, fluctuating field at leeward position 2.299~m.  No
+evidence of turbulence-sustaining behavior appeared at leeward position 1.389~m.
+Accordingly, it was predicted that locations more than 1.389~m leeward of the
+stagnation point can sustain turbulence in this scenario.
+%
+Relaminarization for the \citet{Topalian2014Spatiotemporal} homogenized boundary
+layers showed similar early and late time behavior as that described by
+\citet{Cal2008Similarity} for spatially evolving flows.
+
+\section{Recommendations for Future Work}
+
+Regarding the first study, more investigation into the basic character of the
+spatiotemporally homogenized boundary layers produced by the
+\citet{Topalian2014Spatiotemporal} technique is warranted.  With a better
+understanding of the behavior of the approach on simpler cases, it would
+be possible to disentangle the combined influence of homogenization, strong
+favorable pressure gradients, cold walls, and wall transpiration.  Future
+simulations might begin from the $\Reynolds[\theta]{}\approx{}382$ simulation
+presented here and incrementally eliminate complicating features to produce a
+sequence of problems approaching more canonical, better understood flows.
+%
+Several symptoms of minor problems with the present numerical formulation of the
+homogenization for $\Mach>1$ were raised, including in one dimension for laminar
+solutions, suggesting that additional analysis of the homogenization is
+worthwhile.  Though found usable here, it may be the case that either
+straightforward Giles-like nonreflecting boundary
+conditions~\citep{Giles1988Nonreflecting,Giles1990Nonreflecting} or the chosen
+isothermal wall enforcement scheme or both are inappropriate.  These symptoms
+may also indicate a malady in the model itself.
+%
+Applying the homogenization approach to either the low Mach number,
+variable density or incompressible limits of the Navier--Stokes equations
+would be worthwhile.  Doing so also may provide insight regarding
+the issues observed from the present numerical formulation.
+
+Regarding the second study, it would be interesting to recompute the Orion MPCV
+thermal protection system flow for peak heating during International Space
+Station reentry using our estimate of the edge of the turbulence-sustaining
+region.  From this mixed laminar/turbulent solution the energy flux to the
+ablator could be compared against the fully laminar or fully turbulent results.
+That computation would also provide a
+prediction against which flight data from the upcoming NASA Exploration Flight
+Test-1~\citep{SpaceCom20140317} might be compared.
+%
+Obtaining a more precise location for the edge of the turbulence-sustaining
+region will require methodology improvements.
+%
+In particular, a turbulence-model-based procedure to find the code inputs
+yielding the desired $\delta_{99}$, $\Reynolds[\theta]{}$, $\Mach[e]{}$,
+$p_{e,\xi}^{\ast}$, $v_w^{+}$, and $T_e/T_w$ would permit continuing the present
+relaminarization study based on the fluctuation-sustaining conditions found at 2.299~m.
+%
+The present ad hoc approach for discovering input parameters, though it produced
+interesting and useful results, was operationally unsatisfying and its effective
+application below 2.299~m would be difficult.
+%
+The constant wall blowing $v_w^{+}$ designed to emulate steady-state
+outgassing from the ablator in future studies might better be replaced
+by a controller-based mechanism to adjust the wall blowing velocity to
+achieve nondimensional heat fluxes $B_q$~\citep{Bradshaw1977Compressible}
+extracted from the original laminar flow solution for the reentry
+scenario.
+%
+With such improvements in place, investigating higher-speed reentry trajectories
+for the Orion MPCV might simplify characterizing the edge of a
+turbulence-sustaining region given fully turbulent initial
+conditions and also be more fruitful from the perspective of improving basic
+understanding of the physics in these scenarios.
+%
+Finally, the validity of the present methodology for detecting
+turbulence-sustaining regions might be investigated by comparing its predictions
+against experimental transition data gathered from a wind tunnel facility that
+has been configured to be exceptionally noisy.
+%
+%%%EVIL%EVIL%EVIL%%%
+\enlargethispage{1.0em}
+%%%EVIL%EVIL%EVIL%%%

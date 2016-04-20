@@ -2,17 +2,16 @@
 \section{Proposed Research Campaign}
 \label{sec:proposed_work}
 
-
 The objective of this research project is to provide a definitive
 assessment of the technological feasibility of the entire synthetic
 columnar vortex concept as a means of generating usable energy. In the 
-previous sections we have briefed the reader on the present state of the
+previous sections outlined the present state of the
 simulation capability. In doing so, we have discussed the physics that
 influence dust devils formation, our particular mathematical
 models for the ambient conditions, as well as the SoV vanes, cone and
 turbine. We summarized the numerical discretizations used, the software
 stack and the calibration, verification and validation of these
-components. The purpose of these sections was to convince the reader of
+components. The purpose of these sections was to communicate
 two major points. The first is that an accurate, verified and
 validated simulation capability has been developed that can quickly
 investigate a wide variety of system and scenario settings at a modest
@@ -22,23 +21,22 @@ a local maximum of energy production, as measured by kinetic energy flux
 through the top of the SoV vanes.  
 
 These two points justify the proposed course of work, which is to
-broadly sweep through a large space of possible system configurations
+explore a large space of possible system configurations
 and geometries to discover the globally optimal structure
 of the SoV apparatus. Coupled with the scaling analysis presented in
 Section \ref{sec:physics}, we will then be able to predict the
 conditions (if any) under which the SoV apparatus will be
-technologically competitive with different methods of energy
-generation. This will lead to investigating the physics of the
+technologically feasible. This will lead to investigating the physics of the
 apparatus, to assess how closely the synthetic dust devils mimic the
 natural variety. The proposed research is designed to
 assess feasibility, and it is not expected that actual experimental
 validation will accompany the computational results. Furthermore, it
 must also be emphasized that feasibility is focused on
-technological competitiveness, namely energy produced by the apparatus,
+technical viability, namely energy produced by the apparatus,
 and will not include an economic assessment. In other words, it is
 possible that the SoV will produce energy, but the design required to do
 is prohibitively expensive, and therefore not economically competitive
-with existing technologies. The following is a proposed program of runs 
+with existing technologies. The following is a proposed program of simulations 
 designed to explore a wide configuration space. This focuses on
 optimization for the cone, turbine and vanes. 
 
@@ -86,10 +84,10 @@ tiers are adjusted. For the cone, we expect the height, maximum diameter
 and inner exit diameter to all impact the flow. While it is not known
 what form the ideal cone geometry will take, our expectation is that the
 cone plays at least two important roles. The first is acting as a
-converging nozzle for the flow, increasing the vertical velocity as it
-exits  out the top of the device. In the wind, the cone also acts as a
-shield, preventing the high velocity freestream flow from disrupting the
-vortex before it has run through the turbine. 
+converging nozzle for the flow, increasing the vertical and azimuthal
+velocity as it exits out the top of the device. In the wind, the cone
+also acts as a shield, preventing the high velocity freestream flow from
+disrupting the vortex before it has run through the turbine. 
 
 %
 % cone optimization
@@ -155,30 +153,30 @@ in this design the down wind side of the apparatus is enclosed by a
 solid cylindrical wall.  While the vane representation outlined in
 Section \ref{subsec:vane} is expected to be sufficiently general to support a
 wide variety of vane configurations, it is not at this time clear what
-form of parameterization for vane angle is sufficiently general as to
-support this exploration, and so a table such as shown for the cone and
+form of parameterization for vane angle is sufficiently general to
+support this exploration, and so a table like that for the cone and
 turbine is not yet available. At present the expectation is to proceed
 with this conceptual phase to generate a wide  range of possible
 configurations. The designs that have initially promising results will
-then be proceed with optimization in a manner similar to the examples
-outlined in Section \ref{sec:results}, where new parameter values are
+then be optimized similar to the examples outlined in Section
+\ref{sec:results}, where new parameter values are 
 introduced, a run is performed, and then the output is postprocessed and
 evaluated before the process begins again. In this way it is not
 infeasible to expect that several hundred optimization runs can be
-performed. The next subsection also briefly outlines a proposal to
-investigate algorithmic optimization on these designs.  
+performed. 
+%The next subsection also briefly outlines a proposal to
+%investigate algorithmic optimization on these designs.  
 
 \begin{figure}[htb]
  \centering
- \includegraphics[width=.75\linewidth]{figs/sketch}
- \caption{This is an example image of a proposed vane design. The blue
- arrows indicate the direction of the free stream velocity. The red
- lines are the vane control surfaces. Sketches and diagrams such as this
- are typically generated by various members of the team. The vane
- surface is then instantiated as a region of forcing as detailed in
- Section \ref{subsec:vane} and then simulated. If the initial results
- are promising, then further exploration of that configuration may be
- pursued.} 
+ \includegraphics[width=.75\linewidth]{figs/top}
+ \caption{This is an example image of a proposed vane design. The lines
+ indicate the vane curvature and solid surfaces. Sketches and diagrams
+ such as this  are typically generated by various members of the
+ team. The vane surface is then instantiated as a region of forcing as
+ detailed in Section \ref{subsec:vane} and then simulated. If the
+ initial results are promising, then further exploration of that
+ configuration may be pursued.} 
  \label{fig:sketch}
 \end{figure}
 
@@ -308,11 +306,10 @@ investigate algorithmic optimization on these designs.
 
 \subsection{Proposed Timeline}
 
-
 %
 % timeline
 %
-A rough timeline of the proposed work is presented in Table
+A timeline for the proposed work is presented in Table
 \ref{tab:prop}. The date of each bullet is the planned completion of the
 deliverable. Bullets items in black are required, while those in blue
 are optional, and do not need to be completed to ensure the
@@ -321,41 +318,40 @@ success of this project.
 % 
 % can we optimize? DAKOTA
 % 
-We propose to investigate algorithmic optimization as a tool to discover
-locally optimal system configurations. 
-This will take the form of using either the DAKOTA\cite{adams2013dakota}
-or TAO\cite{tao-user-ref} libraries. These libraries have suites of
-algorithms for non-linear optimization problems without gradient
-information (derivative-free optimization, such as Nelder-Mead or downhill simplex methods). 
-Evaluating the results of the most
-appropriate ``out of the box'' available optimization algorithm on a
-small test problem will provide an opportunity to ensure that our
-expectations on the number of iterations necessary for formal
-optimization of our problem are reasonably correct. 
-We propose these two libraries because DAKOTA is well-known as a library
-with extensive ``black-box'' optimization support, and TAO is already
-made available through pre-existing libMesh dependencies. Should the
-test problem discover that algorithmic optimization is a viable option,
-we will consider using this approach for optimization of the
-configuration. 
+% We propose to investigate algorithmic optimization as a tool to discover
+% locally optimal system configurations. 
+% This will take the form of using either the DAKOTA\cite{adams2013dakota}
+% or TAO\cite{tao-user-ref} libraries. These libraries have suites of
+% algorithms for non-linear optimization problems without gradient
+% information (derivative-free optimization, such as Nelder-Mead or downhill simplex methods). 
+% Evaluating the results of the most
+% appropriate ``out of the box'' available optimization algorithm on a
+% small test problem will provide an opportunity to ensure that our
+% expectations on the number of iterations necessary for formal
+% optimization of our problem are reasonably correct. 
+% We propose these two libraries because DAKOTA is well-known as a library
+% with extensive ``black-box'' optimization support, and TAO is already
+% made available through pre-existing libMesh dependencies. Should the
+% test problem discover that algorithmic optimization is a viable option,
+% we will consider using this approach for optimization of the
+% configuration. 
 
 %
 % short summary of tasks
 %
 
-The second bullet in Table \ref{tab:prop} provide
+The first bullet in Table \ref{tab:prop} provide
 estimated ending dates for the exploration of the configuration space. 
-Given our previous experiences, we expect to be able to rapidly
-iterate through these optimization efforts over the course of several
-months, with the final optimization work on the turbine. 
+We have rapidly iterated 
+through these optimization efforts over the course of several
+months, and are nearly converged on a final design. 
+The second bullet relates to the the final verification of the turbine, to ensure
+this functions properly. 
 At this time we will proceed with ``coupling tests'' to 
 ensure that the parameters are indeed still appropriate. For example,
-after having optimized the turbine parameters, it will be necessary to
+after having optimized the turbine parameters, it may be necessary to
 perturb the lower tier vane parameters to ensure that the selected set
-is nearly optimal even with the addition of a turbine. While we do not
-expect this to be the case, this item is a large uncertainty in the
-proposed timeline and could require significant additional work and
-expert evaluation.  
+is nearly optimal even with the addition of a turbine. 
 
 %
 % probably ok below:
@@ -364,10 +360,9 @@ The third bullet is the expected deadline to provide the results of our
 computational simulation efforts to the experimental group in late
 Spring/early Summer of 2016 so that they can use this information in the
 design of the system to be used for the Arizona field tests in Summer,
-2016. We have proposed preparing this information in June, but the date
-of the actual field test has not yet been set and may change. 
+2016. The date of the actual field test has not yet been set and may change. 
 
-As mentioned in the second to last bullet, it is possible that this
+As mentioned in the fourth item, it is possible that this
 project will permit some glimpses  
 at the fundamental processes underlying the naturally dust devil
 phenomena. To accomplish this, the synthetic dust devils must be
@@ -378,6 +373,11 @@ such as tornados and hurricanes will also  be investigated. A literature
 review of the physics of general cyclonic structures and any observed
 intensification mechanisms may provide hints of the geometries 
 by which the flow is intensified, and why. 
+
+Given our previous experiences, we do not anticipate a rich validation data set 
+to be available after the field test. Nevertheless, we will postprocess any and all
+available data from this event in order to assess the reliability of the computational
+modeling efforts. 
 
 Finally, we anticipate a detailed accounting of the entire project as
 the final deliverable. We expect that all of the investigations detailed 
@@ -404,13 +404,14 @@ above will result in several publications, as well.
 \begin{minipage}[t]{.7\linewidth}
 \color{black}
 \rule{\linewidth}{1pt}
-\ytb{April 2016}{Algorithmic optimization subdomain problem proof-of-concept}
 \ytl{April 2016}{Conclude parameter sweeps and optimization of apparatus}
-%\ytb{May 2016}{Conclude Additional Parameter sweeps}
-\ytl{June 2016}{Proposed configuration and predictions for
- experimental team}
+\ytl{April 2016}{Turbine actuator-disk verification, validation and prediction}
+\ytl{May 2016}{Proposed configuration and predictions for experimental
+ team}
 \ytb{July 2016}{Comparisons between synthetic and natural dust devil physics}
-\ytl{Aug  2016}{SoV feasibility assessment}
+\ytl{Aug 2016}{Validation against 2016 field data}
+%\ytl{Aug 2016}{SoV feasibility assessment}
+\ytl{Fall 2016}{Doctoral dissertation writing}
 \bigskip
 \rule{\linewidth}{1pt}%
 \end{minipage}%

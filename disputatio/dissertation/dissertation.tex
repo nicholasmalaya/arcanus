@@ -1,0 +1,373 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  disstemplate.tex, to be compiled with latex.                     %
+%%  08 April 112002     Version 4                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                   %
+%%  Writing a Doctoral Dissertation with LaTeX at                    %
+%%      the University of Texas at Austin                            %
+%%                                                                   %
+%%  (Modify this ``template'' for your own dissertation.)            %
+%%                                                                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\PassOptionsToPackage{pagebackref=true}{hyperref} % Ensure pagebackref used
+\documentclass[final,letterpaper,12pt]{report}    % Must be 'report' class
+
+\usepackage{utdiss2}               % Dissertation package style file
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Optional packages used for this sample dissertation. If you don't  %
+% need a capability in your dissertation, feel free to comment out   %
+% the package usage command.                                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{preamble}
+
+% Required
+\author{Nicholas Penha Malaya}
+\hypersetup{pdfauthor={Nicholas Malaya}}
+
+% Required
+\address{1310 Newning Ave. \#C\\Austin, Texas 78704}
+
+\title{% Required
+    \mbox{Numerical Simulation of Synthetic, }
+    \mbox{Buoyancy-Induced Columnar Vortices}
+}
+\hypersetup{pdftitle={Numerical Simulation of Synthetic, Buoyancy-Induced Columnar Vortices}}
+\hypersetup{pdfkeywords={Computational Fluid Dynamics} {Computational
+    Aided Design} {Computational Optimization}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NOTICE: The total number of supervisors and other members %%%%%%%%%%
+%%%%%%%%%%%%%%% MUST be seven (7) or less! If you put in more, %%%%%%%
+%%%%%%%%%%%%%%% they are put on the page after the Committee %%%%%%%%%
+%%%%%%%%%%%%%%% Certification of Approved Version page. %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Enter names of the supervisor and co-supervisor(s), if any,
+% of your dissertation committee. Put one name per line with
+% the name in square brackets. The name on the last line, however,
+% must be in curly braces.
+%
+% If you have only one supervisor, the entry below will read:
+%
+%       \supervisor
+%               {Supervisor's Name}
+%
+% NOTE: Maximum three supervisors. Minimum one supervisor.
+% NOTE: The Office of Graduate Studies will accept only two supervisors!
+%
+%
+\supervisor{Robert D. Moser}  % CSEM areas ABC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Enter names of the other (non-supervisor) members(s) of your
+% dissertation committee. Put one name per line with the name
+% in square brackets. The name on the last line, however, must
+% be in curly braces.
+%
+% NOTE: Maximum six other members. Minimum zero other members.
+% NOTE: The Office of Graduate Studies may restrict you to a total
+%       of six committee members.
+%
+%
+\committeemembers[David G. Bogard] 
+                 [Ofodike A. Ezekoye]          
+                 [Charles S. Jackson]
+                 {Todd A. Oliver}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\previousdegrees{B.S.; M.S.E.}
+     % The abbreviated form of your previous degree(s).
+     % E.g., \previousdegrees{B.S., MBA}.
+     %
+     % The default value is `B.S., M.S.'
+
+%\graduationmonth{...}
+     % Graduation month, either May, August, or December, in the form
+     % as `\graduationmonth{May}'. Do not abbreviate.
+     %
+     % The default value (either May, August, or December) is guessed
+     % according to the time of running LaTeX.
+
+%\graduationyear{...}
+     % Graduation year, in the form as `\graduationyear{2001}'.
+     % Use a 4 digit (not a 2 digit) number.
+     %
+     % The default value is guessed according to the time of
+     % running LaTeX.
+
+%\typist{...}
+     % The name(s) of typist(s), put `the author' if you do it yourself.
+     % E.g., `\typist{Maryann Hersey and the author}'.
+     %
+     % The default value is `the author'.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Commands for master's theses and reports.                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% If the degree you're seeking is NOT Doctor of Philosophy, uncomment
+% (remove the % in front of) the following two command lines (the ones
+% that have the \ as their second character).
+%
+%\degree{MASTER OF ARTS}
+%\degreeabbr{M.A.}
+
+% Uncomment the line below that corresponds to the type of master's
+% document you are writing.
+%
+%\masterreport
+%\masterthesis
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some optional commands to change the document's defaults.          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\singlespacing
+%\oneandonehalfspacing
+
+%\singlespacequote
+\oneandonehalfspacequote{}
+
+%%%
+%%% Set page layout parameters, lifted from work by Bert Kay et al.
+%%%
+\setlength{\textheight}{8.5in}
+\setlength{\oddsidemargin}{0.30in}
+\setlength{\evensidemargin}{0.30in}
+\setlength{\textwidth}{5.9in}
+\setlength{\topmargin}{0.155in}
+\setlength{\headheight}{12pt}
+\setlength{\headsep}{0.155in}
+\setlength{\parindent}{7ex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some optional commands to be tested.                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% If there are 10 or more sections, 10 or more subsections for a section,
+% etc., you need to make an adjustment to the Table of Contents with the
+% command \longtocentry.
+%
+%\longtocentry
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Some math support.                                           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%       Theorem environments (these need the amsthm package)
+%
+%% \theoremstyle{plain} %% This is the default
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{ax}{Axiom}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}[section]
+\newtheorem*{notation}{Notation}
+
+%\numberwithin{equation}{section}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Macros.                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%       Here some macros that are needed in this document:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               The document starts here.                            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\draftonly{\listoftodos\clearpage}  % So much time, so little to do.
+
+\copyrightpage{}                    % The copyright page.
+
+%
+% NOTE: In a doctoral dissertation, the Committee Certification page
+%               (with signatures) is BEFORE the Title page.
+%       In a masters thesis or report, the Signature page
+%               (with signatures) is AFTER the Title page.
+%
+%       If you are writing a masters thesis or report, you MUST REVERSE
+%       the order of the \commcertpage and \titlepage commands below.
+%
+\commcertpage{}         % Produces the Committee Certification
+                        %   of Approved Version page (doctoral)
+                        %   or Signature page (masters).
+                        %               20 Mar 2002     cwm
+
+\titlepage{}            % Produces the title page.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dedication and/or epigraph are optional, but must occur here.      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{dedication}
+\input{dedication}
+\end{dedication}
+
+\begin{acknowledgments}
+\input{acknowledgements}
+\end{acknowledgments}
+
+% The abstract is required. Note the use of ``utabstract'' instead of
+% ``abstract''! This was necessary to fix a page numbering problem.
+% The abstract heading is generated automatically.
+% Do NOT use \begin{abstract} ... \end{abstract}.
+%
+\utabstract{}
+\input{abstract}
+\indent
+
+% Table of Contents, List of Tables, List of Figures
+% Avoids overfull TOC entries per http://tex.stackexchange.com/questions/49887/
+\cleardoublepage
+\pdfbookmark{Table of Contents}{toc}  % Add useful PDF bookmark for TOC
+\microtypesetup{protrusion=false}     % Disable protrusion in TOC, etc.
+\makeatletter
+\renewcommand{\@pnumwidth}{1.70em}
+\makeatother
+\tableofcontents
+\listoftables
+\listoffigures
+\microtypesetup{protrusion=true}      % Re-enable protrusion
+\oneandonehalfspacequote{}
+
+% Keep page numbers in the usual place for floats
+\floatpagestyle{plain}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Actual text starts here.                                           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Including external files for each chapter makes this document simpler,
+% makes each chapter simpler, and allows for generating test documents
+% with as few as zero chapters (by commenting out the include statements).
+% This allows quicker processing by the Makediss command file in case you
+% are not working on a specific, long and slow to compile chapter. You
+% can even change the chapter order by merely interchanging the order
+% of the include statements (something I found helpful in my own
+% dissertation).
+%
+\chapter{Introduction}
+\input{chapter-introduction}
+
+\chapter{Background}
+\input{chapter-background}
+
+\chapter{Mathematical Models}
+\input{chapter-model}
+
+\chapter{Computational Techniques}
+\input{chapter-techniques}
+
+\chapter{Software Implementation}
+\input{chapter-software}
+
+\chapter[Characteristics of the Homogenized Boundary Layers\\ at Atmospheric Reentry-like Conditions]
+        {Characteristics of the Homogenized Boundary Layers at Atmospheric Reentry-like Conditions}
+\input{chapter-highqualitydata}
+
+\chapter[Detecting Turbulence-Sustaining Regions\\ on Blunt-Bodied Reentry Vehicles]
+        {Detecting Turbulence-Sustaining Regions on Blunt-Bodied Reentry Vehicles}
+\input{chapter-relaminarization}
+
+\chapter{Conclusions}
+\input{chapter-conclusions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appendix/Appendices                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% If you have only one appendix, use the command \appendix instead
+% of \appendices.
+
+\appendices
+%%\appendix
+
+\chapter{Derivation of the Mathematical Models}
+\input{appendix-derivation}
+
+\chapter{A Manufactured Solution for the Governing Equations}
+\input{appendix-mms}
+
+\chapter[Designing Inviscid Base Flows with Prescribed\\ Pressure Gradients and Edge Mach Conditions]
+        {Designing Inviscid Base Flows with Prescribed Pressure Gradients and Edge Mach Conditions}
+\input{appendix-radialflow}
+
+\chapter{Archived Simulations}
+\input{appendix-archived}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Generate the bibliography.                                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                    %
+% NOTE: For master's theses and reports, NOTHING is permitted to     %
+%       come between the bibliography and the vita. The command      %
+%       to generate the index (if used) MUST be moved to before      %
+%       this section.                                                %
+                                                                     %
+%%%\nocite{*}      % This command causes all items in the            %
+%%%                % bibliographic database to be added to           %
+%%%                % the bibliography, even if they are not          %
+%%%                % explicitly cited in the text.                   %
+                                                                     %
+% See https://code.google.com/p/latex-byu-thesis/wiki/TipsAndTricks  %
+\let\oldbibsection\bibsection{}                                      %
+\renewcommand{\bibsection}{%                                         %
+    \oldbibsection\addcontentsline{toc}{chapter}{Bibliography}       %
+}                                                                    %
+\singlespacing{}              % Make the bibliography more dense     %
+\bibliographystyle{plainnat}  % Here the bibliography                %
+\bibliography{references}     % is inserted.                         %
+\oneandonehalfspacequote{}                                           %
+%\index{Bibliography@\emph{Bibliography}}%                           %
+                                                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Generate the index.                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                    %
+% NOTE: For master's theses and reports, NOTHING is permitted to     %
+%       come between the bibliography and the vita. This section     %
+%       to generate the index (if used) MUST be moved to before      %
+%       the bibliography section.                                    %
+%                                                                    %
+%\printindex%    % Include the index here. Comment out this line     %
+%               % with a percent sign if you do not want an index.   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Vita page.                                                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{vita}
+\input{vita}
+\end{vita}
+
+% Dump the text width so that it can be used to set figure sizes:
+% http://damon-is-a-geek.com/publication-ready-the-first-time-beautiful-reproducible-plots-with-matplotlib.html
+\typeout{===  TEXTWIDTH: \the\textwidth ===}%
+
+\end{document}

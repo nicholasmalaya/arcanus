@@ -2,29 +2,30 @@
 \label{sec:software}
 
 The previous section described a series of models 
-for the system of interest. These models are too 
-complicated to solve exactly, and must instead be 
-instantiated with software to produce a numerical 
-result. This section details the numerical formulation
-and simulation of the models described previously. It begins with a 
+for the system of interest. 
+%These models are too 
+%complicated to solve exactly, and must instead be 
+%instantiated with software to produce a numerical 
+%result. 
+This section details the numerical formulation
+and simulation of these models. It begins with a 
 discussion of the numerical discretization of the equations 
 of interest. The mesh discretization is then described. 
 Next, the scientific software in which these numerical 
 models are used is discussed. Finally, the tool
-chain and supercomputer systems that intialize these 
-software tools are briefly introduced. 
+chain and supercomputer systems are briefly introduced. 
 
 \subsection{Discretization Scheme}
 
-To solve the Navier-Stokes equations on a computer, a
-Galerkin finite element method (FEM) discretization is used, which
-requires that the equations shown previously in
-section~\ref{sub_sec:ns_en} 
-be cast into the weak form. Manipulating
-these partial differential equations into a variation formulation is
-accomplished by multiplying the equations by appropriate test vector
-functions and integrating over the domain, $\Omega$. The resulting
-system of equations are
+To numerically solve the Navier-Stokes equations on a computer, a
+Galerkin finite element method (FEM) is used, which
+requires that the equations in section~\ref{sub_sec:ns_en} 
+be cast into a weak form. Manipulating these partial differential
+equations into a variational formulation is accomplished by multiplying 
+the equations by appropriate test functions and integrating over the
+domain, $\Omega$. The resulting weak problem is to find, 
+$(u,p,T) \in H^1(\Omega)^3 \times L_2(\Omega) \times H^1(\Omega)$ such 
+that 
 
 %
 % http://www.numerik.uni-hd.de/Oberwolfach-Seminar/CFD-Course.pdf
@@ -36,22 +37,24 @@ system of equations are
  \label{eqn:ns_weak} \\
  (\nabla \cdot u,q) &= 0
  \label{eqn:cont_weak} \\
- (\frac{\partial T}{\partial t}, w) + (u \cdot \nabla T, w) + (k \nabla
- T, \nabla w) &= 0.
+ (\frac{\partial T}{\partial t}, w) + (u \cdot \nabla T, w) + (k \, \nabla
+ T, \nabla w) &= 0.\label{eqn:en_weak}
 \end{align}
 
-Where $(u,v) = \int_\Omega u \cdot v dx$ and $v,w,q \in H^1(\Omega)$ are
-appropriate test functions in the Sobolev space of functions on 
-$\Omega$. Some of the simulations presented here were conducted under
+$\forall (v,q,w) \in H^1(\Omega)^3 \times L_2(\Omega) \times
+H^1(\Omega)$, where $(u,v) = \int_\Omega u \cdot v \, dx$.  
+Some of the simulations presented here were conducted under
 steady conditions, for which the $\frac{\partial}{\partial t}$ terms
-vanish.  
-
-All of the simulations discussed in this work were accomplished using
+vanish. A Galerkin FEM scheme is obtained by posing the weak form in
+terms of discrete subspaces of the function spaces specified above
+defined using piecewise-polynomial basis functions. All of the
+simulations discussed in this work were accomplished using 
 linear basis functions for both the velocity and pressure.
-Typically, the use of equal order elements for velocity and pressure is
-ruled out in the standard Galerkin FEM formulation by the Babuska-Brezzi
-condition\cite{bb-cond}. The numerical scheme used in this work is
-stable with equal-order elements for velocity and pressure through the
+%Typically, the use of equal order elements for velocity and pressure is
+%ruled out in the standard Galerkin FEM formulation by the Babuska-Brezzi
+%condition\cite{bb-cond}. 
+The scheme is
+stable with equal-order elements for velocity and pressure due to the
 introduction of streamline upwind/Petrov-Galerkin (SUPG) stabilization
 terms as first described by Hughes\cite{Hughes198685,supg} and extended
 to natural convection as in Becker and Braack\cite{Becker2002428}. The
@@ -60,23 +63,20 @@ residual converges. This scheme is ``consistent'' because the
 underlying order of convergence of the numerical method is not 
 affected\cite{hughes2000finite}. 
 
-This stabilization is accomplished by introducing additional terms to
-the weak form such that, 
-\begin{equation}
- a_s(c,\phi) = a(c,\phi) + \langle Lc,S\phi \rangle_\tau 
-\end{equation}
-Where $a(.,.)$ is the discrete semi-linear form of Equations
-\ref{eqn:ns_weak}, $L()$ are the PDEs from subsection
-\ref{sub_sec:ns_en} in operator form and S is a stabilization operator
+This stabilization is accomplished by introducing an additional term,
+$\langle Lc,S\phi \rangle_\tau$, to the weak form defined in Equations
+\ref{eqn:ns_weak}-\ref{eqn:en_weak}. Here $L()$ is the operator for the PDEs
+in \ref{sub_sec:ns_en}, S is a stabilization operator
 which is chosen to be the negative adjoint of the differential terms of
-$L()$. Finally, $c$ and $\phi$ are vectors, e.g. $ c= (u,p,T)$, the
-state vector, and $\phi = ( v,w,q )$, the vector of test functions. 
-These stabilization terms are added at each element cell, K,  
+$L()$, and $c$ and $\phi$ are state and test functions, i.e. 
+$ c= (u,p,T)$, and $\phi = ( v,w,q )$. 
+The angle brackets $\langle \cdot,\cdot \rangle$ signify integration of
+the element interiors for each of the K elements, that is:
 \begin{equation}
  \langle u,v \rangle_\tau = \sum_K \tau_K(u,v)_K.
 \end{equation}
 This results in three stabilization parameters, $\tau_P, \tau_v, \tau_T$ 
-which are selected according to the values proposed in Becker and Braack. 
+which are selected as proposed by Becker and Braack. 
 A full derivation of the weak form and stabilization terms will be
 provided in an appendix of the full thesis. 
 
@@ -104,24 +104,26 @@ stability and ease of statistical sampling for a uniform timestep.
 
 
 \subsection{Mesh Discretization}
+
 %
 % what about mesh...
 %
 The domain's described in subsection~\ref{sec:bc} are
-discretized in a consistent manner. The domain extents are scaled by
-system diameter. The same number of grid points are used for every
-simulation. In this way the ratio of the domain length to system
-diameter remains fixed. Likewise, the diffusivities are proportionally
-scaled with grid size to ensure that the cell Reynolds number, 
-\begin{equation}
- \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y) u}{\nu_T}
-\end{equation}
- is maintained for every simulation to ensure stability.
+consistently discretized. The domain extents
+are scaled by system diameter but the same number of grid points are used
+for every simulation. Thus, while the ratio of the domain length to system
+diameter remains fixed, the grid spacing increases proportionally with
+domain length. 
 
 The mesh has a uniform spacing in the lateral directions, except for a
-double refinement in the region of the vanes. Typically, the grid is 
+single refinement in the region of the vanes. Typically, the grid is 
 roughly one hundred points in the streamwise and spanwise directions
-before the double refinement. The mesh is non-uniform in height to
+before the refinement. The refinement halves the spacing (doubles the
+number of points) in all three
+coordinate directions, \{x,y,z\} in this region. The refinement is made
+from the ground to 1.5 times the height of the vanes and cone. 
+
+The mesh is non-uniform in height to
 resolve the boundary layer. This is accomplished by redistributing a
 mesh uniform in height, z, according to,
 \begin{equation}
@@ -129,10 +131,36 @@ mesh uniform in height, z, according to,
       C_2 \text{ exp}(C_3 z - 1),                 & \text{otherwise}
      \end{cases}
 \end{equation}
+
 where $z_\delta$ is the chosen height of the boundary layer mesh, and
 $C_1-C_3$ are scaling coefficients. This gives the mesh an exponentially
 varying character, with the coefficients chosen to ensure ten or more
-points in the boundary layer and nearly isotropic cells outside of it.
+points in the boundary layer, isotropic spacing in cells outside of
+it, and smooth blending between these two regimes. Each boundary layer
+spacing was tested against a finer spacing to ensure that the results
+were not sensitive to the choice of spacing. A horizontal slice though a
+representative domain is shown in Figure \ref{fig:meshing}. The single
+refinement in the region of the vanes is visible, as well as the finer
+meshed boundary layer region near the ground. 
+
+  \begin{figure}[!htb]
+    \begin{center}
+     \includegraphics[width = 10 cm]{figs/meshing}
+     \caption{Horizontal slide through the domain, to show a
+     representative meshing. The single refinement region around the
+     vanes is visible, as well as the finer boundary layer mesh near the
+     ground.}
+     \label{fig:meshing}
+    \end{center}
+  \end{figure}
+
+Finally, the diffusivities are proportionally
+scaled with grid size to ensure that the cell Reynolds number, 
+\begin{equation}
+ \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y) u}{\nu_T}
+\end{equation}
+ is maintained for every simulation, in order to ensure stability.
+
 
 %% hmin = 0.001  
 %% hmax = 0.4  
@@ -152,14 +180,14 @@ points in the boundary layer and nearly isotropic cells outside of it.
 
 \subsection{Software Stack}
 
-The numerical approximations described above were implemented using the
-GRINS library\cite{GRINSpaper} in Libmesh\cite{libMeshPaper}. 
-It was designed to support multiphysics FEM
-applications, the reusability and extensibility of mathematical
-modeling kernels, supporting interfaces to existing solver and
-discretization libraries to enable modern solution strategies, while, at
-the same time, retaining flexibility to effectively address a wide range
-of science or engineering problems. 
+The numerical approximations described above had been implemented using
+the GRINS library\cite{GRINSpaper} by Bauman and Stogner using the
+Libmesh\cite{libMeshPaper} FEM infrastructure. It was designed to
+support multiphysics FEM applications, the reusability and extensibility
+of mathematical modeling kernels, supporting interfaces to existing
+solver and discretization libraries to enable modern solution
+strategies, while, at the same time, retaining flexibility to
+effectively address a wide range of science or engineering problems.  
 
 GRINS provides a platform that enables powerful numerical algorithms
 such as adjoint-based AMR, adaptive modeling, sensitivity analysis,
@@ -247,19 +275,17 @@ platform.
 %% (11:47:15 AM) Paul Bauman: That's a *much* faster/better implementation than PETSc's
 
 
-
-
 \subsection{Tool Chain and Simulation Custodianship}
 
-Runs are queued on Texas Advanced Computing Center (TACC)
-supercomputer's Lonestar Four and Stampede. Run durations are typically  
-twelve hours to perform several hundred timesteps. 
-These runs are generally submitted to the production queue and are  
+Simulations are performed on the Texas Advanced Computing Center (TACC)
+supercomputers Lonestar Four and Stampede. Run durations for transient
+cases are typically twelve hours to perform several hundred timesteps. 
+These runs are submitted to the production queue and are  
 264-528 processing cores, 
 or 22-44 nodes on Lonestar (with 12 cores per node), and a similar number
 for Stampede. The runs typically have several million degrees of freedom (DoF), 
 and the local number of DoF per core is maintained at $O(10^4)$. This was
-selected due to memory considerations, after a strong scaling
+selected due to memory constraints, after a strong scaling
 analysis of the performance of the code on these resources, and
 after consulting with the software developers.  
 
@@ -272,9 +298,9 @@ hypothesis or physics the job was intended to investigate. Finally, once
 a week a script performs \textbf{rsync} on the entire archived database to
 ensure more than single redundancy for the runs. 
 
-In other words, the workflow is sufficiently advanced as to permit
-rapidly queuing a series of runs (in parallel) to
-investigate a variety of conditions or scenario parameters. This
-capability is necessary for the optimization campaign detailed in
-\ref{sec:proposed_work}, where running many concurrent investigations
-will be required to adequately sample the configuration space. 
+In other words, the workflow is designed to permit rapid queuing of a
+series of runs (in parallel) to investigate a variety of conditions or
+scenario parameters. This capability is necessary for the optimization
+campaign detailed in \ref{sec:proposed_work}, where running many
+concurrent investigations will be required to adequately sample the
+configuration space.  

@@ -1,0 +1,63 @@
+% Culled from https://svn.ices.utexas.edu/repos/pecos/turbulence/cevBoundaryLayerData/cev1@31995
+\begin{table}[p]
+\centering
+\caption[Reacting boundary layer conditions from
+        fully turbulent Orion MPCV TPS simulations]{%
+  Reacting boundary layer conditions at five representative locations within
+  fully turbulent Orion MPCV TPS simulations by \citet{Bauman2011Loose}.
+  Dimensional quantities use MKS units.  Data reduction by O.  Sahni and V.
+  Topalian.\label{tbl:BaumanCEVConditions}
+}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{l|rrrrr}
+Location label & \hspace{7ex}1 & \hspace{7ex}2 & \hspace{7ex}3 & \hspace{7ex}4 & \hspace{7ex}5 \\
+\hline
+%$x$ position                                                                      & -4.586    & -4.483    & -4.394    & -4.325    & -4.273    \\
+%$y$ position                                                                      & 0.000     & 0.000     & 0.000     & 0.000     & 0.000     \\
+%$z$ position                                                                      & 1.326     & 1.719     & 1.994     & 2.182     & 2.310     \\
+%$x$ edge                                                                          & -4.654    & -4.558    & -4.478    & -4.409    & -4.359    \\
+%$y$ edge                                                                          & 0.000     & 0.000     & 0.000     & 0.000     & 0.000     \\
+%$z$ edge                                                                          & 1.335     & 1.733     & 2.017     & 2.211     & 2.342     \\
+%\hline
+%$\frac{d h}{d \eta}/h \approx 0$                                                  & -1.38e-02 & -4.75e-03 & -1.21e-02 & -6.02e-03 & -8.02e-05 \\
+%Max angle                                                                         & 3.8       & 4.4       & 3.3       & 2.5       & 1.8       \\
+ $\delta$                                                                          & 6.95e-02  & 7.60e-02  & 8.71e-02  & 8.93e-02  & 9.19e-02  \\
+ $\delta^*$                                                                        & 7.70e-03  & 8.37e-03  & 1.02e-02  & 1.02e-02  & 1.04e-02  \\
+ $\theta$                                                                          & 9.49e-03  & 1.03e-02  & 1.16e-02  & 1.18e-02  & 1.20e-02  \\
+ $T_w$                                                                             & 1665      & 1656      & 1646      & 1636      & 1634      \\
+ $T_e$                                                                             & 5851      & 5772      & 5701      & 5647      & 5604      \\
+ $\rho_w$                                                                          & 0.0148    & 0.0133    & 0.0123    & 0.0115    & 0.0109    \\
+ $\rho_e$                                                                          & 0.0033    & 0.0031    & 0.0029    & 0.0027    & 0.0026    \\
+ $p_e$                                                                             & 8507      & 7664      & 7066      & 6621      & 6317      \\
+ $\left|\frac{d p}{d \xi}\right|_e$                                                & 2059      & 2089      & 2112      & 2171      & 2345      \\
+ $\mu_w$                                                                           & 5.83e-05  & 5.81e-05  & 5.79e-05  & 5.77e-05  & 5.76e-05  \\
+ $\mu_e$                                                                           & 1.64e-04  & 1.62e-04  & 1.60e-04  & 1.59e-04  & 1.58e-04  \\
+ $a_e$                                                                             & 1987      & 1967      & 1949      & 1937      & 1928      \\
+ $\tau_w$                                                                          & 26.72     & 29.38     & 31.13     & 32.26     & 34.89     \\
+\hline
+ $\Mach[e]{}$                                                                      & 0.88      & 0.99      & 1.09      & 1.15      & 1.19      \\
+ $\Reynolds[\theta]{} = \frac{\rho_e u_e \theta}{\mu_e}$                           & 338       & 380       & 441       & 449       & 455       \\
+ $\beta = \frac{\delta^\ast}{\tau_w}\left(\frac{\partial p}{\partial\xi}\right)_e$ & -0.59     & -0.60     & -0.69     & -0.68     & -0.70     \\
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[p]
+\centering
+\caption[Perfect gas boundary layer conditions based on
+        fully turbulent Orion MPCV TPS simulations]{%
+  Translation of selected data, holding $\Mach[e]{}$ constant, from
+  \autoref{tbl:BaumanCEVConditions} to $\gamma=1.4$ ideal air obeying Sutherland
+  viscosity law.  Reduction by O.  Sahni and V.
+  Topalian.\label{tbl:BaumanCEVConditionsPerfect}
+}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{l|rrrrr}
+Location label & \hspace{7ex}1 & \hspace{7ex}2 & \hspace{7ex}3 & \hspace{7ex}4 & \hspace{7ex}5 \\
+\hline
+ $\Mach[e]{}$                                                                      & 0.88      & 0.99      & 1.09      & 1.15      & 1.19      \\
+ $\Reynolds[\theta]{} = \frac{\rho_e u_e \theta}{\mu_e}$                           & 391       & 440       & 511       & 520       & 526       \\
+ $\beta = \frac{\delta^\ast}{\tau_w}\left(\frac{\partial p}{\partial\xi}\right)_e$ & -0.81     & -0.81     & -0.93     & -0.92     & -0.94     \\
+\end{tabular}
+\end{table}

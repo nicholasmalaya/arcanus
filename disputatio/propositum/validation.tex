@@ -30,22 +30,22 @@ A challenge in this project is the scarcity of experimental data. Only
 two or three cases of experimental measurements are available. These
 measurements, for reasons detailed in the next subsection, are not
 sufficient to provide confidence in the output of simulations across a
-wide variety  of scenarios. Thus, a high fidelity model using 
+wide variety  of scenarios. Therefore, a high fidelity model using 
 meshed vanes with enforced no-slip velocity boundary conditions along
-the surface of the vane has been developed. These ``gridded'' runs have
-been evaluated against the experimental data, which they match quite
+the surface of the vane was developed. These ``gridded'' runs have
+been validated against the experimental data, which they match quite
 closely. However, as detailed in Section~\ref{subsec:vane}, 
 explicitly meshing the vanes would be far too 
 prohibitively expensive to permit a rapid exploration of a variety of
-system configurations. Instead, this high fidelity model is used as a
-means to generate additional truth data to permit validation of lower
+system configurations. Instead, this high fidelity model is used 
+to generate additional reliable data to permit validation of lower
 fidelity models, such as the virtual vanes. Likewise, the results of the
 unsteady virtual vane simulations can be used as validation data for a
-further reduced order, steady navier-stokes model. This hierarchy of
+further reduced, steady Navier-Stokes model. This hierarchy of
 validation is shown in Figure~\ref{fig:val_hier}, with data sources that
 generate more reliable data at the top, and models that are less
 reliable, but also less computationally expensive at the bottom. In
-terms of expense, the reduced order model (ROM) generates a solution in
+terms of expense, the steady virtual vane model generates a solution in
 approximately two minutes, versus twelve hours for the unsteady virtual
 vane model. The gridded vanes require another factor of ten in
 computational time, and many more man-hours hours of work to generate
@@ -61,23 +61,21 @@ vane models. %and so on up the hierarchy if more confidence is necessary.
  \begin{figure}[!htb]
    \begin{center}
     \includegraphics[width = 8 cm]{figs/validation_hierarchy}
-    \caption{This figures depicts the validation hierarchy between
-    different sources of data generation. The experimental measurements
-    lies at the top, where the data is expected to be the most reliable,
-    but simultaneously the most rare. Moving down the table leads to
+    \caption{This figures depicts the validation hierarchy. The
+    experimental measurements 
+    are at the top, where the data is expected to be the most reliable,
+    but simultaneously the most limited. Moving down the table leads to
     simulated data sources that are less reliable but increasingly
     cheaper in time to generate. At the bottom is the reduced order
-    model (ROM).} 
+    model from steady virtual vane solutions.} 
     \label{fig:val_hier}
    \end{center}
  \end{figure}
 
-Three kinds of validation data are available. These are comparisons
-between data generated in the heated laboratory and the gridded and
-(steady) virtual vanes (``thermal-only''), comparisons between
-experiments in a wind tunnel against gridded and virtual vanes
-(``Wind-only''), and comparisons between the virtual vanes and the field
-tests (``Field'') conducted in Arizona. The existing available data from
+Three kinds of experimental validation data are available. These are
+data generated in the laboratory using a heated plate, data from
+experiments in the wind tunnel (``Wind-only''), and measurements from field
+tests (``Field'') conducted in Arizona. The available data from
 these cases as well as the gridded vanes created to mimic them are are
 summarized in Table~\ref{tab:val_data}. Every case shown has been
 simulated using the virtual vanes.   
@@ -113,15 +111,15 @@ Gridded    & Straight Vanes $60^{\circ}$ & Straight Vanes $60^{\circ}$ & \\
 %
 \normalsize
 \subsection{Thermal-Only Validation}
-This section provides examples of the validation performed on the
+This section provides examples of the validation performed with the
 richest data set, the measurements in the laboratory. All of the
 thermal-only the data was generated in a laboratory setting at Georgia
-Tech. This general system configuration is depicted in Figure
+Tech. The general system configuration is depicted in Figure
 \ref{fig:lab_image}. These data were taken using particle image
 velocimetery (PIV), and the errors in in measurement and sampling are
 not known. In addition, only velocity measurements are
 available. Several potentially important quantities of interest, such as
-the pressure field or the temperature, have not been measured. 
+the pressure and temperature, have not been measured. 
 
 %
 % http://convertonlinefree.com/ConvertImageEN.aspx
@@ -138,7 +136,7 @@ the pressure field or the temperature, have not been measured.
 
 While no sensitivity analysis has been performed, it is likely that the
 largest uncertainty in the laboratory simulation is a result of the
-ventilation. The heated plate at the bottom of the apparatus
+ventilation of the laboratory. The heated plate at the bottom of the apparatus
 generates enough heat to cause a significant increase in room
 temperature (30+ Kelvin), which greatly impacts the SoV
 performance, as the ground to air thermal gradient drives the
@@ -146,7 +144,7 @@ vortex. The laboratory is cooled to maintain
 temperature by two inlet HVAC ducts into the room. 
 %While efforts have been made to characterize the level of ventilation being
 %used, these numbers come with non-trivial uncertainties attached. 
-One vent runs continuously at 288 Kelvin with a flow rate estimated 
+One vent continuously provides air at 288 Kelvin with a flow rate estimated 
 to be 1 $\text{m}^3$/s.
 %(4-6 m/s with an approximate area of 0.2 $m^2$)
 The other vent is active only if the room temperature exceeds 301 Kelvin, 
@@ -199,19 +197,19 @@ adjusted to  1.3 $m^3$/s for the validation results discussed here.
  \end{subfigure}%
   \caption{Azimuthal (left) and vertical (right) velocity 
  as a function of radius for the thermal-only cases. The gold line is
- the virtual vane case, blue the experiment, and red the gridded.} 
+ the virtual vane simulation, blue the experiment, and red the gridded vane.} 
   \label{fig:val_lab}  
 \end{figure}
 
-Figure is a direct comparison between laboratory 
-measurements for a simple single tier configuration ($30^{\circ}$
+Figure \ref{fig:val_lab} is a direct comparison between laboratory 
+measurements for a simple single tier vane configuration ($30^{\circ}$
 straight vanes) and nominally identical simulations with the gridded and
 virtual vanes. The simulations and experiment broadly agree. The
-simulation correctly reproduces the peak structure in the azimuthal
+simulation correctly reproduce the peak structure in the azimuthal
 velocity observed for this configuration in the experiment. The gridded
 vanes closely represent the peaks radial location, while the
-virtual vanes over-predict the location. The radial location of peak
-vertical velocity also closely agrees with experiment.
+virtual vanes over-predict the radial location. The radial location of
+peak vertical velocity also closely agrees with experiment.
 
 Similar validation comparisons have been made between several other
 configurations with similar levels of agreement,  notably the
@@ -219,8 +217,7 @@ $60^{\circ}$ single tier straight vane case, and the two tier hybrid
 vane.  Finally, estimates of the energy fluxes between the field
 configuration and our simulation results agreed within 15\%. These
 validation studies have provided a level of confidence that our
-simulations accurately reproduce the dynamics observed in real vane
-configurations.
+simulations accurately reproduce the phenomena observed in laboratory.
 
 \subsection{Wind Cases}
 
@@ -228,19 +225,19 @@ The laboratory thermal vortex experiments described in the previous
 subsection did not include the effects of the wind, but experience in
 the field indicated how important these effects were. To ensure that the
 virtual vanes could represent this effect, a validation study 
-was performed on results in the presence of sustained winds. 
+was performed using the data obtained in the wind tunnel.
 
 A numerical experiment was performed in which the 60 degree single tier
 straight vanes were placed in a isothermal wind.  These results were
 compared to an identical configuration placed in a wind tunnel.
-However, no measurements (of velocity or any quantity) have been made
-for the vanes in these conditions. Qualitative comparisons, such as
+However, no measurements (of velocity or any quantity) were made
+for the vanes in these conditions. Qualitative comparisons, based on
 descriptions of observed structures and videos of smoke visualization
-have been made between the our simulation results with a mean velocity
-and the experimental wind tunnel. These images and discussions did not
+were made between the simulations and the wind tunnel experiments. These
+images and discussions did not 
 identify any inconsistencies between simulation and experiment.
 However, these results are limited, and are only for the cold wind, as
-the wind tunnel did not include a hot plate.  
+the wind tunnel did not include a heated plate.  
 
 \begin{figure}[htb]
 
@@ -278,9 +275,10 @@ the wind tunnel did not include a hot plate.
  \label{fig:wind_val}
 \end{figure}
 
-Figure~\ref{fig:wind_val} contains images of the resulting averaged
+Figure~\ref{fig:wind_val} contains images of the simulated averaged
 streamwise and  spanwise velocity in a horizontal plane at approximately
-the height of the vanes. As expected, there are some differences in the
+the height of the vanes obtained from simulations with gridded and
+virtual vanes. As expected, there are some differences in the
 details of these simulations, but the overall character of the flow
 inside the vanes, and in the wake of the vanes is quite similar. This
 demonstrates that the virtual vane formulation can indeed represent the
@@ -291,7 +289,7 @@ interaction with the wind.
 Several field tests have been performed by the experimental team. After
 each field test, qualitative observations, measurements and lessons
 learned are provided by the field team. Actual measurements
-are limited. Due to the sophistication of the configuration
+are limited. Due to the complexity of the configuration
 (two vane tiers and a cone) Gridded vanes cases have not been developed
 for the field. This subsection provides a discussion of some of
 the results from the latest field test, as an example of typical
@@ -313,24 +311,26 @@ validations performed.
 %
 
 Figure~\ref{fig:field_val} shows data from the August 2015 field test in
-blue. These results were taken using a anonmometer at fixed radial
-location to measure the azimuthal velocity. The ultrasonic anemometer
-malfunctioned, and the temperature was only measuered at one location at
-1 meter height. A time series from approximately an hour was gathered. 
-This data included large scenario uncertainties, with estimated 3
-m/s variations in wind, 20 degree wind heading changes, and 10 degree
-Celsius shifts in temperature. A solidworks CAD file provided by the
-experimental team gave an indication of the vane and cone geometry,
-which were then represented in the simulations as virtual vanes and a
-solid surface, as described in 
+blue. These results were obtained using an anonmometer at fixed
+azimithal location (believed to be a ninety degree angle, where the zero
+is defined to be aligned with the streamwise flow direction) to measure the
+azimuthal velocity. The ultrasonic 
+anemometer malfunctioned, and the temperature was only measuered at one
+location at 1 meter height. A time series from approximately an hour was
+gathered. This data included large scenario uncertainties, with
+estimated 3 m/s variations in wind, 20 degree wind heading changes, and
+10 degree Celsius shifts in temperature. A solidworks CAD file provided
+by the experimental team defined the vane and cone
+geometry, which were then represented in the simulations as virtual
+vanes and a solid surface, as described in 
 Sections~\ref{subsec:vane} and~\ref{subsec:solid_surface}.   
 
-To span these range of conditions, several simulations were conducted
+To span the range of conditions, several simulations were conducted
 with different scenario parameters. The azimuthal velocity from two such
 simulations (Red and Gold lines) are plotted against the experimental
-data (blue line).  
+data (blue line) in Figure~\ref{fig:field_val}.  
 
-These results accurately bound the experimental data. Furthermore, a
+These simulations accurately bound the experimental data. Furthermore, a
 ``Matching'' case was identified that is broadly consistent with the
 field results. The kinetic energy flux, measured in a horizontal plane
 at the top of the vanes (where a turbine to extract this energy would

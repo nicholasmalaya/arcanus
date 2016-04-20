@@ -10,16 +10,15 @@
 %
 %
 
-The computer simulations in this proposal study are intended to discover
+The computer simulations in the proposed study are intended to discover
 the optimal solar vortex system configuration for a range of scenarios
-and system sizes. 
-This section contains discussions of the preliminary simulation results 
-to motivate that the existing simulation capability is sufficiently well
-developed and understood to permit an efficient exploration of the SoV
-configuration space. 
+and system sizes. This section contains discussions of the preliminary
+simulation results to motivate that the existing simulation capability
+is sufficiently well developed and understood to permit an efficient
+exploration of the SoV configuration space. 
 This section begins with a discussion of the structure of solutions from
 a representative case with no ambient winds, the ``thermal only''
-situation. Next, a case with strong ambient horizontal winds (``Wind'')
+scenario. Next, a case with strong ambient horizontal winds (``Wind'')
 is discussed. Finally, the results from a series of runs are shown to
 demonstrate a heuristic by which incremental optimization of the system
 configuration will be conducted. 
@@ -45,6 +44,47 @@ also illuminating to consider an idealized scenario with natural convection
 driven only by thermal instabilities. Simulations of this baseline,
 thermal-only flow are intended to ensure the SoV apparatus to form a
 strong thermal plume even in the absence of wind. 
+
+In this subsection a representative case of an optimized thermal-only SoV
+configuration is presented. This is a simple curved vane configuration with
+two-tiers with ground temperature of 335 Kelvin and a freestream
+temperature of 313 Kelvin. There is no ambient velocity and the boundary
+conditions are as described in Section \ref{sec:bc}. 
+
+The two tiers of vanes used for these cases are drawn in Figures
+\ref{fig:thermal_vane_bottom} and \ref{fig:thermal_vane_top}.
+ Note that in the
+configuration, the vanes are 
+aligned radially at the largest radius, and then increasingly curve
+towards azimuthal at smaller radius. Note that these are representative
+curves of the body forcing field, and do not actually represent vane
+surfaces. The vanes are represented as in Section \ref{subsec:vane}. 
+These images are created by tracing the path a particle follows through
+the forcing field. The region of forcing is between $\{0.3-0.9\}$ meters
+for the bottom tier, and $\{0.6-0.9\}$ meters for the top tier. Overall,
+the system is 1.1 meters tall, with the short first tier only standing
+0.132 meters high. The top and bottom tiers have final angles of
+$70^{\circ}$ and $85^{\circ}$, respectively. No cone is used in this
+case. 
+
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+ \includegraphics[width=.8\linewidth]{figs/bottom_thermal_only}
+ \caption{Horizontal drawings of the curvature functions for the bottom tier
+ vanes. The max angle is $85^{\circ}$, or $5^{\circ}$ less than azimuthal.}
+ \label{fig:thermal_vane_bottom}  
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[width =0.8\textwidth]{figs/top_thermal_only}
+\caption{Horizontal drawings of the curvature functions for the top tier
+ vanes. The max angle is $70^{\circ}$, or $20^{\circ}$ less than
+ azimuthal.} 
+ \label{fig:thermal_vane_top}  
+\end{minipage}
+\end{figure}
 
 \begin{figure}[htb]
 \centering
@@ -90,31 +130,27 @@ strong thermal plume even in the absence of wind.
 %  \end{subfigure}%
 % \end{figure}
 
-In this subsection a representative case of an optimized thermal-only SoV
-configuration is presented. This is from a simple curved vane with
-two-tiers with ground temperature of 335 Kelvin versus a freestream
-temperature of 313 Kelvin. There is no ambient velocity and the boundary
-conditions are as described in Section \ref{sec:bc}. 
 The results shown are the averages of fifty snapshots of the solution 
 taken over the course of ten minutes. In general, the averaging times
 are selected to be approximately 20 to 30 wash-out times, where a
 wash-out is defined as the time required for a particle at the base of
-the apparatus to flow out through the top boundary. The energy flux
+the apparatus to flow out through the top boundary. The kinetic energy flux
 through the top of the vanes for this case is about 53 watts. The solution
 demonstrates several features characteristic of naturally occurring dust
 devils. Figure \ref{fig:thermal} shows a temperature isocontour set at
-threshold of C higher than the ambient fluid temperature. This value was
-selected as it was noted as characteristic of the thermal core
-temperature above the ambient temperature observed in dust devils by
-Sinclair\cite{Sinclair1969}. The image depicts a tight, coherent thermal
+threshold of 3 Celsius higher than the ambient fluid temperature. This
+value was selected because it was noted by
+Sinclair\cite{Sinclair1969} as characteristic of the thermal core
+temperature above the ambient temperature observed in dust devils. The
+image depicts a tight, coherent thermal 
 plume roughly the same size as the inner diameter of the lower vanes. As
 anticipated, this hot flow is acting like a chimney, generating a large
 vertical velocity which in turn entrains air from the outside. 
 
 An image of the entrainment is shown in Figure\ref{fig:entrain}. The
 image was created by tracking particles as they 
-convect through the device. This image was generated by seeding
-tracer particles into the averaged flowfield and then advancing through
+convect through the device. Tracer particles were seeded into the
+averaged flowfield and then advancing through 
 the field using an RK4 time integrator.  There is clearly a tight inner
 vortex with significant azimuthal velocity as well as a broader region
 of entraining fluid through the upper tier of vanes.  
@@ -230,7 +266,37 @@ visible parallels to a naturally occurring dust devil.
 The wind case is for a 5 m/s ambient wind with a ground temperature of
 335 Kelvin and freestream temperature of 313 Kelvin. There is no ambient
 velocity and the boundary conditions are as described in Section
-\ref{sec:bc}.  
+\ref{sec:bc}. The vanes are drawn in Figures \ref{fig:wind_bottom} and
+\ref{fig:wind_top}. These images show the straight vane case, as well as
+a cone that sits on top of the second tier of vanes. 
+As in the previous section, these images are representative
+curves of the body forcing field, and do not actually represent vane
+surfaces. The vanes are represented as in Section \ref{subsec:vane}. 
+These images are created by tracing the path a particle follows through
+the forcing field. The region of forcing is between $\{0.96-3.4\}$ meters
+for the bottom tier, and $\{1.5-3.4\}$ meters for the top tier. Overall,
+the system is three meters tall, with the short first tier only standing
+0.3 meters high. The top and bottom tiers have final angles of
+$70^{\circ}$ and $80^{\circ}$, respectively. 
+
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+ \includegraphics[width=.8\linewidth]{figs/wind_bottom}
+ \caption{Horizontal drawings of the bottom tier vanes. These are curved 
+ vanes with a final angle of $80^{\circ}$.}
+ \label{fig:wind_bottom}  
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[width =0.8\textwidth]{figs/wind_top}
+\caption{Horizontal drawings of the top tier vanes. These are straight
+ angle vanes set at $70^{\circ}$.} 
+ \label{fig:wind_top}  
+\end{minipage}
+\end{figure}
+
 
 %
 % horizontal slices
@@ -335,7 +401,7 @@ flux through the vanes is also significantly higher.
 The vertical slices are shown in Figure~\ref{fig:wind-ver}. In this
 case, the lower tier of vanes are where the majority of flow is 
 entering the center of the apparatus, while the second tier of vanes are
-blocking the ambient wind and providing protection to the vortex column. 
+blocking the ambient wind and providing protection for the vortex column. 
 
 The thermal plume is significantly less
 visible than in the thermal-only cases. While the
@@ -347,10 +413,10 @@ To visualize the difference between the vertically varying ambient
 temperature and the warmer thermal plume, we use the potential
 temperature, defined as, 
 \begin{equation}
-  \tau(x,y,z) = T(x,y,z) -T_{in}(z) 
+  \tau(x,y,z) = T(x,y,z) -T_{\text{in}}(z) 
    \label{eqn:tau}
 \end{equation}
-where $T_{in}$ is the inflow temperature, described
+where $T_{\text{in}}$ is the inflow temperature, described
 in Section \ref{sec:bc}. In this way the background potential
 temperature is nearly zero, and larger values represent deviations from
 the base flow temperature. The isocountour of a three Kelvin is 
@@ -459,10 +525,13 @@ placed. This is a surface integral\cite{landau1959fm}
 Using the kinetic energy flux as an objective, the vane geometry has
 been optimized. Over approximately tens of iterations, we have
 increased the kinetic energy flux by a factor of 88 relative to the
-baseline. Results of several of these iterations are documented in
-Figure \ref{fig:opt_plot}. Major adjustments to design in the the vane
+baseline. 
+%Results of several of these iterations are documented in
+%Figure \ref{fig:opt_plot}. 
+Major adjustments to design in the the vane
 shape and angles were made to obtain this improvement. Before and after
-images are shown in Figure \ref{fig:vt-wind-vert}. During this optimization the
+images are shown in Figure \ref{fig:vt-wind-vert}. During this
+optimization the 
 qualitative character of the solution changed substantially, changing
 from a mild upward flow with little rotation to a strongly organized
 vortex with a downward central flow and strong azimuthal
@@ -470,7 +539,6 @@ velocities. Before and after vertical slices are shown in Figure
 \ref{fig:opt_flow}. Nevertheless, with a peak energy flux for the final 
 iteration of less than one hundred Watts, significant further
 optimization is necessary for this system to be viable for use as an 
-energy production system. This naturally precedes the next section,
-which contains a discussion of the proposed research campaign and the
-expected course of work that will be performed 
+energy production system. This naturally leads to the next section,
+which is a discussion of the proposed research campaign. 
 

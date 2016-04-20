@@ -1,0 +1,24 @@
+% Graphic-specific fragmaster(1) control file
+%
+% fmclass: amsart
+% fmclassopt: 12pt
+% fmopt: keepaspectratio
+%
+% head:
+% \usepackage{bm}
+% end head
+
+% psfrag commands:
+\psfrag{Normalized by utau2}[][]{$\bm{\widetilde{u_{i}^{\prime\prime}u_{j}^{\prime\prime}}/u_\tau^2}$}
+\psfrag{Stddev normalized by utau2}[][]{$\bm{\sqrt{\operatorname{Var}\left(\widetilde{u_{i}^{\prime\prime}u_{j}^{\prime\prime}}/u_\tau^2\right)}}$}
+\psfrag{yplus}[][]{$\bm{y^{+}}$}
+\psfrag{k}[rc][rc]{$\bm{k}$}
+\psfrag{u''u''}[rc][rc]{$\bm{uu}$}
+\psfrag{v''v''}[rc][rc]{$\bm{vv}$}
+\psfrag{w''w''}[rc][rc]{$\bm{ww}$}
+\psfrag{u''v''}[rc][rc]{$\bm{uv}$}
+\psfrag{std u''u''}[rc][rc]{$\bm{uu}$}
+\psfrag{std v''v''}[rc][rc]{$\bm{vv}$}
+\psfrag{std w''w''}[rc][rc]{$\bm{ww}$}
+\psfrag{std u''v''}[rc][rc]{$\bm{uv}$}
+\psfrag{std k}[rc][rc]{$\bm{k}$}

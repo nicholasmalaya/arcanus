@@ -1,0 +1,58 @@
+% Custom commands used for notational purposes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Things which should behave like operators re: spacing
+\DeclareMathOperator{\covariance}{Cov}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\variance}{Var}
+
+% Requires the `ifdraft' package be defined
+\newcommand{\draftonly}[1]{\ifdraft{#1}{}}
+
+% Source term from integral constraints
+\newcommand{\Cs}{\ensuremath{\mathcal{C}}}
+
+% Imaginary unit
+\newcommand{\ii}{\ensuremath{\mathrm{i}}}
+
+% Knudsen number with optional subscript
+\newcommand{\Knudsen}[1][]{\ensuremath{\mbox{Kn}_{#1}}}
+
+% Mach number with optional subscript
+\newcommand{\Mach}[1][]{\ensuremath{\mbox{Ma}_{#1}}}
+
+% Partial-something-by-partial-something-else derivatives
+% Negative thin spaces added because Charter has too much space here
+\newcommand{\pp}[2]{\frac{\partial\!{#1}}{\partial\!{#2}}}
+
+% Prandtl number with optional subscript
+\newcommand{\Prandtl}[1][]{\ensuremath{\mbox{Pr}_{#1}}}
+
+% A reference value; a quantity less a reference value
+\newcommand{\reference}[1]{\ensuremath{\left\{#1\right\}_{0}}}
+\newcommand{\lessreference}[1]{\ensuremath{\left({#1}-\reference{#1}\right)}}
+
+% Reynolds number with optional subscript
+\newcommand{\Reynolds}[1][]{\ensuremath{\mbox{Re}_{#1}}}
+
+% Source term from slow derivative
+\newcommand{\Ssd}{\ensuremath{\mathcal{S}}}
+
+% The symmetric part of a tensor
+\newcommand{\symmetricpart}[1]{\ensuremath{\operatorname{sym}\left(#1\right)}}
+
+% Denote something as a tensor
+\newcommand{\tensor}[1]{\ensuremath{\accentset{\leftrightarrow}{#1}}}
+
+% Take the transpose
+\newcommand{\trans}[1]{{#1}^{\mathsf{T}}}
+
+% The expectation operator
+\newcommand{\expect}[1]{\operatorname{\mathbb{E}}\left[#1\right]}
+
+% Victor's macros for notation
+\newcommand{\fav}  [1] {\ensuremath{\widetilde{#1}}}  % Favre average
+\newcommand{\fluc} [1] {\ensuremath{#1'}}             % Reynolds fluctuations
+\newcommand{\ffluc}[1] {\ensuremath{#1''}}            % Favre fluctuations
+\newcommand{\func} [2] {\ensuremath{#1 \! \left(#2\right)}}  % Function, IV
+\newcommand{\mean} [1] {\ensuremath{\overline{#1}}}     % mean

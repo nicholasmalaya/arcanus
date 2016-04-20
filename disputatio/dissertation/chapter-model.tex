@@ -1,0 +1,704 @@
+\label{sec:model}
+This chapter summarizes the nondimensional mathematical models used in the
+present work.  First the governing Navier--Stokes are shown.  Reynolds
+and Favre averaging is briefly defined followed by the form of the
+Favre-averaged Navier--Stokes equations used.  Lastly, the spatiotemporal
+homogenization forcing terms due to \citep{Topalian2014Spatiotemporal}
+are presented.  One can find the underlying derivations in
+Appendix~\ref{sec:derivation}.
+
+\section{The Governing Navier--Stokes Equations}
+\label{sec:goveqn}
+
+The flow physics are modeled using the unsteady, three-dimensional,
+compressible Navier--Stokes equations.  These continuum equations arise from
+applying conservation of mass, momentum, and energy to a Newtonian, perfect
+gas.  The model assumes that the first viscosity~$\mu$ obeys a power law in
+temperature~$T$, the other viscosity~$\lambda$ is a constant multiple of $\mu$,
+heat conduction through the gas obeys Fourier's law, and momentum and thermal
+diffusivity are related by a constant Prandtl number.  For simplicity,
+aerothermochemical effects are neglected.
+
+The governing equations may be written in nondimensional form as
+\begin{subequations}
+\label{eq:nondim_model}
+\begin{align}
+  \label{eq:nondim_continuity}
+  \frac{\partial\!}{\partial\!t}\rho{}
+ =
+ &- \nabla\cdot\rho{}u
+  + \Ssd_\rho
+  \\
+  \label{eq:nondim_momentum}
+  \frac{\partial\!}{\partial\!t}\rho{}u
+ =
+ &- \nabla\cdot(u\otimes\rho{}u)
+  - \frac{1}{\Mach^{2}} \nabla{} p
+  + \frac{1}{\Reynolds} \nabla\cdot\tau
+  + f
+  + \Ssd_{\rho{} u}
+  \\
+  \frac{\partial\!}{\partial\!t} \rho{}E
+ =
+ &- \nabla\cdot\rho{}Eu
+  + \frac{1}{\Reynolds\,\Prandtl\,\left( \gamma - 1 \right)}
+    \nabla\cdot\mu\nabla{} T
+\notag\\ \label{eq:nondim_energy}
+ &- \nabla\cdot{} p u
+  + \frac{\Mach^{2}}{\Reynolds} \nabla\cdot\tau{} u
+  + \Mach^{2} f \cdot{} u
+  + q_{b}
+  + \Ssd_{\rho{} E}
+\end{align}
+along with the constitutive relationships
+\begin{align}
+  \label{eq:nondim_constitutive}
+  p &= \left(\gamma-1\right) \left(
+    \rho{}E - \frac{\Mach^{2}}{2}\rho{}u^{2}
+  \right)
+  &
+  T &= \gamma{} \frac{p}{\rho}
+  &
+  a &= \sqrt{T}
+  &
+  h &= \frac{T}{\gamma-1}
+\end{align}
+\begin{align}
+  \mu &= T^{\beta}
+  &
+  \lambda &= \left(\alpha-\frac{2}{3}\right)\mu
+  &
+  \tau &=  \mu\left(\nabla{}u+\trans{\nabla{}u}\right)
+         + \lambda\left(\nabla\cdot{}u\right) I
+\end{align}
+where the nondimensional free parameters
+\begin{align}
+  \Reynolds &= \frac{\rho_{0}u_{0}l_{0}}{\mu_{0}}
+  &
+  \Mach &= \frac{u_{0}}{a_{0}}
+  &
+  \Prandtl &= \frac{\mu_{0}C_{p}}{\kappa_{0}}
+\end{align}
+\end{subequations}
+are the Reynolds, Mach, and Prandtl numbers, respectively.  Other free
+parameters include the ratio of specific heats $\gamma$ and the viscosity power
+law exponent $\beta$.  The von~K\'arm\'an relationship for the
+Knudsen number becomes
+\begin{align}
+  \Knudsen &= \frac{\Mach}{\Reynolds}\sqrt{\frac{\gamma\pi}{2}}
+\end{align}
+where the present continuum assumptions are justified when
+${\Knudsen\ll{}1}$.  The nondimensionalization requires some dimensional
+reference density~$\rho_{0}$, length~$l_{0}$, velocity~$u_{0}$, and
+temperature~$T_{0}$.  Other references quantities are defined as follows:
+\begin{subequations}
+\label{eq:basic_references}
+\begin{align}
+  t_{0} &= \frac{l_{0}}{u_{0}}
+  &
+  a_{0} &= \sqrt{\gamma{}RT_{0}}
+  &
+  p_{0} &= \rho_{0} a_{0}^{2}
+  &
+  E_{0}, H_{0}, h_{0} &= a_{0}^{2}
+  \\
+  \mu_{0},\lambda_{0} &= \mu\!\left( T_{0} \right)
+  &
+  \tau_{0} &= \frac{\mu_{0}u_{0}}{l_{0}}
+  &
+  f_{0} &= \frac{\rho_{0}u_{0}}{t_{0}}
+  &
+  q_{0} &= \frac{\rho_{0}a_{0}^{2}}{t_{0}}
+\end{align}
+\begin{align}
+  {\Ssd_{\rho}}_0 &= \frac{\rho_{0}}{t_0}
+  &
+  {\Ssd_{\rho u}}_0 &= \frac{\rho_{0} u_0}{t_0}
+  &
+  {\Ssd_{\rho E}}_0 &= \frac{\rho_{0} E_0}{t_0}.
+\end{align}
+\end{subequations}
+The terms $f$ and $q_b$ accommodate problem-specific momentum and total energy
+forcing.  When employed, boundary layer homogenization is accomplished
+through slow growth terms $\Ssd_\rho{}$, $\Ssd_{\rho{} u}$, and $\Ssd_{\rho{}
+E}$ which take forms similar to the right hand side of~\eqref{eq:tsg_general}.
+
+The bulk viscosity,
+\begin{align}
+  \mu_{B} &= \lambda + \frac{2}{3}\mu,
+\end{align}
+and the deviatoric component of the strain rate tensor,
+\begin{align}
+  S &= \varepsilon - \frac{1}{3} \trace\left(\varepsilon\right) I
+     = \frac{1}{2}\left(\nabla{}u + \trans{\nabla{}u}\right)
+     - \frac{1}{3}\left(\nabla\cdot{}u\right)I,
+\end{align}
+alternatively may be used to write $\tau$ as
+\begin{align}
+  \tau &= 2 \mu S + \mu_B  \left( \nabla\cdot{}u \right) I.
+\end{align}
+The final free parameter $\alpha$ then controls the bulk viscosity according to
+\begin{align}
+\mu_{B} &= \alpha \mu.
+\end{align}
+Setting $\alpha=0$ recovers Stokes' hypothesis.  The kinematic and bulk
+kinematic viscosities
+\begin{align}
+ \nu &= \frac{\mu}{\rho} & \nu_{B} &= \frac{\mu_{B}}{\rho}
+\end{align}
+will be used at times to simplify notation.  This completes the description of
+the model which is said to be ``closed'' because knowing $\rho$, $u$, and $E$
+permits advancing that state in time.
+
+\section{The Favre-Averaged Navier--Stokes Equations}
+\label{sec:statevo}
+
+As turbulence is chaotic, reporting a statistical description of
+its behavior is essential.
+With only additional modest mathematical assumptions, the above instantaneous
+model may be manipulated to describe the evolution of mean quantities.
+%
+Notationally, the expectation or ``Reynolds average'' of a generic flow
+variable $q$ is written~$\bar{q}$.  The density-weighted expectation
+or ``Favre average'' is defined by
+\begin{align}
+  \tilde{q} &= \overline{\rho{}q}/\bar{\rho}.
+\end{align}
+Fluctuations about the mean and the density-weighted mean are
+denoted
+\begin{align}
+  q'  &\equiv q - \bar{q},
+  &
+  q'' &\equiv q - \tilde{q},
+\end{align}
+respectively.
+Reynolds averaging commutes with differentiation under mild smoothness
+assumptions.  Here the common convention that taking Favre fluctuations,
+$\left(\cdot\right)''$, has higher precedence than differentiation,
+$\nabla\left(\cdot\right)$, has been adopted.  Additional background on these
+two averaging approaches can be found in
+\autoref{sec:averagingtechniques}.
+
+Assuming that all required expectations are finite and that Reynolds averaging
+commutes with differentiation whenever necessary, the model of
+\autoref{sec:goveqn} gives rise to the unsteady Favre-averaged
+Navier--Stokes (FANS) equations:
+\begin{subequations}
+\label{eq:fans_all}
+\begin{align}
+    \frac{\partial\!}{\partial\!t}\bar{\rho}
+=
+ &- \nabla\cdot\bar{\rho}\tilde{u}
+  + \overline{\Ssd_{\rho{}}}
+\label{eq:fans_mass}
+\\
+    \frac{\partial\!}{\partial\!t}\bar{\rho}\tilde{u}
+=
+ &- \nabla\cdot(\tilde{u}\otimes\bar{\rho}\tilde{u})
+  - \frac{1}{\Mach^2}\nabla{}\bar{p}
+  + \nabla\cdot\left(
+        \frac{\bar{\tau}}{\Reynolds}
+      - \bar{\rho} \widetilde{u''\otimes{}u''}
+    \right)
+  + \bar{f}
+  + \overline{\Ssd_{\rho{} u}}
+\label{eq:fans_mom}
+\\
+  \frac{\partial\!}{\partial\!t} \bar{\rho}\tilde{E}
+=
+ &- \nabla\cdot\bar{\rho}\tilde{H}\tilde{u}
+  + \Mach^{2} \nabla\cdot\left(
+        \left(
+            \frac{\bar{\tau}}{\Reynolds}
+          - \bar{\rho} \widetilde{u''\otimes{}u''}
+        \right) \tilde{u}
+      - \frac{1}{2}\bar{\rho}\widetilde{{u''}^{2}u''}
+      + \frac{\overline{\tau{}u''}}{\Reynolds}
+    \right)
+\notag\\
+ &+ \frac{1}{\gamma-1} \nabla\cdot\left(
+      \frac{%
+         \bar{\mu} \widetilde{\nabla{}T}
+       + \bar{\rho} \widetilde{\nu'' \left(\nabla{}T\right)''}
+      }{\Reynolds\Prandtl}
+      - \bar{\rho} \widetilde{T''u''}
+    \right)
+\notag\\
+ &+ \Mach^{2} \left(
+        \bar{f}\cdot\tilde{u}
+      + \overline{f\cdot{}u''}
+    \right)
+  + \bar{q}_b
+  + \overline{\Ssd_{\rho{} E}}
+\label{eq:fans_energy}
+\\
+    \frac{\partial\!}{\partial\!t}\bar{\rho}k
+=
+ &- \nabla\cdot\bar{\rho}k\tilde{u}
+  - \bar{\rho} \widetilde{u''\otimes{}u''} : \nabla\tilde{u}
+  - \frac{\bar{\rho} \epsilon}{\Reynolds}
+  + \nabla\cdot\left(
+        -\frac{1}{2}\bar{\rho} \widetilde{{u''}^{2}u''}
+      + \frac{\overline{\tau{}u''}}{\Reynolds}
+    \right)
+\notag\\
+ &+ \frac{1}{\Mach^2} \left(
+        \bar{p}\nabla\cdot\overline{u''}
+      + \overline{p' \nabla\cdot{}u''}
+      - \frac{1}{\gamma} \nabla\cdot\bar{\rho} \widetilde{T''u''}
+    \right)
+  + \overline{f\cdot{}u''}
+  + \overline{\Ssd_{\rho{} u}\cdot{}u''}.
+\label{eq:fans_tke}
+\end{align}
+The equations are augmented by the following nondimensional relationships:
+\begin{align}
+  \bar{p} &= \frac{\bar{\rho} \tilde{T}}{\gamma}
+&
+   \bar{\rho}\tilde{\nu} =
+   \bar{\mu}
+&= \overline{T^\beta}
+&
+  k &= \frac{1}{2}\widetilde{{u''}^2}
+&
+  \bar{\rho} \epsilon &= \overline{\tau : \nabla{}u''}
+\end{align}
+\begin{align}
+  \tilde{E}
+&=
+  \frac{\tilde{T}}{\gamma\left(\gamma-1\right)}
+  + \Mach^2 \left( \frac{1}{2}\tilde{u}^2 + k
+  \right)
+&
+  \tilde{H}
+&=
+  \tilde{E} + \frac{\tilde{T}}{\gamma}
+&
+  \tilde{h} &= \frac{\tilde{T}}{\gamma-1}
+\end{align}
+\begin{align}
+   \tilde{S}
+&=
+     \frac{1}{2}\left(
+       \widetilde{\nabla{}u} + \trans{\widetilde{\nabla{}u}}
+     \right)
+   - \frac{1}{3}\left(\widetilde{\nabla\cdot{}u}\right) I
+\end{align}
+\begin{align}
+   \bar{\tau}
+&=  2 \bar{\mu}\tilde{S}
+  + 2 \bar{\rho} \widetilde{\nu''S''}
+  + \alpha \bar{\mu} \widetilde{\nabla\cdot{}u} I
+  + \alpha \bar{\rho} \widetilde{\nu''\left(\nabla\cdot{}u\right)''} I.
+\end{align}
+\end{subequations}
+Beyond references~\eqref{eq:basic_references}, this nondimensionalization
+additionally selects:
+\begin{align}
+  k_0 &= u_{0}^2
+&
+  \epsilon_0 &= \frac{u_{0}^2}{t_0}.
+\end{align}
+
+Several correlations affect the evolution
+of mean quantities: the Reynolds stress,
+$-\bar{\rho}\widetilde{u''\otimes{}u''}$; the Reynolds heat flux, $\bar{\rho}
+\widetilde{h''u''} = \bar{\rho} \widetilde{T''u''}/\left(\gamma - 1\right)$;
+turbulent production, $- \bar{\rho} \widetilde{u''\otimes{}u''} :
+\nabla\tilde{u}$; turbulent dissipation, $\bar{\rho} \epsilon/\Reynolds$; turbulent
+transport, $-\frac{1}{2}\bar{\rho}\widetilde{{u''}^{2}u''}$; turbulent work,
+$\overline{\tau{}u''}/\Reynolds$; and the two forcing-velocity correlations,
+$\overline{f\cdot{}u''}$ and $\overline{\Ssd_{\rho{} u}\cdot{}u''}$.  The
+Reynolds stress and heat flux augment the viscous stress and heat flux,
+respectively.  The production term generates the turbulent kinetic energy
+density~$k$ from the interaction of fluctuations with mean gradients while the
+dissipation term destroys $k$.  The turbulent transport and work terms represent
+transport of the $k$ and viscous stress work due to turbulent velocity
+fluctuations, respectively.  The commonly encountered pressure--velocity
+correlation, $\overline{p'u''}$, does not appear in the $k$~equation because an
+exact ideal gas relationship for the turbulent mass flux discussed by
+\citet[p.~216]{Lele1994Compressibility},
+\begin{align}
+    \label{eq:lelecompresibility}
+    \overline{u''} &= \frac{\widetilde{T''u''}}{\tilde{T}}
+                    - \frac{\overline{p'u''}}{\bar{p}},
+\end{align}
+has been used to eliminate it.
+
+The FANS equations may be expressed equivalently using only Reynolds averaging
+and therefore are often called the compressible Reynolds-averaged Navier--Stokes
+(RANS) equations.  Notice that no new constitutive assumptions have been
+employed to produce this FANS formulation--- caveat integrability and smoothness
+requirements they are as exact a description of flow physics as the governing
+Navier--Stokes equations.  Several common simplifications, none of which has
+been made above, along with the correlations they implicitly neglect are
+documented in Appendix~\ref{sec:derivation_FANS}.
+
+The FANS equations are ``unclosed'' because knowing $\bar{\rho}$, $\tilde{u}$,
+$\tilde{E}$, and $k$ does not permit advancing that state in time.  Advancing a
+solution requires:
+\begin{subequations}
+\begin{align*}
+&\bar{\rho}
+&
+&\tilde{u}
+&
+&\tilde{E}
+&
+&\bar{\mu}
+&
+&\bar{f}
+&
+&\bar{q}_b
+&
+&k
+&
+&\epsilon
+&
+&\overline{u''}
+&
+&\symmetricpart{\widetilde{\nabla{}u}}
+\end{align*}
+\begin{align*}
+&\overline{f\cdot{}u''}
+&
+&\overline{\tau{}u''}
+&
+&\overline{p'\nabla\cdot{}u''}
+&
+&-\widetilde{u''\otimes{}u''}
+&
+&-\frac{1}{2}\widetilde{{u''}^{2}u''}
+\end{align*}
+\begin{align*}
+&\widetilde{T''u''}
+&
+&\widetilde{\nu''S''}
+&
+&\widetilde{\nu''\left(\nabla\cdot{}u\right)''}
+&
+&\widetilde{\nu''\left(\nabla{}T\right)''}
+\end{align*}
+\begin{align*}
+&\overline{\Ssd_{\rho{}}}
+&
+&\overline{\Ssd_{\rho{} u}}
+&
+&\overline{\Ssd_{\rho{} E}}
+&
+&\overline{\Ssd_{\rho{} u}\cdot{}u''}.
+\end{align*}
+\end{subequations}
+In many circumstances, the mean state is known \emph{a priori} to be independent
+of time and of a lower spatial dimensionality than the instantaneous state.
+
+Experimentally obtained estimates of the reduced set of these quantities
+required to ``close'' a particular problem are referred to as
+``statistics'' in the turbulence community.  For example, channel flows are
+characterized by statistics varying only in the wall-normal direction.
+Spatially evolving boundary layers possess statistics that vary in both the
+streamwise and wall-normal direction.  Homogenization, as summarized in the
+following section, trades the boundary layer's streamwise statistical evolution
+for a dependence on a collection of auxiliary closure assumptions and modeling
+parameters.
+
+
+\section[Spatiotemporal Homogenization Permitting an Inviscid Base Flow]
+        {Spatiotemporal Homogenization\\Permitting an Inviscid Base Flow}
+\label{sec:imposing_fpg}
+
+\citet{Topalian2014Spatiotemporal} recently postulated a spatiotemporal
+homogenization formulation for simulating the fast evolution of a homogenized
+flow defect relative to some prescribed, spatially developing inviscid base
+flow.
+%
+This section states the forcing terms in sufficient detail to reproduce
+the simulation results in the present work.  The construction
+of this spatiotemporal model appears in \autoref{sec:slowgrowthmodels} for
+completeness.
+
+The nondimensional, conserved spatiotemporal forcing entering
+into~\eqref{eq:nondim_model} is
+\begin{subequations}
+\label{eq:spatiotemporal_cons_forcing}
+\begin{align}
+    \Ssd_{\rho}     &= \Ssd_{\rho,xt},
+&   \Ssd_{\rho u_i} &= \rho \Ssd_{u_i,xt} + u_i \Ssd_{\rho,xt},
+&   \Ssd_{\rho E}   &= \rho \Ssd_{E,xt}   + E   \Ssd_{\rho,xt}
+\end{align}
+where, fixing a temporal growth rate $\operatorname{gr}_{t_0}\!\left(
+\Delta \right)$, the primitive constituents are:
+\label{eq:spatiotemporal_prim_forcing}
+\begin{align}
+    \Ssd_{\rho,xt} &= \tilde{u}\left( \rho \right)_{x_0}
+                    + \rho \left( \tilde{u} \right)_{x_0}
+\\
+    \Ssd_{u_i,xt}  &= \tilde{u} \left( \tilde{u}_i \right)_{x_0}
+                    + \frac{\delta_{ix} \left(\bar{p}\right)_{x_0}}
+                           {\Mach^2 \bar{\rho}}
+                    + u_i^{\prime\prime}\left[
+                        - \operatorname{gr}_{t_0}\!\left(A_u^A\right)
+                        + \frac{y \operatorname{gr}_{t_0}\!\left(\Delta\right)}
+                               {\sqrt{\widetilde{u_k^{\prime\prime}u_k^{\prime\prime}}}}
+                          \frac{\partial\!\sqrt{\widetilde{u_k^{\prime\prime}u_k^{\prime\prime}}}}
+                               {\partial\!y}
+                      \right]
+\\
+    \Ssd_{E  ,xt}  &= \tilde{u} \left( \tilde{E}   \right)_{x_0}
+                    + \frac{\bar  {p}}{\bar{\rho}} \left( \tilde{u} \right)_{x_0}
+                    + \frac{\tilde{u}}{\bar{\rho}} \left( \bar  {p} \right)_{x_0}
+                    + E^{\prime\prime}\left[
+                        - \operatorname{gr}_{t_0}\!\left(A_E^A\right)
+                        + \frac{y \operatorname{gr}_{t_0}\!\left(\Delta\right)}
+                               {\sqrt{\widetilde{E^{\prime\prime}E^{\prime\prime}}}}
+                          \frac{\partial\!\sqrt{\widetilde{E^{\prime\prime}E^{\prime\prime}}}}
+                               {\partial\!y}
+                      \right].
+\end{align}
+\end{subequations}
+These terms are considerably more complex than their temporal
+predecessors~\eqref{eq:temporalhomogenization}.
+Subscripts $t_0$ and $x_0$ indicate forcing arising from temporal or spatial
+homogenization, respectively.  The former terms are gathered inside brackets
+in \eqref{eq:spatiotemporal_prim_forcing}.  \citeauthor{Topalian2011Slow}
+modeled the latter terms as
+\begin{subequations}
+\label{eq:spatiotemporal_prim_model}
+\begin{align}
+\left(\rho\right)_{x_0} &=
+    \frac{\rho}{\bar{\rho}} \left(
+        - \frac{\partial\!{\rho}_I}{\partial\!x_0}
+        - \bar{\rho}_D \operatorname{gr}_{x_0}\!\left({\bar{\rho}_D^A}\right)
+        + y \operatorname{gr}_{x_0}\!\left(\Delta\right)
+          \frac{\partial\!\bar{\rho}_D}{\partial\!y}
+    \right)
+\\
+\left(\tilde{u}_i\right)_{x_0} &=
+    - \frac{\partial\!{u}_{i,I}}{\partial\!x_0}
+    - \tilde{u}_{i,D} \operatorname{gr}_{x_0}\!\left(\tilde{u}_{i,D}^A\right)
+    + y \operatorname{gr}_{x_0}\!\left(\Delta\right)
+      \frac{\partial\!\tilde{u}_{i,D}}{\partial\!y}
+\\
+\label{eq:sp_barp_model}
+\left(\bar{p}\right)_{x_0} &=
+    - \frac{\partial\!{p}_I}{\partial\!x_0}
+    - \bar{p}_D \operatorname{gr}_{x_0}\!\left(\bar{p}_{D}^A\right)
+    + y \operatorname{gr}_{x_0}\!\left(\Delta\right)
+      \frac{\partial\!\bar{p}_D}{\partial\!y}
+\\
+\left(\tilde{E}\right)_{x_0} &=
+    - \frac{\partial\!{E}_I}{\partial\!x_0}
+    - \tilde{E}_D \operatorname{gr}_{x_0}\!\left(\tilde{E}_{D}^A\right)
+    + y \operatorname{gr}_{x_0}\!\left(\Delta\right)
+      \frac{\partial\!\tilde{E}_D}{\partial\!y}
+\end{align}
+\end{subequations}
+which must be computed against a base flow satisfying the steady Euler
+equations.  That is, in conjunction with the instantaneous Favre-averaged state,
+pointwise inviscid data
+\begin{equation}
+\label{eq:spatiotemporal_cons_baseflow}
+\begin{alignedat}{5}
+    &\rho_I\!\left(y\right)                                &\qquad &\rho                                u_I\!\left(y\right)  &\qquad  &\rho                                v_I\!\left(y\right)  &\qquad  &\rho                                E_I\!\left(y\right)  &\qquad  &p_I\!\left(y\right)                               \\
+    \frac{\partial\!}{\partial\!y}&\rho_I\!\left(y\right)  &\qquad \frac{\partial\!}{\partial\!y}&\rho  u_I\!\left(y\right)  &\qquad  \frac{\partial\!}{\partial\!y}&\rho  v_I\!\left(y\right)  &\qquad  \frac{\partial\!}{\partial\!y}&\rho  E_I\!\left(y\right)  &\qquad  \frac{\partial\!}{\partial\!y}&p_I\!\left(y\right) \\
+    \frac{\partial\!}{\partial\!x}&\rho_I\!\left(y\right)  &\qquad \frac{\partial\!}{\partial\!x}&\rho  u_I\!\left(y\right)  &\qquad  \frac{\partial\!}{\partial\!x}&\rho  v_I\!\left(y\right)  &\qquad  \frac{\partial\!}{\partial\!x}&\rho  E_I\!\left(y\right)  &\qquad  \frac{\partial\!}{\partial\!x}&p_I\!\left(y\right)
+\end{alignedat}
+\end{equation}
+must be specified to define the mean primitive viscous flow defects
+\begin{align}
+    \bar{\rho}_D &= \bar{\rho} - \rho_I
+&   \tilde{u}_{i,D} &= \tilde{u}_i - u_{i,I}
+&   \tilde{E}_D &= \tilde{E} - E_I
+&   \bar{p}_D &= \bar{p} - p_I
+\end{align}
+entering into~\eqref{eq:spatiotemporal_prim_model}.  Nonzero streamwise
+derivatives in the inviscid base flow data, for example $p_I$ entering
+into~\eqref{eq:sp_barp_model}, are what permit the model to impose
+pressure-gradient-like conditions while retaining streamwise periodicity in the
+fast time solution.  A semi-analytical procedure to generate the base flow
+data~\eqref{eq:spatiotemporal_cons_baseflow} necessary for the present work
+is the subject of Appendix~\ref{sec:radialflow}.
+
+The two parameters
+\begin{align}
+    \operatorname{gr}_{t_0}\!\left(\Delta\right) &= \left.\left(
+        -\frac{\epsilon}{\Delta} \frac{\partial\!\Delta}{\partial\!t_s}
+    \right)\right|_{t_s = t_0}
+    &
+    \operatorname{gr}_{x_0}\!\left(\Delta\right) &= \left.\left(
+        -\frac{\epsilon}{\Delta} \frac{\partial\!\Delta}{\partial\!x_s}
+    \right)\right|_{x_s = x_0}
+\end{align}
+represent the growth rate of a characteristic length scale $\Delta$ at some
+fixed slow time $t_0$ or some fixed slow location $x_0$ for small homogenization
+parameter $\epsilon$.  In practice,
+$\operatorname{gr}_{t_0}\!\left(\Delta\right)$ is a constant supplied to target
+some desired boundary layer thickness with $\epsilon$ indirectly fixed.
+The inviscid base flow streamwise velocity controls the second parameter per
+\begin{equation}
+    \operatorname{gr}_{x_0}\!\left(\Delta\right)
+    =
+    \frac{\operatorname{gr}_{t_0}\!\left(\Delta\right)}
+         {u_{I,w}}
+\end{equation}
+where the subscript $w$ denotes wall data taken from $y=0$.  The wall reference
+is chosen as no freestream limit exists for flows experiencing nonzero pressure
+gradients.
+
+Expressions~\eqref{eq:spatiotemporal_prim_model} include constants governing the
+growth rates for the amplitude of the mean flow defect, denoted
+$\operatorname{gr}_{x_0}\!\left(q_D^A\right)$ for
+$q\in\left\{\bar{\rho},\tilde{u},\tilde{v},\tilde{w},\tilde{E},\bar{p}\right\}$.
+In scenarios with an isothermal wall, known boundary state in conjunction with
+the inviscid base flow~\eqref{eq:spatiotemporal_cons_baseflow} informs these
+quantities.  By definition,
+\begin{align}
+    \label{eq:gramp_mean}
+    \operatorname{gr}_{x_0}\!\left(q_D^A\right)
+    &=
+    \left.
+    \frac{1}{q_D^A}
+    \frac{\partial\!q_D^A}{\partial\!x_s}
+    \right|_{x_s=x_0}
+    =
+    \left.
+    \frac{1}{q_{w} - q_{I,w}}
+    \left(
+          \frac{\partial\!q_{w}  }{\partial\!x_s}
+        - \frac{\partial\!q_{I,w}}{\partial\!x_s}
+    \right)
+    \right|_{x_s=x_0}.
+\end{align}
+%
+For convenience, $\left.\left(\partial\!q / \partial\!x_s\right)\right|_{x_s = x_0}$ is
+henceforth abbreviated as $\partial\!q / \partial\!x_s$.
+%
+From~\eqref{eq:nondim_constitutive}, uniform wall temperature $T_w$, and the
+isobaric assumption $\partial\!\bar{p} / \partial\!_y \approx 0$,
+\begin{align}
+    \bar{\rho}_w
+    &= \frac{\gamma \bar{p}_{w}}{T_w}
+    \approx \frac{\gamma p_{I,w}}{T_w}.
+\end{align}
+Taking the slow spatial derivative under these assumptions,
+\begin{align}
+    \frac{\partial\!\bar{\rho}_w }{\partial\!x_s}
+    &\approx \frac{\gamma}{\bar{T}_w} \frac{\partial\!p_{I,w}}{\partial\!x_s}.
+\end{align}
+Therefore,
+\begin{align}
+    \label{eq:gramp_mean_rho}
+    \operatorname{gr}_{x_0}\!\left(\bar{\rho}_{D}\right)
+    &\approx
+    \frac{1}{\frac{\gamma p_{I,w}}{T_w} - {\rho}_{I,w}}
+    \left(
+          \frac{\gamma}{T_w} \frac{\partial\!{p   }_{I,w} }{\partial\!x_s}
+        -                    \frac{\partial\!{\rho}_{I,w} }{\partial\!x_s}
+    \right)
+    =
+    \frac{%
+          T_w    \frac{\partial\!\rho_{I,w}}{\partial\!x_s}
+        - \gamma \frac{\partial\!   p_{I,w}}{\partial\!x_s}
+    }{%
+          T_w \rho_{I,w} - \gamma p_{I,w}
+      }.
+\end{align}
+%
+Consider the wall-normal momentum growth rate at a no-slip wall,
+\begin{align}
+    \operatorname{gr}_{x_0}\!\left(\overline{\rho v}_D^A\right)
+    &=
+    \frac{\frac{\partial\!}{\partial\!x_s} {\rho v}_{I,w}}{{\rho v}_{I,w}}.
+\end{align}
+Any nonzero wall blowing velocity $v_w$ has been neglected because
+mimicking~\eqref{eq:gramp_mean_rho},
+\begin{align}
+    \label{eq:gramp_mean_rhov_alt}
+    \underset{\text{rejected}}
+             {\operatorname{gr}_{x_0}\!\left(\overline{\rho v}_D^A\right)}
+    &\approx
+    \frac{1}{{\rho v}_{I,w} - \frac{\gamma p_{I,w}}{T_w} v_w}
+    \left(
+          \frac{\partial\!}{\partial\!x_s}         {\rho v}_{I,w}
+        - \frac{\gamma v_w}{T_w} \frac{\partial\!}{\partial\!x_s} {p}_{I,w}
+    \right)
+\\\notag
+    &=
+    \frac{%
+          T_w \frac{\partial\!}{\partial\!x_s} {\rho v}_{I,w}
+        - \gamma v_w \frac{\partial\!}{\partial\!x_s} {p     }_{I,w}
+    }{%
+        T_w {\rho v}_{I,w} - \gamma v_w p_{I,w}
+    }
+    ,
+\end{align}
+behaves oddly on two accounts.  First, from it one
+recovers~\eqref{eq:gramp_mean_rho} whenever the base flow is designed with
+transpiration as then both $v_{I,w} = v_w \neq 0$ and $\frac{\partial\!v_{I,w}}{\partial\!
+x_s} = 0$ hold.  Second, whenever $v_{I,w} = 0$ its limiting $v_w \to 0$
+behavior is broken in the sense that one recovers
+$\left(\frac{\partial\!{p}_{I,w}}{\partial\!x_s}\right) / p_{I,w}$ for any $v_w
+\neq 0$ but not when $v_w = 0$.
+%
+Consequently, the velocity growth rates also ignore blowing and are:
+\begin{align}
+    \operatorname{gr}_{x_0}\!\left(\tilde{u}_D^A\right)
+    &=
+    \frac{%
+        1
+    }{%
+        {u}_{I,w}
+    }
+    \frac{\partial\!{u}_{I,w}}{\partial\!x_s}
+    &
+    \operatorname{gr}_{x_0}\!\left(\tilde{v}_D^A\right)
+    &=
+    \frac{%
+        1
+    }{%
+        {v}_{I,w}
+    }
+    \frac{\partial\!{v}_{I,w} }{\partial\!x_s}
+    &
+    \operatorname{gr}_{x_0}\!\left(\tilde{w}_D^A\right)
+    &=
+    \frac{%
+        1
+    }{%
+        {w}_{I,w}
+    }
+    \frac{\partial\!{w}_{I,w}}{\partial\!x_s}.
+\end{align}
+%
+The specific energy mean defect growth rate is
+\begin{align}
+    \operatorname{gr}_{x_0}\!\left(\tilde{E}_D^A\right)
+    &=
+    \frac{%
+        \frac{\partial\!{E}_{I,w}}{\partial\!x_s}
+    }{%
+        {E}_{I,w} - E_w
+    }
+\end{align}
+where wall blowing is now neither problematic nor neglected
+so~\eqref{eq:nondim_constitutive} fixes
+\begin{align}
+    E_w &= \frac{T_w}{\gamma \left(\gamma - 1\right)}
+         + \frac{\Mach^2}{2} v_w^2.
+\end{align}
+%
+Finally, whenever growth rates are uninformed or ill-defined according to these
+arguments, they are taken to be zero.  Therefore,
+\begin{align}
+    \operatorname{gr}_{x_0}\!\left(\bar{p}_D^A\right) &= 0,
+&
+    \operatorname{gr}_{t_0}\!\left(A_u^A\right) &= 0,
+&
+    \operatorname{gr}_{t_0}\!\left(A_E^A\right) &= 0.
+\end{align}
+Other cases necessitating this final clause include the thermodynamic growth
+rates when $\left| 1 - T_w / T_{I,w} \right| < 1\%$ and the wall-normal and
+spanwise
+% momentum and %%% NOT USED HERE
+velocity rates when the base flow at the wall is trivial
+in those directions.
