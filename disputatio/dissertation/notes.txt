@@ -8,6 +8,12 @@ todd:
   richer validation
   (model form uncertainty due to atmo model)
 
+  Under what conditions are we able to characterize 
+  the uncertainty?
+
+  Can gridded perhaps provide a clue?
+
+
 dk: 
   wind turbine vs. buoyancy 
   def of flux
@@ -18,3 +24,4 @@ charles jackson:
 
 
 4/18/16
+
