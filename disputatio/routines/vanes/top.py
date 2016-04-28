@@ -105,7 +105,7 @@ def arr(m):
     # Solution curves
     #
     h = -5.5
-    ic=[[h,1.5],[h,1.8],[h,3],[h,4],[h,5],[h,7],[h,9],[h,11]]
+    ic=[[h,3],[h,4],[h,5],[h,7]]
     t0=0; dt=0.1;
     r = ode(vf).set_integrator('vode', method='bdf',max_step=dt)
     for k in range(len(ic)):
@@ -299,7 +299,7 @@ def main():
 #
 # EXECUTE
 #
-main()
+#main()
 
 
 #

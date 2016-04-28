@@ -32,7 +32,7 @@ def load_ell():
     # create data
     # 
     space   = 0.02
-    R       = 1.5
+    R       = 3.0
     y0      = np.arange(1.5,miny,-space)
     #print y0
     #y0 = np.array([1.5, 1.45, 1.35, 1.2, 1.05, 0.9, 0.6, 0.3, 0.15])
@@ -290,7 +290,7 @@ def main():
     fig = plt.gcf()
     fig.gca().add_artist(circle)
 
-    plt.savefig('interp.png')
+    plt.savefig('interp_front.png')
 
     #
     # output polynomial for input

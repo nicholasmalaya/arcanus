@@ -39,9 +39,6 @@ def load_ell():
     space   = 0.02
     R       = 1.5
     y0      = np.arange(1.5,miny,-space)
-    #print y0
-    #y0 = np.array([1.5, 1.45, 1.35, 1.2, 1.05, 0.9, 0.6, 0.3, 0.15])
-
 
     x0      = -np.sqrt(R*R-y0*y0)
     theta0  = np.arctan2(y0,x0)
@@ -114,7 +111,7 @@ def arr(m):
     # Solution curves
     #
     h = hprime
-    ic=[[h,-2],[h,0.8],[h,-1],[h,-3],[h,1.5],[h,0],[h,-3.3]]
+    ic=[[h,-2],[h,0.8],[h,-1],[h,1.5],[h,0],[h,-3.3]]
     t0=0; dt=0.1;
     r = ode(vf).set_integrator('vode', method='bdf',max_step=dt)
     for k in range(len(ic)):
@@ -135,8 +132,6 @@ def polyfit2d(x, y, z, order=5):
     for k, (i,j) in enumerate(ij):
         G[:,k] = x**i * y**j
 
-    #
-    # http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.linalg.lstsq.html
     #
     cnd=1e-5
     #m, _, _, _ = np.linalg.lstsq(G, z,rcond=cnd)
@@ -291,7 +286,7 @@ def main():
     
     plt.title("SoV Vane Configuration")
     plt.xlim([-7,3])
-    plt.ylim([-5,6])
+    plt.ylim([-5,7])
     plt.xlabel('Streamwise (x)')
     plt.ylabel('Spanwise (y)')
 
@@ -317,6 +312,4 @@ main()
 #
 # nick 
 # 4/28/16 
-#
-# http://stackoverflow.com/questions/7997152/python-3d-polynomial-surface-fit-order-dependent
 #
