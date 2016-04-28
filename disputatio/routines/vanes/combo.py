@@ -284,9 +284,10 @@ def main():
     #
     # ----------------------------------------
     
-    plt.title("SoV Vane Configuration")
+    plt.suptitle("SoV Configuration")
+    plt.title("Nine Vane")
     plt.xlim([-7,3])
-    plt.ylim([-5,6])
+    plt.ylim([-4.5,6.5])
     plt.xlabel('Streamwise (x)')
     plt.ylabel('Spanwise (y)')
 
