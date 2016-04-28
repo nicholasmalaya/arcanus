@@ -31,7 +31,7 @@ def load_ell():
     h           = hprime
     thetaf      = 20*np.pi/180.
     a           = -h*1.0
-    miny        = -0.0
+    miny        = -1
 
     #
     # create data
@@ -111,8 +111,8 @@ def arr(m):
     # Solution curves
     #
     h = hprime
-    ic=[[h,-4],[h,1.6],[h,-2],[h,3],[h,0],[h,-6]]
-    end = [2,2,2,0,2,2]
+    ic=[[h,-4],[h,1.6],[h,-2],[h,0],[h,-6],[h,-8]]
+    end = [2,2,2,2,2.5,2.5]
     t0=0; dt=0.1;
     r = ode(vf).set_integrator('vode', method='bdf',max_step=dt)
     for k in range(len(ic)):
@@ -125,6 +125,8 @@ def arr(m):
 
         S=np.array(np.real(Y))
         plt.plot(S[:,0],S[:,1], color = 'red', lw = 4.25)
+    plt.hlines(Rprime, hprime, 0, color='red',lw = 4.25)
+
 
 def polyfit2d(x, y, z, order=5):
     ncols = (order + 1)**2
