@@ -325,7 +325,7 @@ def main():
     fig = plt.gcf()
     fig.gca().add_artist(circle)
     plt.axes().set_aspect('equal', 'datalim')
-    plt.savefig('interp_entire.png')
+    plt.savefig('interp_entire_top.png')
 
     #
     # output polynomial for input
