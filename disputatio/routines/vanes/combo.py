@@ -339,9 +339,9 @@ def main():
     ax.annotate(r'cylinder', xy=(2,-3), xytext=(6,-7),
                 arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=15)
 
-    ax.annotate(r'$L^{t}$', xy=(-13,-8.5), xytext=(-13, 4.0),
+    ax.annotate(r'$L^{t}$', xy=(-12.5,-8.5), xytext=(-12.5, 4.0),
                 arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=15)
-    ax.annotate(r'$L^{t,s}$', xy=(-15.5,12), xytext=(-15.5, 1.5),
+    ax.annotate(r'$L^{t,s}$', xy=(-13, 3), xytext=(-13,13),
                 arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=15)
     
 
