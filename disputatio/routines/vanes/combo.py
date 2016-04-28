@@ -112,10 +112,11 @@ def arr(m):
     #
     h = hprime
     ic=[[h,-4],[h,1.6],[h,-2],[h,3],[h,0],[h,-6]]
+    end = [2,2,2,0,2,2]
     t0=0; dt=0.1;
     r = ode(vf).set_integrator('vode', method='bdf',max_step=dt)
     for k in range(len(ic)):
-        tEnd=np.sqrt(ic[k][0]**2 + ic[k][1]**2)-0.5
+        tEnd=np.sqrt(ic[k][0]**2 + ic[k][1]**2)-end[k]
         Y=[];T=[];S=[];
         r.set_initial_value(ic[k], t0).set_f_params(m)
         while r.successful() and r.t +dt < tEnd:
@@ -289,7 +290,7 @@ def main():
     
     plt.suptitle("SoV Configuration")
     plt.title("Nine Vane")
-    plt.xlim([-14,3])
+    plt.xlim([-12,3])
     plt.ylim([-7,12])
     plt.xlabel('Streamwise (X) [Meters]')
     plt.ylabel('Spanwise (Y) [Meters]')

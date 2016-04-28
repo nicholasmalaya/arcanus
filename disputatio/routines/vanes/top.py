@@ -27,17 +27,15 @@ def load_ell():
     h           = hprime
     thetaf      = 5*np.pi/180.
     R           = Rprime
-    a           = -(h-R)*1.1
+    a           = -(h-R)*1
     miny        = 0.4
-    maxy        = 1.2
+    maxy        = Rprime
 
     #
     # create data
     # 
     space   = 0.02
     y0      = np.arange(maxy,miny,-space)
-
-
     x0      = np.sqrt(R*R-y0*y0)
     theta0  = np.arctan2(y0,x0)    
     thetafy = thetaf*(R-y0)/R
@@ -108,11 +106,12 @@ def arr(m):
     # Solution curves
     #
     h = hprime
-    ic=[[h,3],[h,5],[h,6]]
+    ic=[[h,6],[h,8],[h,12]]
+    end = [0.5,2,4.3]
     t0=0; dt=0.1;
     r = ode(vf).set_integrator('vode', method='bdf',max_step=dt)
     for k in range(len(ic)):
-        tEnd=np.sqrt(ic[k][0]**2 + ic[k][1]**2)+Rprime
+        tEnd=np.sqrt(ic[k][0]**2 + ic[k][1]**2)+end[k]
         Y=[];T=[];S=[];
         r.set_initial_value(ic[k], t0).set_f_params(m)
         while r.successful() and r.t +dt < tEnd:
