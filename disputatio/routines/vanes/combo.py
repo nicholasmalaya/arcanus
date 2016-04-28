@@ -242,6 +242,9 @@ def load_ex():
 #
 def main():
 
+    fig = plt.figure()
+    ax = fig.add_subplot(1,1,1)
+
     # ----------------------------------------
     #
     # load data in
@@ -288,12 +291,17 @@ def main():
     plt.title("Nine Vane")
     plt.xlim([-7,3])
     plt.ylim([-4.5,6.5])
-    plt.xlabel('Streamwise (x)')
-    plt.ylabel('Spanwise (y)')
+    plt.xlabel('Streamwise (X) [Meters]')
+    plt.ylabel('Spanwise (Y) [Meters]')
 
     # add circle
     R = 1.5
-    circle=plt.Circle((0,0),R,color='black',fill=False,linewidth=4)
+    circle=plt.Circle((0,0),R,color='black',linestyle='dotted',fill=False,linewidth=4)
+
+    from matplotlib.patches import Ellipse, Arc
+    ellipse = Arc([0.0,0.0],3.0,3.0,0,180,0,color='black', linewidth='5.0')
+    ax.add_patch(ellipse)
+
     fig = plt.gcf()
     fig.gca().add_artist(circle)
     plt.axes().set_aspect('equal', 'datalim')
