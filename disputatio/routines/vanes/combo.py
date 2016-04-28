@@ -324,8 +324,8 @@ def main():
 
     # adding text
     #
-    ax.text(-20, 11, r'Upstream', fontsize=15)
-    ax.text(2, 11, r'Downstream', fontsize=15)
+    ax.text(-20, 15, r'Upstream', fontsize=15)
+    ax.text(5, 15, r'Downstream', fontsize=15)
 
     # angles
     ax.text(-2, 1, r'$\theta^{t}_{max}$', fontsize=15,color='blue')
@@ -339,8 +339,11 @@ def main():
     ax.annotate(r'cylinder', xy=(2,-3), xytext=(6,-7),
                 arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=15)
 
-
-
+    ax.annotate(r'$L^{t}$', xy=(-13,-8.5), xytext=(-13, 4.0),
+                arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=15)
+    ax.annotate(r'$L^{t,s}$', xy=(-15.5,12), xytext=(-15.5, 1.5),
+                arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=15)
+    
 
     fig = plt.gcf()
     fig.gca().add_artist(circle)
