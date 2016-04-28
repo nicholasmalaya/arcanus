@@ -156,7 +156,7 @@ def main():
     plt.axes().set_aspect('equal', 'datalim')
 
     plt.savefig('interp_entire_bottom.png',dpi=500)
-    plt.savefig('interp_entire_bottom.eps', format='eps', dpi=1000)
+    plt.savefig('interp_entire_bottom.pdf', format='pdf', dpi=1000)
 
 #
 # EXECUTE
