@@ -326,7 +326,7 @@ def main():
     fig.gca().add_artist(circle)
     plt.axes().set_aspect('equal', 'datalim')
     plt.savefig('interp_entire_top.png')
-
+    plt.savefig('interp_entire_top.pdf', format='pdf', dpi=1000)
     #
     # output polynomial for input
     #
