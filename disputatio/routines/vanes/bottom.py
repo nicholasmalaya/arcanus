@@ -125,10 +125,10 @@ def main():
 
     # add circle
     R = radprime
-    circleout=plt.Circle((0,0),R,color='black',linestyle='dotted',fill=False,linewidth=4)
+    circleout=plt.Circle((0,0),R,color='black',linestyle='dotted',fill=False,linewidth=2)
 
     Rin = radmin
-    circlein=plt.Circle((0,0),Rin,color='black',linestyle='dotted',fill=False,linewidth=4)
+    circlein=plt.Circle((0,0),Rin,color='black',linestyle='dotted',fill=False,linewidth=2)
 
     fig = plt.gcf()
     fig.gca().add_artist(circleout)
