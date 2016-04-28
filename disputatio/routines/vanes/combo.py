@@ -293,11 +293,11 @@ def main():
     plt.suptitle("SoV Configuration: Top Tier")
     plt.title("Eight Vane")
 
-    xmin = -20
-    xmax = 11
+    xmin = -15
+    xmax = 5
 
-    ymin = -11
-    ymax = 16
+    ymin = -10
+    ymax = 14
 
     major_ticksx = np.arange(xmin, xmax, 5)
     minor_ticksx = np.arange(xmin, xmax, 1)                                         
