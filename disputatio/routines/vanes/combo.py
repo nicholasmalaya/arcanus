@@ -292,10 +292,27 @@ def main():
     
     plt.suptitle("SoV Configuration")
     plt.title("Nine Vane")
-    plt.xlim([-12,3])
-    plt.ylim([-10,14])
+
+    xmin = -20
+    xmax = 11
+
+    ymin = -11
+    ymax = 16
+
+    major_ticksx = np.arange(xmin, xmax, 5)
+    minor_ticksx = np.arange(xmin, xmax, 1)                                         
+    major_ticksy = np.arange(ymin, ymax, 5)
+    minor_ticksy = np.arange(ymin, ymax, 1)                                         
+    ax.set_xticks(major_ticksx)
+    ax.set_xticks(minor_ticksx, minor=True) 
+    ax.set_yticks(major_ticksy)
+    ax.set_yticks(minor_ticksy, minor=True)
+
+    plt.xlim([xmin,xmax])
+    plt.ylim([ymin,ymax])
     plt.xlabel('Streamwise (X) [Meters]')
     plt.ylabel('Spanwise (Y) [Meters]')
+    plt.grid()
 
     # add circle
     R = Rprime
