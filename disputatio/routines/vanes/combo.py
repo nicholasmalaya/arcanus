@@ -22,7 +22,7 @@ from scipy.integrate import ode
 #
 import top
 
-hprime = -4.5
+hprime = -5.5
 
 def load_ell():
     #
@@ -286,7 +286,7 @@ def main():
     
     plt.title("SoV Vane Configuration")
     plt.xlim([-7,3])
-    plt.ylim([-5,7])
+    plt.ylim([-5,6])
     plt.xlabel('Streamwise (x)')
     plt.ylabel('Spanwise (y)')
 
@@ -295,7 +295,7 @@ def main():
     circle=plt.Circle((0,0),R,color='black',fill=False,linewidth=4)
     fig = plt.gcf()
     fig.gca().add_artist(circle)
-
+    plt.axes().set_aspect('equal', 'datalim')
     plt.savefig('interp_entire.png')
 
     #

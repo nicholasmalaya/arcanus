@@ -17,11 +17,13 @@ import matplotlib.pyplot as plt
 from scipy import integrate
 from scipy.integrate import ode
 
+hprime = -5.5
+
 def load_ell():
     #
     # Generate Data from ellipses
     #
-    h           = -5.5
+    h           = hprime
     thetaf      = 5*np.pi/180.
     R       = 1.5
     a           = -(h-R)*1.1
@@ -104,8 +106,8 @@ def arr(m):
     #
     # Solution curves
     #
-    h = -5.5
-    ic=[[h,3],[h,4],[h,5],[h,7]]
+    h = hprime
+    ic=[[h,3],[h,5],[h,6]]
     t0=0; dt=0.1;
     r = ode(vf).set_integrator('vode', method='bdf',max_step=dt)
     for k in range(len(ic)):
