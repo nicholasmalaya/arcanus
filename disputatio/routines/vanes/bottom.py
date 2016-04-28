@@ -48,7 +48,7 @@ def arr():
     #
     #rad = 0.4
     rad = radprime-0.1
-    theta = np.linspace(0, 2*np.pi, 12)
+    theta = np.linspace(0, 2*np.pi, 13)
     ic    = np.stack((rad*np.cos(theta),rad*np.sin(theta)),axis=-1)
 
     end = 0.0
