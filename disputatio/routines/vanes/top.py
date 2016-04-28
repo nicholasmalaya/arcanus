@@ -17,7 +17,8 @@ import matplotlib.pyplot as plt
 from scipy import integrate
 from scipy.integrate import ode
 
-hprime = -5.5
+hprime = -12
+Rprime = 3.0
 
 def load_ell():
     #
@@ -25,7 +26,7 @@ def load_ell():
     #
     h           = hprime
     thetaf      = 5*np.pi/180.
-    R       = 1.5
+    R           = Rprime
     a           = -(h-R)*1.1
     miny        = 0.4
     maxy        = 1.2
@@ -111,7 +112,7 @@ def arr(m):
     t0=0; dt=0.1;
     r = ode(vf).set_integrator('vode', method='bdf',max_step=dt)
     for k in range(len(ic)):
-        tEnd=np.sqrt(ic[k][0]**2 + ic[k][1]**2)+1.5
+        tEnd=np.sqrt(ic[k][0]**2 + ic[k][1]**2)+Rprime
         Y=[];T=[];S=[];
         r.set_initial_value(ic[k], t0).set_f_params(m)
         while r.successful() and r.t +dt < tEnd:
@@ -283,7 +284,7 @@ def main():
     plt.ylabel('Spanwise (y)')
 
     # add circle
-    R = 1.5
+    R = Rprime
     circle=plt.Circle((0,0),R,color='black',fill=False,linewidth=4)
     fig = plt.gcf()
     fig.gca().add_artist(circle)

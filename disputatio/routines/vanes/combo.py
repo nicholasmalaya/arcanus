@@ -22,8 +22,8 @@ from scipy.integrate import ode
 #
 import top
 
-hprime = -5.5
-
+hprime = -12
+Rprime = 3.0
 def load_ell():
     #
     # Generate Data from ellipses
@@ -37,8 +37,8 @@ def load_ell():
     # create data
     # 
     space   = 0.02
-    R       = 1.5
-    y0      = np.arange(1.5,miny,-space)
+    R       = Rprime
+    y0      = np.arange(Rprime,miny,-space)
 
     x0      = -np.sqrt(R*R-y0*y0)
     theta0  = np.arctan2(y0,x0)
@@ -111,7 +111,7 @@ def arr(m):
     # Solution curves
     #
     h = hprime
-    ic=[[h,-2],[h,0.8],[h,-1],[h,1.5],[h,0],[h,-3.3]]
+    ic=[[h,-4],[h,1.6],[h,-2],[h,3],[h,0],[h,-6]]
     t0=0; dt=0.1;
     r = ode(vf).set_integrator('vode', method='bdf',max_step=dt)
     for k in range(len(ic)):
@@ -289,17 +289,17 @@ def main():
     
     plt.suptitle("SoV Configuration")
     plt.title("Nine Vane")
-    plt.xlim([-7,3])
-    plt.ylim([-4.5,6.5])
+    plt.xlim([-14,3])
+    plt.ylim([-7,12])
     plt.xlabel('Streamwise (X) [Meters]')
     plt.ylabel('Spanwise (Y) [Meters]')
 
     # add circle
-    R = 1.5
+    R = Rprime
     circle=plt.Circle((0,0),R,color='black',linestyle='dotted',fill=False,linewidth=4)
 
     from matplotlib.patches import Ellipse, Arc
-    ellipse = Arc([0.0,0.0],3.0,3.0,0,180,0,color='black', linewidth='5.0')
+    ellipse = Arc([0.0,0.0],2*Rprime,2*Rprime,0,180,0,color='black', linewidth='5.0')
     ax.add_patch(ellipse)
 
     fig = plt.gcf()
