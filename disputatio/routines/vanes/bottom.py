@@ -134,7 +134,7 @@ def main():
     fig.gca().add_artist(circleout)
     fig.gca().add_artist(circlein)
     plt.axes().set_aspect('equal', 'datalim')
-    plt.savefig('interp_entire_top.png')
+    plt.savefig('interp_entire_bottom.png')
 
 #
 # EXECUTE
