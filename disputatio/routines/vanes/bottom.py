@@ -131,11 +131,11 @@ def main():
     circlein=plt.Circle((0,0),Rin,color='black',linestyle='dotted',fill=False,linewidth=2)
 
     # adding text
-    ax.text(-9, 6, r'Upstream', fontsize=15)
-    ax.text(5.4, 6, r'Downstream', fontsize=15)
+    ax.text(-8.4, 6, r'Upstream Side', fontsize=15)
+    ax.text(5.6, 6, r'Downstream Side', fontsize=15)
 
     # angles
-    ax.text(-6, -1, r'$\theta^{b,u}_{min}$', fontsize=20,color='blue')
+    ax.text(-8, -1, r'$\theta^{b,u}_{min}$', fontsize=20,color='blue')
     ax.text(6, -1, r'$\theta^{b,d}_{min}$', fontsize=20,color='blue')
 
     # annotate
@@ -144,6 +144,11 @@ def main():
     ax.annotate(r'$\theta^{b,d}_{max}$', xy=(0.5, 0), xytext=(6, -6),
                 arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=20)
 
+    # outer and inner radius
+    ax.annotate(r'$r^{b}_{max}$', xy=(-4.6, 4), xytext=(-9, 2),
+                arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=20)
+    
+
 
     fig = plt.gcf()
     fig.gca().add_artist(circleout)
@@ -151,7 +156,7 @@ def main():
     plt.axes().set_aspect('equal', 'datalim')
 
     plt.savefig('interp_entire_bottom.png',dpi=500)
-    #plt.savefig('interp_entire_bottom.eps', format='eps', dpi=1000)
+    plt.savefig('interp_entire_bottom.eps', format='eps', dpi=1000)
 
 #
 # EXECUTE
