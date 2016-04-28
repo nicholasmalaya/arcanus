@@ -13,6 +13,8 @@ import matplotlib.pyplot as plt
 from scipy import integrate
 from scipy.integrate import ode
 
+radprime=6.0
+radmin=0.6
 
 def vf(t,x):
     #
@@ -21,8 +23,8 @@ def vf(t,x):
     thetabs_f = 80*np.pi/180.0 # moving from 70 to 80
     thetabs_b = 50*np.pi/180.0 # moving from 70 to 80
 
-    rb  = 0.3
-    rmb = 2.9
+    rb  = radmin
+    rmb = radprime-0.1
 
     r     = np.sqrt(x[0]**2 + x[1]**2)
     theta = np.arctan2(x[1],x[0])
@@ -45,7 +47,7 @@ def arr():
     # Solution curves
     #
     #rad = 0.4
-    rad = 3.0
+    rad = radprime-0.1
     theta = np.linspace(0, 2*np.pi, 12)
     ic    = np.stack((rad*np.cos(theta),rad*np.sin(theta)),axis=-1)
 
@@ -56,7 +58,7 @@ def arr():
         #
         # tEnd=np.sqrt(ic[k][0]**2 + ic[k][1]**2)-end
         #
-        tEnd=3.2
+        tEnd=radprime+0.2
         Y=[];T=[];S=[];
         r.set_initial_value(ic[k], t0)
         while r.successful() and r.t +dt < tEnd:
@@ -77,7 +79,7 @@ def main():
     fig = plt.figure()
     ax = fig.add_subplot(1,1,1)
 
-    dom=4
+    dom=10
 
     xmin = -dom
     xmax = dom
@@ -122,10 +124,10 @@ def main():
     plt.grid()
 
     # add circle
-    R = 3.0
+    R = radprime
     circleout=plt.Circle((0,0),R,color='black',linestyle='dotted',fill=False,linewidth=4)
 
-    Rin = 0.3
+    Rin = radmin
     circlein=plt.Circle((0,0),Rin,color='black',linestyle='dotted',fill=False,linewidth=4)
 
     fig = plt.gcf()
