@@ -290,8 +290,8 @@ def main():
     #
     # ----------------------------------------
     
-    plt.suptitle("SoV Configuration")
-    plt.title("Nine Vane")
+    plt.suptitle("SoV Configuration: Top Tier")
+    plt.title("Eight Vane")
 
     xmin = -20
     xmax = 11

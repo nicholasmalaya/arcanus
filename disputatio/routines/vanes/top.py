@@ -106,7 +106,7 @@ def arr(m):
     # Solution curves
     #
     h = hprime
-    ic=[[h,6],[h,8],[h,12]]
+    ic=[[h,6],[h,8.5],[h,12]]
     end = [0.5,2,4.3]
     t0=0; dt=0.1;
     r = ode(vf).set_integrator('vode', method='bdf',max_step=dt)
