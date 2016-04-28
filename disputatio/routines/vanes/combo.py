@@ -37,7 +37,7 @@ def load_ell():
     # create data
     # 
     space   = 0.02
-    R       = 3.0
+    R       = 1.5
     y0      = np.arange(1.5,miny,-space)
     #print y0
     #y0 = np.array([1.5, 1.45, 1.35, 1.2, 1.05, 0.9, 0.6, 0.3, 0.15])
@@ -247,8 +247,7 @@ def load_ex():
 #
 def main():
 
-    top.load_ell()
-    
+    # ----------------------------------------
     #
     # load data in
     #
@@ -276,22 +275,28 @@ def main():
     # Plot!
     #
     arr(m)
-    
-    #
-    # extent: [ None | (x0,x1,y0,y1) ]
-    #
-    plt.imshow(zz, extent=(x.min(), x.max(), y.min(), y.max()))
-    plt.colorbar()
-    plt.scatter(x, y, c=z)
+    # 
+    # ----------------------------------------
 
+    xt,yt,zt = top.load_ell()
+    mt = polyfit2d(xt,yt,zt)
+    nxt, nyt = 200, 200
+    xxt, yyt = np.meshgrid(np.linspace(x.min(), x.max(), nx), 
+                         np.linspace(y.min(), y.max(), ny))
+    zzt = top.polyval2d(xxt, yyt, mt)
+    top.arr(mt)
+
+    #
+    # ----------------------------------------
+    
     plt.title("SoV Vane Configuration")
-    plt.xlim([-7,1])
-    plt.ylim([-5,2])
+    plt.xlim([-7,3])
+    plt.ylim([-5,6])
     plt.xlabel('Streamwise (x)')
     plt.ylabel('Spanwise (y)')
 
     # add circle
-    R = 3.0
+    R = 1.5
     circle=plt.Circle((0,0),R,color='black',fill=False,linewidth=4)
     fig = plt.gcf()
     fig.gca().add_artist(circle)
@@ -303,9 +308,6 @@ def main():
     #
     poly_disp_fparse(m)    
 
-    #poly_disp_py_line(m)
-    #print
-    #print polyval2d_disp(-5.5, -3.5, m)
 #
 # EXECUTE
 #
