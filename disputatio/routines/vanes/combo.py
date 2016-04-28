@@ -294,7 +294,7 @@ def main():
     plt.title("Eight Vane")
 
     xmin = -15
-    xmax = 5
+    xmax = 6
 
     ymin = -10
     ymax = 14
@@ -321,6 +321,24 @@ def main():
     from matplotlib.patches import Ellipse, Arc
     ellipse = Arc([0.0,0.0],2*Rprime,2*Rprime,0,180,0,color='black', linewidth='5.0')
     ax.add_patch(ellipse)
+
+    # adding text
+    #
+    ax.text(-20, 11, r'Upstream', fontsize=15)
+    ax.text(2, 11, r'Downstream', fontsize=15)
+
+    # angles
+    ax.text(-2, 1, r'$\theta^{t}_{max}$', fontsize=15,color='blue')
+    ax.text(3, 2, r'$\theta^{t,s}_{max}$', fontsize=15,color='blue')
+
+    # outer and inner radius
+    ax.annotate(r'$L_{x}$', xy=(-12,0), xytext=(0, 0),
+                arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=15)
+    ax.annotate(r'cylinder', xy=(2,-3), xytext=(6,-7),
+                arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=15)
+
+
+
 
     fig = plt.gcf()
     fig.gca().add_artist(circle)
