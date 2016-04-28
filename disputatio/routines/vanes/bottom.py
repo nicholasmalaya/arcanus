@@ -123,18 +123,35 @@ def main():
     plt.ylabel('Spanwise (Y) [Meters]')
     plt.grid()
 
-    # add circle
+    # add circle(s)
     R = radprime
     circleout=plt.Circle((0,0),R,color='black',linestyle='dotted',fill=False,linewidth=2)
 
     Rin = radmin
     circlein=plt.Circle((0,0),Rin,color='black',linestyle='dotted',fill=False,linewidth=2)
 
+    # adding text
+    ax.text(-9, 6, r'Upstream', fontsize=15)
+    ax.text(5.4, 6, r'Downstream', fontsize=15)
+
+    # angles
+    ax.text(-6, -1, r'$\theta^{b,u}_{min}$', fontsize=20,color='blue')
+    ax.text(6, -1, r'$\theta^{b,d}_{min}$', fontsize=20,color='blue')
+
+    # annotate
+    ax.annotate(r'$\theta^{b,u}_{max}$', xy=(-0.5, 0), xytext=(-6, -6),
+                arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=20)
+    ax.annotate(r'$\theta^{b,d}_{max}$', xy=(0.5, 0), xytext=(6, -6),
+                arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=20)
+
+
     fig = plt.gcf()
     fig.gca().add_artist(circleout)
     fig.gca().add_artist(circlein)
     plt.axes().set_aspect('equal', 'datalim')
-    plt.savefig('interp_entire_bottom.png')
+
+    plt.savefig('interp_entire_bottom.png',dpi=500)
+    #plt.savefig('interp_entire_bottom.eps', format='eps', dpi=1000)
 
 #
 # EXECUTE
