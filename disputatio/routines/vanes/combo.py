@@ -330,8 +330,8 @@ def main():
     # angles
     ax.text(-2, 1, r'$\theta^{t}_{max}$', fontsize=15,color='blue')
     ax.text(3, 2, r'$\theta^{t,s}_{max}$', fontsize=15,color='blue')
-    ax.text(-12, -3, r'$\theta^{t}_{min}$', fontsize=15,color='blue')
-    ax.text(-12, 10, r'$\theta^{t,s}_{min}$', fontsize=15,color='blue')
+    ax.text(-12, -3, r'$\phi^{t}_{min}$', fontsize=15,color='blue')
+    ax.text(-12, 10, r'$\phi^{t,s}_{min}$', fontsize=15,color='blue')
 
     # outer and inner radius
     ax.annotate(r'$L_{x}$', xy=(-12,0), xytext=(0, 0),

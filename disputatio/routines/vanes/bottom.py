@@ -135,8 +135,8 @@ def main():
     ax.text(5.6, 6, r'Downstream Side', fontsize=15)
 
     # angles
-    ax.text(-8, -1, r'$\theta^{b,u}_{min}$', fontsize=20,color='blue')
-    ax.text(6, -1, r'$\theta^{b,d}_{min}$', fontsize=20,color='blue')
+    ax.text(-8, -1, r'$\phi^{b,u}_{min}$', fontsize=20,color='blue')
+    ax.text(6, -1, r'$\phi^{b,d}_{min}$', fontsize=20,color='blue')
 
     # annotate
     ax.annotate(r'$\theta^{b,u}_{max}$', xy=(-0.5, 0), xytext=(-6, -6),

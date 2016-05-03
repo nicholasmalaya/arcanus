@@ -25,12 +25,12 @@ def main():
     fig = plt.figure()
     ax = fig.add_subplot(1,1,1)
 
-    dom=10
+    dom=20
 
     xmin = -dom
     xmax = dom
 
-    zmin = -dom
+    zmin = 0
     zmax = dom
     
     plt.suptitle("SoV Configuration: Side View")
@@ -38,8 +38,8 @@ def main():
 
     major_ticksx = np.arange(xmin, xmax, 5)
     minor_ticksx = np.arange(xmin, xmax, 1)                                         
-    major_ticksy = np.arange(zmin, zmax, 5)
-    minor_ticksy = np.arange(zmin, zmax, 1)                                         
+    major_ticksz = np.arange(zmin, zmax, 5)
+    minor_ticksz = np.arange(zmin, zmax, 1)                                         
     ax.set_xticks(major_ticksx)
     ax.set_xticks(minor_ticksx, minor=True) 
     ax.set_yticks(major_ticksz)
@@ -51,33 +51,36 @@ def main():
     plt.ylabel('Height (Z) [Meters]')
     plt.grid()
 
+    # adding lines
+    #plt.axhline(y=3.0, xmin=-12.0, xmax=0, linewidth=4, color = 'red')
+
+    # front vane
+    plt.plot((-12,-3),(3,3),linewidth=4,color = 'red')
+
+    # back vane
+    plt.plot((-12,-3),(3,3),linewidth=4,color = 'red')
+    plt.plot((3,3),(,3),linewidth=4,color = 'red')
+
+    #plt.axvline(x=0.402, ymin=0.4, ymax = 0.615, linewidth=2, color='k')
+
     # adding text
-    ax.text(-8.4, 6, r'Upstream Side', fontsize=15)
-    ax.text(5.6, 6, r'Downstream Side', fontsize=15)
+    ax.text(-8.4, 15, r'Upstream Side', fontsize=15)
+    ax.text(5.6, 15, r'Downstream Side', fontsize=15)
 
     # angles
-    ax.text(-8, -1, r'$\theta^{b,u}_{min}$', fontsize=20,color='blue')
-    ax.text(6, -1, r'$\theta^{b,d}_{min}$', fontsize=20,color='blue')
+    #ax.text(-8, -1, r'$\theta^{b,u}_{min}$', fontsize=20,color='blue')
+    #ax.text(6, -1, r'$\theta^{b,d}_{min}$', fontsize=20,color='blue')
 
     # annotate
-    ax.annotate(r'$\theta^{b,u}_{max}$', xy=(-0.5, 0), xytext=(-6, -6),
-                arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=20)
-    ax.annotate(r'$\theta^{b,d}_{max}$', xy=(0.5, 0), xytext=(6, -6),
-                arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=20)
-
-    # outer and inner radius
-    ax.annotate(r'$r^{b}_{max}$', xy=(-4.6, 4), xytext=(-9, 2),
-                arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=20)
+    #ax.annotate(r'$\theta^{b,u}_{max}$', xy=(-0.5, 0), xytext=(-6, -6),
+    #            arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=20)
     
 
-
     fig = plt.gcf()
-    fig.gca().add_artist(circleout)
-    fig.gca().add_artist(circlein)
     plt.axes().set_aspect('equal', 'datalim')
 
-    plt.savefig('interp_entire_bottom.png',dpi=500)
-    plt.savefig('interp_entire_bottom.pdf', format='pdf', dpi=1000)
+    plt.savefig('vertical_design.png',dpi=500)
+    plt.savefig('vertical_design.pdf', format='pdf', dpi=1000)
 
 #
 # EXECUTE
