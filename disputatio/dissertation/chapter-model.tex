@@ -489,41 +489,42 @@ n_y\\
 %
 % example of an algorithm
 %
-\begin{center}
- \begin{algorithm}
-  \caption{The crude separation model. This model identifies if the flow
-  is coming into or out of the vane region, and if the velocity vector
-  is in the same direction as the tangent line of the vanes. In the case
-  of the ``special forcing'' the flow is forced as if it was
-  impacting a solid surface. In the
-  algorithm below, $r_0$ is the max radius of vanes, $r_i$ the minimum
-  radius of vanes, and $\delta$ is the width of the separation region.}
-  \label{alg:sep}
-  \begin{algorithmic}[1]
-   \If{($r_0 > r > r_i$)} 
-   \If{$(r_0 - r) < \delta$ \textbf{or} $((r - r_i) < \delta)$}
-   \State $\overrightarrow{n^r} = \overrightarrow{r}/|r|$
-   \If{$(r - r_i) < \delta$} 
-   \State $\overrightarrow{n^r} = -\overrightarrow{n^r}$
-   \EndIf
-   \State  $\bf t^v = \left( {\bf n^{v^\perp}} \right) \text{sign}\left(
-	    {\bf n^{v^\perp}} \cdot {\bf n^r} \right)$
-   \If{$v \cdot t^v > 0$ \textbf{and} $v \cdot n^r < 0 $}
-   \State ${\bf n}({\bf x}) = \hat r$ \quad (Special Forcing)
-   \Else
-   \State  ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
-  \left(\phi(r) \right) \hat{{\bf \theta}} $
-  \quad (Normal Forcing)
-   \EndIf
-   \Else
-   \State ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
-  \left(\phi(r) \right) \hat{{\bf \theta}} $
-  \quad (Normal Forcing)
-   \EndIf
-   \EndIf
-  \end{algorithmic}
- \end{algorithm}
-\end{center}
+\todo{fix me}
+% \begin{center}
+%  \begin{algorithm}
+%   \caption{The crude separation model. This model identifies if the flow
+%   is coming into or out of the vane region, and if the velocity vector
+%   is in the same direction as the tangent line of the vanes. In the case
+%   of the ``special forcing'' the flow is forced as if it was
+%   impacting a solid surface. In the
+%   algorithm below, $r_0$ is the max radius of vanes, $r_i$ the minimum
+%   radius of vanes, and $\delta$ is the width of the separation region.}
+%   \label{alg:sep}
+%   \begin{algorithmic}[1]
+%    \If{($r_0 > r > r_i$)} 
+%    \If{$(r_0 - r) < \delta$ \textbf{or} $((r - r_i) < \delta)$}
+%    \State $\overrightarrow{n^r} = \overrightarrow{r}/|r|$
+%    \If{$(r - r_i) < \delta$} 
+%    \State $\overrightarrow{n^r} = -\overrightarrow{n^r}$
+%    \EndIf
+%    \State  $\bf t^v = \left( {\bf n^{v^\perp}} \right) \text{sign}\left(
+% 	    {\bf n^{v^\perp}} \cdot {\bf n^r} \right)$
+%    \If{$v \cdot t^v > 0$ \textbf{and} $v \cdot n^r < 0 $}
+%    \State ${\bf n}({\bf x}) = \hat r$ \quad (Special Forcing)
+%    \Else
+%    \State  ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
+%   \left(\phi(r) \right) \hat{{\bf \theta}} $
+%   \quad (Normal Forcing)
+%    \EndIf
+%    \Else
+%    \State ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
+%   \left(\phi(r) \right) \hat{{\bf \theta}} $
+%   \quad (Normal Forcing)
+%    \EndIf
+%    \EndIf
+%   \end{algorithmic}
+%  \end{algorithm}
+% \end{center}
 %
 
 The forcing is modified when the velocity vector of the local flow, $\bf

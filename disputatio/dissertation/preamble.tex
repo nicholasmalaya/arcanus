@@ -17,7 +17,6 @@
 \usepackage{bm}
 \usepackage{calc}
 \usepackage{caption}
-\usepackage{enumerate}
 \usepackage{enumitem}
 \usepackage{floatpag}
 \usepackage{helvet}
@@ -44,6 +43,78 @@
 \usepackage{yhmath}
 \usepackage{xkeyval}
 \usepackage{xspace}
+
+%
+%
+%
+
+% \usepackage{subcaption}
+% \usepackage{mathrsfs}
+% \usepackage{setspace}
+% \usepackage{paralist}
+% \usepackage{fullpage}
+
+%\usepackage{comment}
+%\usepackage{soul}
+%\usepackage{gensymb}
+%\usepackage{todonotes}
+%\usepackage[utf8]{inputenc}
+
+\usepackage{bigints}
+\usepackage{etoolbox}
+\AtBeginEnvironment{pmatrix}{\setlength{\arraycolsep}{15pt}}
+
+\usepackage{pifont}
+%\usepackage{algpseudocode}
+
+\newcommand\ytl[2]{
+\parbox[b]{8em}{\hfill{\color{black}\bfseries\sffamily
+#1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad
+\parbox[c]{4.5cm}{\vspace{7pt}\color{black}\raggedright\sffamily
+#2.\\[7pt]}\\[-3pt]} 
+
+\newcommand\ytb[2]{
+\parbox[b]{8em}{\hfill{\color{blue}\bfseries\sffamily
+#1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad
+\parbox[c]{4.5cm}{\vspace{7pt}\color{blue}\raggedright\sffamily
+#2.\\[7pt]}\\[-3pt]} 
+
+\newcommand\myworries[1]{\textcolor{red}{#1}}
+\newcommand{\abs}[1]{\ensuremath{ \left|#1\right|}}
+\newcommand{\norm}[1]{\ensuremath{ \left|\left|#1\right|\right|}}
+\newcommand{\orderof}[1]{\ensuremath{ {\cal O}\left(#1\right)}}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\grad}[1]{\bv{\nabla} {#1}}
+\newcommand{\bv}[1]{{\ensuremath{\boldsymbol{#1}}}}
+\newcommand{\bt}[1]{{\ensuremath{\boldsymbol{#1}}}}
+\newcommand{\Res}{{\ensuremath{\mathcal R}}}
+\newcommand{\Unknowns}{{\ensuremath{\bf{U}}}}
+\newcommand{\UnknownsR}{{\ensuremath{\bf{U^R}}}}
+\newcommand{\unknown}{{\ensuremath{\bv{u}}}}
+\newcommand{\primalsol}{{\ensuremath{\bv{\tilde{u}}}}}
+\newcommand{\primalsolh}{{\ensuremath{\bv{\tilde{u}^h}}}}
+\newcommand{\adjointsol}{{\ensuremath{\bv{\tilde{z}}}}}
+\newcommand{\adjointsolh}{{\ensuremath{\bv{\tilde{z}^h}}}}
+\newcommand{\adjointsolH}{{\ensuremath{\bv{\tilde{z}^H}}}}
+\newcommand{\Testfuncs}{{\ensuremath{\bf{V}}}}
+\newcommand{\testfunc}{{\ensuremath{\bv{v}}}}
+\newcommand{\intO}{\ensuremath{\int_\Omega}}
+\newcommand{\elem}{\ensuremath{E}}
+\newcommand{\qoi}{{\ensuremath{q}}}
+\newcommand{\qoih}{\ensuremath{q^h}}
+\newcommand{\Qoi}{{\ensuremath{Q}}}
+\newcommand{\param}{{\ensuremath{\xi}}}
+\newcommand{\params}{{\ensuremath{\bv{\param}}}}
+\newcommand{\PDF}{\ensuremath{p}}
+\newcommand{\Params}{{\ensuremath{\bf{\Xi}}}}
+\newcommand{\ParamsR}{{\ensuremath{\bf{\Xi^R}}}}
+\newcommand{\Reals}{{\ensuremath{\mathbb{R}}}}
+\newcommand{\sa}{\nu_{\mathrm{sa}}}
+%
+\newcommand{\uveci}{{\bm{\hat{\textnormal{\bfseries\i}}}}}
+\newcommand{\uvecj}{{\bm{\hat{\textnormal{\bfseries\j}}}}}
+\newcommand{\uveck}{{\bm{\hat{\textnormal{\bfseries\k}}}}}
+
 
 % http://tex.stackexchange.com/questions/110388
 % I want 1e-2 not 1x10^{-2} from siunitx
