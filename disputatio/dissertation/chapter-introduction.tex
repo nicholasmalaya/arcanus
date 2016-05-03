@@ -1,133 +1,96 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Motivation}
-\label{sec:motivation}
+\section{Introduction / Executive Summary}
 
-A vehicle reentering Earth's atmosphere requires a thermal protection system
-(TPS) to mitigate aerothermodynamic heating.  Gauging reentry heat load is
-critical to mission success.  Undersizing a TPS at best destroys expensive
-equipment and at worst causes loss of life.  Oversizing a TPS increases vehicle
-weight and fuel costs and therefore reduces available payload.  Decision makers
-need these heating predictions with quantified uncertainty so they may balance
-reliability requirements against cost constraints.
+Renewable energy is critical to our environmental, economic, and
+national security. Global demand for energy is projected to rise 56\% by
+2040\cite{energy-outlook}, as is our national reliance on fossil
+fuel-based power plants for the bulk of our electricity generation. 
+There is a critical need for safe, clean, and
+cost-effective alternatives to coal, such as wind, solar, hydroelectric,
+and geothermal power. These technologies will simultaneously reduce
+carbon dioxide emissions and help position the U.S. as a leader in the
+global renewable energy industry. 
+% \cite{arpa-e}
+% proposal
+%
+This proposal details a research plan to perform a numerical
+investigation and design optimization of a novel renewable energy concept. 
 
-Turbulence and laminar-turbulent transition enter critically into this balance.
-Turbulence in the fluid boundary layer around a vehicle intensifies heating
-because turbulent mixing enhances momentum, energy, and chemical species
-transport to the TPS\@.  Recent coupled multiphysics studies by
-\citet{Bauman2011Loose} and \citet{Stogner2011Uncertainty} showed that
-ablative TPS predictions are highly sensitive to uncertainty in turbulence model
-calibration parameters.  Further, while low-turbulence freestream conditions allow at
-least the stagnation point region within the flow to be laminar, prediction
-efforts often assume these boundary layers are fully turbulent.  Both
-incorrectly applying turbulence models to laminar regions and neglecting the
-downstream laminar-turbulent transition processes add markedly to heat load
-uncertainty.  Transition models may be employed to relax this assumption by
-accounting for transitional flow.  However, the extreme sensitivity of
-transition phenomena to the upstream environment (see, for example,
-\citet{Federov2011Transition}) brings with those models another uncertainty
-penalty.
+Much of the solar energy incident on the Earth's surface is absorbed
+into the ground, which in turn heats the air layer above the surface.
+This buoyant air layer contains considerable gravitational potential
+energy. 
+With nearly one-third of global land mass covered by deserts, there are huge
+untapped regions for capturing solar heat (about 200 W/$\text{m}^2$
+averaged over a 24-hour day, and up to 1000 W/$\text{m}^2$
+peak)\cite{Hoyt197827}. The available power is competitive in magnitude
+with worldwide power generation from fossil sources. If a technology
+could effectively extract this energy, it would result in a low-cost,
+scalable approach to electrical power generation that could create a new
+class of renewable energy ideally suited for arid regions.  
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Objectives}
+How then, is one to efficiently extract this gravitational potential
+energy and convert it into usable work? We turn to Nature to provide a 
+guide, with the observation that there are natural objects that provide
+precisely this mechanism. Namely, naturally occurring ``dust devils'' 
+characterized by a vertically stratified, ground-heated air layer
+that produces a coherent columnar vortex. These ``dust devil''s are
+ubiquitous, naturally appearing in regions as diverse as Arizona,
+Siberia, over water, or even
+Mars\cite{Sinclair1969,ROG:ROG1635,JGRE:JGRE1660}.  
+ % arizona, indiana, oregon, yukon, colorado
+They are observed to occur over a wide range of length scales (1 - 30
+meters) with large variations in velocities (1 to over 40
+m/s)\cite{Sinclair1969}. 
 
-This work aims to reduce turbulence- and transition-driven uncertainty in
-aerothermodynamic heating predictions for blunt-bodied reentry vehicles in two
-ways.  The first way will reduce the uncertainty entering through the turbulence
-model calibration parameters.  The second way will reduce the uncertainty
-arising from incorrectly treating laminar regions as fully turbulent.
+The basic idea behind the proposed energy harvesting approach is to convert the 
+potential energy in this buoyant air layer to kinetic energy in an
+anchored vortex, and to use that kinetic energy to drive a
+vertical-axis turbine coupled with an electric generator  to
+produce electrical power. 
+The Solar-Driven Vortex (SoV) phenomena has been demonstrated in
+an experimental setup by our partners at Georgia Tech. However, to 
+move beyond proof-of-concept, Computational Fluid 
+Dynamics (CFD) is needed to simulate the SoV. Such simulations will
+provide fundamental insight into the 
+driving dynamics of the system and generate high resolution data, which is
+experimentally inaccessible, to be used to rapidly optimize the
+geometry and configuration of the SoV apparatus. 
 
-%\subsection[Producing High-Quality Data for\\Compressible Turbulence Model Calibration]
-%           {Producing High-Quality Data for Compressible Turbulence Model Calibration}
+%This is a considerable effort. 
 
-First, we aim to use direct numerical simulation (DNS) of the compressible
-Navier--Stokes equations to generate high-quality supersonic boundary layer data
-for turbulence model calibration.  DNS was selected because the technique
-produces data uncertainties limited only by the available computing resources.
-We have designed and implemented a new, well-verified Fourier/B-spline
-pseudospectral DNS code called Suzerain employing ``slow growth,'' a spatiotemporal boundary layer
-homogenization approach by \citet{Topalian2011Slow, Topalian2014Temporal,
-Topalian2014Spatiotemporal}, to efficiently generate turbulence statistics with
-accurately quantified uncertainties.  The code is used to create a rich database
-of compressible turbulence statistics for use by the reentry community.  In
-addition to the long-lived, public datasets we generate, our modern DNS code can
-serve others as a robust, extensible platform for computational turbulence
-research.
+%
+% TODO: add table of 'state of the art' or novel work performed
+%
 
-%\subsection[Characterizing Turbulence-Sustaining Regions\\on Blunt-Bodied Reentry Vehicles]
-%           {Characterizing Turbulence-Sustaining Regions on Blunt-Bodied Reentry Vehicles}
+The objective of this project is to assess the technological feasibility of 
+using synthetic columnar vortices to generate usable energy. 
+This proposal begins in Section \ref{sec:physics} with a discussion of the 
+naturally occurring phenomenon, the presently understood dynamics of
+dust-devils and similar columnar vortices, and the implications for systems
+designed to generate their synthetic counterparts. 
+In Section \ref{sec:mathmodel}, we outline a mathematical model of
+the entire system, and in Section \ref{sec:software}, we discuss the
+algorithms and software implementation used to simulate the
+system. Section \ref{sec:validation} discusses the 
+validation of these results against existing experimental data and high
+fidelity simulations. Section \ref{sec:results} details the preliminary
+predictions of system performance in the field, as well as detailing the 
+several examples of a numerical optimization of the apparatus. Finally, with the 
+preceding sections outlining the present simulation capabilities, 
+Section \ref{sec:proposed_work} proposes a course of investigation
+designed to broadly probe the design space and provide a
+definitive assessment of the technological feasibility of the entire 
+synthetic columnar vortex concept. 
 
-Second, we aim to detect which regions of an ablative thermal protection system
-on a blunt-bodied vehicle can sustain turbulence.  Given the strength of the
-favorable pressure gradients found in these flows, it is reasonable to expect
-that a contiguous region extending some distance radially from the stagnation
-point simply cannot maintain turbulence.  Rather than taking the classical
-transition modeling approach and seeking where laminar-turbulent transition
-occurs, this study instead aims to map where turbulence cannot survive.  The
-spatiotemporal boundary layer DNS code is reused to
-parametrically explore
-pointwise flow conditions found within simulations like those of
-\citet{Bauman2011Loose}.  Fully turbulent fields are initialized and evolved at
-local conditions taken from such simulations.  We say the conditions cannot
-sustain turbulence if the field relaminarizes.  By exploring this parameter
-space, we aim to discover where turbulence models might not be employed when
-engineering practitioners simulate these reentry flows.
+%details a short validation
+%study performed by comparing between the available experimental
+%measurements and the simulations results. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Outline}
-
-This work is organized as follows:
-
-\autoref{sec:review} provides background on the uncertainties arising from
-applying turbulence models within reentry applications, how calibration data
-impacts these uncertainties, and evaluates potential sources for obtaining that
-data.  It further discusses uncertainties arising from transition phenomena and
-proposes a concrete scenario for study based on the Orion MPCV\@.
-
-\autoref{sec:model} summarizes the mathematical models required to pursue
-the aims of the thesis.  \autoref{sec:techniques} details the computational
-techniques used to apply these models while \autoref{sec:software} describes
-their software implementation.
-
-\autoref{sec:bldata} presents new direct numerical simulations of
-spatiotemporally homogenized turbulent boundary layers with features similar to
-those found on the Orion MPCV thermal protection system.  It investigates
-the character of the turbulence, presents Favre-averaged equation budgets,
-and communicates the information necessary to use the data for turbulence
-model calibration.
-
-\autoref{sec:relam} detects turbulence-sustaining regions on the Orion MPCV
-using spatiotemporally homogenized boundary layers.  The study methodology
-is discussed followed by a collection of results corresponding to locations
-on the MPCV thermal protection system.
-
-Finally, \autoref{sec:conclusions} summarizes the conclusions of this thesis
-and presents recommendations for future work.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Contributions}
-
-% THIS WORK HAS MADE THE FOLLOWING CONTRIBUTIONS ???
-% The contributions of this work include the following:
-This work has made the following contributions:
-
-\begin{enumerate}
-    \item Creation of a well-verified, openly available pseudospectral
-    code for the direct numerical simulation (DNS) of sub- through
-    supersonic turbulent boundary layers using ``slow growth''
-    homogenization techniques.
-
-    \item Generation and characterization of metadata-rich DNS data,
-    with well-quantified sampling uncertainty, for sub- and supersonic
-    spatiotemporally homogenized turbulent boundary layers on cold,
-    transpiring walls and subject to strong favorable pressure gradients.
-
-    \item Design of a novel DNS experiment to determine where on a
-    vehicle surface turbulence can be sustained without requiring the
-    flight environment to be sufficiently well-understood that transition
-    modeling can be reliably applied.
-
-    \item Application of this novel DNS experiment to conditions
-    from the NASA Orion Multi-Purpose Crew Vehicle ablative thermal
-    protection system during atmospheric reentry from the International
-    Space Station.
-\end{enumerate}
+%For these simulations to be generally useful, they must first
+%be validated against existing experimental data and high fidelity
+%simulations. These models will then explore regimes and scales where no
+%experimental measurements presently exist. 
+%Characterizing the
+%uncertainty of predictions resulting from extrapolation is a critical
+%component in enabling reliable assessments of field performance of the
+%SoV, as it will guide the commercialization strategy of the product. 
