@@ -1,704 +1,810 @@
-\label{sec:model}
-This chapter summarizes the nondimensional mathematical models used in the
-present work.  First the governing Navier--Stokes are shown.  Reynolds
-and Favre averaging is briefly defined followed by the form of the
-Favre-averaged Navier--Stokes equations used.  Lastly, the spatiotemporal
-homogenization forcing terms due to \citep{Topalian2014Spatiotemporal}
-are presented.  One can find the underlying derivations in
-Appendix~\ref{sec:derivation}.
+%\section{Mathematical Modeling}
+\label{sec:mathmodel}
 
-\section{The Governing Navier--Stokes Equations}
-\label{sec:goveqn}
+% \begin{itemize}
+% \item \st{unstable stratified boundary layers (raleigh number estimate)}
+% \item \st{justify incompressible N-S}
+% \item \st{justification of far-field eddy-viscosity model (M-O)}
+% \item modeling eddy-viscosity in device 
+% \item vane and turbine representation via penalty function // immersed boundary method
+% \item cone representation
+% \end{itemize}
 
-The flow physics are modeled using the unsteady, three-dimensional,
-compressible Navier--Stokes equations.  These continuum equations arise from
-applying conservation of mass, momentum, and energy to a Newtonian, perfect
-gas.  The model assumes that the first viscosity~$\mu$ obeys a power law in
-temperature~$T$, the other viscosity~$\lambda$ is a constant multiple of $\mu$,
-heat conduction through the gas obeys Fourier's law, and momentum and thermal
-diffusivity are related by a constant Prandtl number.  For simplicity,
-aerothermochemical effects are neglected.
-
-The governing equations may be written in nondimensional form as
-\begin{subequations}
-\label{eq:nondim_model}
-\begin{align}
-  \label{eq:nondim_continuity}
-  \frac{\partial\!}{\partial\!t}\rho{}
- =
- &- \nabla\cdot\rho{}u
-  + \Ssd_\rho
-  \\
-  \label{eq:nondim_momentum}
-  \frac{\partial\!}{\partial\!t}\rho{}u
- =
- &- \nabla\cdot(u\otimes\rho{}u)
-  - \frac{1}{\Mach^{2}} \nabla{} p
-  + \frac{1}{\Reynolds} \nabla\cdot\tau
-  + f
-  + \Ssd_{\rho{} u}
-  \\
-  \frac{\partial\!}{\partial\!t} \rho{}E
- =
- &- \nabla\cdot\rho{}Eu
-  + \frac{1}{\Reynolds\,\Prandtl\,\left( \gamma - 1 \right)}
-    \nabla\cdot\mu\nabla{} T
-\notag\\ \label{eq:nondim_energy}
- &- \nabla\cdot{} p u
-  + \frac{\Mach^{2}}{\Reynolds} \nabla\cdot\tau{} u
-  + \Mach^{2} f \cdot{} u
-  + q_{b}
-  + \Ssd_{\rho{} E}
-\end{align}
-along with the constitutive relationships
-\begin{align}
-  \label{eq:nondim_constitutive}
-  p &= \left(\gamma-1\right) \left(
-    \rho{}E - \frac{\Mach^{2}}{2}\rho{}u^{2}
-  \right)
-  &
-  T &= \gamma{} \frac{p}{\rho}
-  &
-  a &= \sqrt{T}
-  &
-  h &= \frac{T}{\gamma-1}
-\end{align}
-\begin{align}
-  \mu &= T^{\beta}
-  &
-  \lambda &= \left(\alpha-\frac{2}{3}\right)\mu
-  &
-  \tau &=  \mu\left(\nabla{}u+\trans{\nabla{}u}\right)
-         + \lambda\left(\nabla\cdot{}u\right) I
-\end{align}
-where the nondimensional free parameters
-\begin{align}
-  \Reynolds &= \frac{\rho_{0}u_{0}l_{0}}{\mu_{0}}
-  &
-  \Mach &= \frac{u_{0}}{a_{0}}
-  &
-  \Prandtl &= \frac{\mu_{0}C_{p}}{\kappa_{0}}
-\end{align}
-\end{subequations}
-are the Reynolds, Mach, and Prandtl numbers, respectively.  Other free
-parameters include the ratio of specific heats $\gamma$ and the viscosity power
-law exponent $\beta$.  The von~K\'arm\'an relationship for the
-Knudsen number becomes
-\begin{align}
-  \Knudsen &= \frac{\Mach}{\Reynolds}\sqrt{\frac{\gamma\pi}{2}}
-\end{align}
-where the present continuum assumptions are justified when
-${\Knudsen\ll{}1}$.  The nondimensionalization requires some dimensional
-reference density~$\rho_{0}$, length~$l_{0}$, velocity~$u_{0}$, and
-temperature~$T_{0}$.  Other references quantities are defined as follows:
-\begin{subequations}
-\label{eq:basic_references}
-\begin{align}
-  t_{0} &= \frac{l_{0}}{u_{0}}
-  &
-  a_{0} &= \sqrt{\gamma{}RT_{0}}
-  &
-  p_{0} &= \rho_{0} a_{0}^{2}
-  &
-  E_{0}, H_{0}, h_{0} &= a_{0}^{2}
-  \\
-  \mu_{0},\lambda_{0} &= \mu\!\left( T_{0} \right)
-  &
-  \tau_{0} &= \frac{\mu_{0}u_{0}}{l_{0}}
-  &
-  f_{0} &= \frac{\rho_{0}u_{0}}{t_{0}}
-  &
-  q_{0} &= \frac{\rho_{0}a_{0}^{2}}{t_{0}}
-\end{align}
-\begin{align}
-  {\Ssd_{\rho}}_0 &= \frac{\rho_{0}}{t_0}
-  &
-  {\Ssd_{\rho u}}_0 &= \frac{\rho_{0} u_0}{t_0}
-  &
-  {\Ssd_{\rho E}}_0 &= \frac{\rho_{0} E_0}{t_0}.
-\end{align}
-\end{subequations}
-The terms $f$ and $q_b$ accommodate problem-specific momentum and total energy
-forcing.  When employed, boundary layer homogenization is accomplished
-through slow growth terms $\Ssd_\rho{}$, $\Ssd_{\rho{} u}$, and $\Ssd_{\rho{}
-E}$ which take forms similar to the right hand side of~\eqref{eq:tsg_general}.
-
-The bulk viscosity,
-\begin{align}
-  \mu_{B} &= \lambda + \frac{2}{3}\mu,
-\end{align}
-and the deviatoric component of the strain rate tensor,
-\begin{align}
-  S &= \varepsilon - \frac{1}{3} \trace\left(\varepsilon\right) I
-     = \frac{1}{2}\left(\nabla{}u + \trans{\nabla{}u}\right)
-     - \frac{1}{3}\left(\nabla\cdot{}u\right)I,
-\end{align}
-alternatively may be used to write $\tau$ as
-\begin{align}
-  \tau &= 2 \mu S + \mu_B  \left( \nabla\cdot{}u \right) I.
-\end{align}
-The final free parameter $\alpha$ then controls the bulk viscosity according to
-\begin{align}
-\mu_{B} &= \alpha \mu.
-\end{align}
-Setting $\alpha=0$ recovers Stokes' hypothesis.  The kinematic and bulk
-kinematic viscosities
-\begin{align}
- \nu &= \frac{\mu}{\rho} & \nu_{B} &= \frac{\mu_{B}}{\rho}
-\end{align}
-will be used at times to simplify notation.  This completes the description of
-the model which is said to be ``closed'' because knowing $\rho$, $u$, and $E$
-permits advancing that state in time.
-
-\section{The Favre-Averaged Navier--Stokes Equations}
-\label{sec:statevo}
-
-As turbulence is chaotic, reporting a statistical description of
-its behavior is essential.
-With only additional modest mathematical assumptions, the above instantaneous
-model may be manipulated to describe the evolution of mean quantities.
+%remember that \st{} is strikethrough
 %
-Notationally, the expectation or ``Reynolds average'' of a generic flow
-variable $q$ is written~$\bar{q}$.  The density-weighted expectation
-or ``Favre average'' is defined by
-\begin{align}
-  \tilde{q} &= \overline{\rho{}q}/\bar{\rho}.
-\end{align}
-Fluctuations about the mean and the density-weighted mean are
-denoted
-\begin{align}
-  q'  &\equiv q - \bar{q},
-  &
-  q'' &\equiv q - \tilde{q},
-\end{align}
-respectively.
-Reynolds averaging commutes with differentiation under mild smoothness
-assumptions.  Here the common convention that taking Favre fluctuations,
-$\left(\cdot\right)''$, has higher precedence than differentiation,
-$\nabla\left(\cdot\right)$, has been adopted.  Additional background on these
-two averaging approaches can be found in
-\autoref{sec:averagingtechniques}.
-
-Assuming that all required expectations are finite and that Reynolds averaging
-commutes with differentiation whenever necessary, the model of
-\autoref{sec:goveqn} gives rise to the unsteady Favre-averaged
-Navier--Stokes (FANS) equations:
-\begin{subequations}
-\label{eq:fans_all}
-\begin{align}
-    \frac{\partial\!}{\partial\!t}\bar{\rho}
-=
- &- \nabla\cdot\bar{\rho}\tilde{u}
-  + \overline{\Ssd_{\rho{}}}
-\label{eq:fans_mass}
-\\
-    \frac{\partial\!}{\partial\!t}\bar{\rho}\tilde{u}
-=
- &- \nabla\cdot(\tilde{u}\otimes\bar{\rho}\tilde{u})
-  - \frac{1}{\Mach^2}\nabla{}\bar{p}
-  + \nabla\cdot\left(
-        \frac{\bar{\tau}}{\Reynolds}
-      - \bar{\rho} \widetilde{u''\otimes{}u''}
-    \right)
-  + \bar{f}
-  + \overline{\Ssd_{\rho{} u}}
-\label{eq:fans_mom}
-\\
-  \frac{\partial\!}{\partial\!t} \bar{\rho}\tilde{E}
-=
- &- \nabla\cdot\bar{\rho}\tilde{H}\tilde{u}
-  + \Mach^{2} \nabla\cdot\left(
-        \left(
-            \frac{\bar{\tau}}{\Reynolds}
-          - \bar{\rho} \widetilde{u''\otimes{}u''}
-        \right) \tilde{u}
-      - \frac{1}{2}\bar{\rho}\widetilde{{u''}^{2}u''}
-      + \frac{\overline{\tau{}u''}}{\Reynolds}
-    \right)
-\notag\\
- &+ \frac{1}{\gamma-1} \nabla\cdot\left(
-      \frac{%
-         \bar{\mu} \widetilde{\nabla{}T}
-       + \bar{\rho} \widetilde{\nu'' \left(\nabla{}T\right)''}
-      }{\Reynolds\Prandtl}
-      - \bar{\rho} \widetilde{T''u''}
-    \right)
-\notag\\
- &+ \Mach^{2} \left(
-        \bar{f}\cdot\tilde{u}
-      + \overline{f\cdot{}u''}
-    \right)
-  + \bar{q}_b
-  + \overline{\Ssd_{\rho{} E}}
-\label{eq:fans_energy}
-\\
-    \frac{\partial\!}{\partial\!t}\bar{\rho}k
-=
- &- \nabla\cdot\bar{\rho}k\tilde{u}
-  - \bar{\rho} \widetilde{u''\otimes{}u''} : \nabla\tilde{u}
-  - \frac{\bar{\rho} \epsilon}{\Reynolds}
-  + \nabla\cdot\left(
-        -\frac{1}{2}\bar{\rho} \widetilde{{u''}^{2}u''}
-      + \frac{\overline{\tau{}u''}}{\Reynolds}
-    \right)
-\notag\\
- &+ \frac{1}{\Mach^2} \left(
-        \bar{p}\nabla\cdot\overline{u''}
-      + \overline{p' \nabla\cdot{}u''}
-      - \frac{1}{\gamma} \nabla\cdot\bar{\rho} \widetilde{T''u''}
-    \right)
-  + \overline{f\cdot{}u''}
-  + \overline{\Ssd_{\rho{} u}\cdot{}u''}.
-\label{eq:fans_tke}
-\end{align}
-The equations are augmented by the following nondimensional relationships:
-\begin{align}
-  \bar{p} &= \frac{\bar{\rho} \tilde{T}}{\gamma}
-&
-   \bar{\rho}\tilde{\nu} =
-   \bar{\mu}
-&= \overline{T^\beta}
-&
-  k &= \frac{1}{2}\widetilde{{u''}^2}
-&
-  \bar{\rho} \epsilon &= \overline{\tau : \nabla{}u''}
-\end{align}
-\begin{align}
-  \tilde{E}
-&=
-  \frac{\tilde{T}}{\gamma\left(\gamma-1\right)}
-  + \Mach^2 \left( \frac{1}{2}\tilde{u}^2 + k
-  \right)
-&
-  \tilde{H}
-&=
-  \tilde{E} + \frac{\tilde{T}}{\gamma}
-&
-  \tilde{h} &= \frac{\tilde{T}}{\gamma-1}
-\end{align}
-\begin{align}
-   \tilde{S}
-&=
-     \frac{1}{2}\left(
-       \widetilde{\nabla{}u} + \trans{\widetilde{\nabla{}u}}
-     \right)
-   - \frac{1}{3}\left(\widetilde{\nabla\cdot{}u}\right) I
-\end{align}
-\begin{align}
-   \bar{\tau}
-&=  2 \bar{\mu}\tilde{S}
-  + 2 \bar{\rho} \widetilde{\nu''S''}
-  + \alpha \bar{\mu} \widetilde{\nabla\cdot{}u} I
-  + \alpha \bar{\rho} \widetilde{\nu''\left(\nabla\cdot{}u\right)''} I.
-\end{align}
-\end{subequations}
-Beyond references~\eqref{eq:basic_references}, this nondimensionalization
-additionally selects:
-\begin{align}
-  k_0 &= u_{0}^2
-&
-  \epsilon_0 &= \frac{u_{0}^2}{t_0}.
-\end{align}
-
-Several correlations affect the evolution
-of mean quantities: the Reynolds stress,
-$-\bar{\rho}\widetilde{u''\otimes{}u''}$; the Reynolds heat flux, $\bar{\rho}
-\widetilde{h''u''} = \bar{\rho} \widetilde{T''u''}/\left(\gamma - 1\right)$;
-turbulent production, $- \bar{\rho} \widetilde{u''\otimes{}u''} :
-\nabla\tilde{u}$; turbulent dissipation, $\bar{\rho} \epsilon/\Reynolds$; turbulent
-transport, $-\frac{1}{2}\bar{\rho}\widetilde{{u''}^{2}u''}$; turbulent work,
-$\overline{\tau{}u''}/\Reynolds$; and the two forcing-velocity correlations,
-$\overline{f\cdot{}u''}$ and $\overline{\Ssd_{\rho{} u}\cdot{}u''}$.  The
-Reynolds stress and heat flux augment the viscous stress and heat flux,
-respectively.  The production term generates the turbulent kinetic energy
-density~$k$ from the interaction of fluctuations with mean gradients while the
-dissipation term destroys $k$.  The turbulent transport and work terms represent
-transport of the $k$ and viscous stress work due to turbulent velocity
-fluctuations, respectively.  The commonly encountered pressure--velocity
-correlation, $\overline{p'u''}$, does not appear in the $k$~equation because an
-exact ideal gas relationship for the turbulent mass flux discussed by
-\citet[p.~216]{Lele1994Compressibility},
-\begin{align}
-    \label{eq:lelecompresibility}
-    \overline{u''} &= \frac{\widetilde{T''u''}}{\tilde{T}}
-                    - \frac{\overline{p'u''}}{\bar{p}},
-\end{align}
-has been used to eliminate it.
-
-The FANS equations may be expressed equivalently using only Reynolds averaging
-and therefore are often called the compressible Reynolds-averaged Navier--Stokes
-(RANS) equations.  Notice that no new constitutive assumptions have been
-employed to produce this FANS formulation--- caveat integrability and smoothness
-requirements they are as exact a description of flow physics as the governing
-Navier--Stokes equations.  Several common simplifications, none of which has
-been made above, along with the correlations they implicitly neglect are
-documented in Appendix~\ref{sec:derivation_FANS}.
-
-The FANS equations are ``unclosed'' because knowing $\bar{\rho}$, $\tilde{u}$,
-$\tilde{E}$, and $k$ does not permit advancing that state in time.  Advancing a
-solution requires:
-\begin{subequations}
-\begin{align*}
-&\bar{\rho}
-&
-&\tilde{u}
-&
-&\tilde{E}
-&
-&\bar{\mu}
-&
-&\bar{f}
-&
-&\bar{q}_b
-&
-&k
-&
-&\epsilon
-&
-&\overline{u''}
-&
-&\symmetricpart{\widetilde{\nabla{}u}}
-\end{align*}
-\begin{align*}
-&\overline{f\cdot{}u''}
-&
-&\overline{\tau{}u''}
-&
-&\overline{p'\nabla\cdot{}u''}
-&
-&-\widetilde{u''\otimes{}u''}
-&
-&-\frac{1}{2}\widetilde{{u''}^{2}u''}
-\end{align*}
-\begin{align*}
-&\widetilde{T''u''}
-&
-&\widetilde{\nu''S''}
-&
-&\widetilde{\nu''\left(\nabla\cdot{}u\right)''}
-&
-&\widetilde{\nu''\left(\nabla{}T\right)''}
-\end{align*}
-\begin{align*}
-&\overline{\Ssd_{\rho{}}}
-&
-&\overline{\Ssd_{\rho{} u}}
-&
-&\overline{\Ssd_{\rho{} E}}
-&
-&\overline{\Ssd_{\rho{} u}\cdot{}u''}.
-\end{align*}
-\end{subequations}
-In many circumstances, the mean state is known \emph{a priori} to be independent
-of time and of a lower spatial dimensionality than the instantaneous state.
-
-Experimentally obtained estimates of the reduced set of these quantities
-required to ``close'' a particular problem are referred to as
-``statistics'' in the turbulence community.  For example, channel flows are
-characterized by statistics varying only in the wall-normal direction.
-Spatially evolving boundary layers possess statistics that vary in both the
-streamwise and wall-normal direction.  Homogenization, as summarized in the
-following section, trades the boundary layer's streamwise statistical evolution
-for a dependence on a collection of auxiliary closure assumptions and modeling
-parameters.
-
-
-\section[Spatiotemporal Homogenization Permitting an Inviscid Base Flow]
-        {Spatiotemporal Homogenization\\Permitting an Inviscid Base Flow}
-\label{sec:imposing_fpg}
-
-\citet{Topalian2014Spatiotemporal} recently postulated a spatiotemporal
-homogenization formulation for simulating the fast evolution of a homogenized
-flow defect relative to some prescribed, spatially developing inviscid base
-flow.
+% should this all be math modeling?
 %
-This section states the forcing terms in sufficient detail to reproduce
-the simulation results in the present work.  The construction
-of this spatiotemporal model appears in \autoref{sec:slowgrowthmodels} for
-completeness.
 
-The nondimensional, conserved spatiotemporal forcing entering
-into~\eqref{eq:nondim_model} is
-\begin{subequations}
-\label{eq:spatiotemporal_cons_forcing}
+The aim of the proposed work is to simulate synthetic
+dust devils in the field. This requires a model of the ambient
+conditions for a representative case, such as Arizona, where
+experimental data is available from tests that have been
+performed. Furthermore, for this to be more generally useful in the
+prediction of flows in a variety of conditions, we need a model generally
+applicable to any flow near the surface of the earth.  
+
+This section details an analysis of surface fluid mechanics, and
+develops a mathematical model for turbulence in a thermally stratified
+medium. We seek to emulate the operation of the apparatus during the
+day, when dust devils are observed to form readily. 
+At these times, the atmospheric surface layer has the following
+character. Incident radiation from the Sun does not significantly
+interact with the air, which is nearly transparent. Instead, this
+radiation is absorbed by the ground, which causes its temperature to
+rise. This results in a thermal gradient between the hot ground and the
+cooler air. The warm ground conducts heat to the air, causing expansion
+and lowering the density of the air. This reduced density air near the
+surface is driven upwards by the force of buoyancy.  
+
+For sufficiently large temperature gradients, the hot surface layer is
+unstable, and as the warm air is driven upwards the flow will transition
+to turbulence. For the typical use case we consider, namely Arizona in
+summer, the temperature difference can be in excess of 30 Kelvin. 
+Rayleigh numbers associated with temperature gradients of this magnitude
+are between $10^{9} - 10^{11}$ and therefore meet the criterion
+% ref thermo book here?
+for transition to a turbulent regime. The flow is that of an unstably
+stratified fluid.  
+
+This section begins by describing the governing equations of the system
+of interest. It then proceeds to the development of a viscosity model
+used to resolve the large scale features of the solution. Next, models
+used to represent the vanes and turbine, as well as the separation of
+fluid off of these modeled surfaces, are introduced.  Finally, the
+models for the computational domain extent and the boundary conditions
+are discussed. 
+
+%Note that a complete numerical specification of all the model
+%parameters introduced in this section are provided in a table in
+%appendix \ref{app:model_param}.
+
+\subsection{Equations of Fluid Motion}
+\label{sub_sec:ns_en}
+%
+% do I need to justify this more? These are pretty critical, after all
+%
+
+The equations describing fluid flow with natural convection are,
 \begin{align}
-    \Ssd_{\rho}     &= \Ssd_{\rho,xt},
-&   \Ssd_{\rho u_i} &= \rho \Ssd_{u_i,xt} + u_i \Ssd_{\rho,xt},
-&   \Ssd_{\rho E}   &= \rho \Ssd_{E,xt}   + E   \Ssd_{\rho,xt}
-\end{align}
-where, fixing a temporal growth rate $\operatorname{gr}_{t_0}\!\left(
-\Delta \right)$, the primitive constituents are:
-\label{eq:spatiotemporal_prim_forcing}
-\begin{align}
-    \Ssd_{\rho,xt} &= \tilde{u}\left( \rho \right)_{x_0}
-                    + \rho \left( \tilde{u} \right)_{x_0}
-\\
-    \Ssd_{u_i,xt}  &= \tilde{u} \left( \tilde{u}_i \right)_{x_0}
-                    + \frac{\delta_{ix} \left(\bar{p}\right)_{x_0}}
-                           {\Mach^2 \bar{\rho}}
-                    + u_i^{\prime\prime}\left[
-                        - \operatorname{gr}_{t_0}\!\left(A_u^A\right)
-                        + \frac{y \operatorname{gr}_{t_0}\!\left(\Delta\right)}
-                               {\sqrt{\widetilde{u_k^{\prime\prime}u_k^{\prime\prime}}}}
-                          \frac{\partial\!\sqrt{\widetilde{u_k^{\prime\prime}u_k^{\prime\prime}}}}
-                               {\partial\!y}
-                      \right]
-\\
-    \Ssd_{E  ,xt}  &= \tilde{u} \left( \tilde{E}   \right)_{x_0}
-                    + \frac{\bar  {p}}{\bar{\rho}} \left( \tilde{u} \right)_{x_0}
-                    + \frac{\tilde{u}}{\bar{\rho}} \left( \bar  {p} \right)_{x_0}
-                    + E^{\prime\prime}\left[
-                        - \operatorname{gr}_{t_0}\!\left(A_E^A\right)
-                        + \frac{y \operatorname{gr}_{t_0}\!\left(\Delta\right)}
-                               {\sqrt{\widetilde{E^{\prime\prime}E^{\prime\prime}}}}
-                          \frac{\partial\!\sqrt{\widetilde{E^{\prime\prime}E^{\prime\prime}}}}
-                               {\partial\!y}
-                      \right].
-\end{align}
-\end{subequations}
-These terms are considerably more complex than their temporal
-predecessors~\eqref{eq:temporalhomogenization}.
-Subscripts $t_0$ and $x_0$ indicate forcing arising from temporal or spatial
-homogenization, respectively.  The former terms are gathered inside brackets
-in \eqref{eq:spatiotemporal_prim_forcing}.  \citeauthor{Topalian2011Slow}
-modeled the latter terms as
-\begin{subequations}
-\label{eq:spatiotemporal_prim_model}
-\begin{align}
-\left(\rho\right)_{x_0} &=
-    \frac{\rho}{\bar{\rho}} \left(
-        - \frac{\partial\!{\rho}_I}{\partial\!x_0}
-        - \bar{\rho}_D \operatorname{gr}_{x_0}\!\left({\bar{\rho}_D^A}\right)
-        + y \operatorname{gr}_{x_0}\!\left(\Delta\right)
-          \frac{\partial\!\bar{\rho}_D}{\partial\!y}
-    \right)
-\\
-\left(\tilde{u}_i\right)_{x_0} &=
-    - \frac{\partial\!{u}_{i,I}}{\partial\!x_0}
-    - \tilde{u}_{i,D} \operatorname{gr}_{x_0}\!\left(\tilde{u}_{i,D}^A\right)
-    + y \operatorname{gr}_{x_0}\!\left(\Delta\right)
-      \frac{\partial\!\tilde{u}_{i,D}}{\partial\!y}
-\\
-\label{eq:sp_barp_model}
-\left(\bar{p}\right)_{x_0} &=
-    - \frac{\partial\!{p}_I}{\partial\!x_0}
-    - \bar{p}_D \operatorname{gr}_{x_0}\!\left(\bar{p}_{D}^A\right)
-    + y \operatorname{gr}_{x_0}\!\left(\Delta\right)
-      \frac{\partial\!\bar{p}_D}{\partial\!y}
-\\
-\left(\tilde{E}\right)_{x_0} &=
-    - \frac{\partial\!{E}_I}{\partial\!x_0}
-    - \tilde{E}_D \operatorname{gr}_{x_0}\!\left(\tilde{E}_{D}^A\right)
-    + y \operatorname{gr}_{x_0}\!\left(\Delta\right)
-      \frac{\partial\!\tilde{E}_D}{\partial\!y}
-\end{align}
-\end{subequations}
-which must be computed against a base flow satisfying the steady Euler
-equations.  That is, in conjunction with the instantaneous Favre-averaged state,
-pointwise inviscid data
+  \frac{\partial u}{\partial t} + u \cdot \nabla u =& \,
+  -\frac{1}{\rho}\nabla P + \nu \nabla^2 u - g \frac{T'}{T_0}\\
+  \nabla \cdot u =& \, 0 \\
+  \rho c_p \frac{\partial T}{\partial t} + u \cdot \nabla T =& \, \nabla
+ \cdot ( k \nabla T)
+\end{align} 
+under the assumption that the temperature variation is small in
+comparison to the mean temperature of the region. These are the
+incompressible Navier-Stokes equations with Boussinesq, a representation
+of buoyancy coupled with the heat equation.  
+%
+% in full document be sure to mention that neglecting coriolis is legit
+% below 50ms
+%
+%
+As discussed above, we anticipate that the flow will be
+turbulent. Turbulence significantly alters the character of the flow,
+and necessitates either resolving the resulting small scales or
+providing a model that emulates their impact. In this case, a
+Reynolds Averaged Navier-Stokes (RANS) formulation is used, where the 
+turbulent viscosity and thermal conductivities are permitted to vary in
+space, and the flow is decomposed into constant laminar and varying
+turbulent and vane components,  
+
+\begin{eqnarray*}
+ \nu =& \nu_{l} + \nu_{T}(z) + \nu_{V}(r,z) \\
+ K =& K_{l} + K_{T}(z) + K_{V}(r,z).
+\end{eqnarray*}
+
+This is an effective eddy viscosity model, and the subsequent two
+sections will elaborate on the spatial dependence and character of
+$\nu_T$, $K_T$, $\nu_C$ and $K_C$. The laminar, base diffusivities 
+are $\nu_l$ and $K_l$, which do not vary in space. 
+
+\subsection{Viscosity Model}
+
+We use the well-known similarity model of Monin and
+Obukhov\cite{monin2007statistical,monin1954basic} as a guide to the
+specification of an eddy viscosity model to describe the vertical mixing
+in the atmosphere. This formulation is an extension of the mixing-length
+model of Prandtl, where the concepts of gradient diffusion and mixing
+length were generalized to thermally stratified flow.   
+
+%
+% justify prandtl assumption here
+%
+
+Monin and Obukhov argued that under statistically stationary, horizontally
+homogeneous conditions, the dynamics of any mean turbulent quantity
+($\bar f$) in a thermally stratified medium depend only on,  
+
 \begin{equation}
-\label{eq:spatiotemporal_cons_baseflow}
-\begin{alignedat}{5}
-    &\rho_I\!\left(y\right)                                &\qquad &\rho                                u_I\!\left(y\right)  &\qquad  &\rho                                v_I\!\left(y\right)  &\qquad  &\rho                                E_I\!\left(y\right)  &\qquad  &p_I\!\left(y\right)                               \\
-    \frac{\partial\!}{\partial\!y}&\rho_I\!\left(y\right)  &\qquad \frac{\partial\!}{\partial\!y}&\rho  u_I\!\left(y\right)  &\qquad  \frac{\partial\!}{\partial\!y}&\rho  v_I\!\left(y\right)  &\qquad  \frac{\partial\!}{\partial\!y}&\rho  E_I\!\left(y\right)  &\qquad  \frac{\partial\!}{\partial\!y}&p_I\!\left(y\right) \\
-    \frac{\partial\!}{\partial\!x}&\rho_I\!\left(y\right)  &\qquad \frac{\partial\!}{\partial\!x}&\rho  u_I\!\left(y\right)  &\qquad  \frac{\partial\!}{\partial\!x}&\rho  v_I\!\left(y\right)  &\qquad  \frac{\partial\!}{\partial\!x}&\rho  E_I\!\left(y\right)  &\qquad  \frac{\partial\!}{\partial\!x}&p_I\!\left(y\right)
-\end{alignedat}
+\bar f = f(z,\frac{g}{T_0},\rho_0,\nu_l,K_l,u^*,q).
 \end{equation}
-must be specified to define the mean primitive viscous flow defects
-\begin{align}
-    \bar{\rho}_D &= \bar{\rho} - \rho_I
-&   \tilde{u}_{i,D} &= \tilde{u}_i - u_{i,I}
-&   \tilde{E}_D &= \tilde{E} - E_I
-&   \bar{p}_D &= \bar{p} - p_I
-\end{align}
-entering into~\eqref{eq:spatiotemporal_prim_model}.  Nonzero streamwise
-derivatives in the inviscid base flow data, for example $p_I$ entering
-into~\eqref{eq:sp_barp_model}, are what permit the model to impose
-pressure-gradient-like conditions while retaining streamwise periodicity in the
-fast time solution.  A semi-analytical procedure to generate the base flow
-data~\eqref{eq:spatiotemporal_cons_baseflow} necessary for the present work
-is the subject of Appendix~\ref{sec:radialflow}.
-
-The two parameters
-\begin{align}
-    \operatorname{gr}_{t_0}\!\left(\Delta\right) &= \left.\left(
-        -\frac{\epsilon}{\Delta} \frac{\partial\!\Delta}{\partial\!t_s}
-    \right)\right|_{t_s = t_0}
-    &
-    \operatorname{gr}_{x_0}\!\left(\Delta\right) &= \left.\left(
-        -\frac{\epsilon}{\Delta} \frac{\partial\!\Delta}{\partial\!x_s}
-    \right)\right|_{x_s = x_0}
-\end{align}
-represent the growth rate of a characteristic length scale $\Delta$ at some
-fixed slow time $t_0$ or some fixed slow location $x_0$ for small homogenization
-parameter $\epsilon$.  In practice,
-$\operatorname{gr}_{t_0}\!\left(\Delta\right)$ is a constant supplied to target
-some desired boundary layer thickness with $\epsilon$ indirectly fixed.
-The inviscid base flow streamwise velocity controls the second parameter per
+Aside from near the surface, the laminar diffusivities $\nu_l$ 
+and $K_l$ will be  
+small compared to their turbulent counterparts, $\nu_T$ and $K_T$, and 
+are therefore negligible. 
+The remaining five parameters are: the distance from the ground, z; the
+buoyancy coefficient, $\frac{g}{T_0}$; the density of the fluid,
+$\rho_0$; a velocity scale, $u^*$ (in particular, the freestream
+velocity); and the heat flux to the ground, $q$. %\todo{is this right?}
+% Likewise, if we define $z-z_0$ as an ``effective roughness
+% height'' or displacement distance, we can reasonably neglect $z_0$ from these
+% considerations. While the roughness height can be large (for instance in
+% a cornfield, where the roughness height could reasonably be several
+% meters), for the present study the expectation is that this roughness
+% height will be on the order of centimeters\cite{oke1987boundary}, and
+% therefore negligible.  
+%
+% add refence to dynamical and physical meteorology 
+% 
+These quantities depend on four dimensions: length, time, temperature
+and mass. Dimensional analysis implies that this mean turbulent quantity
+($\bar f$) should then only be a function of a single dimensionless
+group\cite{munson2012fundamentals}. This is chosen to be,
 \begin{equation}
-    \operatorname{gr}_{x_0}\!\left(\Delta\right)
-    =
-    \frac{\operatorname{gr}_{t_0}\!\left(\Delta\right)}
-         {u_{I,w}}
+ \xi = -\frac{\kappa \frac{g}{T_0} \frac{q}{c_p \rho_0} z}{ {u^*}^3}.
 \end{equation}
-where the subscript $w$ denotes wall data taken from $y=0$.  The wall reference
-is chosen as no freestream limit exists for flows experiencing nonzero pressure
-gradients.
+where $\kappa$ is the (dimensionless) Von-Karman constant. 
+The physical meaning of this quantity bears some discussion.  
+The numerator, $\kappa \frac{g}{T_0} \frac{q}{c_p \rho_0} $, is
+proportional to the buoyant production of kinetic energy.  The
+denominator, $\frac{{u^*}^3}{z}$, is a shear production rate. 
 
-Expressions~\eqref{eq:spatiotemporal_prim_model} include constants governing the
-growth rates for the amplitude of the mean flow defect, denoted
-$\operatorname{gr}_{x_0}\!\left(q_D^A\right)$ for
-$q\in\left\{\bar{\rho},\tilde{u},\tilde{v},\tilde{w},\tilde{E},\bar{p}\right\}$.
-In scenarios with an isothermal wall, known boundary state in conjunction with
-the inviscid base flow~\eqref{eq:spatiotemporal_cons_baseflow} informs these
-quantities.  By definition,
-\begin{align}
-    \label{eq:gramp_mean}
-    \operatorname{gr}_{x_0}\!\left(q_D^A\right)
-    &=
-    \left.
-    \frac{1}{q_D^A}
-    \frac{\partial\!q_D^A}{\partial\!x_s}
-    \right|_{x_s=x_0}
-    =
-    \left.
-    \frac{1}{q_{w} - q_{I,w}}
-    \left(
-          \frac{\partial\!q_{w}  }{\partial\!x_s}
-        - \frac{\partial\!q_{I,w}}{\partial\!x_s}
-    \right)
-    \right|_{x_s=x_0}.
-\end{align}
+The non-dimensional group $\xi$ is typically cast into the following 
+form, 
+\begin{equation}
+ \xi = \frac{z}{L_{M-O}}
+\end{equation}
+where $L_{M-O}$ is the famous, ``Monin-Obukhov'' length,
+\begin{equation}
+ L_{M-O} = -\frac{{u^*}^3}{\kappa \frac{g}{T_0} \frac{q}{c_p \rho_0}}. 
+  \label{eqn_mo_length}
+\end{equation}
+
+This length can be interpreted as the vertical location
+where the production of buoyantly generated kinetic energy is
+approximately equal to the energy generated by wind shear. When the
+magnitude of $L_{M-O}$ is large, the flow is dominated by shear effects,
+and the impact of buoyancy is small. Conversely, a small magnitude of
+$L_{M-O}$ implies that buoyant effects largely dominate the kinetic
+energy production. Notice also that the sign convention in Equation
+\ref{eqn_mo_length} is such that for the systems we consider (q>0, heat
+flux from the surface to the air), $L_{M-O}$ will always be
+negative. This is as expected, as the convection from the high
+temperature surface to cooler air is unstable. 
+
+%The mean quantity $\bar f$ has a
+%functional representation to the effect,
+In this case, appropriately normalized mean turbulent quantities should
+be functions of only the non-dimensional group 
+\begin{equation}
+ \frac{\bar f}{f_{MO}} = \phi(\frac{z}{L_{M-O}})
+\end{equation}
+with $f_{MO}$ a normalizing constant with units of $\bar f$, and $\phi$
+is a function only of $\xi$. We are interested in the case where
+$\xi<0$, which corresponds to heat flux from the ground into the
+air. For instance, the mean velocity field would have scaling,
+$\frac{u^*}{\kappa}$ and the temperature fields would be scaled as $T^*
+= \frac{1}{\kappa u^*} \frac{q}{c_p \rho_0}$. In this way, the mean
+velocity and temperature fields would have the form,  
+\begin{eqnarray}
+\bar u(z) = \frac{u^*}{\kappa} \phi_u(\frac{z}{L_{M-O}}) \\
+\bar T(z) = T^* \phi_T(\frac{z}{L_{M-O}}).
+\end{eqnarray}
+As a result, the vertical gradients of the velocity and temperature are
+necessarily, 
+\begin{eqnarray}
+\frac{\partial \bar u(z)}{\partial z} = \frac{u^*}{\kappa L_{M-O}}
+ \varphi_u(\frac{z}{L_{M-O}}) \label{eq:uz} \\ 
+\frac{\partial \bar T(z)}{\partial z} = \frac{T^*}{L_{M-O}}
+ \varphi_T(\frac{z}{L_{M-O}}) \label{eq:tz}.
+\end{eqnarray}
+Notice that $\phi$ and $\varphi$ are different universal functions. Eddy
+viscosity is defined as, $u'v' = \nu_T \frac{\partial
+u}{\partial z}$\cite{durbin2001statistical}, in which case, using
+equation \ref{eq:uz}, it must scale as
+\begin{equation}
+ \nu_T = \frac{{u^*}^2}{\frac{\partial \bar u}{\partial z}} = \frac{u^*
+  \kappa L_{M-O}}{\varphi_u(\xi)}.
+\end{equation}
+While eddy thermal diffusivity (defined as, $q = c_p \rho_0 K_T
+\frac{\partial T}{\partial z}$) is 
+\begin{equation}
+ K_T = \frac{q/c_p \rho_0}{\frac{\partial \bar T}{\partial z}} = \frac{u^*
+  \kappa L_{M-O}}{\varphi_T(\xi)}.
+\label{eqn:eddy_kt}
+\end{equation}
+Note the difference between $\varphi_u$ and
+$\varphi_T$, which for turbulent Prandtl numbers near unity (e.g. $Pr_T
+\approx 1$) the functions will be identical. The asymptotic behavior of
+the $\varphi_T$ and $\varphi_u$ at large and small values of $\xi$
+provides guidance to the more general character of the functions. 
+Our interest lies in the case where $L_{M-O}<0$, which corresponds to heat flux
+from the ground into the air.  
 %
-For convenience, $\left.\left(\partial\!q / \partial\!x_s\right)\right|_{x_s = x_0}$ is
-henceforth abbreviated as $\partial\!q / \partial\!x_s$.
+
+
+The case where $\xi \to -\infty $ implies $\frac{z}{L_{M-O}} \to
+-\infty $ and $z>>L_{M-O}$. This is most readily interpreted as the instance
+where $u^* \to 0$, e.g. the buoyancy-dominated case with no wind
+(free-convection). For this case, the function $\varphi_T$ must have no
+dependence on $u^*$, and will approach a constant. Scaling
+analysis implies that the overall function will not depend on $u^*$ only
+when the function $\varphi$ scales to the $-\frac{4}{3}$ power. The
+function must then be
+
+\begin{equation}
+ K_T = \frac{1}{C_T} \left( \frac{q}{c_p \rho_0} \frac{g}{T_0}
+		     \right)^\frac{1}{3} z^{\frac{4}{3}}  \text{ 
+for } z \gg L_{M-O}. 
+\end{equation}
+
+So long as the Prandtl number remains constant in space, then
+% todo: provide discussion as to why this is not an unreasonable expectation
+identical arguments regarding the asymptotic behaviour at large $\xi$ provide
+the analogous result for the eddy viscosity's variation with respect to
+distance from the ground,  
+\begin{equation}
+ \nu_T = \frac{1}{C_{\nu_T}} \left( \frac{q}{c_p \rho_0} \frac{g}{T_0}
+			     \right)^\frac{1}{3} z^{\frac{4}{3}}  \text{ 
+for } z \gg L_{M-O}. 
+\end{equation}
+
+These functions have been found to be broadly applicable and
+accurate\cite{Foken2006}, and are easily implemented in software.
+
+\subsection{Eddy Viscosity in the Device}
+
+%However, this is also a more
+%difficult regime to model.\todo{poor justification} 
+The validation process identified a refinement to the virtual vane
+formulation that results in a better representation of the vane
+effects in a broader range of flows. The thermal and momentum
+diffusivities are even larger in the device where the flow across the
+vanes produces shear and generates turbulence. The model now include an
+enhanced turbulent diffusivity in the vortical plume region to account
+for the effects of vortex shedding from the trailing edge of the vanes,
+which is not represented in the virtual vane representation (discussed in
+\ref{subsec:vane}). 
+
+% To successfully accomplish this, source terms
+% for production of diffusivity were formulated to properly
+% account for the generation of turbulence in the region of the
+% vanes. This diffusivity would then convect and diffuse through space. 
+% To avoid modeling a temporal and three-dimensionally spatially
+% varying field of diffusivities, we have instead calibrated the field
+% based on data provided by our partners at Georgia Tech. 
+
+%This calibration
+%is detailed in Section \ref{sec:validation}. 
+The eddy-viscosity in the region of the vanes and interior is set based
+on scaling relations for a turbulent self-similar circular jet, as
+described in Pope\cite{pope2000turbulent},
+ 
+\begin{equation}
+  \nu_C = U_0 y_{1/2} \bar \nu_C.
+  %\nu_C(r) = U_0(r) y_{1/2}(r) \bar \nu_C
+\end{equation}
+
+In this equation, $U_0$ is the peak velocity, and $y_{1/2}$ the jet
+half-width (taken to be the dust devil half-width).  
+% In words, we are scaling the
+% calibrated viscosity by the velocity and length scale of the
+% apparatus. $\bar \nu_C $ is input, measured from the experimental
+% laboratory.  The diffusivity here is essentially a top hat filter, which
+% radial values interior to the vanes the nominal calibrated value, and
+% those outside the vanes zero, e.g. $\nu_C(r>r_{\text{vane}})=0$. 
+The dimensionless constant $\bar \nu_C $ is calibrated based on
+experimental data, and is set to zero outside the device. 
+The thermal diffusivity inside the device, $K_C$, is then fixed with the 
+assumption that the Prandtl number is unity.  
+
+%The thermal and momentum diffusivities are expected to be even larger in the
+%device where the flow across the vanes produces shear and generates
+%turbulence. Our model for the diffusivities inside the vanes should
+%therefore be higher than the ambient regions outside the vanes. 
+
+
+
+\subsection{Vane and Turbine Representation}
+\label{subsec:vane}
+To rapidly prototype general system configurations, the
+computations must be able to explore a large space of possible
+geometries and settings. This presents a significant meshing and 
+computational challenge if the detailed flow around the vanes is to be
+computed. In the region near the vanes, where a no-slip boundary
+condition is imposed, the flow will necessarily form a thin momentum
+boundary layer. Resolving this boundary layer requires high resolutions
+immediately adjacent to the walls. Changing the vane location requires
+that a new mesh be generated.
+This is a significant
+challenge, as the development of a new mesh often requires significant
+human effort and time. Furthermore, the process is error-prone, 
+and would require that each simulation using a new mesh undergo 
+detailed solution verification. 
+
+
+% Your text on the virtual vanes does not provide enough information to
+% know exactly what we did. It is needlessly vague, and does not
+% adequately connect to the real vane geometry. I propose the following
+% more direct and more precise text. Further, the penalty nomenclature
+% is inappropriate.
+
+Instead, we have developed a modeling formulation that does not require
+explicitly meshing the turning vanes, or any surface. These so-called
+``virtual vanes'' are implemented as a body force that 
+is applied in the annular region that contains the vanes. Vane
+geometry is specified by the angle $\phi$ a vane makes with a radial
+line as a function of the radial coordinate $r$. A unit normal to vane
+surfaces ${\bf n}$ is defined as
 %
-From~\eqref{eq:nondim_constitutive}, uniform wall temperature $T_w$, and the
-isobaric assumption $\partial\!\bar{p} / \partial\!_y \approx 0$,
-\begin{align}
-    \bar{\rho}_w
-    &= \frac{\gamma \bar{p}_{w}}{T_w}
-    \approx \frac{\gamma p_{I,w}}{T_w}.
-\end{align}
-Taking the slow spatial derivative under these assumptions,
-\begin{align}
-    \frac{\partial\!\bar{\rho}_w }{\partial\!x_s}
-    &\approx \frac{\gamma}{\bar{T}_w} \frac{\partial\!p_{I,w}}{\partial\!x_s}.
-\end{align}
-Therefore,
-\begin{align}
-    \label{eq:gramp_mean_rho}
-    \operatorname{gr}_{x_0}\!\left(\bar{\rho}_{D}\right)
-    &\approx
-    \frac{1}{\frac{\gamma p_{I,w}}{T_w} - {\rho}_{I,w}}
-    \left(
-          \frac{\gamma}{T_w} \frac{\partial\!{p   }_{I,w} }{\partial\!x_s}
-        -                    \frac{\partial\!{\rho}_{I,w} }{\partial\!x_s}
-    \right)
-    =
-    \frac{%
-          T_w    \frac{\partial\!\rho_{I,w}}{\partial\!x_s}
-        - \gamma \frac{\partial\!   p_{I,w}}{\partial\!x_s}
-    }{%
-          T_w \rho_{I,w} - \gamma p_{I,w}
-      }.
-\end{align}
+\begin{equation}
+ {\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
+  \left(\phi(r) \right) \hat{{\bf \theta}} 
+\end{equation}
 %
-Consider the wall-normal momentum growth rate at a no-slip wall,
-\begin{align}
-    \operatorname{gr}_{x_0}\!\left(\overline{\rho v}_D^A\right)
-    &=
-    \frac{\frac{\partial\!}{\partial\!x_s} {\rho v}_{I,w}}{{\rho v}_{I,w}}.
-\end{align}
-Any nonzero wall blowing velocity $v_w$ has been neglected because
-mimicking~\eqref{eq:gramp_mean_rho},
-\begin{align}
-    \label{eq:gramp_mean_rhov_alt}
-    \underset{\text{rejected}}
-             {\operatorname{gr}_{x_0}\!\left(\overline{\rho v}_D^A\right)}
-    &\approx
-    \frac{1}{{\rho v}_{I,w} - \frac{\gamma p_{I,w}}{T_w} v_w}
-    \left(
-          \frac{\partial\!}{\partial\!x_s}         {\rho v}_{I,w}
-        - \frac{\gamma v_w}{T_w} \frac{\partial\!}{\partial\!x_s} {p}_{I,w}
-    \right)
-\\\notag
-    &=
-    \frac{%
-          T_w \frac{\partial\!}{\partial\!x_s} {\rho v}_{I,w}
-        - \gamma v_w \frac{\partial\!}{\partial\!x_s} {p     }_{I,w}
-    }{%
-        T_w {\rho v}_{I,w} - \gamma v_w p_{I,w}
-    }
-    ,
-\end{align}
-behaves oddly on two accounts.  First, from it one
-recovers~\eqref{eq:gramp_mean_rho} whenever the base flow is designed with
-transpiration as then both $v_{I,w} = v_w \neq 0$ and $\frac{\partial\!v_{I,w}}{\partial\!
-x_s} = 0$ hold.  Second, whenever $v_{I,w} = 0$ its limiting $v_w \to 0$
-behavior is broken in the sense that one recovers
-$\left(\frac{\partial\!{p}_{I,w}}{\partial\!x_s}\right) / p_{I,w}$ for any $v_w
-\neq 0$ but not when $v_w = 0$.
+where $\hat{{\bf r}}$ and $\hat{{\bf \theta}}$ are unit
+vectors in the radial and azimuthal directions, respectively.
+With this vane-normal vector field specified, a body force ${\bf f_v}$
+is defined
+that will drive the velocity in the ${\bf n}$ direction toward zero,
+effectively turning the flow to be parallel to the vanes. The body
+force is defined:
+\begin{equation}
+ {\bf f}_v= -\frac{1}{\ell_v}|{\bf u}|({\bf u}\cdot{\bf n}){\bf n}
+ \label{eqn:body_force}
+\end{equation}
+with ${\bf u}$ the velocity and $\ell_v$ is a specified length
+scale. $\ell_v$ represents the distance over which the
+flow evolves under the influence of the body force before the
+velocity in the normal direction is reduced by a factor of $1/{\bf
+e}$. In other words, this is the length scale over which the
+normal component of the velocity decays exponentially.
+It is a modeling constant and is specified to be
+the same order as the separation distance between neighboring vanes in
+the physical vane configuration, since entry lengths in internal flows
+scale with the width of the channel.
+
+This virtual vane formulation is similar to the ``actuator disk'' model
+commonly used to represent the rotor of a wind turbine \cite{betz}. An actuator 
+disk model is under development and will be detailed in the dissertation.
+
+\subsection{Solid Surface Representation}
+\label{subsec:solid_surface}
+
+In addition to vanes, the SoV device includes impermeable surfaces
+such as the wind break (``cone'') on the top of the facility. As with
+the turning vanes, this is represented without explicitly meshing the
+surface nor imposing  a boundary condition at the surface. This allows
+rapid exploration of configurations  with different solid surfaces to
+control and manipulate the fluid flow. These solid surfaces are
+represented by a body force acting in a region surrounding the wall. 
+A body force normal to the surface is defined in this region so
+that it will drive the normal velocity to zero, resulting in the flow
+moving only parallel to the virtual surface. 
+The body force is defined as in Equation
+\ref{eqn:body_force}; however, the length scale $\ell_v$ is specified to
+be identical to the width of the surface being represented. This is
+typically the width of two or three grid cells. While the actual surface we are
+emulating is thinner than this, the numerical method has difficulty
+converging for surfaces smaller than the grid size.  
+
+Forcing models designed to mimic a surface
+are not unique to this project, and the current formulation is
+ closely related to (among others)
+``immersed boundary methods'' as used by various other
+researchers\cite{doi:10.1146/annurev.fluid.37.061903.175743}. 
+This approach is unique in its use of Babuska's penalty treatment of
+constraints\cite{1973fempen,ZAMM:ZAMM19880680925} to enforce the
+behavior at the boundary. This method was selected because it is easily
+imposed in the FEM context, and the method has been explored in detail
+in the literature. 
+%Typically, the enforcement occurs along a domain
+%boundary, but in this work it is used in the interior, 
+%and is not imposed as a mathematical constraint but rather as a modeling 
+%approach. 
+
+% We add a penalty term to the weak
+% form of the Navier-Stokes momentum equation described in the subsequent
+% section %\ref{eq:ns_weak} 
+% that has the form, 
+% \begin{equation}
+% P_\epsilon = \int_\Omega ({\bf f_v} \cdot v) \, dx
+% \end{equation}
+% where ${\bf f_v}$ is as described in equation \ref{eqn:body_force}. 
+%% As the system is formulated as a variational problem that seeks to
+%% minimize the test function $v$, any velocity that is not aligned with
+%% the vane normal will incur a penalty versus one that does. Note that unlike
+%% some penalty methods, this does not automatically satisfy
+%% continuity. Rather, the velocity field remains divergence free through a
+%% separately enforced constraint.  
+
+\subsection{Separation Model}
+
+In the presence of wind, it was found that there was a significant flow
+out through the vanes in the back of the device. This was obviously
+inconsistent with the findings of our colleagues in the field, who
+observed no outflows out of the back of the device. Moreover, this resulted
+in large inconsistencies between our predictions and the field results,
+almost certainly because of the kinetic and thermal energy that our vane
+representation was permitting to leave out the back of the device.  
+
+This exposed a weakness of the turning vane representation outlined
+previously. When the flow entered the virtual vane forcing region it was
+always turned to align with the vane angle, even when the forcing was in
+the opposite direction of the present velocity.
+This is in contrast to the physical situation, in which we
+expect the flow to continue along an averaged streamline separating from the 
+trailing edges of the vanes, instead of turning around it. 
+The averaged streamline will continue past the trailing edge of the vane
+due to the separation of the boundary layer off the edge surface. An
+image depicting these two cases in shown in Figure \ref{fig:sep_model}.  
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 6 cm]{figs/sep_model}
+    \caption{Schematic depicting the separation model that extends past
+   the trailing edge of the vanes. In the top case, the flow entering
+   the virtual vane region is forced to align with the vane angle despite
+   this resulting in a reversal of the flow direction. This is a
+   consequence of the forcing function acting on the fluid to ensure the
+   velocity vector aligns with the vane. 
+   The second case depicts the separation
+   model, where the flow under certain conditions is not forced and
+   continues to move tangent to the vanes due to 
+   the separation of the boundary layer off the trailing edge.} 
+    \label{fig:sep_model}
+  \end{center}
+\end{figure}
+
+Let $\bf n^v$ be the normal vector to the vanes,
+and $\bf n^r$ the normal vector pointing out of the vane
+region\footnote{\normalsize The superscripts ``v'' and ``r'' stand for
+vane and radial, respectively.}.  
+Then, $\bf t^v$ is the tangential vector to the vanes pointing out of
+the vane region and is defined as,
+
+%\begin{equation}
+% \bf t^v = \left( {\bf n^v_y},{\bf -n_x^v} \right) \text{sign}\left[
+%	    \left( {\bf n^v_y},{\bf -n_x^v} \right) \cdot {\bf n^r} \right].
+%\end{equation}
+\begin{equation}
+ \bf t^v = \left( {\bf n^{v^\perp}} \right) \text{sign}\left(
+	    {\bf n^{v^\perp}} \cdot {\bf n^r} \right).
+\end{equation}
+Here, ${\bf n^{v^\perp}}$ is the vector perpendicular to the normal
+vector of the vanes, which is simply, 
+\begin{equation*}
+ {\bf n^{v^\perp}} = \left[ \begin{array}{c}
+n_x\\
+n_y\\
+\end{array}\right]^{\perp} = 
+ \left[ \begin{array}{c}
+  -n_y\\
+  n_x\\
+	\end{array}\right].
+\end{equation*}
+
 %
-Consequently, the velocity growth rates also ignore blowing and are:
-\begin{align}
-    \operatorname{gr}_{x_0}\!\left(\tilde{u}_D^A\right)
-    &=
-    \frac{%
-        1
-    }{%
-        {u}_{I,w}
-    }
-    \frac{\partial\!{u}_{I,w}}{\partial\!x_s}
-    &
-    \operatorname{gr}_{x_0}\!\left(\tilde{v}_D^A\right)
-    &=
-    \frac{%
-        1
-    }{%
-        {v}_{I,w}
-    }
-    \frac{\partial\!{v}_{I,w} }{\partial\!x_s}
-    &
-    \operatorname{gr}_{x_0}\!\left(\tilde{w}_D^A\right)
-    &=
-    \frac{%
-        1
-    }{%
-        {w}_{I,w}
-    }
-    \frac{\partial\!{w}_{I,w}}{\partial\!x_s}.
-\end{align}
+% example of an algorithm
 %
-The specific energy mean defect growth rate is
-\begin{align}
-    \operatorname{gr}_{x_0}\!\left(\tilde{E}_D^A\right)
-    &=
-    \frac{%
-        \frac{\partial\!{E}_{I,w}}{\partial\!x_s}
-    }{%
-        {E}_{I,w} - E_w
-    }
-\end{align}
-where wall blowing is now neither problematic nor neglected
-so~\eqref{eq:nondim_constitutive} fixes
-\begin{align}
-    E_w &= \frac{T_w}{\gamma \left(\gamma - 1\right)}
-         + \frac{\Mach^2}{2} v_w^2.
-\end{align}
+\begin{center}
+ \begin{algorithm}
+  \caption{The crude separation model. This model identifies if the flow
+  is coming into or out of the vane region, and if the velocity vector
+  is in the same direction as the tangent line of the vanes. In the case
+  of the ``special forcing'' the flow is forced as if it was
+  impacting a solid surface. In the
+  algorithm below, $r_0$ is the max radius of vanes, $r_i$ the minimum
+  radius of vanes, and $\delta$ is the width of the separation region.}
+  \label{alg:sep}
+  \begin{algorithmic}[1]
+   \If{($r_0 > r > r_i$)} 
+   \If{$(r_0 - r) < \delta$ \textbf{or} $((r - r_i) < \delta)$}
+   \State $\overrightarrow{n^r} = \overrightarrow{r}/|r|$
+   \If{$(r - r_i) < \delta$} 
+   \State $\overrightarrow{n^r} = -\overrightarrow{n^r}$
+   \EndIf
+   \State  $\bf t^v = \left( {\bf n^{v^\perp}} \right) \text{sign}\left(
+	    {\bf n^{v^\perp}} \cdot {\bf n^r} \right)$
+   \If{$v \cdot t^v > 0$ \textbf{and} $v \cdot n^r < 0 $}
+   \State ${\bf n}({\bf x}) = \hat r$ \quad (Special Forcing)
+   \Else
+   \State  ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
+  \left(\phi(r) \right) \hat{{\bf \theta}} $
+  \quad (Normal Forcing)
+   \EndIf
+   \Else
+   \State ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
+  \left(\phi(r) \right) \hat{{\bf \theta}} $
+  \quad (Normal Forcing)
+   \EndIf
+   \EndIf
+  \end{algorithmic}
+ \end{algorithm}
+\end{center}
 %
-Finally, whenever growth rates are uninformed or ill-defined according to these
-arguments, they are taken to be zero.  Therefore,
+
+The forcing is modified when the velocity vector of the local flow, $\bf
+u$ is pointing in to the forcing region: ${\bf u} \cdot {\bf n^r} < 0$, and
+when the velocity vector is in the same direction as the tangent line to
+the vanes: ${\bf u} \cdot {\bf t^v} > 0 $. In these instances, the
+forcing acts as if there was a rigid surface past the vane edge, and
+gives the appearance of a special ``no-penetration'' condition for the
+velocity for these cases. The pseudo-code for this procedure is shown in
+Algorithm~\ref{alg:sep}.
+
+The addition of this simple separation model significantly reduced the
+flow that penetrated the back of the vanes, and produces results
+consistent with the observations provided by our experimental
+colleagues.  
+
+\subsection{Effect of Surface Roughness}
+
+%%
+%% this does not describe the phenomena being modeled or the precise
+%% model -- rewrite
+%%
+%%
+%% this does not say enough about the surface roughness
+%% motivate that and explain how it is used, than show your estimate 
+%% to argue it is small
+%%
+
+Surface roughness effects have been shown to play a role in the
+formation of dust devils and related atmospheric
+phenomena\cite{oke1987boundary}. For the flat and sandy regions we are
+simulating, the impact is expected to be a small velocity perturbation 
+in the vertical direction. This is modeled as a volumetric 
+forcing in a narrow region above the surface,
+\begin{equation}
+ F^{'''}_{z_0} = \frac{1}{2}\rho V_z^2/z_{0}, 
+\end{equation}
+where $z_{0}$ is the roughness height. We ensure that the energy
+introduced into the flow is a small fraction of total flow energy by comparing
+this with the energy flux through the top of the vanes. The total energy
+added is measured as,  
+\begin{equation}
+ E_{\text{injected}} = \int_0^{2\pi} \int_0^R \int_0^{z_0} F^{'''}_{z_0}
+  dz dr d\theta.  
+\end{equation}
+R is the outer diameter of the vanes. 
+The value of $E_{\text{injected}}$ is typically a few percent of the
+total kinetic energy flux measured through the top of the
+vanes.
+
+%This general forcing provides additional capabilities including the
+%ability to investigate engineering greater surface roughness or
+%structures that could provide greater ``kick-up'' of the thin thermal
+%layer near the surface into the flowing regime. It can also support more
+%general turning configurations than the virtual vanes outlined above. 
+
+\subsection{Simulation Geometry and Boundary Conditions}
+\label{sec:bc}
+
+In this project, two principle modeling regimes are considered. 
+One is the ``thermal-only'' scenario, in which there are no ambient
+velocities and there is an imposed elevated temperature on the ground.  
+In the other, there are also ambient winds that contribute to the SoV energy
+(``wind'' cases). 
+The computational domain and boundary conditions for these 
+two scenarios are described below.
+
+\textbf{Computational Domain} 
+
+All simulations are performed in a cuboid domain, with six
+faces.  The domain is denoted $\Omega \subset \mathbb{R}^3$. 
+The domain extents are scaled by the system diameter, D, created by the
+outer vane radius. The extents are defined in terms of $\{L_x,L_y,L_z\}$ indicating the 
+streamwise, spanwise and vertical directions, respectively. 
+For both simulation regimes, sensitivity analyses 
+were performed to ensure that the results were not sensitive 
+to the domain extents. For the thermal-only case, for which $L_x = L_y$,
+the system 
+extents $L_x/D$ and $L_y/D$ are chosen to be 3. The height ($L_z/D$) is
+three times the system diameter, which is typically nearly equal to the
+height of the vanes. This defines the thermal-only domain $\Omega_T$, 
+as $\Omega_T = \left[-L_x,L_x \right] \times \left[-L_y,L_y \right]
+\times \left[0,L_z \right]$.   
+
+For the wind cases, the streamwise extent is no longer equal to
+the spanwise length, $L_y$. In these cases, the domain length extends
+two diameters in front of the vanes and three behind. The
+spanwise direction is symmetric and extends two diameters in each direction 
+from the center ($L_y/D = 2$). The height is identical to the
+thermal-only case, at three system diameters ($L_z/D = 3$). Thus, the
+wind domain is defined as $\Omega_W = \left[-2D,3D \right] \times
+\left[-L_y,L_y \right] \times \left[0,L_z \right]$.   
+
+The boundary for the thermal only case is decomposed as,
+$\partial \Omega_T = \Gamma_G \bigcup \Gamma_T \bigcup \Gamma_P $. 
+$\Gamma_G$ is the boundary along the ``Ground'', $\Gamma_T$
+the ``Top'' boundary, and $\Gamma_P$ the four periodic ``Sides''. A 3d
+diagram labeling these boundaries is shown in
+Figure~\ref{fig:thermal3d}. For this case study (no mean wind),
+periodic boundary conditions are used on the four sides , with a modified 
+``inflow-outflow'' Neumann condition\cite{gunzburger1989finite} on the
+top boundary. On the ground, a ``no-slip'' velocity boundary condition is
+imposed, and a Dirichlet condition uniformly fixes
+the temperature of the surface. 
+Each of the $\Gamma$ boundary terms are defined in the paragraphs below. 
+Note that a finite thickness ``Sponge Layer'' is
+indicated on the figure along the top boundary and is defined below. 
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 14 cm]{figs/thermal_only_3d}
+    \caption{Domain for the thermal-only
+   scenario. The diagram scale is representative of typical cases. Note
+   the SoV apparatus in the center, which provides perspective on the
+   extent of the domain with respect to the turning vane diameter. The
+   ground, sides and top boundaries are labeled with the discussion the
+   precise boundary conditions on each provided in
+   section~\ref{sec:bc}. Notice also the finite thickness, high
+   viscosity ``sponge layer'' at the top of the domain.} 
+    \label{fig:thermal3d}
+  \end{center}
+\end{figure}
+
+The boundary for the wind cases is decomposed as,
+$\partial \Omega_W = \Gamma_G \bigcup \Gamma_T \bigcup \Gamma_O \bigcup
+\Gamma_I \bigcup \Gamma_S $.  
+Where $\Gamma_G$ is the boundary along the ``Ground'',
+$\Gamma_T$ the ``Top'' boundary, $\Gamma_S$ the two ``Sides'',
+$\Gamma_I$ the inflow boundary, and $\Gamma_O$ the ``Outflow''  
+boundary.
+The ``wind'' simulation domain is diagrammed in
+Figure~\ref{fig:wind3d}, with the boundaries labeled. 
+For this particular study (a heated ground with 
+an ambient wind), the wind case has a proscribed inlet boundary layer
+along the upstream streamwise face ($\Gamma_I$) for both the temperature
+and the velocity. The ``Ground'' boundary is identical to
+the thermal-only case. The ``Sides'', ``Outflow'' and ``Top'' are all
+set to modified Neumann boundary conditions. Note that ``Sponge Layers''
+are used on both the back boundary and the top. 
+
+\begin{figure}[!htb]
+  \begin{center}
+   %\includegraphics[width = 14 cm]{figs/wind_3d}
+   \includegraphics[width = 14 cm]{figs/wind_3d}
+    \caption{Domain for the wind and thermal scenario. The diagram scale
+   is representative of typical cases. Note the SoV apparatus which
+   provides perspective on the extent of the domain with respect to the
+   turning vane diameter. The ground, sides, inflow, back and top
+   boundaries are labeled with the discussion the precise boundary
+   conditions on each provided in section~\ref{sec:bc}. Notice also the
+   finite thickness, high viscosity ``sponge layer'' at the top and back
+   of the domain.}   
+    \label{fig:wind3d}
+  \end{center}
+\end{figure}
+
+\textbf{Ground Boundary Conditions, $\Gamma_G$} 
+
+For both the wind and thermal-only cases the ground has a fixed
+temperature and no-slip velocity boundary conditions. This boundary 
+($\Gamma_G$) is modeled with a Dirichlet boundary condition, 
 \begin{align}
-    \operatorname{gr}_{x_0}\!\left(\bar{p}_D^A\right) &= 0,
-&
-    \operatorname{gr}_{t_0}\!\left(A_u^A\right) &= 0,
-&
-    \operatorname{gr}_{t_0}\!\left(A_E^A\right) &= 0.
+ \overrightarrow{u} &= 0 \quad \text{ on } \Gamma_G \\
+ T &= T_g.
 \end{align}
-Other cases necessitating this final clause include the thermodynamic growth
-rates when $\left| 1 - T_w / T_{I,w} \right| < 1\%$ and the wall-normal and
-spanwise
-% momentum and %%% NOT USED HERE
-velocity rates when the base flow at the wall is trivial
-in those directions.
+Where $\Gamma_G = \{(x,y,0) \subset \partial \Omega \} $. 
+
+%
+% http://fenicsproject.org/documentation/dolfin/dev/python/demo/documented/periodic/python/documentation.html 
+%
+%
+\textbf{Periodic Boundary Condition, $\Gamma_P$} 
+
+A periodic boundary condition is used in the thermal only cases, 
+along the streamwise and spanwise boundary faces 
+(denoted $\Gamma_{P,x}$ and $\Gamma_{P,y}$, respectively). In these
+cases the state variables  
+are contrained to have the same value on the opposite faces of the domain, 
+for instance in the streamwise direction the boundary conditions are, 
+\begin{align}
+ \overrightarrow{u}(-L_x,y,z) &= \overrightarrow{u}(L_x,y,z) \quad \text{ on } \Gamma_{P,x} \\
+ T(-L_x,y,z) &= T(L_x,y,z)
+\end{align}
+and in the spanwise direction,
+\begin{align}
+ \overrightarrow{u}(x,-L_y,z) &= \overrightarrow{u}(x,L_y,z) \quad \text{ on } \Gamma_{P,y} \\
+ T(x,-L_y,z) &= T(x,L_y,z). 
+\end{align}
+Where $\Gamma_{P,x} = \{(-L_x,y,z) \bigcup (L_x,y,z) \subset \partial
+\Omega \}$  
+and $\Gamma_{P,y} = \{(x,-L_y,z) \bigcup (x,L_y,z) \subset \partial
+\Omega \}$. 
+
+\textbf{Inflow Boundary Condition, $\Gamma_I$} 
+
+On the inflow boundary $(\Gamma_I$), dirichlet conditions are used for both
+velocity and temperature. The boundary-normal, or streamwise component 
+is a function of the surface normal coordinate (z), representing a boundary 
+layer below a uniform velocity, U.
+The common 7th power model of a turbulent boundary layer is used,   
+\begin{equation*}
+  u_{\text{in}}(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)
+  \label{eq:bl_u}
+\end{equation*}
+where $\delta$, the boundary layer thickness, is set based on data
+measured by our experimental partners in the field. 
+The thermal boundary layer is assumed to have a similar boundary layer,
+but, as observed in real atmospheric flows, there remains a vertical
+temperature gradient outside the thin boundary layer. Based on
+results in the literature a $2/3$ Kelvin per meter gradient is 
+imposed\cite{Blocken2007238}. The thermal inflow is then  
+\begin{equation*}
+  T_{\text{in}}(z) = \Delta T \left(1- \text{ min
+			}\left(\left(\frac{z}{\delta}\right)^7,1\right)\right)
+  + T_0 - 2z/3.  
+  \label{eq:bl_t}
+\end{equation*}
+% 335+18*tanh(-z/0.1)-z*2/3
+The inflow boundary is at the surface $x=-L_x$.
+
+\textbf{Mixed inflow/outflow Boundary Conditions on $\Gamma_T$,
+$\Gamma_S$ and $\Gamma_B$}  
+
+At outflow boundaries, a homogeneous Neumann condition is appropriate,
+\begin{align}
+  \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0 \\
+  \frac{\partial T}{\partial n}\bigg|_{\Gamma_T} = 0
+\end{align}
+However, for the cases in this study, 
+a modified Neumann condition is necessary due to the possibility that there will
+be an inflow on these boundaries.
+For example, in the region above the vanes, the concentrated hot plume is
+lifted by buoyancy upward and out of the simulation domain. However, the
+radial inflow towards the apparatus is drawn in by large scale
+convection cells larger than the system diameter. Thus, our boundary
+conditions must permit inflow along the areas above and external to the
+vanes, while simultaneously permitting outflow in the area above the vanes. 
+
+% Roy Stogner: Okay, so this DDN is basically no-traction when there's 
+% outflow and Tn=v when there's inflow?  We have no-traction for v*n, 
+% no-traction for anything else when there's outflow, and Dirichlet
+% v.cross.n = 0 when there's inflow. 
+
+To accomplish this, the boundary condition is,
+\begin{align}
+  \frac{\partial u_n}{\partial n}\bigg|_{\Gamma_T} = 0 \\
+  \text{if } (w<0) \text{ then}& \begin{cases}
+    u_t = 0,\\
+    T = T_{\text{in}}
+  \end{cases} \\
+  \text{ else}& \begin{cases}
+    \frac{\partial u_t}{\partial n}\bigg|_{\Gamma_T} = 0, \\  
+    \frac{\partial T}{\partial n}\bigg|_{\Gamma_T} = 0
+  \end{cases}
+\end{align}
+
+where $u_n$ and $u_t$ are normal and tangential components of the velocity, 
+respectively. This boundary condition is applied on the top boundary
+$\Gamma_T$ ($z=L_z$) and downstream side boundary  $\Gamma_B$ in the wind case.
+
+\textbf{Sponge Layer} 
+
+Finally, a finite thickness ``sponge layer'' is used in the region adjacent 
+to the mixed inflow/outflow boundaries $\Gamma_T$ and $\Gamma_B$.
+This layer artificially increases the momentum diffusivity by
+up to a factor of ten times the nominal value. This was designed to stabilize
+the modified Neumann boundary conditions which can exhibit an instability
+when there is a compact jet of fluid leaving the domain. 
+These regions are referred to by many names in the
+literature\cite{doi:10.1146/annurev.fluid.36.050802.121930}, such as
+absorbing layers, fringe regions, buffer zones, sponges, etc. 
+
+
+%%  This
+%% would create small high velocity inflows, and the feedback loop would
+%% result in instabilities and numerical blow-up. Mindful of the fact that
+%% the character of solution not important in this region, and that our
+%% physical interest remains focused on the region inside and in immediate
+%% proximity to the vanes, we introduced a higher diffusivity ``sponge''
+%% region that would diffuse the high velocity exiting jets sufficiently to
+%% prevent numerically un-physical behavior. No results are quoted from
+%% this ``sacrificial'' region, as it is not considered physically
+%% meaningful.
+
