@@ -107,17 +107,17 @@ def main():
     fs=5
 
     ax.annotate('$L_{x}$', xy=(-12, 2), xycoords='data',
-                xytext=(0, 1.8), textcoords='data',
+                xytext=(0.2, 1.9), textcoords='data',
                 arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
             )
 
     ax.annotate('$H^t$', xy=(-7, 3), xycoords='data',
-                xytext=(-7.5, 0), textcoords='data',
+                xytext=(-7.2, -.4), textcoords='data',
                 arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
             )
 
-    ax.annotate('$H^c$', xy=(4, 5.5), xycoords='data',
-                xytext=(3.5, 2), textcoords='data',
+    ax.annotate('$H^c$', xy=(3.5, 5.5), xycoords='data',
+                xytext=(3.3, 2.5), textcoords='data',
                 arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
             )
 
