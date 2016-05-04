@@ -95,7 +95,24 @@ def main():
     # annotate
     #ax.annotate(r'$\theta^{b,u}_{max}$', xy=(-0.5, 0), xytext=(-6, -6),
     #            arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=20)
-    
+
+    #
+    # 
+    # 
+    #ax.annotate(r'$L_{x}$', xy=(-12,2),xytext=(0, 2),
+    #            arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=10,size=10)
+    #ax.annotate(r'$r^{cyl}$', xy=(3,2), xytext=(0, 2),
+    #            arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=5)
+
+    ax.annotate('$L_{x}$', xy=(-12, 2), xycoords='data',
+                xytext=(0, 1.7), textcoords='data',
+                arrowprops=dict(arrowstyle="->"), color='blue'
+            )
+
+    ax.annotate('$H^t$', xy=(-5, 3), xycoords='data',
+                xytext=(-5.5, 0), textcoords='data',
+                arrowprops=dict(arrowstyle="->"), color='blue'
+            )
 
     fig = plt.gcf()
     plt.axes().set_aspect('equal')
