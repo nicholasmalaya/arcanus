@@ -121,6 +121,11 @@ def main():
                 arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
             )
 
+    ax.annotate('$H^{b,d}$', xy=(3, 1), xycoords='data',
+                xytext=(2.7, -.4), textcoords='data',
+                arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
+            )
+
     ax.annotate('$H^c$', xy=(3.5, 5.5), xycoords='data',
                 xytext=(3.3, 2.5), textcoords='data',
                 arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
