@@ -58,10 +58,27 @@ def main():
     plt.plot((-12,-3),(3,3),linewidth=4,color = 'red')
 
     # back vane (x1,x2),(y1,y2)
+    
+    # front vane (top tier)
     plt.plot((-12,-3),(3,3),linewidth=4,color = 'red')
+    plt.plot((-12,-12),(3,0.5),linewidth=4,color = 'red')
+    plt.plot((-12,-3),(0.5,0.5),linewidth=4,color = 'red')
+    plt.plot((-12,-3),(0.5,0.5),linewidth=4,color = 'red')
+    plt.plot((-3,-3),(3,0.5),linewidth=4,color = 'red')
+
+    # back cyl
     plt.plot((3,3),(1,3),linewidth=4,color = 'red')
 
-    #plt.axvline(x=0.402, ymin=0.4, ymax = 0.615, linewidth=2, color='k')
+    # bottom tier front
+    plt.plot((-0.6,-0.6),(0,0.5),linewidth=4,color = 'red')
+    plt.plot((-6,-6),(0,0.5),linewidth=4,color = 'red')
+    plt.plot((-0.6,-6),(0,0),linewidth=4,color = 'red')
+    plt.plot((-0.6,-6),(0.5,0.5),linewidth=4,color = 'red')
+
+    # bottom tier back
+    plt.plot((0.6,0.6),(0,1),linewidth=4,color = 'red')
+    plt.plot((6,6),(0,1),linewidth=4,color = 'red')
+    plt.plot((0.6,6),(1,1),linewidth=4,color = 'red')
 
     # adding text
     ax.text(-8.4, 15, r'Upstream Side', fontsize=15)
