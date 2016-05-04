@@ -106,8 +106,13 @@ def main():
 
     fs=5
 
-    ax.annotate('$L_{x}$', xy=(-12, 2), xycoords='data',
-                xytext=(0.2, 1.9), textcoords='data',
+    ax.annotate('$L_{x}$', xy=(-12, 2.4), xycoords='data',
+                xytext=(0.2, 2.3), textcoords='data',
+                arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
+            )
+
+    ax.annotate('$r^{cyl}$', xy=(3, 1.5), xycoords='data',
+                xytext=(-0.6, 1.4), textcoords='data',
                 arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
             )
 
