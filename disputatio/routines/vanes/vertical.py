@@ -33,8 +33,8 @@ def main():
     zmin = 0
     zmax = dom
     
-    plt.suptitle("SoV Configuration: Side View")
-    plt.title("12 Vane")
+    plt.title("SoV Configuration: Vertical View")
+    #plt.title("12 Vane")
 
     major_ticksx = np.arange(xmin, xmax, 5)
     minor_ticksx = np.arange(xmin, xmax, 1)                                         
@@ -57,9 +57,9 @@ def main():
     # front vane
     plt.plot((-12,-3),(3,3),linewidth=4,color = 'red')
 
-    # back vane
+    # back vane (x1,x2),(y1,y2)
     plt.plot((-12,-3),(3,3),linewidth=4,color = 'red')
-    plt.plot((3,3),(,3),linewidth=4,color = 'red')
+    plt.plot((3,3),(1,3),linewidth=4,color = 'red')
 
     #plt.axvline(x=0.402, ymin=0.4, ymax = 0.615, linewidth=2, color='k')
 
