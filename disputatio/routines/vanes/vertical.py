@@ -105,13 +105,23 @@ def main():
     #            arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=5)
 
     ax.annotate('$L_{x}$', xy=(-12, 2), xycoords='data',
-                xytext=(0, 1.7), textcoords='data',
+                xytext=(0, 1.8), textcoords='data',
                 arrowprops=dict(arrowstyle="->"), color='blue'
             )
 
-    ax.annotate('$H^t$', xy=(-5, 3), xycoords='data',
-                xytext=(-5.5, 0), textcoords='data',
+    ax.annotate('$H^t$', xy=(-7, 3), xycoords='data',
+                xytext=(-7.5, 0), textcoords='data',
                 arrowprops=dict(arrowstyle="->"), color='blue'
+            )
+
+    ax.annotate('$H^c$', xy=(4, 5.5), xycoords='data',
+                xytext=(3.5, 2), textcoords='data',
+                arrowprops=dict(arrowstyle="->"), color='blue'
+            )
+
+    ax.annotate('$D^c_{min}$', xy=(1.5, 5.1), xycoords='data',
+                xytext=(-3.4, 4.9), textcoords='data',
+                arrowprops=dict(arrowstyle="<->"), color='blue'
             )
 
     fig = plt.gcf()
