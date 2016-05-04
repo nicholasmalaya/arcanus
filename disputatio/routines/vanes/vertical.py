@@ -22,7 +22,7 @@ radmin=0.6
 #
 def main():
 
-    fig = plt.figure()
+    fig = plt.figure(figsize=(10,5))
     ax = fig.add_subplot(1,1,1)
 
     dom=15
@@ -104,24 +104,26 @@ def main():
     #ax.annotate(r'$r^{cyl}$', xy=(3,2), xytext=(0, 2),
     #            arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=5)
 
+    fs=5
+
     ax.annotate('$L_{x}$', xy=(-12, 2), xycoords='data',
                 xytext=(0, 1.8), textcoords='data',
-                arrowprops=dict(arrowstyle="->"), color='blue'
+                arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
             )
 
     ax.annotate('$H^t$', xy=(-7, 3), xycoords='data',
                 xytext=(-7.5, 0), textcoords='data',
-                arrowprops=dict(arrowstyle="->"), color='blue'
+                arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
             )
 
     ax.annotate('$H^c$', xy=(4, 5.5), xycoords='data',
                 xytext=(3.5, 2), textcoords='data',
-                arrowprops=dict(arrowstyle="->"), color='blue'
+                arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
             )
 
     ax.annotate('$D^c_{min}$', xy=(1.5, 5.1), xycoords='data',
-                xytext=(-3.4, 4.9), textcoords='data',
-                arrowprops=dict(arrowstyle="<->"), color='blue'
+                xytext=(-2.2, 5.05), textcoords='data',
+                arrowprops=dict(arrowstyle="<->"), color='blue',fontsize=fs
             )
 
     fig = plt.gcf()
