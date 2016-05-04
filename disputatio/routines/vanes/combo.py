@@ -286,7 +286,7 @@ def main():
                          np.linspace(y.min(), y.max(), ny))
     zzt = top.polyval2d(xxt, yyt, mt)
     top.arr(mt)
-
+    top.poly_disp_fparse(m)    
     #
     # ----------------------------------------
     
