@@ -25,13 +25,13 @@ def main():
     fig = plt.figure()
     ax = fig.add_subplot(1,1,1)
 
-    dom=20
+    dom=15
 
     xmin = -dom
     xmax = dom
 
     zmin = 0
-    zmax = dom
+    zmax = 7
     
     plt.title("SoV Configuration: Vertical View")
     #plt.title("12 Vane")
@@ -81,8 +81,12 @@ def main():
     plt.plot((0.6,6),(1,1),linewidth=4,color = 'red')
 
     # adding text
-    ax.text(-8.4, 15, r'Upstream Side', fontsize=15)
-    ax.text(5.6, 15, r'Downstream Side', fontsize=15)
+    ax.text(-13, 5, r'Upstream Side', fontsize=15)
+    ax.text(5.6, 5, r'Downstream Side', fontsize=15)
+
+    # cone (front, then back)
+    plt.plot((3,1.5),(3,5),linewidth=4,color = 'red')
+    plt.plot((-3,-1.5),(3,5),linewidth=4,color = 'red')
 
     # angles
     #ax.text(-8, -1, r'$\theta^{b,u}_{min}$', fontsize=20,color='blue')
@@ -94,7 +98,7 @@ def main():
     
 
     fig = plt.gcf()
-    plt.axes().set_aspect('equal', 'datalim')
+    plt.axes().set_aspect('equal')
 
     plt.savefig('vertical_design.png',dpi=500)
     plt.savefig('vertical_design.pdf', format='pdf', dpi=1000)
