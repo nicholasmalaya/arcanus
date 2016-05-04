@@ -136,6 +136,11 @@ def main():
                 arrowprops=dict(arrowstyle="<->"), color='blue',fontsize=fs
             )
 
+    ax.annotate('$D^c_{max}$', xy=(3, 3.0), xycoords='data',
+                xytext=(-3.7, 3.0), textcoords='data',
+                arrowprops=dict(arrowstyle="<->"), color='blue',fontsize=fs
+            )
+
     fig = plt.gcf()
     plt.axes().set_aspect('equal')
 
