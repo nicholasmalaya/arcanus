@@ -61,24 +61,24 @@ def main():
     
     # front vane (top tier)
     plt.plot((-12,-3),(3,3),linewidth=4,color = 'red')
-    plt.plot((-12,-12),(3,0.5),linewidth=4,color = 'red')
-    plt.plot((-12,-3),(0.5,0.5),linewidth=4,color = 'red')
-    plt.plot((-12,-3),(0.5,0.5),linewidth=4,color = 'red')
-    plt.plot((-3,-3),(3,0.5),linewidth=4,color = 'red')
+    plt.plot((-12,-12),(3,0.375),linewidth=4,color = 'red')
+    plt.plot((-12,-3),(0.5,0.375),linewidth=4,color = 'red')
+    plt.plot((-12,-3),(0.5,0.375),linewidth=4,color = 'red')
+    plt.plot((-3,-3),(3,0.375),linewidth=4,color = 'red')
 
     # back cyl
     plt.plot((3,3),(1,3),linewidth=4,color = 'red')
 
     # bottom tier front
-    plt.plot((-0.6,-0.6),(0,0.5),linewidth=4,color = 'red')
-    plt.plot((-6,-6),(0,0.5),linewidth=4,color = 'red')
+    plt.plot((-0.6,-0.6),(0,0.375),linewidth=4,color = 'red')
+    plt.plot((-6,-6),(0,0.375),linewidth=4,color = 'red')
     plt.plot((-0.6,-6),(0,0),linewidth=4,color = 'red')
-    plt.plot((-0.6,-6),(0.5,0.5),linewidth=4,color = 'red')
+    plt.plot((-0.6,-6),(0.375,0.375),linewidth=4,color = 'red')
 
     # bottom tier back
-    plt.plot((0.6,0.6),(0,1),linewidth=4,color = 'red')
-    plt.plot((6,6),(0,1),linewidth=4,color = 'red')
-    plt.plot((0.6,6),(1,1),linewidth=4,color = 'red')
+    plt.plot((0.6,0.6),(0,0.75),linewidth=4,color = 'red')
+    plt.plot((6,6),(0,0.75),linewidth=4,color = 'red')
+    plt.plot((0.6,6),(0.75,0.75),linewidth=4,color = 'red')
 
     # adding text
     ax.text(-13, 5, r'Upstream Side', fontsize=15)
@@ -104,45 +104,45 @@ def main():
     #ax.annotate(r'$r^{cyl}$', xy=(3,2), xytext=(0, 2),
     #            arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=5)
 
-    fs=5
+    fs=10
 
     ax.annotate('$L_{x}$', xy=(-12, 2.4), xycoords='data',
-                xytext=(0.2, 2.3), textcoords='data',
+                xytext=(0.2, 2.25), textcoords='data',
                 arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
             )
 
     ax.annotate('$r^{cyl}$', xy=(3, 1.5), xycoords='data',
-                xytext=(-0.6, 1.4), textcoords='data',
+                xytext=(-0.9, 1.35), textcoords='data',
                 arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
             )
 
     ax.annotate('$H^t$', xy=(-7, 3), xycoords='data',
-                xytext=(-7.2, -.4), textcoords='data',
+                xytext=(-7.3, -.65), textcoords='data',
                 arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
             )
 
     ax.annotate('$H^{b,u}$', xy=(-3, 0.5), xycoords='data',
-                xytext=(-3.3, -.4), textcoords='data',
+                xytext=(-3.5, -.65), textcoords='data',
                 arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
             )
 
     ax.annotate('$H^{b,d}$', xy=(3, 1), xycoords='data',
-                xytext=(2.7, -.4), textcoords='data',
+                xytext=(2.5, -.65), textcoords='data',
                 arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
             )
 
-    ax.annotate('$H^c$', xy=(3.5, 5.5), xycoords='data',
-                xytext=(3.3, 2.5), textcoords='data',
+    ax.annotate('$H^c$', xy=(3.5, 5.4), xycoords='data',
+                xytext=(3.1, 2.3), textcoords='data',
                 arrowprops=dict(arrowstyle="->"), color='blue',fontsize=fs
             )
 
     ax.annotate('$D^c_{min}$', xy=(1.5, 5.1), xycoords='data',
-                xytext=(-2.2, 5.05), textcoords='data',
+                xytext=(-2.8, 5.0), textcoords='data',
                 arrowprops=dict(arrowstyle="<->"), color='blue',fontsize=fs
             )
 
     ax.annotate('$D^c_{max}$', xy=(3, 3.0), xycoords='data',
-                xytext=(-3.7, 3.0), textcoords='data',
+                xytext=(-4.2, 2.9), textcoords='data',
                 arrowprops=dict(arrowstyle="<->"), color='blue',fontsize=fs
             )
 

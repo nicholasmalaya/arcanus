@@ -328,10 +328,10 @@ def main():
     ax.text(5, 15, r'Downstream', fontsize=15)
 
     # angles
-    ax.text(-2, 1, r'$\theta^{t}_{max}$', fontsize=15,color='blue')
-    ax.text(3, 2, r'$\theta^{t,s}_{max}$', fontsize=15,color='blue')
-    ax.text(-12, -3, r'$\phi^{t}_{min}$', fontsize=15,color='blue')
-    ax.text(-12, 10, r'$\phi^{t,s}_{min}$', fontsize=15,color='blue')
+    ax.text(-2, 1, r'$\theta^{t,r}$', fontsize=15,color='blue')
+    ax.text(3, 2, r'$\theta^{t,l}$', fontsize=15,color='blue')
+    ax.text(-12, -3, r'$\phi^{t,r}$', fontsize=15,color='blue')
+    ax.text(-12, 10, r'$\phi^{t,l}$', fontsize=15,color='blue')
 
     # outer and inner radius
     ax.annotate(r'$L_{x}$', xy=(-12,0), xytext=(0, 0),
@@ -339,9 +339,9 @@ def main():
     ax.annotate(r'cylinder', xy=(2,-3), xytext=(6,-7),
                 arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=15)
 
-    ax.annotate(r'$L^{t}$', xy=(-12.5,-8.5), xytext=(-12.5, 4.0),
+    ax.annotate(r'$L^{t,r}$', xy=(-12.5,-8.5), xytext=(-12.5, 4.0),
                 arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=15)
-    ax.annotate(r'$L^{t,s}$', xy=(-13, 3), xytext=(-13,13),
+    ax.annotate(r'$L^{t,l}$', xy=(-13, 3), xytext=(-13,13),
                 arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=15)
     
 
