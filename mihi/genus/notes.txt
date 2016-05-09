@@ -1,0 +1,29 @@
+Rocky
+0.5
+Charles	
+0.6
+Lauren
+0.666666666667
+Grandmother Claudia
+0.714285714286
+Caroline
+0.75
+Caroline
+0.7
+Sofia
+0.727272727273
+Christina
+0.692307692308
+The incorrect bets were:
+Helen
+0.25
+Jamey
+0.222222222222
+Andy
+0.25
+M Fritz	
+0.285714285714
+Jen Graham
+0.333333333333
+Josh Graham	
+0.375
