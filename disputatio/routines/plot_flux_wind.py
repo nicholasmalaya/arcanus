@@ -13,7 +13,7 @@ import sys
 # 1102 elliptic vanes
 # 1380 optimized elliptic vanes
 # 2203 horizontal partitions
-flux = [686,796,803,930,1102,1380,2203,3058,2850]
+flux = [686,796,803,930,1102,1380,2203,3058,2850,4617,6045]
 
 #
 # iteration number (should be same as flux, above)
@@ -31,7 +31,9 @@ nts = ['Field Test',
         'Optimized Elliptic',
         'Horizontal Partitions',
         'Asymmetric 1st Tier',
-        'Turbine']
+        'Turbine',
+        'doubled horizontal size',
+        'Final optimizations']
 
 # nts = ['Straight Vanes',
 #        '',
@@ -58,7 +60,7 @@ fsz=32
 fig,ax = plt.subplots()
 plt.plot(it,flux, 'ko-', color='blue')
 plt.xlim(-1.7, it[-1]+0.5)
-plt.ylim(600, 3800)
+plt.ylim(600, 6800)
 plt.ylabel(r'Kinetic Energy Flux (W)',fontsize=fsz)
 plt.xlabel(r'Optimization Case',fontsize=fsz)
 #ax.set_yscale('log')
@@ -69,7 +71,7 @@ ax.xaxis.set_major_formatter(plt.NullFormatter())
 #i=0
 # textcoords = 'offset points'
 for i in xrange(len(nts)):
-    ax.annotate(nts[i], xy=(it[i],flux[i]), xytext=(10, 40+min(i*15,60)),
+    ax.annotate(nts[i], xy=(it[i],flux[i]), xytext=(10, 40+min(i*15,40)),
                 textcoords = 'offset points', 
                 ha = 'right', va = 'top',
                 bbox = dict(boxstyle = 'round,pad=0.5', fc = 'yellow', alpha = 0.7),
