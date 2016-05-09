@@ -13,7 +13,7 @@ import sys
 # 1102 elliptic vanes
 # 1380 optimized elliptic vanes
 # 2203 horizontal partitions
-flux = [180,435,688,705,843,940,1320,1522,1800]
+flux = [180,435,688,705,843,940,1320,1522,1804]
 
 #
 # iteration number (should be same as flux, above)
