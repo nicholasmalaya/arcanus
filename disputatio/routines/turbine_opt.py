@@ -13,7 +13,7 @@ import sys
 # 1102 elliptic vanes
 # 1380 optimized elliptic vanes
 # 2203 horizontal partitions
-flux = [180,435,688,705,843,940,1320,1510,1800]
+flux = [180,435,688,705,843,940,1320,1522,1800]
 
 #
 # iteration number (should be same as flux, above)
@@ -53,7 +53,7 @@ fig,ax = plt.subplots()
 plt.plot(it,flux, 'ko-', color='blue')
 plt.xlim(-1.7, it[-1]+0.5)
 plt.ylim(0, 2200)
-plt.ylabel(r'Kinetic Energy Flux (W)',fontsize=fsz)
+plt.ylabel(r'Energy Extracted (W)',fontsize=fsz)
 plt.xlabel(r'Optimization Case',fontsize=fsz)
 #ax.set_yscale('log')
 
