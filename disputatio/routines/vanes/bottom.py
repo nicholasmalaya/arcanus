@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 from scipy import integrate
 from scipy.integrate import ode
 
-radprime=6.0
+radprime=3.0
 radmin=0.6
 
 def vf(t,x):
@@ -52,13 +52,13 @@ def arr():
     ic    = np.stack((rad*np.cos(theta),rad*np.sin(theta)),axis=-1)
 
     end = 0.0
-    t0=0; dt=0.05;
+    t0=0; dt=0.01;
     r = ode(vf).set_integrator('vode', method='bdf',max_step=dt)
     for k in range(len(ic)):
         #
         # tEnd=np.sqrt(ic[k][0]**2 + ic[k][1]**2)-end
         #
-        tEnd=radprime+0.2
+        tEnd=radprime+0.0
         Y=[];T=[];S=[];
         r.set_initial_value(ic[k], t0)
         while r.successful() and r.t +dt < tEnd:
@@ -79,7 +79,7 @@ def main():
     fig = plt.figure()
     ax = fig.add_subplot(1,1,1)
 
-    dom=10
+    dom=5
 
     xmin = -dom
     xmax = dom
@@ -108,10 +108,10 @@ def main():
     plt.suptitle("SoV Configuration: Bottom Tier")
     plt.title("12 Vane")
 
-    major_ticksx = np.arange(xmin, xmax, 5)
-    minor_ticksx = np.arange(xmin, xmax, 1)                                         
-    major_ticksy = np.arange(ymin, ymax, 5)
-    minor_ticksy = np.arange(ymin, ymax, 1)                                         
+    major_ticksx = np.arange(xmin, xmax, 1)
+    minor_ticksx = np.arange(xmin, xmax, 0.1)                                         
+    major_ticksy = np.arange(ymin, ymax, 1)
+    minor_ticksy = np.arange(ymin, ymax, .1)                                         
     ax.set_xticks(major_ticksx)
     ax.set_xticks(minor_ticksx, minor=True) 
     ax.set_yticks(major_ticksy)
@@ -125,27 +125,27 @@ def main():
 
     # add circle(s)
     R = radprime
-    circleout=plt.Circle((0,0),R,color='black',linestyle='dotted',fill=False,linewidth=2)
+    circleout=plt.Circle((0,0),R,color='black',linestyle='dashed',fill=False,linewidth=2)
 
     Rin = radmin
-    circlein=plt.Circle((0,0),Rin,color='black',linestyle='dotted',fill=False,linewidth=2)
+    circlein=plt.Circle((0,0),Rin,color='black',linestyle='dashed',fill=False,linewidth=1)
 
     # adding text
-    ax.text(-8.4, 6, r'Upstream Side', fontsize=15)
-    ax.text(5.6, 6, r'Downstream Side', fontsize=15)
+    ax.text(-4.4, radprime, r'Upstream Side', fontsize=15)
+    ax.text(2.6, radprime, r'Downstream Side', fontsize=15)
 
     # angles
-    ax.text(-8, -1, r'$\phi^{b,u}$', fontsize=20,color='blue')
-    ax.text(6, -1, r'$\phi^{b,d}$', fontsize=20,color='blue')
+    ax.text(-3.9, 0, r'$\phi^{b,u}$', fontsize=20,color='blue')
+    ax.text(3.2, 0, r'$\phi^{b,d}$', fontsize=20,color='blue')
 
     # annotate
-    ax.annotate(r'$\theta^{b,u}$', xy=(-0.5, 0), xytext=(-6, -6),
+    ax.annotate(r'$\theta^{b,u}$', xy=(-0.2, 0), xytext=(-radprime, -radprime),
                 arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=20)
-    ax.annotate(r'$\theta^{b,d}$', xy=(0.5, 0), xytext=(6, -6),
+    ax.annotate(r'$\theta^{b,d}$', xy=(0.2, 0), xytext=(radprime, -radprime),
                 arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=20)
 
     # outer and inner radius
-    ax.annotate(r'$r^{b}_{max}$', xy=(-4.6, 4), xytext=(-9, 2),
+    ax.annotate(r'$r^{b}_{max}$', xy=(-3.1, 0), xytext=(0.2, .15),
                 arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=20)
     
 

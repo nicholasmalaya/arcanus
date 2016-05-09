@@ -111,7 +111,8 @@ def arr(m):
     # Solution curves
     #
     h = hprime
-    ic=[[h,-4],[h,-1],[h,1],[h,-8]]
+    #ic=[[h,-4],[h,-1],[h,1],[h,-8]]
+    ic=[[h,-3.4],[h,-0.1],[h,-8]]
     end = [2,2,2,2]
     t0=0; dt=0.1;
     r = ode(vf).set_integrator('vode', method='bdf',max_step=dt)
@@ -291,7 +292,7 @@ def main():
     # ----------------------------------------
     
     plt.suptitle("SoV Configuration: Top Tier")
-    plt.title("Eight Vane")
+    plt.title("Seven Vane")
 
     xmin = -15
     xmax = 6
