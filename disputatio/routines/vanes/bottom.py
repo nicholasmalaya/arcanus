@@ -149,7 +149,6 @@ def main():
                 arrowprops=dict(facecolor='black', shrink=0.05),color='blue',fontsize=20)
     
 
-
     fig = plt.gcf()
     fig.gca().add_artist(circleout)
     fig.gca().add_artist(circlein)

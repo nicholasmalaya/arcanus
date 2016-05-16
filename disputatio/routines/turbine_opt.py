@@ -53,7 +53,7 @@ fig,ax = plt.subplots()
 plt.plot(it,flux, 'ko-', color='blue')
 plt.xlim(-1.7, it[-1]+0.5)
 plt.ylim(0, 2200)
-plt.ylabel(r'Energy Extracted (W)',fontsize=fsz)
+plt.ylabel(r'Power Extracted (W)',fontsize=fsz)
 plt.xlabel(r'Optimization Case',fontsize=fsz)
 #ax.set_yscale('log')
 
