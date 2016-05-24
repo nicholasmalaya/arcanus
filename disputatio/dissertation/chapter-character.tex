@@ -149,7 +149,9 @@ An image of the entrainment is shown in Figure\ref{fig:entrain}. The
 image was created by tracking particles as they 
 convect through the device. Tracer particles were seeded into the
 averaged flowfield and then advancing through 
-the field using an RK4 time integrator.  There is clearly a tight inner
+the field using an RK4 time integrator. 
+\todo{define how this is actually performed, mathematically}
+ There is clearly a tight inner
 vortex with significant azimuthal velocity as well as a broader region
 of entraining fluid through the upper tier of vanes.  
 
@@ -543,6 +545,24 @@ which is a discussion of the proposed research campaign.
 \subsection{The Effect of the Wind}
 
 \subsection{Determining the Optimal Drag Polars}
+
+
+% Regarding question number 2, you want to optimize the lift vector (see
+% the figure below).  For the figure, pretend you are sitting to the side
+% of the turbine as the blade is moving up.  We want the L vector to be as
+% close to vertical as possible (in the useful torque direction that will
+% pull the blade up).  In order to do that you need to optimize the
+% Lift/Drag, but you also need to minimize the downwash (Utheta0 and Uz0
+% vectors) as the downwash will turn the lift vector away from the useful
+% torque direction.   Atkins and Liebeck show how to minimize the downwash
+% at a given design condition for a given a set of optimum airfoils.  You
+% can directly solve for blade twist and planform to make sure downwash is
+% minimized and each airfoil is at its Max L/D, but this often gives rotor
+% designs that are not robust as well as structurally infeasible.
+% However, it will give you an idea of what the ideal blade looks like at
+% different conditions and then you can work to find a more robust
+% solution and add structural constraints as well.   
+
 
 \subsection{Energy Scaling with Vortex Size}
 
