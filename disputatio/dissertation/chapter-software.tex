@@ -17,15 +17,15 @@ chain and supercomputer systems are briefly introduced.
 
 \subsection{Discretization Scheme}
 
-To numerically solve the Navier-Stokes equations on a computer, a
-Galerkin finite element method (FEM) is used, which
-requires that the equations in section~\ref{sub_sec:ns_en} 
-be cast into a weak form. Manipulating these partial differential
-equations into a variational formulation is accomplished by multiplying 
-the equations by appropriate test functions and integrating over the
-domain, $\Omega$. The resulting weak problem is to find, 
-$(u,p,T) \in H^1(\Omega)^3 \times L_2(\Omega) \times H^1(\Omega)$ such 
-that 
+A finite element method (FEM) is used to numerically solve the
+Navier-Stokes equations on a computer. 
+Typically, this requires that the equations
+in section~\ref{sub_sec:ns_en} be cast into a weak form. Manipulating
+these partial differential equations into a variational formulation is
+accomplished by multiplying the equations by appropriate test functions
+and integrating over the domain, $\Omega$. The resulting weak problem is
+to find, $(u,p,T) \in H^1(\Omega)^3 \times L_2(\Omega) \times
+H^1(\Omega)$ such that 
 
 %
 % http://www.numerik.uni-hd.de/Oberwolfach-Seminar/CFD-Course.pdf
@@ -45,19 +45,21 @@ $\forall (v,q,w) \in H^1(\Omega)^3 \times L_2(\Omega) \times
 H^1(\Omega)$, where $(u,v) = \int_\Omega u \cdot v \, dx$.  
 Some of the simulations presented here were conducted under
 steady conditions, for which the $\frac{\partial}{\partial t}$ terms
-vanish. A Galerkin FEM scheme is obtained by posing the weak form in
+vanish. An FEM scheme is obtained by posing the weak form in
 terms of discrete subspaces of the function spaces specified above
 defined using piecewise-polynomial basis functions. All of the
 simulations discussed in this work were accomplished using 
-linear basis functions for both the velocity and pressure.
+linear basis functions for both the velocity and pressure. However, the
+weak form equations shown above are only stable with equal-order
+elements for velocity and pressure due to the introduction of streamline
+upwind/Petrov-Galerkin (SUPG) stabilization terms as first described by
+Hughes\cite{Hughes198685,supg} and extended to natural convection as in
+Becker and Braack\cite{Becker2002428}.  
+
 %Typically, the use of equal order elements for velocity and pressure is
 %ruled out in the standard Galerkin FEM formulation by the Babuska-Brezzi
 %condition\cite{bb-cond}. 
-The scheme is
-stable with equal-order elements for velocity and pressure due to the
-introduction of streamline upwind/Petrov-Galerkin (SUPG) stabilization
-terms as first described by Hughes\cite{Hughes198685,supg} and extended
-to natural convection as in Becker and Braack\cite{Becker2002428}. The
+The
 stabilization terms add artificial dissipation that approaches zero as the
 residual converges. This scheme is ``consistent'' because the
 underlying order of convergence of the numerical method is not 
@@ -77,8 +79,8 @@ the element interiors for each of the K elements, that is:
 \end{equation}
 This results in three stabilization parameters, $\tau_P, \tau_v, \tau_T$ 
 which are selected as proposed by Becker and Braack. 
-A full derivation of the weak form and stabilization terms will be
-provided in an appendix of the full thesis. 
+A full derivation of the weak form and stabilization terms are provided
+in Appendix \ref{app:stab}. 
 
 The system of ODEs are discretized in time using the 
 backward Euler method\cite{moin2010fundamentals}. The time interval
