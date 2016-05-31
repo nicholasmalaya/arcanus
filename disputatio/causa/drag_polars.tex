@@ -23,7 +23,56 @@ is,
 \begin{equation}
  F_{\tau} = \frac{1}{2}\rho u_{\tau}^2 \, c \, C_{\tau}.
 \end{equation}
+$u_\tau$ is the relative velocity, which in this case would be
+tangential to the turbine rotation direction. $c$ is the blade chord
+length, which is assumed to be constant (not a function of the radius,
+for instance). Finally, $C_{\tau}$ is the tangential force coefficient,
+which depends on the local lift and drap coefficients, as well as the
+flow angle, $\phi$, 
+\begin{equation}
+ C_{\tau} = C_L \,\text{sin}(\phi) + C_D \,\text{cos}(\phi)
+\end{equation}
+Combining the equations above results in an expression for the power
+that explicitly depends on the lift and drag coefficients, 
+\begin{equation*}
+ P = \frac{\rho\, c\, \omega B}{2}
+  \int_{r_{\text{min}}}^{r_{\text{max}}} u_{\tau}^2 \left(C_L
+						     \,\text{sin}(\phi)
+						     + C_D
+						     \,\text{cos}(\phi)
+						    \right) r\,dr. 
+\end{equation*}
+This equation is separable, 
+\begin{align*}
+ P_L = \frac{\rho\, c\, \omega B}{2}
+  \int_{r_{\text{min}}}^{r_{\text{max}}} u_{\tau}^2 \, C_L \,\text{sin}(\phi)\, r\,dr, \\
+ P_D = \frac{\rho\, c\, \omega B}{2}
+  \int_{r_{\text{min}}}^{r_{\text{max}}} u_{\tau}^2 \, C_D \,\text{cos}(\phi)\, r\,dr. 
+\end{align*}
+Note that $C_D = C_D(\phi,r)$ and $C_L = C_L(\phi,r)$. Our objective is
+now to discover what these unknown functions of lift and drag are. To do
+this, we specify an optimization problem such that, 
+\begin{equation*} 
+ \text{Max } P(C_L,C_D) \quad \text{ subject to: }
+  \begin{cases}
+    C_L < ?\\
+    C_D < ? \\
+  \end{cases}
+\end{equation*}
 
+% \begin{align*}
+%  \text{Max }& P(C_L,C_D) \\
+%  \text{Subject to: }& C_L < ?, \\
+%  & C_D < ?
+% \end{align*}
 
+\section{Questions}
+
+\begin{itemize}
+ \item Does this need regularization to ensure well-posedness?
+ \item Boundary conditions are periodic
+ \item What about supporting twist?
+ \item Can we constrain $C_L, C_D$?
+\end{itemize}
 
 \end{document}
