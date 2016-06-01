@@ -56,9 +56,11 @@ this, we specify an optimization problem such that,
  \text{Max } P(C_L,C_D) \quad \text{ subject to: }
   \begin{cases}
     C_L < ?, \\
-    C_D < ?. \\
+    C_D > 0. \\
   \end{cases}
 \end{equation*}
+
+
 
 % \begin{align*}
 %  \text{Max }& P(C_L,C_D) \\
@@ -71,7 +73,7 @@ this, we specify an optimization problem such that,
 \begin{itemize}
  \item Does this need regularization to ensure well-posedness?
  \item Boundary conditions are periodic
- \item What about supporting twist?
+ \item What about supporting twist? (e.g. $\beta = \beta(r)$)
  \item Can we constrain $C_L, C_D$?
 \end{itemize}
 
