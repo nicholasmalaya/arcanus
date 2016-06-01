@@ -105,6 +105,7 @@ plt.title(r'Coefficient of Lift/Drag as function of $\alpha$')
 plt.xlabel(r'$\alpha$')
 plt.ylabel(r'$C_d$')
 plt.legend()
+plt.xlim([-1,1])
 
 plt.subplot(2, 1, 2)
 plt.plot(anglecl, cl, 'ko-',label='Duane Data')
@@ -112,6 +113,7 @@ plt.plot(anglei, P.polyval(anglei,inter_cl), color='blue',label='Interpolant')
 plt.ylabel(r'$C_l$')
 plt.xlabel(r'$\alpha$')
 plt.legend()
+plt.xlim([-1,1])
 plt.savefig("semi.png")
 
 
