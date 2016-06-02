@@ -15,7 +15,7 @@ Next, the scientific software in which these numerical
 models are used is discussed. Finally, the tool
 chain and supercomputer systems are briefly introduced. 
 
-\subsection{Discretization Scheme}
+\section{Discretization Scheme}
 
 A finite element method (FEM) is used to numerically solve the
 Navier-Stokes equations on a computer. 
@@ -105,12 +105,12 @@ stability and ease of statistical sampling for a uniform timestep.
 %
 
 
-\subsection{Mesh Discretization}
+\section{Mesh Discretization}
 
 %
 % what about mesh...
 %
-The domain's described in subsection~\ref{sec:bc} are
+The domain's described in section~\ref{sec:bc} are
 consistently discretized. The domain extents
 are scaled by system diameter but the same number of grid points are used
 for every simulation. Thus, while the ratio of the domain length to system
@@ -180,7 +180,7 @@ scaled with grid size to ensure that the cell Reynolds number,
 %After operation, solutions are evaluated to ensure that 
 %the qualitative character of the solution does not change.
 
-\subsection{Software Stack}
+\section{Software Stack}
 
 The numerical approximations described above had been implemented using
 the GRINS library\cite{GRINSpaper} by Bauman and Stogner using the
@@ -205,7 +205,7 @@ under LGPL2.1.  GRINS is heavily unit tested, with over 60 tests
 available to ensure the reliability of results regardless of install
 platform. 
 
-%The remainder of this subsection is devoted to
+%The remainder of this section is devoted to
 %discussing the underlying libraries used and the description of the
 %GRINS framework.  
 % PETSC\cite{petsc} trilinos\cite{trilinos}
@@ -228,7 +228,7 @@ platform.
 %
 % INCLUDE IN THESIS
 %
-% \subsection{Solver Options}
+% \section{Solver Options}
 
 % GRINS uses PETSC\cite{petsc} and trilinos\cite{trilinos} for numerical
 % linear algebra, such as constructing and using sparse matrices, finding
@@ -277,7 +277,7 @@ platform.
 %% (11:47:15 AM) Paul Bauman: That's a *much* faster/better implementation than PETSc's
 
 
-\subsection{Tool Chain and Simulation Custodianship}
+\section{Tool Chain and Simulation Custodianship}
 
 Simulations are performed on the Texas Advanced Computing Center (TACC)
 supercomputers Lonestar Four and Stampede. Run durations for transient
