@@ -427,7 +427,7 @@ the blade angle relative to the fan vertical direction,
 
 \subsection{Drag Polar Specification}
 
-Duane says that these were generated with COMSOL.
+Duane says that these were generated with COMSOL.\todo{need picture here}
 
 We can now define the lift and drag normals, where the direction
 opposing drag is, 
@@ -444,6 +444,13 @@ Then, the force on the turbine is,
  \boxed{F = \frac{1}{2}\frac{\rho u_p^2 c}{A}\left(C_l \cdot
 					      n_\text{lift} + C_d \cdot n_\text{drag}  \right)}
 \end{equation}
+
+Volumetric force is
+\begin{equation}
+ \boxed{\frac{n F}{2 \pi r t} = \frac{F}{\text{volume}}= \frac{1}{2}\frac{\rho u_p^2 c}{A}\left(C_l \cdot
+					      n_\text{lift} + C_d \cdot n_\text{drag}  \right)}
+\end{equation}
+
 
 Where c is the chord length (specified as input), and A is the area,
 which is also specified. Now, only the drag polars must be specified in
