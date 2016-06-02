@@ -15,16 +15,15 @@ The power extracted by the turbine is,
 \end{equation}
 where the torque, Q, is, 
 \begin{equation}
- Q = B \int_{r_{\text{min}}}^{r_{\text{max}}} F_{\tau}\, r\, dr.
+ Q = B \int_{r_{\text{min}}}^{r_{\text{max}}} F'_{\tau}\, r\, dr.
 \end{equation}
 Here, B is the number of blades $r_{\text{max}}$ and $r_{\text{min}}$
-are the turbine radii, and $F_{\tau}$ is the force on the turbine, which
-is, 
+are the turbine radii, and $F'_{\tau}$ is the force per unit
+length on the turbine, which is, 
 \begin{equation}
- F_{\tau} = \frac{1}{2}\rho u_{\tau}^2 \, c \, C_{\tau}.
+ F'_{\tau} = \frac{1}{2}\rho U^2 \, c \, C_{\tau}.
 \end{equation}
-$u_\tau$ is the relative velocity, which in this case would be
-tangential to the turbine rotation direction. $c$ is the blade chord
+$U$ is magnitude of velocity. $c$ is the blade chord
 length, which is assumed to be constant (not a function of the radius,
 for instance). Finally, $C_{\tau}$ is the tangential force coefficient,
 which depends on the local lift and drap coefficients, as well as the
@@ -36,7 +35,7 @@ Combining the equations above results in an expression for the power
 that explicitly depends on the lift and drag coefficients, 
 \begin{equation*}
  P = \frac{\rho\, c\, \Omega B}{2}
-  \int_{r_{\text{min}}}^{r_{\text{max}}} u_{\tau}^2 \left(C_L
+  \int_{r_{\text{min}}}^{r_{\text{max}}} U(r)^2 \left(C_L
 						     \,\text{sin}(\phi)
 						     + C_D
 						     \,\text{cos}(\phi)
@@ -45,11 +44,13 @@ that explicitly depends on the lift and drag coefficients,
 This equation is separable, 
 \begin{align*}
  P_L = \frac{\rho\, c\, \Omega B}{2}
-  \int_{r_{\text{min}}}^{r_{\text{max}}} u_{\tau}^2 \, C_L \,\text{sin}(\phi)\, r\,dr, \\
+  \int_{r_{\text{min}}}^{r_{\text{max}}} U(r)^2 \, C_L(\phi,r) \,\text{sin}(\phi)\, r\,dr, \\
  P_D = \frac{\rho\, c\, \Omega B}{2}
-  \int_{r_{\text{min}}}^{r_{\text{max}}} u_{\tau}^2 \, C_D \,\text{cos}(\phi)\, r\,dr. 
+  \int_{r_{\text{min}}}^{r_{\text{max}}} U(r)^2 \, C_D(\phi,r) \,\text{cos}(\phi)\, r\,dr. 
 \end{align*}
-Note that $C_D = C_D(\phi,r)$ and $C_L = C_L(\phi,r)$. Our objective is
+Note that we have assumed $C_D = C_D(\phi,r)$ and $C_L = C_L(\phi,r)$,
+namely, that the coefficients vary with the flow direction and may vary
+radially, due to twisting the blade angle. Our objective is
 now to discover what these unknown functions of lift and drag are. To do
 this, we specify an optimization problem such that, 
 \begin{equation*} 
