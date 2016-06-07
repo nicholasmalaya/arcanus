@@ -42,26 +42,52 @@ that explicitly depends on the lift and drag coefficients,
 						    \right) r\,dr. 
 \end{equation*}
 This equation is separable, 
-\begin{align*}
+\begin{align}
  P_L = \frac{\rho\, c\, \Omega B}{2}
-  \int_{r_{\text{min}}}^{r_{\text{max}}} U(r)^2 \, C_L(\phi,r) \,\text{sin}(\phi)\, r\,dr, \\
+  \int_{r_{\text{min}}}^{r_{\text{max}}} U(r)^2 \, C_L(\phi,r)
+ \,\text{sin}(\phi)\, r\,dr,  \label{lift} \\
  P_D = \frac{\rho\, c\, \Omega B}{2}
-  \int_{r_{\text{min}}}^{r_{\text{max}}} U(r)^2 \, C_D(\phi,r) \,\text{cos}(\phi)\, r\,dr. 
-\end{align*}
+  \int_{r_{\text{min}}}^{r_{\text{max}}} U(r)^2 \, C_D(\phi,r) \,\text{cos}(\phi)\, r\,dr. \label{drag}
+\end{align}
 Note that we have assumed $C_D = C_D(\phi,r)$ and $C_L = C_L(\phi,r)$,
 namely, that the coefficients vary with the flow direction and may vary
-radially, due to twisting the blade angle. Our objective is
-now to discover what these unknown functions of lift and drag are. To do
-this, we specify an optimization problem such that, 
+radially, due to twisting the blade angle. Furthermore, the flow
+direction, $\phi$, varies with radial location, in that $\phi=\phi(r)$. 
+Our objective is now to discover what these unknown functions of lift
+and drag are. To do this, we specify an optimization problem such that, 
 \begin{equation*} 
  \text{Max } P(C_L,C_D) \quad \text{ subject to: }
   \begin{cases}
-    C_L < ?, \\
-    C_D > 0. \\
+   |C_L| < C_L^{\text{Max}}, \\
+   0 < C_D < C_D^{\text{Max}}. \\
   \end{cases}
 \end{equation*}
 
+In words, the drag must be specified to be greater than zero, but
+the lift can be negative. For these conditions, we are interested in
+largest attainable values. For the drag coefficient, $C_D^{\text{Max}}$
+is two. % refmunson 
+This corresponds to a flat plate perpendicular to the flow.
+The lift coefficient peak is about 1.75. This design is not necessarily
+physically realizable, but represents an absolute maximum that one
+appears conceivable. 
 
+The integral shown in Equations \ref{lift} above is bounded by 
+Schwarz's Inequality,  
+\begin{align}
+  \left[\int_{r_{\text{min}}}^{r_{\text{max}}} C_L(\phi,r)\, U(r)^2
+ \,\text{sin}(\phi)\, r\,dr \right]^2 \le 
+ \int_{r_{\text{min}}}^{r_{\text{max}}} C_L^2(\phi,r) dr \,
+ \int_{r_{\text{min}}}^{r_{\text{max}}} U(r)^4 
+ \,\text{sin}^2(\phi)\, r^2\,dr.
+\end{align}
+In this way the quantity,
+\begin{equation}
+ \int_{r_{\text{min}}}^{r_{\text{max}}} C_L^2(\phi,r) dr \,, 
+\end{equation}
+is clearly maximized when $C_L(\phi,r) = C_L^{\text{max}}$. 
+The result for Equation \ref{drag} is identical. Thus, the drag polars
+have the form, 
 
 % \begin{align*}
 %  \text{Max }& P(C_L,C_D) \\
