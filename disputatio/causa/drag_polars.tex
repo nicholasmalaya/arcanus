@@ -1,6 +1,8 @@
 \documentclass{article}
 \usepackage{amsmath,amssymb}
 \usepackage{hyperref}
+\usepackage{graphicx}
+
 \title{\bf{Drag Polar Analysis}}
 \author{Nicholas Malaya \\ Institute for Computational Engineering and Sciences \\ University of Texas at Austin} \date{}
 
@@ -81,7 +83,7 @@ Schwarz's Inequality,
  \int_{r_{\text{min}}}^{r_{\text{max}}} U(r)^4 
  \,\text{sin}^2(\phi)\, r^2\,dr.
 \end{align}
-In this way the quantity,
+In this way the quantity
 \begin{equation}
  \int_{r_{\text{min}}}^{r_{\text{max}}} C_L^2(\phi,r) dr \,, 
 \end{equation}
@@ -92,7 +94,7 @@ have the form,
  &C_L(\phi) = 
   \begin{cases}
     1.75& \quad 0^{\circ} \le \phi \le 180^{\circ}, \\
-   -1.75& \quad 180^{\circ} \le \phi \le 360^{\circ}  \\
+   -1.75& \quad 180^{\circ} \le \phi \le 360^{\circ}.  \\
   \end{cases}\\
  &C_D(\phi) = 
   \begin{cases}
@@ -100,6 +102,16 @@ have the form,
       0& \quad 90^{\circ} \le \phi \le 270^{\circ}.  \\
   \end{cases}\\
 \end{align*}
+The plot of these drag polars are shown in Figure \ref{drags}. 
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 12 cm]{figs/drags}
+    \caption{The idealized drag polars.} 
+    \label{drags}
+  \end{center}
+\end{figure}
+
 
 \newpage
 \section{Questions}

@@ -26,6 +26,10 @@ fsz=24
 fig,ax = plt.subplots()
 plt.plot(it,flux, 'ko-', color='blue',label='No Twist')
 plt.plot(it2,flux2, 'ko-', color='red',label='With Twist')
+
+#plt.axvline(x=55,linewidth=2, color = 'blue')
+#plt.axvline(x=47, ymin=0.5, ymax = 1.1, linewidth=2, color = 'red')
+
 plt.xlim(30, 70)
 plt.ylim(0.9, 1.4)
 plt.ylabel(r'Turbine Power Extracted (kW)',fontsize=fsz)

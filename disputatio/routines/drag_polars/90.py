@@ -31,7 +31,7 @@ def reader(fl):
     
     # open
     fo = open(fl, "r")
-    
+    o
     #
     # iterate
     #
