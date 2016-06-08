@@ -11,10 +11,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+#drag_fl = 'drag.dat'
+drag_fl = 'rankine.dat'
+
+
 #
 # first, import the data from drag.dat
 #
-drag_fl = 'drag.dat'
 ar_sz = sum(1 for line in open(drag_fl))
 r  = np.empty(ar_sz)
 vt = np.empty(ar_sz)
@@ -33,7 +36,23 @@ f.close()
 #
 # now, 
 #
-print vt
+phi = np.arctan(vz/vt)
+print phi
+
+#
+# plot profiles
+#
+
+plt.plot(r,vt,'blue',label=r'$V_\theta$',linewidth=4)
+plt.plot(r,vz,'r--',label=r'$V_z$',linewidth=4)
+plt.xlabel('Radius (meters)')
+plt.ylabel('Velocity (meters/sec)')
+plt.grid(True)
+plt.legend(loc='best')
+# plt.xlim([0,360])
+# plt.ylim([-2.1,2.1])
+plt.savefig('profiles.png')
+
 #
 # nick
 # 6/07/2016
