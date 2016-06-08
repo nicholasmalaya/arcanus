@@ -3,6 +3,20 @@
 # determine optimal energy from flow
 #
 #
+def cl(phi):
+    if(phi>180):
+        cl = -1.75
+    else:
+        cl = 1.75
+    return cl
+
+def cd(phi):
+    if(270>phi>180):
+        cd = 0
+    else:
+        cd = 2.0
+    return cd
+
 #
 # Radius VT  Vz
 # m      m/s m/s
@@ -29,20 +43,33 @@ for line in f:
     rr,vvt,vvz = line.split()
     r[it]  =rr
     vt[it] =vvt
-    vz[it] =vvz
+    vz[it] =vvz    
     it=it+1
 f.close()
 
+U2 = (vt*vt+vz*vz)
+
 #
-# now, 
+# now, calculate angle phi
 #
 phi = np.arctan(vz/vt)
-print phi
+phi_deg = 360*phi/(2*np.pi)
+
+# sanity check
+if(len(phi_deg) != len(vt)):
+    print 'paradox: inconsistent angles with velocities'
+    print sys.exit(1)
+
+
+#
+# time to integrate
+#
+
+
 
 #
 # plot profiles
 #
-
 plt.plot(r,vt,'blue',label=r'$V_\theta$',linewidth=4)
 plt.plot(r,vz,'r--',label=r'$V_z$',linewidth=4)
 plt.xlabel('Radius (meters)')
