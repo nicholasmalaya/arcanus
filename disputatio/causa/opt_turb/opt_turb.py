@@ -24,6 +24,7 @@ def cd(phi):
 #
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 
 #drag_fl = 'drag.dat'
 drag_fl = 'rankine.dat'
@@ -47,7 +48,21 @@ for line in f:
     it=it+1
 f.close()
 
+# check grid is uniform
+tol = 1e-3
+if(np.abs(r[3] - r[2] - r[1]) > tol):
+    print 'paradox: grid not uniform', r[3]-r[2]-r[1]
+    print sys.exit(1)
+    
+
+h  = r[1]
 U2 = (vt*vt+vz*vz)
+c = 0.4
+rho=1.225
+b=6
+omega=10
+rmax=10.0
+rmin=1.0
 
 #
 # now, calculate angle phi
@@ -64,9 +79,15 @@ if(len(phi_deg) != len(vt)):
 #
 # time to integrate
 #
+sm = 0.0
+for i in xrange(1,len(r)):
+    if( rmin < r[i] < rmax ):
+        sm += U2[i]*(cl(phi[i])*np.sin(phi[i]) + cd(phi[i])*np.cos(phi[i]))*r[i]
+        sm += U2[i-1]*(cl(phi[i-1])*np.sin(phi[i-1]) + cd(phi[i-1])*np.cos(phi[i-1]))*r[i-1]
 
-
-
+sm = sm*h/2.0
+#print 'Power Extracted by Turbine is ',sm*c*omega*b*rho/2., 'Watts'
+print 'Power Extracted by Turbine is ',sm*c*omega*b*rho/2./1000., ' kW'
 #
 # plot profiles
 #
