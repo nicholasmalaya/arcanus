@@ -26,8 +26,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 
-#drag_fl = 'drag.dat'
-drag_fl = 'rankine.dat'
+drag_fl = 'drag.dat'
+#drag_fl = 'rankine.dat'
 
 
 #
@@ -80,14 +80,18 @@ if(len(phi_deg) != len(vt)):
 # time to integrate
 #
 sm = 0.0
+en = 0.0
 for i in xrange(1,len(r)):
     if( rmin < r[i] < rmax ):
         sm += U2[i]*(cl(phi[i])*np.sin(phi[i]) + cd(phi[i])*np.cos(phi[i]))*r[i]
         sm += U2[i-1]*(cl(phi[i-1])*np.sin(phi[i-1]) + cd(phi[i-1])*np.cos(phi[i-1]))*r[i-1]
+        en += vz[i]*(U2[i]) + vz[i-1]*(U2[i-1])
 
 sm = sm*h/2.0
+en = en*h/2.0
 #print 'Power Extracted by Turbine is ',sm*c*omega*b*rho/2., 'Watts'
 print 'Power Extracted by Turbine is ',sm*c*omega*b*rho/2./1000., ' kW'
+print 'Power Available is ',np.pi*en*rho/2./1000., ' kW'
 #
 # plot profiles
 #
