@@ -17,13 +17,17 @@ The power extracted by the turbine is,
 \end{equation}
 where the torque, Q, is, 
 \begin{equation}
- Q = B \int_{r_{\text{min}}}^{r_{\text{max}}} F'_{\tau}\, r\, dr.
+ Q = A_r \int_0^{2\pi} \int_{r_{\text{min}}}^{r_{\text{max}}} F''_{\tau}\, r\, dr d\theta.
 \end{equation}
-Here, B is the number of blades $r_{\text{max}}$ and $r_{\text{min}}$
-are the turbine radii, and $F'_{\tau}$ is the force per unit
-length on the turbine, which is, 
+Here, $A_r$ is the relative area coefficient which is, 
 \begin{equation}
- F'_{\tau} = \frac{1}{2}\rho U^2 \, c \, C_{\tau}.
+A_r = \frac{c B (r_{\text{max}}-r_{\text{min}})}{\pi(r_{\text{max}}^2-r_{\text{min}}^2)}
+\end{equation}
+$r_{\text{max}}$ and $r_{\text{min}}$
+are the turbine radii, and $F''_{\tau}$ is the force per unit
+area on the turbine, which is, 
+\begin{equation}
+ F''_{\tau} = \frac{F_{\tau}}{cl}= \frac{1}{2}\rho U^2 \, c \, C_{\tau}.
 \end{equation}
 $U$ is magnitude of velocity. $c$ is the blade chord
 length, which is assumed to be constant (not a function of the radius,
