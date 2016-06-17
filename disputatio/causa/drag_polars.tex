@@ -78,31 +78,29 @@ largest attainable values. For the drag coefficient, $C_D^{\text{Max}}$
 is two. % refmunson 
 This corresponds to a flat plate perpendicular to the flow.
 The lift coefficient peak is about 1.75. This design is not necessarily
-physically realizable, but represents an absolute maximum that one
-appears conceivable. 
+physically realizable, but represents an absolute maximum. 
 
 %
 % does this argument still work?!?
 %
-The integral shown in Equations \ref{lift} above is bounded by 
+The integral shown in Equation \ref{lift} above can be bounded by 
 Schwarz's Inequality,  
-\begin{align}
-  \left[\int_{r_{\text{min}}}^{r_{\text{max}}} C_L(\phi,r)\, U(r)^2
- \,\text{sin}(\phi)\, r\,dr \right]^2 \le 
- \int_{r_{\text{min}}}^{r_{\text{max}}} C_L^2(\phi,r) dr \,
- \int_{r_{\text{min}}}^{r_{\text{max}}} U(r)^4 
- \,\text{sin}^2(\phi)\, r^2\,dr.
-\end{align}
+\begin{align*}
+  \left[
+    \int_0^{2\pi}
+    \int_{r_{\text{min}}}^{r_{\text{max}}} C_L(\phi,r)\, U_R(r)^2
+ \,\text{sin}(\phi)\, r\,dr d\theta \right]^2 \le 
+  \int_0^{2\pi} \int_{r_{\text{min}}}^{r_{\text{max}}} C_L^2(\phi,r) dr d\theta\,
+  \int_0^{2\pi} \int_{r_{\text{min}}}^{r_{\text{max}}} U_R(r)^4 
+ \,\text{sin}^2(\phi)\, r^2\,dr d\theta.
+\end{align*}
 In this way the quantity
 \begin{equation}
- \int_{r_{\text{min}}}^{r_{\text{max}}} C_L^2(\phi,r) dr \,, 
+  \int_0^{2\pi}
+ \int_{r_{\text{min}}}^{r_{\text{max}}} C_L^2(\phi,r) dr d\theta, 
 \end{equation}
 is clearly maximized when $C_L(\phi,r) = C_L^{\text{max}}$. 
 The result for Equation \ref{drag} is identical. 
-
-%
-% done
-
 Therefore, our lift/drag functions may be expressed as,
 \begin{align*} 
  C_D = \bar C_D \, \psi(\phi) 
