@@ -1,0 +1,7 @@
+https://itpeernetwork.intel.com/driving-innovations-in-machine-learning-with-intel/
+
+https://www.oreilly.com/learning/hello-tensorflow
+
+(05:17:30 PM) hgutch: nick: if you want to use sk-learn, module load c7 gcc/4.9 
+fenics-m/1.6 fenics-icesextras
+(05:17:42 PM) nick: nice, thankee hgutch
