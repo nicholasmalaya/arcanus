@@ -26,8 +26,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 
-drag_fl = 'drag.dat'
+#drag_fl = 'drag.dat'
 #drag_fl = 'rankine.dat'
+#drag_fl = 'constant.dat'
+drag_fl = 'betz.dat'
 
 
 #
@@ -55,19 +57,30 @@ if(np.abs(r[3] - r[2] - r[1]) > tol):
     print sys.exit(1)
     
 
-h  = r[1]
-U2 = (vt*vt+vz*vz)
-c = 0.4
-rho=1.225
-b=6
-omega=10
-rmax=10.0
-rmin=1.0
+h   = r[1]
+c   = 0.4
+rho = 1.225
+b   = 6
+omega = 10
+rmax = 10.0
+rmin = 1.0
+
+vt_turb=omega*r
+
+# vp=vt-vt_turb
+vp = np.where(vt-vt_turb >= 0, vt-vt_turb, 0)
+#for i in xrange(1,len(r)):
+#    if(vp[i]<0):
+#        vp[i]=0.0
+
+U2 = ((vt)**2 + vz*vz)
+U22 = ((vp)**2 + vz*vz)
 
 #
 # now, calculate angle phi
 #
-phi = np.arctan(vz/vt)
+phi = np.where(vp != 0, vz/vp, np.pi/2.)
+#np.arctan(vz/vp)
 phi_deg = 360*phi/(2*np.pi)
 
 # sanity check
@@ -83,15 +96,19 @@ sm = 0.0
 en = 0.0
 for i in xrange(1,len(r)):
     if( rmin < r[i] < rmax ):
-        sm += U2[i]*(cl(phi[i])*np.sin(phi[i]) + cd(phi[i])*np.cos(phi[i]))*r[i]
-        sm += U2[i-1]*(cl(phi[i-1])*np.sin(phi[i-1]) + cd(phi[i-1])*np.cos(phi[i-1]))*r[i-1]
+        sm += U22[i]*(cl(phi[i])*np.sin(phi[i]) + cd(phi[i])*np.cos(phi[i]))*r[i]
+        sm += U22[i-1]*(cl(phi[i-1])*np.sin(phi[i-1]) + cd(phi[i-1])*np.cos(phi[i-1]))*r[i-1]
         en += vz[i]*(U2[i]) + vz[i-1]*(U2[i-1])
 
 sm = sm*h/2.0
 en = en*h/2.0
+
+pt=sm*c*omega*b*rho/2./1000.
+pa=np.pi*en*rho/2./1000.
 #print 'Power Extracted by Turbine is ',sm*c*omega*b*rho/2., 'Watts'
-print 'Power Extracted by Turbine is ',sm*c*omega*b*rho/2./1000., ' kW'
-print 'Power Available is ',np.pi*en*rho/2./1000., ' kW'
+print 'Power Extracted by Turbine is ',pt, ' kW'
+print 'Power Available is ',pa, ' kW'
+print 'Efficiency is, ', pt/pa
 #
 # plot profiles
 #
