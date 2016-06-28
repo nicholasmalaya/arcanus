@@ -62,8 +62,15 @@ Note that we have assumed $C_D = C_D(\phi,r)$ and $C_L = C_L(\phi,r)$,
 namely, that the coefficients vary with the flow direction and may vary
 radially, due to twisting the blade angle. Furthermore, the flow
 direction, $\phi$, varies with the location as well as the blade speed,
-in that $\phi=\phi(r,\theta,\Omega)$.  
-
+in that $\phi=\phi(r,\theta,\Omega)$. The relative velocity is the
+quantity, $U_R = u - u_\tau$, e.g. the difference in velocity between
+the turbine and the flow. The turbine has no axial velocity and a
+constant rotation speed, and so the two components of velocity in the
+plane of rotation can be expressed as,
+\begin{align}
+\Omega \,r\, \text{sin}(\theta) = u_\tau \\
+\Omega \,r\, \text{cos}(\theta) = v_\tau
+\end{align}
 
 Our objective is now to discover what these unknown functions of lift
 and drag are. To do this, we specify an optimization problem such that, 
