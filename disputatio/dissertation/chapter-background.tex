@@ -4,8 +4,8 @@
 This chapter addresses what is known about naturally occurring dust
 devils, to motivate how best to \textit{engineer} a synthetic version. 
 It begins with a qualitative discussion of dust-devils, followed by a
-review of the known physics and pertinent literature review. Finally, it
-ends with an plan to leverage these physical processes as a method of
+review of the known physics and pertinent literature. It concludes 
+with an plan to leverage these physical processes as a method of
 usable energy generation. 
 
 
@@ -20,10 +20,10 @@ While a precise definition is elusive, several features
 are characteristic of a dust devil. They are regions of
 intense vorticity and rotation, coupled with strong upward motions 
 that are strong enough draw and lift particles into the flow.
-They are self-sustaining vortices that maintains a funnel-like
+These self-sustaining vortices maintain a funnel-like
 chimney driven by hot air moving both upward and circularly. 
-While they typically survive for only a few minutes, some have 
-been observed to endure for significantly longer. The velocities are 
+While they typically survive for only a few minutes, they have
+been observed to endure hours. The velocities are 
 typically several meters per second, but
 %
 % stolen from: http://glossary.ametsoc.org/wiki/Fujita_scale
@@ -32,6 +32,12 @@ dust devils are occasionally strong enough to cause damage and injury,
 with some reaching F1 on the Fujita Tornado intensity
 scale\cite{Edwards_tornadointensity}, with velocities between 33 and 49
 m/s. 
+
+%
+% dusty! 
+% http://clasp-research.engin.umich.edu/e-field/
+%
+
 %
 % F1 (moderate damage): 33-49 m s-1
 %
@@ -46,7 +52,7 @@ devils may be downward.
 %
 % cite martian dust devils
 %
-cite\todo{martian dust devils}
+cite.\todo{martian dust devils}
 % There is lots of activity on dust devils and dust electrification now.  
 % The reason for this is that the ExoMars Lander will measure electric fields on Mars.
 %Moreover, actual dust devils have been photographed from orbit, with
@@ -115,18 +121,6 @@ simple cartoon in Figure \ref{fig:cartoon}.
 
 \section{Estimate of Energy Scaling}
 
-flux from ground\todo{add citations and basic argument}
-probably mention that flux from ground is upper bound but 
-measurements show that it can be highly intermittent and we are 
-not sure how large of a region can be drawn from
-
-vortex\todo{add estimate of sinclair vortex}
-
-%
-% show what sinclair measured, then show how we think these energies
-% break down into kinetic vs wind
-%
-
 Here we provide a rough estimate of the energy
 available to a dust devil. There are two objectives of this
 analysis. The first is to provide justification for the concept of
@@ -136,13 +130,67 @@ worthwhile. The second objective is to provide a simple analysis that
 can serve as a measure of the efficiency of the generation process,
 e.g. ``What fraction of the available energy are we extracting?''.  
 
-At present, we consider only the energy flowing into the entrainment
-region due to the ambient conditions, in particular, the incoming wind
-and heat flowing through a cylindrical region. We
-consider a medium-sized (3m radius) dust devil with an incoming
+Steady state conditions requires that the dust devil not
+extract more energy than is provided by the thermal resource, the Sun.   
+The peak direct solar insolation in Arizona on a hot summer day is
+greater than 1000 $W/m^2$. However, this estimate is problematic. 
+It is in some sense an optimistic upper bound, as dust devils are only
+converting a fraction of this solar resource into kinetic
+energy. Renno and Ingersoll\cite{renno_inger} used an idealized heat
+engine frame-work to study natural convection and to propose a theory
+for convective available potential energy (CAPE), however, the
+predictions from this underestimate the observed velocities in the real
+objects. Furthermore, It is not clear how large of a region that dust
+devils draw their energy from. Finally, dust devils are highly
+intermittent creatures, typically existing only for a short time. It is
+not certain that they are able to be accurately represented in a steady
+state context. Lending some credence to this are the measurements of
+\cite{} which found that surface heat fluxes could rise to . 
+
+Sinclair's measurements of the velocity profiles inside a dust 
+devil provides a more direct estimate. A velocity profile taken 
+at approximately 9 meter height is shown in Figure \ref{fig:sinclair_profile}. 
+
+  \begin{figure}[!htb]
+    \begin{center}
+     \includegraphics[width = 20 cm]{figs/sinclair_cut}
+     \caption{Sinclair Profile}
+     \label{fig:sinclair_profile}
+    \end{center}
+  \end{figure}
+
+This is a dust devil with an inner core radius of approximately 
+6 meters, and tangential and axial velocities of 11 and 10 m/s, respecively. 
+This profile can be integrated to provide an estimate of the power though this plane, 
+\begin{equation}
+ P = -\frac{\rho }{2} \int V_z (V_{\theta}^2 + V_z^2 ) dA, 
+\end{equation}
+which results in an estimate of 24 kW. This is a substantial amount of
+energy. 
+
+%
+% show what sinclair measured, then show how we think these energies
+% break down into kinetic vs wind
+%
+
+As alluded to above, the energy composition of these flows is of
+interest. For instance, Carroll and Ryan\cite{JGR:JGR14185} %1970
+found that the kinetic energy contained within a dust devil exceeds that
+which is attributable to buoyancy. Furthermore, Kaimal and Busigner
+observed that dust devils possessed an order of magnitude greater
+vertical flux in kinetic and than similarly sized convective
+plumes~\cite{doi:10.1175/1520-0450(1970)009<0612:CSOACP>2.0.CO;2}. The
+interplay between rotation, ambient winds and thermal potential energy
+are critical to velocity intensities observed in these phenomena. 
+
+As an example of this, consider only the energy flowing into the
+entrainment region due to the ambient conditions, in particular, the
+incoming wind and heat flowing through a cylindrical region. A
+medium-sized (3m radius) dust devil with an incoming 
 freestream velocity of 5 m/s. The surface temperature is 343 Kelvin,
 with a specified inflow boundary layer bridging the ground temperature
-to the ambient air conditions of 313 Kelvin. 
+to the ambient air conditions of 313 Kelvin.\todo{convert to same as
+estimate above?}
 % cite this?
 \footnote{\normalsize These numbers were selected based on information
 provided by the Georgia Tech field team from measurements performed in
@@ -195,7 +243,8 @@ the front half of the vanes,
 As the density only varies with height, the integral is simplified to only vary in 
 this direction
 \begin{align*}
-  E_p  & = g \int^{z_\text{max}}_0 u(z) (\rho(z)-\rho_\infty) z  \pi R dz.
+  E_p  & = g \int^{z_\text{max}}_0 u(z) (\rho(z)-\rho_\infty) \, z  \pi
+ R \, dz.
 \end{align*}
 Using the bousinesq approximation, $(\rho(z)-\rho_\infty)  = \rho_0 \beta \Delta T$,
 %\begin{align*}
@@ -204,7 +253,7 @@ Using the bousinesq approximation, $(\rho(z)-\rho_\infty)  = \rho_0 \beta \Delta
 %\end{align*}
 the integral becomes, 
 \begin{align*}
-  E_p & = g  \pi R \beta \rho_0 \Delta T \int^{z_\text{max}}_0 u(z) z dz.
+  E_p & = g  \pi R \beta \rho_0 \Delta T \int^{z_\text{max}}_0 u(z) \, z dz.
 \end{align*}
 This is solved to show
 \begin{align*}
