@@ -7,6 +7,7 @@ cite\todo{need to add interpolation here}
 cite\todo{add some pretty CAD drawings}
 
 \section{Field Prediction}
+\label{subsec:field_predict}
 
 \section{Sources of Error}
 
@@ -15,6 +16,24 @@ cite\todo{add some pretty CAD drawings}
 behaves like wind tunnel contraction
 
 \section{Determining the Optimal Drag Polars}
+
+All of the results in section \ref{subsec:field_predict} were generated
+using 90 degree semicircle blade geometries, as shown in Figure
+\ref{fig:90_drag}. A natural question then is whether more power might
+be extracted with a different rotor geometry. While several comparisons
+have been performed with different choices of drag polars (flat plate,
+180 degree semicircles, etc. ) this was not an exhaustive survey. 
+
+To address the possible possibility of further turbine blade
+improvements, this section details a more generic set of drag
+polars. Here, the drag polars are generic functions and are optimized to
+maximize the power extracted by the rotor. While the resulting drag
+polars might not be physically  realizable, they represent a ``best
+case'' upper bound indicating the peak power that might be extracted
+with further rotor design iterations. This ``limiting case'' is useful
+for evaluating the system feasibility from a technological standpoint,
+by providing the peak power that could be extracted for a given vane
+geometry. 
 
 The power extracted by the turbine is, 
 \begin{equation}
@@ -155,6 +174,10 @@ The plot of these drag polars are shown in Figure \ref{drags}.
   \end{center}
 \end{figure}
 
-add info\todo{add info of energy extracted}
+Under this approach, the steady state power extracted by the
+turbine nearly doubled from the previous best attained with the 90
+degree semicircles, to 2.1 kW.\todo{add info of energy extracted}
+
+mention that flow would die if you didnt calibrate it
 
 add images of the optimal runs\todo{add opt drag polar images}
