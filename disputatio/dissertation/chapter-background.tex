@@ -128,9 +128,8 @@ The reason for this is that the ExoMars Lander will measure electric fields on M
 Numerical simulations of dust devils have been previously
 reported.\todo{expand this greatly} However, they are typically large
 eddy simulations (LES) that point towards the spontaneous occurance of
-similar phenomena within existing 
-climate and atmospheric
-models\cite{QJ:QJ200513160722,doi:10.3137/ao.420105}. 
+similar phenomena within existing climate and atmospheric
+models\cite{QJ:QJ200513160722,doi:10.3137/ao.420105}.  
 
 
 It is not clear what generates the azimuthal velocities. Two major
@@ -140,42 +139,48 @@ and intensifies due to vortex stretching.\cite{}
 
 The other is that vortex tilting\cite{}
 
-\section{Estimate of Energy Scaling}
+\section{Estimate of Dust Devil Power}
+\label{sec:estimate_power}
 
-Here we provide a rough estimate of the energy
+Here we provide a rough estimate of the power
 available to a dust devil. There are two objectives of this
 analysis. The first is to provide justification for the concept of
-extracting energy from them, with the reasoning that should
-sufficient energy be available, then attempting to extract it might be
+extracting power from them, with the reasoning that should
+sufficient power be available, then attempting to extract it might be
 worthwhile. The second objective is to provide a simple analysis that
 can serve as a measure of the efficiency of the generation process,
-e.g. ``What fraction of the available energy are we extracting?''.  
+e.g. ``What fraction of the available power are we extracting?''.  
 
 Steady state conditions requires that the dust devil not
 extract more energy than is provided by the thermal resource, the Sun.   
 The peak direct solar insolation in Arizona on a hot summer day is
 greater than 1000 $W/m^2$. However, this estimate is problematic. 
-It is in some sense an optimistic upper bound, as dust devils are only
+On one hand it is an optimistic upper bound, as dust devils are only
 converting a fraction of this solar resource into kinetic
-energy. Renno and Ingersoll\cite{renno_inger} used an idealized heat
-engine frame-work to study natural convection and to propose a theory
-for convective available potential energy (CAPE), however, the
-predictions from this underestimate the observed velocities in the real
-objects. Furthermore, It is not clear how large of a region that dust
-devils draw their energy from. Finally, dust devils are highly
-intermittent creatures, typically existing only for a short time. It is
-not certain that they are able to be accurately represented in a steady
+energy. On the other hand, it is not clear how large of a region
+that dust devils draw their energy from. 
+Furthermore, Renno and Ingersoll\cite{renno_inger} used an
+idealized heat engine frame-work to study natural convection and to
+propose a theory for convective available potential energy (CAPE),
+and found that the predictions from this substantially underestimate the
+observed velocities in the real objects. Finally, dust devils are highly 
+intermittent, typically existing only for a short time. It is
+not certain that they are accurately represented in a steady
 state context. Lending some credence to this are the measurements of
-\cite{} which found that surface heat fluxes could rise to . 
+Renno\cite{} which found that instantaneous surface heat fluxes could
+rise to two or three times the average solar insolation. 
 
-Sinclair's measurements of the velocity profiles inside a dust 
+Sinclair's anomometer measurements of the velocity profiles inside a dust 
 devil provides a more direct estimate. A velocity profile taken 
 at approximately 9 meter height is shown in Figure \ref{fig:sinclair_profile}. 
 
   \begin{figure}[!htb]
     \begin{center}
-     \includegraphics[width = 20 cm]{figs/sinclair_cut}
-     \caption{Sinclair Profile}
+     \includegraphics[width = 18 cm]{figs/sinclair_cut}
+     \caption{An example of the velocity profiles from Sinclair's 1973
+     study of the inner structure of a dust devil. These profiles can be
+     integrated to provide a direct estimate of the power contained
+     inside one of these objects.}
      \label{fig:sinclair_profile}
     \end{center}
   \end{figure}
@@ -187,7 +192,7 @@ This profile can be integrated to provide an estimate of the power though this p
  P = -\frac{\rho }{2} \int V_z (V_{\theta}^2 + V_z^2 ) dA, 
 \end{equation}
 which results in an estimate of 24 kW. This is a substantial amount of
-energy. 
+power. 
 
 %
 % show what sinclair measured, then show how we think these energies
@@ -248,7 +253,7 @@ The result for the kinetic energy is then,
 \end{align*}
 Where R is the radius of the vortex. Typical values of these quantities
 are, $U = 5$ m/s, $\rho = 1.225$ Kg/$\text{m}^3$, $R = 3$ m,
-$z_{\text{max}} = 2.5$ m and $\delta \approx 10$ cm. This provides an
+$z_{\text{max}} = 3$ m and $\delta \approx 10$ cm. This provides an
 estimate of 1144 Watts as the incoming kinetic energy flux. 
 
 The gravitational potential energy flux is estimated by integrating the
@@ -312,8 +317,8 @@ This is solved to show
 Characteristic values for a dust devil are $\rho_0 = 1.225$ Kg/$\text{m}^3$, 
 $\Delta T= 30$ Kelvin, $\beta = 0.003194$ (This is 1/$T_{\text{ground}}$), 
 $R = 3 $ m, $z_\text{max} = 2.5$ m, $\delta \approx 10$ cm, $g=9.81$ m/$s^2$, and a
-freestream velocity of five meters per second results in an estimate of 34 Watts %33.82 Watts 
-for the gravitational potential energy. 
+freestream velocity of five meters per second results in an estimate of
+103 Watts for the gravitational potential energy. 
 
 The majority of the available energy is thus in the kinetic energy of
 the wind, not the gravitational potential energy of the actual air. 
@@ -359,11 +364,11 @@ cite\todo{cite mark thesis}
 
 \section{Dust Devil Generation Concept}
 
-The preceding discussion suggests that dust devils are carriers of
-significant levels of ambient kinetic and gravitational potential energy
-from the environment. This subsection provides a brief discussion of how
-the physics of dust devils informs the generation of a synthetic
-variety, that might be used as a means of extracting usable work.  
+The discussion in \ref{sec:estimate_power} suggests that dust devils are
+carriers of significant levels of ambient kinetic and gravitational
+potential energy from the environment. This subsection provides a brief
+discussion of how the physics of dust devils informs the generation of a
+synthetic variety, that might be used as a means of extracting usable work.  
 
 In contrast to the naturally occuring dust devils,
 our synthetic solar driven vortex (SoV) design makes use of
