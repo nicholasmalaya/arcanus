@@ -37,6 +37,34 @@ prevent flow in the vanes from rising up and out of the vanes.
   \end{center}
  \end{figure}
 
+\begin{table}[]
+\centering
+\begin{tabular}{lll}
+Name                        & Value & Meaning                    \\
+ \hline
+$r^{\text{cyl}}$            &  3.0 meters & radius of rigid cylinder \\
+$r^t_{\text{min}}$          &  3.0 meters & smallest radius of top tier
+	 vanes, relative to ground \\
+$L_x$                       &  12 meters  & Distance upstream
+	 of vanes relative to center\\
+$\phi^{t,l}$ &  $0^{\circ}$   & Outer angle for the top tier, left side vanes \\
+$\phi^{t,r}$   &  $0^{\circ}$   & Outer angle for the top tier right side \\
+$\theta^{t,l}$ &   $30^{\circ} +\frac{\alpha}{3}$  & Inner angle for the top tier left side vanes\\
+$\theta^{t,r}$   &   $75^{\circ} +\frac{\alpha}{6}$   & Inner angle for the top tier right side \\
+$L^{t,r}$                   &  12 meters  & width of vane in front of cylinder \\
+$L^{t,l}$                   &  10 meters  & width of vane to the side of cylinder \\
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+ \item $\phi$  angle relative to streamwise direction ($\hat i$)
+ \item $\theta$ angle relative to radial direction ($\hat r$)
+ \item $\alpha$ is angle from origin to inner terminus of vane
+ \item Superscript $t$ denotes top, $l$ is left, $r$ right (when viewed
+       from front)
+ \item Forcing function has a discontinuity at $\alpha=90^{\circ}$
+\end{itemize}
+
 
  \begin{figure}[!htb]
   \begin{center}
@@ -50,6 +78,26 @@ prevent flow in the vanes from rising up and out of the vanes.
   \end{center}
  \end{figure}
 
+\begin{table}[]
+\centering
+\begin{tabular}{lll}
+Name                        & Value & Meaning                    \\
+ \hline
+$r^b_{\text{min}}$          &  0.6 meters & Smallest radius of bottom tier vanes \\
+$r^b_{\text{max}}$          &  6.0 meters & Largest radius of bottom tier vanes \\
+$\theta^{b,d}$ &  $60^{\circ}$   & Inner angle for the bottom tier, downstream vanes \\
+$\theta^{b,u}$ &  $80^{\circ}$   & Inner angle for the bottom tier, upstream vanes \\
+$\phi^{b,d}$ &   0   & Outer angle for the bottom  tier, downstream vanes \\
+$\phi^{b,u}$ &   0   & Outer angle for the bottom tier, upstream vanes \\
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+ \item Superscript $b$ denotes bottom tier, $d$ is downstream, $u$ upstream vanes
+ \item $\phi$,$\theta$ angles relative to radial ($\hat r$)
+\end{itemize}
+
+
 \begin{figure}[!htb]
   \begin{center}
    \includegraphics[width = 15 cm]{figs/vertical_design.pdf}
@@ -61,6 +109,23 @@ prevent flow in the vanes from rising up and out of the vanes.
   \end{center}
  \end{figure}
 
+\begin{table}[]
+\centering
+\begin{tabular}{lll}
+Name                        & Value & Meaning                    \\
+ \hline
+$r^{\text{cyl}}$            &  3.0 meters  & radius of rigid cylinder \\
+$L_x$                       &  12 meters  & Furthest distance upstream of top	 tier vanes \\
+ $H^t    $                  &   3 meters  & Height of top tier vanes \\
+ $H^{b,u}$                  & 0.375 meters & Height of bottom tier, upstream vanes \\
+ $H^{b,d}$                  &   .75 meters& Height of bottom tier, downstream vanes \\
+ $H^{c}$                    &   2 meters  & Cone Height \\
+ $D^c_{\text{min}}    $     &   3 meters  & Minimum cone diameter \\
+ $D^c_{\text{max}}    $     &   6 meters  & Diameter of cone at top of vanes\\
+\end{tabular}
+\end{table}
+
+
 The top tier design is now highly asymmetric, with a
 large opening facing the incoming wind to capture incoming free stream
 kinetic energy over a large area. The incoming flow enters the central
@@ -71,7 +136,7 @@ To enable these more general vane geometries, it was necessary to
 formulate a more general parameterization of the vanes. The virtual vane 
 function is now specified by a 7\textsuperscript{th} order polynomial
 fitted to the boundary constraints for the vane angle within the region
-of the vanes.\todo{discuss formulation here}
+of the vanes.
 
 The optimized configuration for this case results in 3.05 kW of kinetic
 energy flux through the top of the vanes, which is 417\% more kinetic
@@ -93,6 +158,14 @@ fabrication.\todo{add some pretty CAD drawings}
 behaves like wind tunnel contraction
 
 \section{Turbine Design}
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 10 cm]{figs/turbine_opt}
+    \caption{Turbine optimization}
+    \label{fig:ut_turbine}
+   \end{center}
+  \end{figure}
 
 In addition to the final vane design, a turbine design developed in
 collaboration with Duane McCormick at UTRC. This design was arrived at
