@@ -2,9 +2,86 @@
 
 \section{Geometry}
 
-cite\todo{need to add interpolation here}
+The steady reduced order model (ROM) was used to explore a broad set of
+system configurations and to optimize kinetic energy flux. The resulting
+configuration represents a significant change from that used in the
+August 2015 Field test. Horizontal and vertical views of this
+configuration are shown in Figures \ref{a-b}, below. A brief summary of
+the differences is given below: 
 
-cite\todo{add some pretty CAD drawings}
+\begin{itemize}
+\item The bottom tier vanes are significantly taller than in the field.
+\item An impermeable cylinder was introduced along the arc $\{\pi < \theta
+      < 0 \}$, e.g. the bottom two quadrants in the images below, replacing the
+vanes in those quadrants. 
+\item The cone is taller providing a greater contraction.
+\item The bottom tier vanes are no longer symmetric: the downwind side is
+taller because the downwind boundary layer is thicker and has a lower
+peak turning angle to reduce blockage.
+\item The upper tier vanes were configured to align with the freestream
+velocity, to provide a larger wind-driven flux into the facility.
+\item Horizontal partitions were added to the top of the upper vanes, to
+prevent flow in the vanes from rising up and out of the vanes. 
+\end{itemize}
+
+ \begin{figure}[!htb]
+  \begin{center}
+   \includegraphics[width = 10 cm]{figs/interp_entire_top.pdf}
+   \caption{A top view of the top vane design. The red lines are the
+     vanes, which are spaced so that the mass flux between vanes is
+     approximately equal. The blue symbols are the parameters that
+     specify the design. Notice the highly asymmetric configuration,
+     with the front (left) opening of the vanes aligned directly with
+     the incoming wind.}
+   \label{fig:top_design}
+  \end{center}
+ \end{figure}
+
+
+ \begin{figure}[!htb]
+  \begin{center}
+   \includegraphics[width = 10 cm]{figs/interp_entire_bottom.pdf}
+   \caption{Azimuthal velocity data from the August 2015 field test is
+   shown in blue. Two virtual vane simulations with different scenario
+   parameters are shown in red and gold. The velocity field was
+   temporally averaged but not averaged in space, to reproduce
+   the measurements from the field.}
+   \label{fig:bottom_design}
+  \end{center}
+ \end{figure}
+
+\begin{figure}[!htb]
+  \begin{center}
+   \includegraphics[width = 15 cm]{figs/vertical_design.pdf}
+   \caption{A side view of the summer 2016 two tier vane design. The
+     vanes are drawn in red. The difference in heights between lower
+     tier vanes in front and back vanes is clearly visible. The turbine
+     is placed at the top of the cone.}
+   \label{fig:vertical_design}
+  \end{center}
+ \end{figure}
+
+The top tier design is now highly asymmetric, with a
+large opening facing the incoming wind to capture incoming free stream
+kinetic energy over a large area. The incoming flow enters the central
+cylindrical area, where it spins and is driven out the top through the
+cone. 
+
+To enable these more general vane geometries, it was necessary to
+formulate a more general parameterization of the vanes. The virtual vane 
+function is now specified by a 7\textsuperscript{th} order polynomial
+fitted to the boundary constraints for the vane angle within the region
+of the vanes.\todo{discuss formulation here}
+
+The optimized configuration for this case results in 3.05 kW of kinetic
+energy flux through the top of the vanes, which is 417\% more kinetic
+energy flux than was produced in the August 2015 Field test.
+
+An optimal set of design parameters were determined and provided to the
+experimental group, for detailed mechanical design and
+fabrication.\todo{add some pretty CAD drawings}
+
+
 
 \section{Field Prediction}
 \label{subsec:field_predict}
@@ -14,6 +91,47 @@ cite\todo{add some pretty CAD drawings}
 \section{Effect if the Cone}
 
 behaves like wind tunnel contraction
+
+\section{Turbine Design}
+
+In addition to the final vane design, a turbine design developed in
+collaboration with Duane McCormick at UTRC. This design was arrived at
+by coupling a ``frozen flow'' optimization routine from UTRC with a Blade
+Element Momentum (BEM) rotor model integrated into UT's CFD model as an
+actuator disk. The rotor/inflow coupling directly modeled enabling
+accurate rotor inflow predictions. In this way, the UTRC code would
+iterate through design parameters using the coupled CFD code as a higher
+fidelity confirmation. The UTRC frozen flow optimization was largely
+consistent with the fully coupled CFD prediction (see Figure \ref{},
+below). This has resulted in two final rotor designs, with and without
+twist. This was because the experimental team was not certain that a
+twisted design would be feasible. Regardless, the twisted rotor
+out-performed the zero-twist rotor. The peak power extracted is
+predicted to be 1.4 kW for the rotor with twist, and slightly more than
+1 kW for a rotor with no twist. 
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 10 cm]{figs/utrc_plot}
+    \caption{​The power extracted by the rotor predicted by the CFD (red
+    circles) and ``frozen flow'' (blue line) for a range of rotor
+    collective angles. The higher lines are for blades with twist, and
+    the lower are for constant blade angle runs, which was always
+    inferior in terms of power extracted.}
+    \label{fig:UTRC_turbine}
+   \end{center}
+  \end{figure}
+
+
+In general, the frozen flow and fully coupled CFD agree. However this is
+only for rotor loadings close to those in the coupled CFD. The errors
+tend to be in frozen flow predictions with parameters far from the
+coupled CFD. In some cases, the limitations of the frozen flow
+optimization were extremely significant. For instance, several attempts
+to extract more power at very large RPMs would cause a breakdown of SoV
+flow in the coupled CFD model, which resulted in the flow power dropping
+by more than an order of magnitude. 
+
 
 \section{Determining the Optimal Drag Polars}
 
