@@ -15,12 +15,12 @@
 % should this all be math modeling?
 %
 
-The aim of the proposed work is to simulate synthetic
+The aim of this work is to simulate synthetic
 dust devils in the field. This requires a model of the ambient
 conditions for a representative case, such as Arizona, where
 experimental data is available from tests that have been
-performed. Furthermore, for this to be more generally useful in the
-prediction of flows in a variety of conditions, we need a model generally
+performed. Furthermore, for this to be generally useful in the
+prediction of flows in a variety of conditions, we need a model
 applicable to any flow near the surface of the earth.  
 
 This chapter details an analysis of surface fluid mechanics, and
@@ -318,8 +318,7 @@ computed. In the region near the vanes, where a no-slip boundary
 condition is imposed, the flow will necessarily form a thin momentum
 boundary layer. Resolving this boundary layer requires high resolutions
 immediately adjacent to the walls. Changing the vane location requires
-that a new mesh be generated.
-This is a significant
+that a new mesh be generated. This is a significant
 challenge, as the development of a new mesh often requires significant
 human effort and time. Furthermore, the process is error-prone, 
 and would require that each simulation using a new mesh undergo 
@@ -335,7 +334,7 @@ detailed solution verification.
 Instead, we have developed a modeling formulation that does not require
 explicitly meshing the turning vanes, or any surface. These so-called
 ``virtual vanes'' are implemented as a body force that 
-is applied in the annular region that contains the vanes. Vane
+is applied in the annular region that contains the vanes.\todo{add image} Vane
 geometry is specified by the angle $\phi$ a vane makes with a radial
 line as a function of the radial coordinate $r$. A unit normal to vane
 surfaces ${\bf n}$ is defined as
@@ -374,9 +373,9 @@ commonly used to represent the rotor of a wind turbine \cite{betz}.
 
 Just an actuator disk or BEM model. 
 Practical utility-scale wind turbines achieve at peak 75\% to 80\% of
-the Betz limit. However, betz is likely not accurate here.\todo{write turbine formulation!}
+the Betz limit. However, betz is likely not accurate here.
 
-The normal in the blade's velocity direction is, 
+The normal in the blade's velocity direction is,\todo{add image} 
 \begin{equation*}
 n_B = \frac{u_B}{||u_B||}. 
 \end{equation*}
