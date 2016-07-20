@@ -252,8 +252,25 @@ distance from the ground,
 for } z \gg L_{M-O}. 
 \end{equation}
 
-These functions have been found to be broadly applicable and
-accurate\cite{Foken2006}, and are easily implemented in software.
+\subsection{Shortcomings of Monin-Obukhov Theory}
+
+Several known (and often well characterized) shortcomings of the Monin
+Obukhov similarity theory exist. These include:
+
+\begin{itemize}
+ \item Surfaces with large spatial variations in roughness heights
+ \item Outside of the surface layer (several hundred meters), the
+       coriolis effect is no longer negligible
+ \item even in ``ideal'' situations, the theory has seldom been found to
+      be accurate to more than 10\% (kansas measurements)\cite{?}
+%\item the theory's predictions are well known to be sensitive to choice
+%      of universal function for $L>0$.
+\end{itemize}
+
+For our case, with minimal surface roughness and our interest
+constrained to the near surface layer, these functions are applicable
+and reasonably accurate\cite{Foken2006}, and are easily implemented in
+software. 
 
 \section{Eddy Viscosity in the Device}
 
@@ -873,14 +890,15 @@ The inflow boundary is at the surface $x=-L_x$.
 \textbf{Mixed inflow/outflow Boundary Conditions on $\Gamma_T$,
 $\Gamma_S$ and $\Gamma_B$}  
 
-At outflow boundaries, a homogeneous Neumann condition is appropriate,
+At outflow boundaries, a homogeneous ``do nothing'' Neumann condition is
+appropriate\cite{Rannacher2000}, 
 \begin{align}
   \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0 \\
   \frac{\partial T}{\partial n}\bigg|_{\Gamma_T} = 0
 \end{align}
-However, for the cases in this study, 
-a modified Neumann condition is necessary due to the possibility that there will
-be an inflow on these boundaries.
+However, for the cases in this study, a modified Neumann condition is
+necessary due to the possibility that there will be an inflow on these
+boundaries. 
 For example, in the region above the vanes, the concentrated hot plume is
 lifted by buoyancy upward and out of the simulation domain. However, the
 radial inflow towards the apparatus is drawn in by large scale
