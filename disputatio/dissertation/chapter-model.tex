@@ -110,7 +110,7 @@ the mixing-length model of Prandtl, where the concepts of gradient
 diffusion and mixing length were generalized to thermally stratified
 flow.    
 
-ADD DIMENSIONS TO MAKE SCALING MORE CLEAR\todo{add dimensions}
+%ADD DIMENSIONS TO MAKE SCALING MORE CLEAR\todo{add dimensions}
 %
 % justify prandtl assumption here
 %
@@ -140,9 +140,25 @@ velocity); and the heat flux to the ground, $q$. %\todo{is this right?}
 %
 % add refence to dynamical and physical meteorology 
 % 
-These quantities depend on four dimensions: length, time, temperature
-and mass. Dimensional analysis implies that this mean turbulent quantity
-($\bar f$) should then only be a function of a single dimensionless
+These primary quantities have the following dimensions,
+
+\begin{eqnarray}
+ \textbf{Height:}& z\enskip \dot = \enskip [m]  \\
+ \textbf{Buoyancy:}& \, \frac{g}{T_0}\enskip \dot = \enskip [m] [s]^{-2}
+  [K]^{-1} \\ 
+ \textbf{Density:}&  \enskip \rho \enskip \dot = \enskip [kg] [m]^{-3}  \\
+ \textbf{Velocity:}& \enskip u^* \enskip \dot = \enskip [m] [s]^{-1} 
+ %\textbf{Height:}& z \rightarrow \text{Units}: Meters \rightarrow [m]  \\
+ %\textbf{Buoyancy:}& \frac{g}{T_0} \rightarrow Units: Meters \rightarrow
+ % [m]  \\ 
+ %\textbf{Density:}& \rho \rightarrow Units:  \rightarrow
+ % [m]  \\ 
+ %b & b
+\end{eqnarray}
+
+Our unknown mean turbulent quantity ($\bar f$) depends on four
+dimensions: length, time, temperature and mass. Dimensional analysis
+implies that this should then only be a function of a single dimensionless
 group\cite{munson2012fundamentals}. This is chosen to be,
 \begin{equation}
  \xi = -\frac{\kappa \frac{g}{T_0} \frac{q}{c_p \rho_0} z}{ {u^*}^3}.
