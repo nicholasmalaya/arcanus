@@ -26,7 +26,7 @@ prevent flow in the vanes from rising up and out of the vanes.
 
  \begin{figure}[!htb]
   \begin{center}
-   \includegraphics[width = 10 cm]{figs/interp_entire_top.pdf}
+   \includegraphics[width = 13 cm]{figs/interp_entire_top.pdf}
    \caption{A top view of the top vane design. The red lines are the
      vanes, which are spaced so that the mass flux between vanes is
      approximately equal. The blue symbols are the parameters that
@@ -65,15 +65,17 @@ $L^{t,l}$                   &  10 meters  & width of vane to the side of cylinde
  \item Forcing function has a discontinuity at $\alpha=90^{\circ}$
 \end{itemize}
 
-
  \begin{figure}[!htb]
   \begin{center}
-   \includegraphics[width = 10 cm]{figs/interp_entire_bottom.pdf}
-   \caption{Azimuthal velocity data from the August 2015 field test is
-   shown in blue. Two virtual vane simulations with different scenario
-   parameters are shown in red and gold. The velocity field was
-   temporally averaged but not averaged in space, to reproduce
-   the measurements from the field.}
+   \includegraphics[width = 13 cm]{figs/interp_entire_bottom.pdf}
+   \caption{A top view of the bottom tier design. These vanes (in red)
+   are also asymmetric, with lower final curvature angles and a taller
+   height for the back (downstream) vanes versus the front. This is due
+   to the thicker boundary layer of the flow entering the device from
+   the right (downstream relative to the wind). These vanes are design
+   to turn the incoming flow so that it is nearly azimuthal near the
+   center of the apparatus, increasing rotation and lowering the
+   pressure in the center.}
    \label{fig:bottom_design}
   \end{center}
  \end{figure}
@@ -138,14 +140,39 @@ To enable these more general vane geometries for the top tier, it was
 necessary to formulate a more general parameterization of the
 vanes.\todo{why did we need to do this?} 
 
-The virtual vane function is now specified by a 7\textsuperscript{th} order
-polynomial fitted to the boundary constraints for the vane angle within
-the region of the vanes.\todo{show 7th order}
-The polynomial order was selected because it
-provided a good balance between accuracy and a desire to maintain as low
-an order as possible.
+The virtual vane function is now specified by a 2D N\textsuperscript{th}
+order polynomial fitted to the boundary constraints for the vane angle
+within the region of the vanes. This has the form, 
 
-These interpolated fields are shown in.\todo{add python plots}
+\begin{equation}
+ P(x,y) = \sum_{i=0}^N  \sum_{j=0}^N a_{i,j} x^i y^j
+\end{equation}
+
+where $a_{i,j}$ are coefficients of the polynomial which are selected by
+minimizing the residual between the known vane values, e.g.\todo{show 7th order}
+
+ \begin{figure}[!htb]
+  \begin{center}
+   \includegraphics[width = 15 cm]{figs/bottom_interp}
+   \caption{Top view of the interpolation function for the ``right
+   side'' of the vanes on the top tier. The red lines are the data sets
+   that provides the input data used to calibrate the two dimensional
+   polynomial field. The black line is the inner radius of the SoV.}
+   \label{fig:bottom_interp}
+  \end{center}
+ \end{figure}
+
+The polynomial order was selected to be n\textsuperscript{th} because it
+provided a good balance between accuracy and a desire to maintain as low
+an order as possible. Furthermore, the vanes interpolation was split
+into two components, for the ``left'' and ``right'' (from the perspective of a
+person standing upwind of the SoV and looking at it) of the vanes in the
+top tier. The ``right'' interpolated field is shown in
+Figure~\ref{fig:bottom_interp}.\todo{update python plots} 
+
+%
+% /h2/nick/src/code/python/poly_vanes
+%
 
 The optimized configuration for this case results in 3.05 kW of kinetic
 energy flux through the top of the vanes, which is 417\% more kinetic
