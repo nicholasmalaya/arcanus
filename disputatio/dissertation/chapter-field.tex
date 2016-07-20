@@ -149,7 +149,17 @@ within the region of the vanes. This has the form,
 \end{equation}
 
 where $a_{i,j}$ are coefficients of the polynomial which are selected by
-minimizing the residual between the known vane values, e.g.\todo{show 7th order}
+minimizing the residual between the specified vane values and the
+polynomial evaluated at that point. In other words, we find the
+least-squares solution to a linear matrix equation, which is
+under-determined. The solution to the equation $A x = b$ is found by
+computing a vector $x$ that minimizes the Euclidean 2-norm $|| b - A x 
+||^2$. 
+%
+% http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.linalg.lstsq.html
+%
+
+e.g.\todo{show 7th order}
 
  \begin{figure}[!htb]
   \begin{center}
@@ -162,7 +172,7 @@ minimizing the residual between the known vane values, e.g.\todo{show 7th order}
   \end{center}
  \end{figure}
 
-The polynomial order was selected to be n\textsuperscript{th} because it
+The polynomial order was selected to be 7\textsuperscript{th} because it
 provided a good balance between accuracy and a desire to maintain as low
 an order as possible. Furthermore, the vanes interpolation was split
 into two components, for the ``left'' and ``right'' (from the perspective of a
