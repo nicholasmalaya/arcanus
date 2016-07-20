@@ -1,5 +1,3 @@
-need to change subsections to sections
-
 do you want an appendix with functions for various vane configurations?
 
-add ref to -- Optimal heat transport solutions for Rayleigh bernard convection (for variational problems)
+add ref to -- Optimal heat transport solutions for Rayleigh bernard convection (for variational problems) 
