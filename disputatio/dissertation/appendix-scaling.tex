@@ -1,3 +1,40 @@
 \label{scaling}
 
-\todo{finish me}
+As mentioned in Chapter~\label{sec:physics}, the mechanical power
+available for extraction is the flux of kinetic energy through a
+vertical surface where one could attach a turbine, for instance, 
+
+\begin{equation}
+ P = \frac{\rho }{2} \int V_z (V_{\theta}^2 + V_z^2 ) dA. 
+\end{equation}
+
+Thus, with the velocity field we can determine the energy
+flux. As in Figure~\ref{fig:sinclair_profile}, we can extract the
+velocity fields from a naturally occurring dust devil as a guide of the 
+representative power contained within. As noted in Sinclair, the
+azimuthal velocity closely follows a Rankene vortex model, 
+
+\begin{equation}
+ V_{\theta} = 
+  \begin{cases}
+   \frac{V_0 r}{R} \quad r < R \\
+   \frac{V_0 R}{r} \quad r > R \\
+  \end{cases}
+\end{equation}
+
+If we assume that $V_z$ adheres to Sinclair's observation that $V_z \approx
+V_{\theta} \approx V_0$ for $r < R \quad (V_z=0,r>R)$, 
+\begin{eqnarray}
+ P &= \frac{1}{2} \rho \int_0^{2\pi}\int_0^{\infty} V_z \, (V^2_z +
+  V_{\theta}^2)\, dr \, d\theta \\ 
+ &= \pi \rho \int_0^{\infty} V_z \, (V^2_z + V_{\theta}^2) dr
+\end{eqnarray}
+
+%\bigintssss 
+
+With, 
+\begin{eqnarray}
+ \rho \approx& 1.225 \,\text{kg}/\text{m} \\
+ R \approx& 5 \,\text{m} \\
+ V_0 \approx& 10 \,\frac{\text{m}}{\text{s}}
+\end{eqnarray}
