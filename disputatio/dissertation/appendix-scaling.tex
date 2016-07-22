@@ -23,18 +23,22 @@ azimuthal velocity closely follows a Rankene vortex model,
 \end{equation}
 
 If we assume that $V_z$ adheres to Sinclair's observation that $V_z \approx
-V_{\theta} \approx V_0$ for $r < R \quad (V_z=0,r>R)$, 
+V_{\theta} \approx V_0$ for $r < R$ and $V_z=\frac{V_0 R}{r}$ for $r > R$,
+the integral can be solved, 
 \begin{eqnarray}
- P &= \frac{1}{2} \rho \int_0^{2\pi}\int_0^{\infty} V_z \, (V^2_z +
+ P =& \frac{1}{2} \rho \int_0^{2\pi}\int_0^{\infty} V_z \, (V^2_z +
   V_{\theta}^2)\, dr \, d\theta \\ 
- &= \pi \rho \int_0^{\infty} V_z \, (V^2_z + V_{\theta}^2) dr
+ =& \pi \rho \int_0^{\infty} V_z \, (V^2_z + V_{\theta}^2) dr
 \end{eqnarray}
 
+%
 %\bigintssss 
+%
 
 With, 
 \begin{eqnarray}
- \rho \approx& 1.225 \,\text{kg}/\text{m} \\
- R \approx& 5 \,\text{m} \\
- V_0 \approx& 10 \,\frac{\text{m}}{\text{s}}
+ \rho \approx& 1.225 \,\text{kg}/\text{m}, \\
+ R \approx& 5 \,\text{m}, \\
+ V_0 \approx& 10 \,\frac{\text{m}}{\text{s}},
 \end{eqnarray}
+we arrive at our estimate of 25 kW.\todo{check numbers!}
