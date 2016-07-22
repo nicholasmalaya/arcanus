@@ -248,8 +248,8 @@ In general, the frozen flow and fully coupled CFD agree. However this is
 only for rotor loadings close to those in the coupled CFD. The errors
 tend to be in frozen flow predictions with parameters far from the
 coupled CFD. In some cases, the limitations of the frozen flow
-optimization were extremely significant. For instance, several attempts
-to extract more power at very large RPMs would cause a breakdown of SoV
+optimization were significant. For instance, several attempts
+to extract more power at large RPMs would cause a breakdown of SoV
 flow in the coupled CFD model, which resulted in the flow power dropping
 by more than an order of magnitude.\todo{add turbine flow pictures}
 
@@ -320,7 +320,7 @@ area on the turbine, which is,
 with $U_R$ the magnitude of relative velocity and $c$ is the blade chord
 length, which is assumed to be constant (not a function of the radius,
 for instance). Finally, $C_{\tau}$ is the tangential force coefficient,
-which depends on the local lift and drap coefficients, as well as the
+which depends on the local lift and drap coefficients, and the
 flow angle, $\phi$, 
 \begin{equation}
  C_{\tau} = C_L \,\text{sin}(\phi) + C_D \,\text{cos}(\phi)
@@ -349,7 +349,7 @@ We lump the constant terms together, $E_{\tau} = \frac{\Omega \rho c B (r_{\text
 Note that we have assumed $C_D = C_D(\phi,r)$ and $C_L = C_L(\phi,r)$,
 namely, that the coefficients vary with the flow direction and may vary
 radially, due to twisting the blade angle. Furthermore, the flow
-direction, $\phi$, varies with the location as well as the blade speed,
+direction, $\phi$, varies with the location and the blade speed,
 in that $\phi=\phi(r,\theta,\Omega)$. The relative velocity is the
 quantity, $U_R = U - U_\tau$, e.g. the difference in velocity between
 the turbine and the flow. The turbine has no axial velocity ($w_\tau =
@@ -373,7 +373,8 @@ and drag are. To do this, we specify an optimization problem such that,
 In words, the drag must be specified to be greater than zero, but
 the lift can be negative. This is a problem in the calculus of
 variations, where the objective is to maximize a
-function\ref{??,2015JFM...784..565S}. 
+functional\ref{thornton2004classical,bradbury1968theoretical,2015JFM...784..565S}
+subject to imposed constraints. 
 
 %
 % does this argument still work?!?

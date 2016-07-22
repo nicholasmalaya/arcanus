@@ -142,7 +142,7 @@ it, and smooth blending between these two regimes. Each boundary layer
 spacing was tested against a finer spacing to ensure that the results
 were not sensitive to the choice of spacing. A horizontal slice though a
 representative domain is shown in Figure \ref{fig:meshing}. The single
-refinement in the region of the vanes is visible, as well as the finer
+refinement in the region of the vanes is visible, along with the finer
 meshed boundary layer region near the ground. 
 
   \begin{figure}[!htb]
@@ -150,7 +150,7 @@ meshed boundary layer region near the ground.
      \includegraphics[width = 10 cm]{figs/meshing}
      \caption{Horizontal slide through the domain, to show a
      representative meshing. The single refinement region around the
-     vanes is visible, as well as the finer boundary layer mesh near the
+     vanes is visible, along with the finer boundary layer mesh near the
      ground.}
      \label{fig:meshing}
     \end{center}
@@ -161,7 +161,7 @@ scaled with grid size to ensure that the cell Reynolds number,
 \begin{equation}
  \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y) u}{\nu_T}
 \end{equation}
- is maintained for every simulation, in order to ensure stability.
+ is maintained for every simulation, to ensure stability.
 
 
 %% hmin = 0.001  
@@ -295,7 +295,7 @@ After a run terminates, several scripts are automatically invoked.
 These scripts archive the run (outside of the volatile /scratch 
 production directories) and simultaneously, label the concluded run with
 unique metadata that defines the system environment, the jobs input
-files and run definitions, as well as information detailing the
+files and run definitions, and information detailing the
 hypothesis or physics the job was intended to investigate. Finally, once
 a week a script performs \textbf{rsync} on the entire archived database to
 ensure more than single redundancy for the runs. 
