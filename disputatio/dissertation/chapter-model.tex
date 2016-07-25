@@ -369,7 +369,21 @@ detailed solution verification.
 Instead, we have developed a modeling formulation that does not require
 explicitly meshing the turning vanes, or any surface. These so-called
 ``virtual vanes'' are implemented as a body force that 
-is applied in the annular region that contains the vanes.\todo{add image} Vane
+is applied in the annular region that contains the vanes. 
+
+   \begin{figure}[!htb]
+    \centering
+    \includegraphics[width =0.47\textwidth]{figs/gridded_region}
+    \hfill
+    \includegraphics[width =0.47\textwidth]{figs/forcing_region}
+     \caption{An example of explicitly represented turning vanes (left)
+    versus an annular forcing region (right).}
+     \label{fig:penalty_model}
+   \end{figure}
+
+
+
+Vane
 geometry is specified by the angle $\phi$ a vane makes with a radial
 line as a function of the radial coordinate $r$. A unit normal to vane
 surfaces ${\bf n}$ is defined as
