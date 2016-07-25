@@ -399,7 +399,7 @@ normal component of the velocity decays exponentially.
 It is a modeling constant and is specified to be
 the same order as the separation distance between neighboring vanes in
 the physical vane configuration, since entry lengths in internal flows
-scale with the width of the channel.
+scale with the width of the channel.\todo{add image of annealing distance}
 
 This virtual vane formulation is similar to the ``actuator disk'' model
 commonly used to represent the rotor of a wind turbine \cite{betz}. 
@@ -650,43 +650,43 @@ n_y\\
 %
 % example of an algorithm
 %
-\todo{fix me}
-% \begin{center}
-%  \begin{algorithm}
-%   \caption{The crude separation model. This model identifies if the flow
-%   is coming into or out of the vane region, and if the velocity vector
-%   is in the same direction as the tangent line of the vanes. In the case
-%   of the ``special forcing'' the flow is forced as if it was
-%   impacting a solid surface. In the
-%   algorithm below, $r_0$ is the max radius of vanes, $r_i$ the minimum
-%   radius of vanes, and $\delta$ is the width of the separation region.}
-%   \label{alg:sep}
-%   \begin{algorithmic}[1]
-%    \If{($r_0 > r > r_i$)} 
-%    \If{$(r_0 - r) < \delta$ \textbf{or} $((r - r_i) < \delta)$}
-%    \State $\overrightarrow{n^r} = \overrightarrow{r}/|r|$
-%    \If{$(r - r_i) < \delta$} 
-%    \State $\overrightarrow{n^r} = -\overrightarrow{n^r}$
-%    \EndIf
-%    \State  $\bf t^v = \left( {\bf n^{v^\perp}} \right) \text{sign}\left(
-% 	    {\bf n^{v^\perp}} \cdot {\bf n^r} \right)$
-%    \If{$v \cdot t^v > 0$ \textbf{and} $v \cdot n^r < 0 $}
-%    \State ${\bf n}({\bf x}) = \hat r$ \quad (Special Forcing)
-%    \Else
-%    \State  ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
-%   \left(\phi(r) \right) \hat{{\bf \theta}} $
-%   \quad (Normal Forcing)
-%    \EndIf
-%    \Else
-%    \State ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
-%   \left(\phi(r) \right) \hat{{\bf \theta}} $
-%   \quad (Normal Forcing)
-%    \EndIf
-%    \EndIf
-%   \end{algorithmic}
-%  \end{algorithm}
-% \end{center}
-%
+
+\begin{center}
+ \begin{algorithm}
+  \caption{The crude separation model. This model identifies if the flow
+  is coming into or out of the vane region, and if the velocity vector
+  is in the same direction as the tangent line of the vanes. In the case
+  of the ``special forcing'' the flow is forced as if it was
+  impacting a solid surface. In the
+  algorithm below, $r_0$ is the max radius of vanes, $r_i$ the minimum
+  radius of vanes, and $\delta$ is the width of the separation region.}
+  \label{alg:sep}
+  \begin{algorithmic}
+   \IF{($r_0 > r > r_i$)} 
+   \IF{$(r_0 - r) < \delta$ \textbf{or} $((r - r_i) < \delta)$}
+   \STATE $\overrightarrow{n^r} = \overrightarrow{r}/|r|$
+   \IF{$(r - r_i) < \delta$} 
+   \STATE $\overrightarrow{n^r} = -\overrightarrow{n^r}$
+   \ENDIF
+   \STATE  $\bf t^v = \left( {\bf n^{v^\perp}} \right) \text{sign}\left(
+  	    {\bf n^{v^\perp}} \cdot {\bf n^r} \right)$
+   \IF{$v \cdot t^v > 0$ \textbf{and} $v \cdot n^r < 0 $}
+   \STATE ${\bf n}({\bf x}) = \hat r$ \quad (Special Forcing)
+   \ELSE
+   \STATE  ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
+  \left(\phi(r) \right) \hat{{\bf \theta}} $
+  \quad (Normal Forcing)
+   \ENDIF
+   \ELSE
+   \STATE ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
+  \left(\phi(r) \right) \hat{{\bf \theta}} $
+  \quad (Normal Forcing)
+   \ENDIF
+   \ENDIF
+  \end{algorithmic}
+ \end{algorithm}
+\end{center}
+
 
 The forcing is modified when the velocity vector of the local flow, $\bf
 u$ is pointing in to the forcing region: ${\bf u} \cdot {\bf n^r} < 0$, and
@@ -734,7 +734,7 @@ added is measured as,
 R is the outer diameter of the vanes. 
 The value of $E_{\text{injected}}$ is typically a few percent of the
 total kinetic energy flux measured through the top of the
-vanes.
+vanes.\todo{expand this section}
 
 %This general forcing provides additional capabilities including the
 %ability to investigate engineering greater surface roughness or
@@ -903,7 +903,8 @@ imposed\cite{Blocken2007238}. The thermal inflow is then
   \label{eq:bl_t}
 \end{equation*}
 % 335+18*tanh(-z/0.1)-z*2/3
-The inflow boundary is at the surface $x=-L_x$.
+The inflow boundary is at the surface $x=-L_x$.\todo{add image of how
+inflow boundary layer profile is roughly correct}
 
 \textbf{Mixed inflow/outflow Boundary Conditions on $\Gamma_T$,
 $\Gamma_S$ and $\Gamma_B$}  
@@ -954,19 +955,17 @@ This layer artificially increases the momentum diffusivity by
 up to a factor of ten times the nominal value. This was designed to stabilize
 the modified Neumann boundary conditions which can exhibit an instability
 when there is a compact jet of fluid leaving the domain. 
+These small outflows would create small high velocity inflows, and the
+feedback loop would result in instabilities and numerical
+blow-up. Mindful of the fact that the character of solution not
+important in this region, and that our physical interest remains focused
+on the region inside and in immediate proximity to the vanes, we
+introduced a higher diffusivity ``sponge'' region that would diffuse the
+high velocity exiting jets sufficiently to prevent numerically
+un-physical behavior. No results are quoted from this ``sacrificial''
+region, as it is not considered physically meaningful.
+
 These regions are referred to by many names in the
 literature\cite{doi:10.1146/annurev.fluid.36.050802.121930}, such as
-absorbing layers, fringe regions, buffer zones, sponges, etc. 
-
-
-%%  This
-%% would create small high velocity inflows, and the feedback loop would
-%% result in instabilities and numerical blow-up. Mindful of the fact that
-%% the character of solution not important in this region, and that our
-%% physical interest remains focused on the region inside and in immediate
-%% proximity to the vanes, we introduced a higher diffusivity ``sponge''
-%% region that would diffuse the high velocity exiting jets sufficiently to
-%% prevent numerically un-physical behavior. No results are quoted from
-%% this ``sacrificial'' region, as it is not considered physically
-%% meaningful.
-
+absorbing layers, fringe regions, buffer zones, sponges,
+etc.\todo{expand this? how thick did it need to be?}
