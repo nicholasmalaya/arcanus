@@ -182,35 +182,31 @@ sensistive to these boundary condition details. The important element is
 the  global energy balance in the room. The flow rate into the room is
 adjusted to  1.3 $m^3$/s for the validation results discussed here.  
 
-%% \begin{figure}[!htb]
-%%   \begin{center}
-%%    \includegraphics[width = 12 cm]{figs/hybrid_profile}
-%%    \caption{Azimuthal and vertical velocity profiles as a function of
-%%    radius. The simulation and experimental data broadly agree, with
-%%    the simulation also exhibiting the characteristic ``twin-peak''
-%%    structure of the hybrid vanes in the azimuthal velocity. }
-%%    \label{fig:lab}
-%%   \end{center}
-%% \end{figure}
-
-\todo{fix me}
-% \begin{figure}[htp!]
-
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width =0.9\textwidth]{figs/sim_vs_exp_30_vt}
-%   \caption{Azimuthal velocity}
-%  \end{subfigure}%
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width =0.9\textwidth]{figs/sim_vs_exp_30_vz}%
-%   \caption{Vertical velocity} 
-%  \end{subfigure}%
-%   \caption{Azimuthal (left) and vertical (right) velocity 
-%  as a function of radius for the thermal-only cases. The gold line is
-%  the virtual vane simulation, blue the experiment, and red the gridded vane.} 
-%   \label{fig:val_lab}  
+% \begin{figure}[!htb]
+%   \begin{center}
+%    \includegraphics[width = 12 cm]{figs/hybrid_profile}
+%    \caption{Azimuthal and vertical velocity profiles as a function of
+%    radius. The simulation and experimental data broadly agree, with
+%    the simulation also exhibiting the characteristic ``twin-peak''
+%    structure of the hybrid vanes in the azimuthal velocity. }
+%    \label{fig:lab}
+%   \end{center}
 % \end{figure}
+
+\begin{figure}[htp!]
+
+  \centering
+  \includegraphics[width =0.47\textwidth]{figs/sim_vs_exp_30_vt}
+%  \caption{Azimuthal velocity}
+ \hfill
+ \includegraphics[width =0.47\textwidth]{figs/sim_vs_exp_30_vz}%
+ %\caption{Vertical velocity} 
+ \caption{Azimuthal (left) and vertical (right) velocity 
+ as a function of radius for the thermal-only cases. The gold line is
+ the virtual vane simulation, blue the experiment, and red the gridded
+ vane. These were all unsteady simulations.} 
+ \label{fig:val_lab}  
+\end{figure}
 
 Figure \ref{fig:val_lab} is a direct comparison between laboratory 
 measurements for a simple single tier vane configuration ($30^{\circ}$
@@ -248,7 +244,7 @@ were made between the simulations and the wind tunnel experiments. These
 images and discussions did not 
 identify any inconsistencies between simulation and experiment.
 However, these results are limited, and are only for the cold wind, as
-the wind tunnel did not include a heated plate.  
+the wind tunnel did not include a heated plate.\todo{fix image (darker vanes)} 
 
 \begin{figure}
   \centering
@@ -266,12 +262,13 @@ the wind tunnel did not include a heated plate.
   \label{fig:wind_val}
  \caption{Horizontal slices through the top of the vanes for the
  wind validation cases. On the left are the explicitly gridded vanes,
- and on the right the virtual vanes. The streamwise velocity shows
- penetration through the region where the vanes are aligned with the
- flow in both the gridded and virtual vanes. In addition, the
- virtual vane case correctly reproduces the direction and magnitude of
- the spanwise velocity inside the vanes. Finally, the wake has similar
- structure between the two cases.}
+ and on the right the virtual vanes. The streamwise velocity (top
+ images) shows penetration through the region where the vanes are aligned
+ with the flow in both the gridded and virtual vanes. The second row
+ shows the spanwise velocity, where it can be seen that the virtual vane
+ case correctly reproduces the direction and magnitude of velocity
+ inside the vanes. Finally, the wake has similar structure between the
+ two cases.} 
 
 \end{figure}
 
