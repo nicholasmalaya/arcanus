@@ -126,7 +126,7 @@ the errors in in measurement and sampling are
 not quoted. The particles are seeded outside of the array vanes and
 permitted to naturally convect into the turning vane enclosure. The
 particles were from a glycol-water theatrical fog (Rosco Fog Fluid). 
-In addition, only velocity measurements are available. Several
+Only velocity measurements are available. Several
 potentially important quantities of interest, such as the pressure and
 temperature, have not been measured.  
 
@@ -250,44 +250,35 @@ identify any inconsistencies between simulation and experiment.
 However, these results are limited, and are only for the cold wind, as
 the wind tunnel did not include a heated plate.  
 
+\begin{figure}
+  \centering
+  \includegraphics[width=.45\linewidth]{figs/gridded_wind}
+  %\caption{Streamwise Velocity: Gridded Vanes}
+  \hfill
+  \includegraphics[width=.45\linewidth]{figs/virtual_wind}
+  %\caption{Streamwise Velocity: Virtual Vanes}
+  \\
+  \includegraphics[width=.45\linewidth]{figs/gridded_wind_span}
+  %\caption{Spanwise Velocity: Gridded Vanes}
+  \hfill
+  \includegraphics[width=.45\linewidth]{figs/virtual_wind_span}
+ %\caption{Spanwise Velocity: Virtual Vanes}
+  \label{fig:wind_val}
+ \caption{Horizontal slices through the top of the vanes for the
+ wind validation cases. On the left are the explicitly gridded vanes,
+ and on the right the virtual vanes. The streamwise velocity shows
+ penetration through the region where the vanes are aligned with the
+ flow in both the gridded and virtual vanes. In addition, the
+ virtual vane case correctly reproduces the direction and magnitude of
+ the spanwise velocity inside the vanes. Finally, the wake has similar
+ structure between the two cases.}
+
+\end{figure}
+
 
 \section{steady vs unsteady}
-\todo{write me}
-% \begin{figure}[htb]
-
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=.75\linewidth]{figs/gridded_wind}
-%   \caption{Streamwise Velocity: Gridded Vanes}
-%  \end{subfigure}%
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=.75\linewidth]{figs/virtual_wind}
-%   \caption{Streamwise Velocity: Virtual Vanes}
-%  \end{subfigure}%
-
-
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=.75\linewidth]{figs/gridded_wind_span}
-%   \caption{Spanwise Velocity: Gridded Vanes}
-%  \end{subfigure}%
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=.75\linewidth]{figs/virtual_wind_span}
-%   \caption{Spanwise Velocity: Virtual Vanes}
-%  \end{subfigure}%
-
-%  \caption{Horizontal slices through the top of the vanes for the
-%  wind validation cases. On the left are the explicitly gridded vanes,
-%  and on the right the virtual vanes. The streamwise velocity shows
-%  penetration through the region where the vanes are aligned with the
-%  flow in both the gridded and virtual vanes. In addition, the
-%  virtual vane case correctly reproduces the direction and magnitude of
-%  the spanwise velocity inside the vanes. Finally, the wake has similar
-%  structure between the two cases.}
-%  \label{fig:wind_val}
-% \end{figure}
+Talk about dialing in the viscosity for steady. Might have some good
+plots I can pull out too\todo{write me}
 
 Figure~\ref{fig:wind_val} contains images of the simulated averaged
 streamwise and  spanwise velocity in a horizontal plane at approximately
