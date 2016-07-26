@@ -11,13 +11,18 @@
 %
 % ||
 %
+Our unit forcing vector $\hat f$ is the normalized inner product of the 
+velocity, $u$, and the tangent vector $\hat t$, 
 \begin{equation}
-- \frac{u \cdot \hat t}{|| u \cdot \hat t ||} = \hat f
+- \frac{u \cdot \hat t}{|| u \cdot \hat t ||} = \hat f. 
 \end{equation}
 
+The force applied is then, 
 \begin{equation}
  F = \hat f \, C_f \, \frac{1}{2} \frac{\rho || u ||^2}{\delta}
 \end{equation}
+Where $C_f$ is the skin friction coefficient (which must be determined),
+$rho $ is the density and $\delta$ the channel half width. 
 For $C_f$, we use Dean's Correlation, 
 
 %
@@ -31,6 +36,5 @@ Where the Reynolds number is defined as,
 \begin{equation}
  Re = \frac{u\, \delta}{\nu}.
 \end{equation}
-
 
 \end{document}
