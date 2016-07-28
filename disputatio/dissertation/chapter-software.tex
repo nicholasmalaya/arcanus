@@ -49,26 +49,23 @@ vanish. An FEM scheme is obtained by posing the weak form in
 terms of discrete subspaces of the function spaces specified above
 defined using piecewise-polynomial basis functions. All of the
 simulations discussed in this work were accomplished using 
-linear basis functions for both the velocity and pressure. However, the
-weak form equations shown above are only stable with equal-order
+linear basis functions for both the velocity and pressure. 
+Typically, the use of equal order elements for velocity and pressure is
+ruled out in the standard Galerkin FEM formulation by the Babuska-Brezzi
+condition\cite{bb-cond}. 
+However, the weak form equations shown above are stable with equal-order
 elements for velocity and pressure due to the introduction of streamline
 upwind/Petrov-Galerkin (SUPG) stabilization terms as first described by
 Hughes\cite{Hughes198685,supg} and extended to natural convection as in
-Becker and Braack\cite{Becker2002428}.  
-
-%Typically, the use of equal order elements for velocity and pressure is
-%ruled out in the standard Galerkin FEM formulation by the Babuska-Brezzi
-%condition\cite{bb-cond}. 
-The
-stabilization terms add artificial dissipation that approaches zero as the
-residual converges. This scheme is ``consistent'' because the
-underlying order of convergence of the numerical method is not 
-affected\cite{hughes2000finite}. 
+Becker and Braack\cite{Becker2002428}. These stabilization terms add
+artificial dissipation that approaches zero as the residual
+converges. This scheme is ``consistent'' because the underlying order of
+convergence of the numerical method is not affected\cite{hughes2000finite}. 
 
 This stabilization is accomplished by introducing an additional term,
 $\langle Lc,S\phi \rangle_\tau$, to the weak form defined in Equations
 \ref{eqn:ns_weak}-\ref{eqn:en_weak}. Here $L()$ is the operator for the PDEs
-in \ref{sub_sec:ns_en}, S is a stabilization operator
+in \ref{sub_sec:ns_en}, and S() is a stabilization operator
 which is chosen to be the negative adjoint of the differential terms of
 $L()$, and $c$ and $\phi$ are state and test functions, i.e. 
 $ c= (u,p,T)$, and $\phi = ( v,w,q )$. 
@@ -135,7 +132,8 @@ mesh uniform in height, z, according to,
 \end{equation}
 
 where $z_\delta$ is the chosen height of the boundary layer mesh, and
-$C_1-C_3$ are scaling coefficients. This gives the mesh an exponentially
+$C_1-C_3$ are scaling coefficients\todo{show coefficients}. 
+This gives the mesh an exponentially
 varying character, with the coefficients chosen to ensure ten or more
 points in the boundary layer, isotropic spacing in cells outside of
 it, and smooth blending between these two regimes. Each boundary layer
@@ -303,9 +301,8 @@ ensure more than single redundancy for the runs.
 In other words, the workflow is designed to permit rapid queuing of a
 series of runs (in parallel) to investigate a variety of conditions or
 scenario parameters. This capability is necessary for the optimization
-campaign detailed in \ref{sec:proposed_work}, where running many
-concurrent investigations will be required to adequately sample the
-configuration space.  
+campaign detailed in \ref{sec:results}, where running many concurrent
+investigations are required to sample the configuration space.  
 
 \section{Testing and Verification}
 
