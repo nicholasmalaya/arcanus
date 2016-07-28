@@ -298,9 +298,20 @@ be extracted with a different rotor geometry. While several comparisons
 have been performed with different choices of drag polars (flat plate,
 180 degree semicircles, etc. ) this was not an exhaustive survey. 
 
+Practical utility-scale wind turbines achieve at peak 75\% to 80\% of
+the Betz limit\cite{?}. While this provides an estimate, the Betz-limit
+is likely not accurate for this case. Any analysis of the power that can
+be extracted is complicated by the presence of considerable vertical and
+azimuthal flow in the vortex, and so the design considerations are
+different from those for a classical wind turbine.
+
 To address the possible possibility of further turbine blade
 improvements, this section details a more generic set of drag
-polars. Here, the drag polars are generic functions and are optimized to
+polars. These generalized drag polars permit exploration of a broader
+design space. The optimization of this model can be fully coupled to the
+flow, and so does not violate any Betz-like considerations that might
+similarly arise in an analysis of frozen flow fields.
+The drag polars are selected to be generic functions and are optimized to
 maximize the power extracted by the rotor. While the resulting drag
 polars might not be physically  realizable, they represent a ``best
 case'' upper bound indicating the peak power that might be extracted
@@ -458,5 +469,10 @@ turbine nearly doubled from the previous best attained with the 90
 degree semicircles, to 2.1 kW.\todo{add info of energy extracted}
 
 mention that flow would die if you didnt calibrate it
+
+
+ The results of this model demonstrate a limit on how much of the energy
+ can be extracted before disrupting the flow so greatly
+ that the vortex cannot be maintained.
 
 add images of the optimal runs\todo{add opt drag polar images}
