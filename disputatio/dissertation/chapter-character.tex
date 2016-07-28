@@ -19,7 +19,7 @@ a representative case with no ambient winds, the ``thermal only''
 scenario. Next, a case with strong ambient horizontal winds (``Wind'')
 is discussed. Finally, the results from a series of runs are shown to
 demonstrate a heuristic by which incremental optimization of the system
-configuration will be conducted. 
+configuration will be conducted\todo{fix this sentence}.
 
 %The results of these optimized configurations will be used as input
 %for the design of a prototype to be tested in Mesa, Arizona this
@@ -301,44 +301,31 @@ $70^{\circ}$ and $80^{\circ}$, respectively.
 %
 % horizontal slices
 %
-% \begin{figure}[htb]
+\begin{figure}[htb]
 
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=.75\linewidth]{figs/wind_u}
-%   \caption{Streamwise}
-%   \label{fig:vt-wind}
-%  \end{subfigure}%
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=.8\linewidth]{figs/wind_w}
-%   \caption{Vertical Velocity}
-%   \label{fig:vz-wind}
-%  \end{subfigure}%
-
-
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=.85\linewidth]{figs/wind_t}
-%   \caption{Temperature}
-%   \label{fig:t-wind}
-%  \end{subfigure}%
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=.75\linewidth]{figs/wind_p}
-%   \caption{Pressure}
-%   \label{fig:p-wind}
-%  \end{subfigure}%
-
-%  \caption{Time averaged horizontal slices taken at the height of the
-%  vanes for the wind cases. The streamwise velocity shows a large
-%  penetration in the region where the vanes are not blocking, and in the
-%  other regions the flow is blocked and flows around. The vertical
-%  velocity is disorganized and does not show the ``two cell'' structure
-%  as in the thermal-only cases.  Note that an
-%  off-center thermal plume is visible, as well.  } 
-%  \label{fig:wind-hor}
-% \end{figure}
+  \centering
+  \includegraphics[width=.47\linewidth]{figs/wind_u}
+ %\caption{Streamwise}
+ % \label{fig:vt-wind}
+ \hfill
+  \includegraphics[width=.47\linewidth]{figs/wind_w}
+ %\caption{Vertical Velocity}
+ % \label{fig:vz-wind}
+ \\
+  \centering
+  \includegraphics[width=.47\linewidth]{figs/wind_t}
+ \hfill
+  \includegraphics[width=.47\linewidth]{figs/wind_p}
+  %\label{fig:p-wind}
+ \caption{Time averaged horizontal slices taken at the height of the
+ vanes for the wind cases. The streamwise velocity shows a large
+ penetration in the region where the vanes are not blocking, and in the
+ other regions the flow is blocked and flows around. The vertical
+ velocity is disorganized and does not show the ``two cell'' structure
+ as in the thermal-only cases.  Note that an
+ off-center thermal plume is visible, as well.  } 
+ \label{fig:wind-hor}
+\end{figure}
 
 
 Horizontal slices of the azimuthal and vertical velocities, and the 
