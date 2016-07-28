@@ -384,12 +384,13 @@ is applied in the annular region that contains the vanes.
 
 
 Vane geometry is specified by the angle $\phi$ a vane makes with a
-radial line as a function of the radial coordinate $r$. A unit normal to
+radial line as a function of the radial coordinate $r$ and the polar
+angle $\theta$. A unit normal to
 vane surfaces ${\bf n}$ is defined as\todo{add theta here?}
 %
 \begin{equation}
- {\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
-  \left(\phi(r) \right) \hat{{\bf \theta}} 
+ {\bf n}({\bf x}) = \sin \left(\phi(r,\theta) \right) \hat{{\bf r}}+ \cos
+  \left(\phi(r,\theta) \right) \hat{{\bf \theta}} 
 \end{equation}
 %
 where $\hat{{\bf r}}$ and $\hat{{\bf \theta}}$ are unit
