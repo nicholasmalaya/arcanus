@@ -384,9 +384,9 @@ is applied in the annular region that contains the vanes.
 
 
 Vane geometry is specified by the angle $\phi$ a vane makes with a
-radial line as a function of the radial coordinate $r$ and the polar
-angle $\theta$. A unit normal to
-vane surfaces ${\bf n}$ is defined as\todo{add theta here?}
+radial line as a function of the radial coordinate, $r$, and the polar
+angle, $\theta$. A unit normal to the vane surface ${\bf n}$ is defined
+as 
 %
 \begin{equation}
  {\bf n}({\bf x}) = \sin \left(\phi(r,\theta) \right) \hat{{\bf r}}+ \cos
@@ -408,23 +408,40 @@ with ${\bf u}$ the velocity and $\ell_v$ is a specified length
 scale. $\ell_v$ represents the distance over which the
 flow evolves under the influence of the body force before the
 velocity in the normal direction is reduced by a factor of $1/{\bf
-e}$. In other words, this is the length scale over which the
+e}$.\todo{add image of annealing distance}
+In other words, this is the length scale over which the
 normal component of the velocity decays exponentially.
 It is a modeling constant and is specified to be
 the same order as the separation distance between neighboring vanes in
 the physical vane configuration, since entry lengths in internal flows
-scale with the width of the channel.\todo{add image of annealing distance}
+scale with the width of the channel.\todo{show calibration of this}
 
 This virtual vane formulation is similar to the ``actuator disk'' model
-commonly used to represent the rotor of a wind turbine \cite{betz}. 
+commonly used to represent the rotor of a wind turbine \cite{betz} and
+described in the subsequent section. 
 
 \section{Turbine Representation}
 
-Just an actuator disk or BEM model. 
+The turbine representation uses an ``actuator disk'' model. This model
+(also often referred to as a ``Blade Element Momentum'' theory)
+is commonly used in wind turbine design\cite{?,?,?}. The essence of this
+model is to approximate the individual spinning turbine blades as a
+washed-out ``disk'', as shown in Figure~\ref{fig:actuator_disk}. 
+
+   \begin{figure}[!htb]
+    \centering
+    \includegraphics[width =0.45\textwidth]{figs/actuator_disk}
+     \caption{The actuator disk model represents a turbine blade
+    geometry (shown on the left) as a spinning ``disk'' region (shown
+    on the right).}
+     \label{fig:actuator_disk}
+   \end{figure}
+
 Practical utility-scale wind turbines achieve at peak 75\% to 80\% of
 the Betz limit. However, betz is likely not accurate here.
 
-The normal in the blade's velocity direction is,\todo{add image} 
+
+The normal in the blade's velocity direction is,
 \begin{equation*}
 n_B = \frac{u_B}{||u_B||}. 
 \end{equation*}
@@ -483,6 +500,8 @@ the blade angle relative to the fan vertical direction,
 
 These parameters, $\beta$, etc. are visually depicted in Figure
 \ref{fig:turbine_image}.  
+
+
 
 \subsection{Drag Polar Specification}
 
