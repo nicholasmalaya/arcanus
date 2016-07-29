@@ -1,3 +1,11 @@
+
+lengths: before appendicies:
+
+* sig length 106 
+* 
+
+---------------
+
 Proposal notes:
 
 prof bogard:
