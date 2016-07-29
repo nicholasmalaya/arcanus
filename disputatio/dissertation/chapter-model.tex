@@ -494,9 +494,10 @@ the blade angle relative to the fan vertical direction,
     \end{center}
   \end{figure}
 
-These parameters, $\beta$, etc. are visually depicted in Figure
-\ref{fig:turbine_image}.  
-
+In words, the blade angle (or local pitch) is measured from the plane of
+rotation to the chord line (i.e., the straight line connecting leading
+to trailing edge). These parameters, $\beta$, etc. are visually depicted
+in Figure \ref{fig:turbine_image}.  
 
 
 \subsection{Drag Polar Specification}
@@ -559,6 +560,41 @@ polynomial fit to continuously interpolate between drag polars.
 
 what about loads on turbine?\todo{loads?}
 %% load was predicted at 20 ft*lbs
+
+
+\subsection{Wake Loss Model}
+\label{subsec:wake_loss_model}
+
+The model's described above do not account for the turbulent wake state,
+which in some cases have been shown to be significant for a wind
+turbine. The model deficiency results due to the actuator disk
+method's dependence on the precision of the lift and drag
+coefficients. During the operation of a wind turbine, should the angle
+of attack can reach high values (post-stall region), then aerodynamic 
+data is not available or inaccurate. 
+   
+This model inadequacy is commonly fixed with the Glauert Correction. 
+Developed in 1926 by Glauert from helicopters rotor blades, this
+correction originally was purely based on experimental data. The model
+was designed to correct the overall thrust coefficient for high angles
+of attack. 
+
+The Glauert correction is a tip loss model.\todo{write me!}
+
+We note that the Glauert correction was developed as a correction to an
+entire rotor disk; the original researchers did not intend it to be
+applied to a rotor annulus. However, because of a limited amount  of
+experimental data, an alternative model does not exist.  
+
+Various researchers\cite{?} (Wilson and Patton  1978) have suggested
+various other corrections to actuator-disk theory. These corrections
+include (among others) accounting for blade thickness on local angle of
+attack, cascade width for high solidity turbines, and spanwise gaps for
+partial span pitch control. The impact of these missing physics can be
+significant, for instance, blade thickness and effects can be  
+aerodynamically significant near the rotor hub and may affect the
+in-plane forces on the rotor\cite{?}. Nevertheless, these corrections
+are not treated in the simulations presented in this document. 
 
 \section{Solid Surface Representation}
 \label{subsec:solid_surface}
