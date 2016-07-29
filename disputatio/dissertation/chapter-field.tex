@@ -134,11 +134,41 @@ kinetic energy over a large area. The incoming flow enters the central
 cylindrical area, where it spins and is driven out the top through the
 cone. 
 
-
-
 To enable these more general vane geometries for the top tier, it was
 necessary to formulate a more general parameterization of the
 vanes.\todo{why did we need to do this?} 
+
+Previously, the vanes had a linear curvature function and were
+axisymmetric. The new concept required the vanes to hold an azimuthal
+dependence so that they are aligned with the streamwise velocity upsteam 
+of the device, and then curve inward to spin the flow at the center of
+the device. A linear vane curvature was first attempted, but this was
+found to have too few degrees of freedom to provide adjustments to the
+vane curvature. Next, vanes that had an elliptic curvature were decided
+upon. The intent here is to have a quarter of an ellipse, where the arc
+of the ellipse starts at the x-intercept (thus ensuring the vane is
+aligned with the freestream velocity) and then curves in towards the
+center of the device, terminating at a high angle nearly azimuthal. To
+accomplish this, the normal vector of the ellipse must be known. 
+
+This required use of implicit differentiation for the functional,
+
+\begin{eqnarray}
+ f(x,y)  =& \frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} = 1, \\
+ \nabla f(x,y) =& \frac{2 (x-h)}{a^2} + \frac{2 (y-k)}{b^2}\frac{dy}{dx} = 0, \\
+ \frac{dy}{dx} =& -\frac{(x-h)}{(y-k)}\frac{b^2}{a^2}. 
+\end{eqnarray}
+Where h and k are the elliptic intercepts and a and b are the
+eccentricity of the ellipse along each axis. The tangent vector along
+the ellipse is then,  
+\begin{eqnarray}
+ %{\bf \hat t} = {\bf e_x} + \frac{dy}{dx}{\bf e_y}, \\
+ {\bf t} = {\bf e_x} + \frac{dy}{dx}{\bf e_y}, \\
+ {\bf t} = {\bf e_x} + \frac{dy}{dx}{\bf e_y}, 
+\end{eqnarray}
+
+
+
 
 The virtual vane function is now specified by a 2D N\textsuperscript{th}
 order polynomial fitted to the boundary constraints for the vane angle
