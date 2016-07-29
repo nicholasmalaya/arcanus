@@ -198,14 +198,12 @@ equations,
 These equations express the fact that the ellipse intercepts both known
 points, that the point $(x_0,y_o)$ lies on the inner radius of the
 apparatus, and that the slope at this point is known. Assuming that
-h,a,x,y,R and m are given, we have a system of four equations (the
+h, a, x, y, R and m are given, we have a system of four equations (the
 above) with four unknowns, $x_0,y_0,k,b$. This is, in principle,
 sufficient information to solve this system. However, in practice,
 Mathematica was unable to find a closed-form solution. Numerous
 simplifications and additional constraints were added to ensure that the
 system of equations were well-posed (a>b, for instance). 
-
-
 
  \begin{figure}[!htb]
   \begin{center}
@@ -215,6 +213,9 @@ system of equations were well-posed (a>b, for instance).
   \end{center}
  \end{figure}
 
+The problem then, is that for a given location $(x,y)$ in space we are
+unable to invert to determine the character of the ellipse that
+intersects that point. Instead,  
 
 The virtual vane function is now specified by a 2D N\textsuperscript{th}
 order polynomial fitted to the boundary constraints for the vane angle
