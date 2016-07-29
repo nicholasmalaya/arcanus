@@ -182,7 +182,28 @@ Noting that the normal vector has the form,
  {\bf n} =& \frac{(x-h)}{a^2} {\bf e_x} + \frac{(y-k)}{b^2} {\bf e_y}.
 \end{eqnarray}
 
-This now defines the normal vector. However, we need to determine
+This now defines the normal vector. However, we need to determine the 
+constants that define ellipses that capture the shape we
+desire. We want to determine an ellipse that has a certain
+slope, m, at a specific point,  $(x_0,y_o)$, which lies on the inner
+radius (R) of the SoV apparatus. This is shown in
+Figure~\ref{fig:elliptic_vane_concept}. We have a system of four
+equations,
+\begin{eqnarray}
+ \frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} =& 1, \\
+ \frac{(x_0-h)^2}{a^2} + \frac{(y_0-k)^2}{b^2} =& 1, \\
+ x_0^2 + y_0^2 =& R, \\
+ -\frac{b^2}{a^2}\frac{(x_0-h)}{(y_0-k)} =& m. 
+\end{eqnarray}
+These equations express the fact that the ellipse intercepts both known
+points, that the point $(x_0,y_o)$ lies on the inner radius of the
+apparatus, and that the slope at this point is known. Assuming that
+h,a,x,y,R and m are given, we have a system of four equations (the
+above) with four unknowns, $x_0,y_0,k,b$. This is, in principle,
+sufficient information to solve this system. However, in practice,
+Mathematica was unable to find a closed-form solution. Numerous
+simplifications and additional constraints were added to ensure that the
+system of equations were well-posed (a>b, for instance). 
 
 
 
