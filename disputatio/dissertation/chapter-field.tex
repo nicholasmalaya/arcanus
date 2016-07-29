@@ -127,6 +127,13 @@ $L_x$                       &  12 meters  & Furthest distance upstream of top	 t
 \end{tabular}
 \end{table}
 
+An optimal set of design parameters were determined and provided to the
+experimental group, for detailed mechanical design and
+fabrication.\todo{add some pretty CAD drawings}
+
+Provided by Mr. John Culp at Georgia Tech. 
+
+\section{Turning Vane Interpolation Functions}
 
 The top tier design is now highly asymmetric, with a
 large opening facing the incoming wind to capture incoming free stream
@@ -175,7 +182,18 @@ Noting that the normal vector has the form,
  {\bf n} =& \frac{(x-h)}{a^2} {\bf e_x} + \frac{(y-k)}{b^2} {\bf e_y}.
 \end{eqnarray}
 
-This now defines the normal vector. 
+This now defines the normal vector. However, we need to determine
+
+
+
+ \begin{figure}[!htb]
+  \begin{center}
+   \includegraphics[width =0.95\textwidth]{figs/elliptic_vane_concept}
+   \caption{The geometric problem for the elliptic vanes.}
+   \label{fig:elliptic_vane_concept}
+  \end{center}
+ \end{figure}
+
 
 The virtual vane function is now specified by a 2D N\textsuperscript{th}
 order polynomial fitted to the boundary constraints for the vane angle
@@ -225,21 +243,16 @@ Figure~\ref{fig:bottom_interp}.\todo{update python plots}
 % /h2/nick/src/code/python/poly_vanes
 %
 
-The optimized configuration for this case results in 3.05 kW of kinetic
-energy flux through the top of the vanes, which is 417\% more kinetic
-energy flux than was produced in the August 2015 Field test.
-
-An optimal set of design parameters were determined and provided to the
-experimental group, for detailed mechanical design and
-fabrication.\todo{add some pretty CAD drawings}
-
-Provided by Mr. John Culp at Georgia Tech. 
-
 
 \section{Field Prediction}
 \label{subsec:field_predict}
 
-also show fields and images
+also show fields and images\todo{write me!}
+
+The optimized configuration for this case results in 3.05 kW of kinetic
+energy flux through the top of the vanes, which is 417\% more kinetic
+energy flux than was produced in the August 2015 Field test.
+
 
 \section{Sources of Error}
 
