@@ -14,14 +14,38 @@ The length of each blade blocking vertical flow in the actuator disk is,
 \end{equation}
 The total length in an annular region that is blocking is therefore,
 \begin{equation}
-  B * Ch_x(r) = l_B(r). 
+  N * Ch_x(r) = l_B(r),
 \end{equation}
-Then, the ratio of an annular length that is impeded by blades is,
+Where N is the number of blades. 
+Then, the ratio of an annular length that is impeded by blades is, 
 \begin{eqnarray}
-  \frac{2\pi r- l_B(r)}{2 \pi r}\\
-  yar
+ B(r) =& \frac{2\pi r- l_B(r)}{2 \pi r}\\
+ B(r) =& 1- \frac{l_B(r)}{2 \pi r}. 
 \end{eqnarray}
+Note that a ``floor'' function is needed to ensure the blockage ratio
+does not go below zero. 
 
+From a 1D control volume analysis for the region, with the continuity
+equation, 
+\begin{eqnarray}
+ \rho V_z' A' =& \rho V_z A,\\
+ V_z' =& V_z \frac{A}{A'}, \\
+ V_z' =& \frac{V_z}{B(r)}.
+\end{eqnarray}
+Note that this implies that $V_z' \rightarrow \infty$ as $A' \rightarrow
+0$. This is as expected, as the blockage becomes more severe, the flow
+would need to move at greater speed to go through it. 
 
+Our flow angle with respect to turbine velocity is therefore modified
+from,
 
+\begin{equation}
+ \theta_f = \text{tan}^{-1}(\frac{U_{\text{up}}}{U_{\text{fwd}}})
+\end{equation}
+to,
+\begin{equation}
+ \theta_f = \text{tan}^{-1}(\frac{U_{\text{up}}}{B(r) U_{\text{fwd}}}). 
+\end{equation}
+As $B(r) \rightarrow 0$, $\theta_f \rightarrow \pi$, e.g. 90 degrees. In
+this way the velocity vector will be completely aligned with drag. 
 \end{document}
