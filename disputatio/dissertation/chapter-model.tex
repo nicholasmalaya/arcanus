@@ -29,12 +29,13 @@ medium. We seek to emulate the operation of the apparatus during the
 day, when dust devils are observed to form readily. 
 At these times, the atmospheric surface layer has the following
 character. Incident radiation from the Sun does not significantly
-interact with the air, which is nearly transparent. Instead, this
-radiation is absorbed by the ground, which causes its temperature to
-rise. This results in a thermal gradient between the hot ground and the
-cooler air. The warm ground conducts heat to the air, causing expansion
-and lowering the density of the air. This reduced density air near the
-surface is driven upwards by the force of buoyancy.  
+interact with the air, which is nearly
+transparent\cite{haltiner1957dynamical}. Instead, this radiation is
+absorbed by the ground, which causes its temperature to rise. This
+results in a thermal gradient between the hot ground and the cooler
+air. The warm ground conducts heat to the air, causing expansion and
+lowering the density of the air. This reduced density air near the
+surface is driven upwards by the force of buoyancy.   
 
 For sufficiently large temperature gradients, the hot surface layer is
 unstable, and as the warm air is driven upwards the flow will transition
@@ -201,7 +202,11 @@ be functions of only the non-dimensional group
  \frac{\bar f}{f_{MO}} = \phi(\frac{z}{L_{M-O}})
 \end{equation}
 with $f_{MO}$ a normalizing constant with units of $\bar f$, and $\phi$
-is a function only of $\xi$. We are interested in the case where
+is a function only of $\xi$. Monin-Obuhkov similarity theory has been
+shown to apply to a wide variety of
+quantities\cite{wyngaard2010turbulence}, but we consider the velocity
+and temperature fields here.  
+Furthermore, we are interested in the case where
 $\xi<0$, which corresponds to heat flux from the ground into the
 air. For instance, the mean velocity field would have scaling,
 $\frac{u^*}{\kappa}$ and the temperature fields would be scaled as $T^*
@@ -243,7 +248,6 @@ Our interest lies in the case where $L_{M-O}<0$, which corresponds to heat flux
 from the ground into the air.  
 %
 
-
 The case where $\xi \to -\infty $ implies $\frac{z}{L_{M-O}} \to
 -\infty $ and $z>>L_{M-O}$. This is most readily interpreted as the instance
 where $u^* \to 0$, e.g. the buoyancy-dominated case with no wind
@@ -259,7 +263,8 @@ function must then be
 for } z \gg L_{M-O}. 
 \end{equation}
 
-So long as the Prandtl number remains constant in space, then
+So long as the Prandtl number remains constant in space\todo{provide
+discussion as to why this is not an unreasonable expectation}, then 
 % todo: provide discussion as to why this is not an unreasonable expectation
 identical arguments regarding the asymptotic behaviour at large $\xi$ provide
 the analogous result for the eddy viscosity's variation with respect to
@@ -425,9 +430,9 @@ described in the subsequent section.
 The turbine representation uses an ``actuator disk'' model. This model
 (also often referred to as a ``Blade Element Momentum'' theory or the
 ``actuator line technique'') is commonly used in wind turbine
-design\cite{?,?,?}. The essence of this model is to approximate the
-individual spinning turbine blades as a washed-out ``disk'', as shown in
-Figure~\ref{fig:actuator_disk}.  
+design\cite{shevell1983fundamentals,?,?}. The essence of this model is
+to approximate the individual spinning turbine blades as a washed-out
+``disk'', as shown in Figure~\ref{fig:actuator_disk}.  
 
    \begin{figure}[!htb]
     \centering
@@ -505,12 +510,13 @@ in Figure \ref{fig:turbine_image}.
 
 Duane says that these were generated with COMSOL.\todo{write to this}
 
-We can now define the lift and drag normals, where the direction
-opposing drag is, 
+We can now define the lift and drag
+normals, where the direction opposing drag is, 
 \begin{equation}
 n_{\text{drag}} = \frac{u_p}{||u_p||} 
 \end{equation}
-and the direction opposing lift orthogonal to the drag and the radial direction, 
+and the direction opposing lift orthogonal to the drag and the radial
+direction,  
 \begin{equation}
 n_{\text{lift}}= n_{\text{drag}} \times n_r. 
 \end{equation}
