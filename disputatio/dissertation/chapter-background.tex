@@ -83,7 +83,9 @@ locations, such as deserts.
 
 Actual measurements made inside a dust devil are limited. The available data
 hints that dust devils contain two regions: a low surface layer and a
-higher invisid region. The low surface region is the  principle location
+higher inviscid region. These regions are indicated in a 
+simple cartoon in Figure \ref{fig:cartoon}.
+The low surface region is the principle location
 of radial inflow. At the top of this region the flow 
 reaches its peak velocity, with that peak dropping with increasing height. 
 The strong radial and azimuthal flow is drawn into a low pressure core 
@@ -92,14 +94,13 @@ computational studies have observed a ``two-cell'' structure
 characterized by a cool downdraft in the center of stronger dust
 devils\cite{doi:10.3137/ao.420105,Sinclair1973}. 
 
-The higher region is characterized by a largely invisid potential flow
+The higher region is characterized by a largely inviscid potential flow
 region with warm air rising and circling around a cool, low pressure
 core. This region is typically many times larger in height than the
 surface layer. While this region also has radial inflow, it is
 significantly weaker than the lower region. Previous studies have found
 this region is relatively well described by a Rankine vortex
-model\cite{Sinclair1973}. These regions are indicated in a 
-simple cartoon in Figure \ref{fig:cartoon}.
+model\cite{Sinclair1973}. 
 
   \begin{figure}[!htb]
     \begin{center}
@@ -120,7 +121,7 @@ Opportunity. Their presence on Mars, with 1/100 of the atmospheric
 density of the Earth, speaks to the universal character of the
 phenomenon. Due to the greatly decreased atmospheric density, the
 Martian dust devils are substantially larger, ranging several kilometers
-across at their base and over ten kilometers tall. This interest in dust
+across at their base and over ten kilometers tall\cite{?}. This interest in dust
 devils and dust electrification is due to interest in the implications for
 atmospheric mixing and transport, in particular as the ExoMars Lander
 will measure electric fields on Mars\cite{renno_comm}.
@@ -162,8 +163,8 @@ the rotation of a naturally occurring dust devil remains enigmatic.
 Here we provide a rough estimate of the power
 available to a dust devil. There are two objectives of this
 analysis. The first is to provide justification for the concept of
-extracting power from them, with the reasoning that should
-sufficient power be available, then attempting to extract it might be
+extracting power from them, with the reasoning that, should
+sufficient power be available, attempting to extract it might be
 worthwhile. The second objective is to provide a simple analysis that
 can serve as a measure of the efficiency of the generation process,
 e.g. ``What fraction of the available power are we extracting?''.  
@@ -240,9 +241,9 @@ to the ambient air conditions of 313 Kelvin.
 provided by the Georgia Tech field team from measurements performed in
 Arizona during the summer of 2014.} 
 
-There are two forms of energy to consider: kinetic and gravitational
-potential. First, we examine the kinetic energy flux through the front
-of the apparatus. 
+In this example, there are two forms of energy to consider: kinetic and
+gravitational potential. First, we examine the kinetic energy flux
+through the front of the apparatus. 
 %From the first law of thermodynamics we can express
 The kinetic energy flux is a surface integral over the upstream face of
 the device,  
@@ -281,12 +282,12 @@ adiabatic redistribution of the density variation from the ambient
 density of the freestream flow,
 $\rho_\infty$~\cite{hatsopoulos1965principles}. This potential energy  
 ($E_p$) has the form of a surface integral over the front half of the
-vanes,  
+control volume, where the ambient winds convect energy across this surface,
 \begin{align*}
   E_p & = \int u(z) (\rho(z)-\rho_\infty) g z dA. 
 \end{align*}
 As the density only varies with height, the integral is simplified to
-only vary in this direction
+only vary in this direction,
 \begin{align*}
   E_p  & = g \int^{z_\text{max}}_0 u(z) (\rho(z)-\rho_\infty) \, z  \pi
  R \, dz.
@@ -334,13 +335,14 @@ This is solved to show
 %% \end{equation}
 
 Characteristic values for a dust devil are $\rho_0 = 1.225$ Kg/$\text{m}^3$, 
-$\Delta T= 30$ Kelvin, $\beta = 0.003194$ (This is 1/$T_{\text{ground}}$), 
+$\Delta T= 30$ Kelvin, $\beta = 0.003194$ (this is 1/$T_{\text{ground}}$), 
 $R = 3 $ m, $z_\text{max} = 2.5$ m, $\delta \approx 10$ cm, $g=9.81$ m/$s^2$, and a
 freestream velocity of five meters per second results in an estimate of
-103 Watts for the gravitational potential energy. 
+103 Watts for the gravitational potential energy flux. 
 
-The majority of the available energy is thus in the kinetic energy of
-the wind, not the gravitational potential energy of the actual air. 
+The majority of the available energy being drawn into the dust devil
+region is thus attributable to the kinetic energy of the wind, not the
+gravitational potential energy of the air.  
 % todo: think about renno
 %This is inconsistent with the results of
 %Renno\cite{}\todo{missing cite here}, who demonstrated
@@ -353,8 +355,9 @@ impact.
 %``lifting-up'' the flow is unclear, but 
 Given the observed increase in dust devil formation during peak thermal
 gradients, it is expected to play an important role. The interplay
-between the thermal and wind are examined in detail in Section
-\ref{sec:wind_impact}. 
+between the impact on dust devil structure and wind velocities due to
+the thermal and wind contributions of energy are examined in detail in
+Section~\ref{sec:wind_impact}. 
 
 \section{Dust Devil Generation Concept}
 
