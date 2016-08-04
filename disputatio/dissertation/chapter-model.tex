@@ -568,11 +568,66 @@ polynomial fit to continuously interpolate between drag polars.
 what about loads on turbine?\todo{loads?}
 %% load was predicted at 20 ft*lbs
 
+\subsection{Blade Blockage Modification}
+
+todo\todo{write intro here}
+
+The length of each blade blocking vertical flow in the actuator disk is, 
+\begin{equation}
+  Ch * \text{Cos}(\beta(r)) = Ch_x(r). 
+\end{equation}
+The total length in an annular region that is blocking is therefore,
+\begin{equation}
+  N * Ch_x(r) = l_B(r),
+\end{equation}
+Where N is the number of blades. 
+Then, the ratio of an annular length that is impeded by blades is, 
+\begin{eqnarray}
+ B(r) =& \frac{2\pi r- l_B(r)}{2 \pi r}\\
+ B(r) =& 1- \frac{l_B(r)}{2 \pi r}. 
+\end{eqnarray}
+Note that a ``floor'' function is needed to ensure the blockage ratio
+does not go below zero. 
+
+From a 1D control volume analysis for the region, with the continuity
+equation, 
+\begin{eqnarray}
+ \rho V_z' A' =& \rho V_z A,\\
+ V_z' =& V_z \frac{A}{A'}, \\
+ V_z' =& \frac{V_z}{B(r)}.
+\end{eqnarray}
+Note that this implies that $V_z' \rightarrow \infty$ as $A' \rightarrow
+0$. This is as expected, as the blockage becomes more severe, the flow
+would need to move at greater speed to go through it. 
+
+Our flow angle with respect to turbine velocity is therefore modified
+from,
+
+\begin{equation}
+ \theta_f = \text{tan}^{-1}(\frac{U_{\text{up}}}{U_{\text{fwd}}})
+\end{equation}
+to,
+\begin{equation}
+ \theta_f = \text{tan}^{-1}(\frac{U_{\text{up}}}{B(r) U_{\text{fwd}}}). 
+\end{equation}
+As $B(r) \rightarrow 0$, $\theta_f \rightarrow \pi$, e.g. 90 degrees. In
+this way the velocity vector will be completely aligned with drag. 
+
+Furthermore, 
+\begin{equation}
+ F = \frac{1}{2}\frac{c \rho U_p^2}{A}(C_L \cdot n_{\text{lift}} + C_d \cdot n_{\text{drag}})
+\end{equation}
+Is modified so that, 
+\begin{equation}
+ \bar U_p^{2} = \left(\frac{U_p}{B(r)}\right)^2
+\end{equation}
+
+todo\todo{add results here, perhaps show \# of blades and blockage \%}
 
 \subsection{Wake Loss Model}
 \label{subsec:wake_loss_model}
 
-todo\todo{completely re-write this section}
+todo\todo{completely re-write this section, perhaps a new name?}
 
 The model's described above do not account for the turbulent wake state,
 which in some cases have been shown to be significant for a wind
