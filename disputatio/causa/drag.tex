@@ -42,8 +42,12 @@ non-smooth surface materials, the design of the field test apparatus
 ultimately relied upon posts to hold the turning vanes. These posts were
 pieces of wood which were modeled as roughness elements. In order to
 determine $C_f$ for these cases, the Colebrook formula\cite{?},
- was used to provide an estimate for the friction factor given a
- roughness height, $\epsilon/D$, 
+% Colebrook, C. F.; White, C. M. (3 August 1937). "Experiments with
+% Fluid Friction in Roughened Pipes". Proceedings of the Royal Society
+% of London. Series A, Mathematical and Physical Sciences. 161 (906):
+% 367–381. doi:10.1098/rspa.1937.0150 
+was used to provide an estimate for the friction factor given a
+roughness height, $\epsilon/D$,  
 \begin{equation}
  \frac{1}{\sqrt{f}} = -2.0 \text{ log}\left(\frac{\epsilon/D}{3.7} + \frac{2.51}{Re\sqrt(f)}\right).
 \end{equation}
@@ -53,6 +57,12 @@ determine $C_f$ for these cases, the Colebrook formula\cite{?},
 \begin{equation}
  f = \left(2.0 \text{ log}\left(\frac{\epsilon/D}{3.7}\right)\right)^2. 
 \end{equation}
-Then, a Moody chart was consulted to provide the 
+%Then, a Moody chart was consulted to provide the the 
+Note that D here is the hydraulic diameter which must account for the
+two plates (we treat the vanes as a channel),
+\begin{equation}
+D_H = \frac{4 A}{P} = \frac{4 (2w)\delta}{2w} = 4 \delta
+\end{equation}
+Where $\delta$ is the channel half width.
 
 \end{document}
