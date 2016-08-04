@@ -178,12 +178,12 @@ the ellipse is then,
 
 Noting that the normal vector has the form, 
 \begin{eqnarray}
- {\bf n} =& {a_x} {\bf e_x} + {a_y}{\bf e_y}, \\
+ {\bf n} =& {a_x} {\bf e_x} + {a_y}{\bf e_y}, \label{eqn:a_x}\\
  {\bf n} =& \frac{(x-h)}{a^2} {\bf e_x} + \frac{(y-k)}{b^2} {\bf e_y}.
 \end{eqnarray}
 
 This now defines the normal vector. However, we need to determine the 
-constants that define ellipses that capture the shape we
+constants (namely, $k,b$) that define ellipses that capture the shape we
 desire. We want to determine an ellipse that has a certain
 slope, m, at a specific point,  $(x_0,y_o)$, which lies on the inner
 radius (R) of the SoV apparatus. This is shown in
@@ -200,10 +200,13 @@ points, that the point $(x_0,y_o)$ lies on the inner radius of the
 apparatus, and that the slope at this point is known. Assuming that
 h, a, x, y, R and m are given, we have a system of four equations (the
 above) with four unknowns, $x_0,y_0,k,b$. This is, in principle,
-sufficient information to solve this system. However, in practice,
-Mathematica was unable to find a closed-form solution. Numerous
-simplifications and additional constraints were added to ensure that the
-system of equations were well-posed (a>b, for instance). 
+sufficient information to solve this system. However, in practice, great
+difficulties arise. Inverting this system by hand is too complex and
+error prone, and furthermore, Mathematica was unable to find a
+closed-form solution. Numerous simplifications and additional
+constraints were added to ensure that the system of equations were
+well-posed (a>b, for instance), but the problem still resisted a
+solution. 
 
  \begin{figure}[!htb]
   \begin{center}
@@ -215,11 +218,20 @@ system of equations were well-posed (a>b, for instance).
 
 The problem then, is that for a given location $(x,y)$ in space we are
 unable to invert to determine the character of the ellipse that
-intersects that point. Instead,\todo{finish me}  
-
-The virtual vane function is now specified by a 2D N\textsuperscript{th}
-order polynomial fitted to the boundary constraints for the vane angle
-within the region of the vanes. This has the form, 
+intersects that point. Instead, we can pose the problem as discretizing
+the arc along the inner radius of the vanes, we can generate data from
+several curves that can be used to calibrate a 2D polynomial that will
+smoothly vary in space. To accomplish this, we choose a series of
+$x_0,y_0$ curves. For each unique ellipse defined by ($x_0,y_0,b,a,k$),
+discretize at a uniform interval between $\left[-h,x_0\right]$, and
+solve for the accompanying y-value, 
+\begin{equation}
+ y = -b \sqrt{1-\frac{(x-h)}{a^2}} + k. 
+\end{equation}
+One now has sufficient information to solve for the normal coefficients
+$a_x$ and $a_y$ as defined in Equation~\ref{eqn:a_x}. This array of
+coefficients specified at (x,y) are now fit to a 2D N\textsuperscript{th}
+order polynomial. This has the form, 
 
 \begin{equation}
  P(x,y) = \sum_{i=0}^N  \sum_{j=0}^N a_{i,j} x^i y^j
@@ -232,10 +244,10 @@ least-squares solution to a linear matrix equation, which is
 under-determined. The solution to the equation $A x = b$ is found by
 computing a vector $x$ that minimizes the Euclidean 2-norm $|| b - A x
 ||^2$. The polynomials were computed in separate python routines and
-resulted in a generated input file. This was then used as part of the
-input for the field runs (see Appendix~\ref{sec:archiving} for more
-details on the input file environment). 
-
+resulted in a generated input file. This specifies the vane angle
+function within the region of the vanes. This function is then used as
+part of the input for the field runs (see Appendix~\ref{sec:archiving}
+for more details on the input file environment). 
 %
 % http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.linalg.lstsq.html
 %
