@@ -94,7 +94,6 @@ significantly more computationally expensive per timestep than a similar
 explicit method, the method was selected due to its unconditional
 stability and ease of statistical sampling for a uniform timestep. 
 
-
 %
 % gave not completely described numerical methods
 % for instance, have not indicated the stabilization schemes
@@ -133,7 +132,7 @@ mesh uniform in height, z, according to,
 \end{equation}
 
 where $z_\delta$ is the chosen height of the boundary layer mesh, and
-$C_1-C_3$ are scaling coefficients\todo{show coefficients}. 
+$C_1-C_3$ are scaling coefficients%\todo{show coefficients}. 
 This gives the mesh an exponentially
 varying character, with the coefficients chosen to ensure ten or more
 points in the boundary layer, isotropic spacing in cells outside of
@@ -207,73 +206,84 @@ platform.
 %The remainder of this section is devoted to
 %discussing the underlying libraries used and the description of the
 %GRINS framework.  
-% PETSC\cite{petsc} trilinos\cite{trilinos}
 
-% GRINS also uses the fparser\cite{fparser}
-% library to support both parsing and compilation of mathematical
-% functions into high 
-% performance kernels. This capability allows for easy specification of
-% boundary conditions, initial conditions, or constitutive equations from an input file. 
+GRINS uses the fparser\cite{fparser}
+library to support both parsing and compilation of mathematical
+functions into high performance kernels. This capability allows for
+easy specification of boundary conditions, initial conditions, or
+constitutive equations from an input file. Some of these inputs are
+detailed in Appendix~\ref{sec:archiving}. 
 
-% Currently, libMesh has been scaled tens of thousands of cores and has
-% been run on over 100,000 cores on the BG/Q machine Mira at Argonne National
-% Lab\cite{libmesh-scaling}
+GRINS/Libmesh are built on the PETSC\cite{petsc} solver package, which
+provides the numerical linear algebra packages used for constructing and
+using sparse matrices, finding the iterative solution of linear systems,
+and for preconditioning.  
 
-%In principle, alternative software libraries/frameworks such as
-%FEniCS\cite{fenics}, OpenFOAM\cite{openfoam}, etc. would likely be
-%capable of simulating this regime. 
+While a variety of solver options have been tested in PETSC, all the
+results shown in this document use GMRES with block Jacobi for
+preconditioning\cite{Saad:2003} for the linear solve. This uses the
+inverse of the diagonal block for that processor for preconditioning of
+the entire linear system. In addition, a preconditioner is used for the
+solution of the diagonal block. This is approximated with incomplete LU
+factorization\cite{?}. Here, the ``incomplete'' refers
+to the level of fill you use, with greater levels of fill approaching
+the ``complete'' LU factorization. 
 
+In principle, alternative software libraries/frameworks such as
+FEniCS\cite{fenics}, OpenFOAM\cite{openfoam}, etc. would likely be
+capable of simulating this regime. While these and other libraries have
+various positives and concerns, the pre-eminent concern is the parallel
+performance at the intended processor count, due to the rapid
+design iterations necessary for this research campaign. Given these concerns,
+the GRINS library is a satisfactory tool. 
 
-%
-% INCLUDE IN THESIS
-%
-% \section{Solver Options}
-
-% GRINS uses PETSC\cite{petsc} and trilinos\cite{trilinos} for numerical
-% linear algebra, such as constructing and using sparse matrices, finding
-% the iterative solution of linear systems, and for preconditioning.  
-
-% While a variety of solver options have been tested in PETSC, all the
-% results shown in this document use GMRES with block Jacobi for
-% preconditioning\cite{Saad:2003} for the linear solve. 
-
-% This uses the inverse of the diagonal block for that processor for
-% preconditioning. 
-
-% the preconditioner it's going to use to precondition the linear system
-% for the solution of the diagonal block. To approximate this, incomplete
-% LU factorization is used. 
-
-% ILU(0) factorization
-
-
-
-%% (11:41:54 AM) nick: ``-ksp_view -ksp_type gmres -pc_type bjacobi -sub_pc_type ilu -sub_pc_factor_levels 0''
+%% (11:41:54 AM) nick: ``-ksp_view -ksp_type gmres -pc_type bjacobi
+%% -sub_pc_type ilu -sub_pc_factor_levels 0'' 
 %% (11:42:00 AM) Paul Bauman: OK
 %% (11:42:17 AM) Paul Bauman: -pc_type is the preconditioner for the entire linear system
 %% (11:42:25 AM) Paul Bauman: You're doing bjacobi = block Jacobi
 %% (11:42:28 AM) nick: right
-%% (11:42:36 AM) nick: and does anyone have a good reference I can learn this better? i feel as if I cant look this up, for some reason
-%% (11:42:39 AM) Paul Bauman: That is just using the inverse of the diagonal block for that processor
+%% (11:42:36 AM) nick: and does anyone have a good reference I can learn
+%% this better? i feel as if I cant look this up, for some reason 
+%% (11:42:39 AM) Paul Bauman: That is just using the inverse of the
+%% diagonal block for that processor 
 %% (11:42:46 AM) Paul Bauman: Now
 %% (11:42:55 AM) Paul Bauman: that is a linear solve
-%% (11:43:17 AM) Paul Bauman: So you can use all the linear solver technology to solve or approximately that block
+%% (11:43:17 AM) Paul Bauman: So you can use all the linear solver
+%% technology to solve or approximately that block 
 %% (11:43:24 AM) Paul Bauman: Hence, -sub_pc_type
 %% (11:43:32 AM) hil left the room.
-%% (11:43:46 AM) Paul Bauman: That's the preconditioner it's going to use to precondition the linear system for the solution of the diagonal block
+%% (11:43:46 AM) Paul Bauman: That's the preconditioner it's going to
+%% use to precondition the linear system for the solution of the
+%% diagonal block 
 %% (11:43:53 AM) Paul Bauman: You're telling it to use incomplete lu
-%% (11:44:26 AM) Paul Bauman: Now the -sub_pc_factor_levels options applies to ilu
+%% (11:44:26 AM) Paul Bauman: Now the -sub_pc_factor_levels options
+%% applies to ilu 
 %% (11:44:28 AM) hil entered the room.
-%% (11:44:44 AM) Paul Bauman: The incomplete part of imcomplete LU is about the level of fill you use
-%% (11:45:05 AM) Paul Bauman: The more levels of fill you have, the more ``complete'' the incomplete LU will be
+%% (11:44:44 AM) Paul Bauman: The incomplete part of imcomplete LU is
+%% about the level of fill you use 
+%% (11:45:05 AM) Paul Bauman: The more levels of fill you have, the more
+%% ``complete'' the incomplete LU will be 
 %% (11:45:08 AM) Paul Bauman: Does that make sense?
 %% (11:45:23 AM) nick: no, that is where you lost me
 %% (11:45:39 AM) nick: i dont think i know this level of fill
-%% (11:46:17 AM) Paul Bauman: Check out Youssef Saad's book if more curious about the subject
+%% (11:46:17 AM) Paul Bauman: Check out Youssef Saad's book if more
+%% curious about the subject 
 %% (11:46:37 AM) nick: cool thanks
-%% (11:46:38 AM) Paul Bauman: Suffice it to say, you heopfully shouldn't ever need to go past 3 or 4 levels of fill
-%% (11:47:03 AM) Paul Bauman: Also, if you've got superlu installed with the PETSc, consider using -sub_pc_factor_mat_solver_package superlu
-%% (11:47:15 AM) Paul Bauman: That's a *much* faster/better implementation than PETSc's
+%% (11:46:38 AM) Paul Bauman: Suffice it to say, you heopfully shouldn't
+%% ever need to go past 3 or 4 levels of fill 
+%% (11:47:03 AM) Paul Bauman: Also, if you've got superlu installed with
+%% the PETSc, consider using -sub_pc_factor_mat_solver_package superlu 
+%% (11:47:15 AM) Paul Bauman: That's a *much* faster/better
+%% implementation than PETSc's 
+
+At the time of this writing, Grins has approximately XX regression
+tests, which provides a reasonable degree of confidence in verification
+testing of the library. Several of these tests directly test the
+capabilities in GRINS used in this document. In particular, several of
+the tests were contributed to GRINS directly by the Author during the
+course of this work and the addition of several of the models detailed
+in Chapter~\ref{sec:mathmodel}.
 
 
 \section{Tool Chain and Simulation Custodianship}
@@ -281,14 +291,27 @@ platform.
 Simulations are performed on the Texas Advanced Computing Center (TACC)
 supercomputers Lonestar Four and Stampede. Run durations for transient
 cases are typically twelve hours to perform several hundred timesteps. 
+The steady runs are considerably shorter, and require less
+than ten minute runtimes. Typically  the wall clock times are two or
+three minutes to solution. As a result, the queue time is significantly
+longer than the actual production runtime. 
 These runs are submitted to the production queue and are  
-264-528 processing cores, 
-or 22-44 nodes on Lonestar (with 12 cores per node), and a similar number
-for Stampede. The runs typically have several million degrees of freedom (DoF), 
-and the local number of DoF per core is maintained at $O(10^4)$. This was
-selected due to memory constraints, after a strong scaling
-analysis of the performance of the code on these resources, and
-after consulting with the software developers.  \todo{add LS5}
+264-528 processing cores, or 22-44 nodes on Lonestar4 (with 12 cores per
+node), and a similar number for Stampede. The runs have
+several million degrees of freedom (DoF), and the local number of DoF
+per core is maintained at $O(10^4)$. This was selected due to memory
+constraints, after a strong scaling analysis of the performance of the
+code on these resources, and after consulting with the software developers.  
+At the time of this writing libMesh has been scaled tens of thousands of
+cores and has been run on over 100,000 cores on the BG/Q machine Mira at
+Argonne National Lab\cite{libmesh-scaling}, and the scaling results here
+are consistent with the performance expectations for this library.
+
+In November, 2015, runs were also staged during early access into full
+production period on TACC's new system, Lonestar5. This machine is
+closer in terms of software stack to Stampede, using the Simple Linux
+Utility for Resource Management (Slurm)\cite{?} scheduling
+system.  
 
 After a run terminates, several scripts are automatically invoked. 
 These scripts archive the run (outside of the volatile /scratch 
@@ -305,10 +328,8 @@ scenario parameters. This capability is necessary for the optimization
 campaign detailed in \ref{sec:results}, where running many concurrent
 investigations are required to sample the configuration space.  
 
-\section{Testing and Verification}
+%\section{Testing and Verification}
+%grid convergence?
 
-grid convergence?
 
-regression tests in grins
-
-validation (later)
+%The validation of the  runs is detailed in the next Chapter. 
