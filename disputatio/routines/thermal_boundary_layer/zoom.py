@@ -29,17 +29,24 @@ def read_dat():
 #
 #
 def plot_raw(x,t):
+    mx = 5
+    order = 7
+    print x[0:mx],t[0:mx]
+    pp = np.poly1d(np.polyfit(x[0:mx],t[0:mx],order))
+    xx = np.arange(0,x[mx],.005)
+
     #log_lst = np.log(lst)
     #print log_lst
     plt.subplot(1, 1, 1)
     plt.plot(x,t, 'ko-',color='blue',label='Raw')
+    plt.plot(xx,pp(xx), 'ko-',color='red',label='fit')
     plt.title('Thermal Boundary Layer Measured')
     plt.xlabel('Location Above Ground (Meters)')
     plt.ylabel('Temperature (Celsius)')
     plt.legend()
 
-    plt.xlim((0,.1))
-    #plt.ylim((25,250))
+    plt.xlim((0,.35))
+    plt.ylim((40,65))
 
     plt.show()
 
