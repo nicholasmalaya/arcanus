@@ -577,7 +577,13 @@ what about loads on turbine?\todo{loads?}
 %
 %https://en.wikipedia.org/wiki/Blade_solidity
 %
-todo\todo{write intro here}
+
+The only thing that has had an impact was introducing a 'blockage' model
+for the actuator disk model. This tries to represent the fact that as
+the number of blades increased, the pressure across the actuator disk
+should rise. We did this by adjusting the area of the actuator disk down
+by the ratio of the free area in the disk versus the blade sizes. 
+This admittedly crude model, todo\todo{write intro here}
 
 The length of each blade blocking vertical flow in the actuator disk is, 
 \begin{equation}
