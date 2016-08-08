@@ -38,7 +38,7 @@ def plot_raw(x,t):
     order = 4
     print x[0:mx],t[0:mx]
     pp = np.poly1d(np.polyfit(x[0:mx],t[0:mx],order))
-    xx = np.arange(0,x[mx],.01)
+    xx = np.arange(0,x[mx],.001)
 
     #log_lst = np.log(lst)
     #print log_lst
@@ -67,8 +67,8 @@ def plot_raw(x,t):
     #
     ## execute!
     #
-    plt.show()
-
+    #plt.show()
+    plt.savefig('fit_zoomed.png')
     print 'Peak velocity modelled is: ',e(0)
 
 def main():
