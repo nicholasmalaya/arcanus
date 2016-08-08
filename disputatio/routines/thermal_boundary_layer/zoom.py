@@ -66,6 +66,8 @@ def plot_raw(x,t):
         
     #
     # http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html
+    # and,
+    # http://stackoverflow.com/questions/3433486/how-to-do-exponential-and-logarithmic-curve-fitting-in-python-i-found-only-poly
     #
     # plot exponential
     plt.plot(xx,e(xx,popt[0],popt[1],popt[2]), 'ko-', color='red',label='exponential')
