@@ -33,10 +33,14 @@ def plot_raw(x,t):
     #print log_lst
     plt.subplot(1, 1, 1)
     plt.plot(x,t, 'ko-',color='blue',label='Raw')
-    plt.title('Thermal Boundary Layer Measured (zoomed)')
+    plt.title('Thermal Boundary Layer Measured')
     plt.xlabel('Location Above Ground (Meters)')
     plt.ylabel('Temperature (Celsius)')
     plt.legend()
+
+    plt.xlim((0,.1))
+    #plt.ylim((25,250))
+
     plt.show()
 
 def main():
