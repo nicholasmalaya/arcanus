@@ -61,7 +61,7 @@ def plot_raw(x,t):
     plt.ylabel('Temperature (Celsius)')
     plt.legend()
 
-    plt.xlim((0,.35))
+    plt.xlim((-.05,.35))
     plt.ylim((40,75))
         
     #
@@ -85,7 +85,7 @@ def plot_raw(x,t):
     plt.xlim((0,2.35))
     plt.savefig('fit.png')
 
-    print 'Peak velocity modelled is: ',e(0,popt[0],popt[1],popt[2])
+    print 'Peak temp is: ',e(0,popt[0],popt[1],popt[2])
     print 'Gradient is: ', e(0,popt[0],popt[1],popt[2])-t[-1]
 
 def main():
