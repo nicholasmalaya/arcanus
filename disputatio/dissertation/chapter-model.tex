@@ -431,13 +431,15 @@ described in the subsequent section.
 % https://en.wikipedia.org/wiki/Blade_solidity
 %
 
+completely neglects unsteady effects
+
 
 The turbine representation uses an ``actuator disk'' model. This model
 (also often referred to as a ``Blade Element Momentum'' theory or the
 ``actuator line technique'') is commonly used in wind turbine
-design\cite{shevell1983fundamentals,betz,?}. The essence of this model is
-to approximate the individual spinning turbine blades as a washed-out
-``disk'', as shown in Figure~\ref{fig:actuator_disk}.  
+design\cite{shevell1983fundamentals,betz,leclerc}. The essence of this
+model is to approximate the individual spinning turbine blades as a
+washed-out ``disk'', as shown in Figure~\ref{fig:actuator_disk}.  
 
    \begin{figure}[!htb]
     \centering
@@ -584,7 +586,7 @@ what about loads on turbine?\todo{loads?}
 
 the actuator
 disk model treats the flow in the disk region as if it was flowing
-through a rotor with identical solidity butan infinite number of
+through a rotor with identical solidity but an infinite number of
 blades. 
 
 The only thing that has had an impact was introducing a 'blockage' model
