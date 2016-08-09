@@ -1,7 +1,7 @@
 %\section{Computational Methods and Software}
 \label{sec:software}
 
-The previous chapter described a series of models 
+The previous chapter described a set of models 
 for the system of interest. 
 %These models are too 
 %complicated to solve exactly, and must instead be 
@@ -17,33 +17,37 @@ chain and supercomputer systems are briefly introduced.
 
 \section{Discretization Scheme}
 
-A finite element method (FEM) is used to numerically solve the
-Navier-Stokes equations on a computer. 
-Typically, this requires that the equations
-in section~\ref{sub_sec:ns_en} be cast into a weak form. Manipulating
-these partial differential equations into a variational formulation is
-accomplished by multiplying the equations by appropriate test functions
-and integrating over the domain, $\Omega$. The resulting weak problem is
-to find, $(u,p,T) \in H^1(\Omega)^3 \times L_2(\Omega) \times
-H^1(\Omega)$ such that 
+The finite element method (FEM) is used to numerically solve the 
+Navier-Stokes equations on a computer. The starting point for the FEM is
+to cast the equations in section~\ref{sub_sec:ns_en} into a weak
+form. A weak form is used to reduce the continuity requirements on the
+basis functions, thereby allowing the use of functions that are
+easy to construct and implement, such as piece-wise polynomials. 
+Manipulating these partial differential equations into a
+variational formulation is accomplished by multiplying the equations by
+appropriate test functions and integrating over the domain,
+$\Omega$. The resulting weak problem is: find $({\bf u},p,T) \in
+H^1(\Omega)^3 \times L_2(\Omega) \times H^1(\Omega)$ such that 
 
 %
 % http://www.numerik.uni-hd.de/Oberwolfach-Seminar/CFD-Course.pdf
 %
 \begin{align}
-  (\frac{\partial u}{\partial t}, v) + (u \cdot \nabla u,v) + \nu
-   (\nabla u, \nabla v)  
-  -(p,\nabla \cdot u) &= (gT'/T_0,v)
+  (\frac{\partial{\bf u}}{\partial t},{\bf v}) + ({\bf u} \cdot \nabla{\bf
+ u},{\bf v}) + \nu (\nabla{\bf u}, \nabla{\bf v})   
+  -(p,\nabla \cdot{\bf u}) &= ({\bf g} \, T'/T_0,v)
  \label{eqn:ns_weak} \\
- (\nabla \cdot u,q) &= 0
+ (\nabla \cdot{\bf u},q) &= 0
  \label{eqn:cont_weak} \\
- (\frac{\partial T}{\partial t}, w) + (u \cdot \nabla T, w) + (k \, \nabla
- T, \nabla w) &= 0.\label{eqn:en_weak}
+ (\frac{\partial T}{\partial t},{\bf w}) + ({\bf u} \cdot \nabla T,{\bf w}) + (k \, \nabla
+ T, \nabla{\bf w}) &= 0.\label{eqn:en_weak}
 \end{align}
 
-$\forall (v,q,w) \in H^1(\Omega)^3 \times L_2(\Omega) \times
-H^1(\Omega)$, where $(\cdot,\cdot)$ denotes the inner product,
-e.g. $(u,v) = \int_\Omega u \cdot v \, dx$.   
+$\forall ({\bf v},q,w) \in H^1(\Omega)^3 \times L_2(\Omega) \times
+H^1(\Omega)$, where $(\cdot,\cdot)$ denotes the $L_2$ inner product, 
+e.g. $(u,v) = \int_\Omega u \cdot v \, dx$. As noted previously,
+boldface letters denote vector quantities (such as ${\bf u} =
+\left \{ u,v,w \right \}$). 
 Some of the simulations presented here were conducted under
 steady conditions, for which the $\frac{\partial}{\partial t}$ terms
 vanish. An FEM scheme is obtained by posing the weak form in
