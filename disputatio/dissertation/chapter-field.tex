@@ -297,7 +297,7 @@ pm\cite{ann_comm}.
 A particular challenge is that the closest measurement was taken by a 
 thermocouple 1 mm above the pavement. Thus, the surface temperature and
 magnitude of thermal gradient were not directly measured. To estimate
-$T_0$ and $\Delta T$ from Equation~\ref{eq:bl_t}, 
+$T_0$ and $\Delta T$ from Equation~\ref{eq:bl_t},\todo{finish this}
 
  \begin{figure}[!htb]
   \begin{center}
@@ -316,8 +316,6 @@ $T_0$ and $\Delta T$ from Equation~\ref{eq:bl_t},
    \label{fig:wind_speed_estimate}
   \end{center}
  \end{figure}
-
-
 
 
 also show fields and images\todo{write me!}
@@ -361,13 +359,13 @@ actuator disk. The rotor/inflow coupling directly modeled enabling
 accurate rotor inflow predictions. In this way, the UTRC code would
 iterate through design parameters using the coupled CFD code as a higher
 fidelity confirmation. The UTRC frozen flow optimization was largely
-consistent with the fully coupled CFD prediction (see Figure \ref{},
-below). This has resulted in two final rotor designs, with and without
-twist. This was because the experimental team was not certain that a
-twisted design would be feasible. Regardless, the twisted rotor
-out-performed the zero-twist rotor. The peak power extracted is
-predicted to be 1.4 kW for the rotor with twist, and slightly more than
-1 kW for a rotor with no twist. 
+consistent with the fully coupled CFD prediction (see
+Figure~\ref{fig:UTRC_turbine}, below). This has resulted in two final
+rotor designs, with and without twist. This was because the experimental
+team was not certain that a twisted design would be
+feasible. Regardless, the twisted rotor out-performed the zero-twist
+rotor. The peak power extracted is predicted to be 1.4 kW for the rotor
+with twist, and slightly more than 1 kW for a rotor with no twist. 
 
   \begin{figure}[!htb]
    \begin{center}
@@ -418,10 +416,12 @@ Add turbine table\todo{add table with turbine}
 
 Shortcomings -- \todo{finish me}
 
-Designed for axisymmetric flow. No wake correction as depicted in
+Designed for axisymmetric flow. 
+
+No wake correction as depicted in
 Section\ref{subsec:wake_loss_model}.    
 
-\section{Determining the Optimal Drag Polars}
+\section{Estimating the Upper Limit on Power Extraction}
 
 All of the results in section \ref{subsec:field_predict} were generated
 using 90 degree semicircle blade geometries, as shown in Figure
@@ -531,7 +531,7 @@ subject to imposed constraints.
 
 %
 % does this argument still work?!?
-betz%
+betz\todo{finish me}
 The integral shown in Equation \ref{lift} above can be bounded by 
 Schwarz's Inequality,  
 \begin{align*}
