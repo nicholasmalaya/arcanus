@@ -16,7 +16,7 @@ models are used is discussed. Finally, the tool
 chain and supercomputer systems are briefly introduced. 
 
 \section{Discretization Scheme}
-
+\label{sec:discretization}
 The finite element method (FEM) is used to numerically solve the 
 Navier-Stokes equations on a computer. The starting point for the FEM is
 to cast the equations in section~\ref{sub_sec:ns_en} into a weak
@@ -74,10 +74,10 @@ $\langle L{\bf c},S {\bf \phi} \rangle_\tau$, to the weak form defined in Equati
 \ref{eqn:ns_weak}-\ref{eqn:en_weak}. Here $L()$ is the operator for the PDEs
 in \ref{sub_sec:ns_en}, and S() is a stabilization operator
 which is chosen to be the negative adjoint of the differential operator
-terms of $L()$, and $c$ and $\phi$ are state and test functions, i.e. 
-$ {\bf c}= ({\bf u},p,T)$, and ${\bf \phi} = ( {\bf v},w,q )$. 
-The angle brackets $\langle \cdot,\cdot \rangle$ signify integration of
-the element interiors for each of the K elements, that is:
+terms of $L()$, and ${\bf c}$ and ${\bf \phi}$ are state and test
+function vectors, i.e. $ {\bf c}= ({\bf u},p,T)$, and ${\bf \phi} = (
+{\bf v},w,q )$. The angle brackets $\langle \cdot,\cdot \rangle$ signify
+integration of the element interiors for each of the K elements, that is:
 \begin{equation}
  \langle {\bf u},{\bf v} \rangle_\tau = \sum_K \tau_K({\bf u},{\bf v})_K.
 \end{equation}
@@ -114,7 +114,7 @@ stability and ease of statistical sampling for a uniform timestep.
 %
 % what about mesh...
 %
-The domain's described in section~\ref{sec:bc} are
+The domains described in section~\ref{sec:bc} are
 consistently discretized. The domain extents
 are scaled by system diameter but the same number of grid points are used
 for every simulation. Thus, while the ratio of the domain length to system
@@ -187,14 +187,15 @@ scaled with grid size to ensure that the cell Reynolds number,
 
 \section{Software Stack}
 
-The numerical approximations described above had been implemented using
-the GRINS library\cite{GRINSpaper} by Bauman and Stogner using the
-Libmesh\cite{libMeshPaper} FEM infrastructure. It was designed to
-support multiphysics FEM applications, the reusability and extensibility
-of mathematical modeling kernels, supporting interfaces to existing
-solver and discretization libraries to enable modern solution
-strategies, while, at the same time, retaining flexibility to
-effectively address a wide range of science or engineering problems.  
+The numerical formulations described in Section~\ref{sec:discretization}
+had been implemented using the GRINS library\cite{GRINSpaper} by Bauman
+and Stogner using the Libmesh\cite{libMeshPaper} FEM infrastructure. It
+was designed to support multiphysics FEM applications, the reusability
+and extensibility of mathematical modeling kernels, supporting
+interfaces to existing solver and discretization libraries to enable
+modern solution strategies, while, at the same time, retaining
+flexibility to effectively address a wide range of science and
+engineering problems.   
 
 GRINS provides a platform that enables powerful numerical algorithms
 such as adjoint-based AMR, adaptive modeling, sensitivity analysis,
@@ -239,7 +240,7 @@ the ``complete'' LU factorization.
 In principle, alternative software libraries/frameworks such as
 FEniCS\cite{fenics}, OpenFOAM\cite{openfoam}, etc. would likely be
 capable of simulating this regime. While these and other libraries have
-various positives and concerns, the pre-eminent concern is the parallel
+various strengths and weaknesses, the pre-eminent concern is the parallel
 performance at the intended processor count, due to the rapid
 design iterations necessary for this research campaign. Given these concerns,
 the GRINS library is a satisfactory tool. 
@@ -295,13 +296,13 @@ Chapter~\ref{sec:mathmodel}.
 
 \section{Tool Chain and Simulation Custodianship}
 
-Simulations are performed on the Texas Advanced Computing Center (TACC)
-supercomputers Lonestar Four and Stampede. Run durations for transient
+Simulations are performed on the Texas Advanced Computing Center\cite{?}
+(TACC) supercomputers Lonestar Four and Stampede. Run durations for transient
 cases are typically twelve hours to perform several hundred timesteps. 
 The steady runs are considerably shorter, and require less
-than ten minute runtimes. Typically  the wall clock times are two or
-three minutes to solution. As a result, the queue time is significantly
-longer than the actual production runtime. 
+than ten minute runtimes. Typically  the wall clock times of the
+steady-state runs are two or three minutes to solution. As a result, the
+queue time is significantly longer than the actual production runtime. 
 These runs are submitted to the production queue and are  
 264-528 processing cores, or 22-44 nodes on Lonestar4 (with 12 cores per
 node), and a similar number for Stampede. The runs have
@@ -309,7 +310,7 @@ several million degrees of freedom (DoF), and the local number of DoF
 per core is maintained at $O(10^4)$. This was selected due to memory
 constraints, after a strong scaling analysis of the performance of the
 code on these resources, and after consulting with the software developers.  
-At the time of this writing libMesh has been scaled tens of thousands of
+At the time of this writing libMesh has been scaled to tens of thousands of
 cores and has been run on over 100,000 cores on the BG/Q machine Mira at
 Argonne National Lab\cite{libmesh-scaling}, and the scaling results here
 are consistent with the performance expectations for this library.
@@ -332,8 +333,9 @@ ensure more than single redundancy for the runs.
 In other words, the workflow is designed to permit rapid queuing of a
 series of runs (in parallel) to investigate a variety of conditions or
 scenario parameters. This capability is necessary for the optimization
-campaign detailed in \ref{sec:results}, where running many concurrent
-investigations are required to sample the configuration space.  
+campaign detailed in Section~\ref{sec:results}, where running many
+concurrent investigations are required to sample the configuration
+space.  
 
 %\section{Testing and Verification}
 %grid convergence?
