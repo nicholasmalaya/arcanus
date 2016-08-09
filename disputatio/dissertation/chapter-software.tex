@@ -53,23 +53,34 @@ Some of the simulations presented here were conducted under
 steady conditions, for which the $\frac{\partial}{\partial t}$ terms
 vanish. An FEM scheme is obtained by posing the weak form in
 terms of discrete subspaces of the function spaces specified above
-defined using piecewise-polynomial basis functions. All of the
-simulations discussed in this work were accomplished using 
-linear basis functions for both the velocity and pressure. 
-Typically, the use of equal order elements for velocity and pressure is
-ruled out in the standard Galerkin FEM formulation by the Babuska-Brezzi
-condition\cite{bb-cond}. 
+defined using piecewise-polynomial basis functions. This discretization
+has the form, $ {\bf v_h} \in {\bf v}$, where ${\bf v_h}$ is an
+approximation of ${\bf v}$ formed through a linear combination of a
+finite number (N) of terms,  
+\begin{equation}
+ {\bf v_h} = \sum_{i=1}^N \alpha_i \phi_i,
+\end{equation}
+with $\alpha_i$ are constants and the N basis functions, $\left \{
+\psi_1, \psi_2, \ldots, \psi_N \right \}$, define an N-dimensional
+subspace of $H^1$\cite{becker1981introduction}. All of the simulations
+discussed in this work were 
+accomplished using linear basis functions for both the velocity and
+pressure. Typically, the use of equal order elements for velocity and
+pressure is ruled out in the standard Galerkin FEM formulation by the
+Babuska-Brezzi condition\cite{bb-cond}. 
 However, the weak form equations shown above are stable with equal-order
-elements for velocity and pressure due to the introduction of streamline
-upwind/Petrov-Galerkin (SUPG) stabilization terms as first described by
+elements for velocity and pressure due to the introduction of pressure
+stabilization terms. The resulting system is still open to convective
+instabilities, and so streamline upwind/Petrov-Galerkin (SUPG)
+stabilization terms are used, as first described by
 Hughes\cite{Hughes198685,supg} and extended to natural convection as in
-Becker and Braack\cite{Becker2002428}. These stabilization terms add
+Becker and Braack\cite{Becker2002428}. These stabilization terms add 
 a residual dependent artificial dissipation that approaches zero as the
 residual converges. This scheme is called ``consistent'' because the
 underlying order of convergence of the numerical method is not
 affected\cite{hughes2000finite}.   
 
-Stabilization is accomplished by introducing an additional term,
+The stabilization described above is accomplished by introducing an additional term,
 $\langle L{\bf c},S {\bf \phi} \rangle_\tau$, to the weak form defined in Equations
 \ref{eqn:ns_weak}-\ref{eqn:en_weak}. Here $L()$ is the operator for the PDEs
 in \ref{sub_sec:ns_en}, and S() is a stabilization operator
