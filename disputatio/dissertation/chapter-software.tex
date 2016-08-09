@@ -39,14 +39,14 @@ H^1(\Omega)^3 \times L_2(\Omega) \times H^1(\Omega)$ such that
  \label{eqn:ns_weak} \\
  (\nabla \cdot{\bf u},q) &= 0
  \label{eqn:cont_weak} \\
- (\frac{\partial T}{\partial t},{\bf w}) + ({\bf u} \cdot \nabla T,{\bf
- w}) + (k \, \nabla T, \nabla{\bf w}) &= 0.\label{eqn:en_weak}
+ (\frac{\partial T}{\partial t}, w) + ({\bf u} \cdot \nabla T,{\bf
+ w}) + (k \, \nabla T, \nabla  w) &= 0.\label{eqn:en_weak}
 \end{align}
 
 $\forall ({\bf v},q,w) \in H^1(\Omega)^3 \times L_2(\Omega) \times
 H^1(\Omega)$, where $(\cdot,\cdot)$ denotes the $L_2$ inner product, 
 $(u,v) = \int_\Omega u \cdot v \, dx$ and $H^1(\Omega)$ is the
-Sobolov space of with one square integrable derivative on the domain
+Sobolov space with one square integrable derivative on the domain
 $\Omega$\cite{oden2012introduction}. As noted previously, boldface letters
 denote vector quantities (such as ${\bf u} = \left \{ u,v,w \right \}$). 
 Some of the simulations presented here were conducted under
@@ -64,40 +64,42 @@ elements for velocity and pressure due to the introduction of streamline
 upwind/Petrov-Galerkin (SUPG) stabilization terms as first described by
 Hughes\cite{Hughes198685,supg} and extended to natural convection as in
 Becker and Braack\cite{Becker2002428}. These stabilization terms add
-artificial dissipation that approaches zero as the residual
-converges. This scheme is ``consistent'' because the underlying order of
-convergence of the numerical method is not affected\cite{hughes2000finite}. 
+a residual dependent artificial dissipation that approaches zero as the
+residual converges. This scheme is called ``consistent'' because the
+underlying order of convergence of the numerical method is not
+affected\cite{hughes2000finite}.   
 
 Stabilization is accomplished by introducing an additional term,
-$\langle Lc,S\phi \rangle_\tau$, to the weak form defined in Equations
+$\langle L{\bf c},S {\bf \phi} \rangle_\tau$, to the weak form defined in Equations
 \ref{eqn:ns_weak}-\ref{eqn:en_weak}. Here $L()$ is the operator for the PDEs
 in \ref{sub_sec:ns_en}, and S() is a stabilization operator
-which is chosen to be the negative adjoint of the differential terms of
-$L()$, and $c$ and $\phi$ are state and test functions, i.e. 
-$ c= (u,p,T)$, and $\phi = ( v,w,q )$. 
+which is chosen to be the negative adjoint of the differential operator
+terms of $L()$, and $c$ and $\phi$ are state and test functions, i.e. 
+$ {\bf c}= ({\bf u},p,T)$, and ${\bf \phi} = ( {\bf v},w,q )$. 
 The angle brackets $\langle \cdot,\cdot \rangle$ signify integration of
 the element interiors for each of the K elements, that is:
 \begin{equation}
- \langle u,v \rangle_\tau = \sum_K \tau_K(u,v)_K.
+ \langle {\bf u},{\bf v} \rangle_\tau = \sum_K \tau_K({\bf u},{\bf v})_K.
 \end{equation}
 This results in three stabilization parameters, $\tau_P, \tau_v, \tau_T$ 
 which are selected as proposed by Becker and Braack. 
 A full derivation of the weak form and stabilization terms are provided
 in Appendix \ref{app:stab}. 
 
-The system of ODEs are discretized in time using the 
-backward Euler method\cite{moin2010fundamentals}. The time interval
-$(0,T)$ is sliced into $N_t$ steps of 
-uniform temporal length,  $\Delta t$, where $n = 0,\dots,N_t$. 
+After spatial discretization, the system of ODEs are discretized in time
+using the backward Euler method\cite{moin2010fundamentals}. The time
+interval $(0,T)$ is sliced into $N_t$ steps of uniform temporal length,
+$\Delta t$, where $n = 0,\dots,N_t$.  
 This has the form, 
 \begin{equation}
- y_{n+1} = y_n + \Delta t \, f(y_{n+1},t_{n+1}).
+ {\bf y}_{n+1} = {\bf y_n } + \Delta t \, f({\bf y_{n+1}},t_{n+1}).
 \end{equation}
-As $f$ is non-linear, a Newton-Raphson method is used to solve the
-resulting implicit nonlinear problem. While an iterative method is
+Where ${\bf y_{n+1}}$ denotes the solution vector at the time step $n+1$, for
+instance. As $f$ is non-linear, a Newton-Raphson method is used to solve
+the resulting implicit nonlinear problem. While an iterative method is
 significantly more computationally expensive per timestep than a similar
 explicit method, the method was selected due to its unconditional
-stability and ease of statistical sampling for a uniform timestep. 
+stability and ease of statistical sampling for a uniform timestep.  
 
 %
 % gave not completely described numerical methods
