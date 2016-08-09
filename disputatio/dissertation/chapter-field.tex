@@ -252,8 +252,6 @@ for more details on the input file environment).
 % http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.linalg.lstsq.html
 %
 
-e.g.\todo{show 7th order}
-
  \begin{figure}[!htb]
   \begin{center}
    \includegraphics[width = 15 cm]{figs/bottom_interp}
@@ -281,6 +279,38 @@ Figure~\ref{fig:bottom_interp}.\todo{update python plots}
 \section{Field Prediction}
 \label{subsec:field_predict}
 
+With the system geometry defined, we need only impose the boundary
+conditions defined in Section~\label{sec:bc} to have defined our
+scenario of interest. However, as with the validation case shown in
+Section~\ref{sec:field_val}, significant uncertainty exists in the
+scenario parameters that define the ambient thermal and wind
+conditions. Some discussion on the scenario parameters is therefore
+warranted. 
+
+The thermal boundary layer gradient was set based on data gathered by 
+the Georgia Tech team in Arizona on June 9th, 2014. The raw data
+presented in Figure~\ref{fig:thermal_profile_fit} is the average from
+four vertical temperature profiles take at different times during a
+single day. The measurements were gathered between 9:49 am and 1:43
+pm\cite{ann_comm}.  
+
+A particular challenge is that the closest measurement was taken by a 
+thermocouple 1 mm above the pavement. Thus, the surface temperature and
+magnitude of thermal gradient were not directly measured. To estimate
+$T_0$ and $\Delta T$ from Equation~\ref{eq:bl_t}, 
+
+\ref{eq:bl_t}
+ \begin{figure}[!htb]
+  \begin{center}
+   \includegraphics[width = 15 cm]{figs/fit_zoomed}
+   \caption{Thermal Profile.}
+   \label{fig:thermal_profile_fit}
+  \end{center}
+ \end{figure}
+
+
+\todo{Show plot of wind?}
+
 also show fields and images\todo{write me!}
 
 The optimized configuration for this case results in 3.05 kW of kinetic
@@ -294,7 +324,7 @@ energy flux than was produced in the August 2015 Field test.
 %
 %behaves like wind tunnel contraction
 
-Scenario Uncertainty
+Scenario Uncertainty!!!!!!!!!!!
 
 Shading
 
