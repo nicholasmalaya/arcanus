@@ -42,8 +42,8 @@ unstable, and as the warm air is driven upwards the flow will transition
 to turbulence. For the typical use case we consider, namely Arizona in
 summer, the temperature difference can be in excess of 30 Kelvin. 
 Rayleigh numbers associated with temperature gradients of this magnitude
-are between $10^{9} - 10^{11}$ and therefore meet the criterion
-% ref thermo book here?
+are between $10^{9} - 10^{11}$ and therefore meets the
+criterion\cite{incropera1996fundamentals}  
 for transition to a turbulent regime. The flow is that of an unstably
 stratified fluid.  
 
@@ -75,15 +75,18 @@ The equations describing fluid flow with natural convection are,
 \end{align} 
 under the assumption that the temperature variation is small in
 comparison to the mean temperature of the region. These are the
-incompressible Navier-Stokes equations with Boussinesq, a representation
-of buoyancy coupled with the heat equation.  
+incompressible Navier-Stokes equations with the Boussinesq
+approximation\cite{boussinesq2010théorie}, a representation of buoyancy
+coupled with the heat equation.   
 %
 % in full document be sure to mention that neglecting coriolis is legit
 % below 50ms
 %
 %
-As discussed above, we anticipate that the flow will be
-turbulent. Turbulence significantly alters the character of the flow,
+As discussed above, we anticipate that the flow will be sufficiently
+high Reynolds number as to be
+turbulent~\cite{Reynolds01011883}. Turbulence significantly alters the
+character of the flow,  
 and necessitates either resolving the resulting small scales or
 providing a model that emulates their impact. In this case, a
 Reynolds Averaged Navier-Stokes (RANS) formulation is used, where the 
@@ -96,10 +99,10 @@ turbulent and vane components,
  K =& K_{l} + K_{T}(z) + K_{V}(r,z).
 \end{eqnarray*}
 
-This is an effective eddy viscosity model, and the subsequent two
-sections will elaborate on the spatial dependence and character of
-$\nu_T$, $K_T$, $\nu_C$ and $K_C$. The laminar, base diffusivities 
-are $\nu_l$ and $K_l$, which do not vary in space. 
+This is an effective eddy viscosity model\cite{boussinesq1887}, and the
+subsequent two sections will elaborate on the spatial dependence and
+character of $\nu_T$, $K_T$, $\nu_C$ and $K_C$. The laminar, base
+diffusivities are $\nu_l$ and $K_l$, which do not vary in space.  
 
 \section{Viscosity Model}
 
@@ -924,10 +927,10 @@ colleagues.
 
 Surface roughness effects have been shown to play a role in the
 formation of dust devils and related atmospheric
-phenomena\cite{oke1987boundary}. For the flat and sandy regions we are
-simulating, the impact is expected to be a small velocity perturbation 
-in the vertical direction. This is modeled as a volumetric 
-forcing in a narrow region above the surface,
+phenomena\cite{oke1987boundary}. For the flat and sandy
+regions we are simulating, the impact is expected to be a small velocity
+perturbation  in the vertical direction. This is modeled as a volumetric
+forcing in a narrow region above the surface, 
 \begin{equation}
  F^{'''}_{z_0} = \frac{1}{2}\rho V_z^2/z_{0}, 
 \end{equation}
@@ -942,7 +945,19 @@ added is measured as,
 R is the outer diameter of the vanes. 
 The value of $E_{\text{injected}}$ is typically a few percent of the
 total kinetic energy flux measured through the top of the
-vanes.\todo{expand this section}
+vanes.
+
+Natarajan and Hangan\cite{Natarajan2012577} found that the introduction
+of surface roughness effects caused a slight decrease in aximuthal
+velocity for simulated vortices. However, studies in the hurricane
+literature that have found enhanced heat transport near the surface,
+indicating an important role due to roughness
+effects~\cite{Zeng2010,GRL:GRL50047,hurricane_drag}. The interaction
+with the surface and therefore, the impact of roughness, is likely
+complicated and not considered in detail in this work. It should be
+noted that in the simulations performed in the course of this study, the
+surface roughness model did modestly intensify the thermal vortex,
+typically by 2-3\%.  
 
 %This general forcing provides additional capabilities including the
 %ability to investigate engineering greater surface roughness or
