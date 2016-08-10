@@ -431,8 +431,26 @@ described in the subsequent section.
 % https://en.wikipedia.org/wiki/Blade_solidity
 %
 
+
 completely neglects unsteady effects
 
+Associated with the loss of axial momentum is a loss of energy which can
+be collected by, say, an electrical generator attached to the rotor
+shaft if, as well as a thrust, the rotor experiences a torque in the
+direction of rotation. 
+
+The generator exerts a torque equal and opposite to that of the airflow
+which keeps the rotational speed constant
+
+ The work done by the aerodynamic torque on the
+generator is converted into electrical energy.
+
+It is assumed that the forces on a blade element can be calculated by
+means of two-dimensional aerofoil characteristics using an angle of
+attack determined from the incident resultant velocity in the
+cross-sectional plane of the element. In this way the velocity component
+in the span-wise direction is ignored. Three-dimensional effects are
+also ignored\cite{burton2001wind}. 
 
 The turbine representation uses an ``actuator disk'' model. This model
 (also often referred to as a ``Blade Element Momentum'' theory or the
@@ -674,8 +692,10 @@ Is modified so that,
 
 todo\todo{add results here, perhaps show \# of blades and blockage \%}
 
-\subsection{Wake Loss Model}
+\subsection{Shortcomings of the Actuator Disk Model}
 \label{subsec:wake_loss_model}
+
+does not model separation between blades, assumes flow remains attached
 
 todo\todo{completely re-write this section, perhaps a new name?}
 
