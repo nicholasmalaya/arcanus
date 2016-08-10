@@ -581,6 +581,32 @@ what about loads on turbine?\todo{loads?}
 %https://en.wikipedia.org/wiki/Blade_solidity
 %
 
+The power output of a turbine is proportional to the thrust that it
+exerts onto the flow, and the larger the thrust, the larger the flow
+resistance the turbine presents to the flow. The maximum power for any
+wind turbine must lie in between two extremes, i.e. a very high and
+a very low impedance both result in minimal power
+extraction\cite{solidity_oxford}.  
+
+For the case of a very high impedance, little fluid flows through the
+turbine, instead it is diverted around the machine; for the case of a
+very low impedance, the turbine hardly affects the flow.
+
+So that the turbine presents an ``efficient'' impedance to the flow, the 
+right balance between its solidity and tip speed ratio needs to be found.
+
+If the solidity is high, the operating tip speed ratio has to be low in
+order to avoid too high an impedance, which has numerous implications. 
+
+Firstly, a low tip speed ratio implies increased torque so that a larger
+and higher cost gearbox has to be used. Secondly, the lower the tip
+speed ratio, the higher the maximum angle of attack, which can be
+problematic with regard to blade stalling
+
+However, it is hard to predict the precise effects of the various
+phenomena, which is why it is difficult to comment on the overall
+performance of a particular machine in a specific
+scenario. \todo{rewrite all this}
 
 %When applied to a rotor with a finite number of blades, 
 
@@ -684,6 +710,10 @@ aerodynamically significant near the rotor hub and may affect the
 in-plane forces on the rotor\cite{Moriarty_aerodyntheory}. Nevertheless,
 these corrections are not treated in the simulations presented in this
 document.  
+
+
+a duct eliminates tip losses\todo{write me}
+
 
 \section{Solid Surface Representation}
 \label{subsec:solid_surface}
