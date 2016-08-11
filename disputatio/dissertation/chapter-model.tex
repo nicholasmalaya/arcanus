@@ -596,105 +596,6 @@ polynomial fit to continuously interpolate between drag polars.
 what about loads on turbine?\todo{loads?}
 %% load was predicted at 20 ft*lbs
 
-\subsection{Blade Solidity Modification}
-
-%
-%https://en.wikipedia.org/wiki/Blade_solidity
-%
-
-The power output of a turbine is proportional to the thrust that it
-exerts onto the flow, and the larger the thrust, the larger the flow
-resistance the turbine presents to the flow. The maximum power for any
-wind turbine must lie in between two extremes, i.e. a very high and
-a very low impedance both result in minimal power
-extraction\cite{solidity_oxford}.  
-
-For the case of a very high impedance, little fluid flows through the
-turbine, instead it is diverted around the machine; for the case of a
-very low impedance, the turbine hardly affects the flow.
-
-So that the turbine presents an ``efficient'' impedance to the flow, the 
-right balance between its solidity and tip speed ratio needs to be found.
-
-If the solidity is high, the operating tip speed ratio has to be low in
-order to avoid too high an impedance, which has numerous implications. 
-
-Firstly, a low tip speed ratio implies increased torque so that a larger
-and higher cost gearbox has to be used. Secondly, the lower the tip
-speed ratio, the higher the maximum angle of attack, which can be
-problematic with regard to blade stalling
-
-However, it is hard to predict the precise effects of the various
-phenomena, which is why it is difficult to comment on the overall
-performance of a particular machine in a specific
-scenario. \todo{rewrite all this}
-
-%When applied to a rotor with a finite number of blades, 
-
-the actuator
-disk model treats the flow in the disk region as if it was flowing
-through a rotor with identical solidity but an infinite number of
-blades. 
-
-The only thing that has had an impact was introducing a 'blockage' model
-for the actuator disk model. This tries to represent the fact that as
-the number of blades increased, the pressure across the actuator disk
-should rise. We did this by adjusting the area of the actuator disk down
-by the ratio of the free area in the disk versus the blade sizes. 
-This admittedly crude model, todo\todo{write intro here}
-
-The length of each blade blocking vertical flow in the actuator disk is, 
-\begin{equation}
-  Ch * \text{Cos}(\beta(r)) = Ch_x(r). 
-\end{equation}
-The total length in an annular region that is blocking is therefore,
-\begin{equation}
-  N * Ch_x(r) = l_B(r),
-\end{equation}
-Where N is the number of blades. 
-Then, the ratio of an annular length that is impeded by blades is, 
-\begin{eqnarray}
- B(r) =& \frac{2\pi r- l_B(r)}{2 \pi r}\\
- B(r) =& 1- \frac{l_B(r)}{2 \pi r}. 
-\end{eqnarray}
-Note that a ``floor'' function is needed to ensure the solidity ratio
-does not go below zero. 
-
-From a 1D control volume analysis for the region, with the continuity
-equation, 
-\begin{eqnarray}
- \rho V_z' A' =& \rho V_z A,\\
- V_z' =& V_z \frac{A}{A'}, \\
- V_z' =& \frac{V_z}{B(r)}.
-\end{eqnarray}
-Note that this implies that $V_z' \rightarrow \infty$ as $A' \rightarrow
-0$. This is as expected, as the blockage becomes more severe, the flow
-would need to move at greater speed to go through it. 
-
-Our flow angle with respect to turbine velocity is therefore modified
-from,
-
-\begin{equation}
- \theta_f = \text{tan}^{-1}(\frac{U_{\text{up}}}{U_{\text{fwd}}})
-\end{equation}
-to,
-\begin{equation}
- \theta_f = \text{tan}^{-1}(\frac{U_{\text{up}}}{B(r) U_{\text{fwd}}}). 
-\end{equation}
-As $B(r) \rightarrow 0$, $\theta_f \rightarrow \pi$, e.g. 90 degrees. In
-this way the velocity vector will be completely aligned with drag. 
-
-Furthermore, 
-\begin{equation}
- F = \frac{1}{2}\frac{c \rho U_p^2}{A}(C_L \cdot n_{\text{lift}} + C_d \cdot n_{\text{drag}})
-\end{equation}
-Is modified so that, 
-\begin{equation}
- \bar U_p^{2} = \left(\frac{U_p}{B(r)}\right)^2
-\end{equation}
-
-todo\todo{add results here, perhaps show \# of blades and blockage \%}
-
 \subsection{Shortcomings of the Actuator Disk Model}
 \label{subsec:wake_loss_model}
 
@@ -737,6 +638,8 @@ document.
 
 a duct eliminates tip losses\todo{write me}
 
+Additionally, a new modification to the actuator disk is demonstrated in 
+section\ref{sec:solidity}. 
 
 \section{Solid Surface Representation}
 \label{subsec:solid_surface}
@@ -769,7 +672,7 @@ behavior at the boundary. This method was selected because it is easily
 imposed in the FEM context, and the method has been explored in detail
 in the literature.\todo{add more discussion of healing length implications here}
 
-show image of cylinder in 2d flow?\todo{add cylinder image? what does
+show image of cylinder in 2d flow?\todo{add cylinder image? what does 
 this show?}
 
 %Typically, the enforcement occurs along a domain
