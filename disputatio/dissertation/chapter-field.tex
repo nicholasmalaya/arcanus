@@ -631,8 +631,20 @@ rationale behind this is to provide an upper bound on the power that can
 be extracted for a particular configuration, which can then be used as
 input for feasiblity considerations of the SoV.  
 
+It is desirable to perform these estimates within the context of the
+actuator disk model (See Section~\ref{sec:actuator_disk}). While
+actuator disk models are commonly optimized\cite{790585,?,?}, the lift and
+drag polars are not. Rather, a given blade geometry is assumed and then
+the rotation rate, blade angle and chord length are optimized. 
+
+Conversely, airfoil optimization is a rich field with sophisticated and
+well-developed techniques\cite{?,?,?}, but these methods do not use an
+actuator disk model, and focus on the shape optimization of the airfoil
+geometry (and through this, the lift and drag polars).
+
 To address the possibility of further turbine blade
-improvements, this section details a more generic set of drag
+improvements, while simultaneously not representing the blade geometry
+proper, this section details a formulation for a generic set of drag
 polars. These generalized drag polars permit exploration of a broader
 design space. The optimization of this model can be fully coupled to the
 flow, and so does not violate any Betz-like considerations that might
