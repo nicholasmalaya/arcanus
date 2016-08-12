@@ -665,15 +665,20 @@ Forcing models designed to mimic a surface
 are not unique to this project, and the current formulation is
  closely related to (among others)
 ``immersed boundary methods'' as used by various other
-researchers\cite{doi:10.1146/annurev.fluid.37.061903.175743}. 
-This approach is unique in its use of Babuska's penalty treatment of
+researchers~\cite{doi:10.1146/annurev.fluid.37.061903.175743,verzicco1998complex}. This
+approach is unique in its use of Babuska's penalty treatment of
 constraints\cite{1973fempen,ZAMM:ZAMM19880680925} to enforce the
 behavior at the boundary. This method was selected because it is easily
-imposed in the FEM context, and the method has been explored in detail
-in the literature.\todo{add more discussion of healing length implications here}
+imposed in the FEM context, and the penalty method proper has been
+explored in detail in the literature.\todo{add more discussion of
+healing length implications here} 
 
-show image of cylinder in 2d flow?\todo{add cylinder image? what does 
-this show?}
+Note that despite the similarity in name, this is a distinct technique
+from the ``penalty immersed boundary method'' of Kim and
+Peskin\cite{:/content/aip/journal/pof2/19/5/10.1063/1.2734674}.  
+
+show image of cylinder in 2d flow?\todo{add cylinder image? what does
+this show?} 
 
 %Typically, the enforcement occurs along a domain
 %boundary, but in this work it is used in the interior, 
