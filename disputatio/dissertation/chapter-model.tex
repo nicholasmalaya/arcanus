@@ -429,7 +429,7 @@ commonly used to represent the rotor of a wind turbine and
 described in the subsequent section. 
 
 \section{Turbine Representation}
-
+\label{sec:actuator_disk}
 %
 % https://en.wikipedia.org/wiki/Blade_solidity
 %
@@ -868,66 +868,6 @@ typically by 2-3\%.
 %layer near the surface into the flowing regime. It can also support more
 %general turning configurations than the virtual vanes outlined above. 
 
-\section{Turning Vane Drag}
-
-yar\todo{Motivate me!}
-
-Our unit forcing vector $\hat f$ is the normalized inner product of the 
-velocity, $u$, and the tangent vector $\hat t$, 
-\begin{equation}
-- \frac{u \cdot \hat t}{|| u \cdot \hat t ||} = \hat f. 
-\end{equation}
-
-The force applied is then, 
-\begin{equation}
- F = \hat f \, C_f \, \frac{1}{2} \frac{\rho || u ||^2}{\delta}
-\end{equation}
-Where $C_f$ is the skin friction coefficient (which must be determined),
-$\rho $ is the density and $\delta$ the channel half width. 
-For $C_f$, we use Dean's Correlation\cite{?}, 
-
-%
-%
-%https://books.google.com/books?id=JBTlucgGdegC&pg=SA13-PA51&lpg=SA13-PA51&dq=dean%27s+correlation+fluids&source=bl&ots=auW8XopUC9&sig=DDxuQONFvqly5KQOocSPr39rS70&hl=en&sa=X&ved=0ahUKEwii3vX9wZHOAhXmxYMKHUqlChYQ6AEIJTAB#v=onepage&q=dean%27s%20correlation%20fluids&f=false 
-%
-\begin{equation}
- C_f = 0.073 (Re)^{-0.25}. 
-\end{equation}
-Where the Reynolds number is defined as, 
-\begin{equation}
- Re = \frac{u\, \delta}{\nu}.
-\end{equation}
-
-Some roughness elements existed across the vanes. In addition to
-non-smooth surface materials, the design of the field test apparatus
-ultimately relied upon posts to hold the turning vanes. These posts were
-pieces of wood which were modeled as roughness elements. In order to
-determine $C_f$ for these cases, the Colebrook formula\cite{Colebrook367},
-% Colebrook, C. F.; White, C. M. (3 August 1937). "Experiments with
-% Fluid Friction in Roughened Pipes". Proceedings of the Royal Society
-% of London. Series A, Mathematical and Physical Sciences. 161 (906):
-% 367–381. doi:10.1098/rspa.1937.0150 
-was used to provide an estimate for the friction factor given a
-roughness height, $\epsilon/D$,  
-\begin{equation}
- \frac{1}{\sqrt{f}} = -2.0 \text{ log}\left(\frac{\epsilon/D}{3.7} + \frac{2.51}{Re\sqrt(f)}\right).
-\end{equation}
- With the assumption that for large roughness the Reynolds number term
- contribution is not significant, the function is no longer implicit in
- $f$ and can be determined directly, 
-\begin{equation}
- f = \left(2.0 \text{ log}\left(\frac{\epsilon/D}{3.7}\right)\right)^2. 
-\end{equation}
-%Then, a Moody chart was consulted to provide the the 
-Note that D here is the hydraulic diameter which must account for the
-two plates (we treat the vanes as a channel),
-\begin{equation}
-D_H = \frac{4 A}{P} = \frac{4 (2w)\delta}{2w} = 4 \delta
-\end{equation}
-Where $\delta$ is the channel half width.
-
-\todo{finish me!}
-
 \section{Simulation Geometry and Boundary Conditions}
 \label{sec:bc}
 
@@ -1130,7 +1070,13 @@ To accomplish this, the boundary condition is,
 
 where $u_n$ and $u_t$ are normal and tangential components of the velocity, 
 respectively. This boundary condition is applied on the top boundary
-$\Gamma_T$ ($z=L_z$) and downstream side boundary  $\Gamma_B$ in the wind case.
+$\Gamma_T$ ($z=L_z$) and downstream side boundary  $\Gamma_B$ in the
+wind case. This mixed boundary condition appears to be a unique
+implementation of a ``directional do-nothing'' condition, which has been
+demonstrated previously in other
+instances~\cite{braack2014directional,feistauer2006non}. In particular,
+the well-posedness of this general class of boundary condition is
+treated in \cite{bruneau1996new}.  
 
 \textbf{Sponge Layer} 
 
