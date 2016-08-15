@@ -364,8 +364,7 @@ Shortcomings -- \todo{finish me}
 
 Designed for axisymmetric flow. 
 
-No wake correction as depicted in
-Section\ref{subsec:wake_loss_model}.    
+No wake correction as depicted in Section~\ref{subsec:wake_loss_model}.    
 
 
 \section{Field Prediction}
@@ -389,25 +388,74 @@ pm\cite{ann_comm}.
 A particular challenge is that the closest measurement was taken by a 
 thermocouple 1 mm above the pavement. Thus, the surface temperature and
 magnitude of thermal gradient were not directly measured. To estimate
-$T_0$ and $\Delta T$ from Equation~\ref{eq:bl_t},\todo{finish this}
+$T_0$ and $\Delta T$, the thermal profile was fit with a least squares
+minimization of the residual between Equation~\ref{eq:bl_t} and to the
+existing experimental data. The resulting profile is plotted in
+Figure~\ref{fig:thermal_profile_fit}. The sparsity of existing
+experimental data near the surface is quite clear from this
+profile. The fitted profile is then evaluated at $x=0$ to determine the
+ground temperature. Based on this criterion, a gradient of 30 Kelvin was
+selected.   
 
  \begin{figure}[!htb]
   \begin{center}
-   \includegraphics[width = 10 cm]{figs/fit_zoomed}
-   \caption{Thermal Profile.}
+   \includegraphics[width = 15 cm]{figs/fit_zoomed}
+   \caption{The raw thermal boundary layer data (blue circles) plotted
+   against the fitted boundary layer profile (red triangles). The
+   paucity of experimental data undermines the fit's accuracy to
+   anything more than a plausible location for the actual wall
+   temperature. }  
    \label{fig:thermal_profile_fit}
   \end{center}
  \end{figure}
 
-
+In addition to the thermal profile, the incoming wind velocity needed an 
+estimate. Thankfully, wind measurements were performed by the
+experimental team in the field also during the June, 2014 test. A single 
+hour time series was captured for both day and night as measured by the
+sonic anemometers. These data series are plotted in
+Figure~\ref{fig:wind_speed_estimate}. The wind speed was sampled at a
+sampling rate of 0.5 Hz, and the traces were plotted for one hour (for
+both the day and night). 
 
  \begin{figure}[!htb]
   \begin{center}
    \includegraphics[width = 15 cm]{figs/wind_measurements}
-   \caption{Wind Speed Measurements.}
+   \caption{Wind Speed Measurements from the June 2014 field test.}
    \label{fig:wind_speed_estimate}
   \end{center}
  \end{figure}
+
+Several observations can be made from this data. There is essentially no
+mean flow at night, but during the day the winds are not insignificant,
+with a mean velocity of about two meters per second and fluctuations of
+nearly six meters per second. It is clear that the wind profile is
+turbulent.  Also note that the daytime wind does not die out: the
+average horizontal velocity during the day is about 2-3 m/sec. 
+
+The wind direction was also monitored, and showed very little variation. 
+This is shown in Figure~\ref{fig:wind_direction}. It was therefore
+assumed that the wind had a constant heading and constant speed during
+the simulations. Furthermore, discussions with the field team indicated
+that wind heading over several years of field tests were relatively
+consistent. This was part of the motivation for the movement to an
+asymmetric vane configuration, as if the wind direction changed daily
+(for instance) it would render an asymmetric design useless, unless it
+could easily be manipulated to align with the free stream velocity. 
+
+ \begin{figure}[!htb]
+  \begin{center}
+   \includegraphics[width = 15 cm]{figs/wind_direction}
+   \caption{Wind direction measurments from the June 2014 field test.}
+   \label{fig:wind_direction}
+  \end{center}
+ \end{figure}
+
+
+% monin obuhkov should deal with this, no?
+%It may very well be that even in the "thermal only" cases there could be
+%significant, zero mean turbulence (perhaps like grid turbulence)
+%contributing from the ambient surroundings. 
 
 
 also show fields and images\todo{write me!}
@@ -431,7 +479,11 @@ Actuator disk under-estimates drag
 
 no model for drag on vanes (was reported by team)
 
+wind heading adjustments and measurements of flux reduction
+
 transient before spin up
+
+no dynamics in wind velocity
 
 We now discuss two possible modeling inaquacy components that were
 investigated in detail. 
@@ -749,7 +801,7 @@ In words, the drag must be specified to be greater than zero, but
 the lift can be negative. This is a problem in the calculus of
 variations, where the objective is to maximize a
 functional subject to imposed
-constraints~\ref{thornton2004classical,bradbury1968theoretical,2015JFM...784..565S}.  
+constraints~\cite{thornton2004classical,bradbury1968theoretical,2015JFM...784..565S}.   
 
 %
 % does this argument still work?!?
@@ -765,7 +817,7 @@ Schwarz's inequality,
  \,\text{sin}^2(\phi)\, r^2\,dr d\theta.
 \end{align*}
 
-In this way the quantity,
+In this way the first integral quantity,
 \begin{equation}
   \int_0^{2\pi}
  \int_{r_{\text{min}}}^{r_{\text{max}}} C_L^2(\phi,r) dr d\theta, 
@@ -834,11 +886,13 @@ To withdraw from the vortex disruption point, the drag
 polars are calibrated by reducing $\bar C_L $ and $\bar C_D$ so that the 
 vortex does not dissipate and the power extracted remains positive. The
 parameters were adjusted by hand, so the calibration is crude. The
-optimal parameters found were $\bar C_L = 1.1$ and $\bar C_D = 1.5$
+optimal parameters found were $\bar C_L = 1.1$ and $\bar C_D = 1.5$. It
+is interesting to note that this is nearly the average of the drag
+polars shown in Figure~\ref{}. 
 
-the steady state power extracted by the
-turbine nearly doubled from the previous best attained with the 90
-degree semicircles, to 2.1 kW.\todo{add info of energy extracted}
+Regardless, the steady state power extracted by the ideal turbine nearly 
+doubled from the previous best attained with the 90 degree semicircles,
+to 2.1 kW.\todo{add info of energy extracted} 
 
- 
+
 add images of the optimal runs\todo{add opt drag polar images}
