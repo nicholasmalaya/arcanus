@@ -418,7 +418,7 @@ energy flux than was produced in the August 2015 Field test.
 
 
 \subsection{Sources of Error}
-
+\label{sec:field_error}
 %\section{Effect if the Cone}
 %
 %behaves like wind tunnel contraction
@@ -652,8 +652,8 @@ a given blade geometry is assumed and then the rotation rate, blade
 angle and chord length (for instance) are optimized.   
 
 Conversely, airfoil optimization is a rich field with sophisticated and
-well-developed
-techniques~\cite{drela1998pros,lewis2001aerodynamic,Chehouri2015361},
+well-vetted
+techniques~\cite{drela1998pros,lewis2001aerodynamic,Chehouri2015361}, 
 but these methods do not use an actuator disk model, and focus on the
 shape optimization of the airfoil geometry (and through this, the lift
 and drag polars). 
@@ -748,14 +748,13 @@ and drag are. To do this, we specify an optimization problem such that,
 In words, the drag must be specified to be greater than zero, but
 the lift can be negative. This is a problem in the calculus of
 variations, where the objective is to maximize a
-functional\ref{thornton2004classical,bradbury1968theoretical,2015JFM...784..565S}
-subject to imposed constraints. 
+functional subject to imposed
+constraints~\ref{thornton2004classical,bradbury1968theoretical,2015JFM...784..565S}.  
 
 %
 % does this argument still work?!?
-betz\todo{finish me}
 The integral shown in Equation \ref{lift} above can be bounded by 
-Schwarz's Inequality,  
+Schwarz's inequality,  
 \begin{align*}
   \left[
     \int_0^{2\pi}
@@ -792,7 +791,16 @@ Therefore, our lift/drag functions may be expressed as,
    -1 \text{ else}. \\
   \end{cases}
 \end{align*}
-Where $\bar C_L = 1.7$ and $\bar C_D = 2.0$.
+Where $\bar C_L = 1.7$ and $\bar C_D = 2.0$. The plot of these drag
+polars are shown in Figure \ref{drags}. As a point of comparison,  
+
+\begin{figure}[!htb]
+  \begin{center}
+    \includegraphics[width = 12 cm]{figs/opt_drags}
+    \caption{The uncalibrated idealized drag polars.} 
+    \label{drags}
+  \end{center}
+\end{figure}
 
 %Thus, the drag polars
 %have the form, 
@@ -808,24 +816,29 @@ Where $\bar C_L = 1.7$ and $\bar C_D = 2.0$.
 %      0& \quad 90^{\circ} \le \phi \le 270^{\circ}.  \\
 %  \end{cases}\\
 %\end{align*}
-The plot of these drag polars are shown in Figure \ref{drags}. 
 
-\begin{figure}[!htb]
-  \begin{center}
-    \includegraphics[width = 12 cm]{figs/opt_drags}
-    \caption{The idealized drag polars.} 
-    \label{drags}
-  \end{center}
-\end{figure}
+Under this approach, the turbine extracts so much energy from the flow
+that the vortex loses its coherence and the power extracted becomes
+negative (e.g. the constant velocity turbine is adding energy to the
+flow).\todo{add image}
+This implies a limit on how much of the energy can be extracted before
+disrupting the flow so greatly that the vortex cannot be maintained.   
+Consistent with the results from Section~\ref{sec:field_error},
+the vortex is not robust, and the feedback from extracting more power
+from it (manifest as increased blade solidity) causes a collapse of the
+vortex structure. It is interesting to note that the vortex collapse is
+not subtle, with the power extracted discontinuously dropping to zero or
+negative values. 
 
-Under this approach, the steady state power extracted by the
+To withdraw from the vortex disruption point, the drag
+polars are calibrated by reducing $\bar C_L $ and $\bar C_D$ so that the 
+vortex does not dissipate and the power extracted remains positive. The
+parameters were adjusted by hand, so the calibration is crude. The
+optimal parameters found were $\bar C_L = 1.1$ and $\bar C_D = 1.5$
+
+the steady state power extracted by the
 turbine nearly doubled from the previous best attained with the 90
 degree semicircles, to 2.1 kW.\todo{add info of energy extracted}
 
-mention that flow would die if you didnt calibrate it
-
- The results of this model demonstrate a limit on how much of the energy
- can be extracted before disrupting the flow so greatly
- that the vortex cannot be maintained.
  
 add images of the optimal runs\todo{add opt drag polar images}
