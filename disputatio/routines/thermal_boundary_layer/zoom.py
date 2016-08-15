@@ -56,12 +56,12 @@ def plot_raw(x,t):
     #print log_lst
     plt.subplot(1, 1, 1)
     plt.plot(x,t, 'ko',color='blue',label='Raw',markersize=10)
-    plt.title('Thermal Boundary Layer Measured')
+    #plt.title('Thermal Boundary Layer Measured')
     plt.xlabel('Location Above Ground (Meters)')
     plt.ylabel('Temperature (Celsius)')
-    plt.legend()
 
-    plt.xlim((-.05,.35))
+    #plt.xlim((-.05,.35))
+    plt.xlim((0.0,.35))
     plt.ylim((40,75))
         
     #
@@ -70,7 +70,8 @@ def plot_raw(x,t):
     # http://stackoverflow.com/questions/3433486/how-to-do-exponential-and-logarithmic-curve-fitting-in-python-i-found-only-poly
     #
     # plot exponential
-    plt.plot(xx,e(xx,popt[0],popt[1],popt[2]), 'ko-', color='red',label='exponential')
+    plt.plot(xx,e(xx,popt[0],popt[1],popt[2]), 'k^-', color='red',label='Fitted')
+    plt.legend()
 
     # plot polynomial:
     #plt.plot(xx,pp(xx), 'ko-',color='red',label='fit')
