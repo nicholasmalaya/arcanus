@@ -8,18 +8,19 @@ well a dedicated optimization effort, a new configuration was created
 and explored computationally. The resulting configuration represents a
 significant change from that used in the August 2015 Field test. This
 chapter begins by describing the geometry of the device and the design
-optimization that lead to this configuration. It then details the
-turbine design incorporated into the SoV to extract energy from the
-flow. A field prediction based entirely on the computational effort is
-then provided. Some of the model shortcomings of this design are then
-discussed, with corrections to the model inadequacy detailed and the
-results explored. Finally, the chapter concludes with an estimate of the
-maximal energy that could be extracted from an idealized device. 
+optimization that lead to this configuration. Next is a detailed look
+at the turbine design incorporated into the SoV to extract energy from
+the flow. A field prediction based entirely on the computational effort is
+then provided. Some of the model shortcomings of this design are
+considered, with corrections to the model inadequacy proposed and the
+results of these corrections to the baseline models explored. Finally,
+the chapter concludes with an estimate of the maximal energy that could
+be extracted from an idealized device.   
 
 \section{Geometry}
-Horizontal and vertical views of this
-configuration are shown in Figures \ref{a-b}, below. A brief summary of
-the differences is given below: 
+Horizontal and vertical views of this configuration are shown in Figures 
+\ref{fig:top_design},\ref{fig:bottom_design} and
+\ref{fig:vertical_design}, below. A brief summary of the differences is given below:  
 
 \begin{itemize}
 \item The bottom tier vanes are significantly taller than in the field.
@@ -51,6 +52,8 @@ prevent flow in the vanes from rising up and out of the vanes.
 
 \begin{table}[]
 \centering
+ \caption{The parameters used in the top tier system geometry. See
+ Figure~\ref{fig:top_design} for a schematic depicting the vanes.}
 \begin{tabular}{lll}
 Name                        & Value & Meaning                    \\
  \hline
@@ -94,6 +97,8 @@ $L^{t,l}$                   &  10 meters  & width of vane to the side of cylinde
 
 \begin{table}[]
 \centering
+ \caption{The parameters used in the bottom tier system geometry. See 
+ Figure~\ref{fig:bottom_design} for a schematic depicting these vanes.}
 \begin{tabular}{lll}
 Name                        & Value & Meaning                    \\
  \hline
@@ -124,6 +129,7 @@ $\phi^{b,u}$ &   0   & Outer angle for the bottom tier, upstream vanes \\
  \end{figure}
 
 \begin{table}[]
+ \caption{The values of parameters shown in Figure~\ref{fig:vertical_design}.}
 \centering
 \begin{tabular}{lll}
 Name                        & Value & Meaning                    \\
