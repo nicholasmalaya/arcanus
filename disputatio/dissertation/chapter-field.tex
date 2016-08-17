@@ -179,11 +179,9 @@ The top tier design is now highly asymmetric, with a
 large opening facing the incoming wind to capture incoming free stream
 kinetic energy over a large area. The incoming flow enters the central
 cylindrical area, where it spins and is driven out the top through the
-cone. 
-
-To enable these more general vane geometries for the top tier, it was
-necessary to formulate a more general parameterization of the
-vanes.\todo{why did we need to do this?} 
+cone. To enable these more asymmetric vane geometries for the top tier,
+it was necessary to formulate a more general parameterization of the
+vanes.
 
 Previously, the vanes had a linear curvature function and were
 axisymmetric. The new concept required the vanes to hold an azimuthal
@@ -230,23 +228,23 @@ radius (R) of the SoV apparatus. This is shown in
 Figure~\ref{fig:elliptic_vane_concept}. We have a system of four
 equations,
 \begin{eqnarray}
- \frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} =& 1, \\
- \frac{(x_0-h)^2}{a^2} + \frac{(y_0-k)^2}{b^2} =& 1, \\
- x_0^2 + y_0^2 =& R, \\
- -\frac{b^2}{a^2}\frac{(x_0-h)}{(y_0-k)} =& m. 
+ \frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} =& 1, \label{eq:ell1}\\
+ \frac{(x_0-h)^2}{a^2} + \frac{(y_0-k)^2}{b^2} =& 1, \label{eq:ell2}  \\
+ x_0^2 + y_0^2 =& R, \label{eq:ell3} \\
+ -\frac{b^2}{a^2}\frac{(x_0-h)}{(y_0-k)} =& m. \label{eq:ell4} 
 \end{eqnarray}
 These equations express the fact that the ellipse intercepts both known
 points, that the point $(x_0,y_o)$ lies on the inner radius of the
 apparatus, and that the slope at this point is known. Assuming that
-h, a, x, y, R and m are given, we have a system of four equations (the
-above) with four unknowns, $x_0,y_0,k,b$. This is, in principle,
-sufficient information to solve this system. However, in practice, great
-difficulties arise. Inverting this system by hand is too complex and
-error prone, and furthermore, Mathematica was unable to find a
-closed-form solution. Numerous simplifications and additional
-constraints were added to ensure that the system of equations were
-well-posed (a>b, for instance), but the problem still resisted a
-solution. 
+h, a, x, y, R and m are given, we have a system of four equations
+(Equations \ref{eq:ell1}-\ref{eq:ell4}) with four unknowns,
+$x_0,y_0,k,b$. This is, in principle, sufficient information to solve
+this system. However, in practice, great difficulties arise. Inverting
+this system by hand is too complex and error prone, and furthermore,
+Mathematica was unable to find a closed-form solution. Numerous
+simplifications and additional constraints were added to ensure that the
+system of equations were well-posed (a>b, for instance), but the problem
+still resisted solution. 
 
  \begin{figure}[!htb]
   \begin{center}
