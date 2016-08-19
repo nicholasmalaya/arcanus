@@ -89,7 +89,9 @@ The new configuration is a highly asymmetric design, intended to capture
 a much greater area of incoming wind and draw it into the center of the
 device. Horizontal and vertical views of the new optimized configuration
 are shown in Figures~\ref{fig:top_design},\ref{fig:bottom_design} and
-\ref{fig:vertical_design}, below. This design, does have some notable 
+\ref{fig:vertical_design}, below. The actual parametric values of these
+vanes are detailed in Tables~\ref{tab:top},\ref{tab:bottom} and
+\ref{tab:side}. This design, does have some notable 
 similarities to the previous efforts. It still retains the two-tier
 design outlined Section~\ref{sec:dust_devil_concept}. The inner diameter 
 of the 2\textsuperscript{nd} tier vanes remains six meters, and the
@@ -123,7 +125,7 @@ vortex, as it limits the inflow of thermal resource which, as detailed
 in Section\ref{sec:wind_impact}, notably plays a substantial role in the
 measured vortex energy flux. 
 
-The lower tier vanes have also been made asymmetric. The downwind side
+The lower tier vanes are now asymmetric. The downwind side
 is substantially taller (by a factor of two) than the upwind side. This
 is due to the downwind boundary layer being thicker on account of it
 possessing a lower Reynolds number. The Reynolds number is lower on the
@@ -131,15 +133,28 @@ downwind side because it does not possess the benefit of a strong wind
 forcing the flow through the vanes. Due to this, the downwind lower tier
 vanes also have a lower peak turning angle to reduce blockage.
 
+Despite repeat efforts, the downwind side of the second tier vanes were
+never found to entrain flow from the wake, even with the vane separation
+model detailed in Section~\ref{sec:separation}. As ``leakage'' of the
+vortex out the back of the SoV has been a noted issue in the past, it
+was decided to introduce an impermeable cylindrical wall along the
+regions where leakage was observed to occur in the simulations. 
+
 The most visually striking change between the current configuration and
 the previous field test is in the second tier vanes. As the wind was
 believed to play a substantial role in providing energy flux to the
-vortex, the upper tier vanes were redesigned  
+vortex, the upper tier vanes were redesigned to capture as much of this
+energy as possible. To do this, the vanes were extended far out in the
+streamwise direction and designed to align with the freestream velocity
+in this location. This broken symmetry introduces a failure mode, as it
+requires that the SoV be aligned with the streamwise velocity. This
+design decision is discussed in more detail in
+Section~\ref{subsec:field_predict}. 
 
-
-
-upper tier horizontal partitions show image
-
+The upper tier vanes also now possess horizontal partitions. By placing
+a flat horizontal ``top'' on the vanes, flow is constrained from leaving
+the SoV apparatus before it is forced into the center. This horizontal
+partition is depicted in Figure\ref{fig:top_down_cad}. 
 
 The cone plays at least two important roles. The first is acting as a
 converging nozzle for the flow, increasing the vertical and azimuthal
@@ -159,9 +174,8 @@ time and fabrication constraints this particular cone design was not
 implemented. The cone design quoted below was the cone used by
 the field team, despite being found to be sub-optimal in
 simulations. All the simulations shown in this chapter are consistent
-with the design used in the 2016 field tests, and this unexecuted cone
+with the design used in the 2016 field tests, and this unrealized cone
 optimization is noted for completeness.
-
 
  \begin{figure}[!htb]
   \begin{center}
@@ -195,6 +209,7 @@ $\theta^{t,r}$   &   $75^{\circ} +\frac{\alpha}{6}$   & Inner angle for the top 
 $L^{t,r}$                   &  12 meters  & width of vane in front of cylinder \\
 $L^{t,l}$                   &  10 meters  & width of vane to the side of cylinder \\
 \end{tabular}
+ \label{tab:top}
 \end{table}
 
 \begin{itemize}
@@ -235,6 +250,7 @@ $\theta^{b,u}$ &  $80^{\circ}$   & Inner angle for the bottom tier, upstream van
 $\phi^{b,d}$ &   0   & Outer angle for the bottom  tier, downstream vanes \\
 $\phi^{b,u}$ &   0   & Outer angle for the bottom tier, upstream vanes \\
 \end{tabular}
+ \label{tab:bottom}
 \end{table}
 
 \begin{itemize}
@@ -269,6 +285,7 @@ $L_x$                       &  12 meters  & Furthest distance upstream of top	 t
  $D^c_{\text{min}}    $     &   3 meters  & Minimum cone diameter \\
  $D^c_{\text{max}}    $     &   6 meters  & Diameter of cone at top of vanes\\
 \end{tabular}
+ \label{tab:side}
 \end{table}
 
 An optimal set of design parameters were determined and provided to the
