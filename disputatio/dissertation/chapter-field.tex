@@ -192,8 +192,16 @@ optimization is noted for completeness.
 
 \begin{table}[]
 \centering
- \caption{The parameters used in the top tier system geometry. See
- Figure~\ref{fig:top_design} for a schematic depicting the vanes.}
+ \caption{The parameters used in the top tier system
+ geometry. Parameters labeled with $\phi$ are angles relative to
+ streamwise direction ($\hat i$), while the $\theta$ parameters are
+ angles relative to radial direction ($\hat r$). $\alpha$ is the angle
+ from origin to inner terminus of vane, and so in this way some vane
+ angles are smoothly varying as a function of polar angle. See
+ Figure~\ref{fig:top_design} for a schematic depicting the vanes. The
+ superscript $t$ denotes top, or the second tier vanes. Among the top
+ tier vanes, $l$ is left, $r$ right (when viewed from upstream of the
+ device).}
 \begin{tabular}{lll}
 Name                        & Value & Meaning                    \\
  \hline
@@ -212,14 +220,11 @@ $L^{t,l}$                   &  10 meters  & width of vane to the side of cylinde
  \label{tab:top}
 \end{table}
 
-\begin{itemize}
- \item $\phi$  angle relative to streamwise direction ($\hat i$)
- \item $\theta$ angle relative to radial direction ($\hat r$)
- \item $\alpha$ is angle from origin to inner terminus of vane
- \item Superscript $t$ denotes top, $l$ is left, $r$ right (when viewed
-       from front)
- \item Forcing function has a discontinuity at $\alpha=90^{\circ}$
-\end{itemize}
+%The values of the parameters depicted in
+%Tables~\ref{tab:top},\ref{tab:bottom} and \ref{tab:side} bear some
+%discussion. 
+
+% Forcing function has a discontinuity at $\alpha=90^{\circ}$
 
  \begin{figure}[!htb]
   \begin{center}
@@ -239,7 +244,10 @@ $L^{t,l}$                   &  10 meters  & width of vane to the side of cylinde
 \begin{table}[]
 \centering
  \caption{The parameters used in the bottom tier system geometry. See 
- Figure~\ref{fig:bottom_design} for a schematic depicting these vanes.}
+ Figure~\ref{fig:bottom_design} for a schematic depicting these
+ vanes. The superscript $b$ denotes bottom tier, $d$ is downstream, $u$
+ for upstream vanes. In this case, both $\phi$ and $\theta$ are angles
+ relative to radial ($\hat r$). }
 \begin{tabular}{lll}
 Name                        & Value & Meaning                    \\
  \hline
@@ -252,11 +260,6 @@ $\phi^{b,u}$ &   0   & Outer angle for the bottom tier, upstream vanes \\
 \end{tabular}
  \label{tab:bottom}
 \end{table}
-
-\begin{itemize}
- \item Superscript $b$ denotes bottom tier, $d$ is downstream, $u$ upstream vanes
- \item $\phi$,$\theta$ angles relative to radial ($\hat r$)
-\end{itemize}
 
 
 \begin{figure}[!htb]
@@ -271,7 +274,8 @@ $\phi^{b,u}$ &   0   & Outer angle for the bottom tier, upstream vanes \\
  \end{figure}
 
 \begin{table}[]
- \caption{The values of parameters shown in Figure~\ref{fig:vertical_design}.}
+ \caption{The values of parameters shown in
+ Figure~\ref{fig:vertical_design}, which is a side view of the SoV apparatus.}
 \centering
 \begin{tabular}{lll}
 Name                        & Value & Meaning                    \\
