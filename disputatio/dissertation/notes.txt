@@ -1,8 +1,18 @@
 
+2\textsuperscript{nd}
+
+
+
+
+
+---------------------------------------------
+
 lengths: before appendicies:
 
 * sig length 106 
-* 
+* rhys 191
+* david 175
+* mk 140
 
 ---------------
 
