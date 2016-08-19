@@ -43,6 +43,8 @@ H^1(\Omega)^3 \times L_2(\Omega) \times H^1(\Omega)$ such that
  w}) + (k \, \nabla T, \nabla  w) &= 0.\label{eqn:en_weak}
 \end{align}
 
+\todo{boundary terms}
+
 $\forall ({\bf v},q,w) \in H^1(\Omega)^3 \times L_2(\Omega) \times
 H^1(\Omega)$, where $(\cdot,\cdot)$ denotes the $L_2$ inner product, 
 $(u,v) = \int_\Omega u \cdot v \, dx$ and $H^1(\Omega)$ is the
@@ -76,7 +78,7 @@ stabilization terms are used, as first described by
 Hughes\cite{Hughes198685,supg} and extended to natural convection as in
 Becker and Braack\cite{Becker2002428}. These stabilization terms add 
 a residual dependent artificial dissipation that approaches zero as the
-residual converges. This scheme is called ``consistent'' because the
+residual converges. This scheme is called consistent because the
 underlying order of convergence of the numerical method is not
 affected\cite{hughes2000finite}.   
 
@@ -125,20 +127,29 @@ stability and ease of statistical sampling for a uniform timestep.
 %
 % what about mesh...
 %
-The domains described in section~\ref{sec:bc} are
-consistently discretized. The domain extents
-are scaled by system diameter but the same number of grid points are used
-for every simulation. Thus, while the ratio of the domain length to system
-diameter remains fixed, the grid spacing increases proportionally with
-domain length. 
+The domain described in section~\ref{sec:bc} are consistently
+discretized. This means that the domain extents, $\{L_x,L_y,L_z\}$, are
+scaled by system diameter (D) but the same number of grid points are
+used for every simulation. Thus, while the ratio of the domain length to
+system diameter remains fixed, the grid spacing $\{\Delta x,\Delta
+y,\Delta z\}$ increases proportionally with domain length.  
+
+The diffusivities are proportionally scaled with grid spacing to
+ensure that the cell Reynolds number, 
+\begin{equation}
+ \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y) u}{\nu_T}
+\end{equation} 
+is maintained for every simulation, to ensure stability. In this way
+ larger domains have higher viscosities which serve to dissipate effects 
+ of scales that are smaller than the grid spacing. 
 
 The mesh has a uniform spacing in the lateral directions, except for a
 single refinement in the region of the vanes. Typically, the grid is 
 roughly one hundred points in the streamwise and spanwise directions
 before the refinement. The refinement halves the spacing (doubles the
-number of points) in all three
-coordinate directions, \{x,y,z\} in this region. The refinement is made
-from the ground to 1.5 times the height of the vanes and cone. 
+number of points) in all three coordinate directions, \{x,y,z\} in this
+region. The refinement is made from the ground to 1.5 times the height
+of the vanes and cone.  
 
 The mesh is non-uniform in height to
 resolve the boundary layer. This is accomplished by redistributing a
@@ -150,7 +161,7 @@ mesh uniform in height, z, according to,
 \end{equation}
 
 where $z_\delta$ is the chosen height of the boundary layer mesh, and
-$C_1-C_3$ are scaling coefficients\todo{show coefficients}. 
+$C_1-C_3$ are scaling coefficients. %\todo{show coefficients}. 
 This gives the mesh an exponentially
 varying character, with the coefficients chosen to ensure ten or more
 points in the boundary layer, isotropic spacing in cells outside of
@@ -172,12 +183,6 @@ meshed boundary layer region near the ground.
     \end{center}
   \end{figure}
 
-Finally, the diffusivities are proportionally
-scaled with grid size to ensure that the cell Reynolds number, 
-\begin{equation}
- \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y) u}{\nu_T}
-\end{equation}
- is maintained for every simulation, to ensure stability.
 
 
 %% hmin = 0.001  
@@ -199,20 +204,22 @@ scaled with grid size to ensure that the cell Reynolds number,
 \section{Software Stack}
 
 The numerical formulations described in Section~\ref{sec:discretization}
-had been implemented using the GRINS library\cite{GRINSpaper} by Bauman
-and Stogner using the Libmesh\cite{libMeshPaper} FEM infrastructure. It
-was designed to support multiphysics FEM applications, the reusability
-and extensibility of mathematical modeling kernels, supporting
-interfaces to existing solver and discretization libraries to enable
-modern solution strategies, while, at the same time, retaining
-flexibility to effectively address a wide range of science and
-engineering problems.   
+is implemented with the GRINS library\cite{GRINSpaper} by Bauman
+and Stogner using the Libmesh\cite{libMeshPaper} FEM
+infrastructure. Designed to support multiphysics FEM applications, 
+GRINS is a flexible library that effectively addresses a wide range of 
+science and engineering problems.   
+ 
+%the reusability
+%and extensibility of mathematical modeling kernels, supporting
+%interfaces to existing solver and discretization libraries to enable
+%modern solution strategies, while, at the same time, retaining
 
-GRINS provides a platform that enables powerful numerical algorithms
-such as adjoint-based AMR, adaptive modeling, sensitivity analysis,
-and, eventually, enabling uncertainty quantification. While few of these
-capabilities are in use for the present work, they could be useful in
-future investigations. 
+%GRINS provides a platform that enables powerful numerical algorithms
+%such as adjoint-based AMR, adaptive modeling, sensitivity analysis,
+%and, eventually, enabling uncertainty quantification. While few of these
+%capabilities are in use for the present work, they could be useful in
+%future investigations. 
 
 GRINS stands for, ``General Reacting Incompressible Navier-Stokes'',
 which roughly encapsulates the physical regimes it was originally
@@ -226,26 +233,26 @@ platform.
 %discussing the underlying libraries used and the description of the
 %GRINS framework.  
 
-GRINS uses the fparser\cite{fparser}
+GRINS uses the fparser~\cite{fparser}
 library to support both parsing and compilation of mathematical
 functions into high performance kernels. This capability allows for
 easy specification of boundary conditions, initial conditions, or
 constitutive equations from an input file. Some of these inputs are
 detailed in Appendix~\ref{sec:archiving}. 
 
-GRINS/Libmesh are built on the PETSC\cite{petsc} solver package, which
+GRINS/Libmesh are built on the PETSc\cite{petsc} solver package, which
 provides the numerical linear algebra packages used for constructing and
-using sparse matrices, finding the iterative solution of linear systems,
+using sparse matrices, finding the solution of linear systems,
 and for preconditioning.  
 
-While a variety of solver options have been tested in PETSC, all the
+While a variety of solver options have been tested in PETSc, all the
 results shown in this document use GMRES with block Jacobi for
-preconditioning\cite{Saad:2003} for the linear solve. This uses the
+preconditioning\cite{Saad:2003} the linear solve. This uses the
 inverse of the diagonal block for that processor for preconditioning of
 the entire linear system. In addition, a preconditioner is used for the
 solution of the diagonal block. This is approximated with incomplete LU
-factorization\cite{?}. Here, the ``incomplete'' refers
-to the level of fill you use, with greater levels of fill approaching
+factorization\cite{chan1997approximate}. Here, the ``incomplete'' refers 
+to the level of fill, with greater levels of fill approaching
 the ``complete'' LU factorization. 
 
 In principle, alternative software libraries/frameworks such as
