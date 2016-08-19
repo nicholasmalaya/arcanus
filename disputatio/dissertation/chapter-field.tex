@@ -15,16 +15,16 @@ then provided. Some of the model shortcomings of this design are
 considered, with corrections to the model inadequacy proposed and the
 results of these corrections to the baseline models explored. Finally,
 the chapter concludes with an estimate of the maximal energy that could
-be extracted from an idealized device.   
+be extracted from an idealized turbine placed within this device.   
 
 \section{Geometry}
 
-The new proposed field geometry represents a significant departure from
+The new field geometry represents a significant departure from
 the August 2015 system, which was designed largely by the experimental
 team at Georgia Tech. CAD images of the 2015 system from the top and
 side are shown in Figure~\ref{fig:cad_aug_2015}, albeit without the
 cone. An actual image of the 2015 field configuration is in
-Figure~\ref{fig:aug_2015_field}.    
+Figure~\ref{fig:aug_2015_field}.\todo{discuss elements of 2015 design}    
 
   \begin{figure}
    \centering
@@ -39,6 +39,27 @@ Figure~\ref{fig:aug_2015_field}.
    \label{fig:cad_aug_2015}
   \end{figure}
 
+
+Starting from this baseline, and armed with the ROM, a dedicated design
+effort was embarked upon explore a large space of possible system
+configurations and geometries to discover the structure of a new SoV
+apparatus. To arrive at the present design, the workflow consisted of
+weekly calls with the experimental team to discuss possible system
+designs, which typically consisted of vane sketches or drawings. 
+
+This conceptual phase generated a wide range of possible
+configurations, few of which showed enough promise to warrant further
+investigation. The designs that had initially promising results were
+then optimized similar to the examples outlined in
+Section~\ref{sec:results}, where new parameter values were introduced, a
+run was performed, and then the output is postprocessed to evaluate the
+Power output before the process begins again. In this way several
+hundred optimization runs were performed over the course of several
+months. While not provably exhaustive, this dedicated exploration of the 
+SoV configuration space was an extensive effort and no major concepts
+generated within the constraints of the principle SoV concept detailed
+in Section~\ref{sec:dust_devil_concept} remain. 
+
   \begin{figure}
    \centering
    \includegraphics[width =0.7\textwidth]{figs/aug_2015_field}
@@ -47,10 +68,9 @@ Figure~\ref{fig:aug_2015_field}.
    \label{fig:aug_2015_field}
   \end{figure}
 
-
-Horizontal and vertical views of this new configuration are shown in
-Figures  \ref{fig:top_design},\ref{fig:bottom_design} and
-\ref{fig:vertical_design}, below. A brief summary of the differences are
+Horizontal and vertical views of the new optimized configuration are
+shown in Figures~\ref{fig:top_design},\ref{fig:bottom_design} and 
+\ref{fig:vertical_design}, below. A brief summary of the differences are 
 given below:     
 
 \begin{itemize}
@@ -68,6 +88,15 @@ velocity, to provide a larger wind-driven flux into the facility.
 prevent flow in the vanes from rising up and out of the vanes.\todo{talk
       to this} 
 \end{itemize}
+
+We now discuss each of these bullets in detail. 
+
+The cone plays at least two important roles. The first is acting as a
+converging nozzle for the flow, increasing the vertical and azimuthal
+velocity as it exits out the top of the device. In the wind, the cone
+also acts as a shield, preventing the high velocity freestream flow from
+disrupting the vortex before it has run through the turbine. 
+
 
  \begin{figure}[!htb]
   \begin{center}
