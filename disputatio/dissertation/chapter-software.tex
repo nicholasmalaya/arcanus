@@ -205,7 +205,7 @@ meshed boundary layer region near the ground.
 
 The numerical formulations described in Section~\ref{sec:discretization}
 is implemented with the GRINS library\cite{GRINSpaper} by Bauman
-and Stogner using the Libmesh\cite{libMeshPaper} FEM
+and Stogner using the libMesh\cite{libMeshPaper} FEM
 infrastructure. Designed to support multiphysics FEM applications, 
 GRINS is a flexible library that effectively addresses a wide range of 
 science and engineering problems.   
@@ -225,9 +225,7 @@ GRINS stands for, ``General Reacting Incompressible Navier-Stokes'',
 which roughly encapsulates the physical regimes it was originally
 designed to simulate. GRINS is open-source, and available on
 \hyperref[www.github.com/grinsfem/grins]{GitHub}. It is released 
-under LGPL2.1.  GRINS is heavily unit tested, with over 60 tests
-available to ensure the reliability of results regardless of install
-platform. 
+under LGPL2.1.  
 
 %The remainder of this section is devoted to
 %discussing the underlying libraries used and the description of the
@@ -240,7 +238,7 @@ easy specification of boundary conditions, initial conditions, or
 constitutive equations from an input file. Some of these inputs are
 detailed in Appendix~\ref{sec:archiving}. 
 
-GRINS/Libmesh are built on the PETSc\cite{petsc} solver package, which
+GRINS/libMesh are built on the PETSc\cite{petsc} solver package, which
 provides the numerical linear algebra packages used for constructing and
 using sparse matrices, finding the solution of linear systems,
 and for preconditioning.  
@@ -256,12 +254,12 @@ to the level of fill, with greater levels of fill approaching
 the ``complete'' LU factorization. 
 
 In principle, alternative software libraries/frameworks such as
-FEniCS\cite{fenics}, OpenFOAM\cite{openfoam}, etc. would likely be
-capable of simulating this regime. While these and other libraries have
-various strengths and weaknesses, the pre-eminent concern is the parallel
-performance at the intended processor count, due to the rapid
-design iterations necessary for this research campaign. Given these concerns,
-the GRINS library is a satisfactory tool. 
+FEniCS\cite{AlnaesBlechta2015a} or OpenFOAM\cite{jasak2007openfoam}
+would likely be capable of simulating this regime. While these and
+other libraries have various strengths and weaknesses, the pre-eminent
+concern is the parallel performance at the intended processor count, due
+to the rapid design iterations necessary for this research
+campaign. Given these concerns, the GRINS library is a satisfactory tool. 
 
 %% (11:41:54 AM) nick: ``-ksp_view -ksp_type gmres -pc_type bjacobi
 %% -sub_pc_type ilu -sub_pc_factor_levels 0'' 
@@ -303,11 +301,11 @@ the GRINS library is a satisfactory tool.
 %% (11:47:15 AM) Paul Bauman: That's a *much* faster/better
 %% implementation than PETSc's 
 
-At the time of this writing, Grins has 94 regression tests, which
+At the time of this writing, GRINS has 94 regression tests, which
 provides a reasonable degree of confidence in verification testing of
 the library. Several of these tests directly test the capabilities in
 GRINS used in this document. In particular, several of the tests were
-contributed to GRINS directly by the Author during the course of this
+contributed to GRINS directly by the author during the course of this
 work and the addition of several of the models detailed in
 Chapter~\ref{sec:mathmodel}. 
 
@@ -330,21 +328,21 @@ constraints, after a strong scaling analysis of the performance of the
 code on these resources, and after consulting with the software developers.  
 At the time of this writing libMesh has been scaled to tens of thousands of
 cores and has been run on over 100,000 cores on the BG/Q machine Mira at
-Argonne National Lab\cite{libmesh-scaling}, and the scaling results here
-are consistent with the performance expectations for this library.
+Argonne National Lab\cite{gaston2013massive}, and the scaling results
+here are consistent with the performance expectations for this library.
 
 In November, 2015, runs were also staged during early access into full
 production period on TACC's new system, Lonestar5. This machine is
 closer in terms of software stack to Stampede, using the Simple Linux
-Utility for Resource Management (Slurm)\cite{?} scheduling
+Utility for Resource Management (Slurm)\cite{yoo2003slurm} scheduling
 system.  
 
 After a run terminates, several scripts are automatically invoked. 
 These scripts archive the run (outside of the volatile /scratch 
 production directories) and simultaneously, label the concluded run with
-unique metadata that defines the system environment, the jobs input
-files and run definitions, and information detailing the
-hypothesis or physics the job was intended to investigate. Finally, once
+unique metadata that defines the system environment; the jobs input
+files and run definitions; and information detailing the
+hypothesis or physics the job was intended to investigate. Finally, once 
 a week a script performs \textbf{rsync} on the entire archived database to
 ensure more than single redundancy for the runs. 
 
