@@ -491,8 +491,14 @@ Figure~\ref{fig:UTRC_turbine}, below). This has resulted in two final
 rotor designs, with and without twist. This was because the experimental
 team was not certain that a twisted design would be
 feasible. Regardless, the twisted rotor out-performed the zero-twist
-rotor. The peak power extracted is predicted to be 1.4 kW for the rotor
-with twist, and slightly more than 1 kW for a rotor with no twist. 
+rotor. 
+%The peak power extracted is predicted to be 1.4 kW for the rotor
+%with twist, and slightly more than 1 kW for a rotor with no twist. 
+% before duane ^ 
+
+The peak power extracted is predicted to be 2.0 kW for the rotor
+with twist, and slightly more than 1.5 kW for a rotor with no twist. 
+% after duane
 
   \begin{figure}[!htb]
    \begin{center}
@@ -506,6 +512,33 @@ with twist, and slightly more than 1 kW for a rotor with no twist.
    \end{center}
   \end{figure}
 
+The proposed turbine design is shown in Table~\ref{tab:turbine}. Note
+that the design parameter $mC $ is actually the number of blades
+multiplied by the chord length. As detailed in
+Section~\ref{sec:actuator_disk}, this is the actual parameter of
+interest in the actuator disk formulation. For fabrication, this was
+decided to correspond to eight blades with a chord length of 0.45 meters
+each. \todo{discuss twist} 
+
+\begin{table}[]
+\centering
+ \caption{The parameters for the optimized turbine design.}
+\begin{tabular}{l|l|l|l}
+Name                & Current Value    & Symbol           & Comments \\
+ \hline
+Outer Blade Angle & $70^{\circ}$ & $\beta_{\text{outer}}$  & linear twist between \\
+Inner Blade Angle & $42^{\circ}$ & $\beta_\text{inner}$    & 
+	     $\beta_\text{inner},\beta_\text{outer}$ \\ 
+Chord Length * \# blades   & 3.6 meters  & $mC $ &  \\
+Turbine rotation rate & 4.0 rad/sec  & $\omega$         &  \\
+Blade Outer Radius  & 1.5 meters   & $B_\text{outer}$ &  \\
+Blade Inner Radius  & 0.3 meters   & $B_\text{inner}$ &  \\
+Height of turbine   & 4.0 meters   & $H_B$            & Height of turbine \\
+\hline
+\end{tabular}
+ \label{tab:turbine}
+\end{table}
+
 
 In general, the frozen flow and fully coupled CFD agree. However this is
 only for rotor loadings close to those in the coupled CFD. The errors
@@ -515,8 +548,6 @@ optimization were significant. For instance, several attempts
 to extract more power at large RPMs would cause a breakdown of SoV
 flow in the coupled CFD model, which resulted in the flow power dropping
 by more than an order of magnitude.\todo{add turbine flow pictures}
-
-Add turbine table\todo{add table with turbine}
 
   \begin{figure}
    \centering
