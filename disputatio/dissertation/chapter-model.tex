@@ -911,7 +911,7 @@ wind domain is defined as $\Omega_W = \left[-2D,3D \right] \times
 \left[-L_y,L_y \right] \times \left[0,L_z \right]$.   
 
 The boundary for the thermal only case is decomposed as,
-$\partial \Omega_T = \Gamma_G \bigcup \Gamma_T \bigcup \Gamma_P $. 
+$\partial \Omega_T = \Gamma_G \, \bigcup \, \Gamma_T \, \bigcup \, \Gamma_P $. 
 $\Gamma_G$ is the boundary along the ``Ground'', $\Gamma_T$
 the ``Top'' boundary, and $\Gamma_P$ the four periodic ``Sides''. A 3d
 diagram labeling these boundaries is shown in
@@ -941,8 +941,8 @@ indicated on the figure along the top boundary and is defined below.
 \end{figure}
 
 The boundary for the wind cases is decomposed as,
-$\partial \Omega_W = \Gamma_G \bigcup \Gamma_T \bigcup \Gamma_O \bigcup
-\Gamma_I \bigcup \Gamma_S $.  
+$\partial \Omega_W = \Gamma_G \, \bigcup \, \Gamma_T \, \bigcup \,
+\Gamma_O \, \bigcup \, \Gamma_I \, \bigcup \, \Gamma_S $.  
 Where $\Gamma_G$ is the boundary along the ``Ground'',
 $\Gamma_T$ the ``Top'' boundary, $\Gamma_S$ the two ``Sides'',
 $\Gamma_I$ the inflow boundary, and $\Gamma_O$ the ``Outflow''  
@@ -1004,9 +1004,9 @@ and in the spanwise direction,
  {\bf u}(x,-L_y,z) &= {\bf u}(x,L_y,z) \quad \text{ on } \Gamma_{P,y} \\
  T(x,-L_y,z) &= T(x,L_y,z). 
 \end{align}
-Where $\Gamma_{P,x} = \{(-L_x,y,z) \bigcup (L_x,y,z) \subset \partial
+Where $\Gamma_{P,x} = \{(-L_x,y,z) \, \bigcup \, (L_x,y,z) \subset \partial
 \Omega \}$  
-and $\Gamma_{P,y} = \{(x,-L_y,z) \bigcup (x,L_y,z) \subset \partial
+and $\Gamma_{P,y} = \{(x,-L_y,z) \, \bigcup \, (x,L_y,z) \subset \partial
 \Omega \}$. 
 
 \textbf{Inflow Boundary Condition, $\Gamma_I$} 
@@ -1087,8 +1087,12 @@ treated in \cite{bruneau1996new}.
 
 Finally, a finite thickness ``sponge layer'' is used in the region adjacent 
 to the mixed inflow/outflow boundaries $\Gamma_T$ and $\Gamma_B$.
+These regions are referred to by many names in the
+literature\cite{doi:10.1146/annurev.fluid.36.050802.121930}, such as
+absorbing layers, fringe regions, buffer zones, sponges,
+etc. 
 This layer artificially increases the momentum diffusivity by
-up to a factor of ten times the nominal value. This was designed to stabilize
+a factor of ten times the nominal value. This was designed to stabilize
 the modified Neumann boundary conditions which can exhibit an instability
 when there is a compact jet of fluid leaving the domain. 
 These small outflows would create small high velocity inflows, and the
@@ -1099,9 +1103,9 @@ on the region inside and in immediate proximity to the vanes, we
 introduced a higher diffusivity ``sponge'' region that would diffuse the
 high velocity exiting jets sufficiently to prevent numerically
 un-physical behavior. No results are quoted from this ``sacrificial''
-region, as it is not considered physically meaningful.
+region, as it is not considered physically meaningful. The top sponge
+layer in both the wind and thermal-only cases are set to be half a
+system diameter $(L_z/D = 1/2)$. For the wind cases, the back sponge
+layer is also set to be half a system diameter $(L_x/D = 1/2)$. 
 
-These regions are referred to by many names in the
-literature\cite{doi:10.1146/annurev.fluid.36.050802.121930}, such as
-absorbing layers, fringe regions, buffer zones, sponges,
-etc.\todo{expand this? how thick did it need to be?}
+%\todo{expand this? how thick did it need to be?}
