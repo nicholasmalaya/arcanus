@@ -91,7 +91,7 @@ device. Horizontal and vertical views of the new optimized configuration
 are shown in Figures~\ref{fig:top_design},\ref{fig:bottom_design} and
 \ref{fig:vertical_design}, below. The actual parametric values of these
 vanes are detailed in Tables~\ref{tab:top},\ref{tab:bottom} and
-\ref{tab:side}. This design, does have some notable 
+\ref{tab:side}. This design does have some notable 
 similarities to the previous efforts. It still retains the two-tier
 design outlined Section~\ref{sec:dust_devil_concept}. The inner diameter 
 of the 2\textsuperscript{nd} tier vanes remains six meters, and the
@@ -202,11 +202,11 @@ optimization is noted for completeness.
  superscript $t$ denotes top, or the second tier vanes. Among the top
  tier vanes, $l$ is left, $r$ right (when viewed from upstream of the
  device).}
-\begin{tabular}{lll}
+\begin{tabular}{l|l|l}
 Name                        & Value & Meaning                    \\
  \hline
-$r^{\text{cyl}}$            &  3.0 meters & radius of rigid cylinder \\
-$r^t_{\text{min}}$          &  3.0 meters & smallest radius of top tier
+$r^{\text{cyl}}$            &  3.0 meters & Radius of rigid cylinder \\
+$r^t_{\text{min}}$          &  3.0 meters & Smallest radius of top tier
 	 vanes, relative to ground \\
 $L_x$                       &  12 meters  & Distance upstream
 	 of vanes relative to center\\
@@ -214,8 +214,8 @@ $\phi^{t,l}$ &  $0^{\circ}$   & Outer angle for the top tier, left side vanes \\
 $\phi^{t,r}$   &  $0^{\circ}$   & Outer angle for the top tier right side \\
 $\theta^{t,l}$ &   $30^{\circ} +\frac{\alpha}{3}$  & Inner angle for the top tier left side vanes\\
 $\theta^{t,r}$   &   $75^{\circ} +\frac{\alpha}{6}$   & Inner angle for the top tier right side \\
-$L^{t,r}$                   &  12 meters  & width of vane in front of cylinder \\
-$L^{t,l}$                   &  10 meters  & width of vane to the side of cylinder \\
+$L^{t,r}$                   &  12 meters  & Width of vane in front of cylinder \\
+$L^{t,l}$                   &  10 meters  & Width of vane to the side of cylinder \\
 \end{tabular}
  \label{tab:top}
 \end{table}
@@ -248,7 +248,7 @@ $L^{t,l}$                   &  10 meters  & width of vane to the side of cylinde
  vanes. The superscript $b$ denotes bottom tier, $d$ is downstream, $u$
  for upstream vanes. In this case, both $\phi$ and $\theta$ are angles
  relative to radial ($\hat r$). }
-\begin{tabular}{lll}
+\begin{tabular}{l|l|l}
 Name                        & Value & Meaning                    \\
  \hline
 $r^b_{\text{min}}$          &  0.6 meters & Smallest radius of bottom tier vanes \\
@@ -274,20 +274,21 @@ $\phi^{b,u}$ &   0   & Outer angle for the bottom tier, upstream vanes \\
  \end{figure}
 
 \begin{table}[]
- \caption{The values of parameters shown in
- Figure~\ref{fig:vertical_design}, which is a side view of the SoV apparatus.}
+ \caption{The values of the parameters shown in
+ Figure~\ref{fig:vertical_design}, which is a side view of the SoV
+ apparatus.} 
 \centering
-\begin{tabular}{lll}
-Name                        & Value & Meaning                    \\
+\begin{tabular}{l|l|l}
+Name                        & Value [Meters] & Meaning                    \\
  \hline
-$r^{\text{cyl}}$            &  3.0 meters  & radius of rigid cylinder \\
-$L_x$                       &  12 meters  & Furthest distance upstream of top	 tier vanes \\
- $H^t    $                  &   3 meters  & Height of top tier vanes \\
- $H^{b,u}$                  & 0.375 meters & Height of bottom tier, upstream vanes \\
- $H^{b,d}$                  &   .75 meters& Height of bottom tier, downstream vanes \\
- $H^{c}$                    &   2 meters  & Cone Height \\
- $D^c_{\text{min}}    $     &   3 meters  & Minimum cone diameter \\
- $D^c_{\text{max}}    $     &   6 meters  & Diameter of cone at top of vanes\\
+$r^{\text{cyl}}$            &   3   & Radius of rigid cylinder \\
+$L_x$                       &  12   & Furthest distance upstream of top	 tier vanes \\
+ $H^t    $                  &   3   & Height of top tier vanes \\
+ $H^{b,u}$                  & 0.375 & Height of bottom tier, upstream vanes \\
+ $H^{b,d}$                  & 0.75  & Height of bottom tier, downstream vanes \\
+ $H^{c}$                    &   2   & Cone Height \\
+ $D^c_{\text{min}}    $     &   3   & Minimum cone diameter \\
+ $D^c_{\text{max}}    $     &   6   & Diameter of cone at top of vanes\\
 \end{tabular}
  \label{tab:side}
 \end{table}
