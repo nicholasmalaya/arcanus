@@ -10,37 +10,72 @@ neutrally stratified flow that varied only in height, z. The Reynolds
 equations for the wind-velocity direction can be simplified to be,  
 \begin{equation}
  \frac{\partial \overline{\rho u'w'}}{\partial z} = -\frac{\partial
-  \bar P}{\partial x} + \rho l \bar v, 
+  \bar P}{\partial x} + \rho f \bar v, 
 \end{equation}
 where $\overline{\rho u'w'}$ is the turbulent momentum flux, $\frac{\partial
-\bar P}{\partial x} $  the mean pressure gradient, and $\bar v$ the
+\bar P}{\partial x} $  the mean pressure gradient, $f$ is the coriolis
+frequency (often called the coriolis parameter) and $\bar v$ the
 averaged wind velocity. Dividing by density and integrating over height,
-z, 
+z,  
 \begin{equation}
  \int_0^H \frac{\partial \overline{u'w'}}{\partial z} dz = \int_0^H
-  \left( -\frac{1}{\rho} \frac{\partial \bar P}{\partial x} + l \bar v
+  \left( -\frac{1}{\rho} \frac{\partial \bar P}{\partial x} + f \bar v
   \right) dz.  
 \end{equation}
 Assuming constant density and replacing with the turbulent shear stress,
 $\tau = \overline{\rho u'w'}$, the left integrand can be solved,  
 \begin{equation}
 \frac{\tau(0) - \tau(H)}{\rho} = \int_0^H
-  \left( \frac{1}{\rho} \frac{\partial \bar P}{\partial x} - l \bar v
+  \left( \frac{1}{\rho} \frac{\partial \bar P}{\partial x} - f \bar v
   \right) dz.  
 \end{equation}
 Careful readers should note the sign change in the equation above. The
 right hand side is bounded by, 
 \begin{equation}
-\int_0^H  \left( \frac{1}{\rho} \frac{\partial \bar P}{\partial x} - l \bar v
-  \right) dz < \int_0^H  \left( \frac{1}{\rho} \frac{\partial \bar P}{\partial x}  \right) dz,
+\int_0^H  \left( \frac{1}{\rho} \frac{\partial \bar P}{\partial x} - f \bar v
+  \right) dz < \int_0^H  \left( \frac{1}{\rho} \frac{\partial \bar
+  P}{\partial x}  \right) dz,
 \end{equation}
 as the coriolis effect opposes the action of the pressure
 gradient. Substituting for the friction velocity, $u_* =
-\sqrt{\frac{\tau}{\rho}}$, 
+\sqrt{\frac{\tau}{\rho}}$, our inequality has the form,
 \begin{equation}
-u^2_*(H) - u^2_*(0)  < \int_0^H  \left( \frac{1}{\rho} \frac{\partial \bar P}{\partial x}  \right) dz,
+u^2_*(H) - u^2_*(0)  < \int_0^H  \left( \frac{1}{\rho} \frac{\partial
+				  \bar P}{\partial x}  \right) dz. 
+\label{eq:cor_f}
 \end{equation}
-
+Consider a pressure wind velocity scale, 
+\begin{align}
+ v_p = \frac{1}{\rho f} \frac{\partial \bar P}{\partial x}  \\
+ f v_p = \frac{1}{\rho} \frac{\partial \bar P}{\partial x} 
+\end{align}
+which, when used in Equation~\ref{eq:cor_f}, greatly simplifies our
+inequality to, 
+\begin{equation}
+u^2_*(H) - u^2_*(0)  < f v_p \, H. 
+\label{eq:cor_main}
+\end{equation}
+As we only seek to estimate the region where the change attributable to
+the coriolis effect is less than some tolerance, we bound
+the difference as,
+\begin{align}
+ \frac{u^2_*(H) - u^2_*(0)}{u^2_*(0)} \leq a, \\
+ u^2_*(H) - u^2_*(0)\leq a u^2_*(0),
+\label{eq:cor_ineq}
+\end{align}
+where the tolerance $a$ is selected to be 20\%. Combining
+Equations~\ref{eq:cor_ineq} and \ref{eq:cor_main}, the height H at which
+the coriolis force meets our tolerance is found to be,
+\begin{align}
+ a \, u^2_*(0) \leq H f v_p \\
+ \boxed{\frac{a u^2_*(0)}{f v_p} \leq H}.
+\end{align}
+Monin and Obukhov further estimated the values of the inputs to this
+equation as $\frac{u_*}{v_p} = 0.05$, $v_p \approx 10$ meters/second, $f
+\approx 10^{-4}$ 1/seconds and $a=0.20$, which results in an H of 50
+meters. Thus, the dynamics of flow below this height are estimated to
+have a less than 20\% impact on account of the coriolis effect, which we
+further neglect fully in the simulations presented in this document. 
 
 Incidentally, this argument may also been seen as evidence for why dust
 devils have no preferred direction of rotation. The coriolis effect is
