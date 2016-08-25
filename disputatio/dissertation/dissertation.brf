@@ -39,12 +39,13 @@
 \backcite {haltiner1957dynamical}{{19}{3}{chapter.23}}
 \backcite {incropera1996fundamentals}{{20}{3}{chapter.23}}
 \backcite {boussinesq2010théorie}{{20}{3.1}{equation.27}}
+\backcite {monin1954basic}{{21}{3.1}{equation.27}}
 \backcite {Reynolds01011883}{{21}{3.1}{equation.27}}
 \backcite {boussinesq1887}{{21}{3.1}{equation.27}}
 \backcite {1990JFM...212..637K}{{21}{3.2}{section.28}}
 \backcite {monin2007statistical}{{21}{3.2}{section.28}}
-\backcite {munson2012fundamentals}{{22}{3.2}{equation.30}}
-\backcite {wyngaard2010turbulence}{{23}{3.2}{equation.34}}
+\backcite {munson2012fundamentals}{{23}{3.2}{equation.30}}
+\backcite {wyngaard2010turbulence}{{24}{3.2}{equation.34}}
 \backcite {durbin2001statistical}{{24}{3.2}{equation.36}}
 \backcite {chuang1969turbulent}{{25}{3.2}{equation.39}}
 \backcite {QJ:QJ49709741204}{{26}{3.2.1}{subsection.41}}
