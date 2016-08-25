@@ -68,21 +68,24 @@ are discussed.
 The equations describing fluid flow with natural convection are,
 \begin{align}
   \frac{\partial u}{\partial t} + u \cdot \nabla u =& \,
-  -\frac{1}{\rho}\nabla P + \nu \nabla^2 u - g \frac{T'}{T_0}\\
-  \nabla \cdot u =& \, 0 \\
+  -\frac{1}{\rho}\nabla P + \nu \nabla^2 u - g \frac{T'}{T_0}
+ \label{eq:ns} \\
+  \nabla \cdot u =& \, 0 \label{eq:cont} \\
   \rho c_p \frac{\partial T}{\partial t} + u \cdot \nabla T =& \, \nabla
- \cdot ( k \nabla T)
+ \cdot ( k \nabla T) \label{eq:ht}
 \end{align} 
 under the assumption that the temperature variation is small in
 comparison to the mean temperature of the region. These are the
 incompressible Navier-Stokes equations with the Boussinesq
 approximation\cite{boussinesq2010théorie}, a representation of buoyancy
-coupled with the heat equation.   
-%
-% in full document be sure to mention that neglecting coriolis is legit
-% below 50ms
-%
-%
+coupled with the heat equation.
+
+Note that these equations ignore the action of the Coriolis force. 
+Monin and Obukhov\ref{monin1954basic} demonstrated that the Coriolis
+force is negligible for the surface layer below fifty meters (a distance
+well below our region of interest), and this argument is detailed in
+Appendix~\ref{appendix:coriolis}.  
+
 As discussed above, we anticipate that the flow will be sufficiently
 high Reynolds number as to be
 turbulent~\cite{Reynolds01011883}. Turbulence significantly alters the
@@ -107,7 +110,7 @@ diffusivities are $\nu_l$ and $K_l$, which do not vary in space.
 \section{Viscosity Model}
 
 We use the well-known similarity model of Monin and
-Obukhov\cite{monin2007statistical,monin1954basic,1990JFM...212..637K} as
+Obukhov\cite{monin2007statistical,1990JFM...212..637K} as
 a guide to the specification of an eddy viscosity model to describe the
 vertical mixing in the atmosphere. This formulation is an extension of
 the mixing-length model of Prandtl, where the concepts of gradient
@@ -266,12 +269,11 @@ function must then be
 for } z \gg L_{M-O}. 
 \end{equation}
 
-So long as the Prandtl number remains constant in space\todo{provide
-discussion as to why this is not an unreasonable expectation}, then 
-% todo: provide discussion as to why this is not an unreasonable expectation
-identical arguments regarding the asymptotic behaviour at large $\xi$ provide
-the analogous result for the eddy viscosity's variation with respect to
-distance from the ground,  
+So long as the turbulent Prandtl number remains constant in space, a not
+altogether unrealistic assumption~\cite{chuang1969turbulent}, then
+identical arguments regarding the asymptotic behaviour at large $\xi$
+provide the analogous result for the eddy viscosity's variation with
+respect to distance from the ground,   
 \begin{equation}
  \nu_T = \frac{1}{C_{\nu_T}} \left( \frac{q}{c_p \rho_0} \frac{g}{T_0}
 			     \right)^\frac{1}{3} z^{\frac{4}{3}}  \text{ 
