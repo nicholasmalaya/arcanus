@@ -4,3 +4,28 @@ This appendix briefly details the arguments of Monin and
 Obukhov\cite{monin1954basic} estimating the impact of the Coriolis
 force, and justifying the neglect of this force in our equations of
 motion (Equation~\ref{eq:ns}, in particular). 
+
+To begin, they assumed statistically stationary, spatially homogeneous,
+neutrally stratified flow that varied only in height, z. The Reynolds
+equations for the wind-velocity direction can be simplified to be,  
+\begin{equation}
+ \frac{\partial \overline{\rho u'w'}}{\partial z} = -\frac{\partial
+  \bar P}{\partial x} + \rho l \bar v, 
+\end{equation}
+where $\overline{\rho u'w'}$ is the turbulent momentum flux, $\frac{\partial
+\bar P}{\partial x} $  the mean pressure gradient, and $\bar v$ the
+averaged wind velocity. Dividing by density and integrating over height,
+z, 
+\begin{equation}
+ \int_0^H \frac{\partial \overline{u'w'}}{\partial z} dz = \int_0^H
+  \left( -\frac{1}{\rho} \frac{\partial \bar P}{\partial x} + l \bar v
+  \right) dz.  
+\end{equation}
+Assuming constant density and replacing with the turbulent shear stress,
+$\tau = \overline{\rho u'w'}$, the left integrand can be solved,  
+\begin{equation}
+\frac{\tau(0) - \tau(H)}{\rho} = \int_0^H
+  \left( \frac{1}{\rho} \frac{\partial \bar P}{\partial x} - l \bar v
+  \right) dz.  
+\end{equation}
+Careful readers should note the sign change in the equation above. 
