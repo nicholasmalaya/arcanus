@@ -8,7 +8,7 @@ for the system of interest.
 %instantiated with software to produce a numerical 
 %result. 
 This chapter details the numerical formulation
-and simulation of these models. It begins with a 
+and solution of these models. It begins with a 
 discussion of the numerical discretization of the equations 
 of interest. The mesh discretization is then described. 
 Next, the scientific software in which these numerical 
@@ -18,9 +18,9 @@ chain and supercomputer systems are briefly introduced.
 \section{Discretization Scheme}
 \label{sec:discretization}
 The finite element method (FEM) is used to numerically solve the 
-Navier-Stokes equations on a computer. The starting point for the FEM is
+Navier-Stokes equations. The starting point for the FEM is
 to cast the equations in Section~\ref{sub_sec:ns_en} into a weak
-form. A weak form is used to reduce the continuity requirements on the
+form. use of the weak form reduces the continuity requirements on the
 basis functions, thereby allowing the use of functions that are
 easy to construct and implement, such as piece-wise polynomials. 
 Manipulating these partial differential equations into a
@@ -54,33 +54,39 @@ denote vector quantities (such as ${\bf u} = \left \{ u,v,w \right \}$).
 Some of the simulations presented here were conducted under
 steady conditions, for which the $\frac{\partial}{\partial t}$ terms
 vanish. An FEM scheme is obtained by posing the weak form in
-terms of discrete subspaces of the function spaces specified above
+terms of finite-dimensional subspaces of the function spaces specified above
 defined using piecewise-polynomial basis functions. This discretization
-has the form, $ {\bf v_h} \in {\bf v}$, where ${\bf v_h}$ is an
-approximation of ${\bf v}$ formed through a linear combination of a
-finite number (N) of terms,  
+has the form, $ {\bf v_h} \in {\bf v}$, where ${\bf v_h}$ is 
+%an approximation of ${\bf v}$ 
+formed through a linear combination of a finite number (N) of basis
+functions $\phi_i$,  
 \begin{equation}
  {\bf v_h} = \sum_{i=1}^N \alpha_i \phi_i,
 \end{equation}
-where $\alpha_i$ are constants and the N basis functions, $\left \{
-\psi_1, \psi_2, \ldots, \psi_N \right \}$, define an N-dimensional 
-subspace of $H^1$\cite{becker1981introduction}. All of the simulations
-discussed in this work were 
-accomplished using linear basis functions for both the velocity and
-pressure. Typically, the use of equal order elements for velocity and
-pressure is ruled out in the standard Galerkin FEM formulation by the
-Babuska-Brezzi condition\cite{bb-cond}. 
-However, the weak form equations shown above are stable with equal-order
-elements for velocity and pressure due to the introduction of pressure
-stabilization terms. The resulting system is still open to convective
-instabilities, and so streamline upwind/Petrov-Galerkin (SUPG)
-stabilization terms are used, as first described by
+where $\alpha_i$ coefficients.\todo{bring becker back?}
+%
+%are constants and the N basis functions, $\left \{
+%\psi_1, \psi_2, \ldots, \psi_N \right \}$, define an N-dimensional 
+%subspace of $H^1$\cite{becker1981introduction}. 
+%
+All of the simulations discussed in this work were 
+accomplished using piecewise linear basis functions for both the
+velocity and pressure. Typically, the use of equal order elements for
+velocity and pressure is ruled out in the standard Galerkin FEM
+formulation because of the Babuska-Brezzi condition\cite{bb-cond}. 
+This is overcome here by 
+%However, the weak form equations shown above are stable with equal-order
+%elements for velocity and pressure due to 
+the introduction of a pressure stabilization
+term\cite{becker1981introduction}. The resulting system is still
+susceptible to convective instabilities, and so streamline upwind/Petrov-Galerkin
+(SUPG) stabilization terms are used, as first described by
 Hughes\cite{Hughes198685,supg} and extended to natural convection as in
-Becker and Braack\cite{Becker2002428}. These stabilization terms add 
-a residual dependent artificial dissipation that approaches zero as the
-residual converges. This scheme is called consistent because the
+Becker and Braack\cite{Becker2002428}. These stabilization terms add a
+residual dependent artificial dissipation that approaches zero as the
+solution converges. This scheme is called consistent because the
 underlying order of convergence of the numerical method is not
-affected\cite{hughes2000finite}.   
+affected\cite{hughes2000finite}.    
 
 The stabilization described above is accomplished by introducing an additional term,
 $\langle L{\bf c},S {\bf \phi} \rangle_\tau$, to the weak form defined in Equations
@@ -109,10 +115,12 @@ This has the form,
 \end{equation}
 Where ${\bf y_{n+1}}$ denotes the solution vector at the time step $n+1$, for
 instance. As $f$ is non-linear, a Newton-Raphson method is used to solve
-the resulting implicit nonlinear problem. While an iterative method is
-significantly more computationally expensive per timestep than a similar
-explicit method, the method was selected due to its unconditional
-stability and ease of statistical sampling for a uniform timestep.  
+the resulting implicit nonlinear problem. 
+
+%While an iterative method is
+%significantly more computationally expensive per timestep than a similar
+%explicit method, the method was selected due to its unconditional
+%stability and ease of statistical sampling for a uniform timestep.  
 
 %
 % gave not completely described numerical methods
@@ -127,32 +135,32 @@ stability and ease of statistical sampling for a uniform timestep.
 %
 % what about mesh...
 %
-The domain described in Section~\ref{sec:bc} are consistently
+The domains described in Section~\ref{sec:bc} are consistently
 discretized. This means that the domain extents, $\{L_x,L_y,L_z\}$, are
 scaled by system diameter (D) but the same number of grid points are
 used for every simulation. Thus, while the ratio of the domain length to
 system diameter remains fixed, the grid spacing $\{\Delta x,\Delta
 y,\Delta z\}$ increases proportionally with domain length.  
 
-The diffusivities are proportionally scaled with grid spacing to
+The eddy diffusivities are proportionally scaled with grid spacing to
 ensure that the cell Reynolds number, 
 \begin{equation}
  \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y) u}{\nu_T}
 \end{equation} 
 is maintained for every simulation, to ensure stability. In this way
- larger domains have higher viscosities which serve to dissipate effects 
- of scales that are smaller than the grid spacing. 
+ larger domains have higher eddy viscosities which serve to dissipate
+ effects of scales that are smaller than the grid spacing. 
 
 The mesh has a uniform spacing in the lateral directions, except for a
 single refinement in the region of the vanes. Typically, the grid is 
 roughly one hundred points in the streamwise and spanwise directions
 before the refinement. The refinement halves the spacing (doubles the
 number of points) in all three coordinate directions, \{x,y,z\} in this
-region. The refinement is made from the ground to 1.5 times the height
-of the vanes and cone.  
+region. The refinement is introduced from the ground to 1.5 times the
+height of the vanes and cone.  
 
-The mesh is non-uniform in height to
-resolve the boundary layer. This is accomplished by redistributing a
+The vertical mesh spacing is non-uniform to resolve the boundary
+layer. This is accomplished by redistributing a 
 mesh uniform in height, z, according to,
 \begin{equation}
  z = \begin{cases} C_1(z-L_z)+L_z,& \text{if } z \geq z_\delta\\
@@ -201,7 +209,7 @@ meshed boundary layer region near the ground.
 %After operation, solutions are evaluated to ensure that 
 %the qualitative character of the solution does not change.
 
-\section{Software Stack}
+\section{Software}
 
 The numerical formulations described in Section~\ref{sec:discretization}
 is implemented with the GRINS library\cite{GRINSpaper} by Bauman
@@ -255,7 +263,7 @@ the ``complete'' LU factorization.
 
 In principle, alternative software libraries/frameworks such as
 FEniCS\cite{AlnaesBlechta2015a} or OpenFOAM\cite{jasak2007openfoam}
-would likely be capable of simulating this regime. While these and
+would be capable of simulating this problem. While these and
 other libraries have various strengths and weaknesses, the pre-eminent
 concern is the parallel performance at the intended processor count, due
 to the rapid design iterations necessary for this research
@@ -304,7 +312,7 @@ campaign. Given these concerns, the GRINS library is a satisfactory tool.
 At the time of this writing, GRINS has 94 regression tests, which
 provides a reasonable degree of confidence in verification testing of
 the library. Several of these tests directly test the capabilities in
-GRINS used in this document. In particular, several of the tests were
+GRINS used in this study. In particular, several of the tests were
 contributed to GRINS directly by the author during the course of this
 work and the addition of several of the models detailed in
 Chapter~\ref{sec:mathmodel}. 
@@ -313,15 +321,15 @@ Chapter~\ref{sec:mathmodel}.
 \section{Tool Chain and Simulation Custodianship}
 
 Simulations are performed on the Texas Advanced Computing Center's 
-(TACC) supercomputers Lonestar Four and Stampede. Run durations for
-transient cases are typically twelve hours to perform several hundred
-timesteps.  The steady runs are considerably shorter, and require less 
-than ten minute runtimes. Typically  the wall clock times of the
-steady-state runs are two or three minutes to solution. As a result, the
-queue time is significantly longer than the actual production runtime. 
-These runs are submitted to the production queue and are  
-264-528 processing cores, or 22-44 nodes on Lonestar4 (with 12 cores per
-node), and a similar number for Stampede. The runs have
+(TACC) supercomputers Lonestar Four, Five, and Stampede. Run
+durations for transient cases are typically twelve hours to perform
+several hundred timesteps.  The steady runs are considerably shorter,
+and require less than ten minute runtimes. Typically  the wall clock
+times of the steady-state runs are two or three minutes to solution. 
+%As a result, the queue time is significantly longer than the actual
+%production runtime. 
+These runs use 264-528 processing cores, or 22-44 nodes on Lonestar4
+(with 12 cores per node), and a similar number for Stampede. The runs have 
 several million degrees of freedom (DoF), and the local number of DoF
 per core is maintained at $O(10^4)$. This was selected due to memory
 constraints, after a strong scaling analysis of the performance of the
@@ -331,20 +339,23 @@ cores and has been run on over 100,000 cores on the BG/Q machine Mira at
 Argonne National Lab\cite{gaston2013massive}, and the scaling results
 here are consistent with the performance expectations for this library.
 
-In November, 2015, runs were also staged during early access into full
-production period on TACC's new system, Lonestar5. This machine is
-closer in terms of software stack to Stampede, using the Simple Linux
-Utility for Resource Management (Slurm)\cite{yoo2003slurm} scheduling
-system.  
+%In November, 2015, runs were also staged during early access into full
+%production period on TACC's new system, Lonestar5. This machine is
+%closer in terms of software stack to Stampede, 
+%using the Simple Linux Utility for Resource Management
+%(Slurm) scheduling system.  
 
-After a run terminates, several scripts are automatically invoked. 
-These scripts archive the run (outside of the volatile /scratch 
+Runs are submitted via job scripts to the SLURM\cite{yoo2003slurm}
+scheduling system. After a run terminates, several additional scripts
+are automatically invoked.  
+These archive the run (outside of the volatile /scratch 
 production directories) and simultaneously, label the concluded run with
 unique metadata that defines the system environment; the jobs input
 files and run definitions; and information detailing the
 hypothesis or physics the job was intended to investigate. Finally, once 
 a week a script performs \textbf{rsync} on the entire archived database to
-ensure more than single redundancy for the runs. 
+%ensure more than single redundancy for the runs. 
+maintain redundant storage of the simulation data. 
 
 In other words, the workflow is designed to permit rapid queuing of a
 series of runs (in parallel) to investigate a variety of conditions or
