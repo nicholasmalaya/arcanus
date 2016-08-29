@@ -430,6 +430,14 @@ quantity, consider the kinetic energy flux through a horizontal plane
 near the top of the vanes, where a turbine will ultimately be
 placed. This is a surface integral\cite{landau1959fm}
 
+% flow.io is awesome
+% https://support.draw.io/questions/2949135/how-to-use-mathematical-typesetting
+%
+%
+%https://www.draw.io/?url=https%3A%2F%2Fjgraph.github.io%2Fdrawio-diagrams%2Fdiagrams%2Fmath.xml
+%
+
+
 %% \begin{equation}
 %%  \dot E = -\oint \rho \textbf{v}(\frac{1}{2}v^2 + e) \cdot d \textbf{f}
 %% \end{equation}
@@ -497,6 +505,19 @@ Using the kinetic energy flux as an objective, the vane geometry has
 been optimized. Over approximately tens of iterations, we have
 increased the kinetic energy flux by a factor of 88 relative to the
 baseline. 
+
+\begin{figure}[htb]
+ \centering
+ \includegraphics[width=0.75\linewidth]{figs/optimization_flow}
+ \caption{A flowchart detailing the optimization heuristic. $\eta$ is
+ representative of any SoV geometric parameter, such as the vane angles,
+ vane height, cone contraction, etc. $\epsilon$ is a small perturbation
+ to the base state, which is not randomly selected but typically is a
+ small fraction of the base value. }
+ \label{fig:opt_image}
+\end{figure}
+
+
 %Results of several of these iterations are documented in
 %Figure \ref{fig:opt_plot}. 
 Major adjustments to design in the the vane
