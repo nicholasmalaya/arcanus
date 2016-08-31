@@ -63,8 +63,8 @@ computational time, and many more man-hours hours of work to generate
 the mesh. Therefore, it is unrealistic to perform parameter sweeps or
 system configuration investigations with the gridded vanes and these
 results are used only for validation studies. Instead, the
-ROM is used, with promising results re-evaluated with unsteady virtual
-vane models. %and so on up the hierarchy if more confidence is necessary. 
+steady model is used, with promising results re-evaluated with unsteady
+virtual vane models. %and so on up the hierarchy if more confidence is necessary. 
 
 %
 % https://www.draw.io/
@@ -247,10 +247,29 @@ However, no measurements (of velocity or any quantity) were made
 for the vanes in these conditions. Qualitative comparisons, based on
 descriptions of observed structures and videos of smoke visualization
 were made between the simulations and the wind tunnel experiments. These
-images and discussions did not 
-identify any inconsistencies between simulation and experiment.
-However, these results are limited, and are only for the cold wind, as
-the wind tunnel did not include a heated plate.
+images and discussions did not identify any inconsistencies between
+simulation and experiment. 
+%
+% Attached in the plate from which we inject the fog from. The holes used
+% for seeding are the center one (0.5” diameter) and the other 4 ones
+% which are 0.25” diameter. The smallest holes are for alignment pins in
+% the tunnel so disregard those ones. Please note that this file is in
+% inches and the previous one in millimeters. 
+% Hidalgo Ardana Pablo
+%
+% 11/26/14
+%
+However, these results are limited, and are
+only for the cold wind, as the wind tunnel did not include a heated plate.
+
+Figure~\ref{fig:wind_val} contains images of the simulated averaged
+streamwise and  spanwise velocity in a horizontal plane at approximately
+the height of the vanes obtained from simulations with gridded and
+virtual vanes. As expected, there are some differences in the
+details of these simulations, but the overall character of the flow
+inside the vanes, and in the wake of the vanes is quite similar. This
+demonstrates that the virtual vane formulation can indeed represent the
+interaction with the wind.\todo{expand this section} 
 
 \begin{figure}
   \centering
@@ -274,12 +293,12 @@ the wind tunnel did not include a heated plate.
  shows the spanwise velocity, where it can be seen that the virtual vane
  case correctly reproduces the direction and magnitude of velocity
  inside the vanes. Finally, the wake has similar structure between the
- two cases.} 
-
+ two cases for the streamwise velocity. The spanwise velocity in the
+ wake is not as closely represented between the cases.} 
 \end{figure}
 
 
-\section{steady vs unsteady}
+\section{Comparisons between Steady and Unsteady Virtual Vanes}
 Talk about dialing in the viscosity for steady. Might have some good
 plots I can pull out too\todo{write me}
 
