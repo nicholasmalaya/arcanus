@@ -253,6 +253,37 @@ Our interest lies in the case where $L_{M-O}<0$, which corresponds to heat flux
 from the ground into the air.  
 %
 
+\subsection*{Case One: $\xi \to 0$}
+The first case, $\xi \to 0$, is equivalent to the scenario where
+$\frac{z}{L} \to 0$, or $L>>z$. This occurs as the heat flux at the wall
+approaches zero ($q \to 0$) , which is simply ``free convection''. In
+this limit, the solution is expected to regain the thermally-independent
+result, the pre-eminent ``log-law''. Start by considering Equation~\ref{eq:uz}
+rearranged into a slightly different form, 
+\begin{equation}
+ \frac{\partial \bar u(z)}{\partial z} = \frac{u^*}{\kappa L} \varphi_u(\frac{z}{L}).
+\end{equation}
+After substituting $L=\frac{z}{\xi}$, 
+\begin{equation}
+ \frac{\partial \bar u(z)}{\partial z} = \frac{u^*}{\kappa z} \xi \varphi_u(\xi).
+\end{equation}
+It is clearer if we rewrite, $\Phi(\xi) = \xi \varphi(\xi)$, 
+\begin{equation}
+ \frac{\partial \bar u(z)}{\partial z} = \frac{u^*}{\kappa z} \Phi(\xi).
+\end{equation}
+One can now more easily see that this function results in a logarithmic
+profile when $\Phi(\xi) = 1$, which in turn implies that for neutral
+stratification $(\xi = 0)$, $\Phi(0) = \lim_{\xi \to 0} \xi \varphi(\xi)
+= 1$. We expect this to be approximately true for all small values of
+$\xi$, e.g. 
+\begin{equation}
+ \Phi(\xi) \approx \text{ln}| \frac{z}{L}| + C 
+\end{equation}
+ when $ |\frac{z}{L}| << 1$. Identical arguments can be made for the
+ asymptotic behaviour of the temperature function.
+
+\subsection*{Case Two: $\xi \to -\infty$}
+
 The case where $\xi \to -\infty $ implies $\frac{z}{L_{M-O}} \to
 -\infty $ and $z>>L_{M-O}$. This is most readily interpreted as the instance
 where $u^* \to 0$, e.g. the buoyancy-dominated case with no wind
@@ -278,6 +309,53 @@ respect to distance from the ground,
 			     \right)^\frac{1}{3} z^{\frac{4}{3}}  \text{ 
 for } z \gg L_{M-O}. 
 \end{equation}
+
+
+\subsection*{Approximations of the Universal Function}
+
+We have now derived two criterion that our desired function of $\xi$ 
+must capture. Namely, that for small values of negative $\xi$, the
+function should be nearly identical to the logarithmic profiles
+associated with neutral stratification. Secondly, at large negative
+values of $\xi$, the function should approach a constant value. Finally,
+we desire that the function smoothly vary between these conditions. 
+
+Again following the lead from Monin-Obukhov, most functions are
+formulated in terms of $\Phi(\xi)$, not $\varphi(\xi)$. Note that while
+we showed that that $\varphi(\xi) \thicksim \xi^{-\frac{4}{3}}$, and
+recalling that $\Phi(\xi) = \xi \varphi(\xi)$ implies that we expect
+$\Phi(\xi) \thicksim \xi^{-\frac{1}{3}}$.
+
+There are several different functions, which are essentially different
+calibrations of the same underlying function for different regimes with 
+varying relative merits\cite{?}. However, the functions are generally in
+very close agreement under neutral and unstable conditions, with the
+disagreement primarily occuring for $z/L>0$. As we expect to only
+simulate conditions  of unstable or neutrally stratified flow, our
+choice of interpolation function does not have a significant impact on 
+the predicted value.  
+
+\begin{figure}[p]
+  \includegraphics[width=.75\linewidth]{figs/mo-compare.png}\\
+  \label{fig:interp-mo}
+  \caption{Comparison between three common interpolation functions for
+ the Monin-Obukhov universal function of momentum.} 
+\end{figure}
+
+For example, Figure~\ref{fig:interp-mo} shows three common interpolation  
+functions. They all have similar qualitative form,  
+and yield nearly identical predictions. As a result, we use functions
+that are simple to compute. The original functions 
+proposed by Monin and Obukhov were avoided, they had a discontinuity in
+the derivative, and are more inaccurate than modern functions due due to
+the fact that they were calibrated on inaccurate experimental data. The
+Hogstrum functions\cite{?} for momentum and temperature are, 
+\begin{eqnarray}
+  \Phi_M(\xi) = (1-19.3 \xi)^{-1/4} \\
+  \Phi_T(\xi) = 0.95 (1-11.6 \xi)^{-1/2}.
+\end{eqnarray}
+These functions have been found to be broadly applicable, accurate and 
+are easily instantiated in software. 
 
 \subsection{Shortcomings of Monin-Obukhov Theory}
 
@@ -880,8 +958,7 @@ typically by several percent.
 \section{Simulation Geometry and Boundary Conditions}
 \label{sec:bc}
 
-In this project\todo{perhaps make subsections?}, two principle modeling
-regimes are considered.  
+In this project, two principle modeling regimes are considered.  
 One is the ``thermal-only'' scenario, in which there are no ambient
 velocities and there is an imposed elevated temperature on the ground.  
 In the other, there are also ambient winds that contribute to the SoV energy
@@ -889,6 +966,7 @@ In the other, there are also ambient winds that contribute to the SoV energy
 The computational domain and boundary conditions for these 
 two scenarios are described below.
 
+%\subsection{Computational Domain} 
 \textbf{Computational Domain} 
 
 All simulations are performed in a cuboid domain, with six
