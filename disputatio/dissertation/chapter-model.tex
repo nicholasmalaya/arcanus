@@ -256,8 +256,9 @@ from the ground into the air.
 \subsection*{Case One: $\xi \to 0$}
 The first case, $\xi \to 0$, is equivalent to the scenario where
 $\frac{z}{L} \to 0$, or $L>>z$. This occurs as the heat flux at the wall
-approaches zero ($q \to 0$) , which is simply ``free convection''. In
-this limit, the solution is expected to regain the thermally-independent
+approaches zero ($q \to 0$) , which is simply ``free convection''. This
+would correspond to a purely wind driven flow with no thermal gradient.
+In this limit, the solution is expected to regain the thermally-independent
 result, the pre-eminent ``log-law''. Start by considering Equation~\ref{eq:uz}
 rearranged into a slightly different form, 
 \begin{equation}
@@ -287,7 +288,9 @@ $\xi$, e.g.
 The case where $\xi \to -\infty $ implies $\frac{z}{L_{M-O}} \to
 -\infty $ and $z>>L_{M-O}$. This is most readily interpreted as the instance
 where $u^* \to 0$, e.g. the buoyancy-dominated case with no wind
-(free-convection). For this case, the function $\varphi_T$ must have no
+(free-convection). This condition is typically referred to as,
+``Thermal-only'' in this text. 
+For this case, the function $\varphi_T$ must have no
 dependence on $u^*$, and will approach a constant. Scaling
 analysis implies that the overall function will not depend on $u^*$ only
 when the function $\varphi$ scales to the $-\frac{4}{3}$ power. The
@@ -361,7 +364,7 @@ are easily instantiated in software.
 
 Several known (and often well characterized) shortcomings of the Monin
 Obukhov similarity theory exist. These include:
-
+ 
 \begin{itemize}
  \item Surfaces with large spatial variations in roughness heights
  \item Outside of the surface layer (several hundred meters) where the 
