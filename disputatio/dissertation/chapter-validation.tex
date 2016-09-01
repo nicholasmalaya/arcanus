@@ -21,8 +21,8 @@ consideration, the mathematical models proposed to simulate it,
 and the numerical solution of these models for a variety of system 
 configurations and scenarios. Before these simulations can be used 
 as a tool to evaluate proposed system designs, it is necessary to
-validate that the physical model in use accurately represent
-reality. As defined by Moser et al.\cite{Moser2012Validating},
+validate that the physical models in use accurately represent
+reality. As defined by Moser {\em et al.}\cite{Moser2012Validating},
 ``validation is the process of determining whether a mathematical model
 is a sufficient representation of reality for the purposes for which the
 model will be used--that is, for predicting specified QoIs (Quantities
@@ -344,60 +344,92 @@ vane formulation can indeed accurately represent the interaction with the wind.
 \section{Comparisons between Steady and Unsteady Virtual Vanes}
 \label{sec:steady_val}
 
-% Talk about dialing in the viscosity for steady. Might have some good
-% plots I can pull out too\todo{write me}
+A the bottom of the validation hierarchy are the steady virtual
+vanes. This is expected to be the most inaccurate model. 
+Simultaneously, this is by far the cheapest computationally, and 
+reduces the run-time from approximately 12 hours (in the case of the
+unsteady) to less than two minutes. This much reduced run-time permits
+rapid exploration of the SoV configuration space, making the steady
+virtual vanes an invaluable design tool. For this reason, the steady
+model is used extensively in Chapters~\ref{sec:results} and
+\ref{sec:field} to explore new SoV vane design concepts. 
 
-This quarter a new tool for rapidly investigating new design concepts
-was developed. Previous results used a transient Navier-Stokes model,
-and the solution was temporally averaged to capture the statistically
-steady behavior of the flow. A new, Reduced Order Model (ROM) was
-formulated in which the steady Navier Stokes equations are solved. This
-has reduced the run-time from approximately 12 hours to less than two
-minutes. This much reduced run-time permits rapid exploration of the SoV
-configuration space, and may allow algorithmic optimization. The
-solutions from the ROM are still undergoing validation against the
-higher fidelity models, but across a range of previously tested
-configurations the kinetic energy flux agrees within 15\% and the
-sensitivities of the energy flux to small perturbations in the system
-configuration correlate well with the results of the higher fidelity
-transient model. It will be an invaluable design tool. A comparison of
-the transient and reduced order steady models in shown in
-Figure~\ref{}. The ROM is currently being used to explore new SoV vane
-design concepts.  
+However, the results of the steady cases must first be
+compared to the transient case to ensure the output is consistent. 
+Figure~\ref{fig:rom_compare} depicts such a case, where the streamwise
+velocity in a wind case was used as a direct comparison between the
+steady and unsteady virtual vane cases. This was a hot-wind case, with
+an ambient freestream velocity of 3 m/s and a temperature gradient of 60
+Kelvin. The boundary conditions are precisely as described in
+Section~\ref{sec:bc}. 
+%The vanes are an axi-symmetric two-tier structure,
+%with inner vane angles of  and degrees, respectively. 
+
+These two solutions are similar, with comparable velocity magnitudes and 
+consistent signs. A comparison between the azimuthal velocities are
+shown in Figure~\ref{fig:rom_az}, which makes clear the more diffuse and
+weaker magnitude peak in the steady solution. Ultimately, the steady
+solution's principle use as a design tool is driven by the response in
+kinetic energy flux to sensitivity to small perturbations in the SoV
+design (such as vane or cone geometry). To measure this, a comparison
+was made to between steady and unsteady solutions from a base state to
+small perturbations in the vane angles. The results of this are shown in
+Figure~\ref{fig:rom_it}, where the steady solution typically
+underestimates, but broadly agrees with, the change in kinetic energy
+flux attributable to a perturbation in the system design parameters. 
+It is for this reason that the steady solution is believed to be a
+useful tool to explore the system configuration space, as it accurately
+represents favorable design adjustments, and so can be used in an
+optimization effort to rapidly probe various configurations and drive
+the system towards peak kinetic energy flux generation. 
 
 \begin{figure}[htp!]
  \centering
  \includegraphics[width =0.47\textwidth]{figs/rom_steady}
  \hfill
  \includegraphics[width =0.47\textwidth]{figs/rom_unsteady}%
- \caption{The averaged transient virtual vane Solution (left image) is
- shown against the steady virtual vane solution (right image). While the
- steady solution is more diffuse, it possesses a similar qualitative
- structure as the higher fidelity solution.}   
+ \caption{A comparison between the streamwise velocity in the averaged
+ transient virtual vane solution (right image) and the steady virtual
+ vane solution (left image). These horizontal slices were taken at the
+ height of the second tier of vanes. The black lines indicate the
+ annular vane forcing region. While the steady solution is more diffuse,
+ it possesses a similar qualitative structure as the higher fidelity
+ solution. The unsteady solution has a larger peak velocity inside the
+ apparatus, while simultaneously possessing a larger and more intense
+ wake region.}
  \label{fig:rom_compare}  
 \end{figure}
 
-Flow features smeared
+% Flow features smeared
+% what type of vanes are these?
+% calibration
 
-what type of vanes are these?
+\begin{figure}[htp!]
+ \centering
+ \includegraphics[width =0.7\textwidth]{figs/rom_radial}
+ \caption{The azimuthal velocity profile as a function of radius for the
+ steady and unsteady cases. The steady solution has a similar radial
+ peak location, but a lower velocity magnitude and a more diffuse
+ structure.}   
+ \label{fig:rom_az}
+\end{figure}
 
-calibration
 
-%
-% The averaged Transient Navier-Stokes Solution (left) is shown against
-% the Reduced Order Steady Model (right). While the ROM solution is more
-% diffuse, it possesses a similar qualitative structure as the higher
-% fidelity solution. 
-%
+% The results between these simulations are broadly consistent. 
+% Across a range of previously tested configurations the kinetic energy
+% flux typically agrees to within 20\% and the sensitivities of the energy
+% flux to small perturbations in the system configuration correlate well
+% with the results of the higher fidelity transient model. 
 
-Figure~\ref{fig:wind_val} contains images of the simulated averaged
-streamwise and  spanwise velocity in a horizontal plane at approximately
-the height of the vanes obtained from simulations with steady and
-unsteady virtual vanes. As expected, there are some differences in the
-details of these simulations, but the overall character of the flow
-inside the vanes, and in the wake of the vanes is quite similar. This
-demonstrates that the virtual vane formulation can indeed represent the
-interaction with the wind. 
+\begin{figure}[htp!]
+ \centering
+ \includegraphics[width =0.7\textwidth]{figs/rom_iterate}
+ \caption{A comparison between the change in kinetic energy flux due to
+ a perturbation in system parameters between the steady and unsteady
+ virtual vanes. For each iteration, a design parameter was changed, and
+ the \% change in kinetic energy flux was recorded.}    
+ \label{fig:rom_it}  
+\end{figure}
 
 \section{Field Configurations}
 \label{sec:field_val}
