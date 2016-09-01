@@ -43,7 +43,7 @@ measurements, for reasons detailed in the next section, are not
 sufficient to provide confidence in the output of simulations across a
 wide variety  of scenarios. Therefore, a high fidelity model using 
 meshed vanes with enforced no-slip velocity boundary conditions along
-the surface of the vane was developed. These ``gridded'' runs have
+the surface of the turning vanes was developed. These ``gridded'' runs have
 been validated against the experimental data, which they match quite
 closely. However, as detailed in Chapter~\ref{subsec:vane}, 
 explicitly meshing the vanes would be far too 
@@ -60,7 +60,9 @@ terms of expense, the steady virtual vane model generates a solution in
 approximately two minutes, versus twelve hours for the unsteady virtual
 vane model. The gridded vanes require another factor of ten in
 computational time, and many more man-hours hours of work to generate
-the mesh. Therefore, it is unrealistic to perform parameter sweeps or
+the mesh (which were generated using gridgen). An example of one of the
+gridded meshes complexity is shown in Figure~\ref{fig:gridded_mesh}. 
+Therefore, it is unrealistic to perform parameter sweeps or
 system configuration investigations with the gridded vanes and these
 results are used only for validation studies. Instead, the
 steady model is used, with promising results re-evaluated with unsteady
@@ -79,6 +81,16 @@ virtual vane models. %and so on up the hierarchy if more confidence is necessary
     are less reliable but increasingly cheaper in time to generate. At
     the bottom is the reduced order model from steady virtual vane solutions.} 
     \label{fig:val_hier}
+   \end{center}
+ \end{figure}
+
+ \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 8 cm]{figs/gridded_mesh_example}
+    \caption{An example of the ``gridded'' mesh, where the turning vanes
+    are explicitly represented and a no-slip boundary condition is
+    imposed on the surface.} 
+    \label{fig:gridded_mesh}
    \end{center}
  \end{figure}
 
