@@ -79,7 +79,7 @@ virtual vane models. %and so on up the hierarchy if more confidence is necessary
     to be the most reliable, but simultaneously the most
     limited. Moving down the table leads to simulated data sources that
     are less reliable but increasingly cheaper in time to generate. At
-    the bottom is the reduced order model from steady virtual vane solutions.} 
+    the bottom are the steady virtual vane solutions.} 
     \label{fig:val_hier}
    \end{center}
  \end{figure}
@@ -233,9 +233,9 @@ adjusted to  1.3 $m^3$/s for the validation results discussed here.
 \end{figure}
 
 Figure~\ref{fig:val_lab} is a direct comparison
-between laboratory  
-measurements for a simple single tier vane configuration ($30^{\circ}$
-straight vanes) and nominally identical simulations with the gridded and
+between laboratory measurements for a simple single tier vane
+configuration ($30^{\circ}$ straight vanes) and nominally identical
+simulations with the gridded and 
 virtual vanes. The simulations and experiment broadly agree. The
 simulation correctly reproduce the peak structure in the azimuthal
 velocity observed for this configuration in the experiment. The gridded
@@ -344,8 +344,51 @@ vane formulation can indeed accurately represent the interaction with the wind.
 \section{Comparisons between Steady and Unsteady Virtual Vanes}
 \label{sec:steady_val}
 
-Talk about dialing in the viscosity for steady. Might have some good
-plots I can pull out too\todo{write me}
+% Talk about dialing in the viscosity for steady. Might have some good
+% plots I can pull out too\todo{write me}
+
+This quarter a new tool for rapidly investigating new design concepts
+was developed. Previous results used a transient Navier-Stokes model,
+and the solution was temporally averaged to capture the statistically
+steady behavior of the flow. A new, Reduced Order Model (ROM) was
+formulated in which the steady Navier Stokes equations are solved. This
+has reduced the run-time from approximately 12 hours to less than two
+minutes. This much reduced run-time permits rapid exploration of the SoV
+configuration space, and may allow algorithmic optimization. The
+solutions from the ROM are still undergoing validation against the
+higher fidelity models, but across a range of previously tested
+configurations the kinetic energy flux agrees within 15\% and the
+sensitivities of the energy flux to small perturbations in the system
+configuration correlate well with the results of the higher fidelity
+transient model. It will be an invaluable design tool. A comparison of
+the transient and reduced order steady models in shown in
+Figure~\ref{}. The ROM is currently being used to explore new SoV vane
+design concepts.  
+
+\begin{figure}[htp!]
+ \centering
+ \includegraphics[width =0.47\textwidth]{figs/rom_steady}
+ \hfill
+ \includegraphics[width =0.47\textwidth]{figs/rom_unsteady}%
+ \caption{The averaged transient virtual vane Solution (left image) is
+ shown against the steady virtual vane solution (right image). While the
+ steady solution is more diffuse, it possesses a similar qualitative
+ structure as the higher fidelity solution.}   
+ \label{fig:rom_compare}  
+\end{figure}
+
+Flow features smeared
+
+what type of vanes are these?
+
+calibration
+
+%
+% The averaged Transient Navier-Stokes Solution (left) is shown against
+% the Reduced Order Steady Model (right). While the ROM solution is more
+% diffuse, it possesses a similar qualitative structure as the higher
+% fidelity solution. 
+%
 
 Figure~\ref{fig:wind_val} contains images of the simulated averaged
 streamwise and  spanwise velocity in a horizontal plane at approximately
