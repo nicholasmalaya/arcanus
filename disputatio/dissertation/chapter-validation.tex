@@ -47,7 +47,7 @@ the surface of the turning vanes was developed. These ``gridded'' runs have
 been validated against the experimental data, which they match quite
 closely. However, as detailed in Chapter~\ref{subsec:vane}, 
 explicitly meshing the vanes would be far too 
-prohibitively expensive to permit a rapid exploration of a variety of
+expensive to permit a rapid exploration of a variety of
 system configurations. Instead, this high fidelity model is used 
 to generate additional reliable data to permit validation of lower
 fidelity models, such as the virtual vanes. Likewise, the results of the
@@ -136,7 +136,7 @@ Gridded    & Straight Vanes $60^{\circ}$ & Straight Vanes $60^{\circ}$ & \\
 %\normalsize
 \section{Thermal-Only Validation}
 This section provides examples of the validation performed with the
-richest data set, the measurements in the laboratory. All of the
+richest experimental data set, the measurements in the laboratory. All of the
 thermal-only the data was generated in a laboratory setting at Georgia
 Tech. The general system configuration is depicted in Figure
 \ref{fig:lab_image}. These data were taken using stereo particle image
@@ -146,7 +146,7 @@ not quoted. The particles are seeded outside of the array vanes and
 permitted to naturally convect into the turning vane enclosure. The
 particles were from a glycol-water theatrical fog (Rosco Fog Fluid). 
 Only velocity measurements are available. Several
-potentially important quantities of interest, such as the pressure and
+potentially important quantities, such as the pressure and
 temperature, have not been measured. 
 
 %
@@ -170,7 +170,7 @@ apparatus generates enough heat to cause an increase in room
 temperature (30+ Kelvin), which greatly impacts the SoV
 performance, as the ground to air thermal gradient drives the
 vortex. The laboratory is cooled to maintain
-temperature by two inlet HVAC ducts into the room. 
+temperature by two inlet HVAC ducts in the room. 
 %While efforts have been made to characterize the level of ventilation being
 %used, these numbers come with non-trivial uncertainties attached. 
 One vent continuously provides air at 288 Kelvin with a flow rate estimated 
@@ -266,7 +266,7 @@ tunnel.
 
 A numerical experiment was performed in which the 60 degree single tier
 straight vanes were placed in a isothermal wind. The boundary conditions
-are as detailed in Section~\ref{sec:bc}, but with in iso-thermal
+are as detailed in Section~\ref{sec:bc}, but in isothermal
 conditions. These results were compared to an identical experimental
 configuration placed in a wind tunnel. However, no measurements (of
 velocity or any quantity) were made for the vanes in these
@@ -344,11 +344,11 @@ vane formulation can indeed accurately represent the interaction with the wind.
 \section{Comparisons between Steady and Unsteady Virtual Vanes}
 \label{sec:steady_val}
 
-A the bottom of the validation hierarchy are the steady virtual
+At the bottom of the validation hierarchy are the steady virtual
 vanes. This is expected to be the most inaccurate model. 
 Simultaneously, this is by far the cheapest computationally, and 
 reduces the run-time from approximately 12 hours (in the case of the
-unsteady) to less than two minutes. This much reduced run-time permits
+unsteady) to less than two minutes. This reduced run-time permits
 rapid exploration of the SoV configuration space, making the steady
 virtual vanes an invaluable design tool. For this reason, the steady
 model is used extensively in Chapters~\ref{sec:results} and
@@ -359,7 +359,7 @@ compared to the transient case to ensure the output is consistent.
 Figure~\ref{fig:rom_compare} depicts such a case, where the streamwise
 velocity in a wind case was used as a direct comparison between the
 steady and unsteady virtual vane cases. This was a hot-wind case, with
-an ambient freestream velocity of 3 m/s and a temperature gradient of 60
+an ambient freestream velocity of 3 m/s and a temperature difference of 60
 Kelvin. The boundary conditions are precisely as described in
 Section~\ref{sec:bc}. 
 %The vanes are an axi-symmetric two-tier structure,
@@ -372,7 +372,8 @@ weaker magnitude peak in the steady solution. Ultimately, the steady
 solution's principle use as a design tool is driven by the response in
 kinetic energy flux to sensitivity to small perturbations in the SoV
 design (such as vane or cone geometry). To measure this, a comparison
-was made to between steady and unsteady solutions from a base state to
+was made between steady and unsteady solutions of changes from a base state 
+in response to
 small perturbations in the vane angles. The results of this are shown in
 Figure~\ref{fig:rom_it}, where the steady solution typically
 underestimates, but broadly agrees with, the change in kinetic energy
@@ -438,8 +439,8 @@ Several field tests have been performed by the experimental team. After
 each field test, qualitative observations, measurements and lessons
 learned are provided by the field team. Actual measurements
 are limited. Due to the complexity of the configuration
-(two vane tiers and a cone) Gridded vanes cases have not been developed 
-for the field. This section provides a discussion of some of
+(two vane tiers and a cone) gridded vanes cases have not been developed 
+for the field configurations. This section provides a discussion of some of
 the results from the latest field test, as an example of typical
 validations performed. 
 
@@ -461,7 +462,7 @@ validations performed.
 
 Figure~\ref{fig:field_val} shows data from the August 2015 field test in
 blue. These results were obtained using an anonmometer at fixed
-azimithal location (believed to be a ninety degree angle, where the zero
+azimithal location (believed to be at a ninety degree angle, where the zero
 is defined to be aligned with the streamwise flow direction) to measure the
 azimuthal velocity. The ultrasonic anemometer malfunctioned, and the
 temperature was only measured at one location at 1 meter height. A time
@@ -490,7 +491,7 @@ heading.
 These simulations accurately bound the experimental data. Furthermore, a
 ``Matching'' case was identified that is broadly consistent with the
 field results. This corresponded to a 3 m/s wind velocity and a 60
-degree Celsius temperature gradient. 
+degree Celsius temperature difference. 
 As the rake was at fixed azimuthal location, the kinetic energy fluxes were
 compared by assuming azimuthal symmetry and integrating in a horizontal
 plane at the top of the vanes (where a turbine to extract this energy
