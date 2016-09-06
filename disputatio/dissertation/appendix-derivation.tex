@@ -3,7 +3,8 @@
 
 This appendix details the weak formulation of the Navier Stokes
 equations instantiated in the software GRINS, and provides a
-derivation of the $\tau$ stabilization terms. 
+derivation of the $\tau$ stabilization terms shown in
+Equation~\ref{eq:tau}.  
 
 In brief, our process is the following: 
 
@@ -67,7 +68,7 @@ We define the inner product by the shorthand notation $(u,v) =
  \rho c_p (\dot T,w) + (u \cdot \nabla T,w) + (k \nabla T,\nabla w) &= 0.
 \end{align}
 
-This defines our weak form operator $a(c,\phi)$. Our full equations will
+This defines our weak form operator, $ a(c,\phi)$. Our full equations will
 also include a stabilization term such that,  
 \begin{equation}
  a_h(c,\phi) = a(c,\phi) +  \langle Lc,S\phi \rangle_\tau. 
@@ -80,7 +81,7 @@ might then fully define the stabilization term $\langle Lc,S\phi
 %
 % section
 %
-\section{The Stabilization Operators L and S}
+\section{The Stabilization Operators, L and S}
 
 
 To form the stabilization terms, 
@@ -111,7 +112,6 @@ the first variation of a function $\Pi(u)$ around a base state, $u$,
 for all $\hat u$ and $\epsilon > 0$ with $u + \epsilon \hat u \in
 H^1_0(\Omega)$. This is recognizable as the G\^{a}teaux
 derivative of the functional. 
-
 
 We now consider the first variation of state for the momentum equation
 term by term. The convective term is, 
@@ -209,7 +209,7 @@ and denotes
  \langle u,v \rangle_\tau = \sum_K \tau_K (u,v)_K.
 \end{equation}
 Where $K$ denotes the FEM cells. Now, through what Becker and Braack
-contemptibly referred to as ``elementary calculus'', we now discover our
+contemptibly referred to as ``elementary calculus'', we arrive at our
 stabilization terms,  
 \begin{align*}
  \langle Lc,S\phi \rangle_\tau = \sum_K \{ \quad &\tau_p (\nabla \cdot u,
