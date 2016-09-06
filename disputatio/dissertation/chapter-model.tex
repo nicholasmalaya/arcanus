@@ -519,6 +519,13 @@ described in the subsequent section.
 % https://en.wikipedia.org/wiki/Blade_solidity
 %
 
+The propulsor has   been  modelled  using the actuator    disc
+simplification. The propulsor is lumped into a single
+disc with no axial dimension. The effect of the propulsor is
+then obtained by assuming a uniform pressure difference across
+the disc, implicitly given by a momentum balance around the
+propulsor and the thrust created by the propulsor.
+
 
 completely neglects unsteady effects\todo{write me}
 
@@ -617,6 +624,8 @@ In words, the blade angle (or local pitch) is measured from the plane of
 rotation to the chord line (i.e., the straight line connecting leading
 to trailing edge). These parameters, $\beta$, etc. are visually depicted
 in Figure \ref{fig:turbine_image}.  
+
+Todo\todo{note how mC is all that matters}
 
 
 \subsection{Drag Polar Specification}
