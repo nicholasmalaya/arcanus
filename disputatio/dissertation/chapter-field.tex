@@ -187,7 +187,10 @@ optimization is noted for completeness.
      approximately equal. The blue symbols are the parameters that
      specify the design. Notice the highly asymmetric configuration,
      with the front (left) opening of the vanes aligned directly with
-     the incoming wind.}
+     the incoming wind. Also note the slight ``wiggle'' in the second
+   vane from the bottom. This is a result of the polynomial
+   interpolation function used to generate the vanes, which is described
+   in Section~\ref{sec:interpolate}.} 
    \label{fig:top_design}
   \end{center}
  \end{figure}
@@ -342,6 +345,7 @@ fabrication of the 2016 Field SoV Prototype.
  \end{figure}
 
 \subsection{Turning Vane Interpolation Functions}
+\label{sec:interpolate}
 
 The top tier design is now highly asymmetric, with a
 large opening facing the incoming wind to capture incoming free stream
@@ -458,24 +462,32 @@ for more details on the input file environment).
 % http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.linalg.lstsq.html
 %
 
- \begin{figure}[!htb]
-  \begin{center}
-   \includegraphics[width = 15 cm]{figs/bottom_interp}
-   \caption{Top view of the interpolation function for the ``right
-   side'' of the vanes on the top tier. The red lines are the data sets
-   that provides the input data used to calibrate the two dimensional
-   polynomial field. The black line is the inner radius of the SoV.}
-   \label{fig:bottom_interp}
-  \end{center}
- \end{figure}
+ % \begin{figure}[!htb]
+ %  \begin{center}
+ %   \includegraphics[width = 15 cm]{figs/bottom_interp}
+ %   \caption{Top view of the interpolation function for the ``right
+ %   side'' of the vanes on the top tier. The red lines are the data sets
+ %   that provides the input data used to calibrate the two dimensional
+ %   polynomial field. The black line is the inner radius of the SoV.}
+ %   \label{fig:bottom_interp}
+ %  \end{center}
+ % \end{figure}
 
 The polynomial order was selected to be 7\textsuperscript{th} because it
 provided a good balance between accuracy and a desire to maintain as low
 an order as possible. Furthermore, the vanes interpolation was split
 into two components, for the ``left'' and ``right'' (from the perspective of a
 person standing upwind of the SoV and looking at it) of the vanes in the
-top tier. The ``right'' interpolated field is shown in
-Figure~\ref{fig:bottom_interp}.\todo{update python plots} 
+top tier. This was found to be the most effective way to ensure that the
+polynomial remained accurate without requiring very high order
+polynomials. The accuracy of the interpolated field was checked by
+``drawing'' vanes by seeding a particle upstream of the field and then
+manually integrating it through the field using the scipy integrate ode
+packages and verifying visually that the vane had the correct
+character. Figures~\ref{fig:top_design} and~\ref{fig:bottom_design} were
+generated using this technique. 
+% The ``right'' interpolated field is shown in
+% Figure~\ref{fig:bottom_interp}.\todo{update python plots} 
 
 %
 % /h2/nick/src/code/python/poly_vanes
