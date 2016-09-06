@@ -221,7 +221,7 @@ velocity and temperature fields would have the form,
 \bar u(z) = \frac{u^*}{\kappa} \phi_u(\frac{z}{L_{M-O}}) \\
 \bar T(z) = T^* \phi_T(\frac{z}{L_{M-O}}).
 \end{eqnarray}
-As a result, the vertical gradients of the velocity and temperature are
+As a result, the mean vertical gradients of the velocity and temperature are
 necessarily, 
 \begin{eqnarray}
 \frac{\partial \bar u(z)}{\partial z} = \frac{u^*}{\kappa L_{M-O}}
@@ -229,7 +229,7 @@ necessarily,
 \frac{\partial \bar T(z)}{\partial z} = \frac{T^*}{L_{M-O}}
  \varphi_T(\frac{z}{L_{M-O}}) \label{eq:tz}.
 \end{eqnarray}
-Notice that $\phi$ and $\varphi$ are different universal functions. Eddy
+Notice that $\phi$ and $\varphi$ are different (unknown) universal functions. Eddy
 viscosity is defined as, $u'v' = \nu_T \frac{\partial
 u}{\partial z}$\cite{durbin2001statistical}, in which case, using
 equation \ref{eq:uz}, it must scale as
@@ -249,8 +249,8 @@ $\varphi_T$, which for turbulent Prandtl numbers near unity (e.g. $Pr_T
 \approx 1$) the functions will be identical. The asymptotic behavior of
 the $\varphi_T$ and $\varphi_u$ at large and small values of $\xi$
 provides guidance to the more general character of the functions. 
-Our interest lies in the case where $L_{M-O}<0$, which corresponds to heat flux
-from the ground into the air.  
+Our interest lies in the case where $L_{M-O} \leq 0$, which corresponds
+to heat flux from the ground into the air.  
 %
 
 \subsection*{Case One: $\xi \to 0$}
