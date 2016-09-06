@@ -491,26 +491,35 @@ Figure~\ref{fig:bottom_interp}.\todo{update python plots}
    \end{center}
   \end{figure}
 
-In addition to the final vane design, a turbine design developed in
+In addition to the final vane design, a turbine design was developed in
 collaboration with Duane McCormick at UTRC. This design was arrived at
-by coupling a ``frozen flow'' optimization routine from UTRC with a Blade
-Element Momentum (BEM) rotor model integrated into UT's CFD model as an
-actuator disk. The rotor/inflow coupling directly modeled enabling
-accurate rotor inflow predictions. In this way, the UTRC code would
-iterate through design parameters using the coupled CFD code as a higher
-fidelity confirmation. The UTRC frozen flow optimization was largely
-consistent with the fully coupled CFD prediction (see
-Figure~\ref{fig:UTRC_turbine}, below). This has resulted in two final
-rotor designs, with and without twist. This was because the experimental
-team was not certain that a twisted design would be
-feasible. Regardless, the twisted rotor out-performed the zero-twist
-rotor. 
+by comparisons between a ``frozen flow'' optimization routine from UTRC 
+with the ``fully coupled'' CFD described previously. This ``frozen
+flow'' Matlab code also used an actuator disk model as described in 
+Section\ref{sec:actuator_disk}, and required the velocity profiles
+immediately upstream of the actuator disk location from runs conducted
+with and without the actuator disk present. Thus, the ``frozen field''
+UTRC code was incapable of estimating the impact of a turbine on the
+flow, and typically required updated velocity fields from the fully
+coupled runs after several iterations. 
+The UTRC code was not directly connected to the UT CFD code. Rather,
+human intervention was required to prepare the velocity field outputs
+from the UT CFD effort so that they could be used in the UTRC
+code. Thus, the UTRC code would iterate through design parameters, and
+then the CFD code was used as a higher fidelity confirmation. The UTRC
+frozen flow optimization was largely consistent with the fully coupled
+CFD prediction (see  Figure~\ref{fig:UTRC_turbine}, below). This has
+resulted in two final rotor designs, with and without twist. This was
+because the experimental team was not certain that a twisted design
+would be feasible. Regardless, the twisted rotor was always predicted to 
+out-perform the zero-twist rotor.  
 %The peak power extracted is predicted to be 1.4 kW for the rotor
 %with twist, and slightly more than 1 kW for a rotor with no twist. 
 % before duane ^ 
-
 The peak power extracted is predicted to be 2.0 kW for the rotor
 with twist, and slightly more than 1.5 kW for a rotor with no twist. 
+All of these results were conducted with the $90^{\circ}$ circular-arc
+airfoil, as shown in Figure~\ref{fig:90_drag}. 
 % after duane
 
   \begin{figure}[!htb]
@@ -529,9 +538,9 @@ The proposed turbine design is shown in Table~\ref{tab:turbine}. Note
 that the design parameter $mC $ is actually the number of blades
 multiplied by the chord length. As detailed in
 Section~\ref{sec:actuator_disk}, this is the actual parameter of
-interest in the actuator disk formulation. For fabrication, this was
+interest in the actuator disk formulation. For fabrication, this was 
 decided to correspond to eight blades with a chord length of 0.45 meters
-each. \todo{discuss twist} 
+each. %\todo{discuss twist}  
 
 \begin{table}[]
 \centering
@@ -552,14 +561,15 @@ Height of turbine   & 4.0 meters   & $H_B$            & Height of turbine \\
  \label{tab:turbine}
 \end{table}
 
-In general, the frozen flow and fully coupled CFD agree. However this is
-only for rotor loadings close to those in the coupled CFD. The errors
-tend to be in frozen flow predictions with parameters far from the
-coupled CFD. In some cases, the limitations of the frozen flow
-optimization were significant. For instance, several attempts
-to extract more power at large RPMs would cause a breakdown of SoV
-flow in the coupled CFD model, which resulted in the flow power dropping
-by more than an order of magnitude.\todo{add turbine flow pictures}
+As mentioned previously, the frozen flow and fully coupled CFD
+agree. However this is only for rotor loadings close to those in the
+coupled CFD. Substantial errors tended to appear in the frozen flow
+predictions with parameters far from the coupled CFD. In some cases, the
+limitations of the frozen flow optimization were significant. For
+instance, several attempts to extract more power at large RPMs would
+cause a breakdown of SoV flow in the coupled CFD model, which resulted
+in the flow power dropping by more than an order of magnitude.\todo{add
+turbine flow pictures} 
 
   \begin{figure}
    \centering
@@ -589,7 +599,6 @@ Shortcomings -- \todo{finish me}
 Designed for axisymmetric flow. 
 
 No wake correction as depicted in Section~\ref{subsec:wake_loss_model}.    
-
 
 \section{Field Prediction}
 \label{subsec:field_predict}
@@ -687,7 +696,6 @@ also show fields and images\todo{write me!}
 The optimized configuration for this case results in 3.05 kW of kinetic
 energy flux through the top of the vanes, which is 417\% more kinetic
 energy flux than was produced in the August 2015 Field test.
-
 
 \subsection{Sources of Error}
 \label{sec:field_error}
@@ -884,36 +892,39 @@ todo\todo{add results here, perhaps show \# of blades and blockage \%}
 \label{sec:peak_estimate}
 
 All of the results in Section~\ref{subsec:field_predict} were generated
-using 90 degree semicircle blade geometries, as shown in Figure
-\ref{fig:90_drag}. A natural question then is whether more power might
-be extracted with a different rotor geometry. Time constraints required
-fabrication of the turbine in short 
+using $90^{\circ}$ semicircle blade geometries, as shown in Figure
+\ref{fig:90_drag}. The only other blade geometries considered were the
+flat plate and $180^{\circ}$ arcs, which were universally found to be
+inferior. Time constraints required fabrication of the turbine in short
 order, and a limited budget encouraged inexpensive (and therefore
-simple) turbine blades. Finally, the design space was limited to 
-readily available drag polar data due to the expense and difficulty of
+simple) turbine blades. Finally, the design space was limited to
+readily available drag polar data due to the expense and difficulty of 
 fabricating non-standard turbine blades. Risk mitigation also played a
 role, with an emphasis on traditional, and therefore well-vetted turbine
-blade design. While several comparisons have been performed with
-different choices of turbine blades (flat plate, 180 degree semicircles,
-etc. ) this was not an exhaustive survey. This section details an
-additional computational research program performed after the turbine
-fabrication with the intent of estimating the upper limit of power
-extraction with an idealized turbine. 
+blade design. %While several comparisons have been performed with
+%different choices of turbine blades (flat plate, 180 degree semicircles,
+%etc. ) this was not an exhaustive survey. 
+%Nevertheless, this is not an exhaustive exploration of turbine
+%blade design, and the question remains, ``Could more power be extracted
+%with a different rotor geometry?''. 
+This section details an additional computational research program
+performed after the turbine fabrication with the intent of estimating
+the upper limit of power extraction with an idealized turbine. 
 
 Practical utility-scale wind turbines achieve at peak 75\% to 80\% of
 the Betz limit\cite{burton2001wind}. The Betz-limit states a theoretical
 maximum of 59\% of the wind's power may be captured. Therefore,
 practical wind turbines extract less than half of the available energy. 
-Comparing the
-kinetic energy flux of simulations without the turbine to the power
-extracted by the turbine, we note that our simulations typically predict
-power extraction ratios slightly less than fifty percent, indicating
-that our efforts are not significantly better or worse than could be
-expected. While this provides an estimate, the Betz-limit is likely not
-accurate for this case. Any analysis of the power that can be extracted
-is complicated by the presence of considerable vertical and azimuthal
-flow in the vortex, and so the design considerations are different from
-those for a classical wind turbine. 
+Comparing the kinetic energy flux of simulations without the turbine to
+the power extracted by the turbine, we note that our simulations
+typically predict power extraction ratios slightly less than fifty
+percent, indicating that our efforts are not significantly better or
+worse than could be expected. While this provides an estimate, the
+Betz-limit is likely not accurate for this case. Any analysis of the
+power that can be extracted is complicated by the presence of
+considerable vertical and azimuthal flow in the vortex, and so the
+design considerations are different from those for a classical wind
+turbine.  
 
 The objective then, is to formulate a more generalized approach to the
 turbine vane parameters to permit an optimization that is not
@@ -924,23 +935,25 @@ be extracted for a particular configuration, which can then be used as
 input for feasiblity considerations of the SoV.  
 
 It is desirable to perform these estimates within the context of the
-actuator disk model (See Section~\ref{sec:actuator_disk}). While
+actuator disk model (see Section~\ref{sec:actuator_disk}). While
 actuator disk models are commonly
-optimized\cite{790585,WE:WE487,en5093425,adkins1983design}, the lift and
+optimized\cite{790585,WE:WE487,en5093425,adkins1983design}, the lift and 
 drag polars are not parameters that are varied in these schemes. Rather,
 a given blade geometry is assumed and then the rotation rate, blade
 angle and chord length (for instance) are optimized.   
 
 Conversely, airfoil optimization is a rich field with sophisticated and
 well-vetted
-techniques~\cite{drela1998pros,lewis2001aerodynamic,Chehouri2015361}, 
+techniques~\cite{drela1998pros,lewis2001aerodynamic,Chehouri2015361},
 but these methods do not use an actuator disk model, and focus on the
 shape optimization of the airfoil geometry (and through this, the lift
-and drag polars). 
+and drag polars).  
 
 To address the possibility of further turbine blade
-improvements, while simultaneously not representing the blade geometry
-proper, this section details a formulation for a generic set of drag
+improvements, while continuing to use an abstract actuator disk model,
+%while simultaneously not representing the blade geometry
+%proper
+this section details a formulation for a generic set of drag 
 polars. These generalized drag polars permit exploration of a broader
 design space. The optimization of this model can be fully coupled to the
 flow, and so does not violate any Betz-like considerations that might
@@ -1038,6 +1051,7 @@ constraints~\cite{thornton2004classical,bradbury1968theoretical,2015JFM...784..5
 
 %
 % does this argument still work?!?
+%
 The integral shown in Equation \ref{lift} above can be bounded by 
 Schwarz's inequality,  
 \begin{align*}
@@ -1077,7 +1091,7 @@ Therefore, our lift/drag functions may be expressed as,
   \end{cases}
 \end{align*}
 Where $\bar C_L = 1.7$ and $\bar C_D = 2.0$. The plot of these drag
-polars are shown in Figure \ref{drags}. As a point of comparison,  
+polars are shown in Figure \ref{drags}. 
 
 \begin{figure}[!htb]
   \begin{center}
@@ -1121,13 +1135,21 @@ vortex does not dissipate and the power extracted remains positive. The
 parameters were adjusted by hand, so the calibration is crude. The
 optimal parameters found were $\bar C_L = 1.1$ and $\bar C_D = 1.5$. It
 is interesting to note that this is nearly the average of the drag
-polars shown in
-Figures~\ref{fig:flat_plate_drag},~\ref{fig:semi_drag},
-and\ref{fig:90_drag}.  
+polars shown in Figures~\ref{fig:flat_plate_drag},~\ref{fig:semi_drag}, 
+and\ref{fig:90_drag}. The solution flow in the case of the idealized
+turbine remains similar to the results shown in
+Section~\ref{subsec:field_predict}, and so are not depicted here. 
 
-Regardless, the steady state power extracted by the ideal turbine nearly 
-doubled from the previous best attained with the 90 degree semicircles,
-to 2.1 kW.\todo{add info of energy extracted} 
+The steady state power extracted by the ideal turbine only modestly
+increased from the previous best attained with the 90 degree
+semicircles, to 2.1 kW. This provides a weak limit 
+(even under these idealized conditions) bounding the power that can be
+derived from this flow. Furthermore, this indicates that previous
+estimates of the power that might be extracted from the flow are not
+greatly limited by the present turbine design. This is an important
+element of the system feasibility assessment, as it provides evidence
+against the turbine being a source of considerable inefficiency. 
 
-The solution flow is similar to the results shown in
-Section~\ref{subsec:field_predict}, and so are not depicted here.
+%discredits any 
+
+% as it implies that any assessments of the system feasibility 
