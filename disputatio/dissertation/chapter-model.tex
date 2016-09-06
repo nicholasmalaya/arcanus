@@ -255,16 +255,16 @@ from the ground into the air.
 
 \subsection*{Case One: $\xi \to 0$}
 The first case, $\xi \to 0$, is equivalent to the scenario where
-$\frac{z}{L} \to 0$, or $L>>z$. This occurs as the heat flux at the wall
-approaches zero ($q \to 0$) , which is simply ``free convection''. This
-would correspond to a purely wind driven flow with no thermal gradient.
-In this limit, the solution is expected to regain the thermally-independent
-result, the pre-eminent ``log-law''. Start by considering Equation~\ref{eq:uz}
-rearranged into a slightly different form, 
+$\frac{z}{L_{M-O}} \to 0$, or $L_{M-O}>>z$. This occurs as the heat flux
+at the wall approaches zero ($q \to 0$) , which is simply ``free
+convection''. This would correspond to a purely wind driven flow with no
+thermal gradient. In this limit, the solution is expected to regain the
+thermally-independent result, the pre-eminent ``log-law''. Start by
+considering Equation~\ref{eq:uz} rearranged into a slightly different form, 
 \begin{equation}
- \frac{\partial \bar u(z)}{\partial z} = \frac{u^*}{\kappa L} \varphi_u(\frac{z}{L}).
+ \frac{\partial \bar u(z)}{\partial z} = \frac{u^*}{\kappa L_{M-O}} \varphi_u(\frac{z}{L_{M-O}}).
 \end{equation}
-After substituting $L=\frac{z}{\xi}$, 
+After substituting $L_{M-O}=\frac{z}{\xi}$, 
 \begin{equation}
  \frac{\partial \bar u(z)}{\partial z} = \frac{u^*}{\kappa z} \xi \varphi_u(\xi).
 \end{equation}
@@ -281,9 +281,9 @@ stratification $(\xi = 0)$,
 We expect this to be approximately true for all small values of
 $\xi$, e.g. 
 \begin{equation}
- \Phi(\xi) \approx \text{ln } \rvert \frac{z}{L} \rvert + C 
+ \Phi(\xi) \approx \text{ln } \rvert \frac{z}{L_{M-O}} \rvert + C 
 \end{equation}
- when $ |\frac{z}{L}| << 1$. Identical arguments can be made for the
+ when $ |\frac{z}{L_{M-O}}| << 1$. Identical arguments can be made for the
  asymptotic behaviour of the temperature function.
 
 \subsection*{Case Two: $\xi \to -\infty$}
