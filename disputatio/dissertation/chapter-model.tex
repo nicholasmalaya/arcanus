@@ -329,7 +329,7 @@ we desire that the function smoothly vary between these conditions.
 Again following the lead from Monin-Obukhov, most functions are
 formulated in terms of $\Phi(\xi)$, not $\varphi(\xi)$. Note that while
 we showed that that $\varphi(\xi) \thicksim \xi^{-\frac{4}{3}}$, and
-recalling that $\Phi(\xi) = \xi \varphi(\xi)$ implies that we expect
+recalling that $\Phi(\xi) = \xi \, \varphi(\xi)$ implies that we expect
 $\Phi(\xi) \thicksim \xi^{-\frac{1}{3}}$.
 
 There are several different functions, which are essentially different
@@ -343,7 +343,7 @@ choice of interpolation function does not have a significant impact on
 the predicted value.  
 
 \begin{figure}[p]
-  \includegraphics[width=.75\linewidth]{figs/mo-compare.png}\\
+  \includegraphics[width=.7\linewidth]{figs/mo-compare.png}\\
   \label{fig:interp-mo}
   \caption{Comparison between three common interpolation functions for
  the Monin-Obukhov universal function of momentum.} 
@@ -358,8 +358,8 @@ the derivative, and are more inaccurate than modern functions due due to
 the fact that they were calibrated on inaccurate experimental data. The
 Hogstrum functions\cite{?} for momentum and temperature are, 
 \begin{eqnarray}
-  \Phi_M(\xi) = (1-19.3 \xi)^{-1/4} \\
-  \Phi_T(\xi) = 0.95 (1-11.6 \xi)^{-1/2}.
+  \Phi_M(\xi) =& (1-19.3 \xi)^{-1/4}, \\
+  \Phi_T(\xi) =& 0.95 (1-11.6 \,\xi)^{-1/2}.
 \end{eqnarray}
 These functions have been found to be broadly applicable, accurate and 
 are easily instantiated in software. 
