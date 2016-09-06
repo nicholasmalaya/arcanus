@@ -14,8 +14,8 @@ equations for the wind-velocity direction can be simplified to be,
   \bar P}{\partial x} + \rho f \bar v, 
 \end{equation}
 where $\overline{\rho u'w'}$ is the turbulent momentum flux, $\frac{\partial
-\bar P}{\partial x} $  the mean pressure gradient, $f$ is the coriolis
-frequency (often called the coriolis parameter) and $\bar v$ the
+\bar P}{\partial x} $  the mean pressure gradient, $f$ is the Coriolis
+frequency (often called the Coriolis parameter) and $\bar v$ the
 averaged wind velocity. Dividing by density and integrating over height,
 z,  
 \begin{equation}
@@ -37,7 +37,7 @@ right hand side is bounded by,
   \right) dz < \int_0^H  \left( \frac{1}{\rho} \frac{\partial \bar
   P}{\partial x}  \right) dz,
 \end{equation}
-as the coriolis effect opposes the action of the pressure
+as the Coriolis effect opposes the action of the pressure
 gradient. Substituting for the friction velocity, $u_* =
 \sqrt{\frac{\tau}{\rho}}$, our inequality has the form,
 \begin{equation}
@@ -57,7 +57,7 @@ u^2_*(H) - u^2_*(0)  < f v_p \, H.
 \label{eq:cor_main}
 \end{equation}
 As we only seek to estimate the region where the change attributable to
-the coriolis effect is less than some tolerance, we bound
+the Coriolis effect is less than some tolerance, we bound
 the difference as,
 \begin{align}
  \frac{u^2_*(H) - u^2_*(0)}{u^2_*(0)} \leq a, \\
@@ -66,7 +66,7 @@ the difference as,
 \end{align}
 where the tolerance $a$ is selected to be 20\%. Combining
 Equations~\ref{eq:cor_ineq} and \ref{eq:cor_main}, the height H at which
-the coriolis force meets our tolerance is found to be,
+the Coriolis force meets our tolerance is found to be,
 \begin{align}
  a \, u^2_*(0) \leq H f v_p \\
  \boxed{\frac{a u^2_*(0)}{f v_p} \leq H}.
@@ -75,10 +75,10 @@ Monin and Obukhov further estimated the values of the inputs to this
 equation as $\frac{u_*}{v_p} = 0.05$, $v_p \approx 10$ meters/second, $f
 \approx 10^{-4}$ 1/seconds and $a=0.20$, which results in an H of 50
 meters. Thus, the dynamics of flow below this height are estimated to
-have a less than 20\% impact on account of the coriolis effect, which we
+have a less than 20\% impact on account of the Coriolis effect, which we
 further neglect fully in the simulations presented in this document. 
 
 Incidentally, this argument may also been seen as evidence for why dust
-devils have no preferred direction of rotation. The coriolis effect is
+devils have no preferred direction of rotation. The Coriolis effect is
 too small to impose a direction, and only (very mildly) intensifies
 cyclonic dust devils while modestly weakening the anti-cyclonic variety.
