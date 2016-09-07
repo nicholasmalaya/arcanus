@@ -494,6 +494,7 @@ generated using this technique.
 %
 
 \section{Turbine Design}
+\label{sec:turb_design}
 
   \begin{figure}[!htb]
    \begin{center}
@@ -528,8 +529,8 @@ out-perform the zero-twist rotor.
 %The peak power extracted is predicted to be 1.4 kW for the rotor
 %with twist, and slightly more than 1 kW for a rotor with no twist. 
 % before duane ^ 
-The peak power extracted is predicted to be 2.0 kW for the rotor
-with twist, and slightly more than 1.5 kW for a rotor with no twist. 
+The peak power extracted is predicted to be 1.35 kW for the rotor
+with twist, and slightly more than 1.1 kW for a rotor with no twist. 
 All of these results were conducted with the $90^{\circ}$ circular-arc
 airfoil, as shown in Figure~\ref{fig:90_drag}. 
 % after duane
@@ -914,9 +915,9 @@ This implies that $V_z' \rightarrow \infty$ as $A' \rightarrow
 0$. This is as expected, as the blockage becomes more severe, the flow
 would need to move at greater speed to go through it. 
 
-Our flow angle with respect to turbine velocity is therefore modified
-from,
-
+The flow angle with respect to turbine velocity is therefore modified 
+from Equation~\ref{eq:fan_direction} in
+Section~\ref{sec:actuator_disk},
 \begin{equation}
  \theta_f = \text{tan}^{-1}(\frac{U_{\text{up}}}{U_{\text{fwd}}})
 \end{equation}
@@ -935,6 +936,27 @@ Is modified so that,
 \begin{equation}
  \bar U_p^{2} = \left(\frac{U_p}{B(r)}\right)^2
 \end{equation}
+
+This turbine modification for solidity has a significant impact on the
+power extracted by the turbine. 
+
+
+  \begin{figure}[!htb]
+   \begin{center}
+    \includegraphics[width = 10 cm]{figs/turbine_opt}
+    \caption{Turbine optimization}
+    \label{fig:turbine_solidity}
+   \end{center}
+  \end{figure}
+
+
+This model modification indicates that the prior prediction of eight
+turbine blades in Section~\ref{sec:turb_design} was too large. Instead,
+a turbine with substantially reduced solidity is preferred. Based on
+Figure~\ref{fig:turbine_solidity}, a turbine with similar
+characteristics in terms of length, location and twist but reduced from
+eight blades to four or two blades is expected to mitigate the
+substantially reduced performance observed in the field. 
 
 todo\todo{add results here, perhaps show \# of blades and blockage \%}
 
@@ -1194,13 +1216,19 @@ Section~\ref{subsec:field_predict}, and so are not depicted here.
 
 The steady state power extracted by the ideal turbine only modestly
 increased from the previous best attained with the 90 degree
-semicircles, to 2.1 kW. This provides a weak limit 
-(even under these idealized conditions) bounding the power that can be
-derived from this flow. Furthermore, this indicates that previous
-estimates of the power that might be extracted from the flow are not
-greatly limited by the present turbine design. This is an important
-element of the system feasibility assessment, as it provides evidence
-against the turbine being a source of considerable inefficiency. 
+semicircles, to 1.78 kW. It is interesting to note that this is 58\% of
+the available kinetic energy flux just upstream of the device,
+indicating that the turbine is very close to the Betz-limit of
+59.3\%. While as indicated previously, the Betz-limit is likely to be
+inaccurate for rotating flows, it is nevertheless interesting that the
+idealized turbine would extract power so close to the maximum predicted by
+Betz.  This provides a weak limit (even under these idealized
+conditions) bounding the power that can be derived from this
+flow. Furthermore, this indicates that previous estimates of the power
+that might be extracted from the flow are not greatly limited by the
+present turbine design. This is an important element of the system
+feasibility assessment, as it provides evidence against the turbine
+being a source of considerable inefficiency.  
 
 %discredits any 
 
