@@ -4,13 +4,13 @@
 #
 import sys
 
-# no twist
-flux = [0.99,1.02,1.06,1.1,1.09,1.11,1.117,1.12,1.115,1.10,1.04]
-it = [35,40,43,45,47,50,53,55,57,60,65]
+# no solidity
+flux = [1.11,1.44,1.83,2.10]
+it = [2,4,6,8]
 
-# twist
-flux2 = [1.13,1.25,1.32,1.33,1.34,1.33,1.31,1.25]
-it2 = [35,40,43,45,47,49,50,55]
+# solidity
+flux2 = [1.05,.852,0.012,0]
+it2 = [2,4,6,8]
 #
 # iteration number (should be same as flux, above)
 #
@@ -25,14 +25,14 @@ fsz=24
 #plt.subplot(1, 1, 1)
 fig,ax = plt.subplots()
 plt.plot(it,flux, 'ko-', color='blue',label='No Solidity Model')
-plt.plot(it2,flux2, 'ko-', color='red',label='Solidity Model')
+plt.plot(it2,flux2, 'ko--', color='red',label='Solidity Model')
 
-plt.xlim(30, 70)
-plt.ylim(0.9, 1.4)
+plt.xlim(0, 10)
+plt.ylim(0, 2.2)
 plt.ylabel(r'Turbine Power Extracted (kW)',fontsize=fsz)
 plt.xlabel(r'# of Blades',fontsize=fsz)
 #ax.set_yscale('log')
-plt.legend()
+plt.legend(loc='best')
 #ax.xaxis.set_major_formatter(plt.NullFormatter())
 
 #
