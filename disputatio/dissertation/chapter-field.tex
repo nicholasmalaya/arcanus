@@ -163,7 +163,7 @@ converging nozzle for the flow, increasing the vertical and azimuthal
 velocity as it exits out the top of the device. Additionally, much akin
 to a wind tunnel contraction, the cone was found to increase the
 symmetry of the flow near the exit. This is appealing as the turbine is
-more readily capable of extracting energy from a symmetric velocity
+more readily capable of extracting power from a symmetric velocity
 field. The second important role for the cone was found to be that in
 the wind, the cone also acts as a shield, preventing the high velocity
 freestream flow from disrupting the vortex before it has run through the
@@ -496,18 +496,74 @@ generated using this technique.
 \section{Turbine Design}
 \label{sec:turb_design}
 
+In addition to the final vane design, a turbine design was developed and
+tested over a range of design conditions. This exploration of the
+turbine design space was conducted in a manner similar to the
+optimization outline detailed in Figure~\ref{fig:opt_image}. The major
+design improvements are detailed in Figure~\ref{fig:ut_turbine}. The
+``initial guess'' was crude, with flat plate drag polars and a poor
+initial guess for the blade angle of $\approx 10^{\circ}$. Later
+designs use a higher blade angle often exceeding $40^{\circ}$. 
+The design parameters that lead to the largest improvements in power
+extracted were changes to the turbine blade geometry (from flat plate to
+$180^{\circ}$ half cylinders to $90^{\circ}$ semicircles), optimization
+of the blade angle and optimization of the turbine rotation rate. 
+However, several other interesting improvements were found in addition to the
+principle improvements, and are detailed below. 
+
   \begin{figure}[!htb]
    \begin{center}
     \includegraphics[width = 10 cm]{figs/turbine_opt}
-    \caption{Turbine optimization}
+    \caption{Initial turbine optimization before the coupling with the
+    frozen flow. The ``initial guess'' was conducted with flat plate
+    drag polars at a low blade angle ($\approx
+    10^{\circ}$). Subsequent design improvements substantially improved  
+    the power extracted, but this list constitutes only a ``greatest
+    hits'' and the actual design improvements were highly iterative,
+    with numerous runs of a particular parameter configuration yielding
+    inferior power output. }
     \label{fig:ut_turbine}
    \end{center}
   \end{figure}
 
-In addition to the final vane design, a turbine design was developed in
-collaboration with Duane McCormick at UTRC. This design was arrived at
-by comparisons between a ``frozen flow'' optimization routine from UTRC 
-with the ``fully coupled'' CFD described previously. This frozen
+A gap in the center of the turbine was found to favorably reduce turbine
+solidity and improve energy extraction. In some cases, this gap was
+found to correspond to a mild downward flow as observed in the
+fully-developed thermal-only cases detailed in
+Section~\ref{sec:thermal_only}. The present simulations do not form a
+two-celled vortex, but a gap in the center of the turbine is still
+favorable. Similarly, while individual blades are not explicitly
+represented in an actuator-disk model, the area of blades is a design
+parameter and can be optimized. This is in essence a solidity or
+blockage term, with more blades providing more surface area to extract
+power from the fluid while simultaneously impeding the flow. A balance
+between too much (a blocked off flow) and too little (too little blade
+area to extract flow power) must be attained through optimization of the
+controlling parameter, $mC$, the product of the number of blades and
+each blade's chord length, as detailed in
+Section~\label{sec:actuator_disk}. 
+
+Improvements to the turbine power extracted were also attained by adding
+``twist''. In other words, the blade angle varies as a function of
+radius, i.e. $\beta = \beta(r)$. Our expectation is that the turbine
+blades are inside the core vortex. Following our expectation of the
+vortex velocity roughly following a Rankene profile, the angular
+velocity obeys a solid body rotation, 
+\begin{equation}
+ V_{\theta} = \Omega r . 
+\end{equation}
+As the torque imposed on the rotor also increases with radius, angular
+velocity is increasingly more desirable to extract at larger radius, and
+vertical velocity more desirable at smaller radius. Thus, our turbine
+blade angle also changes linearly as a function of radius, with
+a higher angle at larger radius. 
+
+%Finally, cone improvement
+After this initial exploration of the turbine design space, further
+investigations were conducted in collaboration with Duane McCormick at
+UTRC. This design was arrived at by comparisons between a ``frozen
+flow'' optimization routine from UTRC  with the ``fully coupled'' CFD
+described previously. This frozen 
 flow Matlab code also used an actuator disk model as described in 
 Section\ref{sec:actuator_disk}, and required the velocity profiles
 immediately upstream of the actuator disk location from runs conducted
@@ -998,7 +1054,8 @@ the upper limit of power extraction with an idealized turbine.
 Practical utility-scale wind turbines achieve at peak 75\% to 80\% of
 the Betz limit\cite{burton2001wind}. The Betz-limit states a theoretical
 maximum of 59\% of the wind's power may be captured. Therefore,
-practical wind turbines extract less than half of the available energy. 
+practical wind turbines extract less than half of the available kinetic
+energy flux. 
 Comparing the kinetic energy flux of simulations without the turbine to
 the power extracted by the turbine, we note that our simulations
 typically predict power extraction ratios slightly less than fifty
