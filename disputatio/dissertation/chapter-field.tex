@@ -507,11 +507,11 @@ generated using this technique.
 In addition to the final vane design, a turbine design was developed in
 collaboration with Duane McCormick at UTRC. This design was arrived at
 by comparisons between a ``frozen flow'' optimization routine from UTRC 
-with the ``fully coupled'' CFD described previously. This ``frozen
-flow'' Matlab code also used an actuator disk model as described in 
+with the ``fully coupled'' CFD described previously. This frozen
+flow Matlab code also used an actuator disk model as described in 
 Section\ref{sec:actuator_disk}, and required the velocity profiles
 immediately upstream of the actuator disk location from runs conducted
-with and without the actuator disk present. Thus, the ``frozen field''
+with and without the actuator disk present. Thus, the frozen flow
 UTRC code was incapable of estimating the impact of a turbine on the
 flow, and typically required updated velocity fields from the fully
 coupled runs after several iterations. 
@@ -538,12 +538,13 @@ efficiencies of modern wind turbines.
 
   \begin{figure}[!htb]
    \begin{center}
-    \includegraphics[width = 10 cm]{figs/utrc_plot}
-    \caption{The power extracted by the rotor predicted by the CFD (red
-    circles) and ``frozen flow'' (blue line) for a range of rotor
-    collective angles. The higher lines are for blades with twist, and
-    the lower are for constant blade angle runs, which was always
-    inferior in terms of power extracted.}
+    \includegraphics[width=.8\linewidth]{figs/utrc_plot}
+    \caption{The power extracted by the rotor predicted by the CFD
+    (dashed line) and frozen flow (solid line) for a range of rotor
+    collective angles. The higher lines (red circles) are for blades
+    with twist, and the lower (blue diamonds) are for constant blade
+    angle runs, which was always  inferior in terms of power
+    extracted. In general the frozen flow closely tracks the CFD.}
     \label{fig:UTRC_turbine}
    \end{center}
   \end{figure}
@@ -563,7 +564,7 @@ each. %\todo{discuss twist}
 Name                & Current Value    & Symbol           & Comments \\
  \hline
 Outer Blade Angle & $70^{\circ}$ & $\beta_{\text{outer}}$  & linear twist between \\
-Inner Blade Angle & $42^{\circ}$ & $\beta_\text{inner}$    & 
+Inner Blade Angle & $47^{\circ}$ & $\beta_\text{inner}$    & 
 	     $\beta_\text{inner},\beta_\text{outer}$ \\ 
 Chord Length * \# blades   & 3.6 meters  & $mC $ &  \\
 Turbine rotation rate & 4.0 rad/sec  & $\omega$         &  \\
@@ -961,7 +962,6 @@ diverge at higher blade count.
    \end{center}
   \end{figure}
 
-
 This model modification indicates that the prior prediction of eight
 turbine blades in Section~\ref{sec:turb_design} was too large. Instead,
 a turbine with substantially reduced solidity is preferred. Based on
@@ -970,7 +970,7 @@ characteristics in terms of length, location and twist but reduced from
 eight blades to four or two blades is expected to mitigate the
 substantially reduced performance observed in the field. 
 
-todo\todo{what about shading?}
+%todo\todo{what about shading?}
 
 \section{Estimating the Upper Limit on Power Extraction}
 \label{sec:peak_estimate}
