@@ -497,7 +497,8 @@ generated using this technique.
 \label{sec:turb_design}
 
 In addition to the final vane design, a turbine design was developed and
-tested over a range of design conditions. This exploration of the
+tested over a range of design conditions. The design parameters defining
+the turbine are listed in Table~\ref{tab:turbine}. The exploration of the
 turbine design space was conducted in a manner similar to the
 optimization outline detailed in Figure~\ref{fig:opt_image}. The major
 design improvements are detailed in Figure~\ref{fig:ut_turbine}. The
@@ -637,10 +638,11 @@ agree. However this is only for rotor loadings close to those in the
 coupled CFD. Substantial errors tended to appear in the frozen flow
 predictions with parameters far from the coupled CFD. In some cases, the
 limitations of the frozen flow optimization were significant. For
-instance, several attempts to extract more power at large RPMs would
-cause a breakdown of SoV flow in the coupled CFD model, which resulted
-in the flow power dropping by more than an order of magnitude.\todo{add
-turbine flow pictures} 
+instance, the frozen flow model would consistently predict larger power
+output at higher RPM. However, several attempts to extract more power at
+larger RPMs would cause a breakdown of SoV flow in the coupled CFD
+model, which resulted in the flow power dropping by more than an order
+of magnitude.%\todo{add turbine flow pictures} 
 
   \begin{figure}
    \centering
@@ -665,11 +667,9 @@ turbine flow pictures}
    \label{fig:turbine_built}
   \end{figure}
 
-Shortcomings -- \todo{finish me}
-
-Designed for axisymmetric flow. 
-
-No wake correction as depicted in Section~\ref{subsec:wake_loss_model}.    
+%Shortcomings -- \todo{finish me}
+%Designed for axisymmetric flow. 
+%No wake correction as depicted in Section~\ref{subsec:wake_loss_model}.    
 
 \section{Field Prediction}
 \label{subsec:field_predict}
@@ -963,8 +963,8 @@ Then, the ratio of an annular length that is impeded by blades is,
 Note that a ``floor'' function is needed to ensure the solidity ratio
 does not go below zero. 
 
-From a 1D control volume analysis for the region, with the continuity
-equation, 
+For a 1D control volume analysis for the region, the continuity
+equation is, 
 \begin{eqnarray}
  \rho V_z' A' =& \rho V_z A,\\
  V_z' =& V_z \frac{A}{A'}, \\
@@ -987,11 +987,12 @@ to,
 As $B(r) \rightarrow 0$, $\theta_f \rightarrow \pi$, e.g. 90 degrees. In
 this way the velocity vector will be completely aligned with drag. 
 
-Furthermore, 
+Furthermore Equation~\ref{eq:force_turb}, 
 \begin{equation}
- F = \frac{1}{2}\frac{c \rho U_p^2}{A}(C_L \cdot n_{\text{lift}} + C_d \cdot n_{\text{drag}})
+ F = \frac{1}{2}\frac{c \rho U_p^2}{A}(C_L \cdot n_{\text{lift}} + C_d
+  \cdot n_{\text{drag}})
 \end{equation}
-Is modified so that, 
+is modified so that, 
 \begin{equation}
  \bar U_p^{2} = \left(\frac{U_p}{B(r)}\right)^2
 \end{equation}
@@ -1110,7 +1111,7 @@ geometry.
 
 The power extracted by the turbine is, 
 \begin{equation}
- P = \Omega Q
+ P = \Omega \, Q
 \end{equation}
 where the torque, Q, is\cite{morgado2014validation}, 
 \begin{equation}
@@ -1260,7 +1261,7 @@ polars are shown in Figure \ref{drags}.
 Under this approach, the turbine extracts so much energy from the flow
 that the vortex loses its coherence and the power extracted becomes
 negative (e.g. the constant velocity turbine is adding energy to the
-flow).\todo{add image}
+flow). %\todo{add image}
 This implies a limit on how much of the energy can be extracted before
 disrupting the flow so greatly that the vortex cannot be maintained.   
 Consistent with the results from Section~\ref{sec:field_error},
@@ -1281,10 +1282,10 @@ and\ref{fig:90_drag}. The solution flow in the case of the idealized
 turbine remains similar to the results shown in
 Section~\ref{subsec:field_predict}, and so are not depicted here. 
 
-The steady state power extracted by the ideal turbine only modestly
+The steady state power extracted by the ideal turbine 
 increased from the previous best attained with the 90 degree
 semicircles, to 2.76 kW. It is interesting to note that this is 58\% of
-the available kinetic energy flux just upstream of the device,
+the available kinetic energy flux measured just upstream of the turbine,
 indicating that the turbine is very close to the Betz-limit of
 59.3\%. While as indicated previously, the Betz-limit is likely to be
 inaccurate for rotating flows, it is nevertheless interesting that the
