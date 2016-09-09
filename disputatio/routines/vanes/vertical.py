@@ -71,14 +71,14 @@ def main():
 
     # bottom tier front
     plt.plot((-0.6,-0.6),(0,0.375),linewidth=4,color = 'red')
-    plt.plot((-3,-3),(0,0.375),linewidth=4,color = 'red')
-    plt.plot((-0.6,-3),(0,0),linewidth=4,color = 'red')
+    plt.plot((-6,-6),(0,0.375),linewidth=4,color = 'red')
+    plt.plot((-0.6,-6),(0,0),linewidth=4,color = 'red')
     plt.plot((-0.6,-3),(0.375,0.375),linewidth=4,color = 'red')
 
     # bottom tier back
     plt.plot((0.6,0.6),(0,0.75),linewidth=4,color = 'red')
-    plt.plot((3,3),(0,0.75),linewidth=4,color = 'red')
-    plt.plot((0.6,3),(0.75,0.75),linewidth=4,color = 'red')
+    plt.plot((6,6),(0,0.75),linewidth=4,color = 'red')
+    plt.plot((0.6,6),(0.75,0.75),linewidth=4,color = 'red')
 
     # adding text
     ax.text(-13, 5, r'Upstream Side', fontsize=15)
