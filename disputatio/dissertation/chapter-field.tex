@@ -655,7 +655,11 @@ of magnitude.%\todo{add turbine flow pictures}
    \hfill
    \includegraphics[width =0.45\textwidth]{figs/rotor_assem_top}
    \\   
-   \caption{CAD design images of the turbine.} 
+   \caption{CAD design images of the turbine. The CAD designs were
+   created by the team at Georgia Tech based on the design
+   specifications from the CFD performed by the author. The images were
+   created from these CAD files by the author using
+   FreeCAD\cite{Falck}.}  
    \label{fig:cad_turbine}
   \end{figure}
 
@@ -836,10 +840,10 @@ to entrain flow from outside the vanes above the device.
 
 \begin{figure}
   \centering
-  \includegraphics[width=.45\linewidth]{figs/field_streamlines}
+  \includegraphics[width=.7\linewidth]{figs/field_streamlines}
   \label{fig:field_stream}
- \caption{Fluid entrainment around the apparatus. This was drawn by
- seeding particles into the flowfield and then advancing them
+ \caption{Fluid entrainment through and around the apparatus. This was
+ drawn by seeding particles into the flowfield and then advancing them  
  using an RK4 time integrator. An outline of the inner enclosure region 
  is shown to provide a sense of scale. The bottom left corner is the
  upwind direction. While a majority of the flow is coming from upstream
@@ -910,15 +914,22 @@ for the significantly reduced flow observed in the field.
 
 \section{Turning Vane Drag}
 
-no model for drag on vanes (was reported by team)
+The first model correction proposed is to introduce drag along the
+turning vanes to account for the skin friction along the surface. To
+introduce a force of parasitic drag, the turning vane forcing 
+representation described in Section~\ref{subsec:vane} need only be
+modified to introduce an additional force that acts in opposition of the
+fluid velocity. Thus, in addition to forcing the flow to align with the
+vane surface, the flow will also be slowed. The vane formulation now
+acts in a dissipative manner, and is not energy conserving. 
 
-Our unit forcing vector $\hat f$ is the normalized inner product of the 
-velocity, $u$, and the tangent vector $\hat t$, 
+Our unit forcing vector $\hat f$ is simply the negative normalized inner
+product of the velocity, $u$, and the turning vane tangent vector $\hat
+t$,  
 \begin{equation}
 - \frac{u \cdot \hat t}{|| u \cdot \hat t ||} = \hat f. 
 \end{equation}
-
-The force applied is then, 
+The volumetric force applied is, 
 \begin{equation}
  F = \hat f \, C_f \, \frac{1}{2} \frac{\rho || u ||^2}{\delta}
 \end{equation}
@@ -926,19 +937,19 @@ Where $C_f$ is the skin friction coefficient (which must be determined),
 $\rho $ is the density and $\delta$ the channel half width. 
 For $C_f$, we use Dean's Correlation\cite{johnson1998handbook}, 
 
-%
+%ane
 %
 %https://books.google.com/books?id=JBTlucgGdegC&pg=SA13-PA51&lpg=SA13-PA51&dq=dean%27s+correlation+fluids&source=bl&ots=auW8XopUC9&sig=DDxuQONFvqly5KQOocSPr39rS70&hl=en&sa=X&ved=0ahUKEwii3vX9wZHOAhXmxYMKHUqlChYQ6AEIJTAB#v=onepage&q=dean%27s%20correlation%20fluids&f=false 
 %
 \begin{equation}
- C_f = 0.073 (Re)^{-0.25}. 
+ C_f = 0.073 \, (Re)^{-0.25}. 
 \end{equation}
 Where the Reynolds number is defined as, 
 \begin{equation}
  Re = \frac{u\, \delta}{\nu}.
 \end{equation}
 
-Some roughness elements existed across the vanes. In addition to
+Some roughness elements exist across the vanes. In addition to
 non-smooth surface materials, the design of the field test apparatus
 ultimately relied upon posts to hold the turning vanes. These posts were
 pieces of wood which were modeled as roughness elements. In order to
@@ -964,9 +975,17 @@ two plates (we treat the vanes as a channel),
 \begin{equation}
 D_H = \frac{4 A}{P} = \frac{4 (2w)\delta}{2w} = 4 \delta
 \end{equation}
-Where $\delta$ is the channel half width.
-
-need plot to show it is small \%\todo{finish me!}
+Where $\delta$ is the channel half width, or in our case, the distance
+between the vanes. To construct a ``worst-case'' scenario, we consider
+the smallest distance between the vanes, which occurs near the center of
+the SoV. Furthermore, we consider roughness heights based on a
+two-by-four (which were used as supports for the
+vanes). Even for this worst case scenario, the velocities on the vanes
+are not substantially reduced with the addition of the drag model. The
+flow field kinetic energy flux was never reduced more than 12\%. 
+This crude model indicates that the reduced flows observed during the
+June 2016 field tests are not attributable to skin friction drag on the
+turning vanes.  
 
 
 \subsection{Blade Solidity Modification}
@@ -974,6 +993,11 @@ need plot to show it is small \%\todo{finish me!}
 %
 %https://en.wikipedia.org/wiki/Blade_solidity
 %
+It was noted that wind turbines typically possess three blades, versus
+the eight blades used in the 2016 field test. This is therefore a
+substantially increased turbine solidity versus common engineering
+designs. It is expected that we are operating in a regime not common to
+typical actuator disk models. 
 
 The power output of a turbine is proportional to the thrust that it
 exerts onto the flow, and the larger the thrust, the larger the flow
@@ -983,42 +1007,46 @@ a low impedance both result in minimal power
 extraction\cite{solidity_oxford}.  
 
 For the case of high impedance, little fluid flows through the
-turbine, instead it is diverted around the machine; for the case of a
-low impedance, the turbine hardly affects the flow. 
+turbine and instead flows around the device. This gives the appearance of
+the turbine being ``blocked''. In the case of low impedance, the turbine
+hardly affects the flow, and less power is extracted than could be. 
 
-So that the turbine presents an ``efficient'' impedance to the flow, the 
-right balance between its solidity and tip speed ratio needs to be found.
-
-If the solidity is high, the operating tip speed ratio has to be low in
-order to avoid too high an impedance, which has numerous implications. 
-
-Firstly, a low tip speed ratio implies increased torque so that a larger
-and higher cost gearbox has to be used. Secondly, the lower the tip
-speed ratio, the higher the maximum angle of attack, which can be
-problematic with regard to blade stalling
+Thus, an ``efficient'' impedance to the flow is one that strikes the 
+right balance between solidity and tip speed ratio. If the solidity is
+high, the operating tip speed ratio must be lower to avoid too high an
+impedance. 
 
 However, it is hard to predict the precise effects of the various
 phenomena, which is why it is difficult to comment on the overall
 performance of a particular machine in a specific
-scenario. \todo{rewrite all this}
+scenario. %Turbine design is highly specialized for 
 
-Interesting enough, there are indications that wind turbines are
-designed to operate at low tip speed ratios with high solidity ratios
-would possess power coefficients close to Betz-like limits of
-efficiency\cite{WE:WE118}. 
+However, the actuator disk model treats the flow in the disk region as
+if it was flowing through a rotor with identical solidity but an
+infinite number of blades. A model correction was introduced that
+attempts to represent the fact that as the number of turbine blades
+increases, the pressure across the actuator disk should rise. This is
+accomplished by adjusting the area of the actuator disk down by the
+ratio of the free area in the disk versus the blade sizes. 
+
+%A second model correction was therefore introduced with the aim of attempting to
+%discern if the turbine 
+
+
+% too high an impedance
+%This has several important implications.  
+
+%A low tip speed ratio implies increased torque, requiring a larger
+%and higher cost gearbox. In addition, the lower the tip speed ratio, the
+%higher the maximum angle of attack, which can be problematic with regard
+%to blade stalling. 
+
+%
+% howevr, it is hard
+%
 
 %When applied to a rotor with a finite number of blades, 
 
-the actuator disk model treats the flow in the disk region as if it was
-flowing through a rotor with identical solidity but an infinite number
-of blades. 
-
-The only thing that has had an impact was introducing a 'blockage' model
-for the actuator disk model. This tries to represent the fact that as
-the number of blades increased, the pressure across the actuator disk
-should rise. We did this by adjusting the area of the actuator disk down
-by the ratio of the free area in the disk versus the blade sizes. 
-This admittedly crude model, todo\todo{write intro here}
 
 The length of each blade blocking vertical flow in the actuator disk is, 
 \begin{equation}
@@ -1100,6 +1128,21 @@ Figure~\ref{fig:turbine_solidity}, a turbine with similar
 characteristics in terms of length, location and twist but reduced from
 eight blades to four or two blades is expected to mitigate the
 substantially reduced performance observed in the field. 
+
+This crude model is admittedly extreme, as it effectively models the
+blades as flat plate bluff bodies, with the flow completely
+separated on the leeward side. Ideally, the flow should be smoothly
+turning through the blading, and not separate. Thus, it is possible that
+this estimate is overly pessimistic. Regardless, this is the only model
+correction that was explored that is plausibly capable of explaining the
+2016 field observations noted in Section~\ref{sec:field_error}. 
+
+Interesting enough, there have been actuator disk models used with wind
+turbines that indicate operating at low tip speed ratios with high
+solidity ratios would possess power coefficients close to Betz-like
+limits of efficiency\cite{WE:WE118}. It is therefore possible that the
+actuator disk model is generally unsuited for high solidity regimes, and
+that the correction presented here is more generally useful. 
 
 %todo\todo{what about shading?}
 
