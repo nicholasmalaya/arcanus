@@ -1,4 +1,4 @@
-\backcite {Falck}{{ix}{(document)}{Doc-Start}}
+\backcite {Falck}{{x}{(document)}{Doc-Start}}
 \backcite {Falck}{{xi}{(document)}{Doc-Start}}
 \backcite {energy-outlook}{{1}{1.1}{section.8}}
 \backcite {Hoyt197827}{{1}{1.1}{section*.9}}
@@ -56,10 +56,10 @@
 \backcite {kaimal}{{29}{3.2.1}{subsection.57}}
 \backcite {Foken2006}{{29}{3.2.1}{subsection.57}}
 \backcite {pope2000turbulent}{{29}{3.3}{section.58}}
-\backcite {burton2001wind}{{32}{3.5}{section*.67}}
-\backcite {leclerc}{{32}{3.5}{section*.67}}
-\backcite {shevell1983fundamentals}{{32}{3.5}{section*.67}}
-\backcite {betz}{{32}{3.5}{section*.67}}
+\backcite {burton2001wind}{{33}{3.5}{section*.67}}
+\backcite {leclerc}{{33}{3.5}{section*.67}}
+\backcite {shevell1983fundamentals}{{33}{3.5}{section*.67}}
+\backcite {betz}{{33}{3.5}{section*.67}}
 \backcite {Moriarty_aerodyntheory}{{38}{3.5.2}{section*.88}}
 \backcite {doi:10.1146/annurev.fluid.37.061903.175743}{{40}{3.6}{section.90}}
 \backcite {verzicco1998complex}{{40}{3.6}{section.90}}
@@ -77,7 +77,7 @@
 \backcite {braack2014directional}{{50}{3.9}{equation.130}}
 \backcite {feistauer2006non}{{50}{3.9}{equation.130}}
 \backcite {bruneau1996new}{{50}{3.9}{equation.130}}
-\backcite {doi:10.1146/annurev.fluid.36.050802.121930}{{50}{3.9}{equation.130}}
+\backcite {doi:10.1146/annurev.fluid.36.050802.121930}{{51}{3.9}{equation.130}}
 \backcite {oden2012introduction}{{53}{4.1}{section*.136}}
 \backcite {bb-cond}{{53}{4.1}{section*.138}}
 \backcite {becker1981introduction}{{53}{4.1}{section*.138}}
