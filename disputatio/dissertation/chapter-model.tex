@@ -545,40 +545,36 @@ described in the subsequent section.
 % https://en.wikipedia.org/wiki/Blade_solidity
 %
 
-The propulsor has   been  modelled  using the actuator    disc
-simplification. The propulsor is lumped into a single
-disc with no axial dimension. The effect of the propulsor is
-then obtained by assuming a uniform pressure difference across
-the disc, implicitly given by a momentum balance around the
-propulsor and the thrust created by the propulsor.
+The turbine is modeled similarly to the virtual vanes. As with the
+vanes, it is desirable to avoid explicitly representing the turbine
+blade control surfaces. Instead, the turbine is modeled using the
+actuator disc simplification. 
+This model (also often referred to as a ``Blade Element Momentum''
+theory or the ``actuator line technique'') is commonly used in wind
+turbine design\cite{shevell1983fundamentals,betz,leclerc}. The essence
+of this model is to approximate the individual spinning turbine blades
+as a washed-out ``disk'', as shown in Figure~\ref{fig:actuator_disk}.
+This method assumes an axisymmetric representation of the turbine
+geometry, and in doing so completely neglects unsteady effects due to
+the rotation of turbine blades in a plane. 
 
+As the flow moves through the actuator disk, it experiences a force
+normal to the represented turbine blade surface. This force will
+generally be in opposition to the flow direction, and will therefore
+impart a loss of momentum on the fluid. 
+Associated with the loss of axial and azimuthal momentum is a loss of
+energy which can be collected by an electrical generator attached
+to the rotor shaft if, as with a thrust, the rotor experiences a torque
+in the direction of rotation. 
 
-completely neglects unsteady effects\todo{write me}
+All the turbine cases shown in this study make the further
+simplification that the rotation speed of the disk is constant. 
+In this way it is assumed that the turbine exerts a torque equal and
+opposite to that of the airflow which keeps the rotational speed
+constant. The work done by the aerodynamic torque on the
+turbine is assumed to feed into a generator, where it is converted into
+electrical energy. 
 
-Associated with the loss of axial momentum is a loss of energy which can
-be collected by, say, an electrical generator attached to the rotor
-shaft if, as with a thrust, the rotor experiences a torque in the
-direction of rotation. 
-
-The generator exerts a torque equal and opposite to that of the airflow
-which keeps the rotational speed constant
-
- The work done by the aerodynamic torque on the
-generator is converted into electrical energy.
-
-It is assumed that the forces on a blade element can be calculated by
-means of two-dimensional aerofoil characteristics using an angle of
-attack determined from the incident resultant velocity in the
-cross-sectional plane of the element. In this way the velocity component
-in the span-wise direction is ignored. Three-dimensional effects are
-also ignored\cite{burton2001wind}. 
-
-The turbine representation uses an ``actuator disk'' model. This model
-(also often referred to as a ``Blade Element Momentum'' theory or the
-``actuator line technique'') is commonly used in wind turbine
-design\cite{shevell1983fundamentals,betz,leclerc}. The essence of this
-model is to approximate the individual spinning turbine blades as a
-washed-out ``disk'', as shown in Figure~\ref{fig:actuator_disk}.  
 
    \begin{figure}[!htb]
     \centering
@@ -589,7 +585,9 @@ washed-out ``disk'', as shown in Figure~\ref{fig:actuator_disk}.
      \label{fig:actuator_disk}
    \end{figure}
 
-The normal in the blade's velocity direction is,
+We now detail the mathematical machinery necessary to specify the
+direction and magnitude of force between the turbine and flow. The
+normal in the blade's velocity direction is, 
 \begin{equation*}
 n_B = \frac{u_B}{||u_B||}. 
 \end{equation*}
@@ -597,7 +595,7 @@ Where $u_B$ is the blade velocity and is specified. The normal in the
 fan vertical direction is typically, $n_v = \left(0,0,1\right)$, 
 e.g. pointing ``up''. Then the normal in the radial direction must be, 
 \begin{equation*}
-n_r = n_B \times n_v. 
+n_r = n_B \times n_v
 \end{equation*}
 
 % The fan-wing-plane bit means that we're only looking at the projection
@@ -611,14 +609,14 @@ n_r = n_B \times n_v.
 % (01:04:25 PM) Roy Stogner: Note that we simplify that equation a tiny
 % bit by using the fact that U_B and N_R are perpendicular. 
 
-Then, the fan-wing-plane component (e.g. the plane perpendicular to the 
+and the fan-wing-plane component (e.g. the plane perpendicular to the 
 radius) of local relative velocity is
 \begin{equation}
 u_p = u - (u\cdot n_r)\cdot n_r - u_B. 
 \end{equation}
-This is the projection of velocity into the plane that's defined by the
-base velocity and vertical direction. 
-Now the ``forward velocity'' in the reference frame of the turbine is, 
+This is the projection of velocity into the plane defined by the base
+velocity and vertical direction. Now the ``forward velocity'' in the
+reference frame of the turbine is,  
 \begin{equation}
 u_{\text{fwd}}= -u_p \cdot n_B
 \end{equation}
@@ -626,7 +624,8 @@ and the ``upward'' velocity in this frame is,
 \begin{equation}
 u_{\text{up}} = u_p \cdot n_v. 
 \end{equation}
-Finally, the angle with respect to the fan velocity direction is specified, 
+The angle with respect to the fan velocity direction may now be
+specified as, 
 \begin{equation}
  \theta_f = \text{atan2}\left(\frac{u_{\text{up}}}{u_{\text{fwd}}}\right)
  %\theta_f =
@@ -639,23 +638,33 @@ the blade angle relative to the fan vertical direction,
  \phi = \theta_f + \beta(r).
 \end{equation}
 
+In words, the blade angle (or local pitch) is measured from the plane of
+rotation to the chord line (i.e., the straight line connecting leading
+to trailing edge). These parameters, $\beta$, C, etc. are visually
+depicted in Figure \ref{fig:turbine_image}.  
+
+In this way, the actuator disk model assumes that the forces on a blade
+element can be calculated by means of two-dimensional aerofoil
+characteristics using an angle of attack determined from the incident
+resultant velocity in the cross-sectional plane of the element. The
+velocity component in the span-wise direction is
+ignored. Three-dimensional effects are also
+ignored\cite{burton2001wind}.  
+
   \begin{figure}[!htb]
     \begin{center}
      \includegraphics[width = 10 cm]{figs/turbine_image}
-     \caption{}
+     \caption{The represented turbine blade
+     geometry. $\beta$, the blade angle, is measured relative to the
+     horizontal plane. C, the chord length of the turbine, is defined as
+     the straight line distance from leading to trailing edge. } 
      \label{fig:turbine_image}
     \end{center}
   \end{figure}
 
-In words, the blade angle (or local pitch) is measured from the plane of
-rotation to the chord line (i.e., the straight line connecting leading
-to trailing edge). These parameters, $\beta$, etc. are visually depicted
-in Figure \ref{fig:turbine_image}.  
-
-Todo\todo{note how mC is all that matters}
-
-
 \subsection{Drag Polar Specification}
+
+We need 
 
 Duane says that these were generated with COMSOL.\todo{write to this}
 
@@ -686,6 +695,9 @@ Volumetric force is
 					      n_\text{lift} + C_d \cdot n_\text{drag}  \right)}
 \end{equation}
 
+
+
+Todo\todo{note how mC is all that matters}
 
 Where c is the chord length (specified as input), and A is the area,
 which is also specified. Now, only the drag polars must be specified in
@@ -796,8 +808,9 @@ approach is unique in its use of Babuska's penalty treatment of
 constraints\cite{1973fempen,ZAMM:ZAMM19880680925} to enforce the
 behavior at the boundary. This method was selected because it is easily
 imposed in the FEM context, and the penalty method proper has been
-explored in detail in the literature.\todo{add more discussion of
-healing length implications here} 
+explored in detail in the literature.
+%\todo{add more discussion of
+%healing length implications here} 
 
 Note that despite the similarity in name, this is a distinct technique
 from the ``penalty immersed boundary method'' of Kim and
