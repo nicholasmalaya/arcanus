@@ -493,10 +493,9 @@ as
 where $\hat{{\bf r}}$ and $\hat{{\bf \theta}}$ are unit
 vectors in the radial and azimuthal directions, respectively.
 With this vane-normal vector field specified, a body force ${\bf f_v}$
-is defined
-that will drive the velocity in the ${\bf n}$ direction toward zero,
-effectively turning the flow to be parallel to the vanes. The body
-force is defined:
+is defined that will drive the velocity in the ${\bf n}$ direction
+toward zero, effectively turning the flow to be parallel to the
+vanes. The body force is defined by,
 \begin{equation}
  {\bf f}_v= -\frac{1}{\ell_v}|{\bf u}|({\bf u}\cdot{\bf n}){\bf n}
  \label{eqn:body_force}
@@ -504,14 +503,23 @@ force is defined:
 with ${\bf u}$ the velocity and $\ell_v$ is a specified length
 scale. $\ell_v$ represents the distance over which the
 flow evolves under the influence of the body force before the
-velocity in the normal direction is reduced by a factor of $1/{\bf
-e}$.\todo{add image of annealing distance}
-In other words, this is the length scale over which the
-normal component of the velocity decays exponentially.
-It is a modeling constant and is specified to be
-the same order as the separation distance between neighboring vanes in
-the physical vane configuration, since entry lengths in internal flows
-scale with the width of the channel.\todo{show calibration of this}
+velocity in the normal direction is reduced by a factor of $1/{\bf 
+e}$.
+This is the length scale over which the normal component of the velocity
+decays exponentially. It is the distance analog to the more familiar
+time constant of exponential decay. 
+
+
+$\ell_v$ is a modeling constant and must be specified. Our expectation
+is that it will be the same order as the separation distance between
+neighboring vanes in the physical vane configuration, since entry 
+lengths in internal flows scale with the width of the channel. 
+Precisely this study is depicted in Figure~\ref{}\todo{help me}, where the
+average misfit between the turning vane angle and 
+
+
+%\todo{show
+%calibration of this} 
 
 This virtual vane formulation is similar to the ``actuator disk'' model
 commonly used to represent the rotor of a wind turbine and
@@ -728,22 +736,22 @@ entire rotor disk; the original researchers did not intend it to be
 applied to a rotor annulus. However, because of a limited amount  of
 experimental data, an alternative model does not exist.  
 
-Various researchers\cite{?} (Wilson and Patton  1978) have suggested
-various other corrections to actuator-disk theory. These corrections
-include (among others) accounting for blade thickness on local angle of
-attack, cascade width for high solidity turbines, and spanwise gaps for
-partial span pitch control. The impact of these missing physics can be
-significant, for instance, blade thickness and effects can be  
-aerodynamically significant near the rotor hub and may affect the
-in-plane forces on the rotor\cite{Moriarty_aerodyntheory}. Nevertheless,
+Various researchers\cite{Moriarty_aerodyntheory,wilson1978design} have
+suggested various other corrections to actuator-disk theory. These
+corrections include (among others) accounting for blade thickness on
+local angle of attack, cascade width for high solidity turbines, and
+spanwise gaps for partial span pitch control. The impact of these
+missing physics can be significant, for instance, blade thickness and
+effects can be aerodynamically significant near the rotor hub and may 
+affect the in-plane forces on the rotor. Nevertheless,
 these corrections are not treated in the simulations presented in this
 document.  
 
-
 a duct eliminates tip losses\todo{write me}
 
-Additionally, a new modification to the actuator disk is demonstrated in 
-Section~\ref{sec:solidity}. 
+Additionally, a new modification to the actuator disk that modifies the
+model to further account for blade solidity is demonstrated in this work
+in Section~\ref{sec:solidity}. 
 
 \section{Solid Surface Representation}
 \label{subsec:solid_surface}
@@ -781,8 +789,8 @@ Note that despite the similarity in name, this is a distinct technique
 from the ``penalty immersed boundary method'' of Kim and
 Peskin\cite{:/content/aip/journal/pof2/19/5/10.1063/1.2734674}.  
 
-show image of cylinder in 2d flow?\todo{add cylinder image? what does
-this show?} 
+%show image of cylinder in 2d flow?\todo{add cylinder image? what does
+%zthis show?} 
 
 %Typically, the enforcement occurs along a domain
 %boundary, but in this work it is used in the interior, 
@@ -978,7 +986,7 @@ The value of $E_{\text{injected}}$ is typically a few percent of the
 total kinetic energy flux measured through the top of the
 vanes.
 
-Dessens~\cite{dessens1972influence} and Leslie~\cite{leslie1977surface}
+Leslie~\cite{leslie1977surface} and Dessens~\cite{dessens1972influence}
 found that the introduction of surface roughness effects caused a slight
 decrease in tangential velocity for simulated vortices, but an increase
 in radial and axial velocities. 
