@@ -509,14 +509,28 @@ This is the length scale over which the normal component of the velocity
 decays exponentially. It is the distance analog to the more familiar
 time constant of exponential decay. 
 
-
 $\ell_v$ is a modeling constant and must be specified. Our expectation
 is that it will be the same order as the separation distance between
 neighboring vanes in the physical vane configuration, since entry 
 lengths in internal flows scale with the width of the channel. 
-Precisely this study is depicted in Figure~\ref{}\todo{help me}, where the
-average misfit between the turning vane angle and 
+This study is depicted in Figure~\ref{}\todo{help me}, where
+the average misfit between the turning vane angle in an explicitly
+represented vane configuration and the flow is plotted. 
 
+Now, $\ell_v$ can be calibrated to explicitly match the results of the
+gridded vanes by assuming that the vane mismatch obeys a radial
+exponential decay of the form $f(r) = A e^{-\ell_v r}$, and taking the
+logarithmic derivative of this quantity, 
+\begin{eqnarray}
+ \frac{f'}{f} = \frac{A e^{-\ell_v r} * -\ell_v}{A e^{-\ell_v r}} =
+  -\ell_v. 
+\end{eqnarray}
+
+This is shown in Figure~\ref{}, where we would expect a flat line if the
+misfit between vanes was perfectly described by an exponential
+decay. While the curve does not perfectly coincide with this, the curve
+does not have severe convexity and the average is sufficient for the
+purposes of this study.
 
 %\todo{show
 %calibration of this} 
