@@ -941,13 +941,31 @@ colleagues.
 Surface roughness effects have been shown to play a role in the
 formation of dust devils and related atmospheric
 phenomena\cite{oke1987boundary}. For the flat and sandy
-regions we are simulating, the impact is expected to be a small velocity
-perturbation  in the vertical direction. This is modeled as a volumetric
-forcing in a narrow region above the surface, 
+regions we are simulating, the impact is expected to be a small
+``kick-up'' forcing velocity perturbation in the vertical
+direction. Assuming azimuthal symmetry and forcing only inside the
+region of the vanes ($r<R$), this is modeled as a volumetric forcing in
+a narrow region above the surface,  
 \begin{equation}
- F^{'''}_{z_0} = \frac{1}{2}\rho V_z^2/z_{0}, 
+ F^{'''}_{z_0} = \frac{1}{2}\rho V_f^2/z_{0}, 
 \end{equation}
-where $z_{0}$ is the roughness height. We ensure that the energy
+where $z_{0}$ is the roughness height. We further assume that this
+forcing is independent of ${\bf u}$. To estimate the magnitude of
+$V_f$, we use a simple result from Newton's laws of motion,
+\begin{eqnarray}
+z_0 = \frac{1}{2} a t^2, \\
+t = \sqrt{\frac{2 a}{z_0}}. \\
+\end{eqnarray}
+Combining this with, $V_f = a t$, 
+\begin{equation}
+V_f = \sqrt{2 a z_0}.
+\end{equation}
+The roughness height zero is set to the boundary layer thickness of 10
+centimeters, and the acceleration was estimated at , based on the study
+of surface roughness impact on tornado-like vorticies of Natarajan and
+Hangan\cite{Natarajan2012577}.  
+
+We ensure that the energy
 introduced into the flow is a small fraction of total flow energy by comparing
 this with the energy flux through the top of the vanes. The total energy
 added is measured as,  
@@ -960,17 +978,23 @@ The value of $E_{\text{injected}}$ is typically a few percent of the
 total kinetic energy flux measured through the top of the
 vanes.
 
-Natarajan and Hangan\cite{Natarajan2012577} found that the introduction
-of surface roughness effects caused a slight decrease in aximuthal
-velocity for simulated vortices. Conversely, hurricane studies have
-found consistently found enhanced heat transport near the surface lead
+Dessens~\cite{dessens1972influence} and Leslie~\cite{leslie1977surface}
+found that the introduction of surface roughness effects caused a slight
+decrease in tangential velocity for simulated vortices, but an increase
+in radial and axial velocities. 
+On a related note, hurricane studies have
+consistently found enhanced heat transport near the surface lead
 to storm intensification, indicating an important role due to roughness
 effects~\cite{Zeng2010,GRL:GRL50047,hurricane_drag}. The interaction
 with the surface and therefore, the impact of roughness, is likely
 complicated and is not considered in detail in this work. It should be 
 noted that in the simulations performed in the course of this study, the
-surface roughness model was observed to modestly intensify the thermal vortex,
-typically by several percent.  
+surface roughness model was observed to modestly intensify the thermal
+vortex, typically by several percent. While this formulation was
+undoubtedly {\it ad-hoc}, studies performed on representative test 
+cases found that results were not sensitive to small
+changes in the forcing region height, radial distance, or
+forcing magnitude. 
 
 %This general forcing provides additional capabilities including the
 %ability to investigate engineering greater surface roughness or
