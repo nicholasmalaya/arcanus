@@ -5,31 +5,37 @@
 import sys
 
 # no twist
-flux = [0.99,1.02,1.06,1.1,1.09,1.11,1.117,1.12,1.115,1.10,1.04]
-it = [35,40,43,45,47,50,53,55,57,60,65]
+r = [1.7,1.45,1.2,1.0]
+f = [0.54,0.32,0.20,0.28]
 
 #
 # iteration number (should be same as flux, above)
 #
 #it = range(len(flux))
 
+xmax=1.8
+xmin=1.0
+
 #
 # now, plot it and make it look good while you are at it
 #
+import numpy as np
 import matplotlib.pyplot as plt
 fsz=24
 
 plt.figure(1)
 plt.subplot(211)
 #fig,ax = plt.subplots()
-plt.plot(it,flux, 'ko-', color='blue',label='No Twist')
 
-#plt.axvline(x=55,linewidth=2, color = 'blue')
-#plt.axvline(x=47, ymin=0.5, ymax = 1.1, linewidth=2, color = 'red')
 
-plt.xlim(30, 70)
-plt.ylim(0.9, 1.4)
-plt.ylabel(r'Misfit',fontsize=fsz)
+#
+# figure one
+#
+
+plt.plot(r,f, 'ko-', color='blue',label='No Twist')
+plt.xlim(xmax, xmin)
+#plt.ylim(0.9, 1.4)
+plt.ylabel(r'$\frac{\langle {\bf u }\cdot {\bf t_v } \rangle}{|| {\bf u} ||}$',fontsize=fsz,rotation=0,labelpad=40)
 #ax.set_yscale('log')
 plt.legend()
 #ax.xaxis.set_major_formatter(plt.NullFormatter())
@@ -39,18 +45,22 @@ plt.legend()
 # figure two
 #
 plt.subplot(212)
-plt.plot(it,flux, 'ko-', color='blue',label='No Twist')
-plt.ylabel(r'$\frac{f\prime}{f}$',fontsize=fsz,rotation=0,labelpad=20)
+plt.plot(r,f, 'ko-', color='blue',label='No Twist')
+plt.ylabel(r'$\frac{f^{\prime}}{f}$',fontsize=fsz,rotation=0,labelpad=40)
 plt.xlabel(r'Radius (meters)',fontsize=fsz)
+plt.axhline(y=np.average(f), linewidth=2, color = 'red')
+plt.xlim(xmax, xmin)
 
 #
 # save figure
 #
+plt.tight_layout()
 plt.savefig('annealing.png')
 
 #
 # MARK IT ZERO
 #
+
 print 'exiting successfully...'
 sys.exit(0)
 
