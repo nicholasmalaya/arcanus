@@ -738,9 +738,16 @@ lift and drag functions, and were fit to the COMSOL data. Typically,
 16\textsuperscript{th} order polynomials were used to ensure that the
 interpolated function closely matched the provided data. The drag and
 lift functions for the three cases considered (flat plates,
-$180^{\circ}$, $90^{\circ}$ circles)are shown in
+$180^{\circ}$, $90^{\circ}$ circles) are shown in
 Figures~\ref{fig:flat_plate_drag},\ref{fig:semi_drag} and
-\ref{fig:90_drag}. 
+\ref{fig:90_drag}. The flat plate drag polars are smoothly
+varying and so the interpolated function is close to the provided
+data. The semi-circles ($180^{\circ}$) are largely accurate, but near
+zero degrees the COMSOL data for the lift function shows a sharp feature
+that is not well resolved by the interpolating polynomial. This is also
+the case for the quarter-circles, where near a zero angle of attack the
+lift function has a near discontinuity that is not well resolved by the
+interpolated function. 
 
 %The semi-circular plots are more complicated. Here, we use a high order
 %polynomial fit to continuously interpolate between drag polars. 
