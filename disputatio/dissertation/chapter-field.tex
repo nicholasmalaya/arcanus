@@ -451,9 +451,10 @@ where $a_{i,j}$ are coefficients of the polynomial which are selected by
 minimizing the residual between the specified vane values and the
 polynomial evaluated at that point. In other words, we find the
 least-squares solution to a linear matrix equation, which is
-under-determined. The solution to the equation $A x = b$ is found by
-computing a vector $x$ that minimizes the Euclidean 2-norm $|| b - A x
-||^2$. The polynomials were computed in separate python routines and
+under-determined. The solution to the equation $A {\bf x} = {\bf b}$ is
+found by computing a vector ${\bf x}$ that minimizes the Euclidean
+2-norm $|| {\bf b} - A {\bf x} ||^2$. The polynomials were computed in
+separate python routines and 
 resulted in a generated input file. This specifies the vane angle
 function within the region of the vanes. This function is then used as
 part of the input for the field runs (see Appendix~\ref{sec:archiving}
@@ -922,15 +923,16 @@ fluid velocity. Thus, in addition to forcing the flow to align with the
 vane surface, the flow will also be slowed. The vane formulation now
 acts in a dissipative manner, and is not energy conserving. 
 
-Our unit forcing vector $\hat f$ is simply the negative normalized inner
-product of the velocity, $u$, and the turning vane tangent vector $\hat
-t$,  
+Our unit forcing vector ${\bf \hat f}$ is simply the negative normalized inner
+product of the velocity, ${\bf u}$, and the turning vane tangent vector
+${\bf \hat t^v}$,  
 \begin{equation}
-- \frac{u \cdot \hat t}{|| u \cdot \hat t ||} = \hat f. 
+- \frac{{\bf u} \cdot {\bf \hat t^v}}{|| {\bf u} \cdot {\bf \hat t^v}
+ ||} = {\bf \hat f}.  
 \end{equation}
 The volumetric force applied is, 
 \begin{equation}
- F = \hat f \, C_f \, \frac{1}{2} \frac{\rho || u ||^2}{\delta}
+ F = {\bf \hat f} \, C_f \, \frac{1}{2} \frac{\rho || {\bf u} ||^2}{\delta}
 \end{equation}
 Where $C_f$ is the skin friction coefficient (which must be determined),
 $\rho $ is the density and $\delta$ the channel half width. 
@@ -1049,11 +1051,11 @@ ratio of the free area in the disk versus the blade sizes.
 
 The length of each blade blocking vertical flow in the actuator disk is, 
 \begin{equation}
-  Ch * \text{Cos}(\beta(r)) = Ch_x(r). 
+  c * \text{Cos}(\beta(r)) = c_x(r). 
 \end{equation}
 The total length in an annular region that is blocking is therefore,
 \begin{equation}
-  N * Ch_x(r) = l_B(r),
+  N * c_x(r) = l_B(r),
 \end{equation}
 Where N is the number of blades. 
 Then, the ratio of an annular length that is impeded by blades is, 
@@ -1079,7 +1081,7 @@ The flow angle with respect to turbine velocity is therefore modified
 from Equation~\ref{eq:fan_direction} in
 Section~\ref{sec:actuator_disk},
 \begin{equation}
- \theta_f = \text{tan}^{-1}(\frac{U_{\text{up}}}{U_{\text{fwd}}})
+ \theta_f = \text{tan}^{-1}(\frac{{\bf u_{\text{up}}}}{{\bf u_{\text{fwd}}}})
 \end{equation}
 to,
 \begin{equation}
@@ -1090,8 +1092,8 @@ this way the velocity vector will be completely aligned with drag.
 
 Furthermore Equation~\ref{eq:force_turb}, 
 \begin{equation}
- F = \frac{1}{2}\frac{c \rho U_p^2}{A}(C_L \cdot n_{\text{lift}} + C_d
-  \cdot n_{\text{drag}})
+ F = \frac{1}{2}\frac{c \rho U_p^2}{A}(C_L \cdot {\bf n_{\text{lift}}} + C_d
+  \cdot {\bf n_{\text{drag}}})
 \end{equation}
 is modified so that, 
 \begin{equation}

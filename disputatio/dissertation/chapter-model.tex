@@ -695,37 +695,47 @@ Duane says that these were generated with COMSOL.\todo{write to this}
 man, describe that these are interpolated!\todo{write me}
 
 We can now define the lift and drag
-normals, where the direction opposing drag is, 
+normals, where the direction opposing drag is, by definition, 
 \begin{equation}
-n_{\text{drag}} = \frac{u_p}{||u_p||} 
+{\bf n_{\text{drag}}} = \frac{{\bf u_p}}{||{\bf u_p}||} 
 \end{equation}
-and the direction opposing lift orthogonal to the drag and the radial
+and the direction opposing lift orthogonal to the drag and the radial 
 direction,  
 \begin{equation}
-n_{\text{lift}}= n_{\text{drag}} \times n_r. 
+{\bf n_{\text{lift}}}= {\bf n_{\text{drag}}} \times {\bf n_r}. 
 \end{equation}
 
 Then, the force on the turbine is, 
+% \begin{equation}
+%  \boxed{F = \frac{1}{2}\frac{\rho u_p^2 c}{A}\left(C_l \cdot
+% 					      n_\text{lift} + C_d \cdot
+% 					      n_\text{drag}  \right)}
+% \label{eq:force_turb}
+% \end{equation}
 \begin{equation}
- \boxed{F = \frac{1}{2}\frac{\rho u_p^2 c}{A}\left(C_l \cdot
-					      n_\text{lift} + C_d \cdot
-					      n_\text{drag}  \right)}
+ F = \frac{1}{2}\frac{\rho {\bf u_p}^2 c}{A}\left(C_l \cdot
+					      {\bf n_\text{lift}} + C_d \cdot
+					      {\bf n_\text{drag}}  \right).
 \label{eq:force_turb}
 \end{equation}
 
-Volumetric force is
+The actuator disk is an approximation of the blades as a volumetric
+forcing ``disk'', and so our interest is in this quantity,
 \begin{equation}
- \boxed{\frac{n F}{2 \pi r t} = \frac{F}{\text{volume}}= \frac{1}{2}\frac{\rho u_p^2 c}{A}\left(C_l \cdot
-					      n_\text{lift} + C_d \cdot n_\text{drag}  \right)}
+\frac{F}{\text{volume}} = \frac{m F}{2 \pi r t} = \frac{1}{2}\frac{\rho
+ {\bf u_p}^2 m c}{A}\left(C_l \cdot {\bf n_\text{lift}} + C_d \cdot {\bf
+		   n_\text{drag}} \right).  
+\label{eq:vol_turb}
 \end{equation}
 
+Where c is the chord length, t the blade thickness, which is also specified. 
+Note that the product, $N c$ appears in Equation~\ref{eq:vol_turb},
+above. This quantity is a solidity (or blockage) factor, and the impact
+will be discussed in greater detail in Section~\ref{sec:solidity}. 
 
+Now, only the drag polars must be
+specified in order to fully determine the force on the blades.
 
-Todo\todo{note how mC is all that matters}
-
-Where c is the chord length (specified as input), and A is the area,
-which is also specified. Now, only the drag polars must be specified in
-order to fully determine the force on the blades.
 
 The semi-circular plots are more complicated. Here, we use a high order
 polynomial fit to continuously interpolate between drag polars. 
