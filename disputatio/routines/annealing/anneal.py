@@ -19,8 +19,9 @@ it = [35,40,43,45,47,50,53,55,57,60,65]
 import matplotlib.pyplot as plt
 fsz=24
 
-plt.subplot(1, 1, 1)
-fig,ax = plt.subplots()
+plt.figure(1)
+plt.subplot(211)
+#fig,ax = plt.subplots()
 plt.plot(it,flux, 'ko-', color='blue',label='No Twist')
 
 #plt.axvline(x=55,linewidth=2, color = 'blue')
@@ -29,10 +30,18 @@ plt.plot(it,flux, 'ko-', color='blue',label='No Twist')
 plt.xlim(30, 70)
 plt.ylim(0.9, 1.4)
 plt.ylabel(r'Misfit',fontsize=fsz)
-plt.xlabel(r'Radius (meters)',fontsize=fsz)
 #ax.set_yscale('log')
 plt.legend()
 #ax.xaxis.set_major_formatter(plt.NullFormatter())
+
+
+#
+# figure two
+#
+plt.subplot(212)
+plt.plot(it,flux, 'ko-', color='blue',label='No Twist')
+plt.ylabel(r'$\frac{f\prime}{f}$',fontsize=fsz,rotation=0,labelpad=20)
+plt.xlabel(r'Radius (meters)',fontsize=fsz)
 
 #
 # save figure
