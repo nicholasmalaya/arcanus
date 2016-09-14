@@ -482,11 +482,11 @@ is applied in the annular region that contains the vanes.
 
 Vane geometry is specified by the angle $\phi$ a vane makes with a
 radial line as a function of the radial coordinate, $r$, and the polar
-angle, $\theta$. A unit normal to the vane surface ${\bf n}$ is defined
+angle, $\theta$. A unit normal to the vane surface ${\bf n_v}$ is defined
 as 
 %
 \begin{equation}
- {\bf n}({\bf x}) = \sin \left(\phi(r,\theta) \right) \hat{{\bf r}}+ \cos
+ {\bf n_v}({\bf x}) = \sin \left(\phi(r,\theta) \right) \hat{{\bf r}}+ \cos
   \left(\phi(r,\theta) \right) \hat{{\bf \theta}} 
 \end{equation}
 %
@@ -497,7 +497,7 @@ is defined that will drive the velocity in the ${\bf n}$ direction
 toward zero, effectively turning the flow to be parallel to the
 vanes. The body force is defined by,
 \begin{equation}
- {\bf f}_v= -\frac{1}{\ell_v}|{\bf u}|({\bf u}\cdot{\bf n}){\bf n}
+ {\bf f}_v= -\frac{1}{\ell_v}|{\bf u}|({\bf u}\cdot{\bf n_v}){\bf n_v}
  \label{eqn:body_force}
 \end{equation}
 with ${\bf u}$ the velocity and $\ell_v$ is a specified length
@@ -513,9 +513,30 @@ $\ell_v$ is a modeling constant and must be specified. Our expectation
 is that it will be the same order as the separation distance between
 neighboring vanes in the physical vane configuration, since entry 
 lengths in internal flows scale with the width of the channel. 
-This study is depicted in Figure~\ref{}\todo{help me}, where
-the average misfit between the turning vane angle in an explicitly
-represented vane configuration and the flow is plotted. 
+This study is depicted in Figure~\ref{fig:annealing}, where
+the average misfit between the turning vane angle in an
+explicitly represented vane configuration and the flow is plotted. 
+
+The trend is clear that as the flow moves through the turning vanes
+towards the center of the apparatus it is brought into alignment with
+the turning vane direction. 
+Notice that the misfit actually grows near the minimum, likely due to
+unmodeled transient effects such as vortex shedding off the vane
+trailing edges. 
+
+   \begin{figure}[!htb]
+    \centering
+    \includegraphics[width =0.47\textwidth]{figs/gridded_region}
+     \caption{The average misfit between the gridded vanes and the
+    flow. The averaging is accomplished through azimuthal
+    averaging. This was taken at half the height of the turning vanes,
+    although the results do not differ at greater or lower height. Note
+    that the plots are normalized by the misfit at the entrance to the
+    vanes. $R_max$ is the furthest radial extent of the gridded vanes,
+    and $R_min$ the smallest radial extent. }
+     \label{fig:annealing}
+   \end{figure}
+
 
 Now, $\ell_v$ can be calibrated to explicitly match the results of the
 gridded vanes by assuming that the vane mismatch obeys a radial
@@ -548,7 +569,7 @@ described in the subsequent section.
 The turbine is modeled similarly to the virtual vanes. As with the
 vanes, it is desirable to avoid explicitly representing the turbine
 blade control surfaces. Instead, the turbine is modeled using the
-actuator disc simplification. 
+actuator disc simplification. \todo{need bf here}
 This model (also often referred to as a ``Blade Element Momentum''
 theory or the ``actuator line technique'') is commonly used in wind
 turbine design\cite{shevell1983fundamentals,betz,leclerc}. The essence
@@ -592,10 +613,10 @@ normal in the blade's velocity direction is,
 n_B = \frac{u_B}{||u_B||}. 
 \end{equation*}
 Where $u_B$ is the blade velocity and is specified. The normal in the
-fan vertical direction is typically, $n_v = \left(0,0,1\right)$, 
+fan vertical direction is typically, $n_f = \left(0,0,1\right)$, 
 e.g. pointing ``up''. Then the normal in the radial direction must be, 
 \begin{equation*}
-n_r = n_B \times n_v
+n_r = n_B \times n_f
 \end{equation*}
 
 % The fan-wing-plane bit means that we're only looking at the projection
@@ -622,7 +643,7 @@ u_{\text{fwd}}= -u_p \cdot n_B
 \end{equation}
 and the ``upward'' velocity in this frame is, 
 \begin{equation}
-u_{\text{up}} = u_p \cdot n_v. 
+u_{\text{up}} = u_p \cdot n_f. 
 \end{equation}
 The angle with respect to the fan velocity direction may now be
 specified as, 
@@ -878,7 +899,7 @@ image depicting these two cases in shown in Figure \ref{fig:sep_model}.
   \end{center}
 \end{figure}
 
-Let $\bf n^v$ be the normal vector to the vanes,
+Let $\bf n^v$ be the normal vector to the vanes,\todo{change to subscripts?}
 and $\bf n^r$ the normal vector pointing out of the vane
 region\footnote{\normalsize The superscripts ``v'' and ``r'' stand for
 vane and radial, respectively.}.  
