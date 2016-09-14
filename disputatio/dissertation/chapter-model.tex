@@ -441,7 +441,6 @@ assumption that the Prandtl number is unity.
 %therefore be higher than the ambient regions outside the vanes. 
 
 
-
 \section{Vane Representation}
 \label{subsec:vane}
 To rapidly prototype general system configurations, the
@@ -534,7 +533,8 @@ trailing edges.
     The subfigure shows the logarithmic derivative, as well as the
     average of the logarithmic derivative in red. 
 $R_{M}$ is the furthest radial extent of the gridded vanes,
-    and $R_{m}$ the smallest radial extent. }
+    and $R_{m}$ the smallest radial extent. The subfigure shows the
+    logarithmic derivative of this quantity.}
      \label{fig:annealing}
    \end{figure}
 
@@ -548,11 +548,12 @@ logarithmic derivative of this quantity,
   -\ell_v. 
 \end{eqnarray}
 
-This is shown in Figure~\ref{}, where we would expect a flat line if the
-misfit between vanes was perfectly described by an exponential
-decay. While the curve does not perfectly coincide with this, the curve
-does not have severe convexity and the average is sufficient for the
-purposes of this study.
+This is shown in subfigure of Figure~\ref{fig:annealing}, where we would
+expect a flat line if the misfit between vanes was perfectly described
+by an exponential decay. While the curve does not perfectly coincide
+with this, the curve does not have severe convexity and the average is
+sufficient for this work. Based on this, the lengthscale $\ell_v$ was
+set to three. 
 
 %\todo{show
 %calibration of this} 
@@ -570,7 +571,7 @@ described in the subsequent section.
 The turbine is modeled similarly to the virtual vanes. As with the
 vanes, it is desirable to avoid explicitly representing the turbine
 blade control surfaces. Instead, the turbine is modeled using the
-actuator disc simplification. \todo{need bf here}
+actuator disc simplification. 
 This model (also often referred to as a ``Blade Element Momentum''
 theory or the ``actuator line technique'') is commonly used in wind
 turbine design\cite{shevell1983fundamentals,betz,leclerc}. The essence
@@ -611,13 +612,14 @@ We now detail the mathematical machinery necessary to specify the
 direction and magnitude of force between the turbine and flow. The
 normal in the blade's velocity direction is, 
 \begin{equation*}
-n_B = \frac{u_B}{||u_B||}. 
+n_B = \frac{{\bf u_B}}{||{\bf u_B}||}. 
 \end{equation*}
-Where $u_B$ is the blade velocity and is specified. The normal in the
-fan vertical direction is typically, $n_f = \left(0,0,1\right)$, 
-e.g. pointing ``up''. Then the normal in the radial direction must be, 
+Where ${\bf u_B}$ is the blade velocity vectorand is specified. The
+normal in the fan vertical direction is typically ${\bf n_f} =
+\left(0,0,1\right)$, e.g. pointing ``up''. Then the normal in the radial
+direction must be,  
 \begin{equation*}
-n_r = n_B \times n_f
+{\bf n_r} = {\bf n_B} \times {\bf n_f}
 \end{equation*}
 
 % The fan-wing-plane bit means that we're only looking at the projection
@@ -634,22 +636,22 @@ n_r = n_B \times n_f
 and the fan-wing-plane component (e.g. the plane perpendicular to the 
 radius) of local relative velocity is
 \begin{equation}
-u_p = u - (u\cdot n_r)\cdot n_r - u_B. 
+{\bf u_p} = {\bf u} - ({\bf u}\cdot {\bf n_r})\cdot {\bf n_r} - {\bf u_B}. 
 \end{equation}
 This is the projection of velocity into the plane defined by the base
 velocity and vertical direction. Now the ``forward velocity'' in the
 reference frame of the turbine is,  
 \begin{equation}
-u_{\text{fwd}}= -u_p \cdot n_B
+{\bf u_{\text{fwd}}}= -{\bf u_p} \cdot {\bf n_B}
 \end{equation}
 and the ``upward'' velocity in this frame is, 
 \begin{equation}
-u_{\text{up}} = u_p \cdot n_f. 
+{\bf u_{\text{up}}} = {\bf u_p} \cdot {\bf n_f}. 
 \end{equation}
 The angle with respect to the fan velocity direction may now be
 specified as, 
 \begin{equation}
- \theta_f = \text{atan2}\left(\frac{u_{\text{up}}}{u_{\text{fwd}}}\right)
+ \theta_f = \text{atan2}\left(\frac{{\bf u_{\text{up}}}}{{\bf u_{\text{fwd}}}}\right)
  %\theta_f =
   %\text{tan}^{-1}\left(\frac{u_{\text{up}}}{u_{\text{fwd}}}\right)
   \label{eq:fan_direction}
