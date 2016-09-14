@@ -688,14 +688,8 @@ ignored\cite{burton2001wind}.
 
 \subsection{Drag Polar Specification}
 
-We need 
-
-Duane says that these were generated with COMSOL.\todo{write to this}
-
-man, describe that these are interpolated!\todo{write me}
-
-We can now define the lift and drag
-normals, where the direction opposing drag is, by definition, 
+We now define the lift and drag normals, where the direction opposing
+drag is, by definition,  
 \begin{equation}
 {\bf n_{\text{drag}}} = \frac{{\bf u_p}}{||{\bf u_p}||} 
 \end{equation}
@@ -731,14 +725,25 @@ forcing ``disk'', and so our interest is in this quantity,
 Where c is the chord length, t the blade thickness, which is also specified. 
 Note that the product, $N c$ appears in Equation~\ref{eq:vol_turb},
 above. This quantity is a solidity (or blockage) factor, and the impact
-will be discussed in greater detail in Section~\ref{sec:solidity}. 
+will be discussed in greater detail in
+Section~\ref{sec:solidity}.\todo{finish this up}
 
-Now, only the drag polars must be
-specified in order to fully determine the force on the blades.
+Now, only the drag polars ($C_l,C_d$) must be specified to fully
+determine the force on the blades. These drag polars are functions of
+the angle of attack, $\alpha$. Plots of these drag polars were provided
+by Duane McCormick at UTRC and were generated with COMSOL. As the data
+was discrete, interpolated functions were used to provide a smoothly
+varying functional. High order polynomials were used to generate the
+lift and drag functions, and were fit to the COMSOL data. Typically,
+16\textsuperscript{th} order polynomials were used to ensure that the
+interpolated function closely matched the provided data. The drag and
+lift functions for the three cases considered (flat plates,
+$180^{\circ}$, $90^{\circ}$ circles)are shown in
+Figures~\ref{fig:flat_plate_drag},\ref{fig:semi_drag} and
+\ref{fig:90_drag}. 
 
-
-The semi-circular plots are more complicated. Here, we use a high order
-polynomial fit to continuously interpolate between drag polars. 
+%The semi-circular plots are more complicated. Here, we use a high order
+%polynomial fit to continuously interpolate between drag polars. 
 
 \begin{figure}[!htb]
   \begin{center}
