@@ -974,13 +974,13 @@ n_y\\
   \begin{algorithmic}
    \IF{($r_0 > r > r_i$)} 
    \IF{$(r_0 - r) < \delta$ \textbf{or} $((r - r_i) < \delta)$}
-   \STATE ${\bf n^r} = {\bf r}/|r|$
+   \STATE ${\bf n_r} = {\bf r}/|r|$
    \IF{$(r - r_i) < \delta$} 
-   \STATE ${\bf n^r} = -{\bf n^r}$
+   \STATE ${\bf n_r} = -{\bf n_r}$
    \ENDIF
-   \STATE  $\bf t^v = \left( {\bf n^{v^\perp}} \right) \text{sign}\left(
-  	    {\bf n^{v^\perp}} \cdot {\bf n^r} \right)$
-   \IF{$v \cdot t^v > 0$ \textbf{and} $v \cdot n^r < 0 $}
+   \STATE  $\bf t_v = \left( {\bf n_v^{\perp}} \right) \text{sign}\left(
+  	    {\bf n_v^{\perp}} \cdot {\bf n_r} \right)$
+   \IF{$v \cdot t_v > 0$ \textbf{and} $v \cdot n_r < 0 $}
    \STATE ${\bf n}({\bf x}) = \hat r$ \quad (Special Forcing)
    \ELSE
    \STATE  ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
@@ -999,9 +999,9 @@ n_y\\
 
 
 The forcing is modified when the velocity vector of the local flow, $\bf
-u$ is pointing in to the forcing region: ${\bf u} \cdot {\bf n^r} < 0$, and
+u$ is pointing in to the forcing region: ${\bf u} \cdot {\bf n_r} < 0$, and
 when the velocity vector is in the same direction as the tangent line to
-the vanes: ${\bf u} \cdot {\bf t^v} > 0 $. In these instances, the
+the vanes: ${\bf u} \cdot {\bf t_v} > 0 $. In these instances, the
 forcing acts as if there was a rigid surface past the vane edge, and
 gives the appearance of a special ``no-penetration'' condition for the
 velocity for these cases. The pseudo-code for this procedure is shown in
