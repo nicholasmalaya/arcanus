@@ -59,12 +59,13 @@ plt.legend()
 # figure two
 #
 plt.subplot(2,1,2)
-plt.plot(r,fp, 'ko-', color='black',label='Log Derivative')
+plt.plot(r,fp, 'ko-', color='black',label='Logarithmic Derivative')
 plt.ylabel(r'$\frac{f^{\prime}}{f}$',fontsize=fsz,rotation=0,labelpad=40)
 plt.xlabel(r'$\frac{r-R_{m}}{R_{M}-R_{m}}$',fontsize=fsz)
-plt.axhline(y=np.average(fp), linewidth=2, color = 'red')
+plt.axhline(y=np.average(fp), linewidth=2, color = 'red',label='Average')
 plt.xlim(xmax, xmin)
-plt.legend()
+plt.legend(loc='best')
+
 
 #
 # save figure
