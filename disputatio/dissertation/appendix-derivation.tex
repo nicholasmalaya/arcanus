@@ -10,13 +10,13 @@ In brief, our process is the following:
 
 \begin{itemize}
  \item Cast Navier Stokes + Boussinesq equations into weak form
- \item Prepare as an operator $Lc=f$
+ \item Prepare as an operator $L\,{\bf c}={\bf f}$
  \item Calculate Fr\'echet derivative
  \item Separate into differential (P) and constant (Z) components,
-       $L'[c] = P + Z$
+       $L'[{\bf c}] = P + Z$
  \item Choose stabilization operator such that $S = -P^*$
- \item Then stabilization has form, $a_h(c,\phi) = a(c,\phi) + \langle
-       Lc,S\phi \rangle_\tau$
+ \item Then stabilization has form, $a_h({\bf c},{\bf \phi}) = a({\bf c},{\bf \phi}) + \langle
+       L{\bf c},S{\bf \phi} \rangle_\tau$
 \end{itemize}
 
 This is essentially the least-squares stabilization proposed by Hughes
@@ -29,33 +29,33 @@ and extended to natural convection by Becker and Braack.
 \section{Weak Formulation of the Equations of Interest}
 
 We begin with the incompressible Navier-Stokes equations with Bousinesq
-buoyancy,\todo{bf}
+buoyancy,
 \begin{align}
- \nabla \cdot u &= \, 0 \label{eq_cont}\\
- \frac{\partial u}{\partial t} + u \cdot \nabla u &= -\frac{1}{\rho}
- \nabla p + \nu \nabla^2 u + g \frac{T'}{T_0} \label{eq_mom}\\
- \rho c_p \frac{\partial T}{\partial t} + u \cdot \nabla T &= \nabla
+ \nabla \cdot {\bf u} &= \, 0 \label{eq_cont}\\
+ \frac{\partial {\bf u}}{\partial t} + {\bf u} \cdot \nabla {\bf u} &= -\frac{1}{\rho}
+ \nabla p + \nu \nabla^2 {\bf u} + g \frac{T'}{T_0} \label{eq_mom}\\
+ \rho c_p \frac{\partial T}{\partial t} + {\bf u} \cdot \nabla T &= \nabla
  \cdot (k \nabla T) \label{eq_energy}
 \end{align}
 e.g. the continuity, momentum and energy equations, respectively. Our 
-state vector is $c =  \left[p,u,T \right]$. To cast these into
+state vector is ${\bf c} =  \left[p,{\bf u},T \right]$. To cast these into
 weak form we multiply by appropriate test 
-functions $\phi = \left[q,v,w \right] \in H^1_0(\Omega)$ and integrate over
-the domain, $\Omega \in \mathbb{R}^n$. Our system of equations now
-appears as, 
+functions ${\bf \phi} = \left[q,{\bf v},w \right] \in H^1_0(\Omega)$ and
+integrate over the domain, $\Omega \in \mathbb{R}^n$. Our system of
+equations now appears as, 
 \begin{align}
-  \bigintsss_\Omega q \nabla \cdot u \, dx &= 0 \\
- \bigintsss_\Omega \dot u \cdot v \, dx +
- \bigintsss_\Omega  (u \cdot \nabla) \, u \cdot v \, dx &=
- \bigintsss_\Omega \frac{p}{\rho} \nabla \cdot v \, dx - \nu \bigintsss_\Omega \nabla u \cdot \nabla v
- \,dx + \bigintsss_\Omega g \frac{T'}{T_0} \cdot v \, dx \\ 
- \rho c_p \bigintsss_\Omega \dot T \cdot w \, dx + \bigintsss_\Omega (u
+  \bigintsss_\Omega q \nabla \cdot {\bf u} \, dx &= 0 \\
+ \bigintsss_\Omega \dot {\bf u} \cdot {\bf v} \, dx +
+ \bigintsss_\Omega  ({\bf u} \cdot \nabla) \, {\bf u} \cdot {\bf v} \, dx &=
+ \bigintsss_\Omega \frac{p}{\rho} \nabla \cdot {\bf v} \, dx - \nu \bigintsss_\Omega \nabla {\bf u} \cdot \nabla {\bf v}
+ \,dx + \bigintsss_\Omega g \frac{T'}{T_0} \cdot {\bf v} \, dx \\ 
+ \rho c_p \bigintsss_\Omega \dot T \cdot w \, dx + \bigintsss_\Omega ({\bf u}
  \cdot \nabla) T \cdot w \, dx  &= -\bigintsss_\Omega (k \nabla T) \cdot
  \nabla w \, dx
 \end{align}
 
-where an ``over-dot'' denotes time diffentiation, e.g. $\dot u =
-\frac{\partial u}{\partial t}$. Note that both the pressure term as well
+where an ``over-dot'' denotes time diffentiation, e.g. $\dot {\bf u} =
+\frac{\partial {\bf u}}{\partial t}$. Note that both the pressure term as well
 as the viscous term were integrated by parts to reduce the required
 order of the solution on those state variables.  
 
