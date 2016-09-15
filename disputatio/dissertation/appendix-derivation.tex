@@ -125,8 +125,8 @@ term by term. The convective term is,
 \end{align}
 and the viscous term is, 
 \begin{align}
- \frac{\partial}{\partial \epsilon} \nabla^2 (u + \epsilon \hat u) \\
- = \nabla^2 \hat u
+ \frac{\partial}{\partial \epsilon} \nabla^2 ({\bf u} + \epsilon \, \hat {\bf u}) \\
+ = \nabla^2 \hat {\bf u}
 \end{align}
 while the buoyancy term is, 
 \begin{align}
@@ -141,22 +141,23 @@ while the buoyancy term is,
 %Lagrangian is therefore, $\mathcal{L}$
 and thus the full adjoint equation for momentum appears as
 \begin{align}
- - u &\cdot \nabla \hat u - \nabla^2 \hat u = -\frac{1}{\rho} \nabla p. 
+ - {\bf u} &\cdot \nabla \hat {\bf u} - \nabla^2 \hat {\bf u} = -\frac{1}{\rho} \nabla p. 
 \label{eq_adjmom}
 \end{align}
 
 The continuity equation is straightforward, 
 \begin{align}
- \frac{\partial}{\partial \epsilon} \nabla \cdot (u + \epsilon \hat
- u) = 0 \\
-\nabla \cdot \hat u = 0.
+ \frac{\partial}{\partial \epsilon} \nabla \cdot ({\bf u} + \epsilon \,
+ \hat {\bf u}) &= 0, \\
+\nabla \cdot \hat {\bf u} &= 0.
 \label{eq_adjcont}
 \end{align}
 
 Finally, consider the convective term of the energy equation, 
 \begin{align}
- \frac{\partial}{\partial \epsilon} u \cdot \nabla (T + \epsilon \hat T)
- = u \cdot \nabla \hat T
+ \frac{\partial}{\partial \epsilon} {\bf u} \cdot \nabla (T + \epsilon
+ \, \hat T)
+ = {\bf u} \cdot \nabla \hat T
 \end{align}
 and the thermal diffusion term, 
 \begin{align}
@@ -165,7 +166,7 @@ and the thermal diffusion term,
 \end{align}
 The full adjoint energy equation is therefore, 
 \begin{align}
- u \cdot \nabla \hat T + \nabla \cdot (k \nabla \hat T) =0.
+ {\bf u} \cdot \nabla \hat T + \nabla \cdot (k \nabla \hat T) = 0.
 \label{eq_adjen}
 \end{align}
 
@@ -178,8 +179,8 @@ defined as thus,
  L = 
   \begin{pmatrix}
     0 & \nabla \cdot () & 0   \\
-    \nabla \,() & u \cdot \nabla() - \nu \nabla^2() & -g \frac{()}{T_0}  \\
-    0 & 0 & u \cdot \nabla() - \nabla \cdot (k \nabla() \,)
+    \nabla \,() & {\bf u} \cdot \nabla() - \nu \nabla^2() & -g \frac{()}{T_0}  \\
+    0 & 0 & {\bf u} \cdot \nabla() - \nabla \cdot (k \nabla() \,)
   \end{pmatrix}.
 \end{equation}
 
@@ -190,8 +191,8 @@ While the S matrix is constructed from Equations
  S = -P^* = 
   \begin{pmatrix}
     0 & \nabla \cdot () & 0   \\
-    \nabla \,() & u \cdot \nabla() + \nu \nabla^2() &  -g \frac{()}{T_0}  \\
-    0 & 0 & u \cdot \nabla() + \nabla \cdot k \nabla()
+    \nabla \,() & {\bf u} \cdot \nabla() + \nu \nabla^2() &  -g \frac{()}{T_0}  \\
+    0 & 0 & {\bf u} \cdot \nabla() + \nabla \cdot k \nabla()
   \end{pmatrix}.
 \end{equation}
 
@@ -202,24 +203,25 @@ While the S matrix is constructed from Equations
 
 Finally, we may now form the $\tau$ stabilization terms, 
 \begin{equation}
- \langle Lc,S\phi \rangle_\tau. 
+ \langle L\, {\bf c},S{\bf \phi} \rangle_\tau. 
 \end{equation}
 Where the operator $ \langle \cdot,\cdot \rangle_\tau. $ is shorthand 
 and denotes
 \begin{equation}
- \langle u,v \rangle_\tau = \sum_K \tau_K (u,v)_K.
+ \langle {\bf u},{\bf v} \rangle_\tau = \sum_K \tau_K ({\bf u},{\bf v})_K.
 \end{equation}
 Where $K$ denotes the FEM cells. Now, through what Becker and Braack
 contemptibly referred to as ``elementary calculus'', we arrive at our
 stabilization terms,  
 \begin{align*}
- \langle Lc,S\phi \rangle_\tau = \sum_K \{ \quad &\tau_p (\nabla \cdot u,
- \nabla \cdot v) \\
- +\quad &\tau_u \,(\nabla p + u \cdot \nabla u - \nu \nabla^2 - g \frac{T'}{T_0},
+ \langle L\,{\bf c},S{\bf \phi} \rangle_\tau = \sum_K \{ \quad &\tau_p (\nabla \cdot {\bf u},
+ \nabla \cdot {\bf v}) \\
+ +\quad &\tau_u \,(\nabla p + {\bf u} \cdot \nabla {\bf u} - \nu
+ \nabla^2 {\bf u} - g \frac{T'}{T_0},
  \nabla q) \\
- +\quad &\tau_u \, (\nabla p + u \cdot \nabla u - \nu \nabla^2 - g \frac{T'}{T_0},
- \nabla u \cdot \nabla v + \nu \nabla^2 v) \\
- +\quad &\tau_T \, (u \cdot T - \nabla \cdot (k \nabla T), \nabla u \cdot \nabla
- w + \nabla \cdot (k \nabla w)) \}.
+ +\quad &\tau_u \, (\nabla p + {\bf u} \cdot \nabla {\bf u} - \nu \nabla^2 {\bf u}- g \frac{T'}{T_0},
+ \nabla {\bf u} \cdot \nabla {\bf v} + \nu \nabla^2 {\bf v}) \\
+ +\quad &\tau_T \, ({\bf u} \cdot T - \nabla \cdot (k \nabla T), \nabla {\bf u} \cdot \nabla
+ w + \nabla \cdot (k \nabla w)) \quad \}.
 \end{align*}
 
