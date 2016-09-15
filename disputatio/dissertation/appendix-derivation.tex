@@ -59,23 +59,23 @@ where an ``over-dot'' denotes time diffentiation, e.g. $\dot {\bf u} =
 as the viscous term were integrated by parts to reduce the required
 order of the solution on those state variables.  
 
-We define the inner product by the shorthand notation $(u,v) =
-\bigintsss_\Omega u\cdot v dx $, giving our equations the form,  
+We define the inner product by the shorthand notation $({\bf u},{\bf v}) =
+\bigintsss_\Omega {\bf u}\cdot {\bf v}\, dx $, giving our equations the form,  
 \begin{align}
- (\nabla \cdot u, q) &= 0 \\
- (\dot u,v) + (u \cdot \nabla u, v) - (p,\nabla \cdot v) + \nu (\nabla
- u, \nabla v) &= (g \frac{T'}{T_0},v) \\
- \rho c_p (\dot T,w) + (u \cdot \nabla T,w) + (k \nabla T,\nabla w) &= 0.
+ (\nabla \cdot {\bf u}, q) &= 0 \\
+ (\dot {\bf u},{\bf v}) + ({\bf u} \cdot \nabla {\bf u}, {\bf v}) - (p,\nabla \cdot {\bf v}) + \nu (\nabla
+ {\bf u}, \nabla {\bf v}) &= (g \frac{T'}{T_0},{\bf v}) \\
+ \rho c_p (\dot T,w) + ({\bf u} \cdot \nabla T,w) + (k \nabla T,\nabla w) &= 0.
 \end{align}
 
-This defines our weak form operator, $ a(c,\phi)$. Our full equations will
+This defines our weak form operator, $ a({\bf c},{\bf \phi})$. Our full equations will
 also include a stabilization term such that,  
 \begin{equation}
- a_h(c,\phi) = a(c,\phi) +  \langle Lc,S\phi \rangle_\tau. 
+ a_h({\bf c},{\bf \phi}) = a({\bf c},{\bf \phi}) +  \langle L\,{\bf c},S{\bf \phi} \rangle_\tau. 
 \end{equation}
 
 The subsequent section will define the operators L and S, so that we
-might then fully define the stabilization term $\langle Lc,S\phi
+might then fully define the stabilization term $\langle L\,{\bf c},S{\bf \phi}
 \rangle_\tau$. 
 
 %
