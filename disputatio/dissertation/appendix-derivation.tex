@@ -87,14 +87,14 @@ might then fully define the stabilization term $\langle L\,{\bf c},S{\bf \phi}
 To form the stabilization terms, 
 
 \begin{equation}
- \langle Lc,S\phi \rangle_\tau
+ \langle L\,{\bf c},S{\bf \phi} \rangle_\tau
 \end{equation}
 
 we must define the operators L and S. The operator L is simply the PDEs
 in Equations \ref{eq_cont} - \ref{eq_energy} written in operator form. S is
 defined as the negative adjoint of the differential terms in L, e.g.
 \begin{align}
- L'[c] = P + Z \\
+ L'[{\bf c}] = P + Z \\
  S = -P^*. 
 \end{align}
 Where P are the differential terms, and Z the constant terms. 
@@ -102,23 +102,24 @@ Where P are the differential terms, and Z the constant terms.
 Our objective is now to construct the adjoint operator of L. This is
 accomplished using the Fr\'echet derivative, which defines the
 functional derivative on L. In general this is accomplished by taking
-the first variation of a function $\Pi(u)$ around a base state, $u$,
+the first variation of a function $\Pi({\bf u})$ around a base state, ${\bf u}$,
 \begin{equation}
- \delta\, \Pi(u) = \lim_{\epsilon \to 0} \frac{\Pi(u+\epsilon \hat u) -
-  \Pi(u)}{\epsilon} =
-  \frac{\partial \Pi(u +\epsilon \hat u)}{\partial \epsilon}
+ \delta\, \Pi({\bf u}) = \lim_{\epsilon \to 0} \frac{\Pi({\bf
+  u}+\epsilon \, \hat {\bf u}) -
+  \Pi({\bf u})}{\epsilon} =
+  \frac{\partial \Pi({\bf u} +\epsilon \, \hat {\bf u})}{\partial \epsilon}
   \bigg|_{\epsilon = 0}
 \end{equation}
-for all $\hat u$ and $\epsilon > 0$ with $u + \epsilon \hat u \in
+$\forall \hat {\bf u}, \epsilon > 0$ with ${\bf u} + \epsilon \, \hat {\bf u} \in
 H^1_0(\Omega)$. This is recognizable as the G\^{a}teaux
 derivative of the functional. 
 
 We now consider the first variation of state for the momentum equation
 term by term. The convective term is, 
 \begin{align}
- \frac{\partial}{\partial \epsilon} (u + \epsilon \hat u) &\cdot \nabla
-  (u + \epsilon \hat u) \\
- = \lim_{\epsilon \to 0} \hat u &\cdot \nabla (u + \epsilon \hat u) \\
+ \frac{\partial}{\partial \epsilon} ({\bf u} + \epsilon \hat {\bf u}) &\cdot \nabla
+  ({\bf u} + \epsilon \hat {\bf u}) \\
+ = \lim_{\epsilon \to 0} \hat {\bf u} &\cdot \nabla (u + \epsilon \hat u) \\
  = \hat u & \cdot \nabla u \\
  = - u &\cdot \nabla \hat u
 \end{align}
