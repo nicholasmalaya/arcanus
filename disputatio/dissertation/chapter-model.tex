@@ -337,7 +337,7 @@ calibrations of the same underlying function for different regimes with
 varying relative merits. %\cite{?}.\todo{missing cites} 
 However, the functions are generally in close agreement under neutral
 and unstable conditions, with the disagreement primarily occuring for
-$z/L>0$. As we expect to only simulate conditions  of unstable or
+$z/L>0$. As we expect to only simulate conditions of unstable or
 neutrally stratified flow, our choice of interpolation function does not
 have a significant impact on the predicted value.  
 
@@ -360,14 +360,15 @@ and yield nearly identical predictions. As a result, we use functions
 that are simple to compute. The original functions 
 proposed by Monin and Obukhov were avoided, they had a discontinuity in
 the derivative, and are more inaccurate than modern functions due due to
-the fact that they were calibrated on inaccurate experimental data. The
-H{\"o}gstr{\"o}m functions for momentum and temperature are, 
+the fact that they were calibrated on less accurate experimental
+data. The H{\"o}gstr{\"o}m functions for momentum and temperature are, 
 \begin{eqnarray}
   \Phi_M(\xi) =& (1-19.3 \, \xi)^{-1/4}, \\
   \Phi_T(\xi) =& 0.95 \, (1-11.6 \,\xi)^{-1/2}.
 \end{eqnarray}
 These functions have been found to be broadly applicable, accurate and 
-are easily instantiated in software. 
+are easily instantiated in software. For this reason the
+H{\"o}gstr{\"o}m functions are used in this work. 
 
 \subsection{Shortcomings of Monin-Obukhov Theory}
 
@@ -680,7 +681,7 @@ ignored\cite{burton2001wind}.
      \includegraphics[width = 10 cm]{figs/turbine_image}
      \caption{The represented turbine blade
      geometry. $\beta$, the blade angle, is measured relative to the
-     horizontal plane. C, the chord length of the turbine, is defined as
+     horizontal plane. c, the chord length of the turbine, is defined as
      the straight line distance from leading to trailing edge. } 
      \label{fig:turbine_image}
     \end{center}
@@ -707,38 +708,47 @@ Then, the force on the turbine is,
 % \label{eq:force_turb}
 % \end{equation}
 \begin{equation}
- F = \frac{1}{2}\frac{\rho {\bf u_p}^2 c}{A}\left(C_l \cdot
+ F = \frac{1}{2} \rho A_B {\bf u_p}^2 \left(C_l \cdot
 					      {\bf n_\text{lift}} + C_d \cdot
 					      {\bf n_\text{drag}}  \right).
 \label{eq:force_turb}
 \end{equation}
-
+$A_B$ is the total area of the turbine blades, so $A_B = B\, c\, r$, where B
+is the number of turbine blades and c is the chord length of the
+turbine. 
 The actuator disk is an approximation of the blades as a volumetric
 forcing ``disk'', and so our interest is in this quantity,
 \begin{equation}
-\frac{F}{\text{volume}} = \frac{m F}{2 \pi r t} = \frac{1}{2}\frac{\rho
- {\bf u_p}^2 m c}{A}\left(C_l \cdot {\bf n_\text{lift}} + C_d \cdot {\bf
+\frac{F}{\text{volume}} = \frac{F}{\pi r^2 t} = \frac{1}{2}\frac{\rho\, B\, c\,
+ {\bf u_p}^2}{\pi r t}\left(C_l \cdot {\bf n_\text{lift}} + C_d \cdot {\bf
 		   n_\text{drag}} \right).  
 \label{eq:vol_turb}
 \end{equation}
-
-Where c is the chord length, t the blade thickness, which is also specified. 
-Note that the product, $N c$ appears in Equation~\ref{eq:vol_turb},
-above. This quantity is a solidity (or blockage) factor, and the impact
-will be discussed in greater detail in
-Section~\ref{sec:solidity}.\todo{finish this entire section up}
+Where t is the blade thickness. 
+Note that the volume is over a different extent than the area. The
+volume is for the entire actuator disk, while the force on the blades
+was only calculated with total surface area of the turbine. 
+To better understand this, note that the product, $B c$ appears in
+Equation~\ref{eq:vol_turb}, above. This quantity is a solidity (or
+blockage) factor, and as the chord length or number of blades increases,
+the total blocked area inside the actuator disk also increases. It is
+interesting to note that in the actuator disk model, only this product
+has impact, and one cannot directly separate the impact of more turbine
+blades versus larger blade chord lengths. 
+The impact of solidity will be discussed in greater detail in
+Section~\ref{sec:solidity}.
 
 Now, only the drag polars ($C_l,C_d$) must be specified to fully
 determine the force on the blades. These drag polars are functions of
 the angle of attack, $\alpha$. Plots of these drag polars were provided
-by Duane McCormick at UTRC and were generated with COMSOL. As the data
-was discrete, interpolated functions were used to provide a smoothly
-varying functional. High order polynomials were used to generate the
-lift and drag functions, and were fit to the COMSOL data. Typically,
-16\textsuperscript{th} order polynomials were used to ensure that the
-interpolated function closely matched the provided data. The drag and
-lift functions for the three cases considered (flat plates,
-$180^{\circ}$, $90^{\circ}$ circles) are shown in
+by Duane McCormick at UTRC and were generated from a 2-D model in
+COMSOL. As the data was discrete, interpolated functions were used to
+provide a smoothly varying functional. High order polynomials were used
+to generate the lift and drag functions, and were fit to the COMSOL
+data. Typically, 16\textsuperscript{th} order polynomials were used to
+ensure that the interpolated function closely matched the provided
+data. The drag and lift functions for the three cases considered (flat
+plates, $180^{\circ}$, $90^{\circ}$ circles) are shown in 
 Figures~\ref{fig:flat_plate_drag},\ref{fig:semi_drag} and
 \ref{fig:90_drag}. The flat plate drag polars are smoothly
 varying and so the interpolated function is close to the provided
