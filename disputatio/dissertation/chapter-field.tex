@@ -909,7 +909,7 @@ reduced velocities.
 %It is also possible that a substantial transient may exist during which
 %the SoV 
 
-A June field test in 2016 reported only modest velocities through the
+An August field test in 2016 reported only modest velocities through the 
 prototype apparatus.
 While substantial, the uncertainties describe above are not sufficient
 to account for the weakness of the observed flow, indicating a
@@ -919,19 +919,21 @@ errors that were investigated in detail, and may account
 for the significantly reduced flow observed in the field. 
 
 \section{Turning Vane Drag}
+\label{sec:vane_drag}
 
 The first model correction proposed is to introduce drag along the
-turning vanes to account for the skin friction along the surface. To
-introduce a force of parasitic drag, the turning vane forcing 
+turning vanes to account for the skin friction along their surfaces. To
+introduce a drag force, the turning vane forcing 
 representation described in Section~\ref{subsec:vane} need only be
-modified to introduce an additional force that acts in opposition of the
+modified to introduce an additional force that acts in opposition to the
 fluid velocity. Thus, in addition to forcing the flow to align with the
-vane surface, the flow will also be slowed. The vane formulation now
-acts in a dissipative manner, and is not energy conserving. 
+vane surface, the flow will also be slowed. 
+% The vane formulation now
+% acts in a dissipative manner, and is not energy conserving. 
 
-Our unit forcing vector ${\bf \hat f}$ is simply the negative normalized inner
-product of the velocity, ${\bf u}$, and the turning vane tangent vector
-${\bf \hat t^v}$,  
+The unit drag forcing vector ${\bf \hat f}$ is simply the negative
+normalized inner product of the velocity, ${\bf u}$, and the turning
+vane tangent vector ${\bf \hat t^v}$,  
 \begin{equation}
 - \frac{{\bf u} \cdot {\bf \hat t^v}}{|| {\bf u} \cdot {\bf \hat t^v}
  ||} = {\bf \hat f}.  
@@ -941,20 +943,22 @@ The volumetric force applied is,
  F = {\bf \hat f} \, C_f \, \frac{1}{2} \frac{\rho || {\bf u} ||^2}{\delta}
 \end{equation}
 Where $C_f$ is the skin friction coefficient (which must be determined),
-$\rho $ is the density and $\delta$ the channel half width. 
-For $C_f$, we use Dean's Correlation\cite{johnson1998handbook}, 
+$\rho $ is the density and $\delta$ is half the distance between
+adjacent vanes. 
+%the channel half width. 
+%For $C_f$, we use Dean's Correlation\cite{johnson1998handbook}, 
 
 %ane
 %
 %https://books.google.com/books?id=JBTlucgGdegC&pg=SA13-PA51&lpg=SA13-PA51&dq=dean%27s+correlation+fluids&source=bl&ots=auW8XopUC9&sig=DDxuQONFvqly5KQOocSPr39rS70&hl=en&sa=X&ved=0ahUKEwii3vX9wZHOAhXmxYMKHUqlChYQ6AEIJTAB#v=onepage&q=dean%27s%20correlation%20fluids&f=false 
 %
-\begin{equation}
- C_f = 0.073 \, (Re)^{-0.25}. 
-\end{equation}
-Where the Reynolds number is defined as, 
-\begin{equation}
- Re = \frac{u\, \delta}{\nu}.
-\end{equation}
+%\begin{equation}
+% C_f = 0.073 \, (Re)^{-0.25}. 
+%\end{equation}
+%Where the Reynolds number is defined as, 
+%\begin{equation}
+% Re = \frac{u\, \delta}{\nu}.
+%\end{equation}
 
 Some roughness elements exist across the vanes. In addition to
 non-smooth surface materials, the design of the field test apparatus
@@ -968,13 +972,13 @@ determine $C_f$ for these cases, the Colebrook formula\cite{Colebrook367},
 was used to provide an estimate for the friction factor given a
 roughness height, $\epsilon/D$,  
 \begin{equation}
- \frac{1}{\sqrt{f}} = -2.0 \text{ log}\left(\frac{\epsilon/D}{3.7} + \frac{2.51}{Re\sqrt(f)}\right).
+ \frac{1}{\sqrt{C_f}} = -2.0 \text{ log}\left(\frac{\epsilon/D}{3.7} + \frac{2.51}{Re\sqrt(f)}\right).
 \end{equation}
  With the assumption that for large roughness the Reynolds number term
- contribution is not significant, the function is no longer implicit in
- $f$ and can be determined directly, 
+ is not significant, the function is no longer implicit in $C_f$ and can
+ be determined directly,  
 \begin{equation}
- f = \left(2.0 \text{ log}\left(\frac{\epsilon/D}{3.7}\right)\right)^2. 
+ C_f = \left(2.0 \text{ log}\left(\frac{\epsilon/D}{3.7}\right)\right)^2. 
 \end{equation}
 %Then, a Moody chart was consulted to provide the the 
 Note that D here is the hydraulic diameter which must account for the
@@ -982,16 +986,16 @@ two plates (we treat the vanes as a channel),
 \begin{equation}
 D_H = \frac{4 A}{P} = \frac{4 (2w)\delta}{2w} = 4 \delta
 \end{equation}
-Where $\delta$ is the channel half width, or in our case, the distance
-between the vanes. To construct a ``worst-case'' scenario, we consider
+Where $\delta$ is again half the distance between the vanes. 
+To construct a ``worst-case'' scenario, we consider
 the smallest distance between the vanes, which occurs near the center of
 the SoV. Furthermore, we consider roughness heights based on a
-two-by-four (which were used as supports for the
-vanes). Even for this worst case scenario, the velocities on the vanes
+four-by-four (which were used as supports for the
+vanes). Even for this worst case scenario, the velocities in the vanes
 are not substantially reduced with the addition of the drag model. The
 flow field kinetic energy flux was never reduced more than 12\%. 
 This crude model indicates that the reduced flows observed during the
-June 2016 field tests are not attributable to skin friction drag on the
+August 2016 field tests are not attributable to skin friction drag on the
 turning vanes.  
 
 
@@ -1034,7 +1038,8 @@ infinite number of blades. A model correction was introduced that
 attempts to represent the fact that as the number of turbine blades
 increases, the pressure across the actuator disk should rise. This is
 accomplished by adjusting the area of the actuator disk down by the
-ratio of the free area in the disk versus the blade sizes. 
+ratio of the free area in the disk versus the blade sizes.\todo{this is
+not the point}
 
 %A second model correction was therefore introduced with the aim of attempting to
 %discern if the turbine 
@@ -1059,12 +1064,13 @@ The length of each blade blocking vertical flow in the actuator disk is,
 \begin{equation}
   c * \text{Cos}(\beta(r)) = c_x(r). 
 \end{equation}
-The total length in an annular region that is blocking is therefore,
+The total circumferential length in an annular region that is blocked
+is therefore, 
 \begin{equation}
-  N * c_x(r) = l_B(r),
+  B * c_x(r) = l_B(r),
 \end{equation}
-Where N is the number of blades. 
-Then, the ratio of an annular length that is impeded by blades is, 
+Where B is the number of blades. 
+Then, the fraction of the circumference that is impeded by blades is, 
 \begin{eqnarray}
  B(r) =& \frac{2\pi r- l_B(r)}{2 \pi r}\\
  B(r) =& 1- \frac{l_B(r)}{2 \pi r}. 
@@ -1106,8 +1112,8 @@ is modified so that,
  \bar U_p^{2} = \left(\frac{U_p}{B(r)}\right)^2
 \end{equation}
 
-This turbine modification for solidity has a significant impact on the
-power extracted by the turbine. A comparison between the number of
+This turbine model modification for solidity has a significant impact on
+the power extracted by the turbine. A comparison between the number of
 turbine blades and the power generated by the turbine for both the
 baseline turbine and the turbine with the solidity modification is shown in
 Figure~\ref{fig:turbine_solidity}. The results are quite consistent with
@@ -1163,9 +1169,11 @@ using $90^{\circ}$ semicircle blade geometries, as shown in Figure
 flat plate and $180^{\circ}$ arcs, which were universally found to be
 inferior. Time constraints required fabrication of the turbine in short
 order, and a limited budget encouraged inexpensive (and therefore
-simple) turbine blades. Finally, the design space was limited to
-readily available drag polar data due to the expense and difficulty of 
-fabricating non-standard turbine blades. Risk mitigation also played a
+simple) turbine blades. 
+%Finally, the design space was limited to
+%readily available drag polar data due to the expense and difficulty of 
+%fabricating non-standard turbine blades. 
+Risk mitigation also played a
 role, with an emphasis on traditional, and therefore well-vetted turbine
 blade design. %While several comparisons have been performed with
 %different choices of turbine blades (flat plate, 180 degree semicircles,
@@ -1173,13 +1181,13 @@ blade design. %While several comparisons have been performed with
 %Nevertheless, this is not an exhaustive exploration of turbine
 %blade design, and the question remains, ``Could more power be extracted
 %with a different rotor geometry?''. 
-This section details an additional computational research program
-performed after the turbine fabrication with the intent of estimating
+This section details an additional computational research 
+effort pursued after the turbine fabrication with the intent of estimating
 the upper limit of power extraction with an idealized turbine. 
 
-Practical utility-scale wind turbines achieve at peak 75\% to 80\% of
-the Betz limit\cite{burton2001wind}. The Betz-limit states a theoretical
-maximum of 59\% of the wind's power may be captured. Therefore,
+Practical utility-scale wind turbines achieve a peak of 75\% to 80\% of
+the Betz limit\cite{burton2001wind}. The Betz-limit places a theoretical 
+maximum of 59\% of the wind's power that can be captured. Therefore,
 practical wind turbines extract less than half of the available kinetic
 energy flux. 
 Comparing the kinetic energy flux of simulations without the turbine to
@@ -1187,19 +1195,21 @@ the power extracted by the turbine, we note that our simulations
 typically predict power extraction ratios slightly less than fifty
 percent, indicating that our efforts are not significantly better or
 worse than could be expected. While this provides an estimate, the
-Betz-limit is likely not accurate for this case. Any analysis of the
-power that can be extracted is complicated by the presence of
-considerable vertical and azimuthal flow in the vortex, and so the
-design considerations are different from those for a classical wind
-turbine.  
+Betz-limit for wind turbines does not apply to the SoV turbine. 
 
-The objective then, is to formulate a more generalized approach to the
-turbine vane parameters to permit an optimization that is not
-constrained to a particular turbine blade geometry. Rather, this
-approach seeks to estimate the upper limit of power extracted. The
-rationale behind this is to provide an upper bound on the power that can 
-be extracted for a particular configuration, which can then be used as
-input for feasibility considerations of the SoV.  
+%likely not accurate for this case. Any analysis of the
+%power that can be extracted is complicated by the presence of
+%considerable vertical and azimuthal flow in the vortex, and so the
+%design considerations are different from those for a classical wind
+%turbine.  
+
+The objective then, is to formulate a generalized approach to treating the
+blades to permit an optimization that is not
+constrained to a particular blade geometry. Rather, this
+approach seeks to estimate the upper limit of the possible power
+extracted. The rationale behind this is to provide an upper bound on the
+power that can be extracted for a particular configuration, which can
+then be used as input for feasibility considerations of the SoV.  
 
 It is desirable to perform these estimates within the context of the
 actuator disk model (see Section~\ref{sec:actuator_disk}). While
@@ -1244,7 +1254,7 @@ where the torque, Q, is\cite{morgado2014validation},
 \end{equation}
 Here, $A_R$ is the relative area coefficient which is, 
 \begin{equation}
-A_R = \frac{c B (r_{\text{max}}-r_{\text{min}})}{\pi(r_{\text{max}}^2-r_{\text{min}}^2)}
+A_R = \frac{B c (r_{\text{max}}-r_{\text{min}})}{\pi(r_{\text{max}}^2-r_{\text{min}}^2)}
 \end{equation}
 where B is the number of blades, $r_{\text{max}}$ and $r_{\text{min}}$
 are the turbine radii, and $F''_{\tau}$ is the force per unit
@@ -1263,7 +1273,7 @@ flow angle, $\phi$,
 Combining the equations above results in an expression for the power
 that explicitly depends on the lift and drag coefficients, 
 \begin{equation*}
- P = \frac{\Omega \rho c B (r_{\text{max}}-r_{\text{min}})}{2 \pi(r_{\text{max}}^2-r_{\text{min}}^2)}
+ P = \frac{\Omega \rho B c (r_{\text{max}}-r_{\text{min}})}{2 \pi(r_{\text{max}}^2-r_{\text{min}}^2)}
 \int_0^{2\pi}
 \int_{r_{\text{min}}}^{r_{\text{max}}} U_R(r,\theta,\Omega)^2 \left(C_L
 						     \,\text{sin}(\phi)
@@ -1273,7 +1283,7 @@ that explicitly depends on the lift and drag coefficients,
 \end{equation*}
 We lump the constant terms together, 
 \begin{equation}
-E_{\tau} = \frac{\Omega \rho c B (r_{\text{max}}-r_{\text{min}})}{2
+E_{\tau} = \frac{\Omega \rho B c (r_{\text{max}}-r_{\text{min}})}{2
  \pi(r_{\text{max}}^2-r_{\text{min}}^2)}
 \end{equation}
  and separate this equation, 
@@ -1415,7 +1425,7 @@ indicating that the turbine is very close to the Betz-limit of
 59.3\%. While as indicated previously, the Betz-limit is likely to be
 inaccurate for rotating flows, it is nevertheless interesting that the
 idealized turbine would extract power so close to the maximum predicted by
-Betz.  This provides a weak limit (even under these idealized
+Betz. This provides a weak limit (even under these idealized
 conditions) bounding the power that can be derived from this
 flow. Furthermore, this indicates that previous estimates of the power
 that might be extracted from the flow are not greatly limited by the
