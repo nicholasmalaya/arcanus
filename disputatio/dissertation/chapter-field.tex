@@ -548,7 +548,7 @@ Improvements to the turbine power extracted were also attained by adding
 radius, i.e. $\beta = \beta(r)$. The improvement in power extraction due
 to a varying blade angle with radius is due to a changing distribution
 of momentum flux. As both azimithal and axial velocities depend on the
-circulation, $\gamma$, so the optimal $\beta$ varies to capture
+circulation, $\Gamma$, so the optimal $\beta$ varies to capture
 this. \todo{sufficient?} 
 
 %Finally, cone improvement
@@ -577,12 +577,27 @@ would be feasible. Regardless, the twisted rotor was always predicted to
 out-perform the zero-twist rotor.  
 The peak power extracted is predicted to be 2.14 kW for the rotor
 with twist, and slightly more than 1.51 kW for a rotor with no twist. 
-All of these results were conducted with the $90^{\circ}$ circular-arc
-airfoil, as shown in Figure~\ref{fig:90_drag}. The load on the turbine
-is predicted to be modest, at 20 ft-lbs. This indicates that the twisted
-rotor design is extracting 44\% of the power from the flow, or a
-Betz-efficiency of 75\%, which is consistent with the measured
-efficiency of modern wind turbines. 
+% The load on the turbine
+% is predicted to be modest, at 20 ft-lbs. 
+This indicates that the twisted rotor design is extracting 44\% of the
+available power from the flow. This is an efficiency: the power
+extracted by the turbine ($P_{\text{Turbine}}$) from the kinetic energy
+flux ($\dot{\text{KE}}$) through the device, e.g.
+\begin{equation}
+\eta_{\dot{\text{KE}}} = \frac{P_{\text{Turbine}}}{\dot{\text{KE}}}. 
+\end{equation}
+The Betz-limit, which of limited use due to its
+neglect of rotation, places an upper bound of 59.3\% of the
+power contained in the flow that might be extracted. Then we can
+consider a ``Betz-efficiency'', which is the ratio of the available
+kinetic energy flux extracted versus this bound, 
+\begin{equation}
+ \eta_\text{Betz} = \frac{\eta_{\dot{\text{KE}}}}{59.3 \%}
+\end{equation}
+This indicates a Betz-efficiency of $\approx 75\%$, which is roughly
+consistent with the measured efficiency of modern wind turbines. 
+All of these results are for the $90^{\circ}$ circular-arc
+blade, as shown in Figure~\ref{fig:90_drag}. 
 % after duane
 
   \begin{figure}[!htb]
