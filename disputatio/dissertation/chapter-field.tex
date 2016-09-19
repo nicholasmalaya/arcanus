@@ -614,7 +614,7 @@ blade, as shown in Figure~\ref{fig:90_drag}.
   \end{figure}
 
 The proposed turbine design is shown in Table~\ref{tab:turbine}. Note
-that the design parameter $mC $ is actually the number of blades
+that the design parameter $Bc $ is actually the number of blades
 multiplied by the chord length. As detailed in
 Section~\ref{sec:actuator_disk}, this is the actual parameter of
 interest in the actuator disk formulation. For fabrication, this was 
@@ -630,7 +630,7 @@ Name                & Current Value    & Symbol           & Comments \\
 Outer Blade Angle & $70^{\circ}$ & $\beta_{\text{outer}}$  & linear twist between \\
 Inner Blade Angle & $47^{\circ}$ & $\beta_\text{inner}$    & 
 	     $\beta_\text{inner},\beta_\text{outer}$ \\ 
-Chord Length * \# blades   & 3.6 meters  & $mC $ &  \\
+\# blades * Chord Length & 3.6 meters  & $Bc $ &  \\
 Turbine rotation rate & 4.0 rad/sec  & $\omega$         &  \\
 Blade Outer Radius  & 1.5 meters   & $B_\text{outer}$ &  \\
 Blade Inner Radius  & 0.3 meters   & $B_\text{inner}$ &  \\
@@ -691,10 +691,10 @@ conditions defined in Section~\label{sec:bc} to have defined our
 scenario of interest. However, as with the validation case shown in
 Section~\ref{sec:field_val}, significant uncertainty exists in the
 scenario parameters that define the ambient thermal and wind
-conditions. Some discussion on the scenario parameters is therefore
+conditions. Some discussion of the scenario parameters is therefore
 warranted. 
 
-The thermal boundary layer gradient was set based on data gathered by 
+The thermal boundary layer was set based on data gathered by 
 the Georgia Tech team in Arizona on June 9th, 2014. The raw data
 presented in Figure~\ref{fig:thermal_profile_fit} is the average from
 four vertical temperature profiles take at different times during a
@@ -702,16 +702,15 @@ single day. The measurements were gathered between 9:49 am and 1:43
 pm\cite{ann_comm}.  
 
 A particular challenge is that the closest measurement was taken by a 
-thermocouple 1 mm above the pavement. Thus, the surface temperature and
-magnitude of thermal gradient were not directly measured. To estimate
+thermocouple 1 mm above the pavement. Thus, the surface temperature was
+not directly measured. To estimate 
 $T_0$ and $\Delta T$, the thermal profile was fit with a least squares
-minimization of the residual between Equation~\ref{eq:bl_t} and to the
-existing experimental data. The resulting profile is plotted in
-Figure~\ref{fig:thermal_profile_fit}. The sparsity of existing
-experimental data near the surface is quite clear from this
-profile. The fitted profile is then evaluated at $x=0$ to determine the
-ground temperature. Based on this criterion, a difference of 30 Kelvin was
-selected.   
+minimization of the residual between Equation~\ref{eq:bl_t} and the
+experimental data. The resulting profile is plotted in
+Figure~\ref{fig:thermal_profile_fit}. The sparsity of experimental data
+near the surface is quite clear from this profile. The fitted profile is
+then evaluated at $x=0$ to determine the ground temperature. Based on
+this calculation, a temperature difference of 30 Kelvin was determined.   
 
  \begin{figure}[!htb]
   \begin{center}
@@ -725,13 +724,13 @@ selected.
   \end{center}
  \end{figure}
 
-In addition to the thermal profile, the incoming wind velocity needed an 
-estimate. Thankfully, wind measurements were performed by the
-experimental team in the field also during the June, 2014 test. A single 
-hour time series was captured for both day and night as measured by the
-sonic anemometers. These data series are plotted in
-Figure~\ref{fig:wind_speed_estimate}. The wind speed was sampled at a
-sampling rate of 0.5 Hz, and the traces were plotted for one hour (for
+In addition to the thermal profile, the incoming wind velocity was
+needed. Thankfully, wind measurements were also performed by the
+experimental team in the field during the June, 2014 test. A one hour
+time series was captured for both day and night as measured by the sonic
+anemometers. These data are plotted in
+Figure~\ref{fig:wind_speed_estimate}. The wind speed was sampled at a 
+rate of 0.5 Hz, and the traces are plotted for one hour (for
 both the day and night). 
 
  \begin{figure}[!htb]
@@ -743,21 +742,24 @@ both the day and night).
  \end{figure}
 
 Several observations can be made from this data. There is essentially no
-mean flow at night, but during the day the winds are not insignificant,
-with a mean velocity of about two meters per second and fluctuations of
-nearly six meters per second. It is clear that the wind profile is
-turbulent.  Also note that the daytime wind does not die out: the
-average horizontal velocity during the day is about 2-3 m/sec. 
+mean flow at night, but during the day the winds are significant,
+with a mean velocity of about two meters per second and fluctuation that
+reached nearly six meters per second. 
+%The wind profile at both day and
+%night possessed rapid, small scale fluctuations in time which were not modeled. 
+%Also note that the daytime
+%wind always  has non-zero mean, and the average horizontal velocity during the day is
+%between 2-3 m/sec.  
 
 The wind direction was also monitored, and showed little variation. 
 This is shown in Figure~\ref{fig:wind_direction}. It was therefore
 assumed that the wind had a constant heading and constant speed during
 the simulations. Furthermore, discussions with the field team indicated
 that wind heading over several years of field tests were relatively
-consistent. This was part of the motivation for the movement to an
-asymmetric vane configuration, as if the wind direction changed daily
+consistent. This was part of the motivation for the introduction of an
+asymmetric vane configuration, since if the wind direction changed daily
 (for instance) it would render an asymmetric design useless, unless it
-could easily be manipulated to align with the free stream velocity. 
+could easily be realigned with the free stream velocity. 
 
  \begin{figure}[!htb]
   \begin{center}
@@ -850,16 +852,16 @@ that the device is entraining air from a region far larger than the SoV
 vane diameter.  While a majority of the flow is coming from upstream of
 the device, a substantial portion of the flow is nevertheless  entrained
 from the leeward side of the SoV. Most of the entrained flow from
-downstream of the vanes comes from a narrower region than the upstream,
-and appears to be constrained to the wake of the SoV. It is also
-interesting to note that most of the backflow from downwind side occurs
-very near the surface. While most of the radial inflow to the SoV is
-from the downside side is near the surface, the vortex is strong enough
-to entrain flow from outside the vanes above the device. 
+downstream of the vanes appears to be constrained come from the wake of
+the SoV. It is also interesting to note that most of the backflow from
+downwind side occurs very near the surface. While most of the radial
+inflow to the SoV is from the downside side is near the surface, the
+vortex is strong enough to entrain flow from outside the vanes above the
+device.  
 
 The 2016 field configuration has 4.77 kW of kinetic energy flux through
 the top of the vanes, taken from a plane just below the turbine, which
-is 608\% more kinetic energy flux than the peak measurement produced in
+is 608\% higher kinetic energy flux than the peak measurement produced in
 the August 2015 Field test.  
 
 \subsection{Sources of Error}
@@ -872,19 +874,18 @@ impact the SoV performance.
 
 A major uncertainty is the opacity of the device. Ideally, the device
 would be completely transparent. However, previous field tests
-found that the SoV footprint resulted in shading in the inner region of
-the vanes, which resulted in a lower temperature inside the device than
-in the immediate region. As the physical trigger for the SoV is
-initiated by thermal buoyancy, this necessarily greatly reduces the
-velocities inside the device, and so the kinetic energy flux and power
-extracted by the turbine. For instance, simulations performed where the
-surface inside the region of the vanes was set to the ambient air
-temperature (an admittedly ``worst-case scenario'') found that the
-energy extracted by the turbine was reduced to only 800 Watts. Thus,
-consistent with the results shown in Section~\ref{sec:wind_impact}, the
-absence of a thermal to drive the flow reduces the available kinetic
-energy flux (and thus, the power extracted by the turbine) by more than
-half. 
+found that the SoV device shaded the inner region, which resulted in a
+lower temperature inside the device than 
+outside. As the physical trigger for the SoV is thermal buoyancy, this
+greatly reduces the velocities inside the device, and so the kinetic
+energy flux and power extracted by the turbine. For instance,
+simulations performed with the ground temperature inside the vane region
+set to the ambient air temperature (an admittedly ``worst-case
+scenario'') found that the energy extracted by the turbine was reduced
+to only 800 Watts. Thus, consistent with the results shown in
+Section~\ref{sec:wind_impact}, the absence of a thermal to drive the
+flow reduces the available kinetic energy flux (and thus, the power
+extracted by the turbine) by more than half. 
 
 %Scenario Uncertainty!!!!!!!!!!!
 
@@ -894,16 +895,15 @@ half.
 
 %wind heading adjustments and measurements of flux reduction
 
-No dynamics in the wind were considered, with only a steady,
-non-zero mean wind velocity. It may well be that even in the "thermal
-only" cases there could be significant, zero mean turbulence (perhaps
-like grid turbulence) contributing from the ambient
-surroundings. However, crude sensitivity analyses were performed by
+No dynamics in the wind were considered, only a steady, mean wind
+velocity. It may well be that even in the "thermal only" cases there
+could be significant, zero mean wind fluctuations contributing energy. 
+However, crude sensitivity analyses were performed by
 adjusting the mean velocity of the wind by  $\pm 1 \text{m}/\text{s}$,
 which indicated that the power generated by the turbine only increases
 with higher wind velocity, and that most of the vortex structure and
 character of the solution discussed in
-Section~\ref{subsec:field_predict} remains true, with only modestly
+Section~\ref{subsec:field_predict} remains valid, with only modestly
 reduced velocities. 
 
 %It is also possible that a substantial transient may exist during which
@@ -911,11 +911,11 @@ reduced velocities.
 
 A June field test in 2016 reported only modest velocities through the
 prototype apparatus.
-While substantial, the uncertainties describe above are not significant
-enough to account for the weakness of observed flow, indicating a
-potentially significant model uncertainty that had previously not been
+While substantial, the uncertainties describe above are not sufficient
+to account for the weakness of the observed flow, indicating a
+potentially significant model error that had not previously been
 considered. The subsequent sections detail two possible modeling
-inadequacy components that were investigated in detail, and may account
+errors that were investigated in detail, and may account
 for the significantly reduced flow observed in the field. 
 
 \section{Turning Vane Drag}
