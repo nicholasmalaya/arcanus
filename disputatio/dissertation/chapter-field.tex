@@ -499,18 +499,18 @@ generated using this technique.
 In addition to the final vane design, a turbine design was developed and
 tested over a range of design conditions. The design parameters defining
 the turbine are listed in Table~\ref{tab:turbine}. The exploration of the
-turbine design space was conducted in a manner similar to the
-optimization outline detailed in Figure~\ref{fig:opt_image}. The major
-design improvements are detailed in Figure~\ref{fig:ut_turbine}. The
-``initial guess'' was crude, with flat plate drag polars and a poor
+turbine design space was performed as outlined in
+Figure~\ref{fig:opt_image}. The major design improvements are detailed
+in Figure~\ref{fig:ut_turbine}. The ``initial guess'' was crude, with
+flat plate drag polars and a poor 
 initial guess for the blade angle of $\approx 10^{\circ}$. Later
 designs use a higher blade angle often exceeding $40^{\circ}$. 
 The design parameters that lead to the largest improvements in power
 extracted were changes to the turbine blade geometry (from flat plate to
 $180^{\circ}$ half cylinders to $90^{\circ}$ semicircles), optimization
 of the blade angle and optimization of the turbine rotation rate. 
-However, several other interesting improvements were found in addition to the
-principle improvements, and are detailed below. 
+However, several other interesting improvements were also found, and are
+detailed below.  
 
   \begin{figure}[!htb]
    \begin{center}
@@ -527,37 +527,29 @@ principle improvements, and are detailed below.
    \end{center}
   \end{figure}
 
-A gap in the center of the turbine was found to favorably reduce turbine
-solidity and improve energy extraction. In some cases, this gap was
-found to correspond to a mild downward flow as observed in the
-fully-developed thermal-only cases detailed in
+An open area in the center of the turbine was found to improve energy
+extraction. In some cases, simulations showed a mild downward flow as
+observed in the fully-developed thermal-only cases detailed in
 Section~\ref{sec:thermal_only}. The present simulations do not form a
-two-celled vortex, but a gap in the center of the turbine is still
+two-celled vortex, but an open center of the turbine is still
 favorable. Similarly, while individual blades are not explicitly
-represented in an actuator-disk model, the area of blades is a design
-parameter and can be optimized. This is in essence a solidity or
-blockage term, with more blades providing more surface area to extract
+represented in an actuator-disk model, the total projected area of
+blades is a design parameter and can be optimized. This represents the
+solidity or blockage, with more blades providing more surface area to extract
 power from the fluid while simultaneously impeding the flow. A balance
 between too much (a blocked off flow) and too little (too little blade
 area to extract flow power) must be attained through optimization of the
-controlling parameter, $mC$, the product of the number of blades and
+controlling parameter, $B \, c$, the product of the number of blades and
 each blade's chord length, as detailed in
-Section~\label{sec:actuator_disk}. 
+Section~\ref{sec:actuator_disk}. 
 
 Improvements to the turbine power extracted were also attained by adding
 ``twist''. In other words, the blade angle varies as a function of
-radius, i.e. $\beta = \beta(r)$. Our expectation is that the turbine
-blades are inside the core vortex. Following our expectation of the
-vortex velocity roughly following a Rankene profile, the angular
-velocity in the inner core region follows a solid body rotation, 
-\begin{equation}
- V_{\theta} = \Omega r . 
-\end{equation}
-As the torque imposed on the rotor also increases with radius, angular
-velocity is increasingly more desirable to extract at larger radius, and
-vertical velocity more desirable at smaller radius. Thus, our turbine
-blade angle also changes linearly as a function of radius, with
-a higher angle at larger radius. 
+radius, i.e. $\beta = \beta(r)$. The improvement in power extraction due
+to a varying blade angle with radius is due to a changing distribution
+of momentum flux. As both azimithal and axial velocities depend on the
+circulation, $\gamma$, so the optimal $\beta$ varies to capture
+this. \todo{sufficient?} 
 
 %Finally, cone improvement
 After this initial exploration of the turbine design space, further
