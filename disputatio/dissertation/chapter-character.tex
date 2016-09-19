@@ -8,63 +8,47 @@
 %
 %
 
-The computer simulations in the proposed study are intended to discover
-the optimal solar vortex system configuration for a range of scenarios
-and system sizes. This section contains discussions of the preliminary
-simulation results to motivate that the existing simulation capability
-is sufficiently well developed and understood to permit an efficient
-exploration of the SoV configuration space. 
-This section begins with a discussion of the structure of solutions from
-a representative case with no ambient winds, the ``thermal only''
-scenario. Next, a case with strong ambient horizontal winds (``Wind'')
-is discussed. Finally, the results from a series of runs are shown to
-demonstrate a heuristic by which incremental optimization of the system
-configuration will be conducted\todo{fix this sentence}.
-
-%The results of these optimized configurations will be used as input
-%for the design of a prototype to be tested in Mesa, Arizona this
-%summer. 
-
-% \todo{add photo}
-  % \begin{figure}[!htb]
-  %  \begin{center}
-  %   \includegraphics[width = 12 cm]{figs/sov_field}
-  %   \caption{A photo of the field configuration, during the June 2015
-  %   Field Test.}
-  %   \label{fig:field_real}
-  %  \end{center}
-  % \end{figure}
+This chapter details some of the early simulations and investigations
+of the SoV. The chapter begins with a study of the thermal-only
+conditions, and the optimization of the vanes in this scenario. It then
+proceeds to a simple wind case. Next, a discussion of the optimization
+procedure is detailed. Finally, the chapter attempts to discern some of
+the physical processes driving the SoV. The effect of the wind versus
+the thermally-drive buoyancy is investigated. The chapter concludes with
+comparisons between the synthetic dust-devils of the SoV and available
+data from the natural variety. 
 
 \section{Thermal Only}
 \label{sec:thermal_only}
 
 While ambient winds in the field impact system performance, it is
-also illuminating to consider an idealized scenario with natural convection
-driven only by thermal instabilities. Simulations of this baseline,
-thermal-only flow are intended to ensure the SoV apparatus to form a
-strong thermal plume even in the absence of wind. 
+also illuminating to consider an idealized scenario with natural
+convection driven only by thermal instabilities. Simulations of this
+baseline, thermal-only flow are intended to ensure the SoV apparatus to
+form a strong thermal plume even in the absence of
+wind. Programmatically, these simulations were conducted before the
+introduction of the wind, as the fully extent of the wind's impact was
+not yet realized. 
 
 In this section a representative case of an optimized thermal-only SoV
 configuration is presented. This is a simple curved vane configuration with
 two-tiers with ground temperature of 335 Kelvin and a freestream
 temperature of 313 Kelvin. There is no ambient velocity and the boundary
-conditions are as described in Chapter~\ref{sec:bc}. 
+conditions are as described in Chapter~\ref{sec:bc}.  
 
 The two tiers of vanes used for these cases are drawn in
- Figures~\ref{fig:thermal_vane_bottom} and \ref{fig:thermal_vane_top}. 
- Note that in the
-configuration, the vanes are 
-aligned radially at the largest radius, and then increasingly curve
-towards azimuthal at smaller radius. Note that these are representative
-curves of the body forcing field, and do not actually represent vane
-surfaces. The vanes are represented as in Chapter~\ref{subsec:vane}. 
-These images are created by tracing the path a particle follows through
-the forcing field. The region of forcing is between $\{0.3-0.9\}$ meters
-for the bottom tier, and $\{0.6-0.9\}$ meters for the top tier. Overall,
-the system is 1.1 meters tall, with the short first tier only standing
-0.132 meters high. The top and bottom tiers have final angles of
-$70^{\circ}$ and $85^{\circ}$, respectively. No cone is used in this
-case. 
+Figures~\ref{fig:thermal_vane_bottom} and \ref{fig:thermal_vane_top}.  
+Note that in the configuration, the vanes are aligned radially at the
+largest radius, and then increasingly curve towards azimuthal at smaller
+radius. Note that these are representative curves of the body forcing
+field, and do not actually represent vane surfaces. The vanes are
+represented as in Chapter~\ref{subsec:vane}.  These images are created
+by tracing the path a particle follows through the forcing field. The
+region of forcing is between $\{0.3-0.9\}$ meters for the bottom tier,
+and $\{0.6-0.9\}$ meters for the top tier. Overall, the system is 1.1
+meters tall, with the short first tier only standing 0.132 meters
+high. The top and bottom tiers have final angles of $70^{\circ}$ and
+$85^{\circ}$, respectively. No cone is used in this case. 
 
 \begin{figure}[htb]
 \centering
@@ -129,17 +113,18 @@ case.
 %  \end{subfigure}%
 % \end{figure}
 
-The results shown are the averages of fifty snapshots of the solution 
-taken over the course of ten minutes. In general, the averaging times
-are selected to be approximately 20 to 30 wash-out times, where a
-wash-out is defined as the time required for a particle at the base of
-the apparatus to flow out through the top boundary. The kinetic energy flux
-through the top of the vanes for this case is about 53 watts. The solution
-demonstrates several features characteristic of naturally occurring dust
-devils. Figure~\ref{fig:thermal} shows a temperature isocontour set at
-threshold of 3 Celsius higher than the ambient fluid temperature. This
-value was selected because it was noted by
-Sinclair~\cite{Sinclair1969} as characteristic of the thermal core
+The results shown were from transient solutions (the unsteady virtual
+vanes) and so the images of the fields are averages of fifty snapshots
+of the solution taken over the course of ten minutes. In general, the
+averaging times are selected to be approximately 20 to 30 wash-out
+times, where a wash-out is defined as the time required for a particle
+at the base of the apparatus to flow out through the top boundary. The
+kinetic energy flux through the top of the vanes for this case is about
+53 watts. The solution demonstrates several features characteristic of
+naturally occurring dust devils. Figure~\ref{fig:thermal} shows a
+temperature isocontour set at threshold of 3 Celsius higher than the
+ambient fluid temperature. This value was selected because it was noted
+by Sinclair~\cite{Sinclair1969} as characteristic of the thermal core 
 temperature above the ambient temperature observed in dust devils. The
 image depicts a tight, coherent thermal plume roughly the same size as
 the inner diameter of the lower vanes. As anticipated, this hot flow is
@@ -147,14 +132,13 @@ acting like a chimney, generating a large vertical velocity which in
 turn entrains air from the outside.  
 
 An image of the entrainment is shown in Figure~\ref{fig:entrain}. The
-image was created by tracking particles as they 
-convect through the device. Tracer particles were seeded into the
-averaged flowfield and then advancing through 
-the field using an RK4 time integrator. 
+image was created by tracking particles as they convect through the
+device. Tracer particles were seeded into the averaged flowfield and
+then advancing through  the field using an RK4 time integrator.  
 \todo{define how this is actually performed, mathematically}
- There is clearly a tight inner vortex with significant azimuthal
- velocity and a broader region of entraining fluid through the
- upper tier of vanes.   
+There is clearly a tight inner vortex with significant azimuthal
+velocity and a broader region of entraining fluid through the upper tier
+of vanes.    
 
 \begin{figure}[htb]
 
@@ -230,15 +214,11 @@ immediately surrounding the vanes.\todo{fix axes to make readable}
 %
 % conclusion of thermal only
 %
-Finally, the thermal plume is relatively
-narrow compared to the diameter of the device. It is desirable to
-broaden the thermal plume, as this would create a larger vertical
-momentum flux and consequentally a larger kinetic energy flux. 
-%% This will presumably
-%% entrain more surrounding fluid, driving it through the vanes and
-%% imparting kinetic energy to the flow. The kinetic energy grows as the
-%% square of the radius, so any broadening of the vortex core can greatly
-%% enhance the kinetic energy flux. 
+Finally, the thermal plume is relatively narrow compared to the diameter
+of the device. It is desirable to broaden the thermal plume, as this
+would create a larger vertical momentum flux and consequentally a larger
+kinetic energy flux.  
+
 The diameter of the thermal core is therefore a critical flow
 characteristic in the thermal-only conditions. However, a means of
 setting the thermal plume's thickness is not presently 
