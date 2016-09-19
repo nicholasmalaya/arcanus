@@ -1,20 +1,20 @@
 \label{sec:field}
 
 The steady virtual vane model was used to explore a broad set of
-system configurations and to optimize the system turning vane
-configuration to optimize for the kinetic energy flux flowing through
-the SoV. Based on the lessons learned in Chapter~\ref{sec:results}, as
-well a dedicated optimization effort, a new configuration was created
+system configurations to optimize the system turning vane
+configuration to maximize the kinetic energy flux into the facility. 
+Based on the lessons learned in Chapter~\ref{sec:results}, as
+well an extensive optimization effort, a new configuration was created
 and explored computationally. The resulting configuration represents a
 significant change from that used in the August 2015 Field test. This
 chapter begins by describing the geometry of the device and the design
 optimization that lead to this configuration. Next is a detailed look
 at the turbine design incorporated into the SoV to extract energy from
-the flow. A field prediction based entirely on the computational effort is
+the flow. A field prediction based on the computational model is
 then provided. Some of the model shortcomings of this design are
-considered, with corrections to the model inadequacy proposed and the
+considered, with corrections for the model deficiencies proposed and the
 results of these corrections to the baseline models explored. Finally,
-the chapter concludes with an estimate of the maximal energy that could
+the chapter concludes with an estimate of the maximum energy that could
 be extracted from an idealized turbine placed within this device.   
 
 \section{System Geometry}
@@ -27,11 +27,11 @@ albeit without the cone. An actual image of the 2015 field configuration
 is in Figure~\ref{fig:aug_2015_field}. The inner diameter of the second
 tier vanes for this apparatus was six meters, and the overall vane
 height was nearly three meters. The second tier vanes were straight and
-constructed out of fiberglass. The sixty minute time averaged integral
+constructed from fiberglass. The sixty minute time averaged integral
 of the kinetic energy flux was measured at 107 Watts, but demonstrated
 large variations, with an RMS of 79.4 Watts and a peak power of 784
 Watts. The peak power corresponds to periods with the largest ambient
-wind velocities, and this is considered a guideline for the 
+wind velocities, and this is considered an indicator of the 
 importance of the wind in the newly proposed asymmetric design.  
 
 %
@@ -50,7 +50,7 @@ importance of the wind in the newly proposed asymmetric design.
    \hfill
    \includegraphics[width =0.45\textwidth]{figs/aug_test_side}
    \caption{August 2015 Field Test CAD images. An image from the top
-   down is on the left, and a skewed view on the right. Both images do
+   down is on the left, and an angled view on the right. Both images do
    not include the cone. The CAD designs were created by the team at
    Georgia Tech. The images were created from these CAD files by the
    author using FreeCAD\cite{Falck}.}  
@@ -58,25 +58,23 @@ importance of the wind in the newly proposed asymmetric design.
   \end{figure}
 
 Starting from this baseline, and armed with the steady virtual vane
-model, a dedicated design effort was embarked upon explore a large space
-of possible system configurations and geometries to discover the
-structure of a new SoV apparatus. To arrive at the present design, the
-workflow consisted of weekly calls with the experimental team to discuss
-possible system designs, which typically consisted of vane sketches or
-drawings.  
+model, an extensive design effort was embarked upon to explore a large space
+of possible system configurations and geometries to develop a new 
+SoV apparatus. To arrive at the present design, the
+process also included weekly calls with the experimental team to discuss
+possible system designs.  
 
 This conceptual phase generated a wide range of possible
 configurations, few of which showed enough promise to warrant further
-investigation. The designs that had initially promising results were
-then optimized similar to the examples outlined in
-Section~\ref{sec:results}, where new parameter values were introduced, a
-run was performed, and then the output is postprocessed to evaluate the
-Power output before the process begins again. In this way several
+investigation. The designs that produced initially promising results were
+then optimized as outlined in 
+Section~\ref{sec:results}, where new parameter values were specified, a
+simulation was performed, and then the output was postprocessed to evaluate the
+energy flux. In this way several
 hundred optimization runs were performed over the course of several
-months. While not provably exhaustive, this dedicated exploration of the 
-SoV configuration space was an extensive effort and no major concepts
-generated within the constraints of the principle SoV concept detailed
-in Section~\ref{sec:dust_devil_concept} remain. 
+months. While not provably exhaustive, this extensive exploration of the 
+SoV configuration space covered the major design concepts detailed
+in Section~\ref{sec:dust_devil_concept}. 
 
   \begin{figure}
    \centering
@@ -86,22 +84,23 @@ in Section~\ref{sec:dust_devil_concept} remain.
    \label{fig:aug_2015_field}
   \end{figure}
 
-The new configuration is a highly asymmetric design, intended to capture
-a much greater area of incoming wind and draw it into the center of the
+The new configuration is highly asymmetric, which is intended to capture
+the wind over 
+a much greater area and draw it into the
 device. Horizontal and vertical views of the new optimized configuration
 are shown in Figures~\ref{fig:top_design},\ref{fig:bottom_design} and
-\ref{fig:vertical_design}, below. The actual parametric values of these
+\ref{fig:vertical_design}, below. The parameters describing the
 vanes are detailed in Tables~\ref{tab:top},\ref{tab:bottom} and
 \ref{tab:side}. This design does have some notable 
-similarities to the previous efforts. It still retains the two-tier
+similarities to the previous iterations. It retains the two-tier
 design outlined Section~\ref{sec:dust_devil_concept}. The inner diameter 
 of the 2\textsuperscript{nd} tier vanes remains six meters, and the
 bottom tier is much shorter than the second tier. A brief summary of the
 differences are provided below:      
 
 \begin{itemize}
-\item The bottom tier vanes are taller than the previous field test
-\item The bottom tier vanes downwind side is taller 
+\item The bottom tier vanes are taller than in the previous field test, 
+      and their height is asymmetric, with taller vanes on the down-wind side
 \item An impermeable cylinder was introduced along the arc $\{\pi < \theta
       < 0 \}$, e.g. the bottom two quadrants in the images below, replacing the
 vanes in those quadrants. 
@@ -112,29 +111,30 @@ prevent flow in the vanes from rising up and out of the vanes
 \item The cone is taller providing a greater contraction
 \end{itemize}
 
-We now discuss each of these bullets in detail. Upon inspection, the
-bottom tier vanes were found to be too short, and so were unnecessarily
-constricting the flow through them. Originally, the height of the lower
-tier vanes were set based on thermal boundary layer considerations, but
-detailed computational inspection found that the boundary layer inside
-the vanes was considerably thicker than a back-of-the-envelope
-measurement would indicate. It is presumed that this is a result of the
-convection of thermal resource into the device from ambient winds and
-the strong radial entrainment from the vortex. If true, then a shorter
+We now discuss each of these changes in detail. Simulations indicated that 
+the
+bottom tier vanes were too short, and were constricting the flow 
+through them. Originally, the height of the lower
+tier vanes was set based on the thickness of the 
+thermal boundary layer, but the original boundary layer inside
+the vanes was considerably thicker than measurements indicated. 
+This is presumed to be a result of the
+convection of ground-heated air into the device by ambient winds and
+the strong radial entrainment by the vortex. If true, then a shorter
 first tier is a substantial impediment to the intensification of the
-vortex, as it limits the inflow of thermal resource which, as detailed
-in Section\ref{sec:wind_impact}, notably plays a substantial role in the
-measured vortex energy flux. 
+vortex, as it limits the inflow of heated air which, as detailed
+in Section\ref{sec:wind_impact}, probably plays an important role in 
+the operation of the device.
 
-The lower tier vanes are now asymmetric. The downwind side
-is substantially taller (by a factor of two) than the upwind side. This
-is due to the downwind boundary layer being thicker on account of it
-possessing a lower Reynolds number. The Reynolds number is lower on the
-downwind side because it does not possess the benefit of a strong wind
-forcing the flow through the vanes. Due to this, the downwind lower tier
-vanes also have a lower peak turning angle to reduce blockage.
+The downwind side lower tier vanes are, by a factor of two, taller 
+than the upwind side. This
+is because the downwind boundary layer is thicker due to its 
+lower Reynolds number. The Reynolds number is lower on the
+downwind side because it is not being driven by the wind.
+For this reason, the downwind lower tier
+vanes also have a lower maximum turning angle to reduce blockage.
 
-Despite repeat efforts, the downwind side of the second tier vanes were
+Despite repeated efforts, the downwind side of the second tier vanes were
 never found to entrain flow from the wake, even with the vane separation
 model detailed in Section~\ref{sec:separation}. As ``leakage'' of the
 vortex out the back of the SoV has been a noted issue in the past, it
@@ -142,33 +142,34 @@ was decided to introduce an impermeable cylindrical wall along the
 regions where leakage was observed to occur in the simulations. 
 
 The most visually striking change between the current configuration and
-the previous field test is in the second tier vanes. As the wind was
-believed to play a substantial role in providing energy flux to the
-vortex, the upper tier vanes were redesigned to capture as much of this
+the previous field configuration is in the second tier vanes. 
+Since the wind was found to be a
+significant fraction of the energy flux entering the device , 
+ the upper tier vanes were redesigned to capture as much of this
 energy as possible. To do this, the vanes were extended far out in the
-streamwise direction and designed to align with the freestream velocity
-in this location. This broken symmetry introduces a failure mode, as it
-requires that the SoV be aligned with the streamwise velocity. This
-design decision is discussed in more detail in
+streamwise direction and aligned with the freestream velocity. 
+This broken symmetry introduces a failure mode, as it
+requires that the facility be aligned with the streamwise velocity, which of 
+course can change. This design decision is discussed in more detail in
 Section~\ref{subsec:scenario_param}. 
 
 The upper tier vanes also now possess horizontal partitions. By placing
 a flat horizontal ``top'' on the vanes, flow is constrained from
-vertically leaving the SoV apparatus before it is forced into the
+leaving the SoV apparatus before it is forced into the
 center. This horizontal partition is clearly visible in
 Figure~\ref{fig:top_down_cad}.   
 
 The cone plays at least two important roles. The first is acting as a
 converging nozzle for the flow, increasing the vertical and azimuthal
-velocity as it exits out the top of the device. Additionally, much akin
-to a wind tunnel contraction, the cone was found to increase the
-symmetry of the flow near the exit. This is appealing as the turbine is
-more readily capable of extracting power from a symmetric velocity
-field. The second important role for the cone was found to be that in
-the wind, the cone also acts as a shield, preventing the high velocity
-freestream flow from disrupting the vortex before it has run through the
-turbine. Both of these effects were observed to increase with a taller
-cone than had been previously used.
+velocity as it exits out the top of the device. Additionally, much like
+a wind tunnel contraction, the cone increases the
+symmetry of the flow near the exit. This is important because the turbine 
+can more easily extract power from a symmetric velocity
+field. 
+Second, the cone also acts as a shield, preventing the wind
+from disrupting the vortex before it has run through the
+turbine. A taller cone than had been previously used was found 
+to be more effective in both of these ways.
 
 It is important to note that while increasing the height of the cone
 (and along with it, the contraction ratio) was recommended, due to
@@ -303,10 +304,9 @@ experimental group, where they were instantiated as CAD designs by
 Mr. John Culp at Georgia Tech. Images of the resulting model were generated
 with FreeCAD~\cite{Falck} by the author and are
 depicted in Figures~\ref{fig:top_down_cad} and \ref{fig:cad_skewed},
-which show a top-down view of the configuration and a skewed
-view of the incoming flow. In both cases the bottom, top and cone are
-clearly visible. After final detailed checks of the resulting
-configuration's angles, lengths, etc. the CAD design was used for
+which show a top-down view and an angled 
+view of the configuration. In both figures the bottom, top and cone are
+clearly visible. This CAD design was used for
 fabrication of the 2016 Field SoV Prototype. 
 
 \begin{figure}[!htb]
@@ -356,17 +356,16 @@ it was necessary to formulate a more general parameterization of the
 vanes.
 
 Previously, the vanes had a linear curvature function and were
-axisymmetric. The new concept required the vanes to hold an azimuthal
+axisymmetric. The new concept required the vanes to have an azimuthal
 dependence so that they are aligned with the streamwise velocity upstream 
 of the device, and then curve inward to spin the flow at the center of
-the device. A linear vane curvature was first attempted, but this was
-found to have too few degrees of freedom to provide adjustments to the
-vane curvature. Next, vanes that had an elliptic curvature were decided
-upon. The intent here is to have a quarter of an ellipse, where the arc
-of the ellipse starts at the x-intercept (thus ensuring the vane is
-aligned with the freestream velocity) and then curves in towards the
-center of the device, terminating at a high angle nearly azimuthal. To
-accomplish this, the normal vector of the ellipse must be known. 
+the device. A linear vane curvature has
+too few degrees of freedom to represent the design concept. 
+Instead, vanes with elliptical shape are used. Each vane is a quarter of 
+an ellipse or less. The minor axis of each ellipse is aligned in the inlet 
+plane, and the vane terminates at the cylindrical boundary of the device interior 
+at a nearly azimuthal angle. To implement this, the normal vector of the ellipse 
+must be determined. 
 
 This required use of implicit differentiation for the functional,
 
@@ -397,7 +396,7 @@ constants (namely, $k,b$) that define ellipses that capture the shape we
 desire. We want to determine an ellipse that has a certain
 slope, m, at a specific point,  $(x_0,y_o)$, which lies on the inner
 radius (R) of the SoV apparatus. This is shown in
-Figure~\ref{fig:elliptic_vane_concept}. We have a system of four
+Figure~\ref{fig:elliptic_vane_concept}, and results in a system of four
 equations,
 \begin{eqnarray}
  \frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} =& 1, \label{eq:ell1}\\
@@ -405,7 +404,7 @@ equations,
  x_0^2 + y_0^2 =& R, \label{eq:ell3} \\
  -\frac{b^2}{a^2}\frac{(x_0-h)}{(y_0-k)} =& m. \label{eq:ell4} 
 \end{eqnarray}
-These equations express the fact that the ellipse intercepts both known
+These equations express the fact that the ellipse intercepts two known
 points, that the point $(x_0,y_o)$ lies on the inner radius of the
 apparatus, and that the slope at this point is known. Assuming that
 h, a, x, y, R and m are given, we have a system of four equations
@@ -416,7 +415,7 @@ encountered. Inverting this system by hand is too complex and error
 prone, and furthermore, Mathematica was unable to find a closed-form
 solution. Numerous simplifications and additional constraints were added
 to ensure that the system of equations were well-posed (a>b, for
-instance), but the problem still resisted solution. 
+instance), but the problem still resisted solution.\todo{rewrite}
 
  \begin{figure}[!htb]
   \begin{center}
