@@ -134,7 +134,7 @@ turn entrains air from the outside.
 An image of the entrainment is shown in Figure~\ref{fig:entrain}. The
 image was created by tracking particles as they convect through the
 device. Tracer particles were seeded into the averaged flowfield and
-then advancing through the field using a Fourth order Runge-Kutta integrator.  
+then advancing through the field using a fourth order Runge-Kutta integrator.  
 There is clearly a tight inner vortex with significant azimuthal
 velocity and a broader region of entraining fluid through the upper tier
 of vanes. This is consistent with the imagined structure of a dust devil
@@ -161,12 +161,9 @@ presented in Figure~\ref{fig:cartoon}.
  % \label{fig:p-to}
  \caption{Time averaged vertical slices through the center of the device
  for the thermal-only cases. Black lines indicate the location of the
- vanes. A strong thermal plume is visible at the center of the device,
- which drives a vertical velocity. The fluid flow is entrained by this
- vertical movement and pulled radially into the center while being
- turned by the turning vanes. Notice also the low pressure ``eye'' at
- the center of the flow, and the modest downward flow in the  center of
- the vertical velocity, consistent with Figure~\ref{fig:cartoon}.} 
+ vanes. The top left is the azimuthal velocity (v), and the top right
+ the vertical velocity, w. The bottom row shows the same plane, but now for the
+ temperature and pressure.} 
  \label{fig:to-vert}
 \end{figure}
 
@@ -174,14 +171,13 @@ presented in Figure~\ref{fig:cartoon}.
 %
 %
 Figure~\ref{fig:to-vert} depicts several vertical slices through the SoV
-for various state variables. One can see that there is a tight core
-vortex with azimuthal and vertical velocities of several meters per
-second. The tight vortex region coincides with a high temperature, low
-pressure core region. The rapidly rotating air near the center induces
-a low pressure core, as observed in real dust devils.
-On the vertical velocity plot, a small downward flow region has formed in
-the middle of the vortex, consistent with the sketch in
-Figure~\ref{fig:cartoon}.   
+for various state variables. A strong thermal plume is visible at the
+center of the device, which drives a vertical velocity. The fluid flow
+is entrained by this vertical movement and pulled radially into the
+center while being turned by the turning vanes. Notice also the low
+pressure ``eye'' at the center of the flow, and the modest downward flow
+in the center of the vertical velocity, consistent with
+Figure~\ref{fig:cartoon}. 
 
 \begin{figure}[htb]
 
@@ -216,7 +212,7 @@ immediately surrounding the vanes.\todo{fix axes to make readable}
 Finally, the thermal plume is relatively narrow compared to the diameter
 of the device. It is desirable to broaden the thermal plume, as this
 would create a larger vertical momentum flux and consequentally a larger
-kinetic energy flux.  
+kinetic energy flux.\todo{kill?}  
 
 The diameter of the thermal core is therefore a critical flow
 characteristic in the thermal-only conditions. However, a means of
@@ -310,45 +306,26 @@ the kinetic energy flux through the vanes is also significantly higher.
 % vertical
 %
 
-% \begin{figure}[htb]
-
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=.75\linewidth]{figs/wind_u_vertical}
-%   \caption{Streamwise}
-%   \label{fig:vt-wind-vert}
-%  \end{subfigure}%
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=.8\linewidth]{figs/wind_w_vertical}
-%   \caption{Vertical Velocity}
-%   \label{fig:vz-wind-vert}
-%  \end{subfigure}%
-
-
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=.85\linewidth]{figs/wind_t_vertical}
-%   \caption{Temperature}
-%   \label{fig:t-wind-vert}
-%  \end{subfigure}%
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=.75\linewidth]{figs/wind_p_vertical}
-%   \caption{Pressure}
-%   \label{fig:p-wind-vert}
-%  \end{subfigure}%
-
-%  \caption{Time averaged vertical slices from the center of the device
-%  for the wind cases. A great deal of flow is radially entrained by the
-%  first tier of vanes, consistent with the approach proposed in
-%  Figure \ref{fig:cartoon_vanes}. 
-%  Notice that while the temperature field appears to
-%  be quite modest, this is due to the fact that the thermal column is not
-%  well centered. The full column is quite visible in Figure
-%  \ref{fig:field_real}.}  
-%  \label{fig:wind-ver}
-% \end{figure}
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=.75\linewidth]{figs/wind_u_vertical}
+  \hfill
+  \includegraphics[width=.8\linewidth]{figs/wind_w_vertical}
+  \\
+  \centering
+  \includegraphics[width=.85\linewidth]{figs/wind_t_vertical}
+  \hfill
+  \includegraphics[width=.75\linewidth]{figs/wind_p_vertical}
+  \\
+ \caption{Time averaged vertical slices from the center of the device
+ for the wind cases. A great deal of flow is radially entrained by the
+ first tier of vanes, consistent with the approach proposed in
+ Figure~\ref{fig:cartoon_vanes}. Notice that while the temperature field
+  appears to be quite modest, this is due to the fact that the thermal
+  column is not well centered. The full column is visible in
+  Figure~\ref{fig:field_real}.}
+ \label{fig:wind-ver}
+\end{figure}
 
 The vertical slices are shown in Figure~\ref{fig:wind-ver}. In this
 case, the lower tier of vanes are where the majority of flow is 
