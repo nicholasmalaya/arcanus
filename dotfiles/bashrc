@@ -66,6 +66,7 @@ export MAIL=/mail/${USER}/Maildir/
 # default printer: change this to suit your needs.
 export PRINTER=pr6406
 #export PRINTER=pr6414
+#export PRINTER=pr6412 is the tara printer
 # cp 6412 is the one by tara
 #export PRINTER=pr6406d  #for double sides
 
@@ -101,39 +102,33 @@ case $MACHINE in
 	case $- in *i*)
 		echo Welcome to $MACHINE, $USER
 		echo Today is : $(date +"%A %B %-d, %Y")
-		echo Loading BASHRC-*NIX
+		echo Loading BASHRC-*NIX CentOS7
 		echo All Systems Nominal
 	esac
 	module purge
-	module load sl6
-	#module load intel/12.1
+	module purge
+	module load c7
 	module load gcc
 	module load mpich2
 	module load mkl
       	module load boost 
 	module load autotools 
-	module load doxygen 
 	module load pfftw3 
 	module load phdf5
 	module load autotools
-	module load epd
+	module load python
 	module load texlive
 	module load gsl
 	module load pfftw3
-	module load esio 
 	module load eigen
 	module load masa 
 	module load pecos
 	module load antioch
-	module load paraview/4.0.1
+	module load paraview
 	module load tbb
 	module load trilinos
 	module load petsc
-	module load neon/0.29.6
-	module load subversion/1.7.9
-	#module list slepc
 	module load vtk
-	#module load libmesh/trunk-devel
 	;;
     athena)
 # interactive mode stuff goes here
@@ -163,35 +158,95 @@ case $MACHINE in
 	case $- in *i*)
 		echo Welcome to $MACHINE, $USER
 		echo Today is : $(date +"%A %B %-d, %Y")
-		echo Loading BASHRC-*NIX
+		echo Loading BASHRC-*NIX CentOS7
 		echo All Systems Nominal
 	esac
 	module purge
-	module load sl6
+	module load c7
 	module load gcc
 	module load mpich2
 	module load mkl
       	module load boost 
 	module load autotools 
-	module load doxygen 
 	module load pfftw3 
 	module load phdf5
 	module load autotools
-	module load epd
+	module load python
 	module load texlive
 	module load gsl
 	module load pfftw3
-	module load esio 
 	module load eigen
 	module load masa 
 	module load pecos
 	module load antioch
-	module load paraview/4.0.1
+	module load paraview
 	module load tbb
 	module load trilinos
 	module load petsc
-	module load neon/0.29.6
-	module load subversion/1.7.9
+	module load vtk
+	;;
+    fry)
+        # interactive mode stuff goes here
+	case $- in *i*)
+		echo Welcome to $MACHINE, $USER
+		echo Today is : $(date +"%A %B %-d, %Y")
+		echo Loading BASHRC-*NIX CentOS7
+		echo All Systems Nominal
+	esac
+	module purge
+	module load c7
+	module load gcc
+	module load mpich2
+	module load mkl
+      	module load boost 
+	module load autotools 
+	module load pfftw3 
+	module load phdf5
+	module load autotools
+	module load python
+	module load texlive
+	module load gsl
+	module load pfftw3
+	module load eigen
+	module load masa 
+	module load pecos
+	module load antioch
+	module load paraview
+	module load tbb
+	module load trilinos
+	module load petsc
+	module load vtk
+	;;
+    bender)
+        # interactive mode stuff goes here
+	case $- in *i*)
+		echo Welcome to $MACHINE, $USER
+		echo Today is : $(date +"%A %B %-d, %Y")
+		echo Loading BASHRC-*NIX CentOS7
+		echo All Systems Nominal
+	esac
+	module purge
+	module load c7
+	module load gcc
+	module load mpich2
+	module load mkl
+      	module load boost 
+	module load autotools 
+	module load pfftw3 
+	module load phdf5
+	module load autotools
+	module load python
+	module load texlive
+	module load gsl
+	module load pfftw3
+	module load eigen
+	module load masa 
+	module load pecos
+	module load antioch
+	module load paraview
+	module load tbb
+	module load trilinos
+	module load petsc
 	module load vtk
 	;;
 	*)
@@ -210,3 +265,7 @@ alias srcgrep="find . -iname '*.C' -or -iname '*.cpp' -or -iname '*.c' \
                     -or -iname '*.F90' -or -iname '*.f90' \
                     -or -iname '*.F' -or -iname '*.f' | xargs grep --color=auto"
 
+if test "$SSH_CONNECTION" != ""
+then
+  export PINENTRY_USER_DATA="USE_CURSES=1"
+fi

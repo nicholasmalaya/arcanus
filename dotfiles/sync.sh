@@ -8,12 +8,12 @@ diff /h2/nick/".$1" "$1"
 if [ $? -ne 0 ]
 then
     cp /h2/nick/".$1" "$1"
-    git commit "$1" -m "[paleologos]: Diff detected in $1. Automatical sync initialized."
+    git commit "$1" -m "[arcanus]: Diff detected in $1. Automatical sync initialized."
     git push
 fi
 }
 
-cd /h2/nick/bin/paleologos/dotfiles/
+cd /h2/nick/bin/arcanus/dotfiles/
 # sync up sync!
 git pull 
 
@@ -29,7 +29,7 @@ crontab -l | diff blah -
 if [ $? -ne 0 ]
 then
     crontab -l > cron
-    git commit cron -m "[paleologos]: Diff detected in cron. Automatically sync initialized."
+    git commit cron -m "[arcanus]: Diff detected in cron. Automatically sync initialized."
     git push
 fi
 
