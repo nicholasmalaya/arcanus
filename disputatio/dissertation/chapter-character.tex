@@ -436,8 +436,11 @@ placed. This is a surface integral~\cite{landau1959fm},
  \centering
  \includegraphics[width=.75\linewidth]{figs/opt_plot}
  \caption{This plot diagrams the improvements to the calculated flux for  
- each iteration of system configuration. Every iteration is labeled by
- design change.}
+ each iteration of system configuration in the thermal-only optimization
+ effort. Every iteration is labeled by design change. This list
+ only highlights the accepted improvements, and the numerous runs of a
+ particular parameter configuration that yielded inferior power output
+ are not shown. }
  \label{fig:opt_plot}
 \end{figure}
 
@@ -458,30 +461,24 @@ placed. This is a surface integral~\cite{landau1959fm},
 % \end{figure}\todo{need better figure}
 
 
-%
-%
-% \begin{figure}[htb!]
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=.75\linewidth]{figs/before_opt}
-%   \caption{Flow before optimization}
-%  \end{subfigure}%
-%  \begin{subfigure}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=.8\linewidth]{figs/after_opt}
-%   \caption{Flow after optimization}
-%  \end{subfigure}%
-%   \caption{These are vertical slices taken at the center of the vanes of
-%  the vertical velocity taken before and after the numerous optimizations
-%  of the turning vanes detailed in Figure \ref{fig:opt_plot}. In the
-%  original figure, the flow produces a narrow plume. In the second, the
-%  flow shows stronger vertical velocities in a much larger and more
-%  organized vortex. The flow has also transitioned into a ``two-cell''
-%  structure akin to that observed in the naturally occuring phenomena as
-%  discussed in Chapter \ref{subsec:phenomena}}
-%   \label{fig:opt_flow}
-% \end{figure}
-%
+
+
+\begin{figure}[htb]
+  \centering
+ \includegraphics[width=.75\linewidth]{figs/before_opt}
+ \hfill
+ \includegraphics[width=.8\linewidth]{figs/after_opt} \\
+  \caption{These are vertical slices taken at the center of the vanes of
+ the vertical velocity taken before and after the numerous optimizations
+ of the turning vanes detailed in Figure \ref{fig:opt_plot}. In the
+ original (left image), the flow produces a narrow plume. In the second
+ (right figure), the flow shows stronger vertical velocities in a much
+ larger and more organized vortex. The flow has also transitioned into a
+ ``two-cell'' structure akin to that observed in the naturally occuring
+ phenomena as discussed in Chapter \ref{subsec:phenomena}}
+  \label{fig:opt_flow}
+\end{figure}
+
 
 Using the kinetic energy flux as an objective, the vane geometry has
 been optimized. Over approximately tens of iterations, we have
