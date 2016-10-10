@@ -25,52 +25,129 @@
 %     applications 
 %
 
-more general?
+Observed velocities indicates that naturally occurring dust devils
+contain a considerable amount of energy, from the gravitational
+potential energy contained in air near the hot surface of the Earth and
+ambient winds. While rudimentary proof-of-concept devices have been
+developed that show that artificial dust devils may be created and
+anchored in place by turning vanes, no previous studies have attempted
+to methodically explore how to engineer these control surfaces to
+intensify the produced vortex, and in doing so, yield a stronger and
+more powerful dust devil. 
+
+This thesis has developed and validated computational models that have
+explored a broad configuration space of turning vanes so as to estimate
+how much power might be produced by one of these synthetic dust devils,
+and in doing so, provide an assessment of the technological feasibility
+of the entire synthetic columnar vortex concept as a means of generating
+usable energy. 
+
+Such a system had never been simulated previously. Developing
+simulations capable of modeling the SoV apparatus and for the scenarios
+of interest therefore required the development of new models and
+software capabilities. This required the development and implementation
+of particular mathematical models for the diffusivities in the ambient
+conditions, and the formulation for the SoV vanes, cone and
+turbine. The latter required the development of a novel representation
+of the SoV system geometry that is sufficiently flexible to permit
+cost-effective iteration in designs. These virtual vanes were
+further extended to include a separation model and the drag due to skin
+friction along the surface. In addition, a modification to the
+actuator-disk model to account for the observed impact of the turbine
+blade solidity was developed. 
+
+The ultimate simulation capability was a complicated coupled system that
+accounted for buoyancy effects, ambient winds and a wide variety of
+turning vane and turbine geometries. These simulations were validated
+across a range of conditions and system configurations and were largely
+consistent with available experimental data and
+observations. Furthermore, a steady state simulation was validated
+against unsteady simulations, which permitted computationally
+inexpensive explorations of the design space. 
 
 
-The objective of this thesis is to provide a definitive assessment of
-the technological feasibility of the entire synthetic columnar vortex
-concept as a means of generating usable energy. The previous sections
-outlined the present state of the simulation capability. In doing so, we
-have discussed the physics that influence dust devils formation, our
-particular mathematical models for the ambient conditions, and the
-formulation for the SoV vanes, cone and turbine. We summarized the
-numerical discretizations used, the software stack and the calibration,
-verification and validation of these components. The purpose of these
-sections was to communicate two major points. The first is that an
-accurate, verified and validated simulation capability has been
-developed that can quickly investigate a wide variety of system and
-scenario settings at a modest computational cost. The second point is
-that we have developed heuristics that permit optimization of any
-baseline SoV configuration to a local maximum of energy production, as
-measured by kinetic energy flux through the top of the SoV vanes.  
+%In doing so, we
+%have discussed the physics that influence dust devils formation, our
+% We summarized the
+%numerical discretizations used, the software stack and the calibration,
+%verification and validation of these components. The purpose of these
+%sections was to communicate two major points. 
+%The first is that an
+%accurate, verified and validated simulation capability has been
+%developed that can quickly investigate a wide variety of system and
+%scenario settings at a modest computational cost. 
 
-These two points were capabilities developed to support the principle
-objective of this work, which is to explore a large space of possible
-system configurations and geometries to discover the globally optimal
-structure of the SoV apparatus. Coupled with the scaling analysis
-presented in Chapter~\ref{sec:physics}, we are now able to predict
-the conditions (if any) under which the SoV apparatus will be
-technologically competitive with other sources of renewable energy.  
+% keep?
+%The second point is
+%that we have developed heuristics that permit optimization of any
+%baseline SoV configuration to a local maximum of energy production, as
+%measured by kinetic energy flux through the top of the SoV vanes.  
 
-This has also permitted investigating the physics of the apparatus, to
-assess how closely the synthetic dust devils mimic the natural
-variety. 
+These capabilities supported the principle objective of this work, which
+is to explore a large space of possible system configurations and
+geometries to discover mechanisms that intensify the vortex velocities
+and the power extracted by the turbine. These simulations indicated that
+the synthetic flow generated by the SoV does indeed have a dust
+devil-like character. The flow is buoyancy driven, with a coherent
+thermal plume corresponding to a region of intense vertical and
+azimuthal velocity. These flows are consistent with the Rankene
+vortex model, which in turn has generally been found to be an accurate
+representation of the velocities in the naturally occurring phenomenon. 
+
+A contribution of this work is in indicating that role of
+ambient winds are more substantial than previously indicated. The wind
+makes a significant contribution of kinetic energy to the flow, but it
+also changes the structure of the vortex. The expectation that the more
+powerful dust devils are driven by substantial winds also implies that
+the structure of dust devils may be more asymmetric than previously believed. 
+
+
+%Coupled with the scaling analysis presented in
+%Chapter~\ref{sec:physics}, we are now able to predict the conditions (if
+%any) under which the SoV apparatus will be technologically competitive
+%with other sources of renewable energy.   
+%This has also permitted investigating the physics of the apparatus, to
+%assess how closely the synthetic dust devils mimic the natural
+%variety. 
 
 %
 % probably dont want this...
 %
 \section{System Feasibility Assessment}
 
+The results of the simulations indicate that over tens of square meters,
+several kilowatts of energy can be produced. These results are not
+promising with regards to the competitiveness of the power generated by
+the device.\todo{compare to existing technologies} 
 
-This is designed to assess feasibility, and at this time no 
-actual experimental validation accompanies the computational
-results. Furthermore, it must also be emphasized that feasibility is
-focused on technical viability, namely energy produced by the apparatus,
-and does not include an economic assessment. In other words, it is
-currently believe that that the SoV does produce usable energy, 
-but the design required to do could be prohibitively expensive, and
-therefore not economically competitive with existing technologies. 
+Furthermore, at this time no experimental validation accompanies the
+computational results, and it is conceivable that the apparatus will not
+perform as well as predicted.  
+
+It is also worth noting that the synthetic dust devils are fragile, and
+the kinetic energy flux in the plume is highly sensitive to ambient
+conditions and the complex interplay between the ambient winds and the
+thermal buoyancy effects. In some cases, small perturbations to the
+system parameters such as the turbine blade number or the turning vane
+angles would result in orders of magnitude weaker vorticies. 
+This indicates that any energy generation system that uses dust
+devils may not be a reliable form of energy generation. This it
+may indicate that the naturally occurring dust devils, while pervasive,
+are not robust, and that individual whirlwinds are easily dissipated
+when interfered with. 
+
+However, it must also be emphasized that feasibility is focused on
+technical viability, namely energy produced by the apparatus, and does
+not include an economic assessment. The SoV is almost certainly cheaper
+to fabricate and install than competing renewable technologies such as
+photovoltaics or wind turbines. Thus, while simulations indicate that
+the SoV lags these technologies in terms of power production, it may be
+more competitive on a dollar per watt basis. 
+
+%In other words, it is currently believed that
+%that the SoV does produce usable energy,  
+%but the design required to do could be prohibitively expensive, and
+%therefore not economically competitive with existing technologies. 
 
 
 % is this too hokey?
@@ -81,22 +158,23 @@ therefore not economically competitive with existing technologies.
 %\end{equation}
 %Where the peak energy per meter squared is detailed in Section~\ref{},
 %and the efficiency estimated in Section\ref{sec:peak_estimate}. 
-A pertinent question is how does this compare to existing technologies,
-when evaluated from a similar standpoint?
 
-talk about how our velocities are lower than expected\todo{real vs synthetic}
+%A pertinent question is how does this compare to existing technologies,
+%when evaluated from a similar standpoint?
 
-
-
-Only positive venue for this are in 
-completely different scenarios (waste industrial heat)
-with much more exotic energy
-
-physics hints that multiple tiers are necessary to make a sort of
-continuous set of entrainment work
-
-might mention that more expensive models are def possible\todo{multiple
-turbines} -- still pretty speculative since usually diminishing
+One outstanding question is that the synthetic dust devils generated by
+the SoV possess substantially reduced velocities versus the naturally
+occurring phenomenon. It is not clear why the velocities are lower than
+expected. The scaling of the velocity of these objects with
+respect to the diameter of the apparatus is not known, and it is
+possible that the larger diameters of the naturally occurring dust
+devils also corresponds to intensified velocities. Alternatively,
+the solidity or blockage of the device in the vanes and turbine was
+found to be a significant limit to the power produced. As the natural
+variety do not have control surfaces that also serve to block the flow,
+these vortices may have larger mass flow rates and kinetic energy
+fluxes.  
+ 
 
 \section{Conclusions and Future Work}
 
@@ -111,6 +189,18 @@ heuristic is also a worthy contribution}
 
 fundamental fluid structure? the failure of several models during the
 optimization work performed here 
+
+
+Only positive venue for this are in 
+completely different scenarios (waste industrial heat)
+with much more exotic energy
+
+physics hints that multiple tiers are necessary to make a sort of
+continuous set of entrainment work
+
+might mention that more expensive models are def possible\todo{multiple
+turbines} -- still pretty speculative since usually diminishing
+
 
 what continuing mysteries\todo{inconsistent results for 2016 field test}
 
