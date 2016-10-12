@@ -36,13 +36,13 @@ two-tiers with ground temperature of 335 Kelvin and a freestream
 temperature of 313 Kelvin. There is no ambient velocity and the boundary
 conditions are as described in Chapter~\ref{sec:bc}.  
 
-The two tiers of vanes used for these cases are drawn in~\todo{add table}
+The two tiers of vanes used for these cases are drawn in
 Figures~\ref{fig:thermal_vane_bottom} and \ref{fig:thermal_vane_top}.  
 Note that in the configuration, the vanes are aligned radially at the
 largest radius, and then increasingly curve towards azimuthal at smaller
 radius. Note that these are representative curves of the body forcing
 field, and do not actually represent vane surfaces. The vanes are
-represented as in Chapter~\ref{subsec:vane}.  These images are created
+represented as in Chapter~\ref{subsec:vane}. These images are created
 by tracing the path a particle follows through the forcing field. The
 region of forcing is between $\{0.3-0.9\}$ meters for the bottom tier,
 and $\{0.6-0.9\}$ meters for the top tier. Overall, the system is 1.1
@@ -56,15 +56,16 @@ $85^{\circ}$, respectively. No cone is used in this case.
 \centering
  \includegraphics[width=.8\linewidth]{figs/bottom_thermal_only}
  \caption{Horizontal drawings of the curvature functions for the bottom tier
- vanes. The max angle is $85^{\circ}$, or $5^{\circ}$ less than azimuthal.}
+ vanes. The apparatus is azimuthally symmetric. The max angle is
+ $85^{\circ}$, or $5^{\circ}$ less than azimuthal.} 
  \label{fig:thermal_vane_bottom}  
 \end{minipage}\hfill
 \begin{minipage}{0.45\textwidth}
 \centering
 \includegraphics[width =0.8\textwidth]{figs/top_thermal_only}
 \caption{Horizontal drawings of the curvature functions for the top tier
- vanes. The max angle is $70^{\circ}$, or $20^{\circ}$ less than
- azimuthal.} 
+ vanes. The apparatus is azimuthally symmetric. The max angle is
+ $70^{\circ}$, or $20^{\circ}$ less than azimuthal.} 
  \label{fig:thermal_vane_top}  
 \end{minipage}
 \end{figure}
@@ -216,14 +217,33 @@ immediately surrounding the vanes.\todo{fix axes to make readable}
 Finally, the thermal plume is relatively narrow compared to the diameter
 of the device. It is desirable to broaden the thermal plume, as this
 would create a larger vertical momentum flux and consequentally a larger
-kinetic energy flux.\todo{kill?}  
-
+kinetic energy flux.  
 The diameter of the thermal core is therefore a critical flow
 characteristic in the thermal-only conditions. However, a means of
 setting the thermal plume's thickness is not presently 
 known. Regardless, these slices lend credibilty to the 
 notion that our turning vane configuration is generating something with
 visible parallels to a naturally occurring dust devil.   
+
+\section{Comparison's between Natural and Synthetic Dust Devils}
+
+Show rankene. 
+
+This is qualitatively similar to simulated tornado velocity
+profiles\ref{nolan1999structure}. 
+
+Do we want to talk about hurricanes?
+
+
+ required is coupling the interior vortex model to a
+ boundary layer model that is coupled to a model of surface heat flow
+ through soil or sand. The rate limiting factor is bound to be the
+ diffusion of heat through a thin super-heated surface layer of
+ the surface\cite{emm_comm}.   
+
+In fact, a study of this nature has been performed with current
+atmospheric models\cite{emanuel2008hypothesis}, but still relied upon
+moisture source term modeling rather than sensible heat flux.   
 
 \section{Wind}
 
@@ -358,7 +378,7 @@ the base flow temperature. The isocountour of a three Kelvin threshold
 is  shown in Figure~\ref{fig:field_real}. This value was selected as
 it was noted as characteristic for the formation of a dust devil by
 Sinclair~\cite{Sinclair1969}. It is clear from the image that a 
-strong thermal column does exist even in the 3 m/s wind cases. 
+strong thermal column exists even in the 3 m/s wind cases. 
 
 %
 % tiso
@@ -464,7 +484,6 @@ placed. This is a surface integral~\cite{landau1959fm},
   \label{fig:opt_flow}
 \end{figure}
 
-
 Using the kinetic energy flux as an objective, the vane geometry has
 been optimized. Over approximately tens of iterations, we have
 increased the kinetic energy flux by a factor of 88 relative to the
@@ -484,9 +503,25 @@ baseline.
 
 %Results of several of these iterations are documented in
 %Figure \ref{fig:opt_plot}. 
-Major adjustments to design in the the vane
-shape and angles were made to obtain this improvement. Before and after
-images are shown in Figure~\ref{fig:opt_flow}. During this optimization
+Major adjustments to design in the the vane shape and angles were made
+to obtain this improvement. The general iteration procedure is shown in
+Figure~\ref{fig:opt_image}. This iteration procedure was never
+automated, and every iteration required human intervention. A system 
+parameter such as vane angle was adjusted by providing a modest change
+(typically a few percent) around the initial state. A simulation was
+then performed, after which the kinetic energy flux at the height of the
+vanes was compared to the previous iteration. If the flux increased,
+the new parameter value was accepted and was used in subsequent runs. In
+general, all system parameters were varied, aside from the overall
+system diameter, which was fixed. 
+
+%discuss why no numerical optimization
+
+%this is a risk that would exist even with numerical optimization
+%Local minimums. 
+
+Before and after images are shown in
+Figure~\ref{fig:opt_flow}. During this optimization 
 the qualitative character of the solution changed substantially,
 changing from a mild upward flow with little rotation to a strongly
 organized vortex with a downward central flow and strong azimuthal 
@@ -500,6 +535,27 @@ driver of the vortex energy budget than had previously been understood.
 This naturally leads to the next section, which details some of the
 investigations into the impact of the wind on the SoV performance. 
 %which is a discussion of the optimized configuration results. 
+
+It should be noted that this heuristic is by no means exhaustive, and it
+is not expected that the final configurations are indeed located at the
+fixed point of optimal design, but that they are adjacent to a local
+optimum with some modest error. As this project is designed to broadly
+explore the feasibility of the concept, a small percentage increase of
+energy flux is not expected to change the conclusions. 
+
+A more significant concern is that this heuristic will only discover a
+local optimum, and so will miss the global optimum which could yield a
+significantly larger energy flux. This risk exists even if
+numerical optimization algorithms were used. Unfortunately, the kinetic
+energy surface for these systems do appear to posses multiple local
+optimums, and different designs were on several occasions found to possess
+similar kinetic energy fluxes. The risk of discovering a local 
+and not the global optimum was attempted to be mitigated by starting
+with multiple initial configurations with different initial
+parameters. However, typically this was performed only a handful of
+times for each configuration, and the variation in the initial state of
+the parameters was arbitrary. 
+
 
 \section{The Effect of the Wind}
 \label{sec:wind_impact}
@@ -530,24 +586,3 @@ what images to show?
 % 
 % nada, that is what
 
-\section{Comparison's between Natural and Synthetic Dust Devils}
-
-Show rankene. 
-
-This is qualitatively similar to simulated tornado velocity
-profiles\ref{nolan1999structure}. 
-
-
-
-Do we want to talk about hurricanes?
-
-
- required is coupling the interior vortex model to a
- boundary layer model that is coupled to a model of surface heat flow
- through soil or sand. The rate limiting factor is bound to be the
- diffusion of heat through a thin super-heated surface layer of
- the surface\cite{emm_comm}.   
-
-In fact, a study of this nature has been performed with current
-atmospheric models\cite{emanuel2008hypothesis}, but still relied upon
-moisture source term modeling rather than sensible heat flux.   
