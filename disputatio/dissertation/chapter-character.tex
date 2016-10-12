@@ -122,7 +122,7 @@ at the base of the apparatus to flow out through the top boundary. The
 kinetic energy flux through the top of the vanes for this case is about
 53 watts. The solution demonstrates several features characteristic of
 naturally occurring dust devils. Figure~\ref{fig:thermal} shows a
-temperature isocontour set at threshold of 3 Celsius higher than the
+temperature isocontour set at threshold of 3 Kelvin higher than the
 ambient fluid temperature. This value was selected because it was noted
 by Sinclair~\cite{Sinclair1969} as characteristic of the thermal core 
 temperature above the ambient temperature observed in dust devils. The
@@ -346,7 +346,7 @@ flow. The plume is more visible using isocountors to render a
 three-dimensional surface. 
 To visualize the difference between the vertically varying ambient
 temperature and the warmer thermal plume, we use the potential
-temperature, defined as,\todo{kill this?} 
+temperature, defined as, 
 \begin{equation}
   \tau(x,y,z) = T(x,y,z) -T_{\text{in}}(z) 
    \label{eqn:tau}
@@ -366,13 +366,13 @@ strong thermal column does exist even in the 3 m/s wind cases.
   \begin{figure}[!htb]
    \begin{center}
     \includegraphics[width = 12 cm]{figs/t_iso}
-    \caption{Iso-contour of the thermal plume. Here, the isocontour is
-    labelled by the potential temperature, $\tau$, as defined in
-    Equation \ref{eqn:tau}. A strong thermal column has visibly formed. The
-    figure is colored by the vertical velocity, and shows the thermal
-    column coincides with a region of upward flow. 
-    An outline of the inner enclosure region is shown to provide a sense of
-    scale.} 
+    \caption{Iso-contour of the thermal plume. Here, the isocontour
+    threshold is defined by a three Kelvin the potential temperature,
+    $\tau$, as defined in Equation \ref{eqn:tau}. A strong thermal
+    column has visibly formed. The figure is colored by the vertical
+    velocity, and shows the thermal column coincides with a region of
+    upward flow. An outline of the inner enclosure region is shown to
+    provide a sense of scale.} 
     \label{fig:field_real}
    \end{center}
   \end{figure}
@@ -380,10 +380,10 @@ strong thermal column does exist even in the 3 m/s wind cases.
 \section{Optimization}
 
 In this section results from a representative optimization
-in a thermal-only case are discussed, to demonstrate the optimization 
-process employed so far. This is a typical mode of scientific and
-engineering inquiry, where a hypothesis regarding system operation is
-developed, followed by testing of the hypothesis, and further
+in a thermal-only case are discussed, to demonstrate the optimization  
+process employed. Broadly speaking, the heuristic is a typical mode of
+scientific and engineering inquiry, where a hypothesis regarding system
+operation is developed, followed by testing of the hypothesis, and further
 iterations.  
 
 This series of simulations are all runs with different system
@@ -486,17 +486,20 @@ baseline.
 %Figure \ref{fig:opt_plot}. 
 Major adjustments to design in the the vane
 shape and angles were made to obtain this improvement. Before and after
-images are shown in Figure~\ref{fig:vt-wind-vert}. During this
-optimization the 
-qualitative character of the solution changed substantially, changing
-from a mild upward flow with little rotation to a strongly organized
-vortex with a downward central flow and strong azimuthal
+images are shown in Figure~\ref{fig:opt_flow}. During this optimization
+the qualitative character of the solution changed substantially,
+changing from a mild upward flow with little rotation to a strongly
+organized vortex with a downward central flow and strong azimuthal 
 velocities. Before and after vertical slices are shown in
 Figure~\ref{fig:opt_flow}. Nevertheless, with a peak energy flux for the
 final iteration of less than one hundred Watts, significant further 
 optimization is necessary for this system to be viable for use as an 
-energy production system. This naturally leads to the next section,
-which is a discussion of the proposed research campaign. 
+energy production system. Due to the very mild kinetic energy fluxes in
+this device, it became apparent that the wind was a more substantial
+driver of the vortex energy budget than had previously been understood. 
+This naturally leads to the next section, which details some of the
+investigations into the impact of the wind on the SoV performance. 
+%which is a discussion of the optimized configuration results. 
 
 \section{The Effect of the Wind}
 \label{sec:wind_impact}
