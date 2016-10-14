@@ -17,16 +17,16 @@ cold  = [0.0,.8745,9.3,29.8]
 #
 import matplotlib.pyplot as plt
 
-plt.plot(speed,hot,'o', label='Hot')
-plt.plot(speed,cold,'o', label='Cold')
+plt.plot(speed,hot,'x-', label='Hot')
+plt.plot(speed,cold,'o--', label='Cold')
 
 #overrx = np.linspace(1.0, 5.0, num=50)
-plt.xlim([0,5])
+plt.xlim([0,4])
 plt.ylim([0,45])
 
 fsz=20
 plt.ylabel(r'Kinetic Energy Flux (Watts)',
-           fontsize=fsz,labelpad=20)
+           fontsize=fsz)
 
 plt.xlabel(r'Wind Speed (m/s)',fontsize=fsz)
 
