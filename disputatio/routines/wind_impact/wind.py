@@ -7,22 +7,26 @@
 # 0        20.0  | 0.0
 #
 
-speed = [0,1,2,3]
-hot   = [20.0,34.5,40.09,34.9]
-cold  = [0.0,.8745,9.3,29.8]
+import numpy as np
 
+speed = [0,1,2,3]
+h     = [10.0,16.5,30.09,54.9]
+c     = [0.0,.8745,9.3,29.8]
+
+hot  = np.array(h)
+cold = np.array(c)
 
 #
 #
 #
 import matplotlib.pyplot as plt
 
-plt.plot(speed,hot,'x-', label='Hot')
-plt.plot(speed,cold,'o--', label='Cold')
+plt.plot(speed,hot,'v-', label='Hot',linewidth=4,markersize=10)
+plt.plot(speed,cold,'o--', label='Cold',linewidth=4,markersize=10)
 
 #overrx = np.linspace(1.0, 5.0, num=50)
-plt.xlim([0,4])
-plt.ylim([0,45])
+plt.xlim([0,3.5])
+plt.ylim([0,100])
 
 fsz=20
 plt.ylabel(r'Kinetic Energy Flux (Watts)',
