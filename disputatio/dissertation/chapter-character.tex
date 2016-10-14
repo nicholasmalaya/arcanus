@@ -43,12 +43,13 @@ conditions are as described in Chapter~\ref{sec:bc}.
 
 The two tiers of vanes used for these cases are drawn in
 Figures~\ref{fig:thermal_vane_bottom} and \ref{fig:thermal_vane_top}.  
-Note that in the configuration, the vanes are aligned radially at the
+Note that in this configuration, the vanes are aligned radially at the
 largest radius, and then increasingly curve towards azimuthal at smaller
-radius. Note that these are representative curves of the body forcing
-field, and do not actually represent vane surfaces. The vanes are
-represented as in Chapter~\ref{subsec:vane}. These images are created
-by tracing the path a particle follows through the forcing field. The
+radius. Note also that these images are representative curves of the
+body forcing field, and do not actually represent vane surfaces. The
+vanes are represented as a body force as detailed in
+Chapter~\ref{subsec:vane}. These images are created by tracing the path
+a particle follows through the forcing field. The 
 region of forcing is between $\{0.3-0.9\}$ meters for the bottom tier,
 and $\{0.6-0.9\}$ meters for the top tier. Overall, the system is 1.1
 meters tall, with the short first tier only standing 0.132 meters
@@ -126,7 +127,7 @@ averaging times are selected to be approximately 20 to 30 wash-out
 times, where a wash-out is defined as the time required for a particle
 at the base of the apparatus to flow out through the top boundary. The
 kinetic energy flux through the top of the vanes for this case is about
-53 watts. The solution demonstrates several features characteristic of
+53 Watts. The solution demonstrates several features characteristic of
 naturally occurring dust devils. Figure~\ref{fig:thermal} shows a
 temperature isocontour set at threshold of 3 Kelvin higher than the
 ambient fluid temperature. This value was selected because it was noted
@@ -215,7 +216,7 @@ Figure~\ref{fig:to-hor}, depicts several horizontal slices
 through the SoV for the same state variables. It can be seen that the
 large velocities are highly localized to a region just inside the
 vanes. Likewise, the entrainment of fluid is limited to a region
-immediately surrounding the vanes.\todo{fix axes to make readable} 
+immediately surrounding the vanes.
 %
 % conclusion of thermal only
 %
@@ -235,7 +236,7 @@ Figure~\ref{fig:rankene}. Here, the azimuthal velocity in the vortex
 core and slightly outside of this region is compared to the Rankene
 vortex model. The profile is generally consistent with the Rankene
 vortex model. The velocity in the inner core region roughly obeys a
-rigid body rotation, with a linear velocity profile before the region
+solid body rotation, with a linear velocity profile before the region
 adjacent to the peak. Around the peak, the profile does not form a sharp
 interface between the inner and outer regions. This is almost certainly
 on account of the interface being smoothed out through the diffusivity
@@ -246,7 +247,7 @@ be on account of the finite temporal averaging, and are not meaningful.
 
 \begin{figure}[htb]
 \centering
- \includegraphics[width=.9\linewidth]{figs/rankene}
+ \includegraphics[width=.85\linewidth]{figs/rankene}
  \caption{The thermal-only temporally averaged azimuthal velocity (blue
  line) compared to the predicted 
  velocity in the Rankene vortex model (black line). The velocity in the
@@ -265,11 +266,11 @@ This provides a degree of belief that the SoV is generating a
 thermal vortex that shares physical similarities with naturally
 occurring dust devils. Furthermore, it is interesting to note that this
 is qualitatively similar to simulated tornado velocity
-profiles\ref{nolan1999structure}, which also have a Rankene-like
+profiles~\cite{nolan1999structure}, which also have a Rankene-like
 character. In the abstract, these results indicate 
 the SoV structure occupies a place in a broader space of fundamental 
 fluid structures of columnar vortices. While not further investigated
-here, this does indicate that these simulations could be a useful tool
+here, this does indicate that these simulations might be a useful tool
 for further investigations of the physics of dust devils and vortex
 structures. 
 
@@ -292,22 +293,27 @@ structures.
 
 \section{Wind Simulations}
 
-The wind case is for a 3 m/s ambient wind with a ground temperature of
-335 Kelvin and freestream temperature of 313 Kelvin. There is no ambient
-velocity and the boundary conditions are as described in
-Chapter~\ref{sec:bc}. The vanes are drawn in
+On account of the extremely modest kinetic energy fluxes measured in the
+thermal-only conditions, simulations were performed to explore the
+available energy flux and solution character in the presence of ambient
+winds. 
+The representative wind case show here is for a 3 m/s ambient wind with
+a ground temperature of 335 Kelvin and freestream temperature of 313
+Kelvin. There is no ambient velocity and the boundary conditions are as
+described in Chapter~\ref{sec:bc}. The vanes are drawn in
 Figures~\ref{fig:wind_bottom} and \ref{fig:wind_top}. These images show
 the straight vane case, and a cone that sits on top of the second tier of vanes. 
 As in the previous section, these images are representative
 curves of the body forcing field, and do not actually represent vane
 surfaces. The vanes are represented as in Chapter~\ref{subsec:vane}. 
 These images are created by tracing the path a particle follows through
-the forcing field. The region of forcing is between $\{0.96-3.4\}$ meters
+the forcing field (see Section~\ref{subsec:scenario_param}). The region
+of forcing is between $\{0.96-3.4\}$ meters 
 for the bottom tier, and $\{1.5-3.4\}$ meters for the top tier. Overall,
 the system is three meters tall, with the short first tier only standing
 0.3 meters high. The top and bottom tiers have final angles of
-$70^{\circ}$ and $80^{\circ}$, respectively.\todo{add newer and fixed up
-wind images}
+$70^{\circ}$ and $80^{\circ}$, respectively.
+%\todo{add newer and fixed up wind images}
 
 \begin{figure}[htb]
 \centering
@@ -368,7 +374,10 @@ structure is undoubtedly different than the thermal-only cases shown
 previously, we can nevertheless see that a thermal plume is forming
 along with a rotating velocity structure. In general the wind cases are
 more disorganized, with less obviously visible coherent
-structure. Notice however that the magnitude of velocities are several
+structure. The velocity profile no longer adheres to the Rankene model,
+in part because of the significant azimuthal asymmetry in the resulting
+velocity fields. 
+Notice however that the magnitude of velocities are several
 times larger than in the thermal-only cases, and the kinetic energy flux
 through the vanes is also significantly higher.    
 
@@ -403,12 +412,11 @@ case, the lower tier of vanes are where the majority of flow is
 entering the center of the apparatus, while the second tier of vanes are
 blocking the ambient wind and providing protection for the vortex column. 
 
-The thermal plume is significantly less
-visible than in the thermal-only cases. While the
-thermal-plume is necessarily weaker relative to the wind, some of this
-is also due to the plume no longer being directly centered in the
-flow. The plume is more visible using isocountors to render a
-three-dimensional surface. 
+The thermal plume is much more complicated than in the thermal-only
+cases. While the thermal-plume is necessarily weaker relative to the
+wind, some of this is also due to the plume no longer being directly
+centered in the flow. The plume is more visible using isocountors to
+render a three-dimensional surface. 
 To visualize the difference between the vertically varying ambient
 temperature and the warmer thermal plume, we use the potential
 temperature, defined as, 
@@ -530,8 +538,8 @@ placed. This is a surface integral~\cite{landau1959fm},
 \end{figure}
 
 Using the kinetic energy flux as an objective, the vane geometry has
-been optimized. Over approximately tens of iterations, we have
-increased the kinetic energy flux by a factor of 88 relative to the
+been optimized. Over approximately tens of iterations, the increased the
+kinetic energy flux was increased by a factor of 88 relative to the 
 baseline. 
 
 \begin{figure}[htb]
@@ -620,6 +628,8 @@ the parameters was arbitrary.
 % However, it will give you an idea of what the ideal blade looks like at
 % different conditions and then you can work to find a more robust
 % solution and add structural constraints as well.   
+
+
 
 thermal vs wind, be sure to mention thermal doubles energy output
 
