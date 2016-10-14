@@ -10,23 +10,29 @@
 import numpy as np
 
 speed = [0,1,2,3]
-h     = [10.0,16.5,30.09,54.9]
-c     = [0.0,.8745,9.3,29.8]
+h     = [7.0,12.5,30.09,54.9]
+c     = [0.0,.8745,7.3,19.8]
 
-hot  = np.array(h)
-cold = np.array(c)
+
+hot  = 11.65*np.array(h)
+cold = 11.65*np.array(c)
 
 #
 #
 #
 import matplotlib.pyplot as plt
 
-plt.plot(speed,hot,'v-', label='Hot',linewidth=4,markersize=10)
-plt.plot(speed,cold,'o--', label='Cold',linewidth=4,markersize=10)
+fig = plt.figure() 
+ax = fig.add_subplot(1,1,1)
+ax.tick_params(axis='x', labelsize=20)
+ax.tick_params(axis='y', labelsize=20)
+
+plt.plot(speed,hot,'v-', label='Hot Wind',linewidth=4,markersize=10)
+plt.plot(speed,cold,'o--', label='Cold Wind',linewidth=4,markersize=10)
 
 #overrx = np.linspace(1.0, 5.0, num=50)
 plt.xlim([0,3.5])
-plt.ylim([0,100])
+plt.ylim([0,700])
 
 fsz=20
 plt.ylabel(r'Kinetic Energy Flux (Watts)',
