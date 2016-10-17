@@ -39,16 +39,17 @@ H^1(\Omega)^3 \times L_2(\Omega) \times H^1(\Omega)$ such that
  \label{eqn:ns_weak} \\
  (\nabla \cdot{\bf u},q) &= 0
  \label{eqn:cont_weak} \\
- (\frac{\partial T}{\partial t}, w) + ({\bf u} \cdot \nabla T,{\bf
- w}) + (k \, \nabla T, \nabla  w) &= 0.\label{eqn:en_weak}
+ (\frac{\partial T}{\partial t}, w) + ({\bf u} \cdot \nabla T,
+ w) + (k \, \nabla T, \nabla  w) &= 0.\label{eqn:en_weak}
 \end{align}
 
-\todo{boundary terms}
+%\todo{boundary terms}
 
 $\forall ({\bf v},q,w) \in H^1(\Omega)^3 \times L_2(\Omega) \times
 H^1(\Omega)$, where $(\cdot,\cdot)$ denotes the $L_2$ inner product, 
-$(u,v) = \int_\Omega u \cdot v \, dx$ and $H^1(\Omega)$ is the
-Sobolov space with one square integrable derivative on the domain
+$({\bf u},{\bf v}) = \int_\Omega {\bf u} \cdot {\bf v} \, dx$ and
+$H^1(\Omega)$ is the Sobolov space with one square integrable derivative
+on the domain 
 $\Omega$\cite{oden2012introduction}. As noted previously, boldface letters
 denote vector quantities (such as ${\bf u} = \left \{ u,v,w \right \}$). 
 Some of the simulations presented here were conducted under
@@ -63,7 +64,7 @@ functions $\phi_i$,
 \begin{equation}
  {\bf v_h} = \sum_{i=1}^N \alpha_i \phi_i,
 \end{equation}
-where $\alpha_i$ coefficients.\todo{bring becker back?}
+where $\alpha_i$ are coefficients\cite{becker1981introduction}.
 %
 %are constants and the N basis functions, $\left \{
 %\psi_1, \psi_2, \ldots, \psi_N \right \}$, define an N-dimensional 
@@ -90,10 +91,10 @@ affected\cite{hughes2000finite}.
 
 The stabilization described above is accomplished by introducing an additional term,
 $\langle L{\bf c},S {\bf \phi} \rangle_\tau$, to the weak form defined in Equations
-\ref{eqn:ns_weak}-\ref{eqn:en_weak}. Here $L()$ is the operator for the PDEs
-in \ref{sub_sec:ns_en}, and S() is a stabilization operator
+\ref{eqn:ns_weak}-\ref{eqn:en_weak}. Here $L$ is the operator for the PDEs
+in \ref{sub_sec:ns_en}, and S is a stabilization operator
 which is chosen to be the negative adjoint of the differential operator
-terms of $L()$, and ${\bf c}$ and ${\bf \phi}$ are state and test
+terms of $L$, and ${\bf c}$ and ${\bf \phi}$ are state and test
 function vectors, i.e. $ {\bf c}= ({\bf u},p,T)$, and ${\bf \phi} = (
 {\bf v},w,q )$. The angle brackets $\langle \cdot,\cdot \rangle$ signify
 integration of the element interiors for each of the K elements, that is:
@@ -221,7 +222,7 @@ meshed boundary layer region near the ground.
 
 \section{Software}
 
-The numerical formulations described in Section~\ref{sec:discretization}
+The numerical formulations described in Chapter~\ref{sec:discretization}
 is implemented with the GRINS library\cite{GRINSpaper} by Bauman
 and Stogner using the libMesh\cite{libMeshPaper} FEM
 infrastructure. Designed to support multiphysics FEM applications, 
