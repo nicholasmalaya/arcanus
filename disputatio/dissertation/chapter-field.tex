@@ -1006,42 +1006,71 @@ turning vanes.
 %
 %https://en.wikipedia.org/wiki/Blade_solidity
 %
+
+The 2016 field test indicated that there was little or no flow through
+the turbine region. Furthermore, it was noted that the chord length of
+the turbine blades was indeed substantial, and the number of blades
+(eight) larger than typically used in wind turbines (which often operate
+with two or three blades). \todo{this section needs another look}
+
+The turbine is represented by an actuator disk model in which the lift
+and drag forces on the blades are determined from a two-dimensional CFD 
+simulation of the flow over an isolated blade. Use of this drag 
+and lift force model in the turbine implicitly assumes that the 
+turbine blades do not significantly block the flow through the 
+turbine, which would be the case if the flow remained attached 
+to the turbine blades as it passes through the turbine. However, 
+this is not likely to be the case over the entire turbine area. 
+
+To determine whether this blockage effect can explain the August 2016
+field observations a worst-case blockage assumption was made in which
+the air is said to pass through the turbine as if each blade blocked the
+flow according to its projected area. This increases the vertical
+velocity that is used in the calculation of blade lift and drag. This
+model essentially assumes that the flow is completely separated on each
+blade, which is not expected to be the case, so this may be an overly
+pessimistic estimate of the blockage effect. 
+
 It was noted that wind turbines typically possess three blades, versus
-the eight blades used in the 2016 field test. This is therefore a
-substantially increased turbine solidity versus common engineering
-designs. It is expected that we are operating in a regime not common to
-typical actuator disk models. 
+ the eight blades used in the 2016 field test. This is therefore a 
+ substantially increased turbine solidity versus common engineering
+ designs. It is expected that we are operating in a regime not common to
+ typical actuator disk models. There are some other studies that have
+ found blade solidity can greatly negatively impact the power extraction
+ from a turbine\ref{solidity_oxford}. 
 
-The power output of a turbine is proportional to the thrust that it
-exerts onto the flow, and the larger the thrust, the larger the flow
-resistance the turbine presents to the flow. The maximum power for any
-wind turbine must lie in between two extremes, i.e. high and
-a low impedance both result in minimal power
-extraction\cite{solidity_oxford}.  
 
-For the case of high impedance, little fluid flows through the
-turbine and instead flows around the device. This gives the appearance of
-the turbine being ``blocked''. In the case of low impedance, the turbine
-hardly affects the flow, and less power is extracted than could be. 
 
-Thus, an ``efficient'' impedance to the flow is one that strikes the 
-right balance between solidity and tip speed ratio. If the solidity is
-high, the operating tip speed ratio must be lower to avoid too high an
-impedance. 
+% The power output of a turbine is proportional to the thrust that it
+% exerts onto the flow, and the larger the thrust, the larger the flow
+% resistance the turbine presents to the flow. The maximum power for any
+% wind turbine must lie in between two extremes, i.e. high and
+% a low impedance both result in minimal power
+% extraction\cite{solidity_oxford}.  
 
-However, it is hard to predict the precise effects of the various
-phenomena, which is why it is difficult to comment on the overall
-performance of a particular machine in a specific
-scenario. %Turbine design is highly specialized for 
+% For the case of high impedance, little fluid flows through the
+% turbine and instead flows around the device. This gives the appearance of
+% the turbine being ``blocked''. In the case of low impedance, the turbine
+% hardly affects the flow, and less power is extracted than could be. 
 
-However, the actuator disk model treats the flow in the disk region as
-if it was flowing through a rotor with identical solidity but an
-infinite number of blades. A model correction was introduced that
-attempts to represent the fact that as the number of turbine blades
-increases, the pressure across the actuator disk should rise. This is
-accomplished by adjusting the area of the actuator disk down by the
-ratio of the free area in the disk versus the blade sizes.\todo{this is
-not the point}
+% Thus, an ``efficient'' impedance to the flow is one that strikes the 
+% right balance between solidity and tip speed ratio. If the solidity is
+% high, the operating tip speed ratio must be lower to avoid too high an
+% impedance. 
+
+% However, it is hard to predict the precise effects of the various
+% phenomena, which is why it is difficult to comment on the overall
+% performance of a particular machine in a specific
+% scenario. %Turbine design is highly specialized for 
+
+% However, the actuator disk model treats the flow in the disk region as
+% if it was flowing through a rotor with identical solidity but an
+% infinite number of blades. A model correction was introduced that
+% attempts to represent the fact that as the number of turbine blades
+% increases, the pressure across the actuator disk should rise. This is
+% accomplished by adjusting the area of the actuator disk down by the
+% ratio of the free area in the disk versus the blade sizes.\todo{this is
+% not the point}
 
 %A second model correction was therefore introduced with the aim of attempting to
 %discern if the turbine 
@@ -1143,14 +1172,27 @@ Figure~\ref{fig:turbine_solidity}, a turbine with similar
 characteristics in terms of length, location and twist but reduced from
 eight blades to four or two blades is expected to mitigate the
 substantially reduced performance observed in the field. 
+This is the only model correction that was explored that is
+capable of explaining the 2016 field observations noted in
+Section~\ref{sec:field_error}.  
 
 This crude model is admittedly extreme, as it effectively models the
 blades as flat plate bluff bodies, with the flow completely
 separated on the leeward side. Ideally, the flow should be smoothly
-turning through the blading, and not separate. Thus, it is possible that
-this estimate is overly pessimistic. Regardless, this is the only model
-correction that was explored that is plausibly capable of explaining the
-2016 field observations noted in Section~\ref{sec:field_error}. 
+turning through the blading, and not separate. Thus, while the blockage
+correction developed here is probably overly pessimistic, it could
+sensibly be used as a predictive or design tool by introducing a
+calibration constant which could be tuned if appropriate data were
+available. However, such a correction is not generally used in the wind
+turbine community, which in part why such a modification was not
+considered in the original model. It is interesting to speculate why,
+this correction has not been used in wind turbine analysis, and yet, the
+design optimization used for such turbines has not pushed the designs to
+every more blades. It is likely that the cost of additional wind turbine
+blades past two or three is not justified, even assuming the optimistic
+increased power capacity that the non-blockage-corrected model would
+predict. This would essentially move the design away from the conditions 
+in which the blockage effect is important. 
 
 Interesting enough, there have been actuator disk models used with wind
 turbines that indicate operating at low tip speed ratios with high
@@ -1370,12 +1412,16 @@ Therefore, our lift/drag functions may be expressed as,
   \end{cases}
 \end{align*}
 Where $\bar C_L = 1.7$ and $\bar C_D = 2.0$. The plot of these drag
-polars are shown in Figure \ref{drags}. 
+polars are shown in Figure~\ref{drags}. 
 
 \begin{figure}[!htb]
   \begin{center}
     \includegraphics[width = 12 cm]{figs/opt_drags}
-    \caption{The uncalibrated idealized drag polars.} 
+    \caption{The uncalibrated idealized drag polars. 
+   These drag polars are constant, discontinuous functions. The lift
+   coefficient (solid blue line) can attain a negative value, but the
+   drag coefficient (dashed red line) is constrained to never drop below
+   zero.}  
     \label{drags}
   \end{center}
 \end{figure}
