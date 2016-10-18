@@ -853,24 +853,23 @@ that it will drive the normal velocity to zero, resulting in the flow
 moving only parallel to the virtual surface. 
 The body force is defined as in Equation
 \ref{eqn:body_force}; however, the length scale $\ell_v$ is specified to
-be identical to the width of the surface being represented. This is
+be the width of the forcing region used to represent the surface. This is
 typically the width of two or three grid cells. While the actual surface we are
-emulating is thinner than this, the numerical method has difficulty
-converging for surfaces smaller than the grid size.  
+emulating is thinner than this, the numerical discretization 
+cannot represent anything thinner. 
+%difficulty converging for surfaces smaller than the grid size.  
 
-Forcing models designed to mimic a surface
-are not unique to this project, and the current formulation is
- closely related to (among others)
+Forcing models designed to mimic a surface are not original to this
+ project, and the current formulation is  closely related to (among others)
 ``immersed boundary methods'' as used by various other
 researchers~\cite{doi:10.1146/annurev.fluid.37.061903.175743,verzicco1998complex}. This
 approach is unique in its use of Babuska's penalty treatment of
 constraints\cite{1973fempen,ZAMM:ZAMM19880680925} to enforce the
 behavior at the boundary. This method was selected because it is easily
-imposed in the FEM context, and the penalty method proper has been
+imposed in the FEM context, and the penalty method properties have been
 explored in detail in the literature.
 %\todo{add more discussion of
 %healing length implications here} 
-
 Note that despite the similarity in name, this is a distinct technique
 from the ``penalty immersed boundary method'' of Kim and
 Peskin\cite{:/content/aip/journal/pof2/19/5/10.1063/1.2734674}.  
@@ -904,7 +903,7 @@ Peskin\cite{:/content/aip/journal/pof2/19/5/10.1063/1.2734674}.
 In the presence of wind, it was found that there was a significant flow
 out through the vanes in the back of the device. This was obviously
 inconsistent with the findings of our colleagues in the field, who
-observed no outflows out of the back of the device. Moreover, this resulted
+observed no such outflows. Moreover, this resulted
 in large inconsistencies between our predictions and the field results,
 almost certainly because of the kinetic and thermal energy that our vane
 representation was permitting to leave out the back of the device.  
@@ -941,7 +940,7 @@ Let $\bf n_v$ be the normal vector to the vanes,
 and $\bf n_r$ the normal vector pointing out of the vane
 region\footnote{\normalsize The subscripts ``v'' and ``r'' stand for
 vane and radial, respectively.}.  
-Then, $\bf t_v$ is the tangential vector to the vanes pointing out of
+Then, $\bf t_v$ is the tangent vector to the vanes pointing out of
 the vane region and is defined as,
 
 %\begin{equation}
@@ -1013,7 +1012,7 @@ the vanes: ${\bf u} \cdot {\bf t_v} > 0 $. In these instances, the
 forcing acts as if there was a rigid surface past the vane edge, and
 gives the appearance of a special ``no-penetration'' condition for the
 velocity for these cases. The pseudo-code for this procedure is shown in
-Algorithm~\ref{alg:sep}.
+Algorithm~\ref{alg:sep}.\todo{cant write mathematically, would be easier}
 
 The addition of this simple separation model significantly reduced the
 flow that penetrated the back of the vanes, and produces results
@@ -1035,29 +1034,31 @@ colleagues.
 Surface roughness effects have been shown to play a role in the
 formation of dust devils and related atmospheric
 phenomena\cite{oke1987boundary}. For the flat and sandy
-regions we are simulating, the impact is expected to be a small
-``kick-up'' forcing velocity perturbation in the vertical
-direction. Assuming azimuthal symmetry and forcing only inside the
-region of the vanes ($r<R$), this is modeled as a volumetric forcing in
-a narrow region above the surface,  
+regions we are simulating, the impact is expected to be a small vertical 
+velocity perturbation which triggers the convective instability caused
+by stratification near the surface. 
+%a small
+%``kick-up'' forcing velocity perturbation in the vertical
+%direction. 
+Assuming azimuthal symmetry, this is modeled as a volumetric forcing in
+a narrow region above the surface in the region of the vanes,  
 \begin{equation}
  F^{'''}_{z_0} = \frac{1}{2}\rho V_f^2/z_{0}, 
 \end{equation}
-where $z_{0}$ is the roughness height. We further assume that this
-forcing is independent of ${\bf u}$. To estimate the magnitude of
-$V_f$, we use a simple result from Newton's laws of motion,
-\begin{eqnarray}
-z_0 = \frac{1}{2} a t^2, \\
-t = \sqrt{\frac{2 a}{z_0}}. \\
-\end{eqnarray}
-Combining this with, $V_f = a t$, our estimate is, 
+where $z_{0}$ is the forcing region height and $V_f$ is the magnitude of
+ the  induced velocity fluctuation which is estimated as, 
+%\begin{eqnarray}
+%z_0 = \frac{1}{2} a t^2, \\
+%t = \sqrt{\frac{2 a}{z_0}}. \\
+%\end{eqnarray}
+%Combining this with, $V_f = a t$, our estimate is, 
 \begin{equation}
 V_f = \sqrt{2 a z_0}.
 \end{equation}
-The roughness height zero is set to the boundary layer thickness of 10
-centimeters. The acceleration was estimated at 0.05
+The forcing region height $z_0$ is set to the boundary layer thickness
+of 10 centimeters. The acceleration was estimated at 0.05
 $\text{m}/\text{s}^2$, based on the observed surface roughness impact on
-tornado-like vorticies of Natarajan and Hangan\cite{Natarajan2012577}.  
+tornado-like vorticies of Natarajan and Hangan\cite{Natarajan2012577}.\todo{good?}  
 
 We ensure that the energy
 introduced into the flow is a small fraction of total flow energy by comparing
@@ -1100,10 +1101,10 @@ forcing magnitude.
 \label{sec:bc}
 
 In this project, two principle modeling regimes are considered.  
-One is the ``thermal-only'' scenario, in which there are no ambient
-velocities and there is an imposed elevated temperature on the ground.  
+One is the ``thermal-only'' scenario, in which there is no wind
+ and there is an imposed elevated temperature on the ground.  
 In the other, there are also ambient winds that contribute to the SoV energy
-(``wind'' cases). 
+(``wind'' cases) and elevated ground temperature. 
 The computational domain and boundary conditions for these 
 two scenarios are described below.
 
@@ -1137,9 +1138,9 @@ wind domain is defined as $\Omega_W = \left[-2D,3D \right] \times
 The boundary for the thermal only case is decomposed as,
 $\partial \Omega_T = \Gamma_G \, \bigcup \, \Gamma_T \, \bigcup \, \Gamma_P $. 
 $\Gamma_G$ is the boundary along the ``Ground'', $\Gamma_T$
-the ``Top'' boundary, and $\Gamma_P$ the four periodic ``Sides''. A 3d
-diagram labeling these boundaries is shown in
-Figure~\ref{fig:thermal3d}. For this case study (no mean wind),
+the ``Top'' boundary, and $\Gamma_P$ the four periodic ``Sides''. A 3D
+diagram labeling these boundaries appears in
+Figure~\ref{fig:thermal3d}. For this case (no mean wind),
 periodic boundary conditions are used on the four sides , with a modified 
 ``inflow-outflow'' Neumann condition\cite{gunzburger1989finite} on the
 top boundary. On the ground, a ``no-slip'' velocity boundary condition is
@@ -1173,13 +1174,13 @@ $\Gamma_I$ the inflow boundary, and $\Gamma_O$ the ``Outflow''
 boundary.
 The ``wind'' simulation domain is diagrammed in
 Figure~\ref{fig:wind3d}, with the boundaries labeled. 
-For this particular study (a heated ground with 
-an ambient wind), the wind case has a proscribed inlet boundary layer
+In this wind case (a heated ground with 
+an ambient wind), there is a proscribed inlet boundary layer
 along the upstream streamwise face ($\Gamma_I$) for both the temperature
 and the velocity. The ``Ground'' boundary is identical to
 the thermal-only case. The ``Sides'', ``Outflow'' and ``Top'' are all
 set to modified Neumann boundary conditions. Note that ``Sponge Layers''
-are used on both the back boundary and the top. 
+are used on both the outflow and the top. 
 
 \begin{figure}[!htb]
   \begin{center}
@@ -1214,7 +1215,7 @@ Where $\Gamma_G = \{(x,y,0) \subset \partial \Omega \} $.
 \textbf{Periodic Boundary Condition, $\Gamma_P$} 
 
 A periodic boundary condition is used in the thermal only cases, 
-along the streamwise and spanwise boundary faces 
+for boundaries normal to the x and y directions 
 (denoted $\Gamma_{P,x}$ and $\Gamma_{P,y}$, respectively). In these
 cases the state variables  
 are contrained to have the same value on the opposite faces of the domain, 
@@ -1250,7 +1251,7 @@ The thermal boundary layer is assumed to have a similar boundary layer,
 but, as observed in real atmospheric flows, there remains a vertical
 temperature gradient outside the thin boundary layer. Based on
 results in the literature a $2/3$ Kelvin per meter gradient is 
-imposed\cite{Blocken2007238}. The thermal inflow is then  
+imposed\cite{Blocken2007238}.\todo{incorrect dimension} The thermal inflow is then  
 \begin{equation*}
   T_{\text{in}}(z) = \Delta T \left(1- \text{ min
 			}\left(\left(\frac{z}{\delta}\right)^7,1\right)\right)
@@ -1263,7 +1264,7 @@ The inflow boundary is at the surface $x=-L_x$.
 \textbf{Mixed inflow/outflow Boundary Conditions on $\Gamma_T$,
 $\Gamma_S$ and $\Gamma_B$}  
 
-At outflow boundaries, a homogeneous ``do nothing'' Neumann condition is
+At outflow boundaries, a homogeneous Neumann condition is
 appropriate\cite{Rannacher2000}, 
 \begin{align}
   \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0 \\
@@ -1296,12 +1297,11 @@ To accomplish this, the boundary condition is,
     \frac{\partial T}{\partial n}\bigg|_{\Gamma_T} = 0
   \end{cases}
 \end{align}
-
 where $u_n$ and $u_t$ are normal and tangential components of the velocity, 
 respectively. This boundary condition is applied on the top boundary
 $\Gamma_T$ ($z=L_z$) and downstream side boundary  $\Gamma_B$ in the
 wind case. This mixed boundary condition appears to be a unique
-implementation of a ``directional do-nothing'' condition, which has been
+implementation of a modified Neumann condition condition, which has been 
 demonstrated previously in other
 instances~\cite{braack2014directional,feistauer2006non}. In particular,
 the well-posedness of this general class of boundary condition is
@@ -1316,20 +1316,25 @@ literature\cite{doi:10.1146/annurev.fluid.36.050802.121930}, such as
 absorbing layers, fringe regions, buffer zones, sponges,
 etc. 
 This layer artificially increases the momentum diffusivity by
-a factor of ten times the nominal value. This was designed to stabilize
+a factor of ten over the nominal value. This was designed to stabilize
 the modified Neumann boundary conditions which can exhibit an instability
 when there is a compact jet of fluid leaving the domain. 
 These small outflows would create small high velocity inflows, and the
 feedback loop would result in instabilities and numerical
-blow-up. Mindful of the fact that the character of solution not
-important in this region, and that our physical interest remains focused
-on the region inside and in immediate proximity to the vanes, we
-introduced a higher diffusivity ``sponge'' region that would diffuse the
-high velocity exiting jets sufficiently to prevent numerically
-un-physical behavior. No results are quoted from this ``sacrificial''
+blow-up. 
+% Mindful of the fact that the character of solution not
+% important in this region, and that our physical interest remains focused
+% on the region inside and in immediate proximity to the vanes, we
+% introduced a higher diffusivity ``sponge'' region that would diffuse the
+% high velocity exiting jets sufficiently to prevent numerically
+% un-physical behavior. 
+Use of this stabilizing sponge layer is justified because we are not
+interested in the flow in this region. 
+No results are quoted from this ``sacrificial''
 region, as it is not considered physically meaningful. The top sponge
-layer in both the wind and thermal-only cases are set to be half a
-system diameter $(L_z/D = 1/2)$. For the wind cases, the back sponge
-layer is also set to be half a system diameter $(L_x/D = 1/2)$. 
+layer in both the wind and thermal-only cases are half a
+system diameter $(L_z/D = 1/2)$ thick. For the wind cases, the
+downstream sponge layer is also half a system diameter $(L_x/D
+= 1/2)$ thick.  
 
 %\todo{expand this? how thick did it need to be?}
