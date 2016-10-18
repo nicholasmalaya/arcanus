@@ -873,9 +873,8 @@ the August 2015 Field test.
 %behaves like wind tunnel contraction
 While these results are promising, there are several significant
 shortcomings to these models and scenario conditions that substantially
-impact the SoV performance. 
-
-A major uncertainty is the opacity of the device. Ideally, the device
+impact the SoV performance. A major uncertainty is the opacity of the
+device. Ideally, the device 
 would be completely transparent. However, previous field tests
 found that the SoV device shaded the inner region, which resulted in a
 lower temperature inside the device than 
@@ -1105,10 +1104,10 @@ to,
 As $B(r) \rightarrow 0$, $\theta_f \rightarrow \pi$, e.g. 90 degrees. In
 this way the velocity vector will be completely aligned with drag. 
 
-Furthermore Equation~\ref{eq:force_turb}\todo{fix dot here}, 
+Finally Equation~\ref{eq:force_turb}, 
 \begin{equation}
- F = \frac{1}{2}\frac{c \rho U_p^2}{A}(C_L \cdot {\bf n_{\text{lift}}} + C_d
-  \cdot {\bf n_{\text{drag}}})
+ F = \frac{1}{2}\frac{c \rho U_p^2}{A}(C_L  {\bf n_{\text{lift}}} + C_d
+   {\bf n_{\text{drag}}})
 \end{equation}
 is modified so that, 
 \begin{equation}
@@ -1166,12 +1165,11 @@ that the correction presented here is more generally useful.
 \label{sec:peak_estimate}
 
 All of the results in Section~\ref{subsec:field_predict} were
-generated\todo{bf this section!}
-using $90^{\circ}$ semicircle blade geometries, as shown in Figure
-\ref{fig:90_drag}. The only other blade geometries considered were the
-flat plate and $180^{\circ}$ arcs, which were universally found to be
-inferior. Time constraints required fabrication of the turbine in short
-order, and a limited budget encouraged inexpensive (and therefore
+generated using $90^{\circ}$ semicircle blade geometries, as shown in
+Figure~\ref{fig:90_drag}. The only other blade geometries considered
+were the flat plate and $180^{\circ}$ arcs, which were universally found
+to be inferior. Time constraints required fabrication of the turbine in
+short order, and a limited budget encouraged inexpensive (and therefore 
 simple) turbine blades. 
 %Finally, the design space was limited to
 %readily available drag polar data due to the expense and difficulty of 
@@ -1247,13 +1245,14 @@ for evaluating the system feasibility from a technological standpoint,
 by providing the peak power that could be extracted for a given vane
 geometry. 
 
-The power extracted by the turbine is, \todo{flip to Bc, as in other chapter}
+The power extracted by the turbine is, 
 \begin{equation}
  P = \Omega \, Q
 \end{equation}
 where the torque, Q, is\cite{morgado2014validation}, 
 \begin{equation}
- Q = A_R \int_0^{2\pi} \int_{r_{\text{min}}}^{r_{\text{max}}} F''_{\tau}\, r\, dr d\theta.
+ Q = A_R \int_0^{2\pi} \int_{r_{\text{min}}}^{r_{\text{max}}}
+  F''_{\tau}\, r\, dr \, d\theta.
 \end{equation}
 Here, $A_R$ is the relative area coefficient which is, 
 \begin{equation}
@@ -1284,12 +1283,12 @@ that explicitly depends on the lift and drag coefficients,
 						     \,\text{cos}(\phi)
 						    \right) r\,dr d\theta. 
 \end{equation*}
-We lump the constant terms together, 
+Lumping the constant terms together, 
 \begin{equation}
 E_{\tau} = \frac{\Omega \rho B c (r_{\text{max}}-r_{\text{min}})}{2
  \pi(r_{\text{max}}^2-r_{\text{min}}^2)}
 \end{equation}
- and separate this equation, 
+ and separating this equation, 
 \begin{align}
  P_L = E_\tau
  \int_0^{2\pi}
@@ -1351,10 +1350,10 @@ In this way the first integral quantity,
 \end{equation}
 is clearly maximized when $C_L(\phi,r) = C_L^{\text{max}}$. 
 The result for Equation \ref{drag} is identical. Now, for these
-conditions, we are interested in largest attainable values. For the drag
-coefficient, $C_D^{\text{Max}}$ is two. % refmunson 
+conditions, we are interested in the largest attainable values. For the drag
+coefficient, $C_D^{\text{Max}}$, we select a peak value of two. % refmunson 
 This corresponds to a flat plate perpendicular to the flow.
-The lift coefficient peak is about 1.75. This design is not necessarily
+The lift coefficient peak value is 1.75. This design is not necessarily
 physically realizable, but represents an absolute maximum. 
 
 Therefore, our lift/drag functions may be expressed as,
@@ -1399,15 +1398,16 @@ polars are shown in Figure \ref{drags}.
 Under this approach, the turbine extracts so much energy from the flow
 that the vortex loses its coherence and the power extracted becomes
 negative (e.g. the constant velocity turbine is adding energy to the
-flow). %\todo{add image}
-This implies a limit on how much of the energy can be extracted before
-disrupting the flow so greatly that the vortex cannot be maintained.   
-Consistent with the results from Section~\ref{sec:field_error},
-the vortex is not robust, and the feedback from extracting more power
-from it (manifest as increased blade solidity) causes a collapse of the
-vortex structure. It is interesting to note that the vortex collapse is
-not subtle, with the power extracted discontinuously dropping to zero or
-negative values.\todo{just kill this?} 
+flow). This implies a limit on how much of the energy can be extracted
+before disrupting the flow so greatly that the vortex cannot be
+maintained.\todo{re-read needed}     
+
+%Consistent with the results from Section~\ref{sec:field_error},
+%the vortex is not robust, and the feedback from extracting more power
+%from it (manifest as increased blade solidity) causes a collapse of the
+%vortex structure. It is interesting to note that the vortex collapse is
+%not subtle, with the power extracted discontinuously dropping to zero or
+%negative values.
 
 To withdraw from the vortex disruption point, the drag
 polars are calibrated by reducing $\bar C_L $ and $\bar C_D$ so that the 
