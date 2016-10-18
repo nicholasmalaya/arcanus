@@ -32,17 +32,17 @@ character. Incident radiation from the Sun does not significantly
 interact with the air, which is nearly
 transparent\cite{haltiner1957dynamical}. Instead, this radiation is
 absorbed by the ground, which causes its temperature to rise. This
-results in a thermal gradient between the hot ground and the cooler
-air. The sensible heat flux causing expansion and lowers the density
+results in a temperature difference between the hot ground and the cooler
+air. The sensible heat causes expansion and lowers the density
 of the air. This reduced density air near the surface is then driven
-upwards by the force of buoyancy.    
+upwards by buoyancy.    
 
-For sufficiently large temperature gradients, the hot surface layer is
+For sufficiently large temperature differences, the hot surface layer is
 unstable, and as the warm air is driven upwards the flow will transition
 to turbulence. For the typical use case we consider, namely Arizona in
 summer, the temperature difference can be in excess of 30 Kelvin. 
-Rayleigh numbers associated with temperature gradients of this magnitude
-are between $10^{9} - 10^{11}$ and therefore meets the
+Rayleigh numbers associated with temperature differences of this
+magnitude are between $10^{9} - 10^{11}$ and therefore meets the
 criterion\cite{incropera1996fundamentals}  
 for transition to a turbulent regime. The flow is that of an unstably
 stratified fluid.  
@@ -50,8 +50,7 @@ stratified fluid.
 This chapter begins by describing the governing equations of the system
 of interest. It then proceeds to the development of a viscosity model
 used to resolve the large scale features of the solution. Next, models
-used to represent the vanes and turbine, and the separation of
-fluid off of these modeled surfaces, are introduced.  Finally, the
+used to represent the vanes and turbine, are introduced.  Finally, the
 models for the computational domain extent and the boundary conditions
 are discussed. 
 
@@ -78,8 +77,7 @@ approximation\cite{boussinesq2010théorie}, a representation of buoyancy
 coupled with the heat equation. Note that in
 Equations~\ref{eq:ns}-\ref{eq:ht}, and throughout this document,
 boldface denotes a vector quantity, for example, ${\bf u} = \{u,v,w\}$.  
-
-Note that these equations ignore the action of the Coriolis force. 
+Further these equations ignore the action of the Coriolis force. 
 Monin and Obukhov~\cite{monin1954basic} demonstrated that the Coriolis
 force is negligible for the surface layer below fifty meters (a distance
 well below our region of interest), and this argument is detailed in
@@ -90,11 +88,11 @@ high Reynolds number as to be
 turbulent~\cite{Reynolds01011883}. Turbulence significantly alters the
 character of the flow,  
 and necessitates either resolving the resulting small scales or
-providing a model that emulates their impact. In this case, a
+providing a model that represents their impact. In this case, a
 Reynolds Averaged Navier-Stokes (RANS) formulation is used, where the 
 turbulent viscosity and thermal conductivities are permitted to vary in
 space, and the flow is decomposed into constant laminar and varying
-turbulent and vane components,  
+turbulent and vane components,\todo{not always rans}  
 
 \begin{eqnarray*}
  \nu =& \nu_{l} + \nu_{T}(z) + \nu_{V}(r,z) \\
@@ -305,8 +303,8 @@ function must then be
 for } z \gg L_{M-O}. 
 \end{equation}
 
-So long as the turbulent Prandtl number remains constant in space, a not
-altogether unrealistic assumption~\cite{chuang1969turbulent}, then
+So long as the turbulent Prandtl number remains constant in space, a
+realistic assumption~\cite{chuang1969turbulent}, then 
 identical arguments regarding the asymptotic behaviour at large $\xi$
 provide the analogous result for the eddy viscosity's variation with
 respect to distance from the ground,   
@@ -372,19 +370,20 @@ H{\"o}gstr{\"o}m functions are used in this work.
 
 \subsection{Shortcomings of Monin-Obukhov Theory}
 
-Several known (and often well characterized) shortcomings of the Monin
-Obukhov similarity theory exist. These include:
+There are several well-known conditions for which the Monin
+Obukhov similarity theory breaks down. These include:
  
 \begin{itemize}
- \item Surfaces with large spatial variations in roughness heights
+ \item Surfaces with large spatial variations in roughness
  \item Outside of the surface layer (several hundred meters) where the 
        coriolis effect is no longer negligible
 %\item the theory's predictions are well known to be sensitive to choice
 %      of universal function for $L>0$.
 \end{itemize}
 
+But neither of these are relevant here. 
 In ``ideal'' situations, the theory has been found to be
-accurate to more than 10\%\cite{QJ:QJ49709741204,kaimal}. 
+accurate to better than 10\%\cite{QJ:QJ49709741204,kaimal}. 
 For our case, with minimal surface roughness and our interest
 constrained to the near surface layer, these functions are applicable
 and reasonably accurate\cite{Foken2006}, and are easily implemented in
@@ -396,9 +395,7 @@ software.
 %difficult regime to model.\todo{poor justification} 
 The validation process identified a refinement to the virtual vane
 formulation that results in a better representation of the vane
-effects in a broader range of flows. The thermal and momentum
-diffusivities are even larger in the device where the flow across the
-vanes produces shear and generates turbulence. The model now include an
+effects in a broader range of flows. The model uses an
 enhanced turbulent diffusivity in the vortical plume region to account
 for the effects of vortex shedding from the trailing edge of the vanes,
 which is not represented in the virtual vane representation (discussed in
@@ -505,17 +502,18 @@ scale. $\ell_v$ represents the distance over which the
 flow evolves under the influence of the body force before the
 velocity in the normal direction is reduced by a factor of $1/{\bf 
 e}$.
-This is the length scale over which the normal component of the velocity
-decays exponentially. It is the distance analog to the more familiar
-time constant of exponential decay. 
+That is, this is the length over which the normal component of the
+velocity decays exponentially. 
+%It is the distance analog to the more
+%familiar time constant of exponential decay. 
 
-$\ell_v$ is a modeling constant and must be specified. Our expectation
-is that it will be the same order as the separation distance between
-neighboring vanes in the physical vane configuration, since entry 
-lengths in internal flows scale with the width of the channel. 
-This study is depicted in Figure~\ref{fig:annealing}, where
-the average misfit between the turning vane angle in an explicitly
-represented vane configuration and the flow is plotted.  
+Therefore, $\ell_v$ is a modeling constant and must be specified. Our
+expectation is that it will be the same order as the separation distance
+between neighboring vanes in the physical vane configuration, since
+entry  lengths in internal flows scale with the width of the
+channel. This study\todo{what study, describe what i did} is depicted in
+Figure~\ref{fig:annealing}, where the average misfit between the turning
+vane angle in an explicitly represented vane configuration and the flow is plotted.   
 
 The trend is clear that as the flow moves through the turning vanes
 towards the center of the apparatus it is brought into alignment with
@@ -554,7 +552,7 @@ expect a flat line if the misfit between vanes was perfectly described
 by an exponential decay. While the curve does not perfectly coincide
 with this, the curve does not have severe convexity and the average is
 sufficient for this work. Based on this, the lengthscale $\ell_v$ was
-set to three. 
+set to three\todo{what? it has dimension}. 
 
 %\todo{show
 %calibration of this} 
@@ -574,10 +572,11 @@ vanes, it is desirable to avoid explicitly representing the turbine
 blade control surfaces. Instead, the turbine is modeled using the
 actuator disc simplification. 
 This model (also often referred to as a ``Blade Element Momentum''
-theory or the ``actuator line technique'') is commonly used in wind
+theory) is commonly used in wind
 turbine design\cite{shevell1983fundamentals,betz,leclerc}. The essence
 of this model is to approximate the individual spinning turbine blades
-as a washed-out ``disk'', as shown in Figure~\ref{fig:actuator_disk}.
+as a ``disk'' in which the effects of the turbine are represented by
+body forces on the fluid, as shown in Figure~\ref{fig:actuator_disk}.
 This method assumes an axisymmetric representation of the turbine
 geometry, and in doing so completely neglects unsteady effects due to
 the rotation of turbine blades in a plane. 
@@ -588,7 +587,7 @@ generally be in opposition to the flow direction, and will therefore
 impart a loss of momentum on the fluid. 
 Associated with the loss of axial and azimuthal momentum is a loss of
 energy which can be collected by an electrical generator attached
-to the rotor shaft if, as with a thrust, the rotor experiences a torque
+to the rotor shaft if the rotor experiences a torque
 in the direction of rotation. 
 
 All the turbine cases shown in this study make the further
@@ -615,7 +614,7 @@ normal in the blade's velocity direction is,
 \begin{equation*}
 n_B = \frac{{\bf u_B}}{||{\bf u_B}||}. 
 \end{equation*}
-Where ${\bf u_B}$ is the blade velocity vectorand is specified. The
+Where ${\bf u_B}$ is the blade velocity vector and is specified. The
 normal in the fan vertical direction is typically ${\bf n_f} =
 \left(0,0,1\right)$, e.g. pointing ``up''. Then the normal in the radial
 direction must be,  
@@ -649,8 +648,7 @@ and the ``upward'' velocity in this frame is,
 \begin{equation}
 {\bf u_{\text{up}}} = {\bf u_p} \cdot {\bf n_f}. 
 \end{equation}
-The angle with respect to the fan velocity direction may now be
-specified as, 
+The angle with respect to the fan velocity direction is then, 
 \begin{equation}
  \theta_f = \text{atan2}\left(\frac{{\bf u_{\text{up}}}}{{\bf u_{\text{fwd}}}}\right)
  %\theta_f =
@@ -708,8 +706,8 @@ Then, the force on the turbine is,
 % \label{eq:force_turb}
   % \end{equation}
 \begin{equation}
- F = \frac{1}{2} \rho A_B {\bf u_p}^2 \left(C_l \cdot
-					      {\bf n_\text{lift}} + C_d \cdot
+ F = \frac{1}{2} \rho A_B {\bf u_p}^2 \left(C_l 
+					      {\bf n_\text{lift}} + C_d 
 					      {\bf n_\text{drag}}  \right).
 \label{eq:force_turb}
 \end{equation}
@@ -720,11 +718,11 @@ The actuator disk is an approximation of the blades as a volumetric
 forcing ``disk'', and so our interest is in this quantity,
 \begin{equation}
 \frac{F}{\text{volume}} = \frac{F}{\pi r^2 t} = \frac{1}{2}\frac{\rho\, B\, c\,
- {\bf u_p}^2}{\pi r t}\left(C_l \cdot {\bf n_\text{lift}} + C_d \cdot {\bf
+ {\bf u_p}^2}{\pi r t}\left(C_l {\bf n_\text{lift}} + C_d {\bf
 		   n_\text{drag}} \right).  
 \label{eq:vol_turb}
 \end{equation}
-Where t is the blade thickness. 
+Where t is the blade thickness of the actuator disk.
 Note that the volume is over a different extent than the area. The
 volume is for the entire actuator disk, while the force on the blades
 was only calculated with total surface area of the turbine. 
@@ -742,14 +740,13 @@ Now, only the drag polars ($C_l,C_d$) must be specified to fully
 determine the force on the blades. These drag polars are functions of
 the angle of attack, $\alpha$. Plots of these drag polars were provided
 by Duane McCormick at UTRC and were generated from a 2-D model in
-COMSOL. As the data was discrete, interpolated functions were used to
-provide a smoothly varying functional. High order polynomials were used
-to generate the lift and drag functions, and were fit to the COMSOL
-data. Typically, 16\textsuperscript{th} order polynomials were used to
-ensure that the interpolated function closely matched the provided
+COMSOL. As the data was discrete, high order polynomials were used
+to obtain smooth functions fit to the COMSOL data. Typically,
+16\textsuperscript{th} order polynomials were used to 
+ensure that the fitted function closely matched the provided
 data. The drag and lift functions for the three cases considered (flat
 plates, $180^{\circ}$, $90^{\circ}$ circles) are shown in 
-Figures~\ref{fig:flat_plate_drag},\ref{fig:semi_drag} and
+Figures~\ref{fig:flat_plate_drag}, \ref{fig:semi_drag} and
 \ref{fig:90_drag}. The flat plate drag polars are smoothly
 varying and so the interpolated function is close to the provided
 data. The semi-circles ($180^{\circ}$) are largely accurate, but near
