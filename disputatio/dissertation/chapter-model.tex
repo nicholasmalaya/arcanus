@@ -787,33 +787,34 @@ interpolated function.
 % Blade torque loads modest, only ~20 ft-lbs
 %% load was predicted at 20 ft*lbs
 
-\subsection{Shortcomings of the Actuator Disk Model}
-\label{subsec:wake_loss_model}
+% lets kill this one
+%\subsection{Shortcomings of the Actuator Disk Model}
+%\label{subsec:wake_loss_model}
 
 The actuator disk model is valuable because of its simplicity, not on
 account of its accuracy. Despite its pervasive use, there are numerous
 known inadequacies to the model. 
 
-In particular, the actuator disk does not account for the separation of
-flow between blades, and implicitly assumes the flow remains attached. 
-This model deficiency results due to the actuator disk
-method's dependence on the precision of the lift and drag
-coefficients. During the operation of a wind turbine, should the angle
-of attack reach high values (post-stall region), then aerodynamic
-data is not available or inaccurate.  
-This model inadequacy is commonly fixed with the Glauert Correction. 
-Developed in 1926 by Glauert from helicopters rotor blades, this
-correction originally was purely based on experimental data. The model
-was designed to correct the overall thrust coefficient for high angles
-of attack\cite{glauert1926general,glauert1935airplane}. 
-While the Glauert correction is a tip loss model, the correction was
-developed as a correction to an entire rotor disk; the original
-researcher did not intend it to be applied to a rotor annulus. 
+% In particular, the actuator disk does not account for the separation of
+% flow between blades, and implicitly assumes the flow remains attached. 
+% This model deficiency results due to the actuator disk
+% method's dependence on the precision of the lift and drag
+% coefficients. During the operation of a wind turbine, should the angle
+% of attack reach high values (post-stall region), then aerodynamic
+% data is not available or inaccurate.  
+% This model inadequacy is commonly fixed with the Glauert Correction. 
+% Developed in 1926 by Glauert from helicopters rotor blades, this
+% correction originally was purely based on experimental data. The model
+% was designed to correct the overall thrust coefficient for high angles
+% of attack\cite{glauert1926general,glauert1935airplane}. 
+% While the Glauert correction is a tip loss model, the correction was
+% developed as a correction to an entire rotor disk; the original
+% researcher did not intend it to be applied to a rotor annulus. 
 %Given that 
 %a duct eliminates tip losses\todo{write me}
 %However, because of a limited amount of experimental data, an alternative model does not exist.  
 
-Nor do the model's described above account for the turbulent wake
+For instance, the model's described above account for the turbulent wake
 state, which in some cases have been shown to be significant for a wind
 turbine\cite{churchfield2012numerical} and may have substantial impact
 on the SoV. 
