@@ -159,7 +159,7 @@ roughly one hundred points in the streamwise and spanwise directions
 before the refinement. The refinement halves the spacing (doubles the
 number of points) in all three coordinate directions, \{x,y,z\} in this
 region. The refinement is introduced from the ground to 1.5 times the
-height of the vanes and cone.\todo{need a look here}
+height of the vanes and cone.
 
 %
 % makes no sense
@@ -171,7 +171,8 @@ height of the vanes and cone.\todo{need a look here}
 %
 
 The vertical mesh spacing is non-uniform to resolve the boundary
-layer. This is accomplished by redistributing a 
+layer.\todo{need a look here}
+ This is accomplished by redistributing a 
 mesh uniform in height, z, according to,
 \begin{equation}
  z = \begin{cases} C_1(z-L_z)+L_z,& \text{if } z \geq z_\delta\\
@@ -184,11 +185,14 @@ $C_1-C_3$ are scaling coefficients. %\todo{show coefficients}.
 This gives the mesh an exponentially
 varying character, with the coefficients chosen to ensure ten or more
 points in the boundary layer, isotropic spacing in cells outside of
-it, and smooth blending between these two regimes. Each boundary layer
-spacing was tested against a finer spacing to ensure that the results
-were not sensitive to the choice of spacing. A horizontal slice though a
-representative domain is shown in Figure \ref{fig:meshing}. The single
-refinement in the region of the vanes is visible, along with the finer
+it, and smooth blending between these two regimes. 
+
+A grid refinement verification was performed, where this spacing was 
+tested against a mesh with twice the grid points in the vertical
+direction for a representative test case. The results were not sensitive
+to the choice of spacing. A horizontal slice though a
+typical domain is shown in Figure~\ref{fig:meshing}. The single 
+refinement in the region of the vanes is visible, along with the finer 
 meshed boundary layer region near the ground. 
 
   \begin{figure}[!htb]
@@ -201,6 +205,8 @@ meshed boundary layer region near the ground.
      \label{fig:meshing}
     \end{center}
   \end{figure}
+
+
 
 
 
