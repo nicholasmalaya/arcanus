@@ -58,7 +58,7 @@ plt.plot(fit,'x--', label='Fit',linewidth=3)
 #
 fsz=20
 plt.ylabel(r"$z'$",fontsize=fsz,rotation="0",labelpad=20)
-plt.xlabel(r'$index$',fontsize=fsz)
+plt.xlabel(r'index',fontsize=fsz)
 plt.legend(loc='best')
 #plt.axes().set_aspect('equal', 'datalim')
 
