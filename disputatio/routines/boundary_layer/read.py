@@ -12,7 +12,7 @@
 
 import csv
 
-ifile  = open('vertical.csv', "rb")
+ifile  = open('vertical0.csv', "rb")
 
 # stupid initialization of list
 T = []
@@ -34,6 +34,11 @@ import numpy as np
 #
 #
 
+height = np.array(height)
+print height.sort()
+
+l = np.arange(len(height))
+fit = (np.exp(.06*l) -1.0)/20.
 
 #
 # plot
@@ -42,7 +47,8 @@ import matplotlib.pyplot as plt
 
 # plt.plot(x, y)
 
-plt.plot(height,'--', label='Simulation',linewidth=3)
+plt.plot(height,'x--', label='Simulation',linewidth=3)
+plt.plot(fit,'x--', label='Fit',linewidth=3)
 
 #plt.ylim([0,3])
 #plt.xlim([0,5])
@@ -51,10 +57,10 @@ plt.plot(height,'--', label='Simulation',linewidth=3)
 #
 #
 fsz=20
-plt.ylabel(r'$u_{\theta}/u^{Max}_{\theta}$',fontsize=fsz,rotation="0",labelpad=20)
-plt.xlabel(r'$r/r^{Max}$',fontsize=fsz)
+plt.ylabel(r"$z'$",fontsize=fsz,rotation="0",labelpad=20)
+plt.xlabel(r'$index$',fontsize=fsz)
 plt.legend(loc='best')
-plt.axes().set_aspect('equal', 'datalim')
+#plt.axes().set_aspect('equal', 'datalim')
 
 
 
