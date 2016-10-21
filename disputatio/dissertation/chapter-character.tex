@@ -11,7 +11,7 @@
 This chapter details some of the early simulations and investigations
 of the SoV. The chapter begins with a study of the thermal-only
 conditions. Comparisons between the synthetic dust-devils of the SoV and
-available data from the natural variety are performed. The chapter then
+available data from the natural variety are described. The chapter then
 proceeds to a simple wind case. Next, a discussion of the optimization
 procedure is detailed. Finally, the chapter concludes with an
 investigation into the effect of the wind versus the thermally-driven buoyancy. 
@@ -27,19 +27,19 @@ investigation into the effect of the wind versus the thermally-driven buoyancy.
 %convection driven only by thermal instabilities. 
 
 First, we consider the ``thermal-only'' case, which is 
-where the natural convection is driven only by thermal instabilities. 
-Simulations of this
-baseline, thermal-only flow are intended to ensure the SoV apparatus to
+driven only by thermal instabilities with no wind. 
+Simulations of this baseline, thermal-only flow are 
+intended to ensure that the SoV apparatus can
 form a strong thermal plume even in the absence of
 wind. Programmatically, these simulations were conducted before the
-introduction of the wind, as the fully extent of the wind's impact was
+introduction of the wind, when the full extent of the wind's impact was
 not yet realized. 
 
 In this section a representative case of an optimized thermal-only SoV
 configuration is presented. This is a simple curved vane configuration with
-two-tiers with ground temperature of 335 Kelvin and a freestream
-temperature of 313 Kelvin. There is no ambient velocity and the boundary
-conditions are as described in Chapter~\ref{sec:bc}.  
+two-tiers, a ground temperature of 335 Kelvin and a freestream
+temperature of 313 Kelvin. There is no ambient wind velocity and the boundary
+conditions are as described in Section~\ref{sec:bc}.  
 
 The two tiers of vanes used for these cases are drawn in
 Figures~\ref{fig:thermal_vane_bottom} and \ref{fig:thermal_vane_top}.  
@@ -50,7 +50,7 @@ body forcing field, and do not actually represent vane surfaces. The
 vanes are represented as a body force as detailed in
 Chapter~\ref{subsec:vane}. These images are created by tracing the path
 a particle follows through the forcing field. The 
-region of forcing is between $\{0.3-0.9\}$ meters for the bottom tier,
+radial region of forcing is between $\{0.3-0.9\}$ meters for the bottom tier,
 and $\{0.6-0.9\}$ meters for the top tier. Overall, the system is 1.1
 meters tall, with the short first tier only standing 0.132 meters
 high. The top and bottom tiers have final angles of $70^{\circ}$ and
@@ -144,7 +144,7 @@ device. Tracer particles were seeded into the averaged flowfield and
 then advancing through the field using a fourth order Runge-Kutta integrator.  
 There is clearly a tight inner vortex with significant azimuthal
 velocity and a broader region of entraining fluid through the upper tier
-of vanes. This is consistent with the imagined structure of a dust devil
+of vanes. This is consistent with the presumed structure of a dust devil
 presented in Figure~\ref{fig:cartoon}.    
 
 \begin{figure}[htb]
@@ -182,9 +182,8 @@ for various state variables. A strong thermal plume is visible at the
 center of the device, which drives a vertical velocity. The fluid flow
 is entrained by this vertical movement and pulled radially into the
 center while being turned by the turning vanes. Notice also the low
-pressure ``eye'' at the center of the flow, and the modest downward flow
-in the center of the vertical velocity, consistent with
-Figure~\ref{fig:cartoon}. 
+pressure ``eye'' at the center of the flow, which coincides with a 
+modest downward flow, consistent with Figure~\ref{fig:cartoon}. 
 
 \begin{figure}[htb]
 
@@ -239,11 +238,11 @@ vortex model. The velocity in the inner core region roughly obeys a
 solid body rotation, with a linear velocity profile before the region
 adjacent to the peak. Around the peak, the profile does not form a sharp
 interface between the inner and outer regions. This is almost certainly
-on account of the interface being smoothed out through the diffusivity
+due to the interface being smoothed out through the diffusivity
 model. In the outer region, the velocity decays at a rate broadly
 consistent with the anticipated $1/r$ predicted in a Rankene vortex. 
-The outer region simulation has small fluctuations which are expected to
-be on account of the finite temporal averaging, and are not meaningful. 
+The outer region simulation has small fluctuations which are 
+almost certainly due to the finite temporal averaging, and are not meaningful. 
 
 \begin{figure}[htb]
 \centering
@@ -267,7 +266,7 @@ be on account of the finite temporal averaging, and are not meaningful.
 These results are consistent with the measured profiles of Sinclair,
 who's data indicated that naturally occurring dust devil's velocity
 profiles did not substantially deviate from the Rankene model. 
-This provides a degree of belief that the SoV is generating a
+This provides a degree of confidence that the SoV is generating a
 thermal vortex that shares physical similarities with naturally
 occurring dust devils. Furthermore, it is interesting to note that this
 is qualitatively similar to simulated tornado velocity
@@ -276,8 +275,8 @@ character. In the abstract, these results indicate
 the SoV structure occupies a place in a broader space of fundamental 
 fluid structures of columnar vortices. While not further investigated
 here, this does indicate that these simulations might be a useful tool
-for further investigations of the physics of dust devils and vortex
-structures. 
+for further investigations of the physics of dust devils and similar 
+vortex structures. 
 
 
 %\section{Comparison's between Natural and Synthetic Dust Devils}
@@ -299,22 +298,23 @@ structures.
 \section{Wind Simulations}
 \label{sec:wind}
 
-On account of the extremely modest kinetic energy fluxes measured in the
-thermal-only conditions, simulations were performed to explore the
+Due to the modest kinetic energy fluxes predicted for the 
+thermal-only conditions and the observations from the field that the 
+winds were persistent, simulations were performed to explore the
 available energy flux and solution character in the presence of ambient
 winds. 
 The representative wind case show here is for a 3 m/s ambient wind with
 a ground temperature of 335 Kelvin and freestream temperature of 313
-Kelvin. There is no ambient velocity and the boundary conditions are as
-described in Chapter~\ref{sec:bc}. The vanes are drawn in
+Kelvin. The boundary conditions are as
+described in Chapter~\ref{sec:bc}. The turning vanes are drawn in
 Figures~\ref{fig:wind_bottom} and \ref{fig:wind_top}. These images show
 the straight vane case, and a cone that sits on top of the second tier of vanes. 
 As in the previous section, these images are representative
 curves of the body forcing field, and do not actually represent vane
 surfaces. The vanes are represented as in Chapter~\ref{subsec:vane}. 
 These images are created by tracing the path a particle follows through
-the forcing field (see Section~\ref{subsec:scenario_param}). The region
-of forcing is between $\{0.96-3.4\}$ meters 
+the forcing field (see Section~\ref{subsec:scenario_param}). The radial 
+region of forcing is between $\{0.96-3.4\}$ meters 
 for the bottom tier, and $\{1.5-3.4\}$ meters for the top tier. Overall,
 the system is three meters tall, with the short first tier only standing
 0.3 meters high. The top and bottom tiers have final angles of
@@ -375,7 +375,7 @@ Horizontal slices of the azimuthal and vertical velocities, and the
 temperature and in-plane velocity (e.g. $\sqrt{u^2 + v^2}$) are shown in
 Figure~\ref{fig:wind-hor}. The freestream velocity is traveling from
 left to right at 3 m/s, which was set based on ambient velocity
-measurements made by the experimental team from the field. While the
+measurements made by the experimental team in the field. While the
 structure is undoubtedly different than the thermal-only cases shown
 previously, we can nevertheless see that a thermal plume is forming
 along with a rotating velocity structure. In general the wind cases are
@@ -413,7 +413,7 @@ through the vanes is also significantly higher.
  \label{fig:wind-ver}
 \end{figure}
 
-The vertical slices are shown in Figure~\ref{fig:wind-ver}.In this 
+The vertical slices are shown in Figure~\ref{fig:wind-ver}. In this 
 case, the lower tier of vanes are where the majority of flow is 
 entering the center of the apparatus, while the second tier of vanes are
 blocking the ambient wind and providing protection for the vortex column. 
@@ -467,14 +467,14 @@ operation is developed, followed by testing of the hypothesis, and further
 iterations.  
 
 This series of simulations are all runs with different system
-configurations conducted in a common ambient scenario, that of the
+configurations conducted in a common environmental scenario, that of the
 unsteady thermal-only simulations described in Chapter~\ref{sec:bc}. 
 
 Our objective is to maximize the energy that can be 
 extracted from the synthetic dust devil. As a surrogate to this
 quantity, consider the kinetic energy flux through a horizontal plane
 near the top of the vanes, where a turbine will ultimately be
-placed. This is a surface integral~\cite{landau1959fm},
+placed. This is the surface integral~\cite{landau1959fm},
 
 % flow.io is awesome
 % https://support.draw.io/questions/2949135/how-to-use-mathematical-typesetting
@@ -545,9 +545,9 @@ placed. This is a surface integral~\cite{landau1959fm},
 \end{figure}
 
 Using the kinetic energy flux as an objective, the vane geometry has
-been optimized. Over approximately tens of iterations, the increased the
+been optimized. Over approximately ten of iterations, the
 kinetic energy flux was increased by a factor of 88 relative to the 
-baseline. 
+starting configuration. 
 
 \begin{figure}[htb]
  \centering
@@ -563,7 +563,7 @@ baseline.
 
 %Results of several of these iterations are documented in
 %Figure \ref{fig:opt_plot}. 
-Major adjustments to design in the the vane shape and angles were made
+Major adjustments to the vane shape and angles were made
 to obtain this improvement. The general iteration procedure is shown in
 Figure~\ref{fig:opt_image}. This iteration procedure was never
 automated, and every iteration required human intervention. A system 
@@ -571,7 +571,7 @@ parameter such as vane angle was adjusted by providing a modest change
 (typically a few percent) around the initial state. A simulation was
 then performed, after which the kinetic energy flux at the height of the
 vanes was compared to the previous iteration. If the flux increased,
-the new parameter value was accepted and was used in subsequent runs. In
+the new parameter value was accepted and used in subsequent runs. In
 general, all system parameters were varied, aside from the overall
 system diameter, which was fixed. 
 
@@ -589,30 +589,36 @@ velocities. Before and after vertical slices are shown in
 Figure~\ref{fig:opt_flow}. Nevertheless, with a peak energy flux for the
 final iteration of less than one hundred Watts, significant further 
 optimization is necessary for this system to be viable for use as an 
-energy production system. Due to the very mild kinetic energy fluxes in
+energy production system. Due to the small kinetic energy fluxes in
 this device, it became apparent that the wind was a more substantial
 driver of the vortex energy budget than had previously been understood. 
 This naturally leads to the next section, which details some of the
 investigations into the impact of the wind on the SoV performance. 
 %which is a discussion of the optimized configuration results. 
 
-It should be noted that this heuristic is by no means exhaustive, and it
-is not expected that the final configurations are indeed located at the
-fixed point of optimal design, but that they are adjacent to a local
-optimum with some modest error. As this project is designed to broadly
-explore the feasibility of the concept, a small percentage increase of
-energy flux is not expected to change the conclusions. 
+%
+%% rdm didn't like this
+%
+%% It should be noted that this heuristic is by no means exhaustive, and it
+%% is not expected that the final configurations are indeed located at the
+%% fixed point of optimal design, but that they are adjacent to a local
+%% optimum with some modest error. As this project is designed to broadly
+%% explore the feasibility of the concept, a small percentage increase of
+%% energy flux is not expected to change the conclusions. 
 
-A more significant concern is that this heuristic will only discover a
-local optimum, and so will miss the global optimum which could yield a
+The optimization process used here is expected to prduce a configuration 
+close to a local optimum, but might miss the global optimum 
+which could yield a
 significantly larger energy flux. This risk exists even if
 numerical optimization algorithms were used. Unfortunately, the kinetic
 energy surface for these systems do appear to posses multiple local
-optimums, and different designs were on several occasions found to possess
-similar kinetic energy fluxes. The risk of discovering a local 
-and not the global optimum was attempted to be mitigated by starting
+optima.
+%, and different designs were on several occasions found to possess
+%similar kinetic energy fluxes. 
+The risk of discovering a local 
+and not the global optimum was partially mitigated by starting
 with multiple initial configurations with different initial
-parameters. However, typically this was performed only a handful of
+design parameters. However, typically this was performed only a handful of
 times for each configuration, and the variation in the initial state of
 the parameters was arbitrary. 
 
@@ -646,11 +652,11 @@ the synthetic dust devils, just as it is necessary in the natural phenomenon.
 At the same time, as was discussed in Section~\ref{sec:opt}, 
 the kinetic energy flux through an optimized device in the thermal-only conditions 
 with no ambient winds
-never attains a magnitude that would make the device competitive. 
+never attains a magnitude that would make the device practical. 
 Furthermore, the kinetic energy flux in the thermal-only conditions 
-is substantially lower than estimated in the naturally occurring objects, 
-perhaps indicating that these natural entities are driven by additional sources, 
-namely, ambient winds.
+is substantially lower than estimated in the naturally occurring phenomenon, 
+perhaps indicating that these natural vortices are driven by additional energy 
+sources, namely, ambient winds.
 This section represents a more systematic investigation into the role of the wind 
 in the present SoV device. 
 
@@ -687,18 +693,20 @@ the hot wind cases. The thermal buoyancy drives stronger vertical
 velocities inside the central region of the SoV, which entrains more fluid from the downwind, 
 region of the SoV. 
 
-This is not unexpected. The flow through the front vane region is set by the velocity 
-scale of the freestream region. However, the downwind side is protected by the turning vanes, 
-and the wake region has much lower velocities. The freestream velocity in this region 
-is more weakly imposed, and a strong thermal buoyancy can instead dominate and dictate the 
-rate of entrainment of kinetic energy flux. 
+%% This is not unexpected. The flow through the front vane region is set by the velocity 
+%% scale of the freestream region. However, the downwind side is protected by the turning vanes, 
+%% and the wake region has much lower velocities. The freestream velocity in this region 
+%% is more weakly imposed, and a strong thermal buoyancy can instead dominate and dictate the 
+%% rate of entrainment of kinetic energy flux. 
 
-Thus, both the wind and thermal effects are acting in concert. For the front side of the 
-vanes, the wind velocity imposes a kinetic energy flux. while the vanes downwind of the freestream are 
+Thus, the wind and thermal effects are synergized. For the front side of the 
+vanes, the wind velocity imposes a kinetic energy flux, 
+while the vanes downwind are 
 principally driven by the thermal buoyancy effects. 
-This indicates that to the turning vanes should no longer be 
-symmetric, and be designed differently between the upstream and downstream faces. 
-This was used as an explicit design consideration for the 2016 Field design, 
+This indicates that to the turning vanes should not be
+symmetric, that is they should be designed differently for 
+the upstream and downstream side of the device. 
+This was used in the 2016 Field design, 
 and the radial entrainment characteristics are discussed in Section~\ref{subsec:field_predict}. 
 
 %\section{Energy Scaling with Vortex Size}
