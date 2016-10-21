@@ -707,8 +707,8 @@ Then, the force on the turbine is,
 % \label{eq:force_turb}
   % \end{equation}
 \begin{equation}
- F = \frac{1}{2} \rho A_B {\bf u_p}^2 \left(C_l 
-					      {\bf n_\text{lift}} + C_d 
+ F = \frac{1}{2} \rho A_B {\bf u_p}^2 \left(C_l \,
+					      {\bf n_\text{lift}} + C_d \,
 					      {\bf n_\text{drag}}  \right).
 \label{eq:force_turb}
 \end{equation}
@@ -719,7 +719,7 @@ The actuator disk is an approximation of the blades as a volumetric
 forcing ``disk'', and so our interest is in this quantity,
 \begin{equation}
 \frac{F}{\text{volume}} = \frac{F}{\pi r^2 t} = \frac{1}{2}\frac{\rho\, B\, c\,
- {\bf u_p}^2}{\pi r t}\left(C_l {\bf n_\text{lift}} + C_d {\bf
+ {\bf u_p}^2}{\pi r t}\left(C_l \, {\bf n_\text{lift}} + C_d \, {\bf
 		   n_\text{drag}} \right).  
 \label{eq:vol_turb}
 \end{equation}
@@ -1250,17 +1250,18 @@ where $\delta$, the boundary layer thickness, is set based on data
 measured by our experimental partners in the field. 
 The thermal boundary layer is assumed to have a similar boundary layer,
 but, as observed in real atmospheric flows, there remains a vertical
-temperature gradient outside the thin boundary layer. Based on
-results in the literature a $2/3$ Kelvin per meter gradient is 
-imposed\cite{Blocken2007238}.\todo{incorrect dimension} The thermal inflow is then  
+temperature gradient outside the thin boundary layer. 
+The thermal inflow has the form,
 \begin{equation*}
   T_{\text{in}}(z) = \Delta T \left(1- \text{ min
 			}\left(\left(\frac{z}{\delta}\right)^7,1\right)\right)
-  + T_0 - 2z/3.  
+  + T_0 - \beta z.  
   \label{eq:bl_t}
 \end{equation*}
 % 335+18*tanh(-z/0.1)-z*2/3
-The inflow boundary is at the surface $x=-L_x$.
+Where, based on results in the literature, $\beta = 2/3$ Kelvin per 
+meter\cite{Blocken2007238}.\todo{needs a look here}
+This inflow boundary is at the surface $x=-L_x$.
 
 \textbf{Mixed inflow/outflow Boundary Conditions on $\Gamma_T$,
 $\Gamma_S$ and $\Gamma_B$}  
