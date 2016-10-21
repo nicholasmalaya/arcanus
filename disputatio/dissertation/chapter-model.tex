@@ -88,11 +88,11 @@ high Reynolds number as to be
 turbulent~\cite{Reynolds01011883}. Turbulence significantly alters the
 character of the flow,  
 and necessitates either resolving the resulting small scales or
-providing a model that represents their impact. In this case, a
-Reynolds Averaged Navier-Stokes (RANS) formulation is used, where the 
-turbulent viscosity and thermal conductivities are permitted to vary in
+providing a model that represents their impact. In this case, 
+%a Reynolds Averaged Navier-Stokes (RANS) formulation is used, where 
+the turbulent viscosity and thermal conductivities are permitted to vary in
 space, and the flow is decomposed into constant laminar and varying
-turbulent and vane components,\todo{not always rans}  
+turbulent and vane components,
 
 \begin{eqnarray*}
  \nu =& \nu_{l} + \nu_{T}(z) + \nu_{V}(r,z) \\
@@ -106,7 +106,7 @@ diffusivities are $\nu_l$ and $K_l$, which do not vary in space.
 
 \section{Viscosity Model}
 
-We use the well-known similarity model of Monin and
+We use the well-known similarity model of Monin and\todo{needs another readthrough}
 Obukhov\cite{monin2007statistical,1990JFM...212..637K} as
 a guide to the specification of an eddy viscosity model to describe the
 vertical mixing in the atmosphere. This formulation is an extension of
