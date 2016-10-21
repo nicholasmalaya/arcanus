@@ -300,7 +300,8 @@ Several simplifying assumptions are made. The freestream
 velocity is assumed to have no components in the span and height and
 the variation in height of the streamwise
 velocity is only due to the thin boundary layer near the
-ground. The boundary layer profile is modeled using the common 7th
+ground. The boundary layer profile is modeled using the common 
+7\textsuperscript{th}
 power function for a turbulent boundary layer,  
 \begin{equation*}
   u(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)
@@ -308,12 +309,12 @@ power function for a turbulent boundary layer,
 where U is the constant freestream velocity and $\delta$ the assumed
 boundary layer thickness. 
 The result for the kinetic energy is then, 
-\begin{align*}
-\text{KE} & = R \rho U^3 \left[ z_{\text{max}} - \frac{10}{11}\delta
-\right].
-\end{align*}
-Where R is the radius of the vortex. Typical values of these quantities
-are, $U = 5$ m/s, $\rho = 1.225$ Kg/$\text{m}^3$, $R = 3$ m,
+\begin{align}
+\text{KE} & = R_{\text{KE}} \, \rho U^3 \left[ z_{\text{max}} - \frac{10}{11}\delta
+\right]. \label{eq:kinetic_energy}
+\end{align}
+Where $R_{\text{KE}}$ is the radius of the vortex. Typical values of these quantities
+are, $U = 5$ m/s, $\rho = 1.225$ Kg/$\text{m}^3$, $R_{\text{KE}} = 3$ m,
 $z_{\text{max}} = 3$ m and $\delta \approx 10$ cm. This provides an
 estimate of 1144 Watts as the incoming kinetic energy flux. 
 
@@ -332,7 +333,7 @@ As the density only varies with height, the integral is simplified to
 only vary in this direction,
 \begin{align*}
   E_p  & = g \int^{z_\text{max}}_0 u(z) (\rho(z)-\rho_\infty) \, z  \pi
- R \, dz.
+ R_p \, dz.
 \end{align*}
 Using the bousinesq approximation, $(\rho(z)-\rho_\infty)  = \rho_0 \beta \Delta T$,
 %\begin{align*}
@@ -341,12 +342,12 @@ Using the bousinesq approximation, $(\rho(z)-\rho_\infty)  = \rho_0 \beta \Delta
 %\end{align*}
 the integral becomes, 
 \begin{align*}
-  E_p & = g  \pi R \beta \rho_0 \Delta T \int^{z_\text{max}}_0 u(z) \, z dz.
+  E_p & = g  \pi R_p \, \beta \rho_0 \Delta T \int^{z_\text{max}}_0 u(z) \, z dz.
 \end{align*}
 This is solved to show
-\begin{align*}
-  E_p & = g  \pi R \beta \rho_0 U \Delta T \left[ \frac{z_\text{max}^2}{2} - \frac{7 \delta^2}{18} \right].
-\end{align*}
+\begin{align}
+  E_p & = g  \pi R_p \beta \rho_0 U \Delta T \left[ \frac{z_\text{max}^2}{2} - \frac{7 \delta^2}{18} \right].\label{eq:potential}
+\end{align}
 
 %
 % \todo{check units}
@@ -358,48 +359,42 @@ This is solved to show
 % = Kg M^2 / s^3
 %
 
-%Once again assuming the 7th order power function for a turbulent boundary layer, 
-% old text:::
-%% \begin{align*}
-%%   \text{Potential Energy Flux} & = \int_{-z_\text{max}}^0 u(z) \Delta \rho g z dz. \\
-%%   & = \int_{-z_\text{max}}^0 u(z) \rho' g z^2 dz. 
-%% \end{align*}
-%% Where the substitution, $\Delta \rho = \rho' z$ was made. We again
-%% assume the boundary layer follows the 7th order profile, and 
-%% that $\rho' = -\beta \rho_0 \Delta T$, resulting in, 
-%% %
-%% % cite monin-yaglom page 59
-%% %
-%% \begin{equation}
-%%  \text{Power } = U \beta \rho_0 \Delta T g \left[ \frac{z_\text{max}^3}{3} -
-%% 					    \frac{7}{30} \delta^3
-%% 					   \right]. 
-%% \end{equation}
-
 Characteristic values for a dust devil are $\rho_0 = 1.225$ Kg/$\text{m}^3$, 
 $\Delta T= 30$ Kelvin, $\beta = 0.003194$ (this is 1/$T_{\text{ground}}$), 
-$R = 3 $ m, $z_\text{max} = 3$ m, $\delta \approx 10$ cm, $g=9.81$ m/$s^2$, and a
+$R_p = 3 $ m, $z_\text{max} = 3$ m, $\delta \approx 10$ cm, $g=9.81$ m/$s^2$, and a
 freestream velocity of five meters per second results in an estimate of
-217 Watts for the gravitational potential energy flux. 
+217 Watts for the gravitational potential energy flux.\todo{needs another look here} 
 
-The majority of the available energy being drawn into the dust devil
-region is thus attributable to the kinetic energy of the wind, not the
-gravitational potential energy of the air.\todo{lets change the wording here}
-% todo: think about renno
-%This is inconsistent with the results of
-%Renno\cite{}\todo{missing cite here}, who demonstrated
-%that the available thermal energy present was not sufficient to account
-%for the velocities measured in dust devils. 
-However, while the gravitational potential energy is a small fraction of
-the energy available, that does not imply it is without significant
-impact.\todo{perhaps find size necessary for ke ~ pe?} 
-%The extent to which the thermal energy acts as an assisting mechanism for 
-%``lifting-up'' the flow is unclear, but 
-Given the observed increase in dust devil formation during peak thermal
-gradients, it is expected to play an important role. The interplay
+This result implies that a significant fraction of the available energy 
+convecting into the the dust devil region is thus attributable to 
+the kinetic energy of the wind, not the
+gravitational potential energy of the air.
+However, the above assumes that the potential energy input to dust 
+devils is only drawn in through a region identical to the kinetic energy. 
+It is also interesting to 
+consider the area that must be accessed by the dust devil for the 
+potential energy to be as large as the kinetic energy. To accomplish this,
+the radii in Equations~\ref{eq:kinetic_energy} 
+and \ref{eq:potential} are no longer 
+assumed to be equal. Instead, assume that 
+kinetic energy radius remains the same ($R_{\text{KE}} = 3$) but that 
+the radius of entrainment for the potential energy ($R_{p}$) is unknown.
+
+The result of solving for $R_p$ yields, 
+\begin{equation}
+  R_p = \frac{R_{\text{KE}} \, U^2 \left[ z_{\text{max}} - \frac{10}{11}\delta
+\right]}{g  \pi \beta \Delta T \left[ \frac{z_\text{max}^2}{2} - \frac{7 \delta^2}{18} \right]}.
+\end{equation}
+Using the same values as above, $R_p = 15.83$ meters. 
+This implies that the dust devil must pull from more than five times the area to
+draw in as much potential energy as kinetic energy. 
+Further discussion on the interplay
 between the impact on dust devil structure and wind velocities due to
 the thermal and wind contributions of energy are examined in detail in
 Section~\ref{sec:wind_impact}. 
+
+%Given the observed increase in dust devil formation during peak thermal
+%gradients, it is expected to play an important role. 
 
 \section{Dust Devil Generation Concept}
 \label{sec:dust_devil_concept}
