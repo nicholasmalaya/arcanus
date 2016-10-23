@@ -337,7 +337,7 @@ fabrication of the 2016 Field SoV Prototype.
 \begin{figure}[!htb]
   \begin{center}
    \includegraphics[width =0.7\textwidth]{figs/skewed_cad}
-   \caption{A skewed view of the CAD drawings, which provides
+   \caption{An angled view of the CAD drawings, which provides
    perspective on the height of the cone, the first and second tiers of 
    turning vanes, and the horizontal partitions.}
    \label{fig:cad_skewed}
@@ -384,16 +384,17 @@ the ellipse is then,
   \underbrace{\frac{(x-h)}{a^2}}_{a_x}{\bf e_y} \\
  {\bf t} =& {a_y} {\bf e_x} - {a_x}{\bf e_y}. 
 \end{eqnarray}
-
-Noting that the normal vector has the form, 
+%
+The normal vector is perpendicular to the tangent, and has the form, 
 \begin{eqnarray}
  {\bf n} =& {a_x} {\bf e_x} + {a_y}{\bf e_y}, \label{eqn:a_x}\\
  {\bf n} =& \frac{(x-h)}{a^2} {\bf e_x} + \frac{(y-k)}{b^2} {\bf e_y}.
 \end{eqnarray}
 
-This now defines the normal vector. However, we need to determine the 
+This now defines the normal vector.\todo{the rest of this section needs another look} 
+However, we need to determine the 
 constants (namely, $k,b$) that define ellipses that capture the shape we
-desire. We want to determine an ellipse that has a certain
+desire. Further, we must determine an ellipse that has a certain
 slope, m, at a specific point,  $(x_0,y_o)$, which lies on the inner
 radius (R) of the SoV apparatus. This is shown in
 Figure~\ref{fig:elliptic_vane_concept}, and results in a system of four
@@ -406,16 +407,20 @@ equations,
 \end{eqnarray}
 These equations express the fact that the ellipse intercepts two known
 points, that the point $(x_0,y_o)$ lies on the inner radius of the
-apparatus, and that the slope at this point is known. Assuming that
-h, a, x, y, R and m are given, we have a system of four equations
-(Equations \ref{eq:ell1}-\ref{eq:ell4}) with four unknowns,
-$x_0,y_0,k,b$. This is, in principle, sufficient information to solve
-this system. However, in practice, significant difficulties were
-encountered. Inverting this system by hand is too complex and error
-prone, and furthermore, Mathematica was unable to find a closed-form
-solution. Numerous simplifications and additional constraints were added
-to ensure that the system of equations were well-posed (a>b, for
-instance), but the problem still resisted solution.\todo{needs another look}
+apparatus, and that the slope at this point is known. 
+
+
+%% Assuming that
+%% h, a, x, y, R and m are given, we have a system of four equations
+%% (Equations \ref{eq:ell1}-\ref{eq:ell4}) with four unknowns,
+%% $x_0,y_0,k,b$. 
+%% This is, in principle, sufficient information to solve
+%% this system. However, in practice, significant difficulties were
+%% encountered. Inverting this system by hand is too complex and error
+%% prone, and furthermore, Mathematica was unable to find a closed-form
+%% solution. Numerous simplifications and additional constraints were added
+%% to ensure that the system of equations were well-posed (a>b, for
+%% instance), but the problem still resisted solution.
 
  \begin{figure}[!htb]
   \begin{center}
@@ -425,39 +430,44 @@ instance), but the problem still resisted solution.\todo{needs another look}
   \end{center}
  \end{figure}
 
-The problem then, is that for a given location $(x,y)$ in space we are
-unable to invert to determine the character of the ellipse that
-intersects that point. Instead, we can pose the problem as discretizing
-the arc along the inner radius of the vanes, we can generate data from
+The challenge is to determine the the ellipse that
+intersects a given point in space ($(x,y)$). 
+This is solved discretizing the arc along the inner radius 
+of the turning vanes, and generating data from
 several curves that can be used to calibrate a 2D polynomial that will
-smoothly vary in space. To accomplish this, we choose a series of
-$x_0,y_0$ curves. For each unique ellipse defined by ($x_0,y_0,b,a,k$),
-discretize at a uniform interval between $\left[-h,x_0\right]$, and
-solve for the accompanying y-value, 
+smoothly vary in space. This is accomplish by choosing a series of
+$x_0,y_0$ curves. Each unique ellipse is defined by ($x_0,y_0,b,a,k$),
+and discretized at a uniform interval between $\left[-h,x_0\right]$, 
+so that the accompanying y-value can be solved as, 
 \begin{equation}
  y = -b \sqrt{1-\frac{(x-h)}{a^2}} + k. 
 \end{equation}
-One now has sufficient information to solve for the normal coefficients
+The x and y values of a particular ellipse, 
+provides sufficient information to solve for the normal coefficients
 $a_x$ and $a_y$ as defined in Equation~\ref{eqn:a_x}. This array of
-coefficients specified at (x,y) are now fit to a 2D N\textsuperscript{th}
+coefficients specified at (x,y) for several ellipses 
+are now fit to a 2D N\textsuperscript{th}
 order polynomial. This has the form, 
 
 \begin{equation}
  P(x,y) = \sum_{i=0}^N  \sum_{j=0}^N a_{i,j} x^i y^j
 \end{equation}
 
-where $a_{i,j}$ are coefficients of the polynomial which are selected by
-minimizing the residual between the specified vane values and the
-polynomial evaluated at that point. In other words, we find the
-least-squares solution to a linear matrix equation, which is
-under-determined. The solution to the equation $A {\bf x} = {\bf b}$ is
-found by computing a vector ${\bf x}$ that minimizes the Euclidean
-2-norm $|| {\bf b} - A {\bf x} ||^2$. The polynomials were computed in
-separate python routines and 
+where $a_{i,j}$ are coefficients of the polynomial which are 
+determined by minimizing the residual between the 
+known vane values and the polynomial evaluated at that point. 
+%In other words, we find the
+%least-squares solution to a linear matrix equation, which is
+%under-determined. 
+%% The solution to the equation $A {\bf x} = {\bf b}$ is
+%% found by computing a vector ${\bf x}$ that minimizes the Euclidean
+%% 2-norm $|| {\bf b} - A {\bf x} ||^2$. 
+The polynomials were computed in separate python routines and 
 resulted in a generated input file. This specifies the vane angle
-function within the region of the vanes. This function is then used as
-part of the input for the field runs (see Appendix~\ref{sec:archiving}
-for more details on the input file environment). 
+function for any (x,y) that lies within the region of the vanes. 
+This function is then used as part of the input file for the 
+field runs (see Appendix~\ref{sec:archiving} for 
+more details on the input file environment). 
 %
 % http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.linalg.lstsq.html
 %
@@ -473,12 +483,13 @@ for more details on the input file environment).
  %  \end{center}
  % \end{figure}
 
-The polynomial order was selected to be 7\textsuperscript{th} because it
-provided a good balance between accuracy and a desire to maintain as low
+The polynomial was selected to be 7\textsuperscript{th} order because this
+provided a balance between accuracy and a desire to maintain as low
 an order as possible. Furthermore, the vanes interpolation was split
 into two components, for the ``left'' and ``right'' (from the perspective of a
 person standing upwind of the SoV and looking at it) of the vanes in the
-top tier. This was found to be the most effective way to ensure that the
+top tier. Due to the change in the direction of curvature between these vanes, 
+this was found to be the most effective way to ensure that the
 polynomial remained accurate without requiring very high order
 polynomials. The accuracy of the interpolated field was checked by
 ``drawing'' vanes by seeding a particle upstream of the field and then
