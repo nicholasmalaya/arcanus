@@ -392,12 +392,12 @@ The normal vector is perpendicular to the tangent, and has the form,
 \end{eqnarray}
 
 This now defines the normal vector.\todo{the rest of this section needs another look} 
-However, we need to determine the 
-constants (namely, $k,b$) that define ellipses that capture the shape we
-desire. Further, we must determine an ellipse that has a certain
-slope, m, at a specific point,  $(x_0,y_o)$, which lies on the inner
-radius (R) of the SoV apparatus. This is shown in
-Figure~\ref{fig:elliptic_vane_concept}, and results in a system of four
+However, the constants $k$ and $b$ must be determined to 
+define ellipses of the desired shape. 
+Furthermore, an ellipse that has a certain slope, m, 
+at a specific point,  $(x_0,y_o)$, which lies on the inner
+radius (R) of the SoV apparatus must be determined. This is shown in
+Figure~\ref{fig:elliptic_vane_concept}, which defines a system of four
 equations,
 \begin{eqnarray}
  \frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} =& 1, \label{eq:ell1}\\
@@ -406,8 +406,9 @@ equations,
  -\frac{b^2}{a^2}\frac{(x_0-h)}{(y_0-k)} =& m. \label{eq:ell4} 
 \end{eqnarray}
 These equations express the fact that the ellipse intercepts two known
-points, that the point $(x_0,y_o)$ lies on the inner radius of the
-apparatus, and that the slope at this point is known. 
+points, that one of those points ,$(x_0,y_o)$, lies 
+on the inner radius of the apparatus, and that the slope at 
+this point is known. 
 
 
 %% Assuming that
@@ -425,24 +426,29 @@ apparatus, and that the slope at this point is known.
  \begin{figure}[!htb]
   \begin{center}
    \includegraphics[width =0.95\textwidth]{figs/elliptic_vane_concept}
-   \caption{The geometric problem for the elliptic vanes.}
+   \caption{The geometric problem for the elliptic vanes. Each turning vane intersects
+   the inner radius of the SoV device (at the point $(x_0,y_0)$). 
+   The slope of the vane at this point is known (m). 
+   Far from the device ($x=h$), the vane is aligned with the streamwise velocity. }
    \label{fig:elliptic_vane_concept}
   \end{center}
  \end{figure}
 
-The challenge is to determine the the ellipse that
-intersects a given point in space ($(x,y)$). 
-This is solved discretizing the arc along the inner radius 
+The challenge is to determine which ellipse travels through 
+a given point in space ($(x,y)$). 
+This is solved by discretizing the arc along the inner radius 
 of the turning vanes, and generating data from
 several curves that can be used to calibrate a 2D polynomial that will
-smoothly vary in space. This is accomplish by choosing a series of
-$x_0,y_0$ curves. Each unique ellipse is defined by ($x_0,y_0,b,a,k$),
+smoothly vary in space, and generate a ``field'' of elliptic vanes. 
+This is accomplish by choosing a series of
+$x_0,y_0$ curves along the inner radius of the SoV. 
+Each unique ellipse is defined by ($x_0,y_0,b,a,k$),
 and discretized at a uniform interval between $\left[-h,x_0\right]$, 
 so that the accompanying y-value can be solved as, 
 \begin{equation}
  y = -b \sqrt{1-\frac{(x-h)}{a^2}} + k. 
 \end{equation}
-The x and y values of a particular ellipse, 
+The set of x and y values of a particular ellipse 
 provides sufficient information to solve for the normal coefficients
 $a_x$ and $a_y$ as defined in Equation~\ref{eqn:a_x}. This array of
 coefficients specified at (x,y) for several ellipses 
