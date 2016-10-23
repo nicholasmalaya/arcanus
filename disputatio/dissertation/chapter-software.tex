@@ -171,17 +171,42 @@ height of the vanes and cone.
 %
 
 The vertical mesh spacing is non-uniform to resolve the boundary
-layer.\todo{need a look here}
- This is accomplished by redistributing a 
-mesh uniform in height, z, according to,
+layer.\todo{the rest of this section needs another look}
+This is accomplished by redistributing a mesh which is uniformly spaced over the 
+interval $\{0,L_z\}$ in height, $\hat z$, to a non-uniform mesh ($z$) over the same interval. 
+%This non-uniform ``boundary-layer'' mesh is designed to resolve the small 
+%scale variations near the wall. 
+% what about chi?
+To accomplish this, a mapping $\chi$ is defined that is a strictly increasing function,
+with the spacing between points intially at $h_min$ and also also strictly increasing 
+until the point $z_b$, where the spacing reaches a constant, $h_max$.
+%
+% define conditions here
+%
+
+%
+% mesh mapping here
+%
 \begin{equation}
- z = \begin{cases} C_1 (z-L_z)+L_z,& \text{if } z \geq z_\delta\\
-      C_2 \text{ exp}(C_3 z - 1),                 & \text{otherwise}
-     \end{cases}
+ z = \chi(\hat z) = 
+ \begin{cases} C_1 (\hat z - L_z) + L_z, & \text{if } \hat z \geq \hat z_b \\
+   C_2 \text{ exp}(C_3 \hat z - 1),      & \text{if } \hat z < \hat z_b \\
+ \end{cases}
 \end{equation}
 
-where $z_\delta$ is the chosen height of the boundary layer mesh, and
-$C_1-C_3$ are scaling coefficients. %\todo{show coefficients}. 
+
+
+%% \begin{equation}
+%%  z = \begin{cases} C_1 (z-L_z)+L_z,& \text{if } z \geq z_\delta\\
+%%       C_2 \text{ exp}(C_3 z - 1),                 & \text{otherwise}
+%%      \end{cases}
+%% \end{equation}
+
+Where $z_b$ represents the chosen height of the 
+boundary layer mesh, and is specified. 
+
+
+%$C_1-C_3$ are scaling coefficients. %\todo{show coefficients}. 
 This gives the mesh an exponentially
 varying character, with the coefficients chosen to ensure ten or more
 points in the boundary layer, isotropic spacing in cells outside of
