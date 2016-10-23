@@ -33,7 +33,7 @@ interact with the air, which is nearly
 transparent\cite{haltiner1957dynamical}. Instead, this radiation is
 absorbed by the ground, which causes its temperature to rise. This
 results in a temperature difference between the hot ground and the cooler
-air. The sensible heat causes expansion and lowers the density
+air. The ground heats the air, causing expansion and lowering the density
 of the air. This reduced density air near the surface is then driven
 upwards by buoyancy.    
 
@@ -109,7 +109,7 @@ diffusivities are $\nu_l$ and $K_l$, which do not vary in space.
 We use the well-known similarity model of Monin and
 Obukhov\cite{monin2007statistical,1990JFM...212..637K} as
 a guide to the specification of an eddy viscosity model to describe the
-vertical mixing in the atmosphere.\todo{needs another readthrough} 
+vertical mixing in the atmosphere.\todo{this entire section still needs to be fixed} 
 This formulation is an extension of
 the mixing-length model of Prandtl, where the concepts of gradient
 diffusion and mixing length were generalized to thermally stratified
@@ -396,11 +396,11 @@ software.
 %difficult regime to model.\todo{poor justification} 
 The validation process identified a refinement to the virtual vane
 formulation that results in a better representation of the vane
-effects in a broader range of flows. The model uses an
-enhanced turbulent diffusivity in the vortical plume region to account
-for the effects of vortex shedding from the trailing edge of the vanes,
-which is not represented in the virtual vane representation (discussed in
-\ref{subsec:vane}). 
+effects in a broader range of flows.\todo{entire section needs another read} 
+An enhanced turbulent diffusivity is used in the vortical 
+plume region to account for the effects of vortex shedding from 
+the trailing edge of the vanes, which is not represented in the 
+virtual vane representation. 
 
 % To successfully accomplish this, source terms
 % for production of diffusivity were formulated to properly
@@ -413,8 +413,7 @@ which is not represented in the virtual vane representation (discussed in
 %This calibration
 %is detailed in Section~\ref{sec:validation}. 
 The eddy-viscosity in the region of the vanes and interior is set
-based\todo{fiddle here}
-on scaling relations for a turbulent self-similar circular jet, as
+based on scaling relations for a turbulent self-similar circular jet, as
 described in Pope\cite{pope2000turbulent},
  
 \begin{equation}
@@ -422,18 +421,30 @@ described in Pope\cite{pope2000turbulent},
   %\nu_C(r) = U_0(r) y_{1/2}(r) \bar \nu_C
 \end{equation}
 
-In this equation, $U_0$ is the peak velocity, and $y_{1/2}$ the jet
-half-width (taken to be the dust devil half-width).  
+In this equation, $U_0$ is the peak velocity, and is set based on the observed
+velocities that exist in the SoV. 
+%
 % In words, we are scaling the
 % calibrated viscosity by the velocity and length scale of the
 % apparatus. $\bar \nu_C $ is input, measured from the experimental
 % laboratory.  The diffusivity here is essentially a top hat filter, which
 % radial values interior to the vanes the nominal calibrated value, and
 % those outside the vanes zero, e.g. $\nu_C(r>r_{\text{vane}})=0$. 
-The dimensionless constant $\bar \nu_C $ is calibrated based on
-experimental data, and is set to zero outside the device. 
+The dimensionless constant $\bar \nu_C $ was calibrated against
+laboratory generated experimental data 
+(the table-top laboratory experiment is detailed in Section~\ref{sec:validation}), 
+and is set to zero outside the device. 
 The thermal diffusivity inside the device, $K_C$, is then fixed with the 
 assumption that the Prandtl number is unity.  
+
+Finally, the length scale $y_{1/2}$ is set either to the 
+separation distance between neighboring vanes, or the radius of the SoV apparatus. 
+The former is used for the unsteady virtual vanes, when greater spatial and 
+temporal fidelity is required to capture the dynamics of the plume and wake. 
+This is in contrast to the case of the steady virtual vanes, where 
+the radius of the SoV apparatus is used as the length scale and 
+no dynamics of the flow are are resolved. 
+The simulations are discussed in further detail in Chapter~\ref{sec:validation}.
 
 %The thermal and momentum diffusivities are expected to be even larger in the
 %device where the flow across the vanes produces shear and generates
@@ -490,7 +501,7 @@ as
 \end{equation}
 %
 where $\hat{{\bf r}}$ and $\hat{{\bf \theta}}$ are unit
-vectors in the radial and azimuthal directions, respectively.
+vectors in the radial and azimuthal directions, respectively. \todo{this section needs another read} 
 With this vane-normal vector field specified, a body force ${\bf f_v}$
 is defined that will drive the velocity in the ${\bf n}$ direction
 toward zero, effectively turning the flow to be parallel to the
@@ -509,20 +520,25 @@ velocity decays exponentially.
 %It is the distance analog to the more
 %familiar time constant of exponential decay. 
 
-Therefore, $\ell_v$ is a modeling constant and must be specified. Our
-expectation is that it will be the same order as the separation distance
-between neighboring vanes in the physical vane configuration, since
-entry  lengths in internal flows scale with the width of the
-channel. This study\todo{what study, describe what i did} is depicted in
-Figure~\ref{fig:annealing}, where the average misfit between the turning
-vane angle in an explicitly represented vane configuration and the flow is plotted.   
+The length scale $\ell_v$ is a modeling constant and must be specified. 
+The length over which the flow comes into alignment 
+with the vane direction is measured in Figure~\ref{fig:annealing}. 
+This plots the average misfit between the turning
+vane angle in an explicitly represented vane configuration and the flow. 
+A value of one would represent flow that is perpendicular to the 
+turning vanes, while a value of zero would represent perfectly aligned flow.
 
 The trend is clear that as the flow moves through the turning vanes
 towards the center of the apparatus it is brought into alignment with
 the turning vane direction. 
-Notice that the misfit actually grows near the minimum, likely due to
-unmodeled transient effects such as vortex shedding off the vane
-trailing edges. 
+Notice that the misfit actually reaches a minimum and never comes into 
+complete alignment with the vanes, likely due to unmodeled transient 
+effects such as vortex shedding off the vane trailing edges. 
+
+%Our expectation is that it will be the same order as the separation distance
+%between neighboring vanes in the physical vane configuration, since
+%entry lengths in internal flows scale with the width of the
+%channel. 
 
    \begin{figure}[!htb]
     \centering
@@ -533,28 +549,30 @@ trailing edges.
     although the results do not differ at greater or lower height. 
     The subfigure shows the logarithmic derivative, as well as the
     average of the logarithmic derivative in red. 
-$R_{M}$ is the furthest radial extent of the gridded vanes,
+    $R_{M}$ is the furthest radial extent of the gridded vanes,
     and $R_{m}$ the smallest radial extent. The subfigure shows the
-    logarithmic derivative of this quantity.}
+    logarithmic derivative of this quantity in black, and the average value of the
+    logarithmic derivative in red.}
      \label{fig:annealing}
    \end{figure}
 
-
-Now, $\ell_v$ can be calibrated to explicitly match the results of the
-gridded vanes by assuming that the vane mismatch obeys a radial
-exponential decay of the form $f(r) = A e^{-\ell_v r}$, and taking the
-logarithmic derivative of this quantity, 
+The value of $\ell_v$ can be calibrated to explicitly match the 
+results of the gridded vanes by assuming that the vane mismatch 
+obeys a radial exponential decay of the form $f(r) = A e^{-\lambda r}$, 
+where $\lambda = \frac{1}{\ell_v}$.
+Taking the logarithmic derivative of this quantity, 
 \begin{eqnarray}
- \frac{f'}{f} = \frac{A e^{-\ell_v r} * -\ell_v}{A e^{-\ell_v r}} =
-  -\ell_v. 
+ \frac{f'}{f} = \frac{A e^{-\lambda r} * -\lambda}{A e^{-\lambda r}} =
+  -\lambda. 
 \end{eqnarray}
 
-This is shown in the subfigure of Figure~\ref{fig:annealing}, where we would
-expect a flat line if the misfit between vanes was perfectly described
-by an exponential decay. While the curve does not perfectly coincide
+The logarithmic derivative is shown in the 
+subfigure of Figure~\ref{fig:annealing}. If the misfit between vanes 
+was perfectly described by an exponential decay, the line would be flat. 
+While the curve does not perfectly coincide
 with this, the curve does not have severe convexity and the average is
 sufficient for this work. Based on this, the lengthscale $\ell_v$ was
-set to three\todo{what? it has dimension}. 
+set to one third of a meter.
 
 %\todo{show
 %calibration of this} 
@@ -652,7 +670,7 @@ and the ``upward'' velocity in this frame is,
 \end{equation}
 The angle with respect to the fan velocity direction is then, 
 \begin{equation}
- \theta_f = \text{atan2}\left(\frac{{\bf u_{\text{up}}}}{{\bf u_{\text{fwd}}}}\right)
+ \theta_f = \text{atan2}\left(\frac{{\bf u_{\text{up}}}}{{\bf u_{\text{fwd}}}}\right),
  %\theta_f =
   %\text{tan}^{-1}\left(\frac{u_{\text{up}}}{u_{\text{fwd}}}\right)
   \label{eq:fan_direction}
@@ -699,7 +717,7 @@ direction,
 \begin{equation}
 {\bf n_{\text{lift}}}= {\bf n_{\text{drag}}} \times {\bf n_r}. 
 \end{equation}
-
+%
 Then, the force on the turbine is, 
 % \begin{equation}
 %  \boxed{F = \frac{1}{2}\frac{\rho u_p^2 c}{A}\left(C_l \cdot
