@@ -173,16 +173,32 @@ height of the vanes and cone.
 The vertical mesh spacing is non-uniform to resolve the boundary
 layer.\todo{the rest of this section needs another look}
 This is accomplished by redistributing a mesh which is uniformly spaced over the 
-interval $\{0,L_z\}$ in height, $\hat z$, to a non-uniform mesh ($z$) over the same interval. 
+interval $\{0,L_z\}$ in height, $\hat z$, to a non-uniform mesh, $z$, over the same interval. 
 %This non-uniform ``boundary-layer'' mesh is designed to resolve the small 
 %scale variations near the wall. 
 % what about chi?
-To accomplish this, a mapping $\chi$ is defined that is a strictly increasing function,
-with the spacing between points intially at $h_min$ and also also strictly increasing 
-until the point $z_b$, where the spacing reaches a constant, $h_max$.
+To accomplish this, a mapping $z = \chi(\hat z)$ is defined by the following conditions. 
+The minimum and maximum extents are preserved so that $ \chi(0) = 0 $ and $ \chi(L_z) = L_z $. 
+The map $\chi$ spacing between points is initially a specified value, $h_{\text{min}}$, 
+\begin{equation}
+  h_{\text{min}} = \chi'(0) \hat h.
+\end{equation}
+Where $\hat h = L_z/\text{nz}$. The map is strictly increasing until the 
+point $\hat z_b$, where the spacing reaches a constant, $h_{max}$, 
+\begin{equation}
+  h_{\text{max}} = \chi'(\hat z_b) \hat h. 
+\end{equation}
+After this point, the mesh has a uniform spacing of $h_{max}$, 
+\begin{equation}
+  h_{\text{max}} = \chi'(L_z) \hat h. 
+\end{equation}
+
+
 %
 % define conditions here
 %
+
+This mapping is defined by the following conditions.  The initial spacing is 
 
 %
 % mesh mapping here
@@ -190,7 +206,7 @@ until the point $z_b$, where the spacing reaches a constant, $h_max$.
 \begin{equation}
  z = \chi(\hat z) = 
  \begin{cases} C_1 (\hat z - L_z) + L_z, & \text{if } \hat z \geq \hat z_b \\
-   C_2 \text{ exp}(C_3 \hat z - 1),      & \text{if } \hat z < \hat z_b \\
+   C_2 \text{ exp}(C_3 \, \hat z - 1),      & \text{if } \hat z < \hat z_b \\
  \end{cases}
 \end{equation}
 
