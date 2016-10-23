@@ -101,7 +101,7 @@ turbulent and vane components,
 
 This is an effective eddy viscosity model\cite{boussinesq1887}, and the
 subsequent two sections will elaborate on the spatial dependence and
-character of $\nu_T$, $K_T$, $\nu_C$ and $K_C$. The laminar, base
+character of $\nu_T$, $K_T$, $\nu_V$ and $K_V$. The laminar, base
 diffusivities are $\nu_l$ and $K_l$, and do not vary in space.  
 
 \section{Viscosity Model}
@@ -414,7 +414,7 @@ based on scaling relations for a turbulent self-similar circular jet, as
 described in Pope\cite{pope2000turbulent},
  
 \begin{equation}
-  \nu_C = U_0 y_{1/2} \bar \nu_C.
+  \nu_V = U_0 y_{1/2} \bar \nu_C.
   %\nu_C(r) = U_0(r) y_{1/2}(r) \bar \nu_C
 \end{equation}
 
@@ -427,11 +427,11 @@ velocities that exist in the SoV.
 % laboratory.  The diffusivity here is essentially a top hat filter, which
 % radial values interior to the vanes the nominal calibrated value, and
 % those outside the vanes zero, e.g. $\nu_C(r>r_{\text{vane}})=0$. 
-The dimensionless constant $\bar \nu_C $ was calibrated against
+The dimensionless constant $\bar \nu_V $ was calibrated against
 laboratory generated experimental data 
 (the table-top laboratory experiment is detailed in Section~\ref{sec:validation}), 
 and is set to zero outside the device. 
-The thermal diffusivity inside the device, $K_C$, is then fixed with the 
+The thermal diffusivity inside the device, $K_V$, is then fixed with the 
 assumption that the Prandtl number is unity.  
 
 Finally, the length scale $y_{1/2}$ is set either to the 
