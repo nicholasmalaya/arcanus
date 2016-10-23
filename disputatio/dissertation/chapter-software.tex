@@ -179,54 +179,63 @@ interval $\{0,L_z\}$ in height, $\hat z$, to a non-uniform mesh, $z$, over the s
 % what about chi?
 To accomplish this, a mapping $z = \chi(\hat z)$ is defined by the following conditions. 
 The minimum and maximum extents are preserved so that $ \chi(0) = 0 $ and $ \chi(L_z) = L_z $. 
-The map $\chi$ spacing between points is initially a specified value, $h_{\text{min}}$, 
+The map spacing between points is initially a specified minimum value, 
 \begin{equation}
-  h_{\text{min}} = \chi'(0) \hat h.
+  h_{\text{min}} = \chi'(0) \, \hat h.
 \end{equation}
 Where $\hat h = L_z/\text{nz}$. The map is strictly increasing until the 
 point $\hat z_b$, where the spacing reaches a constant, $h_{max}$, 
 \begin{equation}
-  h_{\text{max}} = \chi'(\hat z_b) \hat h. 
+  h_{\text{max}} = \chi'(\hat z_b) \, \hat h. 
 \end{equation}
-After this point, the mesh has a uniform spacing of $h_{max}$, 
+From this point onward, the mesh has a uniform spacing, also of $h_{max}$, 
 \begin{equation}
-  h_{\text{max}} = \chi'(L_z) \hat h. 
+  h_{\text{max}} = \chi'(L_z) \, \hat h. 
 \end{equation}
 
-
-%
-% define conditions here
-%
-
-This mapping is defined by the following conditions.  The initial spacing is 
+We further assume that the mapping has an exponential functional form, 
+\begin{equation}
+  \chi(\hat z) = A \text{ exp}^{\beta \hat z}.
+\end{equation}
 
 %
 % mesh mapping here
 %
+Then, by specifying $h_{\text{min}}$, $h_{\text{max}}$ and 
+$z_b$ (chosen thickness of the boundary layer mesh), 
+these conditions are sufficient to define a mapping, 
 \begin{equation}
  z = \chi(\hat z) = 
- \begin{cases} C_1 (\hat z - L_z) + L_z, & \text{if } \hat z \geq \hat z_b \\
-   C_2 \text{ exp}(C_3 \, \hat z - 1),      & \text{if } \hat z < \hat z_b \\
+ \begin{cases} C_1 (\hat z - L_z) + L_z & \text{if } \hat z \geq \hat z_b, \\
+   C_2 \text{ exp}(C_3 \, \hat z - 1)      & \text{if } \hat z < \hat z_b. \\
  \end{cases}
 \end{equation}
 
-
-
+$C_1-C_3$ are scaling coefficients, and are defined as, %\todo{show coefficients}. 
+\begin{align}
+  C_1 &= C_2 \, C_3 e^{C_3 \, \hat z_b}, \\
+  C_2 &= \frac{\hat z_b}{h_r -1}, \\
+  C_3 &= \frac{\text{ln }(h_r) }{\hat z_b},
+\end{align}
+and $h_r$ is the ratio between the largest and smallest spacing, 
+\begin{equation}
+  h_r = \frac{h_{\text{max}}}{h_{\text{min}}}, 
+\end{equation}
+and,
+\begin{equation}
+  \hat z_b = \frac{L_z}{1 + \frac{L_z - z_b}{C_2 \, h_r \text{ ln }(h_r)}}.
+\end{equation}
 %% \begin{equation}
 %%  z = \begin{cases} C_1 (z-L_z)+L_z,& \text{if } z \geq z_\delta\\
 %%       C_2 \text{ exp}(C_3 z - 1),                 & \text{otherwise}
 %%      \end{cases}
 %% \end{equation}
 
-Where $z_b$ represents the chosen height of the 
-boundary layer mesh, and is specified. 
-
-
-%$C_1-C_3$ are scaling coefficients. %\todo{show coefficients}. 
-This gives the mesh an exponentially
-varying character, with the coefficients chosen to ensure ten or more
-points in the boundary layer, isotropic spacing in cells outside of
-it, and smooth blending between these two regimes. 
+%The mesh has an exponentially varying character, 
+%$h_{\text{min}}$, $h_{\text{max}}$ and $z_b$ 
+%are chosen to ensure ten or more
+%points in the boundary layer, isotropic spacing in cells outside of
+%it, and smooth blending between these two regimes. 
 
 A grid refinement verification was performed, where this spacing was 
 tested against a mesh with twice the grid points in the vertical
