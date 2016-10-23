@@ -181,22 +181,16 @@ To accomplish this, a mapping $z = \chi(\hat z)$ is defined by the following con
 The minimum and maximum extents are preserved so that $ \chi(0) = 0 $ and $ \chi(L_z) = L_z $. 
 The map spacing between points is initially a specified minimum value, 
 \begin{equation}
-  h_{\text{min}} = \chi'(0) \, \hat h.
+  h_{\text{min}} = \chi'(0) \, \hat h,
 \end{equation}
-Where $\hat h = L_z/\text{nz}$. The map is strictly increasing until the 
-point $\hat z_b$, where the spacing reaches a constant, $h_{max}$, 
-\begin{equation}
-  h_{\text{max}} = \chi'(\hat z_b) \, \hat h. 
-\end{equation}
-From this point onward, the mesh has a uniform spacing, also of $h_{max}$, 
-\begin{equation}
-  h_{\text{max}} = \chi'(L_z) \, \hat h. 
-\end{equation}
-
-We further assume that the mapping has an exponential functional form, 
-\begin{equation}
-  \chi(\hat z) = A \text{ exp}^{\beta \hat z}.
-\end{equation}
+where $\hat h = L_z/\text{nz}$. The map is strictly increasing until the 
+point $\hat z_b$, where the spacing reaches a constant, 
+$h_{\text{max}} = \chi'(\hat z_b) \, \hat h$. 
+From this point onward, the mesh has a constant uniform spacing,  
+$  h_{\text{max}} = \chi'(L_z) \, \hat h$. 
+%
+Finally, the mapping is assumed to hold an exponential functional form, 
+$  \chi(\hat z) = A \text{ exp}^{\beta \hat z}$.
 
 %
 % mesh mapping here
@@ -211,13 +205,13 @@ these conditions are sufficient to define a mapping,
  \end{cases}
 \end{equation}
 
-$C_1-C_3$ are scaling coefficients, and are defined as, %\todo{show coefficients}. 
+Here, $C_1-C_3$ are coefficients, and are defined as, %\todo{show coefficients}. 
 \begin{align}
   C_1 &= C_2 \, C_3 e^{C_3 \, \hat z_b}, \\
   C_2 &= \frac{\hat z_b}{h_r -1}, \\
   C_3 &= \frac{\text{ln }(h_r) }{\hat z_b},
 \end{align}
-and $h_r$ is the ratio between the largest and smallest spacing, 
+where $h_r$ is the ratio between the largest and smallest spacing, 
 \begin{equation}
   h_r = \frac{h_{\text{max}}}{h_{\text{min}}}, 
 \end{equation}
