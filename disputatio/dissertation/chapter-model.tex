@@ -102,7 +102,7 @@ turbulent and vane components,
 This is an effective eddy viscosity model\cite{boussinesq1887}, and the
 subsequent two sections will elaborate on the spatial dependence and
 character of $\nu_T$, $K_T$, $\nu_C$ and $K_C$. The laminar, base
-diffusivities are $\nu_l$ and $K_l$, which do not vary in space.  
+diffusivities are $\nu_l$ and $K_l$, and do not vary in space.  
 
 \section{Viscosity Model}
 
@@ -501,7 +501,7 @@ as
 \end{equation}
 %
 where $\hat{{\bf r}}$ and $\hat{{\bf \theta}}$ are unit
-vectors in the radial and azimuthal directions, respectively. \todo{this section needs another read} 
+vectors in the radial and azimuthal directions, respectively. 
 With this vane-normal vector field specified, a body force ${\bf f_v}$
 is defined that will drive the velocity in the ${\bf n}$ direction
 toward zero, effectively turning the flow to be parallel to the
@@ -520,7 +520,7 @@ velocity decays exponentially.
 %It is the distance analog to the more
 %familiar time constant of exponential decay. 
 
-The length scale $\ell_v$ is a modeling constant and must be specified. 
+The length scale $\ell_v$ is a modeling constant and must be specified.\todo{this section needs another read}  
 The length over which the flow comes into alignment 
 with the vane direction is measured in Figure~\ref{fig:annealing}. 
 This plots the average misfit between the turning
@@ -971,7 +971,7 @@ the vane region and is defined as,
  \bf t_v = \left( {\bf n_v^{\perp}} \right) \text{sign}\left(
 	    {\bf n_v^{\perp}} \cdot {\bf n_r} \right).
 \end{equation}
-Here, ${\bf n_v^{\perp}}$ is the vector perpendicular to the normal
+Where ${\bf n_v^{\perp}}$ is the vector perpendicular to the normal
 vector of the vanes, which is simply, 
 \begin{equation*}
  {\bf n_v^{\perp}} = \left[ \begin{array}{c}
@@ -988,51 +988,63 @@ n_y\\
 % example of an algorithm
 %
 
-\begin{center}
- \begin{algorithm}
-  \caption{The crude separation model. This model identifies if the flow
-  is coming into or out of the vane region, and if the velocity vector
-  is in the same direction as the tangent line of the vanes. In the case
-  of the ``special forcing'' the flow is forced as if it was
-  impacting a solid surface. In the
-  algorithm below, $r_0$ is the max radius of vanes, $r_i$ the minimum
-  radius of vanes, and $\delta$ is the width of the separation region.}
-  \label{alg:sep}
-  \begin{algorithmic}
-   \IF{($r_0 > r > r_i$)} 
-   \IF{$(r_0 - r) < \delta$ \textbf{or} $((r - r_i) < \delta)$}
-   \STATE ${\bf n_r} = {\bf r}/|r|$
-   \IF{$(r - r_i) < \delta$} 
-   \STATE ${\bf n_r} = -{\bf n_r}$
-   \ENDIF
-   \STATE  $\bf t_v = \left( {\bf n_v^{\perp}} \right) \text{sign}\left(
-  	    {\bf n_v^{\perp}} \cdot {\bf n_r} \right)$
-   \IF{$v \cdot t_v > 0$ \textbf{and} $v \cdot n_r < 0 $}
-   \STATE ${\bf n}({\bf x}) = \hat r$ \quad (Special Forcing)
-   \ELSE
-   \STATE  ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
-  \left(\phi(r) \right) \hat{{\bf \theta}} $
-  \quad (Normal Forcing)
-   \ENDIF
-   \ELSE
-   \STATE ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
-  \left(\phi(r) \right) \hat{{\bf \theta}} $
-  \quad (Normal Forcing)
-   \ENDIF
-   \ENDIF
-  \end{algorithmic}
- \end{algorithm}
-\end{center}
+% \begin{center}
+%  \begin{algorithm}
+%   \caption{The crude separation model. This model identifies if the flow
+%   is coming into or out of the vane region, and if the velocity vector
+%   is in the same direction as the tangent line of the vanes. In the case
+%   of the ``special forcing'' the flow is forced as if it was
+%   impacting a solid surface. In the
+%   algorithm below, $r_0$ is the max radius of vanes, $r_i$ the minimum
+%   radius of vanes, and $\delta$ is the width of the separation region.}
+%   \label{alg:sep}
+%   \begin{algorithmic}
+%    \IF{($r_0 > r > r_i$)} 
+%    \IF{$(r_0 - r) < \delta$ \textbf{or} $((r - r_i) < \delta)$}
+%    \STATE ${\bf n_r} = {\bf r}/|r|$
+%    \IF{$(r - r_i) < \delta$} 
+%    \STATE ${\bf n_r} = -{\bf n_r}$
+%    \ENDIF
+%    \STATE  $\bf t_v = \left( {\bf n_v^{\perp}} \right) \text{sign}\left(
+%   	    {\bf n_v^{\perp}} \cdot {\bf n_r} \right)$
+%    \IF{$v \cdot t_v > 0$ \textbf{and} $v \cdot n_r < 0 $}
+%    \STATE ${\bf n}({\bf x}) = \hat r$ \quad (Special Forcing)
+%    \ELSE
+%    \STATE  ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
+%   \left(\phi(r) \right) \hat{{\bf \theta}} $
+%   \quad (Normal Forcing)
+%    \ENDIF
+%    \ELSE
+%    \STATE ${\bf n}({\bf x}) = \sin \left(\phi(r) \right) \hat{{\bf r}}+ \cos
+%   \left(\phi(r) \right) \hat{{\bf \theta}} $
+%   \quad (Normal Forcing)
+%    \ENDIF
+%    \ENDIF
+%   \end{algorithmic}
+%  \end{algorithm}
+% \end{center}
 
 
-The forcing is modified when the velocity vector of the local flow, $\bf
-u$ is pointing in to the forcing region: ${\bf u} \cdot {\bf n_r} < 0$, and
+The forcing is modified when the velocity vector of the local flow, ${\bf u}$ 
+is pointing into the forcing region: ${\bf u} \cdot {\bf n_r} < 0$, and
 when the velocity vector is in the same direction as the tangent line to
-the vanes: ${\bf u} \cdot {\bf t_v} > 0 $. In these instances, the
+the vanes: $ {\bf u} \cdot {\bf t_v} > 0 $, 
+
+\begin{equation}
+ {\bf n}({\bf x}) = 
+ \begin{cases} 
+   \hat {\bf r}  & \text{if } {\bf u} \cdot {\bf n_r} < 0 \text{ and }  {\bf u} \cdot {\bf t_v} > 0  ,\\
+   \sin \left(\phi \right) \hat{{\bf r}}+ \cos \left(\phi \right) \hat{{\bf \theta}}  & \text{else}.
+ \end{cases}
+\end{equation}
+%
+In these instances, the
 forcing acts as if there was a rigid surface past the vane edge, and
 gives the appearance of a special ``no-penetration'' condition for the
-velocity for these cases. The pseudo-code for this procedure is shown in
-Algorithm~\ref{alg:sep}.\todo{cant write mathematically, would be easier}
+velocity for these cases. 
+
+%The pseudo-code for this procedure is shown in
+%Algorithm~\ref{alg:sep}.\todo{cant write mathematically, would be easier}
 
 The addition of this simple separation model significantly reduced the
 flow that penetrated the back of the vanes, and produces results
@@ -1078,7 +1090,7 @@ V_f = \sqrt{2 a z_0}.
 The forcing region height $z_0$ is set to the boundary layer thickness
 of 10 centimeters. The acceleration was estimated at 0.05
 $\text{m}/\text{s}^2$, based on the observed surface roughness impact on
-tornado-like vorticies of Natarajan and Hangan\cite{Natarajan2012577}.\todo{good?}  
+tornado-like vorticies of Natarajan and Hangan\cite{Natarajan2012577}.
 
 We ensure that the energy
 introduced into the flow is a small fraction of total flow energy by comparing
