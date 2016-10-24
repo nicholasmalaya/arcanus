@@ -92,17 +92,17 @@ providing a model that represents their impact. In this case,
 %a Reynolds Averaged Navier-Stokes (RANS) formulation is used, where 
 the turbulent viscosity and thermal conductivities are permitted to vary in
 space, and the flow is decomposed into constant laminar
-($\nu_{l},K_{l}$), varying turbulent ($\nu_{T},K_{T}$), and vane
+($\nu_{l},K_{l}$), varying turbulent ($\nu_{t},K_{t}$), and vane
 ($\nu_{V},K_{V}$) components, 
 
 \begin{eqnarray*}
- \nu =& \nu_{l} + \nu_{T}(z) + \nu_{V}(r,z), \\
- K =& K_{l} + K_{T}(z) + K_{V}(r,z).
+ \nu =& \nu_{l} + \nu_{t}(z) + \nu_{V}(r,z), \\
+ K =& K_{l} + K_{t}(z) + K_{V}(r,z).
 \end{eqnarray*}
 
 This is an effective eddy viscosity model\cite{boussinesq1887}, and the
 subsequent two sections will elaborate on the spatial dependence and
-character of $\nu_T$, $K_T$, $\nu_V$ and $K_V$. The laminar, base
+character of $\nu_t$, $K_t$, $\nu_V$ and $K_V$. The laminar, base
 diffusivities are $\nu_l$ and $K_l$, and do not vary in space.  
 
 \section{Viscosity Model}
@@ -132,13 +132,13 @@ homogeneous conditions, the dynamics of any mean turbulent quantity
 \end{equation}
 Aside from near the surface, the laminar diffusivities $\nu_l$ 
 and $K_l$ will be  
-small compared to their turbulent counterparts, $\nu_T$ and $K_T$, and 
+small compared to their turbulent counterparts, $\nu_t$ and $K_t$, and 
 are therefore negligible. 
 The remaining parameters are: the distance from the ground, z; the
 buoyancy coefficient, $\frac{g}{T_0}$; 
-%the density of the fluid, $\rho_0$; 
+the density of the fluid, $\rho_0$; 
 a velocity scale, $u^*$ (in particular, the freestream
-velocity); and the turbulent heat flux to the ground, $q$. 
+velocity); and the turbulent heat flux to the ground, $\frac{q}{\rho_0 c_p}$. 
 %and the specific heat,
 %$c_p$. %\todo{is this right?} 
 % Likewise, if we define $z-z_0$ as an ``effective roughness
@@ -158,9 +158,9 @@ These primary quantities have the following dimensions,
  \textbf{Buoyancy:}& \qquad \frac{g}{T_0}\enskip \dot = \enskip [kg] [m] [s]^{-2}
   [K]^{-1} \\ 
  \textbf{Velocity:}& \enskip u^* \enskip \dot = \enskip [m] [s]^{-1} \\
+  \textbf{Density:}&  \enskip \rho_0 \enskip \dot = \enskip [kg] [m]^{-3}  \\
  \textbf{Heat Flux:}& \enskip \frac{q}{\rho_0 c_p} \enskip \dot = \enskip [K] [m]^{-1} [s]^{-1} \\
  % \textbf{Heat Flux:}& \enskip q \enskip \dot = \enskip [kg] [s]^{-3} \\
- % \textbf{Density:}&  \enskip \rho_0 \enskip \dot = \enskip [kg] [m]^{-3}  \\
  % \textbf{Specific Heat:}& \enskip c_p \enskip \dot = \enskip [m]^2 [s]^{-2} [K]^{-1} 
 \end{eqnarray}
 
@@ -230,23 +230,23 @@ As a result, the mean vertical gradients of the velocity and temperature are,
  \varphi_T(\frac{z}{L_{M-O}}) \label{eq:tz}.
 \end{eqnarray}
 Where $\phi$ and $\varphi$ are different (and unknown) universal functions. Eddy
-viscosity is defined as, $u'v' = \nu_T \frac{\partial
+viscosity is defined as, $u'v' = \nu_t \frac{\partial
 u}{\partial z}$\cite{durbin2001statistical}, in which case, using
 equation \ref{eq:uz}, it must scale as, 
 \begin{equation}
- \nu_T = \frac{{u^*}^2}{\frac{\partial \bar u}{\partial z}} = \frac{u^*
+ \nu_t = \frac{{u^*}^2}{\frac{\partial \bar u}{\partial z}} = \frac{u^*
   \kappa L_{M-O}}{\varphi_u(\xi)}.
 \end{equation}
 While the eddy thermal diffusivity (defined as, $q = c_p \rho_0 K_T
 \frac{\partial T}{\partial z}$) is 
 \begin{equation}
- K_T = \frac{q/c_p \rho_0}{\frac{\partial \bar T}{\partial z}} = \frac{u^*
+ K_t = \frac{q/c_p \rho_0}{\frac{\partial \bar T}{\partial z}} = \frac{u^*
   \kappa L_{M-O}}{\varphi_T(\xi)}.
 \label{eqn:eddy_kt}
 \end{equation}
 Note that while we have not assumed that $\varphi_u$ and
 $\varphi_T$ are identical, for turbulent Prandtl numbers near unity 
-(e.g. $Pr_T \approx 1$), they will be. The asymptotic behavior of
+(e.g. $Pr_t \approx 1$), they will be. The asymptotic behavior of
 the $\varphi_T$ and $\varphi_u$ at large and small values of $\xi$
 provides guidance to the more general character of the functions. 
 
@@ -307,7 +307,7 @@ when the function $\varphi$ scales to the $-\frac{4}{3}$ power. The
 function must then be,
 
 \begin{equation}
- K_T = \frac{1}{C_T} \left( \frac{q}{c_p \rho_0} \frac{g}{T_0}
+ K_t = \frac{1}{C_T} \left( \frac{q}{c_p \rho_0} \frac{g}{T_0}
 		     \right)^\frac{1}{3} z^{\frac{4}{3}}  \text{ 
 for } z \gg L_{M-O}. 
 \end{equation}
@@ -318,7 +318,7 @@ identical arguments regarding the asymptotic behaviour at large $\xi$
 provide the analogous result for the eddy viscosity's variation with
 respect to distance from the ground,   
 \begin{equation}
- \nu_T = \frac{1}{C_{\nu_T}} \left( \frac{q}{c_p \rho_0} \frac{g}{T_0}
+ \nu_t = \frac{1}{C_{\nu_t}} \left( \frac{q}{c_p \rho_0} \frac{g}{T_0}
 			     \right)^\frac{1}{3} z^{\frac{4}{3}}  \text{ 
 for } z \gg L_{M-O}. 
 \end{equation}
