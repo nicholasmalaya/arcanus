@@ -396,13 +396,16 @@ software.
 
 %However, this is also a more
 %difficult regime to model.\todo{poor justification} 
-The validation process identified a refinement to the virtual vane
-formulation that results in a better representation of the vane
-effects in a broader range of flows.\todo{entire section needs another read} 
-An enhanced turbulent diffusivity is used in the vortical 
-plume region to account for the effects of vortex shedding from 
-the trailing edge of the vanes, which is not represented in the 
-virtual vane representation. 
+The atmospheric boundary layer model discussed in the previous section
+does not account for the precence of the SoV device.\todo{entire section needs another read} 
+%The validation process identified a refinement to the virtual vane
+%formulation that results in a better representation of the vane
+%effects in a broader range of flows.
+To account for this, an augmented turbulent diffusivity 
+is used in the vortical plume region to account for the turbulence 
+in the device. The diffusivity is enhanced due to vortex shedding from the 
+trailing edge of the vanes, and other effects not 
+represented in the virtual vane model. 
 
 % To successfully accomplish this, source terms
 % for production of diffusivity were formulated to properly
@@ -423,7 +426,8 @@ described in Pope\cite{pope2000turbulent},
   %\nu_C(r) = U_0(r) y_{1/2}(r) \bar \nu_C
 \end{equation}
 
-In this equation, $U_0$ is the peak velocity, and is set based on the observed
+In this equation, $U_0$ is the peak velocity, 
+and is set based on the observed
 velocities that exist in the SoV. 
 %
 % In words, we are scaling the
@@ -443,10 +447,15 @@ Finally, the length scale $y_{1/2}$ is set either to the
 separation distance between neighboring vanes, or the radius of the SoV apparatus. 
 The former is used for the unsteady virtual vanes, when greater spatial and 
 temporal fidelity is required to capture the dynamics of the plume and wake. 
+This viscosity is designed to represent the fluctuations inside the device 
+due to separation of flow off the turning vanes, for instance. 
 This is in contrast to the case of the steady virtual vanes, where 
 the radius of the SoV apparatus is used as the length scale and 
-no dynamics of the flow are are resolved. 
-The simulations are discussed in further detail in Chapter~\ref{sec:validation}.
+no dynamics of the flow are are resolved. Here, the resolved scale is that of the
+vortical plume itself, and not any fluctuating quantities. This is principally 
+for design purposes, and is intented only to capture the largest scale 
+features of the flow. These simulation regimes are discussed in further detail in 
+Chapter~\ref{sec:validation}.
 
 %The thermal and momentum diffusivities are expected to be even larger in the
 %device where the flow across the vanes produces shear and generates
