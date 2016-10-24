@@ -1,6 +1,8 @@
 \label{sec:archiving}
 
-\todo{finish archived appendix}
+Do you want vane forcing functions defined here?
+
+\todo{fix me}
 
 Two general types of data have been captured from each completed
 simulation and archived on the Corral\footnote{%
@@ -12,18 +14,126 @@ and Ranch\footnote{%
 resources at the Texas Advanced Computing Center\footnote{%
     \url{http://www.tacc.utexas.edu/}
 }
-(TACC).  These complete archives will be made available on request. 
+(TACC).  These complete archives will be made available on request.  Reduced
+data, as described towards the end of this appendix, will be made available
+online\footnote{\url{http://turbulence.ices.utexas.edu/}} for general
+consumption.
+
+The first type of data archived describes the software environment used for the
+simulations.  From each production batch job the information shown in
+\autoref{tbl:executiondetails} was preserved.
+%
+In addition to providing an execution record and raw data for performance
+variability investigations, these details permit determining what, if any,
+portions of the software stack may have changed between any two given batch
+jobs.
+
+\begin{table}
+\centering
+\caption[Execution details captured from each production batch job]{%
+  Software and hardware execution details captured from every production batch
+  job as human-readable text files.  Files named like \texttt{*.dat} provide time
+  measured relative to a wall clock, the simulation physics, and time step
+  number.\label{tbl:executiondetails}
+}
+\begin{small}
+\begin{tabular}{p{0.20\textwidth}|p{0.70\textwidth}}
+Filename & Contents \\ \hline \hline
+\texttt{bc.dat}       & Trace of conserved state behavior at boundaries \\
+\texttt{binary}       & Absolute path to the compiled Suzerain binary \\
+\texttt{cpuinfo}      & \texttt{/proc/cpuinfo} from MPI rank zero \\
+\texttt{dependencies} & Runtime-resolved shared library dependencies \\
+\texttt{environment}  & Environment variables in effect at runtime \\
+\texttt{kernel}       & \texttt{/proc/kernel} from MPI rank zero \\
+\texttt{log.dat}      & Complete execution log according to Suzerain \\
+\texttt{meminfo}      & \texttt{/proc/meminfo} from MPI rank zero \\
+\texttt{output}       & Complete execution log according to the batch system \\
+\texttt{qoi.dat}      & Trace of scalar quantities of interest like $\Reynolds[\theta]{}$ \\
+\texttt{state.dat}    & Trace of mean and fluctuating conserved state \\
+\texttt{version}      & Suzerain version information from the compiled binary
+\end{tabular}
+\end{small}
+\end{table}
+
+The second type of data archived contains instantaneous physics.  This data
+consists of complete instantaneous field snapshots taken periodically during each
+simulation run along with a variety of scenario parameters and descriptive grid
+statistics.  This data is stored in HDF5~\citep{hdf5} files via the ESIO
+library~\citep{ESIOweb}.  These snapshots are Suzerain restart
+files.  \autoref{tbl:restartfile} describes a subset of the data captured.  An
+effort was made to preserve the discrete operator details so that others might
+post-process the fields using consistent numerics but without needing access to
+a B-spline package.  While fields are stored as Fourier and B-spline
+expansion coefficients for efficiency and operational flexibility, Suzerain can convert this data to physical space if
+necessary.
 
 \begin{table}
 \centering
 \caption[Instantaneous fields and other details comprising a restart file]{%
-  A small subset of the details comprising a restart file.}
+  A small subset of the details comprising a Suzerain restart file.
+  HDF5 comments in the file provide operational context.  For example,
+  information on field storage ordering is provided in the comments of
+  \texttt{/rho}, \texttt{/rho\_E}, etc.\label{tbl:restartfile}
+}
 \begin{small}
 \begin{tabular}{p{0.29\textwidth}|p{0.65\textwidth}}
 HDF5 Dataset & Contents \\ \hline \hline
 \texttt{alpha                 } & Ratio of bulk to dynamic viscosity \\
+\texttt{beta                  } & Temperature power law exponent \\
+\texttt{breakpoints\_y        } & Breakpoint locations used for wall-normal B-spline basis \\
+%\texttt{bulk\_rho             } & Bulk density target \\
+%\texttt{bulk\_rhou            } & Bulk streamwise momentum target \\
+\texttt{collocation\_points\_x} & Collocation points for the dealiased, streamwise X direction \\
+\texttt{collocation\_points\_y} & Collocation points for wall-normal discrete operators \\
+\texttt{collocation\_points\_z} & Collocation points for the dealiased, spanwise Z direction \\
+\texttt{DAFx                  } & Dealiasing factor in streamwise X direction \\
+\texttt{DAFz                  } & Dealiasing factor in spanwise Z direction \\
+\texttt{Dy0T                  } & Transpose of banded, wall-normal Y collocation mass matrix \\
+\texttt{Dy1T                  } & Transpose of banded, wall-normal Y first derivative \\
+\texttt{Dy2T                  } & Transpose of banded, wall-normal Y second derivative \\
+\texttt{evmagfactor           } & Safety factor in $\left(0,1\right]$ used to adjust time step aggressiveness \\
+\texttt{gamma                 } & Ratio of specific heats \\
+%\texttt{Gy0T                  } & Transpose of banded, wall-normal Y Galerkin mass matrix \\
+\texttt{htdelta               } & Wall-normal breakpoint hyperbolic tangent stretching \\
+%\texttt{integration\_weights  } & Integrate by dotting B-spline coefficients against weights \\
+\texttt{knots                 } & Knots used to build B-spline basis \\
+\texttt{k                     } & Wall-normal B-spline order (4 indicates piecewise cubic) \\
+\texttt{kx                    } & Wavenumbers in streamwise X direction \\
+\texttt{kz                    } & Wavenumbers in spanwise Z direction \\
+\texttt{Lx                    } & Nondimensional grid length in streamwise X direction \\
+\texttt{Ly                    } & Nondimensional grid length in wall normal Y direction \\
+\texttt{Lz                    } & Nondimensional grid length in spanwise Z direction \\
+\texttt{Ma                    } & Mach number \\
+\texttt{Nx                    } & Global logical extents in streamwise X direction \\
+\texttt{Ny                    } & Global logical extents in wall-normal Y direction \\
+\texttt{Nz                    } & Global logical extents in spanwise Z direction \\
+\texttt{Pr                    } & Prandtl number \\
+\texttt{Re                    } & Reynolds number \\
+\texttt{rho                   } & Nondimensional density \\
+\texttt{rho\_E                } & Nondimensional total energy \\
+\texttt{rho\_u                } & Nondimensional streamwise momentum \\
+\texttt{rho\_v                } & Nondimensional wall-normal momentum \\
+\texttt{rho\_w                } & Nondimensional spanwise momentum \\
 \texttt{t                     } & Simulation physical time \\
 \end{tabular}
 \end{small}
 \end{table}
 
+During simulation execution, \emph{in situ} instantaneous mean samples
+of various quantities as a function of wall-normal position are taken
+more frequently than full restart checkpoints.  The samples are stored
+in separate HDF5 files sharing much with Suzerain's restart files.
+The quantities thus sampled are a superset of information necessary to
+compute the instantaneous Favre-averaged Navier--Stokes residuals per
+\autoref{sec:statevo}.
+
+After a simulation completes, all such samples and associated instantaneous
+residuals are aggregated into a single ``reduced data'' HDF5 file.  This reduced
+data permits third parties to easily access many first and second order
+turbulence statistics without requiring them to post-process many gigabytes of
+raw field data on a dedicated cluster environment.  In addition, the
+autoregressive uncertainty estimates described in \autoref{eq:uqaccounting} are
+included for each Reynolds-averaged scalar.  This reduced data is easily
+downloadable and may be imported into common software like GNU~Octave,
+\textsc{Matlab}\textsuperscript{\textregistered}, \textit{Mathematica}\textsuperscript{\textregistered}, or
+Python in a single command.
