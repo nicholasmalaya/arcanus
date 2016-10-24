@@ -91,11 +91,12 @@ and necessitates either resolving the resulting small scales or
 providing a model that represents their impact. In this case, 
 %a Reynolds Averaged Navier-Stokes (RANS) formulation is used, where 
 the turbulent viscosity and thermal conductivities are permitted to vary in
-space, and the flow is decomposed into constant laminar and varying
-turbulent and vane components,
+space, and the flow is decomposed into constant laminar
+($\nu_{l},K_{l}$), varying turbulent ($\nu_{T},K_{T}$), and vane
+($\nu_{V},K_{V}$) components, 
 
 \begin{eqnarray*}
- \nu =& \nu_{l} + \nu_{T}(z) + \nu_{V}(r,z) \\
+ \nu =& \nu_{l} + \nu_{T}(z) + \nu_{V}(r,z), \\
  K =& K_{l} + K_{T}(z) + K_{V}(r,z).
 \end{eqnarray*}
 
