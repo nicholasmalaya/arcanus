@@ -405,7 +405,7 @@ To account for this, an augmented turbulent diffusivity
 is used in the vortical plume region to account for the turbulence 
 in the device. The diffusivity is enhanced due to vortex shedding from the 
 trailing edge of the vanes, and other effects not 
-represented in the virtual vane model. 
+represented in the virtual vane model (discussed in Section~\ref{subsec:vane}). 
 
 % To successfully accomplish this, source terms
 % for production of diffusivity were formulated to properly
@@ -487,9 +487,14 @@ detailed solution verification.
 % is inappropriate.
 
 Instead, we have developed a modeling formulation that does not require
-explicitly meshing the turning vanes, or any surface. These so-called
-``virtual vanes'' are implemented as a body force that 
-is applied in the annular region that contains the vanes. 
+explicitly meshing the turning vanes, or any surface. The primary function
+of the vanes is to turn the flow. 
+We therefore represent the vanes as a force field, over 
+which a force is applied to the velocity field to align it 
+with the angle of the turning vanes, defined here as a 
+field of vectors. 
+These so-called `virtual vanes'' are implemented as a body force that 
+is applied in the region that would otherwise contain the vanes. 
 
    \begin{figure}[!htb]
     \centering
@@ -513,6 +518,9 @@ as
 %
 where $\hat{{\bf r}}$ and $\hat{{\bf \theta}}$ are unit
 vectors in the radial and azimuthal directions, respectively. 
+The quadratic functional form of this forcing can be motivated by 
+the desire for a dimensionally consistent forcing. A linear form, 
+for instance, is not dimensionally consistent. 
 With this vane-normal vector field specified, a body force ${\bf f_v}$
 is defined that will drive the velocity in the ${\bf n}$ direction
 toward zero, effectively turning the flow to be parallel to the
@@ -530,6 +538,7 @@ That is, this is the length over which the normal component of the
 velocity decays exponentially. 
 %It is the distance analog to the more
 %familiar time constant of exponential decay. 
+
 
 The length scale $\ell_v$ is a modeling constant and must be specified.\todo{this section needs another read}  
 The length over which the flow comes into alignment 
