@@ -135,7 +135,8 @@ are therefore negligible.
 The remaining parameters are: the distance from the ground, z; the
 buoyancy coefficient, $\frac{g}{T_0}$; the density of the fluid,
 $\rho_0$; a velocity scale, $u^*$ (in particular, the freestream
-velocity); the heat flux to the ground, $q$; and the specific heat. %\todo{is this right?}
+velocity); the heat flux to the ground, $q$; and the specific heat,
+$c_p$. %\todo{is this right?} 
 % Likewise, if we define $z-z_0$ as an ``effective roughness
 % height'' or displacement distance, we can reasonably neglect $z_0$ from these
 % considerations. While the roughness height can be large (for instance in
@@ -155,7 +156,7 @@ These primary quantities have the following dimensions,
  \textbf{Density:}&  \enskip \rho_0 \enskip \dot = \enskip [kg] [m]^{-3}  \\
  \textbf{Velocity:}& \enskip u^* \enskip \dot = \enskip [m] [s]^{-1} \\
  \textbf{Heat Flux:}& \enskip q \enskip \dot = \enskip [kg] [s]^{-3} \\
- \textbf{Specific Heat:}& \enskip c_p \enskip \dot = \enskip [m]^2 [2]^{-2} [K]^{-1} 
+ \textbf{Specific Heat:}& \enskip c_p \enskip \dot = \enskip [m]^2 [s]^{-2} [K]^{-1} 
 \end{eqnarray}
 
 The unknown mean turbulent quantity ($\bar f$) depends on four
@@ -333,7 +334,7 @@ Most functions are formulated in terms of $\Phi(\xi)$,
 not $\varphi(\xi)$. As
 $\varphi(\xi) \thicksim \xi^{-\frac{4}{3}}$, and recalling that
 $\Phi(\xi) = \xi \, \varphi(\xi)$, we expect 
-$\Phi(\xi) \thicksim \xi^{-\frac{1}{3}}$.
+$\Phi(\xi)$ to scale as $\xi^{-\frac{1}{3}}$.
 %
 %\cite{?}.\todo{missing cites} 
 However, the functions are generally in close agreement under neutral
