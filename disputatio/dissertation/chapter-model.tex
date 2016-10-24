@@ -224,7 +224,7 @@ way, the mean velocity and temperature fields would have the form,
 \end{eqnarray}
 As a result, the mean vertical gradients of the velocity and temperature are,
 \begin{eqnarray}
-\frac{\partial \bar u(z)}{\partial z} = \frac{u^*}{\kappa L_{M-O}}
+\frac{\partial \bar u(z)}{\partial z} = \frac{u^*}{\kappa \, L_{M-O}}
  \varphi_u(\frac{z}{L_{M-O}}) \label{eq:uz}, \\ 
 \frac{\partial \bar T(z)}{\partial z} = \frac{T^*}{L_{M-O}}
  \varphi_T(\frac{z}{L_{M-O}}) \label{eq:tz}.
@@ -234,14 +234,14 @@ viscosity is defined as, $u'v' = \nu_t \frac{\partial
 u}{\partial z}$\cite{durbin2001statistical}, in which case, using
 equation \ref{eq:uz}, it must scale as, 
 \begin{equation}
- \nu_t = \frac{{u^*}^2}{\frac{\partial \bar u}{\partial z}} = \frac{u^*
-  \kappa L_{M-O}}{\varphi_u(\xi)}.
+ \nu_t = \frac{{u^*}^2}{\frac{\partial \bar u}{\partial z}} = \frac{u^* \,
+  \kappa \, L_{M-O}}{\varphi_u(\xi)}.
 \end{equation}
 While the eddy thermal diffusivity (defined as, $q = c_p \rho_0 K_T
-\frac{\partial T}{\partial z}$) is 
+\frac{\partial T}{\partial z}$) is,
 \begin{equation}
- K_t = \frac{q/c_p \rho_0}{\frac{\partial \bar T}{\partial z}} = \frac{u^*
-  \kappa L_{M-O}}{\varphi_T(\xi)}.
+ K_t = \frac{q/c_p \rho_0}{\frac{\partial \bar T}{\partial z}} = \frac{u^* \,
+  \kappa \, L_{M-O}}{\varphi_T(\xi)}.
 \label{eqn:eddy_kt}
 \end{equation}
 Note that while we have not assumed that $\varphi_u$ and
