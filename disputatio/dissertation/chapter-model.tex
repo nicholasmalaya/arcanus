@@ -205,7 +205,7 @@ corresponds to heat flux from the ground into the air.
 %The mean quantity $\bar f$ has a
 %functional representation to the effect,
 The results of the scaling analysis imply that appropriately normalized
-mean turbulent quantities should be functions of only the
+mean turbulent quantities should be functions only of a single 
 non-dimensional group, 
 \begin{equation}
  \frac{\bar f}{f_{MO}} = \phi(\frac{z}{L_{M-O}}), 
@@ -223,7 +223,7 @@ way, the mean velocity and temperature fields would have the form,
 \bar T(z) = T^* \phi_T(\frac{z}{L_{M-O}}).
 \end{eqnarray}
 Taking the derivative of these equations results in the mean 
-vertical gradients of the velocity and temperature are,
+vertical gradients of the velocity and temperature, which are,
 \begin{eqnarray}
 \frac{\partial \bar u(z)}{\partial z} = \frac{u^*}{\kappa \, L_{M-O}}
  \varphi_u(\frac{z}{L_{M-O}}) \label{eq:uz}, \\ 
@@ -233,7 +233,7 @@ vertical gradients of the velocity and temperature are,
 Where $\phi$ and $\varphi$ are different (and unknown) universal functions. Eddy
 viscosity is defined as, $u'v' = \nu_t \frac{\partial
 u}{\partial z}$\cite{durbin2001statistical}, in which case, using
-equation \ref{eq:uz}, it must scale as, 
+equation \ref{eq:uz}, it can be expressed as, 
 \begin{equation}
  \nu_t = \frac{{u^*}^2}{\frac{\partial \bar u}{\partial z}} = \frac{u^* \,
   \kappa \, L_{M-O}}{\varphi_u(\xi)}.
@@ -246,10 +246,10 @@ While the eddy thermal diffusivity (defined as, $q = c_p \rho_0 K_T
 \label{eqn:eddy_kt}
 \end{equation}
 Note that while we have not assumed that $\varphi_u$ and
-$\varphi_T$ are identical, for turbulent Prandtl numbers near unity 
-(e.g. $Pr_t \approx 1$), they will be. The asymptotic behavior of
-the $\varphi_T$ and $\varphi_u$ at large and small values of $\xi$
-provides guidance to the more general character of the functions. 
+$\varphi_T$ are identical, for turbulent Prandtl numbers of unity 
+(e.g. $Pr_t = 1$), they will be. We now consider the asymptotic behavior
+of $\varphi_T$ and $\varphi_u$ at large and small values of $\xi$
+to provides guidance as to the more general character of the functions. 
 
 %Our interest lies in the case where $L_{M-O} \leq 0$, which corresponds
 %to heat flux from the ground into the air.  
@@ -260,7 +260,7 @@ The first case is the limit
 %, is equivalent to the scenario where
 %$\frac{z}{L_{M-O}} \to 0$, or 
 $L_{M-O}>>z$, $\xi \to 0$. This occurs as the heat flux
-at the wall approaches zero ($q \to 0$). 
+at the wall approaches zero (e.g. $q \to 0$). 
 This is purely wind driven flow with no thermal differences. 
 In this limit, the profile is expected to be the ``log-law''. 
 Equation~\ref{eq:uz} can be rearranged to obtain, 
