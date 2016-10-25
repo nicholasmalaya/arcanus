@@ -222,7 +222,8 @@ way, the mean velocity and temperature fields would have the form,
 \bar u(z) = \frac{u^*}{\kappa} \phi_u(\frac{z}{L_{M-O}}), \\
 \bar T(z) = T^* \phi_T(\frac{z}{L_{M-O}}).
 \end{eqnarray}
-As a result, the mean vertical gradients of the velocity and temperature are,
+Taking the derivative of these equations results in the mean 
+vertical gradients of the velocity and temperature are,
 \begin{eqnarray}
 \frac{\partial \bar u(z)}{\partial z} = \frac{u^*}{\kappa \, L_{M-O}}
  \varphi_u(\frac{z}{L_{M-O}}) \label{eq:uz}, \\ 
@@ -291,7 +292,8 @@ When $ |\frac{z}{L_{M-O}}| << 1$ it is therefore expected that,
 \begin{equation}
  \varphi_u(\xi) \approx \text{ln } \rvert \frac{z}{L_{M-O}} \rvert + C.
 \end{equation}
-Identical arguments can be made for the asymptotic behaviour of the temperature function.
+Identical arguments can be made for the asymptotic 
+behaviour of the temperature function.
 
 \subsection*{Case Two: $\xi \to -\infty$}
 
@@ -300,8 +302,10 @@ This is most readily interpreted as the instance
 where $u^* \to 0$, e.g. the buoyancy-dominated case with no wind
 (free-convection). This condition is typically referred to as,
 ``Thermal-only'' in this text. 
-For this case, the function $\varphi_u$ must have no
-dependence on $u^*$, and will approach a constant. Scaling
+For this to be the case, the function $\varphi_T$ in 
+Equation~\ref{eqn:eddy_kt} must have no dependence on 
+$u^*$, and will approach a constant. 
+Thus, scaling
 analysis implies that the overall function will not depend on $u^*$ only 
 when the function $\varphi$ scales to the $-\frac{4}{3}$ power. The
 function must then be,
