@@ -391,7 +391,7 @@ The normal vector is perpendicular to the tangent, and has the form,
  {\bf n} =& \frac{(x-h)}{a^2} {\bf e_x} + \frac{(y-k)}{b^2} {\bf e_y}.
 \end{eqnarray}
 
-This now defines the normal vector.\todo{the rest of this section needs another look} 
+This now defines the normal vector.
 However, the constants $k$ and $b$ must be determined to 
 define ellipses of the desired shape. 
 Furthermore, an ellipse that has a certain slope, m, 
@@ -434,7 +434,7 @@ this point is known.
   \end{center}
  \end{figure}
 
-The challenge is to determine which ellipse travels through 
+The challenge is to determine which ellipse passes through 
 a given point in space ($(x,y)$). 
 This is solved by discretizing the arc along the inner radius 
 of the turning vanes, and generating data from
@@ -563,10 +563,10 @@ Section~\ref{sec:actuator_disk}.
 Improvements to the turbine power extracted were also attained by adding
 ``twist''. In other words, the blade angle varies as a function of
 radius, i.e. $\beta = \beta(r)$. The improvement in power extraction due
-to a varying blade angle with radius is due to a changing distribution
+to a varying blade angle with radius is due to a varying distribution
 of momentum flux. As both azimithal and axial velocities depend on the
-circulation, $\Gamma$, so the optimal $\beta$ varies to capture
-this. \todo{sufficient?} 
+circulation, $\Gamma$, so the optimal $\beta$ varies radially to capture
+the optimal turbine blade angle. 
 
 %Finally, cone improvement
 After this initial exploration of the turbine design space, further
@@ -597,23 +597,22 @@ with twist, and slightly more than 1.51 kW for a rotor with no twist.
 % The load on the turbine
 % is predicted to be modest, at 20 ft-lbs. 
 This indicates that the twisted rotor design is extracting 44\% of the
-available power from the flow. This is an efficiency:\todo{another look here would be warranted} 
-the power
+available power from the flow. This is an efficiency: the power
 extracted by the turbine ($P_{\text{Turbine}}$) from the kinetic energy
-flux ($\dot{\text{KE}}$) through the device, e.g.
+flux ($\dot{\text{KE}}$) through the device, 
 \begin{equation}
 \eta_{\dot{\text{KE}}} = \frac{P_{\text{Turbine}}}{\dot{\text{KE}}}. 
 \end{equation}
-The Betz-limit, which of limited use due to its
-neglect of rotation, places an upper bound of 59.3\% of the
-power contained in the flow that might be extracted. Then we can
-consider a ``Betz-efficiency'', which is the ratio of the available
-kinetic energy flux extracted versus this bound, 
-\begin{equation}
- \eta_\text{Betz} = \frac{\eta_{\dot{\text{KE}}}}{59.3 \%}
-\end{equation}
-This indicates a Betz-efficiency of $\approx 75\%$, which is roughly
-consistent with the measured efficiency of modern wind turbines. 
+% The Betz-limit, which of limited use due to its
+% neglect of rotation, places an upper bound of 59.3\% of the
+% power contained in the flow that might be extracted. Then we can
+% consider a ``Betz-efficiency'', which is the ratio of the available
+% kinetic energy flux extracted versus this bound, 
+% \begin{equation}
+%  \eta_\text{Betz} = \frac{\eta_{\dot{\text{KE}}}}{59.3 \%}
+% \end{equation}
+% This indicates a Betz-efficiency of $\approx 75\%$, which is roughly
+% consistent with the measured efficiency of modern wind turbines. 
 All of these results are for the $90^{\circ}$ circular-arc
 blade, as shown in Figure~\ref{fig:90_drag}. 
 % after duane
@@ -1028,7 +1027,7 @@ The 2016 field test indicated that there was little or no flow through
 the turbine region. Furthermore, it was noted that the chord length of
 the turbine blades was indeed substantial, and the number of blades
 (eight) larger than typically used in wind turbines (which often operate
-with two or three blades). \todo{this section needs another look}
+with two or three blades).
 
 The turbine is represented by an actuator disk model in which the lift
 and drag forces on the blades are determined from a two-dimensional CFD 
@@ -1043,10 +1042,10 @@ To determine whether this blockage effect can explain the August 2016
 field observations a worst-case blockage assumption was made in which
 the air is said to pass through the turbine as if each blade blocked the
 flow according to its projected area. This increases the vertical
-velocity that is used in the calculation of blade lift and drag. This
-model essentially assumes that the flow is completely separated on each
-blade, which is not expected to be the case, so this may be an overly
-pessimistic estimate of the blockage effect. 
+velocity experienced by the blades and used in the calculation of blade
+lift and drag. This model essentially assumes that the flow is
+completely separated on each blade, which is not expected to be the
+case, so this may be an overly pessimistic estimate of the blockage effect. 
 
 It was noted that wind turbines typically possess three blades, versus
  the eight blades used in the 2016 field test. This is therefore a 
@@ -1182,7 +1181,7 @@ diverge at higher blade count.
    \end{center}
   \end{figure}
 
-This model modification indicates that the prior prediction of eight
+This model modification indicates that the prior design of eight
 turbine blades in Section~\ref{sec:turb_design} was too large. Instead,
 a turbine with substantially reduced solidity is preferred. Based on
 Figure~\ref{fig:turbine_solidity}, a turbine with similar
@@ -1201,7 +1200,7 @@ correction developed here is probably overly pessimistic, it could
 sensibly be used as a predictive or design tool by introducing a
 calibration constant which could be tuned if appropriate data were
 available. However, such a correction is not generally used in the wind
-turbine community, which in part why such a modification was not
+turbine community, which is in part why such a modification was not
 considered in the original model. It is interesting to speculate why,
 this correction has not been used in wind turbine analysis, and yet, the
 design optimization used for such turbines has not pushed the designs to
@@ -1463,7 +1462,7 @@ that the vortex loses its coherence and the power extracted becomes
 negative (e.g. the constant velocity turbine is adding energy to the
 flow). This implies a limit on how much of the energy can be extracted
 before disrupting the flow so greatly that the vortex cannot be
-maintained.\todo{re-read needed}     
+maintained.
 
 %Consistent with the results from Section~\ref{sec:field_error},
 %the vortex is not robust, and the feedback from extracting more power
@@ -1485,13 +1484,9 @@ Section~\ref{subsec:field_predict}, and so are not depicted here.
 
 The steady state power extracted by the ideal turbine 
 increased from the previous best attained with the 90 degree
-semicircles, to 2.76 kW. It is interesting to note that this is 58\% of
-the available kinetic energy flux measured just upstream of the turbine,
-indicating that the turbine is very close to the Betz-limit of
-59.3\%. Though, as indicated previously, the Betz-limit is not valid for
-this flow, it is nevertheless interesting that the idealized turbine
-would extract power so close to the maximum predicted by Betz. This
-provides a loose band on the power that can be derived from this
+semicircles, to 2.76 kW. This is 58\% of
+the available kinetic energy flux measured just upstream of the turbine.
+This provides a loose band on the power that can be derived from this
 flow. Furthermore, this indicates that previous estimates of the power
 that might be extracted from the flow are not greatly limited by the
 present turbine design. This is an important element of the system

@@ -171,14 +171,15 @@ height of the vanes and cone.
 %
 
 The vertical mesh spacing is non-uniform to resolve the boundary
-layer.\todo{the rest of this section needs another look}
-This is accomplished by redistributing a mesh which is uniformly spaced over the 
-interval $\{0,L_z\}$ in height, $\hat z$, to a non-uniform mesh, $z$, over the same interval. 
+layer. This is accomplished by redistributing a mesh which is uniformly
+spaced over the interval $\{0,L_z\}$ in height, $\hat z$, to a
+non-uniform mesh, $z$, over the same interval.  
 %This non-uniform ``boundary-layer'' mesh is designed to resolve the small 
 %scale variations near the wall. 
 % what about chi?
-To accomplish this, a mapping $z = \chi(\hat z)$ is defined by the following conditions. 
-The minimum and maximum extents are preserved so that $ \chi(0) = 0 $ and $ \chi(L_z) = L_z $. 
+A mapping $z = \chi(\hat z)$ is defined by the following conditions.  
+The minimum and maximum extents are preserved so that $ \chi(0) = 0 $
+and $ \chi(L_z) = L_z $.  
 The map spacing between points is initially a specified minimum value, 
 \begin{equation}
   h_{\text{min}} = \chi'(0) \, \hat h,
