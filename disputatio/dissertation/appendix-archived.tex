@@ -58,67 +58,86 @@ values.
 
 In addition to the input files, each of these directories contains two
 directories, {\it gold} and {\it output}. After each run, all of the
-output files are moved into {\it output} and
+output files are moved into {\it output} where they are saved in a
+directory labeled by the unique slurm id for that particular run. In
+addition, if the run exited successfully, then the output files
+necessary to restart the run are saved in the {\it gold} directory. 
+This is handled automatically, after the completion of a job, by custom
+bash scripts attached to the slurm scheduler. These scripts are
+available in the {\it common} directory. 
 
-This is handled automatically, by custom bash scripts attached to the
-slurm scheduler. These scripts are available in the {\it common}
-directory. 
+Each input file must specify a path to files contained in {\it common}
+to define the problem run. Thus, for instance, to specify a viscosity
+model, the line, 
+\begin{verbatim}
+[include ../common/viscosity/visc_mo_steady_super.in]
+\end{verbatim}
+would run the job with the viscosity model defined in the file,
+``visc\_mo\_steady\_super.in''.  
+The {\it common} contained every file needed to specify a problem, so
+that different cases share common files. This ensures that a single file
+cannot have an incorrectly specified parameter in it, and permits
+regression testing old results to ensure that output has not changed. 
+The {\it common} directory is organized as follows. The available models
+to include are specified in Table~\ref{tbl:run}. 
 
 \begin{table}
 \centering
-\caption[Execution details captured from each production batch job]{%
-  Software and hardware execution details captured from every production batch
-  job as human-readable text files.  Files named like \texttt{*.dat} provide time
-  measured relative to a wall clock, the simulation physics, and time step
-  number.\label{tbl:executiondetails}
+\caption{%
+  The available model classes for each SoV run. Not all model classes
+ are necessary to perform a run.\label{tbl:run}
 }
 \begin{small}
 \begin{tabular}{p{0.20\textwidth}|p{0.70\textwidth}}
-Filename & Contents \\ \hline \hline
-\texttt{bc.dat}       & Trace of conserved state behavior at boundaries \\
-\texttt{binary}       & Absolute path to the compiled Suzerain binary \\
-\texttt{cpuinfo}      & \texttt{/proc/cpuinfo} from MPI rank zero \\
-\texttt{dependencies} & Runtime-resolved shared library dependencies \\
-\texttt{environment}  & Environment variables in effect at runtime \\
-\texttt{kernel}       & \texttt{/proc/kernel} from MPI rank zero \\
-\texttt{log.dat}      & Complete execution log according to Suzerain \\
-\texttt{meminfo}      & \texttt{/proc/meminfo} from MPI rank zero \\
-\texttt{output}       & Complete execution log according to the batch system \\
-\texttt{qoi.dat}      & Trace of scalar quantities of interest like $\Reynolds[\theta]{}$ \\
-\texttt{state.dat}    & Trace of mean and fluctuating conserved state \\
-\texttt{version}      & Suzerain version information from the compiled binary
+Directory Name & Purpose \\ \hline \hline
+ \texttt{bc}       & Boundary Conditions \\
+ \texttt{drag}       & Drag Model (optional) \\
+ \texttt{forcing}       & Surface Roughness Forcing \\
+ \texttt{ic}       & Initial Conditions \\
+ \texttt{qoi}       & Quantities of Interest to be measured, such as
+     kinetic energy flux \\
+ \texttt{scripts}       & Scripts used to invoke job, not used by input
+     files directly \\
+ \texttt{turbine}       & Turbine run definition \\
+ \texttt{vanes}       & Virtual vane definition \\
+ \texttt{visc}       & Viscosity Model \\
 \end{tabular}
 \end{small}
 \end{table}
 
-The second type of data archived contains instantaneous physics.  This data
-consists of complete instantaneous field snapshots taken periodically during each
-simulation run along with a variety of scenario parameters and descriptive grid
-statistics.  
+
 
 \begin{table}
 \centering
 \caption[Instantaneous fields and other details comprising a restart file]{%
-  A small subset of the details comprising a Suzerain restart file.
-  HDF5 comments in the file provide operational context.  For example,
-  information on field storage ordering is provided in the comments of
-  \texttt{/rho}, \texttt{/rho\_E}, etc.\label{tbl:restartfile}
+  The data comprising a restart file, stored in EXODUSII
+ format.\label{tbl:EXO}
 }
 \begin{small}
 \begin{tabular}{p{0.29\textwidth}|p{0.65\textwidth}}
-HDF5 Dataset & Contents \\ \hline \hline
-\texttt{alpha                 } & Ratio of bulk to dynamic viscosity \\
-\texttt{t                     } & Simulation physical time 
+EXODUSII Dataset & Contents \\ \hline \hline
+\texttt{T                     } & The 3d temperature field, in Kelvin \\
+\texttt{u                     } & Streamwise velocity component \\ 
+\texttt{v                     } & Spanwise velocity component \\ 
+\texttt{w                     } & Vertical velocity component \\ 
+\texttt{p                     } & Pressure field \\ 
+\texttt{k                     } & Thermal conductivity field \\ 
+\texttt{mu                    } & Kinematic Viscosity field \\ 
+\texttt{vel\_penalty\_        } & Virtual Vane Forcing Field \\ 
+\texttt{vel\_source\_        }  & Surface Roughness Forcing Field 
 \end{tabular}
 \end{small}
 \end{table}
 
-This data is cumbersome and not easily imported into common software
-like GNU~Octave, \textsc{Matlab}\textsuperscript{\textregistered},
+A snapshot of an input file is provided in Table~\ref{tbl:EXO}. 
+Due to the exodusII format, this data is cumbersome and not easily
+imported into common software like GNU~Octave,
+\textsc{Matlab}\textsuperscript{\textregistered},
 \textit{Mathematica}\textsuperscript{\textregistered}, or Python in a
-single command. Rather, paraview provides the best means to visualize
+single command. Rather, paraview provides the best means to visualize 
 and explore these datasets, and was the main post-processing software
-used in this thesis. 
+used in this thesis. A hand written python reader was developed and can
+be provided upon request. 
 
 The github hashes of the latest (and believed to be backward compatible)
 GRINS and libMesh versions used in this document were, 
