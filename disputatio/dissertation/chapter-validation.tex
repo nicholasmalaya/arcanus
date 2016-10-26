@@ -283,6 +283,31 @@ separation model, which is detailed in Section~\ref{sec:separation}. The
 images  did not identify any inconsistencies between the refined
 simulation and experiment.   
 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.45\linewidth]{figs/gridded_wind}
+  %\caption{Streamwise Velocity: Gridded Vanes}
+  \hfill
+  \includegraphics[width=.45\linewidth]{figs/virtual_wind}
+  %\caption{Streamwise Velocity: Virtual Vanes}
+  \\
+  \includegraphics[width=.45\linewidth]{figs/gridded_wind_span}
+  %\caption{Spanwise Velocity: Gridded Vanes}
+  \hfill
+  \includegraphics[width=.45\linewidth]{figs/virtual_wind_span}
+ %\caption{Spanwise Velocity: Virtual Vanes}
+ \caption{Horizontal slices through the top of the vanes for the
+ wind validation cases. On the left are the explicitly gridded vanes,
+ and on the right the virtual vanes. The streamwise velocity (top
+ images) shows penetration through the region where the vanes are aligned
+ with the flow in both the gridded and virtual vanes. The second row
+ shows the spanwise velocity, where it can be seen that the virtual vane
+ case correctly reproduces the direction and magnitude of velocity
+ inside the vanes.} 
+ \label{fig:wind_val}
+\end{figure}
+
 %
 % Attached in the plate from which we inject the fog from. The holes used
 % for seeding are the center one (0.5” diameter) and the other 4 ones
@@ -298,8 +323,8 @@ only for the cold wind, as the wind tunnel did not include a heated plate.
 To provide a more quantitative validation study, the virtual vanes were
 compared to gridded vanes for a cold wind case. Both cases had identical
 boundary conditions, as detailed in Section~\ref{sec:bc}. A two meter
-per second inlet velocity was selected. 
-Figure~\ref{fig:wind_val} contains images of the simulated averaged
+per second inlet velocity was selected. Figure~\ref{fig:wind_val}
+contains images of the simulated averaged 
 streamwise and  spanwise velocity in a horizontal plane at approximately
 the height of the vanes obtained from simulations with gridded and
 virtual vanes. 
@@ -317,31 +342,6 @@ cases. While there are some differences in the
 details of these simulations, the overall character of the flow
 inside the vanes is quite similar. This demonstrates that the virtual
 vane formulation can indeed accurately represent the interaction with the wind.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=.45\linewidth]{figs/gridded_wind}
-  %\caption{Streamwise Velocity: Gridded Vanes}
-  \hfill
-  \includegraphics[width=.45\linewidth]{figs/virtual_wind}
-  %\caption{Streamwise Velocity: Virtual Vanes}
-  \\
-  \includegraphics[width=.45\linewidth]{figs/gridded_wind_span}
-  %\caption{Spanwise Velocity: Gridded Vanes}
-  \hfill
-  \includegraphics[width=.45\linewidth]{figs/virtual_wind_span}
- %\caption{Spanwise Velocity: Virtual Vanes}
-  \label{fig:wind_val}
- \caption{Horizontal slices through the top of the vanes for the
- wind validation cases. On the left are the explicitly gridded vanes,
- and on the right the virtual vanes. The streamwise velocity (top
- images) shows penetration through the region where the vanes are aligned
- with the flow in both the gridded and virtual vanes. The second row
- shows the spanwise velocity, where it can be seen that the virtual vane
- case correctly reproduces the direction and magnitude of velocity
- inside the vanes.} 
-\end{figure}
-
 
 \section{Comparisons between Steady and Unsteady Virtual Vanes}
 \label{sec:steady_val}
