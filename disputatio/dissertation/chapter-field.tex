@@ -381,7 +381,7 @@ the ellipse is then,
  %{\bf \hat t} = {\bf e_x} + \frac{dy}{dx}{\bf e_y}, \\
  {\bf t} =& {\bf e_x} + \frac{dy}{dx}{\bf e_y}, \\
  {\bf t} =& \underbrace{\frac{(y-k)}{b^2}}_{a_y} {\bf e_x} -
-  \underbrace{\frac{(x-h)}{a^2}}_{a_x}{\bf e_y} \\
+  \underbrace{\frac{(x-h)}{a^2}}_{a_x}{\bf e_y}, \\
  {\bf t} =& {a_y} {\bf e_x} - {a_x}{\bf e_y}. 
 \end{eqnarray}
 %
@@ -456,9 +456,9 @@ are now fit to a 2D N\textsuperscript{th}
 order polynomial. This has the form, 
 
 \begin{equation}
- P(x,y) = \sum_{i=0}^N  \sum_{j=0}^N a_{i,j} x^i y^j
+ P(x,y) = \sum_{i=0}^N  \sum_{j=0}^N a_{i,j} x^i y^j,
 \end{equation}
-
+%
 where $a_{i,j}$ are coefficients of the polynomial which are 
 determined by minimizing the residual between the 
 known vane values and the polynomial evaluated at that point. 
@@ -947,7 +947,7 @@ vane surface, the flow will also be slowed.
 % The vane formulation now
 % acts in a dissipative manner, and is not energy conserving. 
 
-The unit drag forcing vector ${\bf \hat f}$ is simply the negative
+The unit drag forcing vector, ${\bf \hat f}$, is simply the negative
 normalized inner product of the velocity, ${\bf u}$, and the turning
 vane tangent vector ${\bf \hat t^v}$,  
 \begin{equation}
@@ -956,7 +956,7 @@ vane tangent vector ${\bf \hat t^v}$,
 \end{equation}
 The volumetric force applied is, 
 \begin{equation}
- F = {\bf \hat f} \, C_f \, \frac{1}{2} \frac{\rho || {\bf u} ||^2}{\delta}
+ F = {\bf \hat f} \, C_f \, \frac{1}{2} \frac{\rho || {\bf u} ||^2}{\delta}.
 \end{equation}
 Where $C_f$ is the skin friction coefficient (which must be determined),
 $\rho $ is the density and $\delta$ is half the distance between
@@ -997,12 +997,12 @@ roughness height, $\epsilon/D$,
  C_f = \left(2.0 \text{ log}\left(\frac{\epsilon/D}{3.7}\right)\right)^2. 
 \end{equation}
 %Then, a Moody chart was consulted to provide the the 
-Note that D here is the hydraulic diameter which must account for the
+Note that D is the hydraulic diameter which must account for the
 two plates (we treat the vanes as a channel),
 \begin{equation}
-D_H = \frac{4 A}{P} = \frac{4 (2w)\delta}{2w} = 4 \delta
+D_H = \frac{4 A}{P} = \frac{4 (2w)\delta}{2w} = 4 \delta,
 \end{equation}
-Where $\delta$ is again half the distance between the vanes. 
+where $\delta$ is again half the distance between the vanes. 
 To construct a ``worst-case'' scenario, we consider
 the smallest distance between the vanes, which occurs near the center of
 the SoV. Furthermore, we consider roughness heights based on a
@@ -1109,15 +1109,15 @@ The length of each blade blocking vertical flow in the actuator disk is,
 \begin{equation}
   c * \text{Cos}(\beta(r)) = c_x(r). 
 \end{equation}
-The total circumferential length in an annular region that is blocked
+While the total circumferential length in an annular region that is blocked
 is therefore, 
 \begin{equation}
   B * c_x(r) = l_B(r),
 \end{equation}
-Where B is the number of blades. 
+where B is the number of blades. 
 Then, the fraction of the circumference that is impeded by blades is, 
 \begin{eqnarray}
- B(r) =& \frac{2\pi r- l_B(r)}{2 \pi r}\\
+ B(r) =& \frac{2\pi r- l_B(r)}{2 \pi r},\\
  B(r) =& 1- \frac{l_B(r)}{2 \pi r}. 
 \end{eqnarray}
 Note that a ``floor'' function is needed to ensure the solidity ratio
@@ -1138,7 +1138,7 @@ The flow angle with respect to turbine velocity is therefore modified
 from Equation~\ref{eq:fan_direction} in
 Section~\ref{sec:actuator_disk},
 \begin{equation}
- \theta_f = \text{tan}^{-1}(\frac{{\bf u_{\text{up}}}}{{\bf u_{\text{fwd}}}})
+ \theta_f = \text{tan}^{-1}(\frac{{\bf u_{\text{up}}}}{{\bf u_{\text{fwd}}}}),
 \end{equation}
 to,
 \begin{equation}
@@ -1149,12 +1149,13 @@ this way the velocity vector will be completely aligned with drag.
 
 Finally Equation~\ref{eq:force_turb}, 
 \begin{equation}
- F = \frac{1}{2}\frac{c \rho U_p^2}{A}(C_L  {\bf n_{\text{lift}}} + C_d
-   {\bf n_{\text{drag}}})
+ F = \frac{1}{2}\frac{c \rho U_p^2}{A}(C_L \, {\bf n_{\text{lift}}} +
+  C_d \,
+   {\bf n_{\text{drag}}}),
 \end{equation}
 is modified so that, 
 \begin{equation}
- \bar U_p^{2} = \left(\frac{U_p}{B(r)}\right)^2
+ \bar U_p^{2} = \left(\frac{U_p}{B(r)}\right)^2.
 \end{equation}
 
 This turbine model modification for solidity has a significant impact on
@@ -1303,7 +1304,7 @@ geometry.
 
 The power extracted by the turbine is, 
 \begin{equation}
- P = \Omega \, Q
+ P = \Omega \, Q,
 \end{equation}
 where the torque, Q, is\cite{morgado2014validation}, 
 \begin{equation}
@@ -1312,7 +1313,7 @@ where the torque, Q, is\cite{morgado2014validation},
 \end{equation}
 Here, $A_R$ is the relative area coefficient which is, 
 \begin{equation}
-A_R = \frac{B c (r_{\text{max}}-r_{\text{min}})}{\pi(r_{\text{max}}^2-r_{\text{min}}^2)}
+A_R = \frac{B c (r_{\text{max}}-r_{\text{min}})}{\pi(r_{\text{max}}^2-r_{\text{min}}^2)},
 \end{equation}
 where B is the number of blades, $r_{\text{max}}$ and $r_{\text{min}}$
 are the turbine radii, and $F''_{\tau}$ is the force per unit
@@ -1326,7 +1327,7 @@ for instance). Finally, $C_{\tau}$ is the tangential force coefficient,
 which depends on the local lift and drag coefficients, and the
 flow angle, $\phi$, 
 \begin{equation}
- C_{\tau} = C_L \,\text{sin}(\phi) + C_D \,\text{cos}(\phi)
+ C_{\tau} = C_L \,\text{sin}(\phi) + C_D \,\text{cos}(\phi).
 \end{equation}
 Combining the equations above results in an expression for the power
 that explicitly depends on the lift and drag coefficients, 
@@ -1342,7 +1343,7 @@ that explicitly depends on the lift and drag coefficients,
 Lumping the constant terms together, 
 \begin{equation}
 E_{\tau} = \frac{\Omega \rho B c (r_{\text{max}}-r_{\text{min}})}{2
- \pi(r_{\text{max}}^2-r_{\text{min}}^2)}
+ \pi(r_{\text{max}}^2-r_{\text{min}}^2)},
 \end{equation}
  and separating this equation, 
 \begin{align}
@@ -1364,8 +1365,8 @@ the turbine and the flow. The turbine has no axial velocity ($w_\tau =
 0$) and a constant rotation speed, and so the two components of velocity
 in the plane of rotation can be expressed as,
 \begin{align}
- u_\tau = \Omega \,r\, \text{sin}(\theta)\\
- v_\tau = \Omega \,r\, \text{cos}(\theta)
+ u_\tau = \Omega \,r\, \text{sin}(\theta),\\
+ v_\tau = \Omega \,r\, \text{cos}(\theta).
 \end{align}
 
 Our objective is now to discover what these unknown functions of lift
@@ -1417,12 +1418,12 @@ Therefore, our lift/drag functions may be expressed as,
  C_D(\phi) = \bar C_D \, \psi(\phi) 
   \begin{cases}
    \psi(\phi) = 1 \text{ if sin}(\phi) > 0,   \\
-   0 \text{ else} \\
+   0 \quad\quad\text{    else} \\
   \end{cases} \\
  C_L(\phi) = \bar C_L \, \Psi(\phi) 
   \begin{cases}
    \Psi(\phi) = 1 \text{ if cos}(\phi) > 0,   \\
-   -1 \text{ else}. \\
+   -1 \quad\quad\text{ else}. \\
   \end{cases}
 \end{align*}
 Where $\bar C_L = 1.7$ and $\bar C_D = 2.0$. The plot of these drag

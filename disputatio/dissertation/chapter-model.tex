@@ -1217,7 +1217,8 @@ wind domain is defined as $\Omega_W = \left[-2D,3D \right] \times
 \left[-L_y,L_y \right] \times \left[0,L_z \right]$.   
 
 The boundary for the thermal only case is decomposed as,
-$\partial \Omega_T = \Gamma_G \, \bigcup \, \Gamma_T \, \bigcup \, \Gamma_P $. 
+$\partial \Omega_T = \Gamma_G \, \bigcup \, \Gamma_T \, \bigcup \,
+\Gamma_P $.  
 $\Gamma_G$ is the boundary along the ``Ground'', $\Gamma_T$
 the ``Top'' boundary, and $\Gamma_P$ the four periodic ``Sides''. A 3D
 diagram labeling these boundaries appears in
@@ -1247,8 +1248,10 @@ indicated on the figure along the top boundary and is defined below.
 \end{figure}
 
 The boundary for the wind cases is decomposed as,
-$\partial \Omega_W = \Gamma_G \, \bigcup \, \Gamma_T \, \bigcup \,
-\Gamma_O \, \bigcup \, \Gamma_I \, \bigcup \, \Gamma_S $.  
+\begin{equation*}
+ \partial \Omega_W = \Gamma_G \, \bigcup \, \Gamma_T \, \bigcup \,
+  \Gamma_O \, \bigcup \, \Gamma_I \, \bigcup \, \Gamma_S.  
+  \end{equation*}
 Where $\Gamma_G$ is the boundary along the ``Ground'',
 $\Gamma_T$ the ``Top'' boundary, $\Gamma_S$ the two ``Sides'',
 $\Gamma_I$ the inflow boundary, and $\Gamma_O$ the ``Outflow''  
@@ -1317,13 +1320,14 @@ and $\Gamma_{P,y} = \{(x,-L_y,z) \, \bigcup \, (x,L_y,z) \subset \partial
 
 \textbf{Inflow Boundary Condition, $\Gamma_I$} 
 
-On the inflow boundary $(\Gamma_I$), dirichlet conditions are used for both
-velocity and temperature. The boundary-normal, or streamwise component 
-is a function of the surface normal coordinate (z), representing a boundary 
-layer below a uniform velocity, U.
-The common 7th power model of a turbulent boundary layer is used,   
+On the inflow boundary $(\Gamma_I$), dirichlet conditions are used for
+both velocity and temperature. The boundary-normal, or streamwise
+component is a function of the surface normal coordinate (z),
+representing a boundary layer below a uniform velocity, U.
+The common 7\textsuperscript{th} power model of a turbulent boundary
+layer is used,    
 \begin{equation*}
-  u_{\text{in}}(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)
+  u_{\text{in}}(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right),
   \label{eq:bl_u}
 \end{equation*}
 where $\delta$, the boundary layer thickness, is set based on data
@@ -1339,7 +1343,7 @@ The thermal inflow has the form,
   \label{eq:bl_t}
 \end{equation*}
 % 335+18*tanh(-z/0.1)-z*2/3
-Where, based on results in the literature, $\beta = 2/3$ Kelvin per 
+Based on results in the literature, $\beta = 2/3$ Kelvin per 
 meter\cite{Blocken2007238}.
 This inflow boundary is at the surface $x=-L_x$.
 
@@ -1349,8 +1353,8 @@ $\Gamma_S$ and $\Gamma_B$}
 At outflow boundaries, a homogeneous Neumann condition is
 appropriate\cite{Rannacher2000}, 
 \begin{align}
-  \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0 \\
-  \frac{\partial T}{\partial n}\bigg|_{\Gamma_T} = 0
+  \frac{\partial u}{\partial n}\bigg|_{\Gamma_T} = 0, \\
+  \frac{\partial T}{\partial n}\bigg|_{\Gamma_T} = 0.
 \end{align}
 However, for the cases in this study, a modified Neumann condition is
 necessary due to the possibility that there will be an inflow on these
