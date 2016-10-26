@@ -2,23 +2,67 @@
 
 %Do you want vane forcing functions defined here?
 
-Two general types of data have been captured from each completed
-simulation and archived on 
-Ranch\footnote{npm7@ranch:/home2/00000/npm7/sov\_huge\_backup}
-resources at the Texas Advanced Computing Center\footnote{%
+The entirety of data used in this document have been captured and
+are on the tape archival system
+Ranch\footnote{npm7@ranch:/home2/00000/npm7/sov\_huge\_backup} 
+at the Texas Advanced Computing Center\footnote{% 
     \url{http://www.tacc.utexas.edu/}
 }
 (TACC).  These complete archives will be made available on request. 
 
-The first type of data archived describes the software environment used for the
-simulations.  From each production batch job the information shown in
-\autoref{tbl:executiondetails} was preserved.
-%
-In addition to providing an execution record and raw data for performance
-variability investigations, these details permit determining what, if any,
-portions of the software stack may have changed between any two given batch
-jobs.
+The files are stored in a format identical to that of the SVN archive
+located at,
+\url{https://svn.ices.utexas.edu/repos/pecos/solar_vortex/}. The
+organization of the repository bears some discussion. The root level,
+contains the folders: {\it documents}, {\it grids},{\it input}, {\it
+postproc}, and {\it single\_shot\_input}. {\it documents} contains
+quarterly reports and model documentation in LaTeX and MSFT word format.  
+{\it grids} contains the raw gridgen files used to generate meshes for
+the gridded vanes. {\it postproc} contains the files used to perform
+temporal averaging, as well as paraview and python scripts used to
+visualize the fields and generate images of the simulations. {\it
+single\_shot\_input} is a deprecated set of input files from the
+earliest investigations into the SoV. These input files represent an
+older format where all the definitions and file settings were contained
+in a single input file. Due to the volume and complexity of input
+required for these simulations, these older files are cumbersome and
+extremely difficult to read. Finally, {\it input} is the directory that
+contains the input files as well as the output of the simulations (on
+Ranch, not on SVN). 
 
+The {\it input} directory is broken into four directories. The first,
+{\it field}, contains all the physical investigations for the SoV Field
+tests with the virtual vanes, typically steady, but some unsteady
+virtual vane investigations are also contained here. {\it gridded} are
+directories that contain the input files and simulation output from the
+gridded runs, and {\it laboratory} contains the table-top laboratory
+runs. Finally, {\it opt} contains the optimization runs where runs where
+rapidly iterated with perturbed system parameters. These were entirely
+``Steady'' virtual vane cases. 
+
+All these directories then have a common structure. They have a {\it
+common} directory that contains all the sub-input files, and then a
+unique problem folder that details the unique run, as well as the output
+of this file. For instance, the a problem folder might be entitled,
+``field\_2016\_august\_3m'' for the 2016 August field test conducted
+with a three meter per second wind velocity. Inside each problem
+directory, there are two files, an ``initial.in'' and a ``gold.in''. The
+initial file starts a run, even if steady, typically with enhanced (and
+likely un-physical) viscosity, to help the solver converge. Subsequent
+runs are restarted from this base state but with the viscosity model
+detailed in Chapter~\ref{sec:mathmodel}. No results from this initial
+solve are quoted in this document. In some cases for complicated
+geometries, multiple initial steps were required, in which the viscosity
+was stepped down from the high initial state to the model derived
+values. 
+
+In addition to the input files, each of these directories contains two
+directories, {\it gold} and {\it output}. After each run, all of the
+output files are moved into {\it output} and
+
+This is handled automatically, by custom bash scripts attached to the
+slurm scheduler. These scripts are available in the {\it common}
+directory. 
 
 \begin{table}
 \centering
@@ -69,7 +113,23 @@ HDF5 Dataset & Contents \\ \hline \hline
 \end{small}
 \end{table}
 
-This data is cumbersome and not easily imported into common software like GNU~Octave,
-\textsc{Matlab}\textsuperscript{\textregistered}, \textit{Mathematica}\textsuperscript{\textregistered}, or
-Python in a single command. Rather, paraview provides the best means to visualize and explore these 
-datasets. 
+This data is cumbersome and not easily imported into common software
+like GNU~Octave, \textsc{Matlab}\textsuperscript{\textregistered},
+\textit{Mathematica}\textsuperscript{\textregistered}, or Python in a
+single command. Rather, paraview provides the best means to visualize
+and explore these datasets, and was the main post-processing software
+used in this thesis. 
+
+The github hashes of the latest (and believed to be backward compatible)
+GRINS and libMesh versions used in this document were, 
+\begin{verbatim}
+  GRINS Version: 5373d0fc001ea98c715638851e4e3b0e7f96cc95                                                  
+  libMesh Version: cd139a10cef2cf603f85f64a11c10d6bbe4d6780
+\end{verbatim}
+%
+While built from master in the development branch, these should
+correspond closely to versions v0.7.0 in GRINS and libMesh v1.0.0.  
+
+%Finally, the raw .tex of this document and the accompanying figures was
+%is publicly available at,
+%\url{https://github.com/nicholasmalaya/arcanus/disputatio/dissertation}.  
