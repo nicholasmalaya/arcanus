@@ -128,7 +128,7 @@ homogeneous conditions, the dynamics of any mean turbulent quantity
 
 \begin{equation}
 %\bar f = f(z,\frac{g}{T_0},\rho_0,\nu_l,K_l,u^*,q,c_p).
-\bar f = f(z,\frac{g}{T_0},\nu_l,K_l,u^*,\frac{q}{\rho_0,c_p}).
+\bar f = f(z,\frac{g}{T_0},\nu_l,K_l,u^*,\rho_0,\frac{q}{\rho_0 \, c_p}).
 \end{equation}
 Aside from near the surface, the laminar diffusivities $\nu_l$ 
 and $K_l$ will be  
@@ -261,7 +261,7 @@ The first case is the limit
 %$\frac{z}{L_{M-O}} \to 0$, or 
 $L_{M-O}>>z$, $\xi \to 0$. This occurs as the heat flux
 at the wall approaches zero (e.g. $q \to 0$). 
-This is purely wind driven flow with no thermal differences. 
+This is purely wind driven flow with no thermal variation. 
 In this limit, the profile is expected to be the ``log-law''. 
 Equation~\ref{eq:uz} can be rearranged to obtain, 
 %\begin{equation}
@@ -308,11 +308,11 @@ For Equation~\ref{eq:tz} to be non-trivial (and
 non-singular) in the limit as $\xi \to -\infty$, it must have no
 dependence on $u^*$. A glance at this equation shows that
 $T^* \thicksim \frac{1}{u^*}$, and $L \thicksim
-{u^*}^{3}$. The non-dimensional scale, $\xi$, holds a
-$(u^*)^{-3}$ scaling through the dependence on the M-O length, 
+{u^*}^{3}$. The non-dimensional scale, $\xi$, includes a
+$(u^*)^{-3}$ factor through the dependence on the M-O length, 
 $L_{M-O}$, in the denominator. 
 Therefore, the overall function will not depend on $u^*$ only when
-the function $\varphi$ scales to the $-\frac{4}{3}$ power. 
+the function $\varphi$ is proportional to  $\xi^{-\frac{4}{3}}$. 
 
 This means that the gradient in temperature has the following form,
 \begin{equation}
@@ -351,8 +351,9 @@ We have now derived two criterion that our desired function of $\xi$
 must capture. Namely, that for small values of negative $\xi$, the
 function should be nearly identical to the logarithmic profiles
 associated with neutral stratification. Secondly, at large negative
-values of $\xi$, the function should approach a constant value. Finally,
-we desire that the function smoothly vary between these conditions. 
+values of $\xi$, the function should go to
+$\xi^{-\frac{4}{3}}$. Finally, the function should smoothly vary between
+these conditions.  
 
 There are several different functions, which are essentially different
 calibrations of the same underlying function for different regimes with 
@@ -472,18 +473,19 @@ The thermal diffusivity inside the device, $K_V$, is then fixed with the
 assumption that the Prandtl number is unity.  
 
 Finally, the length scale $y_{1/2}$ is set either to the 
-separation distance between neighboring vanes, or the radius of the SoV apparatus. 
-The former is used for the unsteady virtual vanes, when greater spatial and 
-temporal fidelity is required to capture the dynamics of the plume and wake. 
-This viscosity is designed to represent the fluctuations inside the device 
-due to separation of flow off the turning vanes, for instance. 
-This is in contrast to the case of the steady virtual vanes, where 
-the radius of the SoV apparatus is used as the length scale and 
-no dynamics of the flow are are resolved. Here, the resolved scale is that of the
-vortical plume itself, and not any fluctuating quantities. This is principally 
-for design purposes, and is intented only to capture the largest scale 
-features of the flow. These simulation regimes are discussed in further detail in 
-Chapter~\ref{sec:validation}.
+separation distance between neighboring vanes, or the radius of the SoV
+apparatus. The former is used for the unsteady virtual vanes, when
+greater spatial and temporal fidelity is required to capture the
+dynamics of the plume and wake. This viscosity is designed to represent
+the fluctuations inside the device due to separation of flow off the
+turning vanes, for instance. This is in contrast to the case of the
+steady virtual vanes, where the radius of the SoV apparatus is used as
+the length scale and no dynamics of the flow are are resolved. Here, the
+resolved scale is that of the vortical plume itself, and not any
+fluctuating quantities. This is principally for design purposes, and is
+intented only to capture the largest scale features of the flow. These
+simulation regimes are discussed in further detail in
+Chapter~\ref{sec:validation}. 
 
 %The thermal and momentum diffusivities are expected to be even larger in the
 %device where the flow across the vanes produces shear and generates
