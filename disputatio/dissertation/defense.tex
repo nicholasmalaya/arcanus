@@ -64,58 +64,7 @@ Texas at Austin}
 \end{frame}
 
 %===============================================================================
-\begin{frame}{Thank you}
-\begin{center}
-%Drs\@. Biros, Clemens, Demkowicz, Oliver, van de Geijn
-\begin{columns}
-   \begin{column}{0.44\linewidth}
-      Dr\@. Robert D. Moser, Supervisor \\
-      Dr\@. George Biros \\
-      Dr\@. Noel T. Clemens
-  \end{column}
-  \begin{column}{0.44\linewidth}
-      Dr\@. Leszek F. Demkowicz \\
-      Dr\@. Todd A. Oliver \\
-      Dr\@. Robert van de Geijn
-  \end{column}
-\end{columns}
-\vspace{2em}
-\pause{}
-\begin{columns}[t]
-    \begin{column}{0.32\linewidth}
-        Paul Bauman \\
-        Michael Borden \\
-        Henry Chang \\
-        Jesse Chan \\
-        Truman Ellis \\
-        Kemelli Estacio-Hiroms \\
-        Omar Al Hinai
-    \end{column}
-    \begin{column}{0.32\linewidth}
-        Benjamin Kirk \\
-        Thomas Kirschenmann \\
-        Myoungkyu Lee \\
-        Nicholas Malaya \\
-        Damon McDougall \\
-        Craig Michoski \\
-        Rebecca Morrison \\
-        Nathan Roberts
-    \end{column}
-    \begin{column}{0.32\linewidth}
-        Oleg Schilling \\
-        Karl Schulz \\
-        Christopher Simmons \\
-        Roy Stogner \\
-        Victor Topalian \\
-        Jesse Windle \\
-        Shan Yang
-    \end{column}
-\end{columns}
-\vspace{2em}
-\pause{}
-Michelle, Ozark, \& Oxford
-\end{center}
-\end{frame}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -150,5 +99,49 @@ Michelle, Ozark, \& Oxford
 
 \end{frame}
 
+%
+% mesh
+%
+\begin{frame}
+ \frametitle{Mesh}
+ 
+ \begin{figure}[htb]
+  \centering
+  \includegraphics[width=.55\linewidth]{meshing}
+ \end{figure}
+ 
+ \begin{block}{Discretization}
+  \begin{itemize}
+   \item Single refinement in vane region
+  \end{itemize}
+\begin{equation*}
+	  \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y)
+	   \, u}{\nu_T}
+\end{equation*}	
+  \begin{itemize}
+   \item Boundary layer mesh visible
+  \end{itemize}
+ \end{block}
+\end{frame}
+
+%
+% SUPG Stab
+%
+\begin{frame}
+\frametitle{Stabilization Outline}
+
+\begin{itemize}
+ \item Cast Navier Stokes + Boussinesq equations into weak form
+ \item Prepare as operator $Lc=f$
+ \item Calculate Fr\'echet derivative (to calculate operator adjoint)
+ \item Separate into differential (P) and constant (Z) components,
+       $L'[c] = P + Z$
+ \item Choose stabilization operator such that $S = -P^*$
+ \item Then stabilization has form, $a_h(c,\phi) = a(c,\phi) + \langle
+       Lc,S\phi \rangle_\tau$
+\end{itemize}
+
+
+\end{frame}
 
 \end{document}
