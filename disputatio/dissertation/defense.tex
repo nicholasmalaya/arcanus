@@ -148,7 +148,6 @@ Texas at Austin}
 
 \end{frame}
 
-
 \begin{frame}
 \frametitle{Project Objectives}
 
@@ -189,6 +188,7 @@ Texas at Austin}
 \section{Modeling}
 %
 %
+
 
 %
 %
@@ -303,7 +303,6 @@ The equations describing fluid flow with natural convection are,
     \item Stabilized with SUPG stabilization \textit{al la} Hughes/Becker+Braack
       \begin{itemize}
       \item Adjoint stabilization scheme ($\tau$)
-      \item Circumvents Babuska-Brezzi (we are using linear elements)
       \end{itemize}
     \item Time discretization via backward Euler \textcolor{blue}{(if not steady)}
     \item Newton method used to solve resulting non-linear implicit system
@@ -318,7 +317,7 @@ The equations describing fluid flow with natural convection are,
 
   \begin{block}{Hardware}
     \begin{itemize}
-    \item Most of the runs performed on LS4,LS5, Stampede at TACC
+    \item Runs performed on LS4,LS5, Stampede at TACC
     \item 264-528 processing cores
     \item Several million degrees of freedom for each run, locally $O(10^4)$ 
     \end{itemize}
