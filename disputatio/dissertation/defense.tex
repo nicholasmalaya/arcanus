@@ -189,14 +189,46 @@ Texas at Austin}
 \section{Modeling}
 %
 %
+
+%
+%
+%
+\begin{frame}
+\frametitle{Dynamical Equations}
+The equations describing fluid flow with natural convection are,
+\begin{align}
+  \frac{\partial {\bf u}}{\partial t} + {\bf u} \cdot \nabla {\bf u} =& \,
+  -\frac{1}{\rho}\nabla P + \nu \nabla^2 {\bf u} \textcolor{orange}{- g \frac{T-T_0}{T_0}}\\
+  \nabla \cdot {\bf u} =& \, 0 \\
+  \rho c_p \frac{\partial T}{\partial t} + {\bf u} \cdot \nabla T =& \, \nabla
+ \cdot ( K \nabla T)
+\end{align} 
+
+\begin{itemize}
+  \item Incompressible N-S + \textcolor{orange}{Boussinesq buoyancy}
+  \item Temperature variation small compared to mean temperature
+  \item Low mach number
+\end{itemize}
+\begin{center}
+  However, $Ra \approx 10^9 - 10^{11}$ -- \textcolor{blue}{Need turbulence model!}
+\end{center}
+\end{frame}
+
+%
+%
+%
 \begin{frame}
 \frametitle{Scenario Modeling}
  
- MO 
+ MO (spatially homogeneous)
+
  winds
+
  thermal
 
 \end{frame}
+
+
 
 %
 %
@@ -246,6 +278,41 @@ Texas at Austin}
 \end{block}
 
 \end{frame}
+
+%
+%
+%
+\begin{frame}
+  \frametitle{Numerics}
+  \begin{block}{Formulation}
+    \begin{itemize}
+    \item Using Galerkin FEM discretization (N-S in weak form)
+    \item Stabilized with SUPG stabilization \textit{al la} Hughes/Becker+Braack
+      \begin{itemize}
+      \item Adjoint stabilization scheme ($\tau$)
+      \item Circumvents Babuska-Brezzi (we are using linear elements)
+      \end{itemize}
+    \item Time discretization via backward Euler \textcolor{blue}{(if not steady)}
+    \item Newton method used to solve resulting non-linear implicit system
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Software}
+    \begin{itemize}
+    \item Using GRINS(+Libmesh) library developed by Bauman and Stogner
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Hardware}
+    \begin{itemize}
+    \item Most of the runs performed on LS4,LS5, Stampede at TACC
+    \item 264-528 processing cores
+    \item Several million degrees of freedom for each run, locally $O(10^4)$ 
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
 
 %
 %
@@ -431,16 +498,24 @@ put a stick not stuff here
  \frametitle{Solution Structure}
 
 
-
 \end{frame}
 
 
-
+%
 %
 %
 \begin{frame}
  \frametitle{Drag addition}
-
+\begin{itemize}
+ \item Initial analysis indicated drag not significant
+ \item Revisited after 2016 Field test
+ \item Model introduced skin-friction effects
+ \item Drag computed based on smallest distance between vanes
+       \begin{itemize}
+	\item ``worst-case'' scenario
+       \end{itemize}
+ \item Kinetic energy flux never reduced by more than 12\%.
+\end{itemize}
 
 
 \end{frame}
@@ -452,6 +527,35 @@ put a stick not stuff here
 \begin{frame}
  \frametitle{Solidity Modification}
 
+
+ \begin{columns}[]
+  \begin{column}{0.55\linewidth}
+
+
+   \begin{center}
+    \includegraphics[width=1.1\linewidth]{solidity}
+   \end{center}
+
+  \end{column}
+  \begin{column}{0.45\linewidth}
+   
+   \begin{block}{Correction to actuator disk}
+    \begin{itemize}
+     \item Model assumes flow separates from turbine blade
+	   \begin{itemize}
+	    \item ``worst case'' estimate
+	   \end{itemize}
+     \item Six and eight turbine blades greatly impacted
+     \item Need calibration/validation data for more detailed assessment  
+	   \begin{itemize}
+	    \item Data needed from field or gridded simulation
+	   \end{itemize}
+     \item Even with correction, model appears inadequate
+    \end{itemize}
+
+   \end{block}
+  \end{column}
+ \end{columns}
 
 
 \end{frame}
