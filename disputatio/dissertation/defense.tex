@@ -262,9 +262,9 @@ Texas at Austin}
 %
 %
 \begin{frame}
- \frametitle{Top Tier Vanes}
+ \frametitle{Optimization}
 
-
+put a stick not stuff here
 
 \end{frame}
 
@@ -376,7 +376,7 @@ Texas at Austin}
   \includegraphics[width=0.58\linewidth]{actuator_disk}
  \end{center}
  
- \begin{block}{Actuator Disk}
+ \begin{block}{Actuator Disk (Blade Element Momentum)}
   \begin{itemize}
   \item Represents turbine blade geometry as spinning disk
   \item Assumes axisymmetric turbine, neglects unsteady effects
@@ -390,17 +390,35 @@ Texas at Austin}
 %
 %
 \begin{frame}
- \frametitle{Turbine Optimization Process}
+ \frametitle{Turbine Optimization Method}
 
  \begin{columns}[]
-  \begin{column}{0.45\linewidth}
+  \begin{column}{0.55\linewidth}
    \begin{center}
-    \includegraphics[width=0.8\linewidth]{utrc_plot}
+    \includegraphics[width=1.0\linewidth]{utrc_plot}
    \end{center}
 
   \end{column}
     \begin{column}{0.45\linewidth}
-     hyar
+
+     \begin{block}{Coupled Effort}
+     \begin{itemize}
+      \item Optimization effort based on UTRC ``frozen flow''
+	    and full CFD
+      \item Both use actuator disk model
+      \item Frozen flow uses CFD inflow as input
+      \item Iterative procedure
+	    \begin{itemize}
+	     \item Frozen flow prediction 
+	     \item ``validated'' by CFD
+	    \end{itemize}
+      \item Results broadly agree
+	    \begin{itemize}
+	     \item inflow updated after several iterations
+	    \end{itemize}
+     \end{itemize}
+
+      \end{block}
     \end{column}
  \end{columns}
 \end{frame}
