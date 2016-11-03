@@ -158,9 +158,16 @@ Texas at Austin}
   \end{itemize}
  \end{block}
 
+
+ \begin{block}{Scenario Space}
+  \begin{itemize}
+   \item Atmospheric, buoyancy, winds, etc. 
+  \end{itemize}
+  \end{block}
+
  \begin{block}{Solar Vortex (SoV) System Configuration}
  \begin{itemize}
-  \item Probe and optimize configuration with CFD
+  \item Represent complex configuration with CFD
 	\begin{itemize}
 	 \item Turning vanes
 	 \item Cone (and solid surfaces)
@@ -168,16 +175,11 @@ Texas at Austin}
 	\end{itemize}
   \item Inform design for 2016 field test
 	\begin{itemize}
+	 \item Probe and optimize SoV configuration
 	 \item Predict energy output
 	\end{itemize}
  \end{itemize}
  \end{block}
-
- \begin{block}{Scenario Space}
-  \begin{itemize}
-   \item Atmospheric, buoyancy, winds, etc. 
-  \end{itemize}
-  \end{block}
 
 \end{frame}
 
@@ -188,9 +190,48 @@ Texas at Austin}
 %
 %
 \begin{frame}
- \frametitle{Vanes}
+\frametitle{Turning Vane Representation}
 
+\begin{columns}[]
+  \begin{column}{0.49\linewidth}
 
+   \begin{block}{Virtual Vanes}
+    \begin{itemize}
+     \item Requirements: 
+	   \begin{itemize}
+	    \item Very general formulation
+	    \item No re-meshing 
+	   \end{itemize}
+     \item Volumetric forcing: 
+	   \begin{itemize}
+	    \item Vane surface not represented
+	    \item Similar to actuator-disk
+	   \end{itemize}	 
+    \end{itemize}
+   \end{block}
+  \end{column}
+
+  \begin{column}{0.49\linewidth}
+   \begin{center}
+    \includegraphics[width=0.85\linewidth]{vanes}
+   \end{center}
+
+  \end{column}
+\end{columns}
+
+\begin{block}{Formulation}
+  \begin{itemize}
+    \item Unit normal to vane surface, 
+      \begin{equation}
+        {\bf n}({\bf x}) = \sin \left(\textcolor{red}{\phi(r)} \right) \hat{{\bf r}}+ \cos
+        \left(\textcolor{red}{\phi(r)} \right) \hat{{\bf \theta}} 
+      \end{equation}
+    \item Apply ${\bf f_v}$ to force flow parallel to vanes,
+      \begin{equation}
+        {\bf f}_v= -\frac{1}{\textcolor{red}{\ell_v}}|{\bf u}|({\bf u}\cdot{\bf n}){\bf n}
+      \end{equation}
+  \end{itemize}
+\end{block}
 
 \end{frame}
 
