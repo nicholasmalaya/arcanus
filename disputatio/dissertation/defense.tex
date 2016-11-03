@@ -34,6 +34,10 @@
 \makecommand{\n}{\phantom{$-$}}  % Ditto
 \makecommand{\c}[1]{}          % Comment out material
 
+\newcommand{\Rarrow}{\Rightarrow}
+\newcommand{\LRarrow}{\Leftrightarrow}
+\newcommand{\rarrow}{\rightarrow}
+
 \newcommand\ytl[2]{
 \parbox[b]{8em}{\hfill{\color{black}\bfseries\sffamily
 #1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad
@@ -87,12 +91,37 @@ Texas at Austin}
  \section{Motivation}
  %
  %
- \begin{frame}
-  \frametitle{Dust devil}
- 
- 
- 
- \end{frame}
+
+\begin{frame}
+  \frametitle{The dust devil phenomenon}
+  \begin{columns}[]
+    \begin{column}{0.45\linewidth}
+      \begin{center}
+        \includegraphics[width=0.6\linewidth]{Dust_devil}
+      \end{center}
+      \begin{center}
+        \includegraphics[width=0.8\linewidth]{martian_dust}
+      \end{center}
+    \end{column}
+  %
+    \begin{column}{0.55\linewidth}
+
+      \begin{block}{Turbulent, unstable motions}
+        \begin{itemize}
+	 \item Incident solar energy absorbed into ground
+	 \item Ground heats air by conduction
+	 \item Heated air expands, lowering density, 
+	       driven upward by force of buoyancy
+	 \item Arizona in Summer ($\Delta T= 30$ K) 
+	 \item $Ra \approx 10^9 - 10^{11} \rarrow$ 
+	       unstably stratified fluid
+	 \item Velocities can exceed 33 m/s.
+        \end{itemize}
+      \end{block}
+      How much energy is present in one of these objects? 
+      \end{column}
+    \end{columns}
+  \end{frame}
 
 %===============================================================================
 
