@@ -1,3 +1,2 @@
-do you want an appendix with functions for various vane configurations?
+add thermal-only to appendix
 
-nomenclature section?
