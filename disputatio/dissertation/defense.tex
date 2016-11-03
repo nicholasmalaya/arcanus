@@ -34,6 +34,25 @@
 \makecommand{\n}{\phantom{$-$}}  % Ditto
 \makecommand{\c}[1]{}          % Comment out material
 
+\newcommand\ytl[2]{
+\parbox[b]{8em}{\hfill{\color{black}\bfseries\sffamily
+#1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad
+\parbox[c]{8.5cm}{\vspace{7pt}\color{black}\raggedright\sffamily
+#2.\\[7pt]}\\[-3pt]} 
+
+\newcommand\yto[2]{
+\parbox[b]{8em}{\hfill{\color{orange}\bfseries\sffamily
+#1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad
+\parbox[c]{8.5cm}{\vspace{7pt}\color{orange}\raggedright\sffamily
+#2.\\[7pt]}\\[-3pt]} 
+
+\newcommand\ytb[2]{
+\parbox[b]{8em}{\hfill{\color{blue}\bfseries\sffamily
+#1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad
+\parbox[c]{8.5cm}{\vspace{7pt}\color{blue}\raggedright\sffamily
+#2.\\[7pt]}\\[-3pt]} 
+
+
 \date{Nov. 8th, 2016}
 \author[Nicholas Malaya]{Nicholas Malaya}
 \institute{Department of Mechanical Engineering \\ The University of
@@ -65,6 +84,53 @@ Texas at Austin}
 
 %===============================================================================
 
+ \section{Motivation}
+ %
+ %
+ \begin{frame}
+  \frametitle{Dust devil}
+ 
+ 
+ 
+ \end{frame}
+
+%===============================================================================
+
+\section{Modeling}
+%
+%
+\begin{frame}
+ \frametitle{Vanes}
+
+
+
+\end{frame}
+
+%
+%
+\begin{frame}
+ \frametitle{Validation}
+
+
+\end{frame}
+
+
+%===============================================================================
+
+\section{Optimization Heuristics}
+%
+%
+\begin{frame}
+ \frametitle{Top Tier Vanes}
+
+
+
+\end{frame}
+
+
+%===============================================================================
+
+\section{2016 Field Test}
 %
 %
 \begin{frame}
@@ -96,6 +162,15 @@ Texas at Austin}
 
 \end{frame}
 
+
+%
+%
+\begin{frame}
+ \frametitle{Actuator Disk Model}
+
+ no validated
+
+\end{frame}
 
 
 %
@@ -153,6 +228,7 @@ Texas at Austin}
 
 %
 %
+\section{Conclusions}
 \begin{frame}
  \frametitle{System Feasibility Assessment}
 
@@ -161,6 +237,14 @@ Texas at Austin}
  no validation
 
  'fragile'
+
+\end{frame}
+
+%
+%
+\begin{frame}
+ \frametitle{Conclusions and Future Work}
+
 
 \end{frame}
 
@@ -215,6 +299,36 @@ Texas at Austin}
        Lc,S\phi \rangle_\tau$
 \end{itemize}
 \end{frame}
+
+%
+%
+%
+\begin{frame}
+\frametitle{Proposal Timeline}
+\small
+\begin{center}
+\begin{table}
+\centering
+\begin{minipage}[t]{1.6\linewidth}
+\color{black}
+ \rule{\linewidth}{1pt}
+ \yto{April 2016}{Conclude parameter sweeps and optimization of apparatus}
+ \yto{April 2016}{Turbine actuator-disk verification, validation and prediction}
+ \ytl{May 2016}{Proposed configuration and predictions for experimental
+ team}
+ \ytb{July 2016}{Comparisons between synthetic and natural dust devil physics}
+ \ytl{Aug 2016}{Validation against 2016 field data}
+ \ytl{Sept 2016}{Optimal drag polar prediction}
+\ytl{Nov. 2016}{Dissertation Defense}
+ \bigskip
+ \rule{\linewidth}{1pt}%
+\end{minipage}%
+\end{table}
+ \label{tab:prop}
+\end{center}
+
+\end{frame}
+
 
 %
 %
