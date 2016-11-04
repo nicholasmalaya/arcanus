@@ -1,2 +1,2 @@
-add thermal-only to appendix
+horizontal slices?
 
