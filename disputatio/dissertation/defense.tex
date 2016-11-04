@@ -26,8 +26,8 @@
 % I want 1e-2 not 1x10^{-2} from siunitx
 \sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}}
 
-\setbeamertemplate{itemize/enumerate body begin}{\small}
-\setbeamertemplate{itemize/enumerate subbody begin}{\footnotesize}
+%\setbeamertemplate{itemize/enumerate body begin}{\small}
+%\setbeamertemplate{itemize/enumerate subbody begin}{\footnotesize}
 
 \makecommand{\z}{\phantom{0}}  % Facilitates column alignment
 \makecommand{\Z}{\phantom{.0}} % Ditto
@@ -125,7 +125,7 @@ Texas at Austin}
         \begin{itemize}
 	 \item Incident solar energy absorbed into ground
 	       \begin{itemize}
-		\item peak direct solar insolation 1000~W/$\text{m}^2$ 
+		\item peak solar insolation 1000~W/$\text{m}^2$ 
 	       \end{itemize}
 	 \item Ground heats air by conduction
 	 \item Heated air expands, lowering density, 
@@ -469,6 +469,49 @@ The equations describing fluid flow with natural convection are,
 %
 \begin{frame}
  \frametitle{Validation}
+
+ \begin{columns}[]
+  \begin{column}{0.55\linewidth}
+
+   \begin{block}{Scenarios and Configurations}
+    \begin{itemize}
+     \item Tabletop Laboratory
+     \item Cold Wind Tunnel
+     \item Field
+     \item Hierarchy of CFD models 
+	   \begin{itemize}
+	    \item gridded vs virtual
+	    \item steady vs unsteady
+	    \item sensitivities to QoI
+	   \end{itemize}
+    \end{itemize}
+    \end{block}
+
+  \end{column}
+
+  \begin{column}{0.45\linewidth}
+  \begin{center}
+   \includegraphics[width=.85\linewidth]{sim_vs_exp_30_vt}
+  \end{center}
+  \end{column}
+  \end{columns}
+
+ %
+ % 2nd column
+ 
+ \begin{columns}[]
+  \begin{column}{0.55\linewidth}
+   
+   \begin{center}
+    \includegraphics[width=.55\linewidth]{gridded_wind}
+   \end{center}
+\end{column}
+ \begin{column}{0.55\linewidth}
+   \begin{center}
+    \includegraphics[width=.55\linewidth]{virtual_wind}
+   \end{center}
+\end{column}
+ \end{columns}
 
 
 \end{frame}
