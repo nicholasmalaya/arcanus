@@ -708,6 +708,7 @@ put a stick not stuff here
 
 %
 %
+%
 \begin{frame}
  \frametitle{Turbine Model}
 
@@ -725,6 +726,28 @@ put a stick not stuff here
  \end{block}
 
 \end{frame}
+
+%
+%
+%
+\begin{frame}
+ \frametitle{Turbine Model}
+
+ \begin{center}
+  \includegraphics[width=0.58\linewidth]{actuator_disk}
+ \end{center}
+ 
+ \begin{block}{Actuator Disk (Blade Element Momentum)}
+  \begin{itemize}
+  \item Represents turbine blade geometry as spinning disk
+  \item Assumes axisymmetric turbine, neglects unsteady effects
+  \item Not validated
+  \item Common in wind turbine industry
+  \end{itemize}
+ \end{block}
+
+\end{frame}
+
 
 %
 %
@@ -981,6 +1004,43 @@ Several other possible model corrections were investigated
 \section{Extra Slides}
 
 %
+% scaling
+%
+\begin{frame}
+  \frametitle{Estimate of Energy Scaling}
+    \begin{itemize}
+    \item Medium size dust devil: $3\text{m} = \text{D}$, $U =  5 \text{
+	  m/s}$, $\Delta T = 30$ K, $3$ meters tall
+    \item Assume a turbulent boundary layer ($\delta = 10$ cm),
+      \begin{equation*}
+        u(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)
+      \end{equation*}        
+    \end{itemize}
+
+  \begin{columns}[]
+    \begin{column}{0.45\linewidth}
+      Boussinesq potential energy flux over the upstream flow [Renno]:
+      \begin{align*}
+        E_p & = \int u(z) (\rho(z)-\rho_\infty) g z \, dA \\
+        E_p & = g  \pi R \beta \rho_0 U \Delta T \left[ \frac{z_\text{max}^2}{2} - \frac{7 \delta^2}{18} \right] \\
+       & = 217 \text{ Watts}
+      \end{align*}
+
+    \end{column}
+  %
+    \begin{column}{0.55\linewidth}
+      The KE flux:  surface integral over upstream face of dust devil: 
+      \begin{align*}
+        \text{KE} & = \int \frac{\vec V^2}{2} \rho \vec V \cdot \hat n \, dA \\
+        \text{KE} & = R \rho U^3 \left[ z_{\text{max}} - \frac{10}{11}\delta \right] \\
+        & = 1144 \text{ Watts}
+      \end{align*}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+%
 %
 %
 \begin{frame}
@@ -1033,6 +1093,80 @@ Several other possible model corrections were investigated
  \item Then stabilization has form, $a_h(c,\phi) = a(c,\phi) + \langle
        Lc,S\phi \rangle_\tau$
 \end{itemize}
+\end{frame}
+
+%
+%
+%
+\begin{frame}
+\frametitle{Simulation Geometry and Boundary Conditions}
+
+\begin{block}{Specified Inflow}
+
+   \begin{itemize}
+   \item 7th order turbulent boundary layer, 
+     \begin{equation*}
+       u_{\text{in}}(z) = U \text{ min }\left(\left(\frac{z}{\delta}\right)^7,1\right)
+       \label{eq:bl_u}
+     \end{equation*}
+   \item The thermal inflow is then,
+     \begin{equation*}
+       T_{\text{in}}(z) = \Delta T \left(1- \text{ min
+       }\left(\left(\frac{z}{\delta}\right)^7,1\right)\right)
+       + T_0 \textcolor{blue}{- \beta}.  
+     \end{equation*}
+   \end{itemize}
+\end{block}
+
+\begin{block}{Ground}
+  \begin{itemize}
+    \item modeled with a Dirichlet boundary condition such that, 
+      \begin{align*}
+        {\bf u} &= 0 \quad \text{ on } \Gamma_G \\
+        T &= T_g
+      \end{align*}
+  \end{itemize}
+  \end{block}
+
+\end{frame}
+
+%
+%
+%
+\begin{frame}
+\frametitle{Field Validation Study}
+ 
+\begin{columns}[]
+  \begin{column}{0.52\linewidth}
+   \begin{block}{Scenario parameter uncertainty}
+    \begin{itemize}
+     \item Wind speed: 2-5 m/s
+     \item Wind direction($\approx20^{\circ}$)
+     \item $T_{\text{s}} = 50-60^{\circ}$ C ($\approx 121-140^{\circ}$ F)
+     \item No boundary layer temperature data 
+	   (DAQ equipment malfunctioned)
+    \end{itemize}
+   \end{block}
+  \end{column}
+
+  \begin{column}{0.49\linewidth}
+
+   \begin{center}
+    \includegraphics[width=0.99\linewidth]{validate_field}
+   \end{center}
+  \end{column}
+ \end{columns}
+
+ \begin{center}
+  \begin{itemize}
+   \item CFD broadly consistent with field observations
+	 \begin{itemize}
+	  \item Experimental data extremely limited
+	 \end{itemize}
+   \item Kinetic energy fluxes match to within 10\%
+  \end{itemize}
+  \end{center}
+
 \end{frame}
 
 
