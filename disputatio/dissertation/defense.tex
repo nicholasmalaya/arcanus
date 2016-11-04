@@ -34,9 +34,24 @@
 \makecommand{\n}{\phantom{$-$}}  % Ditto
 \makecommand{\c}[1]{}          % Comment out material
 
+\definecolor{Purple}{rgb}{.8,0,.8}
+\definecolor{Blue}{rgb}{0,0,1}
+\definecolor{MyDarkGreen}{rgb}{0,0.45,0.08}
+\definecolor{Red}{rgb}{1,0,0}
+\definecolor{Red}{rgb}{1,0,0}
+\definecolor{gold}{rgb}{0.83, 0.69, 0.22}
+\definecolor{DarkRed}{rgb}{.5,0,0}
+\definecolor{DarkCyan}{rgb}{0,.6,.6}
+\definecolor{DarkGreen}{rgb}{0,.5,0}
+
+
 \newcommand{\Rarrow}{\Rightarrow}
 \newcommand{\LRarrow}{\Leftrightarrow}
 \newcommand{\rarrow}{\rightarrow}
+\newcommand{\myred}[1]{{\color{red} #1}}
+\newcommand{\myblue}[1]{{\color{blue} #1}}
+\newcommand{\mygreen}[1]{{\color{MyDarkGreen} #1}}
+
 
 \newcommand\ytl[2]{
 \parbox[b]{8em}{\hfill{\color{black}\bfseries\sffamily
@@ -148,6 +163,79 @@ Texas at Austin}
 
 \end{frame}
 
+\begin{frame}
+\frametitle{Dust Devil Structure [Sinclair,Kanak,Renno]}
+
+\begin{columns}[]
+  \begin{column}{0.45\linewidth}
+   \begin{center}
+    \includegraphics[width=0.9\linewidth]{ground}
+   \end{center}
+  \end{column}
+  %
+  \begin{column}{0.55\linewidth}
+    \begin{block}{Dust devil structure}
+    \begin{itemize}
+     \item Driven by buoyancy of hot ground
+     \item Near surface: radial inflow spinning region (core) 
+     \item Downward flow in \myred{hot}, low-pressure  center (``eye'')
+     \item Fluid from higher region entrained (inviscid potential flow region)
+     \item Characterized by strong rotation
+     \begin{itemize}
+      \item What generates vorticity?
+        \begin{itemize}
+        \item vortex stretching
+        \item vortex tilting
+          \end{itemize}
+     \end{itemize}
+    \end{itemize}
+   \end{block}
+  \end{column}
+\end{columns}
+
+\end{frame}
+
+
+%
+%
+%
+\begin{frame}
+\frametitle{Synthetic Dust Devils}
+
+\begin{columns}[]
+  \begin{column}{0.45\linewidth}
+   \begin{center}
+    \includegraphics[width=0.9\linewidth]{ground_vanes}
+   \end{center}
+  \end{column}
+  %
+  \begin{column}{0.55\linewidth}
+   \begin{block}{Motivation}
+    \begin{itemize}
+     \item Engineer synthetic vortices for energy generation
+       \begin{itemize}
+	\item Two tier configuration mimics natural phenomenon
+	\item Turbine at upper tier vanes to extract energy
+       \end{itemize}
+
+     \item Difficult to explore space experimentally
+	   \begin{itemize}
+	    \item Field tests in Arizona (GT)
+	    \item expensive to alter configuration
+	    \item difficult to measure everything
+	   \end{itemize}
+    \end{itemize}
+   \end{block}
+
+  \end{column}
+\end{columns}
+   
+\end{frame}
+
+
+%
+%
+%
 \begin{frame}
 \frametitle{Project Objectives}
 
