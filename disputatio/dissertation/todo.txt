@@ -1,2 +1,4 @@
-horizontal slices?
+horizontal slices? meh
+
+how about steady vs unsteady? and sensitivies? builds into optimization
 

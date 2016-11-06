@@ -465,7 +465,7 @@ The equations describing fluid flow with natural convection are,
    \item Specified Inflow (Dirichlet)
    \item Top and Outflow have special mixed B.C.
    \item Sponge layers on Top and Outflow
-   \item Natural (do nothing) boundaries on the side (Neumann)
+   \item Natural boundaries on the side (Neumann)
    \end{itemize}
 
 \end{block}
@@ -799,14 +799,14 @@ wind also increases energy flux!
 
      \begin{block}{Coupled Effort}
      \begin{itemize}
-      \item Optimization effort based on UTRC ``frozen flow''
+      \item Optimization effort based on UTRC (Duane McCormick) ``frozen flow'' 
 	    and full CFD
       \item Both use actuator disk model
       \item Frozen flow used CFD as input
       \item Iterative procedure
 	    \begin{itemize}
 	     \item Frozen flow prediction 
-	     \item ``Validated'' by CFD
+	     \item ``Confirmed'' by CFD
 	     \item Not automated!
 	    \end{itemize}
       \item Results broadly agree
@@ -825,16 +825,22 @@ wind also increases energy flux!
 \begin{frame}
  \frametitle{Final Design}
 
+\begin{columns}[]
+  \begin{column}{0.45\linewidth}
+ 
     \begin{figure}[htb]
      \centering
-     \includegraphics[width=.53\linewidth]{rotor_assem_oblique_2}
+     \includegraphics[width=.73\linewidth]{rotor_assem_oblique_2}
     \end{figure}
 
     \begin{figure}[htb]
      \centering
-     \includegraphics[width=.2\linewidth]{turbine_built}
+     \includegraphics[width=.4\linewidth]{turbine_built}
     \end{figure}
 
+  \end{column}
+  \begin{column}{0.45\linewidth}
+ 
  turbine energy?
 
  turbine placed at top of vanes
@@ -842,6 +848,9 @@ wind also increases energy flux!
  gap in turbine 
 
  turbine efficiency?
+
+ \end{column}
+ \end{columns}
 
 \end{frame}
 
