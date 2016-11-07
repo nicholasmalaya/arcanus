@@ -292,7 +292,7 @@ Texas at Austin}
 
  \begin{block}{Solar Vortex (SoV) System Configuration}
  \begin{itemize}
-  \item Represent complex configuration with Reduced Order Model in CFD
+  \item Represent complex configuration with Reduced Order Models in CFD
 	\begin{itemize}
 	 \item Turning vanes
 	 \item Cone (and solid surfaces)
@@ -651,19 +651,45 @@ The equations describing fluid flow with natural convection are,
 
     \begin{block}{Heuristic}
       \begin{itemize}
-        \item Iterative perturbation of SoV system parameters
-        \item If change in kinetic energy flux favorable, design ``accepted''
-	\item Performed for vanes, turbine, cone, etc. 
-          \begin{itemize}	
-            \item ``Circle back'' to test coupling
-          \end{itemize}
-	\item Several hundred iterations performed
-	\item Energy surface complicated
+       \item Iterative perturbation of SoV system parameters
+       \item If change in kinetic energy flux favorable, design ``accepted''
+       \item Performed for vanes, turbine, cone, etc. 
+	     \begin{itemize}	
+	      \item ``Circle back'' to test coupling
+	     \end{itemize}
+       \item Several hundred iterations performed
+       \item Energy surface complicated
       \end{itemize}
     \end{block}
 
   \end{column}
   \end{columns}
+ 
+\end{frame}
+
+%
+%
+%
+\begin{frame}
+ \frametitle{Interplay between Wind and Temperature}
+
+  \begin{itemize}
+    \item Higher wind velocities increases energy flux
+    \item Kinetic energy flux only 100 Watts in thermal-only
+    \item Energy flux more than doubles with $\Delta T$
+    \begin{itemize}
+    \item Not just vertical axis wind turbine!
+    \end{itemize} 
+    \item Thermal and wind are synergistic
+    \begin{itemize}
+      \item Implications for natural dust devils? 
+    \end{itemize}
+  \end{itemize}
+
+ \begin{figure}[htb]
+  \centering
+  \includegraphics[width=.55\linewidth]{wind_impact}
+ \end{figure}
  
 \end{frame}
 
@@ -761,32 +787,6 @@ The equations describing fluid flow with natural convection are,
 \end{frame}
 
 
-
-%
-%
-%
-\begin{frame}
- \frametitle{Effect of the Wind}
-
-  \begin{itemize}
-    \item Higher wind velocities increases energy flux
-    \item Kinetic energy flux only 100 Watts in thermal-only
-    \item Energy flux more than doubles with $\Delta T$
-    \begin{itemize}
-    \item Not just vertical axis wind turbine!
-    \end{itemize} 
-    \item Thermal and wind are synergistic
-    \begin{itemize}
-      \item Implications for natural dust devils? 
-    \end{itemize}
-  \end{itemize}
-
- \begin{figure}[htb]
-  \centering
-  \includegraphics[width=.55\linewidth]{wind_impact}
- \end{figure}
- 
-\end{frame}
 
 %
 %
@@ -904,11 +904,13 @@ The equations describing fluid flow with natural convection are,
         \item Represented as a region of volumetric forcing,
           \begin{equation}
             F''' = \frac{1}{2}\frac{\rho\, B\, c\,
-              {\bf u_p}^2}{\pi r t}\left(C_l \, {\bf n_\text{l}} + C_d \, {\bf
-	      n_\text{d}} \right)
+              {\bf u_p}^2}{\pi r t}\left(\textcolor{red}{C_l} \, {\bf
+				    n_\text{l}} + \textcolor{red}{C_d}
+				    \, {\bf n_\text{d}} \right)
           \end{equation}
-        \item interpolated polynomial over drag polar data
-        \item flat plate, \textcolor{blue}{$90^{\circ}$}, $180^{\circ}$ considered
+	 %\item interpolated polynomial over drag polar data
+	 \item flat plate, \textcolor{blue}{$90^{\circ}$}, $180^{\circ}$
+	       all considered
         \end{itemize}
       \end{block}
       
@@ -1019,7 +1021,7 @@ The equations describing fluid flow with natural convection are,
  \begin{block}{Concept}
    \begin{itemize}
    \item Estimate upper limit on power that could be extracted from flow, 
-     independent of turbine geometry 
+     independent of particular drag polars
    \item Still use actuator disk model
    \item Instead of $90^{\circ}$, $180^{\circ}$, generalized drag polars
    \end{itemize}
