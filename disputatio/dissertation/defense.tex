@@ -961,7 +961,7 @@ The equations describing fluid flow with natural convection are,
 %
 %
 \begin{frame}
- \frametitle{Final Design}
+ \frametitle{Final Turbine Design}
 
 \begin{columns}[]
   \begin{column}{0.4\linewidth}
@@ -1080,25 +1080,43 @@ Several other possible model corrections were investigated
 %
 %
 \begin{frame}
- \frametitle{Drag addition}
-\begin{itemize}
- \item Initial analysis indicated drag not significant
- \item Revisited after 2016 Field test
- \item Model introduced skin-friction effects
- \item Drag computed based on smallest distance between vanes
-       \begin{itemize}
-	\item ``worst-case'' scenario
-       \end{itemize}
- \item Kinetic energy flux never reduced by more than 12\%.
-\end{itemize}
-
-
+ \frametitle{Turning Vane Drag}
+ \begin{block}{}
+   \begin{itemize}
+   \item Initial analysis indicated drag not significant%, revisted after 2016 Field test
+   \item Volumetric forcing applied is, 
+     \begin{equation}
+       F''' = {\bf \hat f} \, C_f \, \frac{1}{2} \frac{\rho || {\bf u} ||^2}{\delta}
+     \end{equation}
+   \item Where, the unit drag forcing vector,
+     \begin{equation}
+       - \frac{{\bf u} \cdot {\bf \hat t^v}}{|| {\bf u} \cdot {\bf \hat t^v}
+         ||} = {\bf \hat f}
+     \end{equation}
+     And skin friction estimated using Colebrook Formula, 
+     \begin{equation}
+       C_f = \left(2.0 \text{ log}\left(\frac{\epsilon/D}{3.7}\right)\right)^2
+     \end{equation}
+     (Neglecting Re effects)
+   \end{itemize}
+ \end{block}
 \end{frame}
 
 
 \begin{frame}
-\frametitle{Drag Addition}
-
+  \frametitle{Turning Vane Drag, cont.}
+  \begin{block}{Drag Summary}
+    \begin{itemize}
+    \item Model introduced skin-friction effects
+    \item ``worst-case'' scenario
+      \begin{itemize}
+      \item Drag computed based on smallest distance between vanes
+      \item Roughness elements based on post size
+      \end{itemize}
+    \item Kinetic energy flux never reduced by more than 12\%.
+    \end{itemize}
+  \end{block}
+  
 \end{frame}
 
 %
