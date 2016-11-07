@@ -697,6 +697,10 @@ The equations describing fluid flow with natural convection are,
 
   \end{column}
   \end{columns}
+
+\vspace{5mm}
+ \centering
+   The results of this effort was used for the 2016 Field Test
  
 \end{frame}
 
@@ -1248,12 +1252,14 @@ Several other possible model corrections were investigated
 
  \begin{block}{Actuator Disk Modification}
    \begin{itemize}
-   \item Actuator disk does not account for any solidity effects
-   \item Correction to forcing by reducing flow area,
-     \begin{equation}
-       B(r) = 1- \frac{l_B(r)}{2 \pi r}
-     \end{equation}
-     Where $l_B$ is the circumferential length blocked by turbine blades.
+    \item Actuator disk assumes flow remains attached 
+    \item Modify velocity seen by turbine blades
+   % \item Correction to forcing by reducing flow area,
+   %   \begin{equation}
+   %     B(r) = 1- \frac{l_B(r)}{2 \pi r}
+   %   \end{equation}
+   %   Where $l_B$ is the circumferential length blocked by turbine
+   % 	 blades. 
    \item Velocity vector will completely align with drag	 
    \end{itemize}
  \end{block}
