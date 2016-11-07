@@ -729,7 +729,7 @@ The equations describing fluid flow with natural convection are,
 %
 %
 \begin{frame}
-\frametitle{Scenario Modeling}
+\frametitle{Scenario Conditions}
  
  \begin{columns}[]
   \begin{column}{0.5\linewidth}
@@ -751,9 +751,10 @@ The equations describing fluid flow with natural convection are,
 
   \begin{block}{Ambient Conditions}
   \begin{itemize}
-  \item	Thermal B.L. profile fit to field measurements
-  \item Wind heading largely constant 
-  \item Wind magnitude steady 
+   \item Wind heading largely constant 
+   \item Wind magnitude steady 
+   \item Consistent with other data and regional analysis
+   \item Thermal B.L. profile fit to field measurements
   \end{itemize}
   \end{block}	
 
@@ -960,6 +961,7 @@ The equations describing fluid flow with natural convection are,
 	    \end{itemize}
       \item Results broadly agree
 	    \begin{itemize}
+	     \item Frozen flow assumes axisymmetric flow
 	     \item inflow updated after several iterations
 	    \end{itemize}
      \end{itemize}
@@ -1028,7 +1030,7 @@ The equations describing fluid flow with natural convection are,
  P_L = E_\tau
  \int_0^{2\pi}
   \int_{r_{\text{min}}}^{r_{\text{max}}} U_R(r,\theta,\Omega)^2 \, \textcolor{orange}{C_L(\phi,r)}
- \,\text{sin}(\phi)\, r\,dr d\theta
+ \,\text{ sin}(\phi)\, r\,dr d\theta
 \end{equation*}
 
  \begin{block}{Idealized Drag Polars}
@@ -1170,11 +1172,10 @@ Several other possible model corrections were investigated
        - \frac{{\bf u} \cdot {\bf \hat t^v}}{|| {\bf u} \cdot {\bf \hat t^v}
          ||} = {\bf \hat f}
      \end{equation}
-     And skin friction estimated using Colebrook Formula, 
+     And skin friction estimated using Colebrook Formula with full roughness, 
      \begin{equation}
        C_f = \left(2.0 \text{ log}\left(\frac{\epsilon/D}{3.7}\right)\right)^2
      \end{equation}
-     (Neglecting Re effects)
    \end{itemize}
  \end{block}
 \end{frame}
