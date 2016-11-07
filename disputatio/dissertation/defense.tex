@@ -361,17 +361,52 @@ The equations describing fluid flow with natural convection are,
 %%   \end{column}
 %% \end{columns}
 
-\begin{block}{Monin-Obukhov}
+  \begin{eqnarray*}
+    \nu =& \nu_{l} + \textcolor{red}{\nu_{t}(z)} + \nu_{V}(r,z), \\
+    K =& K_{l} + \textcolor{red}{K_{t}(z)} + K_{V}(r,z).
+  \end{eqnarray*}
 
-\begin{itemize}
-\item $\bar f = f(z,\frac{g}{T_0},u^*,\rho_0,\frac{q}{\rho_0 \, c_p})$
-\item Single non-dimensional group: $ \xi = -\frac{\kappa \frac{g}{T_0} \frac{q}{c_p \rho_0} z}{ {u^*}^3}$ 
-\item yar
-\end{itemize}
-\end{block}
-
+  \begin{block}{Monin-Obukhov Diffusivities, $\nu_{t},K_{t}$}
+    \begin{itemize}
+    \item Under stationary, homogeneous conditions turbulent quantity $\bar f$, 
+      \begin{equation}
+        \bar f = f(z,\frac{g}{T_0},u^*,\rho_0,\frac{q}{\rho_0 \, c_p})
+      \end{equation}
+    \item Single non-dimensional group: 
+      \begin{equation}
+        \xi = -\frac{\textcolor{red}{\kappa \frac{g}{T_0} \frac{q}{c_p \rho_0}} \textcolor{blue}{z}}{ \textcolor{blue}{{U_{\infty}^3}}}
+      \end{equation}
+      % buoyant production of kinetic energy
+      % shear production rate
+    \item Asymptotic conditions interpolated by functions common to atmospheric modeling
+    \end{itemize}
+  \end{block}
+  
 \end{frame}
 
+%
+%
+%
+\begin{frame}
+  \frametitle{Diffusivity Modeling}
+  
+  \begin{eqnarray*}
+    \nu =& \nu_{l} + \nu_{t}(z) + \textcolor{red}{\nu_{V}(r,z)}, \\
+    K =& K_{l} + K_{t}(z) + \textcolor{red}{K_{V}(r,z)}.
+  \end{eqnarray*}
+  
+  \begin{block}{Vane Diffusivities, $\nu_{V},K_{V}$ }
+    \begin{itemize}
+    \item Set by scaling relations for a turbulent self-similar circular jet,
+      \begin{equation}
+        \nu_V = U_0 y_{1/2} \bar \nu_C.
+      \end{equation}
+    \item Set only in the region interior to the turning vanes
+    \item $y_{1/2}$ set to either separation distance between vanes or system diameter
+    \end{itemize}
+  \end{block}
+  
+\end{frame}
 
 %
 %
