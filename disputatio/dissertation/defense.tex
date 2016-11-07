@@ -1128,8 +1128,20 @@ Several other possible model corrections were investigated
  \begin{block}{Observations}
    \begin{itemize}
    \item Little or no flow observed in turbine region
-   \item Number of blades (8) substantially larger than typical wind turbines (2-3)
-   \item yar
+   \item Number of blades (8) larger than typical wind turbines (2-3)
+   \item Hypothesis: flow ``blocked'' by large and numerous turbine blades
+   \end{itemize}
+ \end{block}
+
+ \begin{block}{Actuator Disk Modification}
+   \begin{itemize}
+   \item Actuator disk does not account for any solidity effects
+   \item Correction to forcing by reducing flow area,
+     \begin{equation}
+       B(r) = 1- \frac{l_B(r)}{2 \pi r}
+     \end{equation}
+     Where $l_B$ is the circumferential length blocked by turbine blades.
+   \item Velocity vector will completely align with drag	 
    \end{itemize}
  \end{block}
 \end{frame}
