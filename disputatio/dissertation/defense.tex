@@ -1252,15 +1252,28 @@ Several other possible model corrections were investigated
 
  \begin{block}{Actuator Disk Modification}
    \begin{itemize}
+    \small
     \item Actuator disk assumes flow remains attached 
-    \item Modify velocity seen by turbine blades
+    \item Increase velocity seen by turbine blades to account for flow
+	  going around the blades,
+          \begin{equation}
+            F''' = \frac{1}{2}\frac{\rho\, B\, c\,
+              {\bf U_p}^2}{\pi r t}\left(C_l \, {\bf
+				    n_l} + C_d
+				    \, {\bf n_d} \right)
+          \end{equation}
+	  to, 
+	  \begin{equation}
+	    \bar U_p^{2} = \left(\frac{U_p}{B(r)}\right)^2
+	  \end{equation}
+	  Where $B(r)$ is a blockage factor between (relative area)
    % \item Correction to forcing by reducing flow area,
    %   \begin{equation}
    %     B(r) = 1- \frac{l_B(r)}{2 \pi r}
    %   \end{equation}
    %   Where $l_B$ is the circumferential length blocked by turbine
    % 	 blades. 
-   \item Velocity vector will completely align with drag	 
+    %\item Velocity vector will completely align with drag	 
    \end{itemize}
  \end{block}
 \end{frame}
