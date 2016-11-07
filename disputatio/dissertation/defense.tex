@@ -1114,6 +1114,7 @@ Several other possible model corrections were investigated
       \item Roughness elements based on post size
       \end{itemize}
     \item Kinetic energy flux never reduced by more than 12\%.
+    \item Crude model indicates reduced flows not attributable to drag
     \end{itemize}
   \end{block}
   
@@ -1124,6 +1125,13 @@ Several other possible model corrections were investigated
 \begin{frame}
  \frametitle{Solidity Modification}
 
+ \begin{block}{Observations}
+   \begin{itemize}
+   \item Little or no flow observed in turbine region
+   \item Number of blades (8) substantially larger than typical wind turbines (2-3)
+   \item yar
+   \end{itemize}
+ \end{block}
 \end{frame}
 
 %
@@ -1170,11 +1178,66 @@ Several other possible model corrections were investigated
 \begin{frame}
  \frametitle{Idealized Turbine Drag Polars}
 
-in contrast to previous efforts, 
-we now optimize power extraction for a generic turbine
+ \begin{block}{Concept}
+   \begin{itemize}
+   \item Estimate upper limit on power that could be extracted from flow, 
+     independent of turbine geometry 
+   \item Still use actuator disk model
+   \item Instead of $90^{\circ}$, $180^{\circ}$, generalized drag polars
+   \end{itemize}
+ \end{block}
+
+
+\begin{equation*}
+ P_L = E_\tau
+ \int_0^{2\pi}
+  \int_{r_{\text{min}}}^{r_{\text{max}}} U_R(r,\theta,\Omega)^2 \, \textcolor{orange}{C_L(\phi,r)}
+ \,\text{sin}(\phi)\, r\,dr d\theta
+\end{equation*}
+
+ \begin{block}{Idealized Drag Polars}
+   \begin{itemize}
+   \item Optimization problem: what lift/drag functions maximize power?
+     \begin{itemize}
+       \item Constant coefficients $C_L,C_D$
+     \end{itemize}
+   \end{itemize}
+ \end{block}
 
 \end{frame}
 
+%
+%
+\begin{frame}
+ \frametitle{Idealized Turbine Drag Polars, cont.}
+
+Lift/drag functions may be expressed as,
+ \begin{align*} 
+ C_D(\phi) = \bar C_D \, \psi(\phi) 
+  \begin{cases}
+   \psi(\phi) = 1 \text{ if sin}(\phi) > 0,   \\
+   0 \quad\quad\text{    else} \\
+  \end{cases} \\
+ C_L(\phi) = \bar C_L \, \Psi(\phi) 
+  \begin{cases}
+   \Psi(\phi) = 1 \text{ if cos}(\phi) > 0,   \\
+   -1 \quad\quad\text{ else}. \\
+  \end{cases}
+\end{align*}
+
+ \begin{block}{Calibration}
+   \begin{itemize}
+   \item What constant values?
+   \item $\bar C_L = 1.7$ and $\bar C_D = 2.0$: kills flow
+   \item $\bar C_L = 1.1$ and $\bar C_D = 1.5$: 
+     \begin{itemize}
+     \item 2.76 kW vs. 2.14 kW 
+     \item 58\% efficiency
+     \item Useful for feasibility assessment
+     \end{itemize}
+   \end{itemize}
+ \end{block}
+\end{frame}
 
 %
 %
