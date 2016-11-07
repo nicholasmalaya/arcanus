@@ -573,6 +573,43 @@ The equations describing fluid flow with natural convection are,
 
 %===============================================================================
 
+%\section{Steady vs. Transient Virtual Vanes}
+%
+%
+\begin{frame}
+ \frametitle{Steady vs. Transient Virtual Vanes}
+
+ \begin{columns}[]
+  \begin{column}{0.5\linewidth}
+
+    \begin{figure}[htb]
+     \centering
+     \includegraphics[width=.7\linewidth]{rom_iterate}
+    \end{figure}
+
+    \end{column}
+  \begin{column}{0.5\linewidth}
+
+    \begin{figure}[htb]
+     \centering
+     \includegraphics[width=.7\linewidth]{rom_radial}
+    \end{figure}
+
+  \end{column}
+ \end{columns}
+
+ \begin{block}{Unsteady vs. Steady}
+   \begin{itemize}
+   \item Transient vs. no $\frac{\partial ()}{\partial t}$
+   %\item Solutions temporally averaged
+   \item Run-time 12 hrs vs. 2 minutes
+   \item Steady is principle design tool
+   \end{itemize}
+ \end{block}
+ 
+\end{frame}
+
+
 \section{Optimization Heuristics}
 %
 %
@@ -584,8 +621,6 @@ The equations describing fluid flow with natural convection are,
      \includegraphics[width=.53\linewidth]{turbine_opt}
     \end{figure}
  
-
-
 \end{frame}
 
 
