@@ -10,7 +10,9 @@
 import numpy as np
 
 speed = [0,1,2,3]
-h     = [7.0,12.5,30.09,54.9]
+s     = [0]
+#h     = [7.0,12.5,30.09,54.9]
+h     = [7.0]
 c     = [0.0,.8745,7.3,24.8]
 
 
@@ -27,11 +29,11 @@ ax = fig.add_subplot(1,1,1)
 ax.tick_params(axis='x', labelsize=20)
 ax.tick_params(axis='y', labelsize=20)
 
-plt.plot(speed,hot,'v-', label='Hot Wind',linewidth=4,markersize=10)
-plt.plot(speed,cold,'o--', label='Cold Wind',linewidth=4,markersize=10)
+plt.plot(s,hot,'v-', label='Hot Wind',linewidth=4,markersize=30,color='blue')
+plt.plot(speed,cold,'o--', label='Cold Wind',linewidth=4,markersize=10,color='green')
 
 #overrx = np.linspace(1.0, 5.0, num=50)
-plt.xlim([-0.3,3.5])
+plt.xlim([-.3,3.5])
 plt.ylim([0,700])
 
 fsz=20
@@ -47,7 +49,7 @@ plt.xlabel(r'Wind Speed (m/s)',fontsize=fsz)
 plt.legend(loc='best')
 plt.tight_layout()
 #plt.show()
-plt.savefig('wind_impact.png')
+plt.savefig('wind_one.png')
 
 
 #

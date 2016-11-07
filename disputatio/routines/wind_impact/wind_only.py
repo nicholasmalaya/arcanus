@@ -31,7 +31,7 @@ ax.tick_params(axis='y', labelsize=20)
 plt.plot(speed,cold,'o--', label='Cold Wind',linewidth=4,markersize=10,color='green')
 
 #overrx = np.linspace(1.0, 5.0, num=50)
-plt.xlim([0,3.5])
+plt.xlim([-0.3,3.5])
 plt.ylim([0,700])
 
 fsz=20
