@@ -616,10 +616,32 @@ The equations describing fluid flow with natural convection are,
 \begin{frame}
  \frametitle{Optimization}
 
+ \begin{columns}[]
+  \begin{column}{0.5\linewidth}
+
     \begin{figure}[htb]
      \centering
-     \includegraphics[width=.53\linewidth]{turbine_opt}
+     \includegraphics[width=1.0\linewidth]{turbine_opt}
     \end{figure}
+
+  \end{column}
+  \begin{column}{0.5\linewidth}
+
+    \begin{block}{Heuristic}
+      \begin{itemize}
+        \item Iterative perturbation of SoV system parameter
+        \item If \% change in kinetic energy flux favorable, design ``accepted''
+	\item Performed for vanes, turbine, cone, etc. 
+          \begin{itemize}	
+            \item ``Circle back'' to test coupling
+          \end{itemize}
+	\item Several hundred iterations performed
+	\item Energy surface complex
+      \end{itemize}
+    \end{block}
+
+  \end{column}
+  \end{columns}
  
 \end{frame}
 
