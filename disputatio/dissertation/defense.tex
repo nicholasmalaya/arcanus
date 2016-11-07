@@ -234,43 +234,6 @@ Texas at Austin}
    
 \end{frame}
 
-%
-%
-%
-\begin{frame}
-\frametitle{Example configuration}
-
-\begin{columns}[]
-  \begin{column}{0.5\linewidth}
-
-   \begin{center}
-    \includegraphics[width=0.8\linewidth]{side_example}
-   \end{center}
-
-
-  \end{column}
-  %
-  \begin{column}{0.5\linewidth}
-
-   \begin{center}
-    \includegraphics[width=0.8\linewidth]{top_example}
-   \end{center}
-
-  \end{column}
-\end{columns}
-
-   \begin{block}{Turning Vanes}
-    \begin{itemize}
-     \item Several control surfaces used to turn the flow
-     \item Top tier significantly taller than the bottom
-     \item A cone may be added to the top to contract the flow
-     \item A turbine is placed above the vanes to extract kinetic energy
-    \end{itemize}
-   \end{block}
-   
-\end{frame}
-
-
 
 %
 %
@@ -308,7 +271,6 @@ Texas at Austin}
  \end{block}
 
 \end{frame}
-
 
 %===============================================================================
 
@@ -389,36 +351,40 @@ The equations describing fluid flow with natural convection are,
   
 \end{frame}
 
+
 %
 %
 %
 \begin{frame}
-  \frametitle{Diffusivity Modeling}
-  
-  \begin{eqnarray*}
-    \nu =& \nu_{l} + \nu_{a}(z) + \textcolor{red}{\nu_{V}(r,z)}, \\
-    K =& K_{l} + K_{a}(z) + \textcolor{red}{K_{V}(r,z)}.
-  \end{eqnarray*}
-  
-  \begin{block}{Vane Diffusivities, $\nu_{V},K_{V}$ }
+\frametitle{Example configuration}
+
+\begin{columns}[]
+  \begin{column}{0.5\linewidth}
+
+   \begin{center}
+    \includegraphics[width=0.8\linewidth]{side_example}
+   \end{center}
+
+  \end{column}
+  %
+  \begin{column}{0.5\linewidth}
+
+   \begin{center}
+    \includegraphics[width=0.8\linewidth]{top_example}
+   \end{center}
+
+  \end{column}
+\end{columns}
+
+   \begin{block}{Turning Vanes}
     \begin{itemize}
-    \item Accounts for turbulence not represented by virtual vanes
-    \item Modeled as free shear layer, turbulent self-similar circular jet,
-      \begin{equation}
-        \nu_V = U_0 \, L \, C_{\nu}
-      \end{equation}
-    \item Applied only in the region interior to the turning vanes
-     \item $C_{\nu}$ dimensionless constant
-    \item $L$ either: 
-\begin{itemize}
- \item ``VLES''-like: separation distance between vanes (unsteady)
- \item ``RANS''-like: system diameter \quad (steady)
-\end{itemize}
-
-
+     \item Several control surfaces used to turn the flow
+     \item Top tier significantly taller than the bottom
+     \item A cone may be added to the top to contract the flow
+     \item A turbine is placed above the vanes to extract kinetic energy
     \end{itemize}
-  \end{block}
-  
+   \end{block}
+   
 \end{frame}
 
 %
@@ -469,6 +435,39 @@ The equations describing fluid flow with natural convection are,
   \end{itemize}
  \end{block}
 
+\end{frame}
+
+
+%
+%
+%
+\begin{frame}
+  \frametitle{Diffusivity Modeling}
+  
+  \begin{eqnarray*}
+    \nu =& \nu_{l} + \nu_{a}(z) + \textcolor{red}{\nu_{V}(r,z)}, \\
+    K =& K_{l} + K_{a}(z) + \textcolor{red}{K_{V}(r,z)}.
+  \end{eqnarray*}
+  
+  \begin{block}{Vane Diffusivities, $\nu_{V},K_{V}$ }
+    \begin{itemize}
+    \item Accounts for turbulence not represented by virtual vanes
+    \item Modeled as free shear layer, turbulent self-similar circular jet,
+      \begin{equation}
+        \nu_V = U_0 \, L \, C_{\nu}
+      \end{equation}
+    \item Applied only in the region interior to the turning vanes
+     \item $C_{\nu}$ dimensionless constant
+    \item $L$ either: 
+\begin{itemize}
+ \item ``VLES''-like: separation distance between vanes (unsteady)
+ \item ``RANS''-like: system diameter \quad (steady)
+\end{itemize}
+
+
+    \end{itemize}
+  \end{block}
+  
 \end{frame}
 
 
