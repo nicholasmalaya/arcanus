@@ -1289,14 +1289,14 @@ Several other possible model corrections were investigated
    \begin{itemize}
     \small
     \item Actuator disk neglects interaction effects between turbine blades
-    \item Increase velocity seen by turbine blades to account for flow
-	  going around the blades,
+%    \item Increase velocity seen by turbine blades to account for flow\
+%	  going around the blades,
 
-	  \begin{equation}
-	   \theta_f = \text{tan}^{-1}(\frac{{\bf
-	    u_{\text{up}}}}{\textcolor{blue}{B(r)} {\bf
-	    u_{\text{fwd}}}}).  
-	  \end{equation}
+	  % \begin{equation}
+	  %  \theta_f = \text{tan}^{-1}(\frac{{\bf
+	  %   u_{\text{up}}}}{\textcolor{blue}{B(r)}\, {\bf
+	  %   u_{\text{fwd}}}}).  
+	  % \end{equation}
 
           %% \begin{equation}
           %%   F''' = \frac{1}{2}\frac{\rho\, B\, c\,
@@ -1308,17 +1308,16 @@ Several other possible model corrections were investigated
 	  %% \begin{equation}
 	  %%   \bar U_p^{2} = \left(\frac{U_p}{B(r)}\right)^2
 	  %% \end{equation}
-	  Where $u_{\text{up}}$ and $u_{\text{fwd}}$ are the ``upward'' and
-	  ``forward'' velocities in the reference frame of the turbine 
-	  and $B(r)$ is a blockage factor (relative area) 
+	  % Where $u_{\text{up}}$ and $u_{\text{fwd}}$ are the ``upward'' and
+	  % ``forward'' velocities in the reference frame of the turbine 
+	  % and $B(r)$ is a blockage factor (relative area) 
 
-   % \item Correction to forcing by reducing flow area,
-   %   \begin{equation}
-   %     B(r) = 1- \frac{l_B(r)}{2 \pi r}
-   %   \end{equation}
-   %   Where $l_B$ is the circumferential length blocked by turbine
-   % 	 blades. 
-    %\item Velocity vector will completely align with drag	 
+    \item Correction to forcing by reducing flow area,
+	  \begin{equation}
+	   B(r) = 1 - \frac{l_B(r)}{2 \pi r}
+	  \end{equation}
+	  Ratio: $l_B$ (length blocked by turbine blades) vs. total area
+    \item As $l_B $ increases, velocity vector will align with drag	 
    \end{itemize}
  \end{block}
 \end{frame}
@@ -1348,11 +1347,11 @@ Several other possible model corrections were investigated
 	    %\item models turbine blades as flate plate bluff bodies
 	   \end{itemize}
      \item Six and eight turbine blades greatly impacted
+     \item Even with correction, model appears inadequate
      \item Need calibration/validation data for more detailed assessment  
 	   \begin{itemize}
 	    \item Data needed from field or gridded simulation
 	   \end{itemize}
-     \item Even with correction, model appears inadequate
     \end{itemize}
 
    \end{block}
