@@ -1138,24 +1138,23 @@ The flow angle with respect to turbine velocity is therefore modified
 from Equation~\ref{eq:fan_direction} in
 Section~\ref{sec:actuator_disk},
 \begin{equation}
- \theta_f = \text{tan}^{-1}(\frac{{\bf u_{\text{up}}}}{{\bf u_{\text{fwd}}}}),
+ \theta_f = \text{tan}^{-1}(\frac{u_{\text{up}}}{ u_{\text{fwd}}}),
 \end{equation}
 to,
 \begin{equation}
- \theta_f = \text{tan}^{-1}(\frac{{\bf u_{\text{up}}}}{B(r) {\bf  u_{\text{fwd}}}}). 
+ \theta_f = \text{tan}^{-1}(\frac{ u_{\text{up}}}{B(r) u_{\text{fwd}}}). 
 \end{equation}
 As $B(r) \rightarrow 0$, $\theta_f \rightarrow \pi$, e.g. 90 degrees. In
-this way the velocity vector will be completely aligned with drag. 
-
-Finally Equation~\ref{eq:force_turb}, 
+this way the velocity vector will be completely aligned with
+drag. Finally Equation~\ref{eq:force_turb},  
 \begin{equation}
- F = \frac{1}{2}\frac{c \rho U_p^2}{A}(C_L \, {\bf n_{\text{lift}}} +
+ F = \frac{1}{2}\frac{c \rho {\bf u_p^2}}{A}(C_L \, {\bf n_{\text{lift}}} +
   C_d \,
    {\bf n_{\text{drag}}}),
 \end{equation}
 is modified so that, 
 \begin{equation}
- \bar U_p^{2} = \left(\frac{U_p}{B(r)}\right)^2.
+ \overbar {\bf u_p^{2}} = \left(\frac{{\bf u_p}}{B(r)}\right)^2.
 \end{equation}
 
 This turbine model modification for solidity has a significant impact on
