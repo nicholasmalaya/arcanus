@@ -577,9 +577,11 @@ distance measured in simulations with explicitly meshed vanes. The
 length over which the flow comes into alignment with the vane direction
 for a gridded vane simulation is measured in
 Figure~\ref{fig:annealing}. This plots the average misfit between the
-turning vane angle and the fluid velocity. A value of one would
-represent flow that is perpendicular to the turning vanes, while a value
-of zero would represent perfectly aligned flow.  
+turning vane angle and the fluid velocity, measured as the normalized
+difference between the fluid velocity and the tangent line of the
+turning vanes. A value of one would represent flow that is perpendicular
+to the turning vanes, while a value of zero would represent perfectly
+aligned flow.   
 
 The trend is clear that as the flow moves through the turning vanes
 towards the center of the apparatus it is brought into alignment with
@@ -715,15 +717,18 @@ This is the projection of velocity into the plane defined by the base
 velocity and vertical direction. Now the ``forward velocity'' in the
 reference frame of the turbine is,  
 \begin{equation}
-{\bf u_{\text{fwd}}}= -{\bf u_p} \cdot {\bf n_B}
+u_{\text{fwd}} = -{\bf u_p} \cdot {\bf n_B}
 \end{equation}
 and the ``upward'' velocity in this frame is, 
 \begin{equation}
-{\bf u_{\text{up}}} = {\bf u_p} \cdot {\bf n_f}. 
+u_{\text{up}} = {\bf u_p} \cdot {\bf n_f}. 
 \end{equation}
 The angle with respect to the fan velocity direction is then, 
 \begin{equation}
- \theta_f = \text{atan2}\left(\frac{{\bf u_{\text{up}}}}{{\bf u_{\text{fwd}}}}\right),
+% \theta_f = \text{atan2}\left(\frac{{\bf u_{\text{up}}}}{{\bf
+ % u_{\text{fwd}}}}\right),
+ \theta_f = \text{atan2}\left(\frac{ u_{\text{up} }}{
+			 u_{\text{fwd}}}\right), 
  %\theta_f =
   %\text{tan}^{-1}\left(\frac{u_{\text{up}}}{u_{\text{fwd}}}\right)
   \label{eq:fan_direction}
