@@ -764,7 +764,7 @@ ignored\cite{burton2001wind}.
     \end{center}
   \end{figure}
 
-\subsection{Drag Polar Specification}
+\subsection{Specification of the Lift and Drag Coefficients}
 
 We now define the lift and drag normals, where the direction opposing
 drag is, by definition,  
@@ -815,9 +815,9 @@ blades versus larger blade chord lengths.
 The impact of solidity will be discussed in greater detail in
 Section~\ref{sec:solidity}.
 
-Now, only the drag polars ($C_l,C_d$) must be specified to fully
-determine the force on the blades. These drag polars are functions of
-the angle of attack, $\alpha$. Plots of these drag polars were provided
+Now, only the drag coefficients ($C_l,C_d$) must be specified to fully
+determine the force on the blades. These coefficients are functions of
+the angle of attack, $\alpha$. Data for the coefficients was provided
 by Duane McCormick at UTRC and were generated from a 2-D model in
 COMSOL. As the data was discrete, high order polynomials were used
 to obtain smooth functions fit to the COMSOL data. Typically,
@@ -826,7 +826,7 @@ ensure that the fitted function closely matched the provided
 data. The drag and lift functions for the three cases considered (flat
 plates, $180^{\circ}$, $90^{\circ}$ circles) are shown in 
 Figures~\ref{fig:flat_plate_drag}, \ref{fig:semi_drag} and
-\ref{fig:90_drag}. The flat plate drag polars are smoothly
+\ref{fig:90_drag}. The flat plate drag coefficient is smoothly
 varying and so the interpolated function is close to the provided
 data. The semi-circles ($180^{\circ}$) are largely accurate, but near
 zero degrees the COMSOL data for the lift function shows a sharp feature
@@ -841,7 +841,7 @@ interpolated function.
 \begin{figure}[!htb]
   \begin{center}
     \includegraphics[width = 12 cm]{figs/flat}
-    \caption{The flat plate drag polars.} 
+    \caption{The flat plate lift and drag coefficients as a function of the angle of attack, $\alpha$.} 
     \label{fig:flat_plate_drag}
   \end{center}
 \end{figure}
@@ -849,7 +849,7 @@ interpolated function.
 \begin{figure}[!htb]
   \begin{center}
     \includegraphics[width = 12 cm]{figs/semi}
-    \caption{The semicircle (180 degree) drag polars.} 
+    \caption{The semicircle (180 degree) lift and drag coefficients as a function of the angle of attack, $\alpha$.} 
     \label{fig:semi_drag}
   \end{center}
 \end{figure}
@@ -857,7 +857,7 @@ interpolated function.
 \begin{figure}[!htb]
   \begin{center}
     \includegraphics[width = 12 cm]{figs/90}
-    \caption{The 90 degree drag polars.} 
+    \caption{The 90 degree (quarter circle) lift and drag coefficient as a function of the angle of attack, $\alpha$.} 
     \label{fig:90_drag}
   \end{center}
 \end{figure}
@@ -903,8 +903,8 @@ suggested various other corrections to actuator-disk theory. These
 corrections include (among others) accounting for blade thickness on
 local angle of attack, cascade width for high solidity turbines, and
 spanwise gaps for partial span pitch control. The impact of these
-missing physics can be significant, for instance, blade thickness and
-effects can be aerodynamically significant near the rotor hub and may 
+missing physics can be significant, for instance, blade thickness
+can be aerodynamically significant near the rotor hub and may 
 affect the in-plane forces on the rotor. Nevertheless,
 these corrections are not treated in the simulations presented in this
 document. 
