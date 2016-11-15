@@ -711,7 +711,8 @@ direction must be,
 and the fan-wing-plane component (e.g. the plane perpendicular to the 
 radius) of local relative velocity is
 \begin{equation}
-{\bf u_p} = {\bf u} - ({\bf u}\cdot {\bf n_r})\cdot {\bf n_r} - {\bf u_B}. 
+%{\bf u_p} = {\bf u} - ({\bf u}\cdot {\bf n_r})\cdot {\bf n_r} - {\bf u_B}. 
+{\bf u_p} = {\bf u} - ({\bf u}\cdot {\bf n_r}) \, {\bf n_r} - {\bf u_B}. 
 \end{equation}
 This is the projection of velocity into the plane defined by the base
 velocity and vertical direction. Now the ``forward velocity'' in the
@@ -804,7 +805,7 @@ Where t is the blade thickness of the actuator disk.
 Note that the volume is over a different extent than the area. The
 volume is for the entire actuator disk, while the force on the blades
 was only calculated with total surface area of the turbine. 
-To better understand this, note that the product, $B c$ appears in
+To better understand this, note that the product $B c$ appears in
 Equation~\ref{eq:vol_turb}, above. This quantity impacts the solidity (or
 blockage), and as the chord length or number of blades increases,
 the total blocked area inside the actuator disk also increases. It is
