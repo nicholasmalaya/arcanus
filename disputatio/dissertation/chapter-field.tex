@@ -44,7 +44,7 @@ importance of the wind in the newly proposed asymmetric design.
 % direction or 15 degrees from azimuthal.  
 
 
-  \begin{figure}
+  \begin{figure}[!htb]
    \centering
    \includegraphics[width =0.4\textwidth]{figs/aug_test_top}
    \hfill
@@ -76,7 +76,7 @@ months. While not provably exhaustive, this extensive exploration of the
 SoV configuration space covered the major design concepts detailed
 in Section~\ref{sec:dust_devil_concept}. 
 
-  \begin{figure}
+  \begin{figure}[!htb]
    \centering
    \includegraphics[width =0.7\textwidth]{figs/aug_2015_field}
    \caption{A photo of the August 2015 Field Configuration. Image
@@ -87,7 +87,7 @@ in Section~\ref{sec:dust_devil_concept}.
 The new configuration is highly asymmetric, which is intended to capture
 the wind over 
 a much greater area and draw it into the
-device. Horizontal and vertical views of the new optimized configuration
+device. Horizontal and vertical views of the newly optimized configuration
 are shown in Figures~\ref{fig:top_design},\ref{fig:bottom_design} and
 \ref{fig:vertical_design}, below. The parameters describing the
 vanes are detailed in Tables~\ref{tab:top},\ref{tab:bottom} and
@@ -112,8 +112,7 @@ prevent flow in the vanes from rising up and out of the vanes
 \end{itemize}
 
 We now discuss each of these changes in detail. Simulations indicated that 
-the
-bottom tier vanes were too short, and were constricting the flow 
+the bottom tier vanes were too short, and were constricting the flow 
 through them. Originally, the height of the lower
 tier vanes was set based on the thickness of the 
 thermal boundary layer, but the original boundary layer inside
@@ -125,6 +124,55 @@ first tier is a substantial impediment to the intensification of the
 vortex, as it limits the inflow of heated air which, as detailed
 in Section\ref{sec:wind_impact}, probably plays an important role in 
 the operation of the device.
+
+
+ \begin{figure}[!htb]
+  \begin{center}
+   \includegraphics[width =0.7\textwidth]{figs/interp_entire_top.pdf}
+   \caption{A top view of the top vane design. The red lines are the
+     vanes, which are spaced so that the mass flux between vanes is
+     approximately equal. The blue symbols are the parameters that
+     specify the design. Notice the highly asymmetric configuration,
+     with the front (left) opening of the vanes aligned directly with
+     the incoming wind. Also note the slight ``wiggle'' in the second
+   vane from the bottom. This is a result of the polynomial
+   interpolation function used to generate the vanes, which is described
+   in Section~\ref{sec:interpolate}.} 
+   \label{fig:top_design}
+  \end{center}
+ \end{figure}
+
+\begin{table}[!htb]
+\centering
+ \caption{The parameters used in the top tier system
+ geometry. Parameters labeled with $\phi$ are angles relative to
+ streamwise direction ($\hat i$), while the $\theta$ parameters are
+ angles relative to radial direction ($\hat r$). $\alpha$ is the angle
+ from origin to inner terminus of vane, and so in this way some vane
+ angles are smoothly varying as a function of polar angle. See
+ Figure~\ref{fig:top_design} for a schematic depicting the vanes. The
+ superscript $t$ denotes top, or the second tier vanes. Among the top
+ tier vanes, $l$ is left, $r$ right (when viewed from upstream of the
+ device).}
+\begin{tabular}{l|l|l}
+Name                        & Value & Meaning                    \\
+ \hline
+$r^{\text{cyl}}$            &  3.0 meters & Radius of rigid cylinder \\
+$r^t_{\text{min}}$          &  3.0 meters & Smallest radius of top tier
+	 vanes, relative to ground \\
+$L_x$                       &  12 meters  & Distance upstream
+	 of vanes relative to center\\
+$\phi^{t,l}$ &  $0^{\circ}$   & Outer angle for the top tier, left side vanes \\
+$\phi^{t,r}$   &  $0^{\circ}$   & Outer angle for the top tier right side \\
+$\theta^{t,l}$ &   $30^{\circ} +\frac{\alpha}{3}$  & Inner angle for the top tier left side vanes\\
+$\theta^{t,r}$   &   $75^{\circ} +\frac{\alpha}{6}$   & Inner angle for the top tier right side \\
+$L^{t,r}$                   &  12 meters  & Width of vane in front of cylinder \\
+$L^{t,l}$                   &  10 meters  & Width of vane to the side of cylinder \\
+\end{tabular}
+ \label{tab:top}
+\end{table}
+
+
 
 The downwind side lower tier vanes are, by a factor of two, taller 
 than the upwind side. This
@@ -140,6 +188,41 @@ model detailed in Section~\ref{sec:separation}. As ``leakage'' of the
 vortex out the back of the SoV has been a noted issue in the past, it
 was decided to introduce an impermeable cylindrical wall along the
 regions where leakage was observed to occur in the simulations. 
+
+ \begin{figure}[!htb]
+  \begin{center}
+   \includegraphics[width =0.7\textwidth]{figs/interp_entire_bottom.pdf}
+   \caption{A top view of the bottom tier design. These vanes (in red)
+   are also asymmetric, with lower final curvature angles and a taller
+   height for the back (downstream) vanes versus the front. This is due
+   to the thicker boundary layer of the flow entering the device from
+   the right (downstream relative to the wind). These vanes are design
+   to turn the incoming flow so that it is nearly azimuthal near the
+   center of the apparatus, increasing rotation and lowering the
+   pressure in the center.}
+   \label{fig:bottom_design}
+  \end{center}
+ \end{figure}
+
+\begin{table}[!htb]
+\centering
+ \caption{The parameters used in the bottom tier system geometry. See 
+ Figure~\ref{fig:bottom_design} for a schematic depicting these
+ vanes. The superscript $b$ denotes bottom tier, $d$ is downstream, $u$
+ for upstream vanes. In this case, both $\phi$ and $\theta$ are angles
+ relative to radial ($\hat r$). }
+\begin{tabular}{l|l|l}
+Name                        & Value & Meaning                    \\
+ \hline
+$r^b_{\text{min}}$          &  0.6 meters & Smallest radius of bottom tier vanes \\
+$r^b_{\text{max}}$          &  6.0 meters & Largest radius of bottom tier vanes \\
+$\theta^{b,d}$ &  $60^{\circ}$   & Inner angle for the bottom tier, downstream vanes \\
+$\theta^{b,u}$ &  $80^{\circ}$   & Inner angle for the bottom tier, upstream vanes \\
+$\phi^{b,d}$ &   0   & Outer angle for the bottom  tier, downstream vanes \\
+$\phi^{b,u}$ &   0   & Outer angle for the bottom tier, upstream vanes \\
+\end{tabular}
+ \label{tab:bottom}
+\end{table}
 
 The most visually striking change between the current configuration and
 the previous field configuration is in the second tier vanes. 
@@ -171,101 +254,6 @@ from disrupting the vortex before it has run through the
 turbine. A taller cone than had been previously used was found 
 to be more effective in both of these ways.
 
-It is important to note that while increasing the height of the cone
-(and along with it, the contraction ratio) was recommended, due to
-time and fabrication constraints this particular cone design was not
-implemented. The cone design quoted below was the cone used by
-the field team, despite being found to be sub-optimal in
-simulations. All the simulations shown in this chapter are consistent
-with the design used in the 2016 field tests, and this unrealized cone
-optimization is noted for completeness.
-
- \begin{figure}[!htb]
-  \begin{center}
-   \includegraphics[width =0.7\textwidth]{figs/interp_entire_top.pdf}
-   \caption{A top view of the top vane design. The red lines are the
-     vanes, which are spaced so that the mass flux between vanes is
-     approximately equal. The blue symbols are the parameters that
-     specify the design. Notice the highly asymmetric configuration,
-     with the front (left) opening of the vanes aligned directly with
-     the incoming wind. Also note the slight ``wiggle'' in the second
-   vane from the bottom. This is a result of the polynomial
-   interpolation function used to generate the vanes, which is described
-   in Section~\ref{sec:interpolate}.} 
-   \label{fig:top_design}
-  \end{center}
- \end{figure}
-
-\begin{table}[]
-\centering
- \caption{The parameters used in the top tier system
- geometry. Parameters labeled with $\phi$ are angles relative to
- streamwise direction ($\hat i$), while the $\theta$ parameters are
- angles relative to radial direction ($\hat r$). $\alpha$ is the angle
- from origin to inner terminus of vane, and so in this way some vane
- angles are smoothly varying as a function of polar angle. See
- Figure~\ref{fig:top_design} for a schematic depicting the vanes. The
- superscript $t$ denotes top, or the second tier vanes. Among the top
- tier vanes, $l$ is left, $r$ right (when viewed from upstream of the
- device).}
-\begin{tabular}{l|l|l}
-Name                        & Value & Meaning                    \\
- \hline
-$r^{\text{cyl}}$            &  3.0 meters & Radius of rigid cylinder \\
-$r^t_{\text{min}}$          &  3.0 meters & Smallest radius of top tier
-	 vanes, relative to ground \\
-$L_x$                       &  12 meters  & Distance upstream
-	 of vanes relative to center\\
-$\phi^{t,l}$ &  $0^{\circ}$   & Outer angle for the top tier, left side vanes \\
-$\phi^{t,r}$   &  $0^{\circ}$   & Outer angle for the top tier right side \\
-$\theta^{t,l}$ &   $30^{\circ} +\frac{\alpha}{3}$  & Inner angle for the top tier left side vanes\\
-$\theta^{t,r}$   &   $75^{\circ} +\frac{\alpha}{6}$   & Inner angle for the top tier right side \\
-$L^{t,r}$                   &  12 meters  & Width of vane in front of cylinder \\
-$L^{t,l}$                   &  10 meters  & Width of vane to the side of cylinder \\
-\end{tabular}
- \label{tab:top}
-\end{table}
-
-%The values of the parameters depicted in
-%Tables~\ref{tab:top},\ref{tab:bottom} and \ref{tab:side} bear some
-%discussion. 
-
-% Forcing function has a discontinuity at $\alpha=90^{\circ}$
-
- \begin{figure}[!htb]
-  \begin{center}
-   \includegraphics[width =0.7\textwidth]{figs/interp_entire_bottom.pdf}
-   \caption{A top view of the bottom tier design. These vanes (in red)
-   are also asymmetric, with lower final curvature angles and a taller
-   height for the back (downstream) vanes versus the front. This is due
-   to the thicker boundary layer of the flow entering the device from
-   the right (downstream relative to the wind). These vanes are design
-   to turn the incoming flow so that it is nearly azimuthal near the
-   center of the apparatus, increasing rotation and lowering the
-   pressure in the center.}
-   \label{fig:bottom_design}
-  \end{center}
- \end{figure}
-
-\begin{table}[]
-\centering
- \caption{The parameters used in the bottom tier system geometry. See 
- Figure~\ref{fig:bottom_design} for a schematic depicting these
- vanes. The superscript $b$ denotes bottom tier, $d$ is downstream, $u$
- for upstream vanes. In this case, both $\phi$ and $\theta$ are angles
- relative to radial ($\hat r$). }
-\begin{tabular}{l|l|l}
-Name                        & Value & Meaning                    \\
- \hline
-$r^b_{\text{min}}$          &  0.6 meters & Smallest radius of bottom tier vanes \\
-$r^b_{\text{max}}$          &  6.0 meters & Largest radius of bottom tier vanes \\
-$\theta^{b,d}$ &  $60^{\circ}$   & Inner angle for the bottom tier, downstream vanes \\
-$\theta^{b,u}$ &  $80^{\circ}$   & Inner angle for the bottom tier, upstream vanes \\
-$\phi^{b,d}$ &   0   & Outer angle for the bottom  tier, downstream vanes \\
-$\phi^{b,u}$ &   0   & Outer angle for the bottom tier, upstream vanes \\
-\end{tabular}
- \label{tab:bottom}
-\end{table}
 
 
 \begin{figure}[!htb]
@@ -279,7 +267,7 @@ $\phi^{b,u}$ &   0   & Outer angle for the bottom tier, upstream vanes \\
   \end{center}
  \end{figure}
 
-\begin{table}[]
+\begin{table}[!htb]
  \caption{The values of the parameters shown in
  Figure~\ref{fig:vertical_design}, which is a side view of the SoV
  apparatus.} 
@@ -298,6 +286,20 @@ $L_x$                       &  12   & Furthest distance upstream of top	 tier va
 \end{tabular}
  \label{tab:side}
 \end{table}
+
+It is important to note that while increasing the height of the cone
+(and along with it, the contraction ratio) was recommended, due to
+time and fabrication constraints this particular cone design was not
+implemented. The cone design quoted below was the cone used by
+the field team, despite being found to be sub-optimal in
+simulations. All the simulations shown in this chapter are consistent
+with the design used in the 2016 field tests, and this unrealized cone
+optimization is noted for completeness.
+%The values of the parameters depicted in
+%Tables~\ref{tab:top},\ref{tab:bottom} and \ref{tab:side} bear some
+%discussion. 
+
+% Forcing function has a discontinuity at $\alpha=90^{\circ}$
 
 An optimal set of design parameters were determined and provided to the
 experimental group, where they were instantiated as CAD designs by
@@ -643,7 +645,7 @@ each. This turbine has a large solidity, and the implications of this
 are discussed further in Section~\ref{sec:solidity}. 
 %\todo{discuss twist}  
 
-\begin{table}[]
+\begin{table}[!htb]
 \centering
  \caption{The parameters for the optimized turbine design.}
 \begin{tabular}{l|l|l|l}
