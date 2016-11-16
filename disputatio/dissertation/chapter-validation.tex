@@ -285,18 +285,28 @@ simulation and experiment.
 
 
 \begin{figure}
-  \centering
-  \includegraphics[width=.45\linewidth]{figs/gridded_wind}
-  %\caption{Streamwise Velocity: Gridded Vanes}
-  \hfill
-  \includegraphics[width=.45\linewidth]{figs/virtual_wind}
-  %\caption{Streamwise Velocity: Virtual Vanes}
-  \\
-  \includegraphics[width=.45\linewidth]{figs/gridded_wind_span}
-  %\caption{Spanwise Velocity: Gridded Vanes}
-  \hfill
-  \includegraphics[width=.45\linewidth]{figs/virtual_wind_span}
- %\caption{Spanwise Velocity: Virtual Vanes}
+  \begin{subfigure}{0.49\textwidth}
+   \centering
+   \includegraphics[width=.95\linewidth]{figs/gridded_wind}
+   \caption{Streamwise Velocity: Gridded Vanes}
+  \end{subfigure}
+ %\hfill
+  \begin{subfigure}{0.49\textwidth}  
+   \centering
+   \includegraphics[width=.95\linewidth]{figs/virtual_wind}
+   \caption{Streamwise Velocity: Virtual Vanes}
+   \end{subfigure} \\
+  \begin{subfigure}{0.49\textwidth}
+   \centering
+   \includegraphics[width=.95\linewidth]{figs/gridded_wind_span}
+   \caption{Spanwise Velocity: Gridded Vanes}
+  \end{subfigure}
+ %\hfill
+  \begin{subfigure}{0.49\textwidth}
+   \centering
+  \includegraphics[width=.95\linewidth]{figs/virtual_wind_span}
+   \caption{Spanwise Velocity: Virtual Vanes}
+  \end{subfigure}
  \caption{Horizontal slices through the top of the vanes for the
  wind validation cases. On the left are the explicitly gridded vanes,
  and on the right the virtual vanes. The streamwise velocity (top
