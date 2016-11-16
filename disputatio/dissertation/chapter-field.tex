@@ -773,15 +773,16 @@ reached nearly six meters per second.
 %wind always  has non-zero mean, and the average horizontal velocity during the day is
 %between 2-3 m/sec.  
 
-The wind direction was also monitored, and showed little variation in heading. 
-This is shown in Figure~\ref{fig:wind_direction}. It was therefore
-assumed that the wind had a constant heading and constant speed during
-the simulations. Furthermore, discussions with the field team indicated
-that wind heading over several years of field tests were relatively
-consistent. This was part of the motivation for the introduction of an
-asymmetric vane configuration, since if the wind direction changed daily
-(for instance) it would render an asymmetric design useless, unless it
-could easily be realigned with the free stream velocity. 
+The wind direction was also monitored, and showed little variation in
+heading. This is shown in Figure~\ref{fig:wind_direction}. It was
+therefore assumed that the wind had a constant heading and constant
+speed during the simulations. Furthermore, discussions with the field
+team indicated that wind heading over several years of field tests were
+relatively consistent. This was part of the motivation for the
+introduction of an asymmetric vane configuration, since if the wind
+direction changed daily (for instance) it would render an asymmetric
+design useless, unless it could easily be realigned with the free stream
+velocity.  
 
  \begin{figure}[!htb]
   \begin{center}
@@ -790,6 +791,27 @@ could easily be realigned with the free stream velocity.
    \label{fig:wind_direction}
   \end{center}
  \end{figure}
+
+Simulations were performed to assess the variation in power extracted by
+the turbine should the wind heading not align with the vanes. It would
+be non-trivial to implement heading changes in the freestream velocity  
+with the wind case boundary conditions discussed in
+Section~\ref{sec:bc}. Instead, the vanes were rotated by $\pm
+20^{\circ}$ and $45^{\circ}$ so that they did not align with the
+freestream. This was performed by creating a new interpolation vane
+function as described in Section~\ref{sec:interpolate} with a linear
+rotation of the coordinates. 
+
+Because the apparatus is not azimuthally symmetric, the vanes were
+rotated both clockwise and counter-clockwise. A $20^{\circ}$
+counter-clockwise adjustment only reduces the power by
+2\%. A clockwise rotation resulted in a reduction of 8\%.
+The apparatus is therefore likely not sensitive to directional heading
+changes of this magnitude. However, increasing the
+rotation to 45 degrees clockwise reduces the power extracted by 63\% and
+47\% for the counter-clockwise rotation. While substantial, this is a
+``worst-case'' estimate and it was expected that the experimental team
+could do better in terms of alignment than this. 
 
 
 % monin obuhkov should deal with this, no?
