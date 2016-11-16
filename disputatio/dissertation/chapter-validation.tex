@@ -388,10 +388,16 @@ probe various configurations and drive the system towards peak kinetic
 energy flux generation.  
 
 \begin{figure}[htp!]
+ \begin{subfigure}{0.49\textwidth}
  \centering
- \includegraphics[width =0.47\textwidth]{figs/rom_steady}
- \hfill
- \includegraphics[width =0.47\textwidth]{figs/rom_unsteady}%
+ \includegraphics[width =0.9\textwidth]{figs/rom_steady}
+  \caption{Steady Virtual Vanes}
+ \end{subfigure}
+ \begin{subfigure}{0.49\textwidth}
+  %\hfill
+ \includegraphics[width =0.9\textwidth]{figs/rom_unsteady}%
+  \caption{Unsteady Virtual Vanes}
+ \end{subfigure}
  \caption{A comparison between the streamwise velocity in the averaged
  transient virtual vane solution (right image) and the steady virtual
  vane solution (left image). These horizontal slices were taken at the
@@ -412,9 +418,10 @@ energy flux generation.
  \centering
  \includegraphics[width =0.7\textwidth]{figs/rom_radial}
  \caption{The azimuthal velocity profile as a function of radius for the
- steady and unsteady cases. The steady solution has a similar radial
- peak location, but a lower velocity magnitude and a more diffuse
- structure.}   
+ steady and unsteady cases. The profile is extracted from $\theta =
+ 90^{\circ}$. The unsteady vanes were temporally averaged. The steady
+ solution has a similar radial peak location, but a lower velocity
+ magnitude and a more diffuse structure.}   
  \label{fig:rom_az}
 \end{figure}
 
