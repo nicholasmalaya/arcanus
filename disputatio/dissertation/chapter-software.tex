@@ -144,14 +144,15 @@ used for every simulation. Thus, while the ratio of the domain length to
 system diameter remains fixed, the grid spacing $\{\Delta x,\Delta
 y,\Delta z\}$ increases proportionally with domain length.  
 
-The eddy diffusivities are proportionally scaled with grid spacing to
+The eddy diffusivities ($\nu_{t},K_{t}$) in Equations~\ref{eqn:visc_tot}
+and ~\ref{eqn:therm_tot} are proportionally scaled with grid spacing to 
 ensure that the cell Reynolds number, 
 \begin{equation}
- \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y) \, u}{\nu_T}
+ \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y) \, u}{\nu_t}
 \end{equation} 
-is maintained for every simulation, to ensure stability. In this way
- larger domains have higher eddy viscosities which serve to dissipate
- effects of scales that are smaller than the grid spacing. 
+is maintained for every simulation, to ensure stability. 
+In this way, larger domains have higher eddy viscosities which serve to 
+dissipate effects of scales that are smaller than the grid spacing. 
 
 The mesh has a uniform spacing in the lateral directions, except for a
 single refinement in the region of the vanes. Typically, the grid is 
