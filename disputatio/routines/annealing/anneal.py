@@ -48,7 +48,7 @@ plt.subplot(2,1,1)
 plt.plot(r,f, 'ko-', color='blue',label='Misfit')
 plt.xlim(xmax, xmin)
 #plt.ylim(0.9, 1.4)
-plt.ylabel(r'$\frac{\langle {\bf u }\cdot {\bf t_v } \rangle}{||\, {\bf u}\, ||}$',
+plt.ylabel(r'$\frac{\langle {\bf u }\cdot {\bf n_v } \rangle}{||\, {\bf u}\, ||}$',
            fontsize=fsz,rotation=0,labelpad=40)
 #ax.set_yscale('log')
 plt.legend()
