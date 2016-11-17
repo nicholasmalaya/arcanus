@@ -20,7 +20,7 @@ chain and supercomputer systems are briefly introduced.
 The finite element method (FEM) is used to numerically solve the 
 Navier-Stokes equations. The starting point for the FEM is
 to cast the equations in Section~\ref{sub_sec:ns_en} into a weak
-form. use of the weak form reduces the continuity requirements on the
+form. Use of the weak form reduces the continuity requirements on the
 basis functions, thereby allowing the use of functions that are
 easy to construct and implement, such as piece-wise polynomials. 
 Manipulating these partial differential equations into a
@@ -35,18 +35,18 @@ H^1(\Omega)^3 \times L_2(\Omega) \times H^1(\Omega)$ such that
 \begin{align}
   (\frac{\partial{\bf u}}{\partial t},{\bf v}) + ({\bf u} \cdot \nabla{\bf
  u},{\bf v}) + (\nu \,\nabla{\bf u}, \nabla{\bf v})   
-  -(p,\nabla \cdot{\bf u}) &= ({\bf g} \, T'/T_0,v)
+  -(p,\nabla \cdot{\bf u}) &= ({\bf g} \, T'/T_0,v),
  \label{eqn:ns_weak} \\
- (\nabla \cdot{\bf u},q) &= 0
+ (\nabla \cdot{\bf u},q) &= 0,
  \label{eqn:cont_weak} \\
  (\frac{\partial T}{\partial t}, w) + ({\bf u} \cdot \nabla T,
- w) + (k \, \nabla T, \nabla  w) &= 0.\label{eqn:en_weak}
+ w) + (k \, \nabla T, \nabla  w) &= 0,\label{eqn:en_weak}
 \end{align}
 
 %\todo{boundary terms}
 
 $\forall ({\bf v},q,w) \in H^1(\Omega)^3 \times L_2(\Omega) \times
-H^1(\Omega)$, where $(\cdot,\cdot)$ denotes the $L_2$ inner product, 
+H^1(\Omega)$, where $(\cdot,\cdot)$ denotes the $L_2$ inner product  
 $({\bf u},{\bf v}) = \int_\Omega {\bf u} \cdot {\bf v} \, dx$ and
 $H^1(\Omega)$ is the Sobolov space with one square integrable derivative
 on the domain 
