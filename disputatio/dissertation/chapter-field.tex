@@ -69,7 +69,7 @@ configurations, few of which showed enough promise to warrant further
 investigation. The designs that produced initially promising results were
 then optimized as outlined in 
 Section~\ref{sec:results}, where new parameter values were specified, a
-simulation was performed, and then the output was postprocessed to evaluate the
+simulation was performed, and then the output was post-processed to evaluate the
 energy flux. In this way several
 hundred optimization runs were performed over the course of several
 months. While not provably exhaustive, this extensive exploration of the 
@@ -499,7 +499,7 @@ this was found to be the most effective way to ensure that the
 polynomial remained accurate without requiring high order
 polynomials. The accuracy of the interpolated field was checked by
 ``drawing'' vanes by seeding a particle upstream of the field and then
-manually integrating it through the field using the scipy integrate ode
+manually integrating it through the field using the SciPy integrate ode
 packages and verifying visually that the vane had the correct
 character. Figures~\ref{fig:top_design} and~\ref{fig:bottom_design} were
 generated using this technique. 
@@ -564,7 +564,7 @@ Improvements to the turbine power extracted were also attained by adding
 ``twist''. In other words, the blade angle varies as a function of
 radius, i.e. $\beta = \beta(r)$. The improvement in power extraction due
 to a varying blade angle with radius is due to a varying distribution
-of momentum flux. As both azimithal and axial velocities depend on the
+of momentum flux. As both azimuthal and axial velocities depend on the
 circulation, $\Gamma$, so the optimal $\beta$ varies radially to capture
 the optimal turbine blade angle. 
 
@@ -1216,7 +1216,7 @@ Section~\ref{sec:field_error}.
 This crude model is admittedly extreme, as it effectively models the
 blades as flat plate bluff bodies, with the flow completely
 separated on the leeward side. Ideally, the flow should be smoothly
-turning through the blading, and not separate. Thus, while the blockage
+turning through the blades, and not separate. Thus, while the blockage
 correction developed here is probably overly pessimistic, it could
 sensibly be used as a predictive or design tool by introducing a
 calibration constant which could be tuned if appropriate data were
