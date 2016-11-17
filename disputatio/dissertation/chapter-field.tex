@@ -253,7 +253,7 @@ Second, the cone also acts as a shield, preventing the wind
 from disrupting the vortex before it has run through the
 turbine. A taller cone than had been previously used was found 
 to be more effective in both of these ways.
-
+%
 \begin{figure}[!htb]
   \begin{center}
    \includegraphics[width = 15 cm]{figs/vertical_design.pdf}
@@ -264,7 +264,7 @@ to be more effective in both of these ways.
    \label{fig:vertical_design}
   \end{center}
  \end{figure}
-
+%
 \begin{table}[!htb]
  \caption{The values of the parameters shown in
  Figure~\ref{fig:vertical_design}, which is a side view of the SoV
@@ -284,7 +284,7 @@ $L_x$                       &  12   & Furthest distance upstream of top	 tier va
 \end{tabular}
  \label{tab:side}
 \end{table}
-
+%
 It is important to note that while increasing the height of the cone
 (and along with it, the contraction ratio) was recommended, due to
 time and fabrication constraints this particular cone design was not
@@ -499,10 +499,10 @@ this was found to be the most effective way to ensure that the
 polynomial remained accurate without requiring high order
 polynomials. The accuracy of the interpolated field was checked by
 ``drawing'' vanes by seeding a particle upstream of the field and then
-manually integrating it through the field using the SciPy integrate ode
-packages and verifying visually that the vane had the correct
-character. Figures~\ref{fig:top_design} and~\ref{fig:bottom_design} were
-generated using this technique. 
+manually integrating it through the field using the SciPy
+\textbf{integrate.ode} packages and verifying visually that the vane had
+the correct character. Figures~\ref{fig:top_design}
+and~\ref{fig:bottom_design} were generated using this technique. 
 % The ``right'' interpolated field is shown in
 % Figure~\ref{fig:bottom_interp}.\todo{update python plots} 
 
@@ -585,11 +585,12 @@ The UTRC code was not directly connected to the UT CFD code. Rather,
 human intervention was required to prepare the velocity field outputs
 from the UT CFD effort so that they could be used in the UTRC
 code. Thus, the UTRC code would iterate through design parameters, and
-then the CFD code was used as a higher fidelity confirmation. The UTRC
-frozen flow optimization was largely consistent with the fully coupled
-CFD prediction (see  Figure~\ref{fig:UTRC_turbine}, below). This has
-resulted in two final rotor designs, with and without twist. This was
-because the experimental team was not certain that a twisted design
+then the CFD code was used as a higher fidelity confirmation. 
+
+The UTRC frozen flow optimization was largely consistent with the fully
+coupled CFD prediction (see  Figure~\ref{fig:UTRC_turbine}, below). This
+has resulted in two final rotor designs, with and without twist. This
+was because the experimental team was not certain that a twisted design 
 would be feasible. Regardless, the twisted rotor was always predicted to 
 out-perform the zero-twist rotor.  
 The peak power extracted is predicted to be 2.14 kW for the rotor
@@ -854,7 +855,7 @@ rotation to 45 degrees clockwise reduces the power extracted by 63\% and
 
 The velocity and temperature fields resulting from the 2016 field test   
 simulations are shown in Figures~\ref{fig:field_hor} and
-~\ref{fig:field_vert}. Generally speaking, the fields have
+\ref{fig:field_vert}. Generally speaking, the fields have 
 complicated, non-trivial structure. The majority of the flow is driven
 into the vanes by the ambient upstream winds, where it accelerates due
 to the contraction of the vanes towards the center of the SoV.
