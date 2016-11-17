@@ -145,10 +145,10 @@ system diameter remains fixed, the grid spacing $\{\Delta x,\Delta
 y,\Delta z\}$ increases proportionally with domain length.  
 
 The eddy diffusivities ($\nu_{t},K_{t}$) in Equations~\ref{eqn:visc_tot}
-and ~\ref{eqn:therm_tot} are proportionally scaled with grid spacing to 
+and \ref{eqn:therm_tot} are proportionally scaled with grid spacing to 
 ensure that the cell Reynolds number, 
 \begin{equation}
- \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y) \, u}{\nu_t}
+ \text{Re}_\text{cell} = \frac{\text{max}(\Delta x,\Delta y) \, u}{\nu_t},
 \end{equation} 
 is maintained for every simulation, to ensure stability. 
 In this way, larger domains have higher eddy viscosities which serve to 
