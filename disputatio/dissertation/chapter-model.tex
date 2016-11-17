@@ -293,7 +293,7 @@ When $ |\frac{z}{L_{M-O}}| << 1$ it is therefore expected that,
  \varphi_u(\xi) \approx \text{ln } \rvert \frac{z}{L_{M-O}} \rvert + C.
 \end{equation}
 Identical arguments can be made for the asymptotic 
-behaviour of the temperature function.
+behavior of the temperature function.
 
 \subsection*{Case Two: $\xi \to -\infty$}
 
@@ -335,7 +335,7 @@ for } z \gg L_{M-O}.
 
 So long as the turbulent Prandtl number remains constant in space, a
 reasonable assumption~\cite{chuang1969turbulent}, then 
-identical arguments regarding the asymptotic behaviour at large $\xi$
+identical arguments regarding the asymptotic behavior at large $\xi$
 provide the analogous result for the eddy viscosity's variation with
 respect to distance from the ground,   
 \begin{equation}
@@ -366,7 +366,7 @@ $\Phi(\xi)$ to scale as $\xi^{-\frac{1}{3}}$.
 %
 %\cite{?}.\todo{missing cites} 
 However, the functions are generally in close agreement under neutral
-and unstable conditions, with the disagreement primarily occuring for
+and unstable conditions, with the disagreement primarily occurring for
 $z/L>0$. As we expect to only simulate conditions of unstable or
 neutrally stratified flow, our choice of interpolation function does not
 have a significant impact on the predicted value.  
@@ -378,7 +378,7 @@ have a significant impact on the predicted value.
  the Monin-Obukhov universal function of momentum. The plots closely
  coincide, as the functions are generally in close agreement under
  neutral and unstable conditions, with the disagreement primarily
- occuring for $\xi > 0$, which is unimportant for this work.} 
+ occurring for $\xi > 0$, which is unimportant for this work.} 
  \label{fig:interp-mo}
 \end{figure}
 
@@ -408,7 +408,7 @@ Obukhov similarity theory breaks down. These include:
 \begin{itemize}
  \item Surfaces with large spatial variations in roughness
  \item Outside of the surface layer (several hundred meters) where the 
-       coriolis effect is no longer negligible
+       Coriolis effect is no longer negligible
 %\item the theory's predictions are well known to be sensitive to choice
 %      of universal function for $L>0$.
 \end{itemize}
@@ -426,7 +426,7 @@ software.
 %However, this is also a more
 %difficult regime to model.\todo{poor justification} 
 The atmospheric boundary layer model discussed in the previous section
-does not account for the precence of the SoV device.
+does not account for the presence of the SoV device.
 %The validation process identified a refinement to the virtual vane
 %formulation that results in a better representation of the vane
 %effects in a broader range of flows.
@@ -483,7 +483,7 @@ steady virtual vanes, where the radius of the SoV apparatus is used as
 the length scale and no dynamics of the flow are are resolved. Here, the
 resolved scale is that of the vortical plume itself, and not any
 fluctuating quantities. This is principally for design purposes, and is
-intented only to capture the largest scale features of the flow. These
+intended only to capture the largest scale features of the flow. These
 simulation regimes are discussed in further detail in
 Chapter~\ref{sec:validation}. 
 
@@ -626,7 +626,7 @@ subfigure of Figure~\ref{fig:annealing}. If the misfit between vanes
 was perfectly described by an exponential decay, the line would be flat. 
 While the curve does not perfectly coincide with this, the curve does
 not have severe convexity and the average is sufficient for this
-work. Based on this, the lengthscale $\ell_v$ was set to one third of a
+work. Based on this, the length scale $\ell_v$ was set to one third of a
 meter. 
 
 %\todo{show
@@ -1150,7 +1150,7 @@ V_f = \sqrt{2 a z_0}.
 The forcing region height $z_0$ is set to the boundary layer thickness
 of 10 centimeters. The acceleration was estimated at 0.05
 $\text{m}/\text{s}^2$, based on the observed surface roughness impact on
-tornado-like vorticies of Natarajan and Hangan\cite{Natarajan2012577}.
+tornado-like vortices of Natarajan and Hangan\cite{Natarajan2012577}.
 
 We ensure that the energy
 introduced into the flow is a small fraction of total flow energy by comparing
@@ -1313,7 +1313,7 @@ A periodic boundary condition is used in the thermal only cases,
 for boundaries normal to the x and y directions 
 (denoted $\Gamma_{P,x}$ and $\Gamma_{P,y}$, respectively). In these
 cases the state variables  
-are contrained to have the same value on the opposite faces of the domain, 
+are constrained to have the same value on the opposite faces of the domain, 
 for instance in the streamwise direction the boundary conditions are, 
 \begin{align}
  {\bf u}(-L_x,y,z) &= {\bf u}(L_x,y,z) \quad \text{ on } \Gamma_{P,x} \\
@@ -1331,7 +1331,7 @@ and $\Gamma_{P,y} = \{(x,-L_y,z) \, \bigcup \, (x,L_y,z) \subset \partial
 
 \textbf{Inflow Boundary Condition, $\Gamma_I$} 
 
-On the inflow boundary $(\Gamma_I$), dirichlet conditions are used for
+On the inflow boundary $(\Gamma_I$), Dirichlet conditions are used for
 both velocity and temperature. The boundary-normal, or streamwise
 component is a function of the surface normal coordinate (z),
 representing a boundary layer below a uniform velocity, U.
