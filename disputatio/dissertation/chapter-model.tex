@@ -557,14 +557,14 @@ is defined that will drive the velocity in the ${\bf n}$ direction
 toward zero, effectively turning the flow to be parallel to the
 vanes. The body force is defined by,
 \begin{equation}
- {\bf f}_v= -\frac{1}{\ell_v}|{\bf u}|({\bf u}\cdot{\bf n_v}){\bf n_v},
+ {\bf f}_v= -\frac{1}{\ell_v}|{\bf u}|\,({\bf u}\cdot{\bf n_v})\,{\bf n_v},
  \label{eqn:body_force}
 \end{equation}
-with ${\bf u}$ the velocity and $\ell_v$ is a specified length
-scale. The quadratic functional form of this forcing can be motivated by 
-the desire for a dimensionally consistent forcing, which is not possible
-with only a linear dependence on velocity. The length scale, $\ell_v$,
-represents the distance over which the 
+with ${\bf u}$ the velocity and $\ell_v$ is a specified (virtual vane)
+length scale. The quadratic functional form of this forcing can be
+motivated by the desire for a dimensionally consistent forcing, which is
+not possible with only a linear dependence on velocity. The length
+scale, $\ell_v$, represents the distance over which the 
 flow evolves under the influence of the body force before the
 velocity in the normal direction is reduced by a factor of $1/{\bf 
 e}$. That is, this is the length over which the normal component of the
@@ -1031,8 +1031,8 @@ the vane region and is defined as,
  \bf t_v = \left( {\bf n_v^{\perp}} \right) \text{sign}\left(
 	    {\bf n_v^{\perp}} \cdot {\bf n_r} \right).
 \end{equation}
-Here, sign() is the sign (or signum) function, that extracts the 
-sign of a real number and ${\bf n_v^{\perp}}$ is the vector 
+Here, sign() is the sign (or signum) function, which extracts the 
+sign of a real number, and ${\bf n_v^{\perp}}$ is the vector 
 perpendicular to the normal vector of the vanes, which is simply, 
 \begin{equation*}
  {\bf n_v^{\perp}} = \left[ \begin{array}{c}
