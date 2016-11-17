@@ -483,7 +483,7 @@ validations performed.
 
 Figure~\ref{fig:field_val} shows velocity data from the 
 August 2015 field test in blue. These results were 
-obtained using an anonmometer at fixed
+obtained using an anemometer at fixed
 azimithal location (believed to be at a ninety degree angle, where the zero
 is defined to be aligned with the streamwise flow direction) to measure the
 azimuthal velocity. A time
@@ -500,6 +500,26 @@ Chapters~\ref{subsec:vane} and~\ref{subsec:solid_surface}. Hence, the
 scenario uncertainty was significant, while the uncertainty in the
 system apparatus was small. 
 
+\begin{table}[!htb]
+\centering
+ \caption{The range of conditions represented in
+ Figure~\ref{fig:field_val}. The heading is with respect to the presumed
+ wind direction. The heading may at first appear not to be significant,
+ as the vanes are axisymmetric. However, the rake holding
+ the anemometer was placed at a $90^{\circ}$ relative to the presumed
+ freestream velocity, and the SoV solution structure is not symmetric.}
+\begin{tabular}{l|l|l|l}
+Case Name & Wind Velocity (m/s) & Heading & $T_\text{Surface}$
+ (Celsius) \\ 
+ \hline
+ Peak (Red Line) &  5.0  & $0^{\circ}$ & $60^{\circ}$ \\
+ Match (Black Line) &  3.0  & $0^{\circ}$ & $60^{\circ}$ \\
+ Minimum (Gold Line) &  2.0  & $20^{\circ}$ & $20^{\circ}$ \\
+\end{tabular}
+ \label{tab:val_cond}
+\end{table}
+
+
 To span the range of scenario conditions, several simulations were conducted
 with different parameters. These simulations were performed with
 unsteady virtual vanes on a wind blown domain as detailed in
@@ -514,7 +534,8 @@ heading.
 These simulations accurately bound the experimental data. Furthermore, a
 ``Matching'' case was identified that is broadly consistent with the
 field results. This corresponded to a 3 m/s wind velocity and a 60
-degree Celsius temperature difference. 
+degree Celsius temperature difference. These range of conditions are
+summarized in Table~\ref{tab:val_cond}. 
 As the rake was at fixed azimuthal location, the kinetic energy fluxes were
 compared by assuming azimuthal symmetry and integrating in a horizontal
 plane at the top of the vanes (where a turbine to extract this energy
@@ -524,6 +545,7 @@ kinetic energy flux agrees with the experimental estimate within
 that the velocity field is highly azimuthally asymmetric. Nevertheless,
 no significant inconsistencies have been identified between the
 experimental results and the simulations. 
+
 
 %
 % validation story is incomplete
