@@ -730,7 +730,7 @@ experimental data. The resulting profile is plotted in
 Figure~\ref{fig:thermal_profile_fit}. The sparsity of experimental data
 near the surface is quite clear from this profile. The fitted profile is
 then evaluated at $x=0$ to determine the ground temperature. Based on
-this calculation, a temperature difference of 30 Kelvin was determined.   
+this calculation, a temperature difference of 30 Kelvin was estimated.   
 
  \begin{figure}[!htb]
   \begin{center}
@@ -791,20 +791,21 @@ velocity.
  \end{figure}
 
 Simulations were performed to assess the variation in power extracted by
-the turbine should the wind heading not align with the vanes. It would
+the turbine should the wind heading not align with the vanes.\todo{Todd asked, "Did you do any sensistivity studies to look at variation of performance of the optimal design to the wind heading?}
+ It would
 be non-trivial to implement heading changes in the freestream velocity  
 with the wind case boundary conditions discussed in
 Section~\ref{sec:bc}. Instead, the vanes were rotated by $\pm
-20^{\circ}$ and $45^{\circ}$ so that they did not align with the
-freestream. This was performed by creating a new interpolation vane
-function as described in Section~\ref{sec:interpolate} with a linear
-rotation of the coordinates. 
+20^{\circ}$ and $\pm 45^{\circ}$ so that they did not align with the
+freestream. %This was performed by creating a new interpolation vane
+%function as described in Subsection~\ref{sec:interpolate} with the addition of 
+%a linear rotation of the apparatus.
 
 As the apparatus is not azimuthally symmetric, the vanes were
 rotated both clockwise and counter-clockwise. A $20^{\circ}$
 counter-clockwise adjustment reduced the power by
 2\%, while a clockwise rotation resulted in a reduction of 8\%.
-The apparatus is therefore likely not sensitive to directional heading 
+The apparatus is therefore likely not to be sensitive to directional heading  
 changes of this magnitude. However, increasing the
 rotation to 45 degrees clockwise reduces the power extracted by 63\% and
 47\% for the counter-clockwise rotation. 
