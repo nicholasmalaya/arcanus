@@ -2,9 +2,11 @@
 #
 # sync dot files on magus with central repo
 #
+#HM=/h2/nick/
+HM=/home/nmalaya/
 manus()
 { # take input string, test if changed
-diff /h2/nick/".$1" "$1"
+diff $HM".$1" "$1"
 if [ $? -ne 0 ]
 then
     cp /h2/nick/".$1" "$1"
@@ -13,7 +15,7 @@ then
 fi
 }
 
-cd /h2/nick/bin/arcanus/dotfiles/
+cd $HM/bin/arcanus/dotfiles/
 # sync up sync!
 git pull 
 
@@ -39,4 +41,5 @@ exit 0
 #
 # nick
 # 2/28/14
+# 3/01/16
 #
