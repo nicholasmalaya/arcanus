@@ -23,6 +23,7 @@ git pull
 manus emacs
 manus bashrc
 manus aliases
+manus sync.sh
 
 #
 # now, diff crontab
