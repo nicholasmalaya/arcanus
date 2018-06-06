@@ -1,0 +1,148 @@
+MAILTO=""
+#MAILTO="nick@ices.utexas.edu"
+
+#m h  dom mon dow   command
+############################################
+#JANUARY
+0   4 06 1 * ~/bin/msg/reminder daigle
+0   4  8 1 * ~/bin/msg/reminder Estimated_Taxes_Due_in_a_week
+0   4 15 1 * ~/bin/msg/reminder_all Dad_Rocky
+0   4 18 1 * ~/bin/msg/reminder_all Dad_Ron
+0   5 20 1 * ~/bin/msg/reminder Katherine
+0   4 24 1 * ~/bin/msg/reminder Gabriel
+0   4 25 1 * ~/bin/msg/reminder Kate_Conway
+0   4 27 1 * ~/bin/msg/reminder_n Check_Blood_Pressure
+0   4 30 1 * ~/bin/msg/reminder Sanjenis
+
+#FEBRUARY
+0   4 02 2 * ~/bin/msg/reminder_n chris_kyle_day
+0   4 05 2 * ~/bin/msg/reminder_all Callie!
+0   4 05 2 * ~/bin/msg/reminder_all aunt_annie
+0   4 08 2 * ~/bin/msg/reminder Mk
+0   4 15 2 * ~/bin/msg/reminder Allison
+0   4 19 2 * ~/bin/msg/reminder_all Chris_brother
+0   5 20 2 * ~/bin/msg/reminder Rhys
+0   4 21 2 * ~/bin/msg/reminder has_tax_organizer_arrived
+0   4 22 2 * ~/bin/msg/reminder Pravin
+0   4 25 2 * ~/bin/msg/reminder_all Ashley_cousin
+
+#MARCH
+0   4 08 3 * ~/bin/msg/reminder_all Wifeie
+0   4 12 3 * ~/bin/msg/reminder damon
+0   4 13 3 * ~/bin/msg/reminder_all lauren_mardis
+0   4 15 3 * ~/bin/msg/reminder_all celia
+0   4 18 3 * ~/bin/msg/reminder_all Tasha_cousin
+0   4 25 3 * ~/bin/msg/reminder Sam_still_owes_Em_a_goat
+
+#APRIL
+0   4 02 4 * ~/bin/msg/reminder Charles
+0   4 03 4 * ~/bin/msg/reminder Tim_Bludau
+0   4 10 4 * ~/bin/msg/reminder Estimated_Taxes_Due_in_a_week
+0   4 11 4 * ~/bin/msg/reminder_n car_wash
+0   4 14 4 * ~/bin/msg/reminder J
+0   4 22 4 * ~/bin/msg/reminder Roland
+0   4 27 4 * ~/bin/msg/reminder Bubba
+
+#MAY
+0   4 02 5 * ~/bin/msg/reminder Fritz
+0   4 05 5 * ~/bin/msg/reminder_all Cary_uncle
+0   4 09 5 * ~/bin/msg/reminder Julian
+0   4 10 5 * ~/bin/msg/reminder_all Aunt_Chris
+0   4 12 5 * ~/bin/msg/reminder champions_league_final_soon
+0   4 13 5 * ~/bin/msg/reminder_all Renee
+0   4 14 5 * ~/bin/msg/reminder Anniversary
+0   4 18 5 * ~/bin/msg/reminder Anica_the_Belgian_Grandmother
+0   4 20 5 * ~/bin/msg/reminder Katelyn
+
+#JUNE
+0   4 01 6 * ~/bin/msg/reminder_all uncle_greg
+0   4 06 6 * ~/bin/msg/reminder_all Mom_b-day_Helen
+0   4  7 6 * ~/bin/msg/reminder Estimated_Taxes_Due_in_a_week
+0   4 11 6 * ~/bin/msg/reminder_all Phoebe_cousin
+0   4 16 6 * ~/bin/msg/reminder_c Mom_and_Dad_anniversary
+0   4 21 6 * ~/bin/msg/reminder_c Mom_b-day_claudia
+0   4 25 6 * ~/bin/msg/reminder_all Caroline_Rush
+
+#JULY
+0   4 03 7 * ~/bin/msg/reminder Chad
+0   4 05 7 * ~/bin/msg/reminder roy
+# winner gets to pick dinner location
+#0   4 07 7 * ~/bin/msg/reminder Is_a_st_regis_open_in_austin_0yrs
+0   4 08 7 * ~/bin/msg/reminder Mike_dodd
+0   4 09 7 * ~/bin/msg/reminder sarah_dodd
+0   4 10 7 * ~/bin/msg/reminder kristin_brudy
+0   4 14 7 * ~/bin/msg/reminder Todd_oliver
+0   4 18 7 * ~/bin/msg/reminder car_wash
+0   4 24 7 * ~/bin/msg/reminder LJ
+
+#AUGUST
+0   4 01 8 * ~/bin/msg/reminder_all Sam
+0   4 02 8 * ~/bin/msg/reminder Tim_Piechowski
+0   4 03 8 * ~/bin/msg/reminder Kim
+0   4 14 8 * ~/bin/msg/reminder Bob
+0   4 20 8 * ~/bin/msg/reminder paul_bauman
+0   4 28 8 * ~/bin/msg/reminder Karl
+
+#SEPTEMBER
+0   4 18 9 * ~/bin/msg/reminder Brent
+#0   4 11 9 * ~/bin/msg/reminder Estimated_Taxes_Due_in_a_week
+0   4 20 9 * ~/bin/msg/reminder_all Granddad
+0   4 21 9 * ~/bin/msg/reminder Travis Ed Jackie
+0   4 23 9 * ~/bin/msg/reminder Alexander!
+0   4 26 9 * ~/bin/msg/reminder Sarah_J
+
+#OCTOBER
+0   4 03 10 * ~/bin/msg/reminder Nonie
+0   4  6 10 * ~/bin/msg/reminder belanger
+0   4 21 10 * ~/bin/msg/reminder Jojo
+0   4 26 10 * ~/bin/msg/reminder Rufino
+0   4 27 10 * ~/bin/msg/reminder Rocco
+0   4 30 10 * ~/bin/msg/reminder Oma
+
+#NOVEMBER
+0   4  1 11 * ~/bin/msg/reminder_n eat_some_lysene_this_month
+#0   4  4 11 * ~/bin/msg/reminder Alice_em
+0   4 15 11 * ~/bin/msg/reminder Sara_Tassan
+0   4 20 11 * ~/bin/msg/reminder Christina
+0   4 21 11 * ~/bin/msg/reminder Me_Me_Me!
+0   4 22 11 * ~/bin/msg/reminder Andrew
+
+#DECEMBER
+0   4 8  12 * ~/bin/msg/reminder car_wash!
+0   4 23 12 * ~/bin/msg/reminder Kevin_Kim
+0   4 13 12 * ~/bin/msg/reminder house_annual_inspection
+
+#To be executed each hour
+5  *  * * * /h2/nick/src/pass/shredder.sh
+
+#To be executed each day
+#30  12  * * * /h2/nick/bin/paleologos/dotfiles/sync.sh
+#20  9   * * * ~/bin/msg/morrow
+#0  6   * * * ~/bin/msg/litany.sh
+
+#To be executed each week (monday)
+0  20  * * 1 ~/bin/msg/reminder take_out_trash!
+
+#To be executed each week (tues)
+0  20  * * 2 ~/bin/msg/reminder bring_back_trash!
+
+#To be executed each week (thursday)
+#30  4  * * 4 ~/bin/msg/litany.sh
+
+#To be executed each week (sunday)
+0  20  * * 7 ~/bin/msg/reminder baby_bump_photo
+
+# quarterly
+30 03 01 Dec,Apr,Jul,Oct * ~/bin/msg/reminder car_wash
+
+#To be executed each month
+0   1   10  * * ~/bin/msg/reminder callie_heartworm
+0   1   10  * * ~/bin/msg/reminder_n change_contacts
+#0   1   5  * * ~/bin/msg/reminder Tyres!
+
+# Reminders executed once a year:
+0   5 02 8 * ~/bin/msg/reminder_n Interest_
+0   8 15 6 * ~/bin/msg/reminder change_air_filter
+
+# dont forget to leave whitespace at the end of cron
+#*/1 * * * * /usr/bin/touch /h2/nick/foo
